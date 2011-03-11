@@ -9,4 +9,4 @@ gem 'rspec-expectations'
 gem 'rspec-mocks'
 gem 'autotest'
 gem 'factory_girl'
-
+gem 'acts_as_tree'

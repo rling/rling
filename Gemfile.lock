@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
+    acts_as_tree (0.1.1)
     arel (2.0.9)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -87,6 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_tree
   autotest
   factory_girl
   mysql (= 2.8.1)
