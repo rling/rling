@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserDetailSetting do
    before(:each) do
-       @attr={:field_name=>"test",:field_type=>'textbox'}
+       @attr={:field_name=>"name",:field_type=>'textbox'}
        @user_detail_setting = UserDetailSetting.new(:field_name=>'test',:field_type=>'textbox')
        @user_detail = UserDetail.new(:user_id=>1,:user_detail_setting_id=>@user_detail_setting.id,:selected_value=>"test")
    end
@@ -34,6 +34,38 @@ describe UserDetailSetting do
    user_detail_setting.mandatory.should==false
   end
 
+  it "should contain many associated userdetail" do
+   @user_detail_setting.user_details<< UserDetail.new(:user_detail_setting_id=>@user_detail_setting.id)
+   @user_detail_setting.user_details<< UserDetail.new(:user_detail_setting_id=>@user_detail_setting.id)
+   @user_detail_setting.should have(2).user_details
+  end
 
+  it "validates length of name minimum 3 characters" do
+    name = 'a' * 2
+    field_name = UserDetailSetting.new(@attr.merge(:field_name=> name))
+    field_name.valid?.should be_false
+  end
+
+  it "validates length of name maximum 8 characters" do
+    name = 'a' * 9
+    field_name = UserDetailSetting.new(@attr.merge(:field_name=> name))
+    field_name.valid?.should be_false
+  end
+
+  it "should accept characters from a..z and A..Z" do
+    names = %w[ravi kiran]
+    names.each do |name|
+      valid_field_name = UserDetailSetting.new(@attr.merge(:field_name => name))
+      valid_field_name.should be_valid
+    end
+  end
+
+  it "should not accept characters other than a..z and A..Z" do
+    names = %w[ravi@11 Ravi.k ravi_com]
+    names.each do |name|
+      invalid_field_name = UserDetailSetting.new(@attr.merge(:field_name => name))
+      invalid_field_name.should_not be_valid
+    end 
+  end
 
 end

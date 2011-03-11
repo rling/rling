@@ -138,4 +138,6 @@ describe User do
     matching_user.should_not be_nil
     matching_user.should == user
   end 
+
+
 end
