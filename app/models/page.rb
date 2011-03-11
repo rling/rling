@@ -62,7 +62,7 @@ def generate_perma_link(perma_link)
     if page.nil?
       return perma_link
     else
-      count = 1
+      count = 0
       until (Page.find_by_perma_link("/"+perma_link + "-" + count.to_s).nil?)
         count+=1
       end
@@ -84,10 +84,13 @@ private
       if menu.nil?
 	  menu = Menu.new
       end 
-      menu.name = @menu_name
-      menu.parent_id = @parent_id 
+      menu.name = 'name'
+      menu.parent_id = @parent_id
+      menu.menuset_id = @menuset_id
       menu.page_id = self.id
+     
       menu.menu_view_type = self.page_view_type
+      
       menu.save
     end
 	end

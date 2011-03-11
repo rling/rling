@@ -4,7 +4,7 @@ development:
   adapter: mysql
   database: rling
   username: root
-  password: root
+
 
 
 # Warning: The database defined as "test" will be erased and
@@ -14,7 +14,7 @@ test:
   adapter: mysql
   database: rling_test
   username: root
-  password: root
+
 
 
 #production:

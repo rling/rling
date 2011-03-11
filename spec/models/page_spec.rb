@@ -1,130 +1,190 @@
 require 'spec_helper'
 
 describe Page do
-  before (:each) do
-    @page=Page.create :perma_link => '/home',:title => 'home'
-    @menuset=Menuset.create :name=>"header"
-    @menu=Menu.create :page_id => @page.id ,:menuset_id=>@menuset.id,:name=>'contact' 
-    @pagevariable=PageVariable.create :page_id=>@page.id
-    @page2=Page.create  :title=>'home' ,:perma_link=>'/home1'
-
+ before (:each) do
+  @page_attributes={ :perma_link =>'/perma_link' ,:title=>'title' }
+  @menu_attributes={ :name=>'name',:menuset_id=>'1'}
+  @menuset_attributes ={:name=>'name'}
+  @page_variable_attributes={:variable_value=>'value'} 
+  @page=Page.create!(@page_attributes)
+  @menuset=Menuset.create!(@menuset_attributes)
+  @menu=Menu.create!(@menu_attributes)  
  end
-
- it "should  not be valid without a title"        do
-  
-   @page.should be_valid 
-
-   @page.title=nil
-   @page.should_not be_valid
-   @page.errors[:title].should include("can't be blank")
-
+ it "should create at valid attributes" do
     
-   @page.title=' '
-   @page.should_not be_valid
-   @page.errors[:title].should include("can't be blank")
-
-   @page.home_page.should eql(false)
-   @page.page_view_type.should eql(0)
-  end
-   
-  it "should not be  valid without a perma link" do
-   @page.should be_valid  
-
-   @page.perma_link=nil
-   @page.should_not be_valid
-   @page.errors[:perma_link].should include("can't be blank")
- 
-   @page.perma_link=' '
-   @page.should_not be_valid
-   @page.errors[:perma_link].should include("can't be blank")
-  end
- 
-
-  it "should create unique perma link" do
-   page = Page.new(:perma_link =>'/home' ,:title=>"home")
-   page.should_not  be_valid
-   page.errors[:perma_link].should include("has already been taken")
-  end
-
-  it "should have a menu" do
-    @page.menu.should eql(@menu)
-  end
-  it "should have many page variables" do
-     
-     @page.page_variables << PageVariable.new(:page_id => @page.id)
-     @page.page_variables << PageVariable.new(:page_id => @page.id)
-     @page.should have(3).page_variables
-  end
- 
+     @page.should be_valid
+ end
   
-  it "should destroy associated menu" do
+ 
+ #*************************************Tests Validations********************************************************#
 
-       @page.destroy
-      Menu.find_by_id(@menu.id).should be_nil
+  it "should not be valid without a title" do
+   page=Page.new(@page_attributes.merge(:title=>nil))
+   page.should_not be_valid 
+ 
+   page=Page.new(@page_attributes.merge(:title=>' '))
+   page.should_not be_valid
+
   end
+  
+  it "should not be valid without a perma link" do
+  page=Page.new(@page_attributes.merge(:perma_link=>nil))
+  page.should_not be_valid
+  
+  page=Page.new(@page_attributes.merge(:perma_link=>''))
+  page.should_not be_valid
+ 
+  end
+  it "should have a unique perma link " do
+ 
+   @second_page=Page.new(@page_attributes.merge(:title=>'some_title'))
+   @second_page.should_not be_valid
+  end
+ #*******************************Tests Default Values*************************************************#
+   it "should test home_page default value" do
+   page=Page.new(@page_attributes)
+   page.home_page.should eql(false)
+   end
+   
+   it "should test page_view_type default value" do
+    page=Page.new(@page_attributes)
+    page.page_view_type.should eql(0)
+    end
 
-  it "should destroy associated page variable" do
-
-       @page.destroy
-       PageVariable.find_by_id(@pagevariable.id).should be_nil
+  #**********************************Tests Associations**********************************************#
+   it "should have one  menu "do
+   
+    
+     first_menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id))
+     second_menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id))
+     @page.menu.should eql(first_menu)
+     @page.menu.should_not eql(second_menu)
   end
 
   it "testing the association of menu" do
    Page.reflect_on_association(:menu).should_not  be_nil
   end
-	
-    it  "tests perma_link generations " do
-      Page.new.generate_perma_link("home").should_not be_nil
-      Page.new.generate_perma_link("home").should eql("home-1")
-      Page.new.generate_perma_link("home2").should_not be_nil
-      Page.new.generate_perma_link("home2").should eql("home2")
+   
+  it "should have many page variables" do
+   
+   @first_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id=>@page.id))
+   @second_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id=>@page.id))
+   @page.should have(2).page_variables
   end
-
-     it "tests method menu_menuset_id " do
-       @page.menu_menuset_id.should eql(@menuset.id)
-    end
-
-    it "tests  method menu_menuset_id=(value)" do
-     menuset_id=@page2.menu_menuset_id=(@menuset.id)
-     menu=Menu.create :page_id =>@page2.id ,:parent_id=>@menu.id ,:menuset_id=>menuset_id ,:name=>'contact'
-     menu.menuset_id.should eql(@menuset.id) 
-    end
  
-   it "tests menu_parent_id" do
-      @page.menu_parent_id .should eql(0)
-      menu=Menu.create :page_id =>@page2.id ,:parent_id=>@menu.id ,:menuset_id=>@menuset.id ,:name=>'contact'
-      @page2.menu_parent_id.should eql(@menu.id) 
-   end
-          
-  it "tests menu_parent_id=(value) " do
-      parent_id= @page2.menu_parent_id=(@menu.id)
-      menu=Menu.create :page_id =>@page2.id, :parent_id=>parent_id ,:name=>'contact' ,:menuset_id=>@menuset.id
-      
-      menu.parent_id.should eql(@menu.id)
-  end   
 
-  it "tests menu_name" do
-      @page.menu_name.should eql(@menu.name)
+  it "testing the association ofpage variable" do
+   Page.reflect_on_association(:page_variables).should_not  be_nil
   end
+   
+#*****************************************Tests Dependent Destroy***************************************#
+   it "should destroy associated menu" do
+     page=Page.create!(@page_attributes.merge(:perma_link=>'some_perma_link'))
+     menu=Menu.create!(@menu_attributes.merge(:page_id=>page.id))
+     page.destroy
+     Menu.find_by_id(menu.id).should be_nil
+   end
 
+
+   it "should destroy associated page variables"  do
+       page=Page.create!(@page_attributes.merge(:perma_link=>'some_perma_link'))
+      first_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id => page.id))
+      second_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id => page.id))
+      page.destroy
+      PageVariable.find_by_id(first_page_variable.id).should be_nil
+      PageVariable.find_by_id(first_page_variable.id).should be_nil
+   end
+#******************************************tests Call backs **********************************************#
+        
+
+   
+
+    it "should test before_save  callback " do
+         page=Page.new(@page_attributes.merge(:perma_link=>'some_perma_link'))
+        
+         page.should_receive(:perma_link_generate)
+         page.save
+       
+       end
+
+   it "should  test after_create  callback " do
+
+       page=Page.new(@page_attributes.merge(:perma_link=>'some_perma_link')) 
+       
+       page.should_receive(:set_menu)
+     
+
+       page.save
+   end 
+  
+#**************************************Tests Instance Methods*******************************************#
+ #1.
+      it "tests method menu_menuset_id " do
+    
+       
+        menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>@menuset.id))
+        @page.menu_menuset_id.should  eql(@menuset.id)
+       end 
+ #2.
+       it "tests menthod menu_menuset_id=(value) "do
+       
+        menuset_id=@page.menu_menuset_id=(123) 
+        menuset_id.should eql(123)    
+        menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>menuset_id))
+        menu.menuset_id.should eql(123)    
+        end
+
+ #3.  
+       it "should test menu_parent_id " do
+         
+         menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>@menuset.id ,:parent_id=>@menu.id))
+         @page.menu_parent_id.should eql(@menu.id)
+        
+       end
+ #4   
+       it "should test menu_parent_id=(value) " do
+
+        parent_id= @page.menu_parent_id=(@menu.id)
+        menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>@menuset.id ,:parent_id=>parent_id))
+        menu.parent_id.should eql(@menu.id)
+
+       end
+#5
+    it "tests menu_name" do
+       menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>@menuset.id ))
+      @page.menu_name.should eql(menu.name)
+   end
+#6
 
   it "tests menu_name=(value) " do
     
-     menu_name=@page2.menu_name=('about')
-     menu=Menu.create :page_id =>@page2.id,:name=>menu_name ,:menuset_id=>@menuset.id
-     menu.name.should eql('about')
-  end
+     menu_name=@page.menu_name=('menu_name')
+     menu=Menu.create!(@menu_attributes.merge(:page_id=>@page.id ,:menuset_id=>@menuset.id ,:name=>menu_name))
+     menu.name.should eql('menu_name')
+  end 
 
- it "tests permalnk method" do
-  @page.permalnk.should eql('/home')
+#7
+  it "tests permalnk method" do
+  @page.permalnk.should eql(@page.perma_link)
  end
 
- it "tests permalnk=(value) method " do
-    perma_link=@page2.permalnk=('/about1')
+#8
+  it "tests permalnk=(value) method " do
+    perma_link=@page.permalnk=('some_perma_link')
     perma_link.should_not be_nil
-    perma_link.should eql('/about1')
-    page2=Page.create :title=>'home' , :perma_link=>perma_link + '2'
-    page2.perma_link .should eql('/about12')
+    perma_link.should eql('some_perma_link')
+    page= Page.create!(@page_attributes.merge( :perma_link=>perma_link ))
+    page.perma_link .should eql(perma_link)
  end
+#9
+it  "tests perma_link generations " do
 
+      page=Page.create :perma_link => '/home',:title => 'home'
+      Page.new.generate_perma_link("home").should_not be_nil
+      Page.new.generate_perma_link("home").should eql("home-0")
+      Page.new.generate_perma_link("home2").should_not be_nil
+      Page.new.generate_perma_link("home2").should eql("home2")
+  end
+   
 end
+#****************************************END***************************************************************#

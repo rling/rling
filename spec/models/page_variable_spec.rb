@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe PageVariable do
  before(:each) do 
-  @page=Page.create :perma_link =>'/home' ,:title =>'home'
+  @page_attributes={ :perma_link =>'/perma_link' ,:title=>'title' }
+  @page=Page.create!(@page_attributes)
   @pagevariablesetting=PageVariableSetting.create :name=>'keyword'
  end
+#**************************Belongs to associations*****************************************************#
  it "belongs to a page" do
     @pagevariable=PageVariable.new 
     @pagevariable.page.should be_nil
@@ -18,6 +20,8 @@ describe PageVariable do
     @pagevariable.page_variable_setting.should be_nil
     @pagevariable.page_variable_setting=@pagevariablesetting
     @pagevariable.page_variable_setting.should eql(@pagevariablesetting)
+
    
  end
 end
+#*************************************************END****************************************************#

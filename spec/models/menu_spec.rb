@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Menu do
   before(:each) do
-    @menu = Menu.new (:name=>'name')
+    @menu = Menu.new(:name => 'name')
   end
 
 
