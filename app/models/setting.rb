@@ -1,8 +1,10 @@
 class Setting < ActiveRecord::Base
+#Validations
   validates :name, :presence=> true
   validates :desc_text, :presence=> true
   validates :setting_type, :presence=> true
 
+#Class Methods
  def setting_data
    data = setting_value
    case self.setting_type

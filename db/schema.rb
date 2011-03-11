@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20110310053324) do
   end
 
   create_table "roles", :force => true do |t|
-    t.string   "role_type",    :default => "true"
-    t.boolean  "is_deletable"
+    t.string   "role_type"
+    t.boolean  "is_deletable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

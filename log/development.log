@@ -7915,3 +7915,216 @@ Migrating to CreatePageVariables (20110310053324)
   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053107')[0m
   [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053133')
   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (18.5ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (9.2ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateMenusets (20110310053107)
+  [1m[35mSQL (6.8ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053107')[0m
+Migrating to CreateMenus (20110310053117)
+  [1m[35mSQL (11.7ms)[0m  CREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053117')[0m
+Migrating to CreateSettings (20110310053133)
+  [1m[35mSQL (4.5ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053133')[0m
+Migrating to CreateRoles (20110310053149)
+  [1m[35mSQL (6.4ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  SHOW TABLES
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'admin') LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  describe `roles`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('admin', 1, '2011-03-11 13:10:47', '2011-03-11 13:10:47')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'user') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('user', 1, '2011-03-11 13:10:47', '2011-03-11 13:10:47')[0m
+  [1m[35mSQL (2.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'anonymous') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('anonymous', 1, '2011-03-11 13:10:47', '2011-03-11 13:10:47')[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053149')[0m
+Migrating to CreateUsers (20110310053207)
+  [1m[35mSQL (7.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (27.5ms)[0m  CREATE INDEX `index_users_on_login` ON `users` (`login`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (38.1ms)[0m  CREATE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053207')[0m
+Migrating to CreateUserDetailSettings (20110310053223)
+  [1m[35mSQL (7.2ms)[0m  CREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053223')[0m
+Migrating to CreateUserDetails (20110310053233)
+  [1m[35mSQL (17.8ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053233')[0m
+Migrating to CreatePages (20110310053303)
+  [1m[35mSQL (8.2ms)[0m  CREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053303')[0m
+Migrating to CreatePageVariableSettings (20110310053316)
+  [1m[35mSQL (7.6ms)[0m  CREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (4.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053316')[0m
+Migrating to CreatePageVariables (20110310053324)
+  [1m[35mSQL (5.6ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053324')[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.8ms)[0m  [1mdescribe `menus`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `menus`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `menusets`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `page_variable_settings`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `page_variable_settings`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `page_variables`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `page_variables`
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `pages`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `pages`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `settings`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `user_detail_settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `user_detail_settings`
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `user_details`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `user_details`
+  [1m[36mSQL (1.9ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  DROP DATABASE IF EXISTS `rling_test`
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE DATABASE `rling_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (7.1ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (6.4ms)[0m  [1mCREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (6.6ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.0ms)[0m  [1mCREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.1ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.9ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.9ms)[0m  [1mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.5ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.1ms)[0m  [1mCREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.6ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (37.4ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (6.7ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.3ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (6.7ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053324')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053117')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053303')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053207')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053149')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053133')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053107')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053316')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053223')[0m
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (16.1ms)[0m  DROP DATABASE IF EXISTS `rling_test`
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE DATABASE `rling_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (24.6ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.7ms)[0m  [1mCREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (9.5ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.5ms)[0m  [1mCREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (19.2ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.3ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.8ms)[0m  [1mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.3ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.3ms)[0m  [1mCREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.8ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (8.1ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (7.5ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.6ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (6.7ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053324')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053117')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053303')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053207')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053149')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053133')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053107')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053316')
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053223')[0m
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (17.3ms)[0m  DROP DATABASE IF EXISTS `rling_test`
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE DATABASE `rling_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (6.4ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (6.4ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.7ms)[0m  [1mCREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (6.1ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (3.8ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.4ms)[0m  [1mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.0ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (13.6ms)[0m  [1mCREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (4.8ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (8.4ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (8.3ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (5.4ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (7.4ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053324')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053117')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053303')
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053207')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053149')
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053133')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053107')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053316')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053223')[0m

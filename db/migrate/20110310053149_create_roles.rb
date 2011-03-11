@@ -1,8 +1,8 @@
 class CreateRoles < ActiveRecord::Migration
   def self.up
     create_table :roles do |t|
-      t.string :role_type, :default => "true"
-      t.boolean :is_deletable
+      t.string :role_type
+      t.boolean :is_deletable, :default =>true
 
       t.timestamps
     end

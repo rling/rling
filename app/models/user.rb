@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 #Associations
   belongs_to :role
-  has_many :userdetails, :dependent=> :destroy
+  has_many :user_details, :dependent=> :destroy
 
 #Attributes
   attr_protected :id, :salt
@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness=> true,:length => {:minimum => 6, :maximum => 254},
             :format=> {:with => email_regex }
   validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true
-
+  validates :role_id, :presence=> true
 #Callbacks                       
   after_save :activate_user
   before_save :update_salt_and_hash
@@ -40,6 +40,11 @@ class User < ActiveRecord::Base
     @role = role
   end
 
+  def has_password?(submitted_password)
+    # Compare encrypted_password with the encrypted version of submitted_password.
+    hashed_password == encrypt(submitted_password)
+  end
+
 
 #Private Methods
  private
@@ -54,6 +59,11 @@ class User < ActiveRecord::Base
   def self.encrypt(pass, salt)
     Digest::SHA1.hexdigest(pass+salt)
   end
+
+  def encrypt(str)
+     Digest::SHA1.hexdigest(str+salt)
+  end
+
 
   def self.random_string(len)
     #generat a random password consisting of strings and digits

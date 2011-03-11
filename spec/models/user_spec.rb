@@ -6,18 +6,19 @@ describe User do
     @attr = { :login => "sandeep", 
               :email => "sandeep@heurion.com",
               :password => 'test123',
-              :password_confirmation=> 'test123'
+              :password_confirmation=> 'test123',
+              :role_id=> 1
             }
+  end
 
-  end
   it "should create a new user given valid attributes" do
-    User.create!(@attr)
+    user=User.create!(@attr)
   end
+
 #validating login
   it "should have login" do
     user = User.new(@attr.merge(:login => ''))
     user.should_not be_valid
-
   end
   
   it "should have a unique login" do
@@ -32,7 +33,8 @@ describe User do
     user=User.new(@attr.merge(:login => "1234567890123456"))
     user.valid?.should be_false
   end
-#validating users in roles
+
+#validating associations
   it "should be in any roles assigned to it" do
     user = User.new
     user.assign_role("assigned role")
@@ -43,6 +45,25 @@ describe User do
     user = User.new
     user.should_not be_in_role("unassigned role")
   end
+
+  it "should have a role attribute" do
+    user=User.new(@attr)
+    user.should respond_to(:role)
+  end
+
+  it "should destroy associated user_details" do
+    user=User.create!(@attr)
+    user_detail=UserDetail.create!(:user_id=>user.id,:user_detail_setting_id=>1,:selected_value=>"test")
+    user.destroy
+    UserDetail.find_by_id(user_detail.id).should be_nil
+  end
+ 
+  it "should require a role id" do
+      User.new(@attr.merge(:role_id=>'')).should_not be_valid
+    end
+
+
+
 #validates email
   it "validates presence of email" do
     user = User.new(@attr.merge(:email => ''))
@@ -101,11 +122,23 @@ describe User do
     user = User.new(@attr.merge(:password_confirmation=> 'test111'))
     user.should_not be_valid
   end
-#validates default value for is_activated
-   it "should take default value false for 'is_activated'" do
-     user=User.new(@attr)
-     user.is_activated.should==false
+
+#validates default values
+  it "should take default value false for 'is_activated'" do
+    user=User.new(@attr)
+    user.is_activated.should== false
   end
+
+  it "should take default value 0 for 'login_count'" do
+    user=User.new(@attr)
+    user.login_count.should== 0
+  end
+
+  it "should take default value 0 for 'failed_login_count'" do
+    user=User.new(@attr)
+    user.failed_login_count.should== 0
+  end
+
 #validating authentication
   it "should return nil on login/password mismatch" do
      user=User.create!(@attr.merge(:is_activated=>true))
@@ -128,7 +161,7 @@ describe User do
 
   it "should return nil on email/password mismatch" do
     user=User.create!(@attr.merge(:is_activated=>true))
-    wrong_password_user = User.authenticate(@attr[:email],'wrongpass',true)
+    wrong_password_user = User.authenticate(@attr[:email],'wrongpass',false)
     wrong_password_user.should be_nil
   end
 
@@ -137,7 +170,29 @@ describe User do
     matching_user = User.authenticate(@attr[:email], @attr[:password],false)
     matching_user.should_not be_nil
     matching_user.should == user
-  end 
+  end
 
+  it "should return nil on correct email/password but not activated" do
+    user=User.create!(@attr)
+    matching_user=User.authenticate(@attr[:email],@attr[:password],false)
+    matching_user.should be_nil
+  end
+
+#validating callbacks
+  it "should set the hashed password" do
+      user=User.create(@attr)
+      user.hashed_password.should_not be_blank
+    end
+
+#validating password storing
+  it "should be true if the passwords match" do
+      user=User.create!(@attr)
+      user.has_password?(@attr[:password]).should be_true
+  end    
+
+  it "should be false if the passwords don't match" do
+      user=User.create!(@attr)
+      user.has_password?("invalid").should be_false
+  end 
 
 end

@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe Role do
+
   it "is not valid without a role_type" do
     role = Role.new(:role_type => '')
     role.should_not be_valid
+    role.errors[:role_type].should include("can't be blank")
   end
 
   it "should have unique role_type" do
@@ -18,5 +20,17 @@ describe Role do
     user_role.save
     Role.by_role_type(:user).id.should == user_role.id
   end
+
+  it "should take default value true for 'is_deletable'" do
+    role=Role.new(@attr)
+    role.is_deletable.should== true
+  end
+
+#validating associations
+  it "should have a users attribute" do
+    role=Role.create!(:role_type=>'test')
+    role.should respond_to(:users)
+  end
+
    
 end
