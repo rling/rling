@@ -34,6 +34,8 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     builder (2.1.2)
+    ckeditor (3.5.1)
+      mime-types (>= 1.16)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -90,6 +92,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_tree
   autotest
+  ckeditor
   factory_girl
   mysql (= 2.8.1)
   rails (= 3.0.5)

@@ -1,0 +1,106 @@
+<h3>RlingCMS Setup Process</h3>
+Welcome to RlingCMS. This is your first step towards using a great system to build your dream website. As a first time entry, you need to first create the administrator of the website. You can also allocate necessary details as to how to make the best utilization of the website. As a first step, please fill out the Administration form and then continue to use the website.
+<script language="javascript">
+function disablelogin(entity)
+{
+  if(entity.checked)
+  {
+   $('login_field').hide();
+  }
+  else
+  {
+   $('login_field').show();
+  }
+}
+
+</script>
+<% form_tag first_user_create_sessions_path do %>
+<table>
+  <tr id="login_field">
+    <td>
+       <label for="user_login">Username</label>
+    </td>
+     <td>
+        <%= text_field "user", "login", :size => 20 %>
+     </td>
+     <td>
+        <%=  error_message_on(:user, :login, options={}) %><span>
+     </td>
+ </tr>
+ <tr>
+       <td>
+          <label for="user_email">Email</label>
+       </td>
+   </tr>
+   <tr>
+      <td>
+           <%= text_field "user", "email",  :size => 20 %>
+      </td>
+      <td>
+           <%=  error_message_on(:user, :email, options={}) %>
+      </td>
+   </tr>
+   <tr>
+       <td colspan=3>
+         <%= check_box_tag "is_login_type_email","",false ,:onclick=>"disablelogin(this);" %>Login to system is via Login name or email.
+       </td>
+   </tr>
+   <tr>
+      <td>
+         <label for="user_password">Password</label>
+      </td>
+   </tr>
+   <tr>
+      <td>
+        <%= password_field "user", "password", :size => 20 %>
+      </td>
+      <td>
+         <%=  error_message_on(:user, :password, options={}) %>
+      </td>
+   </tr>
+   <tr>
+      <td>
+        <label for="user_password_confirmation">Password Confirmation</label>
+      </td>
+   </tr>
+   <tr>
+      <td>
+         <%= password_field "user", "password_confirmation", :size => 20 %>
+      </td>
+      <td>
+         <%=  error_message_on(:user, :password_confirmation, options={}) %>
+      </td>
+   </tr>
+  
+   <tr>
+       <td colspan=3>
+         <%= check_box_tag "register_himself" %>Can a user register himself in th website, Is it allowed
+       </td>
+   </tr>
+   <tr>
+       <td colspan=3>
+         <%= check_box_tag "admin_user" %>Can the admin register a user in the website
+       </td>
+   </tr>
+   <tr>
+       <td colspan=3>
+         <%= check_box_tag "user_register_activation" %>When the user registers, should an activation email sent to him to activate himself before using the system
+       </td>
+   </tr>
+   <tr>
+       <td colspan=3>
+         <%= check_box_tag  "admin_register_activation" %>When the admin registers the user should an activation email be sent to the user to activate before using the system
+       </td>
+   </tr>
+    <tr>
+       <td colspan=3>
+         <%= check_box_tag  "welcome_email" %>Once the user registers should an welcome email be sent.
+       </td>
+   </tr>
+   
+</table>
+
+
+
+<%= submit_tag "Create Rling First User"%>
+<% end %>

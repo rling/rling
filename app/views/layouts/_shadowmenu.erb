@@ -1,0 +1,35 @@
+<%= javascript_include_tag 'fancybox/jquery-1.4.2.min' %>
+<%= javascript_include_tag 'fancybox/jquery.fancybox-1.3.1' %>
+<link rel="stylesheet" type="text/css" href="/javascripts/fancybox/jquery.fancybox-1.3.1.css" media="screen" />
+
+<%
+   output = ""
+   menuset = Menuset.find_by_name(menusetname)
+   menus = Menu.find_all_by_level_and_menuset_id(1,menuset.id, :order=>"position")
+   firstmenu = true
+   output << "<ul class='menuset'>"
+   menuids = Array.new
+   menus.each do |menu|
+   	menulink = ""
+   	if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
+     		menulink = menu.page.perma_link
+   	else
+     		menulink = menu.link_path
+   	end
+      unless(menulink.empty? || menulink == "/")
+        menuids << menu.id 
+      end
+    	output << "<li class='"+ (firstmenu ? "menuitem_first" : "menuitem") + "'>"
+    	output << "<a href='#{menulink}' id='menu_#{menu.id}'>#{menu.name}</a>"
+    	output << "</li>"
+    	firstmenu = false
+   end
+   
+  output << "<script type='text/javascript'>$(document).ready(function() {"	
+  menuids.each do |menuid|
+   output << "$(\"#menu_#{menuid}\").fancybox({'width': '75%','height': '75%','autoScale': false,'transitionIn': 'none','transitionOut': 'none','type': 'iframe'});
+"
+  end
+  output << "});</script>" 
+%>
+<%= output %>

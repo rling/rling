@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rling</title>
-  <%= stylesheet_link_tag :all %>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%#= get_page_variable "SEO Meta Title" %></title>
+  <META name="description" content="<%#= get_page_variable "SEO Meta Description" %>" >
+  <META name="keywords" content="<%#= get_page_variable "SEO Meta Keywords" %>" >
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'scaffold' %>
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :ckeditor %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="layout">
+<div id="header">
+<div id="top_bar">
+<% if current_user %>
+	<% if current_user.admin == true %>
+		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+	<% end %>
+	<%= link_to "Logout", session_path, :method => :delete %>
+<% end %>
+</div>
+<%= render :partial=>"layouts/header" %>
+</div>
+<div id="middle">
+<%= yield  %>
+</div>
+<div id="footer">
+<%= render :partial=>"layouts/footer" %>
+</div>
 </body>
 </html>
