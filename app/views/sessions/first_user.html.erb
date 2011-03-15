@@ -31,8 +31,7 @@ function disablelogin(entity)
        <td>
           <label for="user_email">Email</label>
        </td>
-   </tr>
-   <tr>
+   
       <td>
            <%= text_field "user", "email",  :size => 20 %>
       </td>
@@ -49,8 +48,6 @@ function disablelogin(entity)
       <td>
          <label for="user_password">Password</label>
       </td>
-   </tr>
-   <tr>
       <td>
         <%= password_field "user", "password", :size => 20 %>
       </td>
@@ -62,8 +59,6 @@ function disablelogin(entity)
       <td>
         <label for="user_password_confirmation">Password Confirmation</label>
       </td>
-   </tr>
-   <tr>
       <td>
          <%= password_field "user", "password_confirmation", :size => 20 %>
       </td>
@@ -74,27 +69,27 @@ function disablelogin(entity)
   
    <tr>
        <td colspan=3>
-         <%= check_box_tag "register_himself" %>Can a user register himself in th website, Is it allowed
+         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in th website, Is it allowed
        </td>
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "admin_user" %>Can the admin register a user in the website
+         <%= check_box_tag "allow_admin_register_user" %>Can the admin register a user in the website
        </td>
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "user_register_activation" %>When the user registers, should an activation email sent to him to activate himself before using the system
+         <%= check_box_tag "user_activation_required_on_user" %>When the user registers, should an activation email sent to him to activate himself before using the system
        </td>
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag  "admin_register_activation" %>When the admin registers the user should an activation email be sent to the user to activate before using the system
+         <%= check_box_tag  "user_activation_required_on_admin" %>When the admin registers the user should an activation email be sent to the user to activate before using the system
        </td>
    </tr>
     <tr>
        <td colspan=3>
-         <%= check_box_tag  "welcome_email" %>Once the user registers should an welcome email be sent.
+         <%= check_box_tag  "send_welcome_email" %>Once the user registers should an welcome email be sent.
        </td>
    </tr>
    

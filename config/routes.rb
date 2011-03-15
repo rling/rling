@@ -9,6 +9,10 @@ Rling::Application.routes.draw do
     end
   end
 
+  match "login" => "sessions#new"
+  match "logout" => "sessions#destroy"
+  match "register" => "users#new"
+  match "admin/dashboard" =>"admin#dashboard"
   root :to => "display#index"
 
   # The priority is based upon order of creation:

@@ -9,24 +9,28 @@ class ApplicationController < ActionController::Base
   private
        
     def current_user
-      return (session[:user].nil? ? nil : session[:user])
+      return session[:user]
     end
     
     def current_user=(value)
      session[:user] = value
     end
 
+    def current_user?
+     return !session[:user].nil?
+    end
+
     def require_user
-      unless current_user
+       unless current_user?
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_user_session_url
+        redirect_to new_session_url
         return false
       end
     end
 
     def require_no_user
-      if current_user
+      if current_user?
         store_location
         flash[:notice] = "You must be logged out to access this page"
         redirect_to account_url
@@ -35,7 +39,7 @@ class ApplicationController < ActionController::Base
     end
     
    def require_admin
-      unless current_user.admin
+      unless current_user.admin?
         flash[:notice] = "You do not have administrator previleges to access the page"
         redirect_to :controller => "users", :action => "show", :id => current_user.id
         return false

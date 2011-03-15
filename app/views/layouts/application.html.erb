@@ -16,15 +16,22 @@
 <div id="header">
 <div id="top_bar">
 <% if current_user %>
-	<% if current_user.admin == true %>
+	<% if current_user.admin? %>
 		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
 	<% end %>
-	<%= link_to "Logout", session_path, :method => :delete %>
+	<%= link_to "Logout", "/logout" %>
+<% else %>
+ <%= link_to "Login","/login" %>
 <% end %>
 </div>
 <%= render :partial=>"layouts/header" %>
 </div>
 <div id="middle">
+<div id="flash_notice">
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+</div>
 <%= yield  %>
 </div>
 <div id="footer">

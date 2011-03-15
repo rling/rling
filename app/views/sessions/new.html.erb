@@ -1,0 +1,14 @@
+<h1>Login</h1>
+
+<%= form_tag sessions_path do  %>
+
+  <%= label_tag :login %><br />
+  <%= text_field_tag :login %><br />
+  <br />
+  <%= label_tag :password %><br />
+  <%= password_field_tag :password %><br />
+  
+  
+  <%= submit_tag "Login" %>
+<% end %>
+	

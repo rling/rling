@@ -16,19 +16,13 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true
   validates :role_id, :presence=> true
 #Callbacks                       
-  after_save :activate_user
   before_save :update_salt_and_hash
-  before_create :update_salt_and_hash
+  before_create :update_salt_and_hash,:activate_user
 #Class Methods
-  def self.authenticate(login, pass, is_login)
-    if is_login
-	    u=find(:first, :conditions=>["login = ?", login])
-    else
-	    u=find(:first, :conditions=>["email = ?", login])
-    end 	
+  def self.authenticate(login, pass)
+    u=find(:first, :conditions=>["login = ?", login])
     return nil if u.nil?
-    return u if User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated
-    nil
+    return (User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated) ? u : nil
   end
 
 #Instance Methods
@@ -40,6 +34,10 @@ class User < ActiveRecord::Base
     @role = role
   end
 
+  def admin?
+    return self.role_id==3
+  end
+  
   def has_password?(submitted_password)
     # Compare encrypted_password with the encrypted version of submitted_password.
     hashed_password == encrypt(submitted_password)
@@ -74,10 +72,7 @@ class User < ActiveRecord::Base
   end
  
   def activate_user
-   @activate_setting = Setting.find_by_name(:user_activation_email)
-   if !@activate_setting.nil? && @activate_setting.setting_data
-     #Notifier.send_activation_email
-   end
+   self.activation_key = User.random_string(8)
   end 
   
 end
