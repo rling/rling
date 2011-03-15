@@ -6,6 +6,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :perma_link
       t.boolean :home_page ,:default => false
       t.integer :page_view_type ,:default => 0
+      t.integer :user_id 
       t.timestamps
     end
   end
