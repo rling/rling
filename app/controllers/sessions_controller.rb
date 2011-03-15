@@ -71,6 +71,24 @@ def create
  end
 end
 
+def forgot
+    if request.post?
+      user = User.find_by_email(params[:user][:email])
+      respond_to do |format|
+      if user
+        user.create_reset_code
+        flash[:notice] = "Reset code sent to #{user.email}"
+        format.html { redirect_to login_path }
+        format.xml { render :xml => user.email, :status => :created }
+      else
+        flash[:error] = "#{params[:user][:email]} does not exist in system"
+        format.html { redirect_to login_path }
+        format.xml { render :xml => user.email, :status => :unprocessable_entity }
+        end
+      end
+    end
+end
+
 def destroy
     session[:user] = nil
     flash[:notice] = "You have been logged out."
