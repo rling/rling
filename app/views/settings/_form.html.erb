@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <b><%= f.label :name,'Setting Name' %></b><br />
+    <%= f.label @setting.name %>
+  </div>
+  <div class="field">
+    <b><%= f.label :desc_text,'Descriptive Text' %></b><br />
+    <%= f.label @setting.desc_text %>
+  </div>
+  <div class="field">
+    <b><%= f.label :setting_type %></b><br />
+    <%= f.select :setting_type,['boolean','integer','float','string','date','datetime'] %>
+  </div>
+  <div class="field">
+    <b><%= f.label :setting_value,'Setting Value' %></b><br />
+    <%= f.text_field :setting_value %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

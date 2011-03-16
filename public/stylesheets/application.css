@@ -127,3 +127,10 @@ width: 800px;
 padding: 5px;
  border-right: 1px solid black;
 }
+
+.image_link
+{
+width: 20px;
+height: 20px;
+border: none;
+}

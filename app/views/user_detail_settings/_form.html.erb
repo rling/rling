@@ -1,0 +1,42 @@
+<%= form_for(@user_detail_setting) do |f| %>
+  <% if @user_detail_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_detail_setting.errors.count, "error") %> prohibited this user_detail_setting from being saved:</h2>
+
+      <ul>
+      <% @user_detail_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= f.label :field_name %><br />
+  <%= f.text_field :field_name %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label :field_type %><br />
+  <%= f.select :field_type,["Textfield","Textarea","Dropdown","Checkbox","Radio Button"] %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label :field_values %><br />
+  <%= f.text_field :field_values %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label :default_value %><br />
+  <%= f.text_field :default_value %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label :mandatory,'Is this field mandatory for users' %><br />
+  <%= f.check_box :mandatory %><br />
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

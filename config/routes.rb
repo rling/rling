@@ -3,6 +3,7 @@ Rling::Application.routes.draw do
   resources :page_variable_settings
   resources :users
   resources :settings
+  resources :user_detail_settings
   resources :password_resets do
    collection do
      post 'new'
