@@ -1,4 +1,6 @@
 Rling::Application.routes.draw do
+  resources :menus
+  resources :menusets
   resources :pages
   resources :page_variable_settings
   resources :users

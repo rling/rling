@@ -1,0 +1,29 @@
+<h1>Listing menus</h1>
+<% form_tag :url=>{:action=>"update_position"} do %>
+<table>
+  <% @all_menus.each do |m| %>
+  <tr>
+    <% if m[1] < 0 %>
+    <td><%= m[0] %></td>
+    <% else %>
+    <% menu = Menu.find(m[1])
+       menu.level.times do %>
+    <td></td>
+    <% end %>
+    <td><%= m[0] %></td>
+
+    <td align=right><%= text_field_tag "#{menu.id}",menu.position, :size=>2 %></td>
+    <td align=center><%= link_to 'Show', menu %></td>
+    <td align=center><%= link_to 'Edit', edit_menu_path(menu) %></td>
+    <td align=center><%= link_to 'Destroy', menu, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<%= submit_tag 'Update Positions' %>
+<% end %>
+
+
+<br />
+
+<%= link_to 'New menu', new_menu_path %>
