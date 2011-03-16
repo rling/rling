@@ -14,7 +14,7 @@ Setting.create(:name=>"send_welcome_email",:desc_text=>"If a user is registered,
 Setting.create(:name=>"is_login_type_email",:desc_text=>"Should the login to the website be done using the login or by using the email address of the user",:setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"user_activation_required_on_user",:desc_text=>"Should the System send activation email when the user registers into the website",:setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"user_activation_required_on_admin",:desc_text=>"Should the System send activation email when the admin registers the user using admin panel in the website",:setting_type=>"boolean",:setting_value=>"false")
-
+Setting.create(:name=>"site_url",:desc_text=>"URL of the Site that is required to go out as external links. e.g. in emails, on pages, etc.,",:setting_type=>"string",:setting_value=>"http://localhost:3000")
 
 
 

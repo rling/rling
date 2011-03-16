@@ -31535,3 +31535,1032 @@ Rendered layouts/_nolistmenu.erb (2.8ms)
 Rendered layouts/_footer.erb (4.6ms)
 Rendered display/index.erb within layouts/application (129.4ms)
 Completed 200 OK in 178ms (Views: 139.1ms | ActiveRecord: 4.8ms)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (45.8ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (24.9ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateMenusets (20110310053107)
+  [1m[35mSQL (8.4ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053107')[0m
+Migrating to CreateMenus (20110310053117)
+  [1m[35mSQL (11.2ms)[0m  CREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053117')[0m
+Migrating to CreateRoles (20110310053149)
+  [1m[35mSQL (9.6ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'admin') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  describe `roles`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('admin', 1, '2011-03-16 15:39:23', '2011-03-16 15:39:23')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'user') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('user', 1, '2011-03-16 15:39:23', '2011-03-16 15:39:23')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'anonymous') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('anonymous', 1, '2011-03-16 15:39:23', '2011-03-16 15:39:23')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053149')[0m
+Migrating to CreateUserDetailSettings (20110310053223)
+  [1m[35mSQL (6.8ms)[0m  CREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053223')[0m
+Migrating to CreateUserDetails (20110310053233)
+  [1m[35mSQL (6.5ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053233')[0m
+Migrating to CreatePages (20110310053303)
+  [1m[35mSQL (13.1ms)[0m  CREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053303')[0m
+Migrating to CreatePageVariableSettings (20110310053316)
+  [1m[35mSQL (8.4ms)[0m  CREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053316')[0m
+Migrating to CreatePageVariables (20110310053324)
+  [1m[35mSQL (11.4ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053324')[0m
+Migrating to CreateSettings (20110314065704)
+  [1m[35mSQL (12.0ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110314065704')[0m
+Migrating to CreateUsers (20110314065928)
+  [1m[35mSQL (8.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (20.5ms)[0m  CREATE INDEX `index_users_on_login` ON `users` (`login`)
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (12.2ms)[0m  CREATE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110314065928')[0m
+Migrating to AddSessionsTable (20110315144448)
+  [1m[35mSQL (8.0ms)[0m  CREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW KEYS FROM `sessions`[0m
+  [1m[35mSQL (19.5ms)[0m  CREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW KEYS FROM `sessions`[0m
+  [1m[35mSQL (11.1ms)[0m  CREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110315144448')[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `menus`[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `menus`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mSQL (1.2ms)[0m  SHOW KEYS FROM `menusets`
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `page_variable_settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `page_variable_settings`
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `page_variables`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `page_variables`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `pages`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `pages`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `sessions`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `settings`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `settings`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `user_detail_settings`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_detail_settings`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `user_details`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_details`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (10.1ms)[0m  DROP TABLE `menus`
+  [1m[36mSQL (19.3ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.0ms)[0m  [1mDROP TABLE `menusets`[0m
+  [1m[35mSQL (13.1ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.2ms)[0m  DROP TABLE `page_variable_settings`
+  [1m[36mSQL (14.5ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.9ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.3ms)[0m  [1mDROP TABLE `page_variables`[0m
+  [1m[35mSQL (16.5ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.1ms)[0m  DROP TABLE `pages`
+  [1m[36mSQL (18.7ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (1.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.4ms)[0m  [1mDROP TABLE `roles`[0m
+  [1m[35mSQL (12.5ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.9ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.7ms)[0m  DROP TABLE `sessions`
+  [1m[36mSQL (8.7ms)[0m  [1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (1.2ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (11.3ms)[0m  [1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (17.5ms)[0m  [1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [1m[35mSQL (1.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.4ms)[0m  [1mDROP TABLE `settings`[0m
+  [1m[35mSQL (19.6ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.2ms)[0m  DROP TABLE `user_detail_settings`
+  [1m[36mSQL (7.7ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.4ms)[0m  [1mDROP TABLE `user_details`[0m
+  [1m[35mSQL (11.0ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.9ms)[0m  DROP TABLE `users`
+  [1m[36mSQL (10.1ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (19.2ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (9.9ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (1.0ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Header') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Header', 'Header Menu for RlingCMS', '2011-03-16 15:39:42', '2011-03-16 15:39:42')
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Footer') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Footer', 'Footer Menu for RlingCMS', '2011-03-16 15:39:42', '2011-03-16 15:39:42')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Anonymous') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  describe `roles`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Anonymous', 0, '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'User') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('User', 0, '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Admin') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Admin', 0, '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `settings`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_user_register_user', 'Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute', 'false', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_admin_register_user', 'Should the System allow administrators to self register users to the website', 'true', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('send_welcome_email', 'If a user is registered, should there be a welcome email sent to the user on registration', 'false', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('is_login_type_email', 'Should the login to the website be done using the login or by using the email address of the user', 'false', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_user', 'Should the System send activation email when the user registers into the website', 'false', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_admin', 'Should the System send activation email when the admin registers the user using admin panel in the website', 'false', 'boolean', '2011-03-16 15:39:42', '2011-03-16 15:39:42')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('site_url', 'URL of the Site that is required to go out as external links. e.g. in emails, on pages, etc.,', 'http://localhost:3000', 'string', '2011-03-16 15:39:42', '2011-03-16 15:39:42')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  DROP DATABASE IF EXISTS `rling_test`
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE DATABASE `rling_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (20.0ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (22.3ms)[0m  [1mCREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.8ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.6ms)[0m  [1mCREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.1ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (7.9ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (17.2ms)[0m  [1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (10.5ms)[0m  [1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (17.6ms)[0m  [1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (11.2ms)[0m  [1mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.7ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (8.4ms)[0m  [1mCREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (16.5ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (11.6ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (20.4ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.7ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (16.9ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110315144448')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110314065704')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053149')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053223')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053324')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053303')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053107')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053316')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110314065928')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053117')
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-16 21:10:35 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by DisplayController#index as HTML
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+Redirected to http://localhost:3000/sessions/first_user
+Completed 302 Found in 240ms
+
+
+Started GET "/sessions/first_user" for 127.0.0.1 at 2011-03-16 21:10:35 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#first_user as HTML
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_sessions_first_user_html_erb___951295995_83409840_831614850 at /ravikiran/rling-gitcode/rling/app/views/sessions/first_user.html.erb:17)
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.5ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (117.1ms)
+Rendered layouts/_header.erb (118.9ms)
+  [1m[36mMenuset Load (0.5ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.4ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (3.3ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered sessions/first_user.html.erb within layouts/application (146.5ms)
+Completed 200 OK in 202ms (Views: 151.9ms | ActiveRecord: 32.8ms)
+
+
+Started POST "/sessions/first_user_create" for 127.0.0.1 at 2011-03-16 21:10:55 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#first_user_create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "user"=>{"login"=>"", "email"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "is_login_type_email"=>"", "site_url"=>"http://localhost:3000", "allow_user_register_user"=>"1", "allow_admin_register_user"=>"1", "send_welcome_email"=>"1", "commit"=>"Create Rling First User"}
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`role_id` = 3 LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'ravikiran@heurion.com') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'ravikiran@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (1.2ms)[0m  describe `users`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('ravikiran@heurion.com', 'ravikiran@heurion.com', 3, '5e6abbdeac6be91e0a6b27407c0797775bdc2efe', 'gKGoT3hvqw', 'uEl7MpMB', 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-16 15:40:55', '2011-03-16 15:40:55')[0m
+  [1m[35mSQL (7.5ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-16 15:40:55' WHERE `settings`.`id` = 4[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-16 15:40:55' WHERE `settings`.`id` = 1[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'send_welcome_email' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-16 15:40:55' WHERE `settings`.`id` = 3[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_user' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 137ms
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2011-03-16 21:10:55 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#new as HTML
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (62.0ms)
+Rendered layouts/_header.erb (63.8ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered sessions/new.html.erb within layouts/application (75.7ms)
+Completed 200 OK in 133ms (Views: 82.5ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-16 21:11:03 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "login"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE (login = 'ravikiran@heurion.com') LIMIT 1
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 40ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:11:03 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+Rendered admin/dashboard.html.erb within layouts/application (66.4ms)
+Completed   in 88ms
+
+ActionView::Template::Error (undefined local variable or method `account_url' for #<#<Class:0x9f22548>:0x9f20e64>):
+    19: <div id="top_bar">
+    20: <% if current_user %>
+    21:         <% if current_user %>
+    22:               Logged in as: <%= link_to(current_user.login,account_url) %> |
+    23:         <% end %>
+    24: 	<% if current_user.admin? %>
+    25: 		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+  app/views/layouts/application.html.erb:22:in `_app_views_layouts_application_html_erb___864025181_83409200_831614850'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (6.2ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.5ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:16:30 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+Rendered admin/dashboard.html.erb within layouts/application (20.9ms)
+Completed   in 44ms
+
+ActionView::Template::Error (undefined local variable or method `account_url' for #<#<Class:0xa00e0b0>:0xa00b93c>):
+    19: <div id="top_bar">
+    20: <% if current_user %>
+    21:         <% if current_user %>
+    22:               Logged in as: <%= link_to(current_user.login,account_url) %> |
+    23:         <% end %>
+    24: 	<% if current_user.admin? %>
+    25: 		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+  app/views/layouts/application.html.erb:22:in `_app_views_layouts_application_html_erb___864025181_83891700_831614850'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.7ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:16:48 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+Rendered admin/dashboard.html.erb within layouts/application (21.2ms)
+Completed   in 45ms
+
+ActionView::Template::Error (undefined local variable or method `account_url' for #<#<Class:0xa168f50>:0xa166e58>):
+    19: <div id="top_bar">
+    20: <% if current_user %>
+    21:         <% if current_user %>
+    22:               Logged in as: <%= link_to(current_user.login,account_url) %> |
+    23:         <% end %>
+    24: 	<% if current_user.admin? %>
+    25: 		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+  app/views/layouts/application.html.erb:22:in `_app_views_layouts_application_html_erb___864025181_84608270_831614850'
+
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.9ms)
+Rendered /usr/local/ruby/lib/ruby/gems/1.9.1/gems/actionpack-3.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.0ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:24:10 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (121.4ms)
+Rendered layouts/_header.erb (123.1ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered admin/dashboard.html.erb within layouts/application (135.3ms)
+Completed 200 OK in 158ms (Views: 141.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/account" for 127.0.0.1 at 2011-03-16 21:24:15 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (66.1ms)
+Rendered layouts/_header.erb (67.9ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered users/show.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 159ms (Views: 87.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-16 21:24:19 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (118.2ms)
+Rendered layouts/_header.erb (119.9ms)
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered users/index.html.erb within layouts/application (134.5ms)
+Completed 200 OK in 159ms (Views: 141.0ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-16 21:24:26 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#new as HTML
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT `roles`.* FROM `roles`
+Rendered users/_form.html.erb (37.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (65.6ms)
+Rendered layouts/_header.erb (67.3ms)
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered users/new.html.erb within layouts/application (117.5ms)
+Completed 200 OK in 219ms (Views: 123.1ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/user_detail_settings" for 127.0.0.1 at 2011-03-16 21:24:31 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UserDetailSettingsController#index as HTML
+  [1m[36mUserDetailSetting Load (0.5ms)[0m  [1mSELECT `user_detail_settings`.* FROM `user_detail_settings`[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (120.8ms)
+Rendered layouts/_header.erb (122.5ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered user_detail_settings/index.html.erb within layouts/application (151.1ms)
+Completed 200 OK in 180ms (Views: 163.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/settings" for 127.0.0.1 at 2011-03-16 21:24:39 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SettingsController#index as HTML
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings`
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (63.8ms)
+Rendered layouts/_header.erb (65.6ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered settings/index.html.erb within layouts/application (102.1ms)
+Completed 200 OK in 123ms (Views: 109.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-16 21:24:42 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (122.8ms)
+Rendered layouts/_header.erb (124.6ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered users/index.html.erb within layouts/application (139.3ms)
+Completed 200 OK in 163ms (Views: 145.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/account" for 127.0.0.1 at 2011-03-16 21:24:52 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (65.5ms)
+Rendered layouts/_header.erb (67.3ms)
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Rendered layouts/_footer.erb (4.4ms)
+Rendered users/show.html.erb within layouts/application (79.9ms)
+Completed 200 OK in 106ms (Views: 86.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-03-16 21:24:54 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles`
+Rendered users/_form.html.erb (111.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (64.5ms)
+Rendered layouts/_header.erb (66.2ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered users/edit.html.erb within layouts/application (191.5ms)
+Completed 200 OK in 218ms (Views: 199.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-16 21:24:59 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (114.7ms)
+Rendered layouts/_header.erb (116.3ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered users/index.html.erb within layouts/application (130.8ms)
+Completed 200 OK in 155ms (Views: 137.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-03-16 21:25:05 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (64.9ms)
+Rendered layouts/_header.erb (66.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered users/show.html.erb within layouts/application (132.1ms)
+Completed 200 OK in 158ms (Views: 138.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/account" for 127.0.0.1 at 2011-03-16 21:25:13 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (66.4ms)
+Rendered layouts/_header.erb (68.1ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered users/show.html.erb within layouts/application (80.1ms)
+Completed 200 OK in 107ms (Views: 86.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-03-16 21:25:15 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles`[0m
+Rendered users/_form.html.erb (108.4ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (61.2ms)
+Rendered layouts/_header.erb (62.9ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Rendered layouts/_footer.erb (4.4ms)
+Rendered users/edit.html.erb within layouts/application (185.3ms)
+Completed 200 OK in 210ms (Views: 191.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-16 21:25:19 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (116.4ms)
+Rendered layouts/_header.erb (118.2ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered users/index.html.erb within layouts/application (133.0ms)
+Completed 200 OK in 156ms (Views: 139.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-16 21:25:21 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#new as HTML
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mSetting Load (0.2ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.* FROM `roles`
+Rendered users/_form.html.erb (35.5ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (64.6ms)
+Rendered layouts/_header.erb (66.3ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered users/new.html.erb within layouts/application (114.5ms)
+Completed 200 OK in 213ms (Views: 120.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-03-16 21:25:36 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.* FROM `roles`
+Rendered users/_form.html.erb (107.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (63.4ms)
+Rendered layouts/_header.erb (65.2ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered users/edit.html.erb within layouts/application (185.7ms)
+Completed 200 OK in 211ms (Views: 192.0ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at 2011-03-16 21:25:51 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role_id"=>"3"}, "id"=>"1", "commit"=>"Update User"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'ravikiran@heurion.com') AND (`users`.id <> 1) LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'ravikiran@heurion.com') AND (`users`.id <> 1) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 26ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-03-16 21:25:52 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (66.2ms)
+Rendered layouts/_header.erb (68.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered users/show.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 164ms (Views: 87.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-16 21:25:54 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-16 21:25:55 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by DisplayController#index as HTML
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (119.0ms)
+Rendered layouts/_header.erb (120.7ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered display/index.erb within layouts/application (130.8ms)
+Completed 200 OK in 171ms (Views: 137.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-16 21:26:01 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#new as HTML
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (65.6ms)
+Rendered layouts/_header.erb (67.4ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered sessions/new.html.erb within layouts/application (79.4ms)
+Completed 200 OK in 138ms (Views: 137.3ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-16 21:26:07 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "login"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE (login = 'ravikiran@heurion.com') LIMIT 1
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 37ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:26:08 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (67.0ms)
+Rendered layouts/_header.erb (68.7ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered admin/dashboard.html.erb within layouts/application (81.0ms)
+Completed 200 OK in 157ms (Views: 88.2ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/account" for 127.0.0.1 at 2011-03-16 21:26:14 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (65.3ms)
+Rendered layouts/_header.erb (67.0ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered users/show.html.erb within layouts/application (79.1ms)
+Completed 200 OK in 106ms (Views: 85.5ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2011-03-16 21:26:16 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles`[0m
+Rendered users/_form.html.erb (112.1ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (64.8ms)
+Rendered layouts/_header.erb (66.6ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.1ms)
+Rendered users/edit.html.erb within layouts/application (192.2ms)
+Completed 200 OK in 218ms (Views: 198.5ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users/1" for 127.0.0.1 at 2011-03-16 21:26:17 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "user"=>{"password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role_id"=>"3"}, "id"=>"1", "commit"=>"Update User"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'ravikiran@heurion.com') AND (`users`.id <> 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'ravikiran@heurion.com') AND (`users`.id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 24ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-03-16 21:26:18 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (62.7ms)
+Rendered layouts/_header.erb (64.3ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered users/show.html.erb within layouts/application (76.3ms)
+Completed 200 OK in 102ms (Views: 82.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-16 21:26:20 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-16 21:26:20 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by DisplayController#index as HTML
+  [1m[35mPage Load (0.1ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (118.5ms)
+Rendered layouts/_header.erb (120.2ms)
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered display/index.erb within layouts/application (130.4ms)
+Completed 200 OK in 160ms (Views: 137.0ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-16 21:26:26 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#new as HTML
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (62.8ms)
+Rendered layouts/_header.erb (64.5ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered sessions/new.html.erb within layouts/application (76.3ms)
+Completed 200 OK in 84ms (Views: 83.1ms | ActiveRecord: 27.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-16 21:26:32 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zl+2KEqPFTaLgTqiMLg1dC55N72bjcIlmQkPSGM60mA=", "login"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'ravikiran@heurion.com') LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 40ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:26:32 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (65.4ms)
+Rendered layouts/_header.erb (67.2ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.2ms)
+Rendered admin/dashboard.html.erb within layouts/application (79.5ms)
+Completed 200 OK in 158ms (Views: 86.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-16 21:26:34 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-16 21:26:34 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by DisplayController#index as HTML
+  [1m[35mPage Load (0.1ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (114.3ms)
+Rendered layouts/_header.erb (116.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Rendered layouts/_footer.erb (4.7ms)
+Rendered display/index.erb within layouts/application (126.6ms)
+Completed 200 OK in 162ms (Views: 133.1ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-16 21:31:09 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#new as HTML
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Admin' LIMIT 1[0m
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.5ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (132.5ms)
+Rendered layouts/_header.erb (142.5ms)
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Rendered layouts/_footer.erb (8.4ms)
+Rendered sessions/new.html.erb within layouts/application (200.2ms)
+Completed 200 OK in 604ms (Views: 251.6ms | ActiveRecord: 17.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-16 21:31:15 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JJvbyPrrzUY5Gh+BBjgqjxZJRNWtqHilflUjLqoKhp0=", "login"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'ravikiran@heurion.com') LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 39ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-16 21:31:15 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by AdminController#dashboard as HTML
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (61.1ms)
+Rendered layouts/_header.erb (62.8ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (3.9ms)
+Rendered admin/dashboard.html.erb within layouts/application (74.6ms)
+Completed 200 OK in 118ms (Views: 102.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/settings" for 127.0.0.1 at 2011-03-16 21:31:18 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SettingsController#index as HTML
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings`
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (119.3ms)
+Rendered layouts/_header.erb (121.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (4.0ms)
+Rendered settings/index.html.erb within layouts/application (164.7ms)
+Completed 200 OK in 209ms (Views: 190.5ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-16 21:31:21 +0530
+DEPRECATION WARNING: Base.named_scope has been deprecated, please use Base.scope instead. (called from <class:User> at /ravikiran/rling-gitcode/rling/app/models/user.rb:23)
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-16 21:31:22 +0530
+DEPRECATION WARNING: Setting filter_parameter_logging in ActionController is deprecated and has no longer effect, please set 'config.filter_parameters' in config/application.rb instead. (called from <class:ApplicationController> at /ravikiran/rling-gitcode/rling/app/controllers/application_controller.rb:5)
+  Processing by DisplayController#index as HTML
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (117.1ms)
+Rendered layouts/_header.erb (118.7ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered display/index.erb within layouts/application (129.0ms)
+Completed 200 OK in 211ms (Views: 157.3ms | ActiveRecord: 10.6ms)

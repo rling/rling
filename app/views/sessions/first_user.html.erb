@@ -66,6 +66,14 @@ function disablelogin(entity)
          <%=  error_message_on(:user, :password_confirmation, options={}) %>
       </td>
    </tr>
+     <tr>
+      <td>
+        <label for="Site URL">URL of the Site that you would use</label>
+      </td>
+      <td>
+         <%= text_field_tag "site_url", "http://localhost:3000", :size => 20 %>
+      </td>
+   </tr>
   
    <tr>
        <td colspan=3>

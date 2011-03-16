@@ -47,14 +47,15 @@ def first_user_create
    else
     redirect_to :action => :new
    end
+   
 end
 
 def new
 end
  
 def create
-  if current_user.nil?
-    @user =User.authenticate(params[:login], params[:password])
+ if current_user.nil?
+  @user =User.authenticate(params[:login], params[:password])
     unless @user.nil?
       flash[:notice] = "Login successful!" 
       self.current_user = @user

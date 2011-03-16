@@ -19,7 +19,7 @@
 <div id="top_bar">
 <% if current_user %>
         <% if current_user %>
-              Logged in as: <%= link_to(current_user.login) %> |
+              Logged in as: <%= link_to(current_user.login,account_url) %> |
         <% end %>
 	<% if current_user.admin? %>
 		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |

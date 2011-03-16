@@ -63,13 +63,14 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+   
   end
 
   # POST /users
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @user.role_id = params[:admin] 
+    @user.login = @user.email if @user.login.blank?
     respond_to do |format|
       if @user.save
         format.html { redirect_to(@user, :notice => 'Login successful.') }
@@ -85,10 +86,8 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        @user.admin = params[:admin]
         format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
         format.xml  { head :ok }
       else

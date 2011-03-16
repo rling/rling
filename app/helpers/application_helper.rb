@@ -52,4 +52,9 @@ def get_all_menus(record)
      end
      return returnvalue
   end
+
+  def get_setting(settingname)
+    setting = Setting.find_by_name(settingname)
+    return (setting.nil? ? nil : setting.setting_data)
+  end   
 end

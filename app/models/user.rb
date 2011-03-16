@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   validates :login, :presence => true,:uniqueness=> true, :length => {:minimum => 4, :maximum => 254}
   validates :email, :presence => true, :uniqueness=> true,:length => {:minimum => 4, :maximum => 254},
             :format=> {:with => email_regex }
-  validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true
+  validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true, :if => :password_validation_required?
   validates :role_id, :presence=> true
 #Callbacks                       
   before_save :update_salt_and_hash
@@ -46,10 +46,19 @@ class User < ActiveRecord::Base
     # Compare encrypted_password with the encrypted version of submitted_password.
     hashed_password == encrypt(submitted_password)
   end
+
+  def recently_reset?
+    @reset
+  end
  
-   def create_reset_code
+  def create_reset_code
     @reset = true
     self.reset_password_key =Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )  
+    save(false)
+  end
+
+  def delete_reset_code
+    self.attributes = {:reset_password_key => nil}
     save(false)
   end
 
@@ -84,7 +93,10 @@ class User < ActiveRecord::Base
    self.activation_key = User.random_string(8)
   end 
   
- 
+  def password_validation_required?
+    hashed_password.blank? || !password.blank?
+  end
+
 
 
 end

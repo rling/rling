@@ -7,10 +7,12 @@ Rling::Application.routes.draw do
   resources :settings
   resources :user_detail_settings
   resources :password_resets do
-   collection do
-     post 'new'
-     post 'reset'
+   member do
+     get 'reset'
    end
+   collection do
+     post 'change'
+   end 
   end
   resources :sessions do 
     collection do
@@ -18,6 +20,7 @@ Rling::Application.routes.draw do
      post 'first_user_create'
     end
   end
+  match "account"=> "users#show"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
   match "register" => "users#new"
