@@ -1,5 +1,26 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <b>Login:</b>
+  <%=@user.login %>
+</p>
+<p>
+  <b>Email:</b>
+  <%=@user.email %>
+</p>
+<p>
+  <b>Role:</b>
+  <% if @user.admin? %>
+  is admin
+  <% else %>
+  is not admin
+  <% end %> 
+</p>
+<p>
+  <b>Login count:</b>
+  <%=@user.login_count %>
+</p>
+<p>
+  <b>Current login ip:</b>
+  <%=@user.current_login_ip %>
+</p>
+<%= link_to 'Edit', edit_user_path(@user)  %> <% if current_user.admin? %>| <%= link_to 'Back',:action=>"index" %><% end %>
 
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

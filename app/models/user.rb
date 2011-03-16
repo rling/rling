@@ -10,14 +10,18 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 #Validations
-  validates :login, :presence => true,:uniqueness=> true, :length => {:minimum => 4, :maximum =>15 }
-  validates :email, :presence => true, :uniqueness=> true,:length => {:minimum => 6, :maximum => 254},
+  validates :login, :presence => true,:uniqueness=> true, :length => {:minimum => 4, :maximum => 254}
+  validates :email, :presence => true, :uniqueness=> true,:length => {:minimum => 4, :maximum => 254},
             :format=> {:with => email_regex }
   validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true
   validates :role_id, :presence=> true
 #Callbacks                       
   before_save :update_salt_and_hash
   before_create :update_salt_and_hash,:activate_user
+
+#Named Scope
+  named_scope :admins,  :conditions =>"role_id = 3"
+
 #Class Methods
   def self.authenticate(login, pass)
     u=find(:first, :conditions=>["login = ?", login])

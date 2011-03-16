@@ -4,19 +4,19 @@ class Setting < ActiveRecord::Base
   validates :desc_text, :presence=> true
   validates :setting_type, :presence=> true
 
-#Class Methods
+#Instance Methods
  def setting_data
    data = setting_value
    case self.setting_type
-    when :boolean
+    when "boolean"
      data = (setting_value=="true") rescue nil     
-    when :integer
+    when "integer"
      data = setting_value.to_i rescue nil
-    when :float
+    when "float"
      data = setting_value.to_f rescue nil
-    when :date
+    when "date"
      data = Date.parse(setting_value) rescue nil
-    when :datetime
+    when "datetime"
      data = Datetime.strptime(setting_value) rescue nil
    end
    return data

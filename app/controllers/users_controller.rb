@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
+  before_filter :require_user, :except => [:new,:create,:activate]
+  before_filter :require_admin, :except => [:new,:create,:activate]
   def index
     @users = User.all
 
@@ -26,12 +28,36 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    @user = User.new
-
-    respond_to do |format|
+   if current_user?
+    setting = Setting.find_by_name("allow_admin_register_user")
+    puts setting.setting_data
+    if current_user.admin? && !setting.setting_data
+     flash[:notice] = "Admin cannot create a new User"
+     respond_to do |format|
+      format.html {redirect_to users_path }
+     end   
+    else
+      @user = User.new
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @user }
+      end
+    end
+  else
+    setting = Setting.find_by_name("allow_user_register_user")
+    unless setting.setting_data
+     flash[:notice] = "User is not authorized to register into the site"
+     respond_to do |format|
+      format.html {redirect_to "/"}
+     end
+    else
+     @user = User.new
+     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
+     end
     end
+   end
   end
 
   # GET /users/1/edit
@@ -43,7 +69,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @user.admin = params[:admin] 
+    @user.role_id = params[:admin] 
     respond_to do |format|
       if @user.save
         format.html { redirect_to(@user, :notice => 'Login successful.') }
@@ -76,8 +102,17 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-
+    if @user.admin? 
+     if User.admins.size > 1
+       @user.destroy
+       flash[:notice] = "User deleted successfully"
+     else
+              flash[:notice] = "Atleast one administrator required to execute website activities"
+     end
+    else
+       @user.destroy
+       flash[:notice] = "User deleted successfully"
+    end
     respond_to do |format|
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }

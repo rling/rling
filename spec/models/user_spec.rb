@@ -27,10 +27,11 @@ describe User do
     second_user.should_not be_valid
   end
 
-  it "validates length of login in 4..15" do
+  it "validates length of login with minimum 4 characters" do
     user=User.new(@attr.merge(:login => "123"))
     user.valid?.should be_false
-    user=User.new(@attr.merge(:login => "1234567890123456"))
+    long = 'a' * 255
+    user=User.new(@attr.merge(:login => long))
     user.valid?.should be_false
   end
 
@@ -87,8 +88,8 @@ describe User do
   end
 
 
-  it "validates length of email within 6..254" do
-    short = 'a' * 5
+  it "validates length of email within 4..254" do
+    short = 'a' * 3
     user = User.new(@attr.merge(:email => short))
     user.valid?.should be_false
     long = 'a' * 255
@@ -142,39 +143,39 @@ describe User do
 #validating authentication
   it "should return nil on login/password mismatch" do
      user=User.create!(@attr.merge(:is_activated=>true))
-     wrong_password_user = User.authenticate(@attr[:login],'wrongpass',true)
+     wrong_password_user = User.authenticate(@attr[:login],'wrongpass')
      wrong_password_user.should be_nil
   end
 
   it "should return the user on login/password match" do
      user=User.create!(@attr.merge(:is_activated=>true))
-     matching_user = User.authenticate(@attr[:login], @attr[:password],true)
+     matching_user = User.authenticate(@attr[:login], @attr[:password])
      matching_user.should_not be_nil
      matching_user.should == user
   end
  
   it "should return nil on correct login/password but not activated" do
     user=User.create!(@attr)
-    matching_user=User.authenticate(@attr[:login],@attr[:password],true)
+    matching_user=User.authenticate(@attr[:login],@attr[:password])
     matching_user.should be_nil
   end
 
   it "should return nil on email/password mismatch" do
     user=User.create!(@attr.merge(:is_activated=>true))
-    wrong_password_user = User.authenticate(@attr[:email],'wrongpass',false)
+    wrong_password_user = User.authenticate(@attr[:email],'wrongpass')
     wrong_password_user.should be_nil
   end
 
   it "should return the user on email/password match" do
-    user=User.create!(@attr.merge(:is_activated=>true))
-    matching_user = User.authenticate(@attr[:email], @attr[:password],false)
+    user=User.create!(@attr.merge(:is_activated=>true,:login=>"sandeep@heurion.com"))
+    matching_user = User.authenticate(@attr[:email], @attr[:password])
     matching_user.should_not be_nil
     matching_user.should == user
   end
 
   it "should return nil on correct email/password but not activated" do
     user=User.create!(@attr)
-    matching_user=User.authenticate(@attr[:email],@attr[:password],false)
+    matching_user=User.authenticate(@attr[:email],@attr[:password])
     matching_user.should be_nil
   end
 

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
-  helper_method :current_user
+  helper_method :current_user,:current_user?
   filter_parameter_logging :password, :password_confirmation
   before_filter :check_browser,:check_admin
   layout :set_layout

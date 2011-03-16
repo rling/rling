@@ -11,6 +11,27 @@
     </div>
   <% end %>
 
+  <div class="field">
+  <%= f.label :login %><br />
+  <%= f.text_field :login %><br />
+  </div>
+  <div class="field">
+  <%= f.label :email %><br />
+  <%= f.text_field :email %><br />
+  </div>
+  <div class="field">
+  <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+  <%= f.password_field :password %><br />
+  </div>
+  <div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %><br /><br />
+  </div>
+  <% if self.current_user? && self.current_user.admin? %>
+  <%= check_box('','admin',  :checked=> @user.admin?) %>Grant Administration Access<br />
+  <% end %>
+  <%= f.hidden_field_tag :id, @user.id %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
