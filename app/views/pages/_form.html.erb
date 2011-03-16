@@ -1,0 +1,81 @@
+ <%= javascript_include_tag :ckeditor %>
+
+<%= form_for(@page) do |form| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :body %><br />
+    <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5')  %>
+  </div>
+  
+  
+  
+  <div class="field">
+    <%= form.label :page_view_type %><br />
+    <%= form.select :page_view_type,{'Computer & Mobile Browsers'=>0,'Computer Browser only'=>1,'Mobile Browser only'=>2} %>
+  </div>
+ 
+  <div class="field">
+      <%= form.label :perma_link %><br />
+      <% if @page.perma_link.nil? %>
+      <%= form.text_field :perma_link, :disabled=>"disabled"  %>
+      <% else %>
+      <%= form.text_field :perma_link %>
+      <% end %>
+      
+  <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked)     {$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+ 
+  </div> 
+  
+
+   <div>
+   <% PageVariableSetting.find(:all).each do |pcv| %>
+   <%= pcv.name %><br/>
+   <% pv = PageVariable.find_by_page_id_and_page_variable_setting_id(@page.id,pcv.id) %>
+   <%= text_area_tag "page_variables[#{pcv.id}]",(pv.blank? ? "" : pv.variable_value),{:rows=>3,:cols=>50} %><br/>
+   <% end %>
+  </div>
+   
+   <div>
+
+
+   <% if @menu.nil? %>
+  <%= check_box('','add_menu',  :checked=> "false", :onclick => "if (this.checked){$('show_menu').show();} else        {$('show_menu').hide();}") %>
+  Add Menu for this Page
+  <div id="show_menu" style="display:none;">
+<% else %>
+<div id="show_menu">
+<% end %>
+<%= form.label :menu_name %><br />
+<%= form.text_field :menu_name %><br />
+<%= form.label "Parent Menu" %><br />
+<%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %><br />
+</div>
+   </div>
+
+
+
+
+ <div>
+  <%= check_box('','home_page',  :checked=> @page.home_page) %>
+Show on Home Page
+</div>
+<div class="actions">
+    <%= form.submit %>
+    </div>
+<% end %>

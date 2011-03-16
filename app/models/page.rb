@@ -1,7 +1,9 @@
 class Page < ActiveRecord::Base
+include PermalinkHelper
 #Associations
 has_one :menu ,:dependent => :destroy
 has_many :page_variables ,:dependent => :destroy
+has_many :user_details
 
 #validations
 validates :title ,:presence=>true

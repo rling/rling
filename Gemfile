@@ -11,6 +11,4 @@ gem 'autotest'
 gem 'factory_girl'
 gem 'acts_as_tree'
 gem 'ckeditor'
-gem 'cucumber'
-gem 'cucumber-rails'
-gem 'webrat'
+

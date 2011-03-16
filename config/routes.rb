@@ -1,4 +1,6 @@
 Rling::Application.routes.draw do
+  resources :pages
+  resources :page_variable_settings
   resources :users
   resources :settings
   resources :password_resets do

@@ -1,0 +1,34 @@
+<h1>Listing pages</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Perma link</th>
+    <th>Home page</th>
+    <th>Page view type</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.title %></td>
+    <td><%= raw page.body %></td>
+    <td><%= page.perma_link %></td>
+    <td><%= page.home_page %></td>
+    <td><%= page.page_view_type %></td>
+    <td><%= page.user_id %></td>
+    <td><%= link_to 'Show', page %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %></td>
+    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_page_path %>
+<%= link_to 'New Page variable setting', new_page_variable_setting_path %>

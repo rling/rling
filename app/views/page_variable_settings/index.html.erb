@@ -1,0 +1,25 @@
+<h1>Listing page_variable_settings</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Default value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @page_variable_settings.each do |page_variable_setting| %>
+  <tr>
+    <td><%= page_variable_setting.name %></td>
+    <td><%= page_variable_setting.default_value %></td>
+    <td><%= link_to 'Show', page_variable_setting %></td>
+    <td><%= link_to 'Edit', edit_page_variable_setting_path(page_variable_setting) %></td>
+    <td><%= link_to 'Destroy', page_variable_setting, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page variable setting', new_page_variable_setting_path %>

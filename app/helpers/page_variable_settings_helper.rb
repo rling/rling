@@ -1,0 +1,2 @@
+module PageVariableSettingsHelper
+end

@@ -55,9 +55,10 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
-    def check_browser
+   def check_browser
 	if session[:browser].nil?
 	  session[:browser] = 1
+        unless request.headers["HTTP_USER_AGENT"].nil?
         browsers = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
 	  useragent = request.headers["HTTP_USER_AGENT"].downcase
         browsers.each do |os|
@@ -67,12 +68,13 @@ class ApplicationController < ActionController::Base
 		 end
 	  end
 	end	
-      
+      end
     end
    
    def check_admin
     if session[:admin_found].nil? 
      role = Role.find_by_role_type("Admin")
+      unless role.nil?
      if role.users.size > 0
 	session[:admin_found] = true
      else
@@ -80,6 +82,7 @@ class ApplicationController < ActionController::Base
 		     redirect_to first_user_sessions_path
      	     end
      end
+    end
     end
    end
 
