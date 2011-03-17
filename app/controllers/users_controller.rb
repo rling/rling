@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_filter :require_admin, :except => [:new,:create,:activate]
   def index
     @users = User.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -118,7 +117,12 @@ class UsersController < ApplicationController
     end
   end
 
- def activate
+  def user_details
+    @user=User.find(params[:id])
+    @user_detail_settings=UserDetailSetting.find(:all)
+  end
+
+  def activate
    @user_setting = UserSetting.find(:first)
    @user=User.find(params[:id])
    @user.activation_key = nil
@@ -143,25 +147,35 @@ class UsersController < ApplicationController
       end
  end
 
-end
-
-def save_password
-  @user = User.find(params[:id])
-  if request.post?
-      @user.update_attributes(:password=>params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
-      if @user.save
-         flash[:message] = "your password is changed"
-        respond_to do |format|
-            format.html {redirect_to login_users_path}
-            format.xml {render :xml =>@user}
-        end
-      else
-         respond_to do |format|
-            format.html {render :action=> "change_password"}
-            format.xml {render :xml =>@user}
-        end
-
-      end
+ def update_details
+    puts params.inspect
+    user_id=params[:user_id]
+    form_field=params[:form_field]
+    mandatory_failed = false
+    UserDetailSetting.all.each do |user_detail_setting|
+    if user_detail_setting.mandatory && params[:form_field][user_detail_setting.field_name].blank?
+      mandatory_failed = true
+      break
+    end
+    user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
+    user_detail=UserDetail.new if user_detail.nil?
+    user_detail.user_id=user_id if user_detail.user_id.nil?
+    user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
+    if params[:form_field][user_detail_setting.field_name].nil? && user_detail_setting.field_type == "Checkbox"
+      user_detail.selected = "0"
+    else
+      user_detail.selected_value=params[:form_field][user_detail_setting.field_name]
+    end
+    user_detail.save
    end
-
+  if mandatory_failed
+    @user = User.find(user_id)
+    @userdetailsettings = UserDetailSetting.all
+    flash[:notice]="All the mandatory fields are necessary"
+    redirect_to user_details_user_path(user)
+  else
+    flash[:notice]="Successfully updated"
+    redirect_to users_path
+  end
+  end
 end

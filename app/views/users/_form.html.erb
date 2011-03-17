@@ -37,11 +37,11 @@
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %><br /><br />
   </div>
-
+  <div class="field">
   <% if current_user.admin? %>
   Select role <%= select(:user, :role_id, Role.all.map{|p|[p.role_type,p.id]}) %></br>
   <% end %>
-   
+  </div>
   <%= f.hidden_field_tag :id, @user.id %>
 
   <div class="actions">

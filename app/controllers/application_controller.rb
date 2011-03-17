@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
    
    def check_admin
     if session[:admin_found].nil? 
-     role = Role.find_by_role_type("Admin")
+     role = Role.find_by_role_type("Administrator")
       unless role.nil?
      if role.users.size > 0
 	session[:admin_found] = true

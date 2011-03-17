@@ -1,0 +1,23 @@
+<h3>Edit User Details</h3>
+<%= form_tag update_details_user_path(@user), :method => :post do %>
+<%= hidden_field_tag 'user_id',@user.id %>
+  <% @user_detail_settings.each do |user_detail_setting| %>
+    <p>
+      <%= user_detail_setting.mandatory ? "*" : "" %>
+      <%= user_detail_setting.field_name %>:
+      <% user_detail_setting_value = user_detail_setting.default_value %>
+      <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id) %>
+      <% unless user_detail.nil? %>
+      <% user_detail_setting_value = user_detail.selected_value %>
+      <% end %>        
+      <%= check_field_type(user_detail_setting,user_detail_setting_value) %>
+    </p>
+  <% end %> 
+  <p><%= submit_tag "Submit" %> |
+<% if current_user.admin? %>
+  <%= link_to "Back",users_path %>
+<% else %>
+  <%= link_to "My Account",account_path %>
+<% end %>
+  </p>  
+<% end %>

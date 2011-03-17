@@ -1,4 +1,5 @@
 class SettingsController < ApplicationController
+  before_filter :require_user, :require_admin
   # GET /settings
   # GET /settings.xml
   def index

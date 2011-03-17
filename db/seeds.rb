@@ -5,7 +5,7 @@ Menuset.create(:name=>"Footer",:description=>"Footer Menu for RlingCMS")
 #Create Roles
 Role.create(:role_type=>"Anonymous",:is_deletable=>false)
 Role.create(:role_type=>"User",:is_deletable=>false)
-Role.create(:role_type=>"Admin",:is_deletable=>false)
+Role.create(:role_type=>"Administrator",:is_deletable=>false)
 
 #Create Login Settings
 Setting.create(:name=>"allow_user_register_user",:desc_text=>"Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute",:setting_type=>"boolean",:setting_value=>"false")

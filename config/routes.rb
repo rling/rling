@@ -9,7 +9,13 @@ Rling::Application.routes.draw do
   resources :menusets
   resources :pages
   resources :page_variable_settings
-  resources :users
+  resources :roles
+  resources :users do
+    member do
+      get 'user_details'
+      post 'update_details'
+    end
+  end
   resources :settings
   resources :user_detail_settings
   resources :password_resets do

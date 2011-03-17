@@ -1,4 +1,5 @@
 class UserDetailSettingsController < ApplicationController
+  before_filter :require_user, :require_admin
   # GET /user_detail_settings
   # GET /user_detail_settings.xml
   def index
