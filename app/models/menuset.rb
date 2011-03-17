@@ -1,6 +1,6 @@
 class Menuset < ActiveRecord::Base
   has_many :menus
-  validates :name ,:presence =>true,:uniqueness=>true
+  validates :name ,:uniqueness=>true
 
   def levelname 
     treelevel
@@ -11,7 +11,7 @@ class Menuset < ActiveRecord::Base
   end
 
   def treelevel
-  #self.id = -(self.id)
+ self.id = -(self.id)
    lname = self.name
    lname
   end

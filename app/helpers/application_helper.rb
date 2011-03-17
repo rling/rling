@@ -2,7 +2,7 @@ module ApplicationHelper
 def get_all_menus(record)
     menu = Array.new
     Menuset.all.each do |menuset|
-    top_items = Menu.find_all_by_menuset_id(menuset.id,:order => 'position')
+    top_items = Menu.find_all_by_menuset_id_and_level(menuset.id,1,:order => 'position')
     menu << menuset
     top_items.each { |item| add_item_to_menu(record, item, menu)}
     end
@@ -12,11 +12,11 @@ def get_all_menus(record)
   def add_item_to_menu(record, item, menu)
       unless record.nil?
 	      unless record.id == item.id
-		menu << item#"#{leader}#{item.name}"
+		menu << item #"#{leader}#{item.name}"
 		item.children.each { |child| add_item_to_menu(record, child, menu) }
 	      end
       else
-	      menu << item#"#{leader}#{item.name}"
+	      menu << item #"#{leader}#{item.name}"
 		item.children.each { |child| add_item_to_menu(record, child, menu) }
       end
   end

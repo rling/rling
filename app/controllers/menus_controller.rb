@@ -1,11 +1,11 @@
 class MenusController < ApplicationController
-  include MenusHelper
+  include ApplicationHelper
   before_filter :require_user, :require_admin
 
   # GET /menus
   # GET /menus.xml
   def index
-    @all_menus = get_menu_tree.collect{|m|[m.treename,m.id]}
+    @all_menus = get_all_menus(Menu.new).collect{|m|[m.treename,m.id]}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @menus }
@@ -83,9 +83,10 @@ class MenusController < ApplicationController
     end
   end
 
+ 
   def update_position
-    @menus = Menu.all
-    Menu.all.each do |menu|
+   
+     Menu.all.each do |menu|
       menu.update_attribute(:position,params["#{menu.id}"])
     end
     redirect_to :action => 'index'

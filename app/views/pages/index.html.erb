@@ -20,10 +20,10 @@
     <td><%= page.perma_link %></td>
     <td><%= page.home_page %></td>
     <td><%= page.page_view_type %></td>
-    <td><%= page.user_id %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></td>
+   
+    <td><%= link_to image_tag("show.png",:class=>"image_link"), page %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
+    <td><%= link_to image_tag("delete.png",:class=>"image_link"), page, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

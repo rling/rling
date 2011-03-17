@@ -37,7 +37,7 @@
       <%= form.text_field :perma_link %>
       <% end %>
       
-  <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked)     {$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
+  <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
 Generate permalink automatically<br />
  
   </div> 

@@ -1,7 +1,7 @@
 class Menu < ActiveRecord::Base
   belongs_to :menuset
   belongs_to :page
-  validates :name ,:presence=>true
+  validates :name, :presence=>true
   validates :menuset_id ,:presence=>true
   validates :menu_view_type, :presence=>true
   acts_as_tree :order => :position
@@ -12,7 +12,7 @@ class Menu < ActiveRecord::Base
   def levelname
     lname = ""
     self.level.times do
-      lname << "-- "
+      lname << "--"
     end
     lname << name
     lname = "" if lname.blank?
@@ -39,7 +39,6 @@ private
       if self.parent_id < 0
         self.menuset_id = self.parent_id.abs
         self.parent_id = 0
-        self.level = 0
       else
         unless self.parent.nil?
         self.menuset_id = self.parent.menuset_id

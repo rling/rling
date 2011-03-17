@@ -1,13 +1,13 @@
 class PagesController < ApplicationController
-
-
+ 
 include PermalinkHelper
-before_filter :require_user, :require_admin
   # GET /pages
   # GET /pages.xml
+  before_filter :require_user, :require_admin
+  #before_filter :require_admin,:except=>[:edit,:update,:destroy,:show]
+
   def index
     @pages = Page.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pages }
@@ -18,7 +18,7 @@ before_filter :require_user, :require_admin
   # GET /pages/1.xml
   def show
     @page = Page.find(params[:id])
-
+    @menu = Menu.find_by_page_id(@page.id)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @page }
@@ -29,7 +29,7 @@ before_filter :require_user, :require_admin
   # GET /pages/new.xml
   def new
     @page = Page.new
-     respond_to do |format|
+    respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @page }
     end
@@ -44,11 +44,15 @@ before_filter :require_user, :require_admin
   # POST /pages.xml
   def create
     @page = Page.new(params[:page])
-    @page.permalnk = params[:permalnk]
+    if params[:permalnk] == "1"
+     @page.perma_link_generate
+    end
     @page.home_page = params[:home_page]
     respond_to do |format|
       if @page.save
-        format.html { redirect_to(@page, :notice => 'Page was successfully created.') }
+	  update_page_variables(params[:page_variables],@page)
+        flash[:notice] = 'Page was successfully created.'
+        format.html { redirect_to(@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
@@ -59,12 +63,30 @@ before_filter :require_user, :require_admin
 
   # PUT /pages/1
   # PUT /pages/1.xml
-  def update
+  def update 
     @page = Page.find(params[:id])
-
+    if params[:permalnk] == "1"
+   	@page.perma_link_generate
+    end
+    
+    unless params[:page][:menu_name].empty?
+	    menu = Menu.find_by_page_id(@page.id)
+	    if menu.nil?
+	     menu = Menu.new
+	    end
+	    menu.name = params[:page][:menu_name]
+	    menu.parent_id = params[:page][:menu_parent_id]
+	    menu.page_id = @page.id
+            menu.menu_view_type = params[:page][:page_view_type]
+	    menu.save
+    end
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to(@page, :notice => 'Page was successfully updated.') }
+   	   update_page_variables(params[:page_variables],@page)
+         @page.home_page = params[:home_page] 
+         @page.save
+        flash[:notice] = 'Page was successfully updated.'
+        format.html { redirect_to(@page) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,14 +100,12 @@ before_filter :require_user, :require_admin
   def destroy
     @page = Page.find(params[:id])
     @page.destroy
-
     respond_to do |format|
       format.html { redirect_to(pages_url) }
       format.xml  { head :ok }
     end
   end
-
-
+  
 private 
 
 def update_page_variables(page_variables,page)
@@ -100,4 +120,5 @@ def update_page_variables(page_variables,page)
   pv.save
  end 
 end
+
 end

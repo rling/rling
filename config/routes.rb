@@ -1,5 +1,11 @@
 Rling::Application.routes.draw do
-  resources :menus
+  resources :menus do
+    collection do
+     post 'update_position'
+    end
+   end   
+  
+
   resources :menusets
   resources :pages
   resources :page_variable_settings
@@ -25,6 +31,8 @@ Rling::Application.routes.draw do
   match "logout" => "sessions#destroy"
   match "register" => "users#new"
   match "admin/dashboard" =>"admin#dashboard"
+  match "/:permalink"=> "display#show_page"
+  
   root :to => "display#index"
 
   # The priority is based upon order of creation:

@@ -1,17 +1,18 @@
 class Page < ActiveRecord::Base
 include PermalinkHelper
+
+#callbacks
+after_save :set_menu
+
 #Associations
 has_one :menu ,:dependent => :destroy
 has_many :page_variables ,:dependent => :destroy
-has_many :user_details
 
 #validations
 validates :title ,:presence=>true
-validates :perma_link ,:presence=>true ,:uniqueness => true
+validates :perma_link ,:presence=>true, :uniqueness=>true
 
-#callbacks
-after_create :set_menu
-before_save :perma_link_generate
+
 
 #instance methods
 def menu_menuset_id
@@ -72,7 +73,9 @@ def generate_perma_link(perma_link)
     end
   end
 
-
+ def perma_link_generate
+     self.perma_link = "/" + generate_perma_link(create_permalink(self.title))
+ end
 
 
 
@@ -80,29 +83,25 @@ def generate_perma_link(perma_link)
 private
 
  def set_menu
-   unless @menu_name.nil?   
-   unless @menu_name.empty?
+   unless @menu_name.blank?
       menu = self.menu
       if menu.nil?
 	  menu = Menu.new
       end 
-      menu.name = 'name'
+      menu.name = @menu_name
       menu.parent_id = @parent_id
-      menu.menuset_id = @menuset_id
       menu.page_id = self.id
-     
       menu.menu_view_type = self.page_view_type
-      
+      if @parent_id.to_i < 0
+        menu.menuset_id = @parent_id.to_i.abs
+      else
+        menu.menuset_id= Menu.find(@parent_id).menuset_id
+      end
       menu.save
     end
-	end
   end
 
- def perma_link_generate
-   if @permalnk == '1'
-     self.perma_link = "/" + generate_perma_link(create_permalink(self.title))
-   end
- end
+
 
 def destroy_menu
  unless self.menu.nil?
