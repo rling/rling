@@ -1,5 +1,7 @@
 <div id="footer_menu">
+<% unless Menuset.find_by_name("Footer").nil? %>
 <%= render :partial=>"layouts/nolistmenu", :locals=>{:menusetname=>"Footer"}%>
+<% end %>
 </div>
 <div id="developer">
 Developed by Heurion<br/>
