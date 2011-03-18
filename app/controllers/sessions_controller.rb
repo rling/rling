@@ -56,14 +56,17 @@ end
 def create
  if current_user.nil?
   @user =User.authenticate(params[:login], params[:password])
-    unless @user.nil?
+  unless @user.nil?
       flash[:notice] = "Login successful!"
       self.current_user = @user
+      if params[:remember_me]="1"
+          session[:remember_token] = @user.id
+      end
       if @user.admin?
         redirect_to :controller=>"admin",:action=>"dashboard"
-        else
+      else
         redirect_to :controller => "users", :action => "show", :id => @user.id
-     end
+      end
    else
      render :action => :new
    end

@@ -6,9 +6,9 @@ body, td{
   font-size:   13px;
   line-height: 18px;
 }
-a { color: #000;text-decoration:none; }
-a:visited { color: #000;text-decoration:none; }
-a:hover { color: #ffffff; background:#BF2E1B; text-decoration:none;}
+a { color: white;text-decoration:none; }
+a:visited { color: white;text-decoration:none; }
+a:hover { color: white; background:#BF2E1B; text-decoration:none;}
 #layout
 {
 margin:auto;
@@ -28,8 +28,12 @@ text-align:right;
 height:20px;
 width: 800px;
 float:left;
+color:white;
 }
-
+#top_bar a
+{
+    color: white;
+}
 #header_text{
    text-align:center;
    height: 80px;
@@ -111,6 +115,12 @@ padding: 5px;
 #developer{
 text-align:center;
 width: 800px;
+color:white;
+}
+
+#developer a
+{
+    color:white;
 }
 
 .shadow_sub_menu
