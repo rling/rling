@@ -38,6 +38,7 @@ private
   end
 
   def set_level
+   unless self.parent_id.nil?
     if self.parent_id < 0
       self.level = 1
       self.menuset_id = self.parent_id.abs
@@ -46,6 +47,7 @@ private
       self.level = self.parent.level + 1
       self.menuset_id = self.parent.menuset_id
     end
+  end
   end
 
 end
