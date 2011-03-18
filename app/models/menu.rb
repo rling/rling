@@ -3,12 +3,12 @@ class Menu < ActiveRecord::Base
   belongs_to :page
 
   validates :name, :presence=>true
-  validates :menuset_id ,:presence=>true
   validates :menu_view_type, :presence=>true
-
-  acts_as_tree :order => :position
+ 
   before_save :set_level
   before_destroy :set_children
+
+  acts_as_tree :order => :position
 
 
   def levelname
@@ -27,25 +27,7 @@ class Menu < ActiveRecord::Base
   end
 
 
-  def set_level
-    puts "33333333333333"
-    logger.error("222222222222222")
-    logger.error(self.inspect)
-    unless self.parent_id.nil?
-      if self.parent_id < 0
-        self.menuset_id = self.parent_id.abs
-        self.parent_id = 0
-      else
-        unless self.parent.nil?
-        self.menuset_id = self.parent.menuset_id
-        end
-      end
-      if self.parent_id == 0
-        self.level = 1
-      else
-        self.level = Menu.find_by_id(self.parent_id).level + 1
-      end
-  end
+  
 
 private
 
@@ -55,7 +37,15 @@ private
     end	 
   end
 
-
-end
+  def set_level
+    if self.parent_id < 0
+      self.level = 1
+      self.menuset_id = self.parent_id.abs
+      self.parent_id = 0
+    elsif self.parent_id > 0
+      self.level = self.parent.level + 1
+      self.menuset_id = self.parent.menuset_id
+    end
+  end
 
 end

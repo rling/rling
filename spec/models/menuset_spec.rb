@@ -37,14 +37,17 @@ describe Menuset do
 #test for methods...............................................
 
   it "test treelevel method" do
+    @menuset.save
     @menuset.treelevel.should eql(@menuset.name) 
   end 
 
   it "test for treename" do
+    @menuset.save
     @menuset.treename.should eql(@menuset.name)
   end
 
   it "test for levelname" do
+    @menuset.save
     @menuset.levelname.should eql(@menuset.name)
   end
  

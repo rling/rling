@@ -83,7 +83,7 @@ describe Menu do
  
   it "test levelname method " do
     @menu.level=1
-    @menu.levelname.should eql('-- '+ @menu.name) 
+    @menu.levelname.should eql('--'+ @menu.name) 
   end
 
   it "test treename method" do
