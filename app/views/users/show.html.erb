@@ -23,5 +23,8 @@
   <b>Current login ip:</b>
   <%=@user.current_login_ip %>
 </p>
-<%= link_to 'Edit', edit_user_path(@user)  %> <% if current_user.admin? %>| <%= link_to 'Back',:action=>"index" %><% end %>
+<%= link_to 'Edit', edit_user_path(@user)  %> | 
+<% if current_user.admin? %>
+<%= link_to 'Back',:action=>"index" %>
+<% end %>
 

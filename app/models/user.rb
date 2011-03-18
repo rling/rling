@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :role_id, :presence=> true
 #Callbacks                       
   before_save :update_salt_and_hash
-  before_create :update_salt_and_hash,:activate_user
+  before_create :update_salt_and_hash,:activation_key
 
 #Named Scope
   named_scope :admins,  :conditions =>"role_id = 3"
@@ -62,6 +62,26 @@ class User < ActiveRecord::Base
     save(false)
   end
 
+  def activate
+    @activated = true
+    self.is_activated = true
+    self.activation_key = nil
+    save(false)
+  end
+
+  
+   def active?
+     activation_key.nil?
+   end
+
+  def activation_key
+    self.activation_key  = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+  end
+
+   def recently_activated?
+     @activated
+   end
+
 #Private Methods
  private
  
@@ -80,7 +100,6 @@ class User < ActiveRecord::Base
      Digest::SHA1.hexdigest(str+salt)
   end
 
-
   def self.random_string(len)
     #generat a random password consisting of strings and digits
     chars = ("a".."z").to_a + ("A".."Z").to_a + ("0".."9").to_a
@@ -89,14 +108,8 @@ class User < ActiveRecord::Base
     return newpass
   end
  
-  def activate_user
-   self.activation_key = User.random_string(8)
-  end 
-  
   def password_validation_required?
     hashed_password.blank? || !password.blank?
   end
-
-
 
 end

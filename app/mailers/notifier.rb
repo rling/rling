@@ -7,4 +7,12 @@ def forgot_password(user)
       @url= "#{get_setting("site_url")}/password_resets/#{@reset_password_key}/reset"
       mail(:to => user.email, :subject => "link to create a password")
 end
+
+def activation_key(user)
+    @user=user.login
+    @activation_key= user.activation_key if user.recently_activated?
+    @url= "#{get_setting("site_url")}/users/#{@activation_key}/activate"
+    mail(:to => user.email, :subject => "link to activate account")
+end
+
 end
