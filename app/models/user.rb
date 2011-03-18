@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   before_create :update_salt_and_hash,:activation_key
 
 #Named Scope
-  named_scope :admins,  :conditions =>"role_id = 3"
+  scope :admins,  :conditions =>"role_id = 3"
 
 #Class Methods
   def self.authenticate(login, pass)

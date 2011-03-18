@@ -83,7 +83,6 @@ class MenusController < ApplicationController
     end
   end
 
- 
   def update_position
    
      Menu.all.each do |menu|

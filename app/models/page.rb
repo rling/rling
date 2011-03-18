@@ -12,8 +12,6 @@ has_many :page_variables ,:dependent => :destroy
 validates :title ,:presence=>true
 validates :perma_link ,:presence=>true, :uniqueness=>true
 
-
-
 #instance methods
 def menu_menuset_id
  unless self.menu.nil?
