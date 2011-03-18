@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   # GET /users
   # GET /users.xml
   before_filter :require_user, :except => [:new,:create,:activate]
-  before_filter :require_admin, :except => [:new,:create,:activate]
+  before_filter :require_admin, :except => [:new,:create,:activate,:show,:edit,:user_details,:update_details]
   def index
     @users = User.all
     respond_to do |format|
@@ -15,9 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     userid = params[:id]
-    userid = current_user.id if userid.nil? 
+    userid = current_user.id if userid.nil?
     @user = User.find(userid)
-
+    @user_detail_settings=UserDetailSetting.find(:all)
+ #   @user_details=UserDetail.find(:all)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -29,7 +31,6 @@ class UsersController < ApplicationController
   def new
    if current_user?
     setting = Setting.find_by_name("allow_admin_register_user")
-    puts setting.setting_data
     if current_user.admin? && !setting.setting_data
      flash[:notice] = "Admin cannot create a new User"
      respond_to do |format|
@@ -72,8 +73,25 @@ class UsersController < ApplicationController
     @user.login = @user.email if @user.login.blank?
     respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'Login successful.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        flash[:notice] = "User registered successfully"
+        if get_setting("send_welcome_email")
+          Notifier.welcome_email(@user).deliver
+        end
+        #Write code for Send welcome email if setting is true
+        if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
+          @user.create_activation_key
+          Notifier.activation_key(@user).deliver
+          flash[:notice] = "User created successfully, An email has been sent to you, please follow the instructions to activate yourself to the website"
+        else
+          @user.is_activated = true
+          @user.save
+        end
+        if current_user? and current_user.admin?
+        format.html {redirect_to users_path }
+        else
+        format.html { redirect_to '/login'}
+        end
+ #         format.xml { render :xml => user.email, :status => :created }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
@@ -81,6 +99,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def activate
+    @user = User.find_by_activation_key(params[:id]) unless params[:id].nil?
+    @user.is_activated=true
+    @user.delete_activation_key
+      respond_to do |format|
+            format.html {redirect_to login_path, :notice=>'Your acoount has been activated'}
+            format.xml {render :xml =>@user}
+  end
+  end
+ 
   # PUT /users/1
   # PUT /users/1.xml
   def update
@@ -122,33 +150,7 @@ class UsersController < ApplicationController
     @user_detail_settings=UserDetailSetting.find(:all)
   end
 
-  def activate
-   @user_setting = UserSetting.find(:first)
-   @user=User.find(params[:id])
-   @user.activation_key = nil
-   @user.save(false)
-     if @user.role_id == 1
-        respond_to do |format|
-          format.html {redirect_to home_index_path }
-          format.xml { render :xml =>@user }
-        end
-     elsif @user.role_id == 2 
-        if @user_setting.login_email == true
-           respond_to do |format|
-             format.html {redirect_to log_settings_path }
-             format.xml { render :xml =>@user }
-         end
-         else
-            respond_to do |format|
-              format.html {redirect_to gen_login_settings_path }
-              format.xml { render :xml =>@user }
-         end
-      end
-      end
- end
-
  def update_details
-    puts params.inspect
     user_id=params[:user_id]
     form_field=params[:form_field]
     mandatory_failed = false
@@ -172,10 +174,14 @@ class UsersController < ApplicationController
     @user = User.find(user_id)
     @userdetailsettings = UserDetailSetting.all
     flash[:notice]="All the mandatory fields are necessary"
-    redirect_to user_details_user_path(user)
+    redirect_to user_details_user_path(@user)
   else
     flash[:notice]="Successfully updated"
-    redirect_to users_path
+    if current_user.admin?
+      redirect_to users_path
+    else
+      redirect_to account_path
   end
   end
+ end
 end

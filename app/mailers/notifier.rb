@@ -12,7 +12,12 @@ def activation_key(user)
     @user=user.login
     @activation_key= user.activation_key if user.recently_activated?
     @url= "#{get_setting("site_url")}/users/#{@activation_key}/activate"
-    mail(:to => user.email, :subject => "link to activate account")
+    mail(:to => user.email, :subject => "Link to activate account")
+end
+
+def welcome_email(user)
+  @user=user.login
+  mail(:to=> user.email,:subject=> "Welcome #{@user}")
 end
 
 end

@@ -57,15 +57,19 @@ class User < ActiveRecord::Base
     save(false)
   end
 
+  def create_activation_key
+    @activated= true
+    self.activation_key  = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+    save(false)
+  end
+
   def delete_reset_code
     self.attributes = {:reset_password_key => nil}
     save(false)
   end
 
-  def activate
-    @activated = true
-    self.is_activated = true
-    self.activation_key = nil
+  def delete_activation_key
+    self.attributes = {:activation_key => nil}
     save(false)
   end
 
@@ -74,12 +78,17 @@ class User < ActiveRecord::Base
      activation_key.nil?
    end
 
-  def activation_key
-    self.activation_key  = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-  end
 
    def recently_activated?
      @activated
+   end
+
+   def recently_created?
+     @create
+   end
+
+   def create_welcome_msg
+     @create = true
    end
 
 #Private Methods

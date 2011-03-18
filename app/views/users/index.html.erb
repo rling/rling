@@ -20,5 +20,8 @@
 <% end %>
 </table>
 
-<br /><%= link_to 'New User', new_user_path %> |
+<br />
+<% unless !get_setting("allow_admin_register_user") %>
+<%= link_to 'New User', new_user_path %> |
+<%end%>
 <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />

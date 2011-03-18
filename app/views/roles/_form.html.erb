@@ -15,12 +15,7 @@
     <%= f.label :role_type %><br />
     <%= f.text_field :role_type %>
   </div>
-<% if @role.is_deletable == true %>
-  <div class="field">
-    <%= f.label :is_deletable, 'Is this deletable' %><br />
-    <%= f.check_box :is_deletable %>
-  </div>
-<% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

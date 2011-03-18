@@ -1,4 +1,17 @@
+<%= link_to 'Edit Information', edit_user_path(@user)  %> |
+<%= link_to 'Edit User Details', user_details_user_path(@user) %>
 <h3>Displaying <%= @user.login %>'s information</h3>
+<% @user_detail_settings.each do |user_detail_setting| %>
+<p>
+  <b><%= user_detail_setting.field_name %>:</b>
+  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id) %>
+  <% unless user_detail.nil? %>
+  <%= user_detail.selected_value %>
+  <% else %>
+  <% "" %>
+  <% end %>
+</p>
+<%end%>
 <p>
   <b>Login:</b>
   <%=@user.login %>
@@ -23,8 +36,6 @@
   <b>Current login ip:</b>
   <%=@user.current_login_ip %>
 </p>
-<%= link_to 'Edit', edit_user_path(@user)  %> | 
 <% if current_user.admin? %>
 <%= link_to 'Back',:action=>"index" %>
 <% end %>
-

@@ -24,13 +24,21 @@
 	<% end %>
 	<%= link_to "Logout", "/logout" %>
 <% else %>
+ <% setting = Setting.find_by_name("allow_user_register_user") %>
+ <% if setting.setting_data %>
+ <%= link_to 'Register', new_user_path %> |
+ <% end %>
  <%= link_to "Login","/login" %>
 <% end %>
 </div>
 <%= render :partial=>"layouts/header" %>
 </div>
 <div id="middle">
-
+<%if flash[:notice]%>
+<div id="flash_notice">
+<%= flash[:notice]  %>
+</div>
+<%end%>
 <%= yield  %>
 </div>
 <div id="footer">
