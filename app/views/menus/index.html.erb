@@ -1,4 +1,5 @@
 <h1>Listing menus</h1>
+<%= link_to 'New menu', new_menu_path %><br/><br/>
 <% form_tag update_position_menus_path do %>
 <table>
 <% @all_menus.each do |m| %>
@@ -12,10 +13,11 @@
 <% end %>
 <td><%= m[0] %></td>
 
+   
     <td align=right><%= text_field_tag "#{menu.id}",menu.position, :size=>2 %></td>
-    <td align=center><%= link_to 'Show', menu %></td>
-    <td align=center><%= link_to 'Edit', edit_menu_path(menu) %></td>
-    <td align=center><%= link_to 'Destroy', menu, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td align=center><%= link_to image_tag('show.png',:class=>'image_link'), menu %></td>
+    <td align=center><%= link_to image_tag('edit.png',:class=>'image_link'), edit_menu_path(menu) %></td>
+    <td align=center><%= link_to image_tag('delete.png',:class=>'image_link'), menu, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
  </tr>
 <% end %>

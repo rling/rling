@@ -1,5 +1,5 @@
 <h1>Listing menusets</h1>
-
+<%= link_to 'New Menuset', new_menuset_path %>
 <table>
   <tr>
     <th>Name</th>
@@ -9,15 +9,16 @@
 
 <% @menusets.each do |menuset| %>
   <tr>
-    <td><%= menuset.name %></td>
+      <td><%= menuset.name %></td>
     <td><%= menuset.description %></td>
-    <td><%= link_to 'Show', menuset %></td>
-    <td><%= link_to 'Edit', edit_menuset_path(menuset) %></td>
-    <td><%= link_to 'Destroy', menuset, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag('show.png',:class=>'image_link'), menuset %></td>
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_menuset_path(menuset) %></td>
+    <td><%= link_to image_tag('delete.png',:class=>'image_link'), menuset, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Menuset', new_menuset_path %>
+<%= link_to 'New Menuset', new_menuset_path %> | 
+<%= link_to "Back to Dashboard", admin_dashboard_path %>
