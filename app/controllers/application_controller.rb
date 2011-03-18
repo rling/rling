@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
 	  useragent = request.headers["HTTP_USER_AGENT"].downcase
         browsers.each do |os|
 	  	 if useragent.match(os)
-#		    session[:browser]=2
+		    session[:browser]=2
 		    break
 		 end
 	  end

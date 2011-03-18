@@ -50,7 +50,9 @@ include PermalinkHelper
     @page.home_page = params[:home_page]
     respond_to do |format|
       if @page.save
+          unless params[:page_variables].nil?
 	  update_page_variables(params[:page_variables],@page)
+          end
         flash[:notice] = 'Page was successfully created.'
         format.html { redirect_to(@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
@@ -82,7 +84,9 @@ include PermalinkHelper
     end
     respond_to do |format|
       if @page.update_attributes(params[:page])
-   	   update_page_variables(params[:page_variables],@page)
+   	  unless params[:page_variables].nil?
+	  update_page_variables(params[:page_variables],@page)
+          end
          @page.home_page = params[:home_page] 
          @page.save
         flash[:notice] = 'Page was successfully updated.'

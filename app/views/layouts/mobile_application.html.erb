@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>RlingCMS -- Faster CMS for Faster Minds</title>
+  <%= stylesheet_link_tag 'mobile_application' %>
+
+</head>
+<body>
+<div id="layout">
+
+<div id="header">
+<%= render :partial=>"layouts/mobile_header" %>
+</div>
+<div id="middle">
+<%= yield  %>
+</div>
+<div id="footer">
+<%# render :partial=>"layouts/mobile_footer" %>
+</div>
+</body>
+</html>
