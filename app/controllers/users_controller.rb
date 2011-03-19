@@ -76,7 +76,7 @@ class UsersController < ApplicationController
         flash[:notice] = "User registered successfully"
         if get_setting("send_welcome_email")
           Notifier.welcome_email(@user).deliver
-        end
+       
         #Write code for Send welcome email if setting is true
         if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
           @user.create_activation_key
@@ -96,6 +96,7 @@ class UsersController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
+     end
     end
   end
 
@@ -104,7 +105,7 @@ class UsersController < ApplicationController
     @user.is_activated=true
     @user.delete_activation_key
       respond_to do |format|
-            format.html {redirect_to login_path, :notice=>'Your acoount has been activated'}
+            format.html {redirect_to login_path, :notice=>'Your account has been activated'}
             format.xml {render :xml =>@user}
   end
   end

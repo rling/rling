@@ -60,7 +60,8 @@ def create
       flash[:notice] = "Login successful!"
       self.current_user = @user
       if params[:remember_me]="1"
-          session[:remember_token] = @user.id
+          cookies[:remember_me] = { :value => @user.id, :expires => Time.now + 3600}
+
       end
       if @user.admin?
         redirect_to :controller=>"admin",:action=>"dashboard"
@@ -68,9 +69,11 @@ def create
         redirect_to :controller => "users", :action => "show", :id => @user.id
       end
    else
+     flash[:notice]="Incorrect password"
      render :action => :new
    end
  else
+     flash[:notice]="Incorrect password"
      render :action => :new
  end
 end
@@ -94,6 +97,7 @@ def forgot
 end
 
 def destroy
+    cookies.delete :remember_me
     session[:user] = nil
     flash[:notice] = "You have been logged out."
     redirect_to('/')

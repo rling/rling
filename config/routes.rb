@@ -12,6 +12,7 @@ Rling::Application.routes.draw do
   resources :roles
   resources :users do
     member do
+      get 'activate'
       get 'user_details'
       post 'update_details'
     end
