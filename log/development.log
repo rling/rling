@@ -2460,3 +2460,618 @@ Rendered layouts/_nolistmenu.erb (1.4ms)
 Rendered layouts/_footer.erb (3.4ms)
 Rendered pages/index.html.erb within layouts/application (103.2ms)
 Completed 200 OK in 158ms (Views: 111.9ms | ActiveRecord: 1.4ms)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (17.2ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (9.8ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateMenusets (20110310053107)
+  [1m[35mSQL (7.3ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053107')[0m
+Migrating to CreateMenus (20110310053117)
+  [1m[35mSQL (10.7ms)[0m  CREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053117')[0m
+Migrating to CreateRoles (20110310053149)
+  [1m[35mSQL (11.2ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mRole Load (14.6ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'admin') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  describe `roles`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('admin', 1, '2011-03-21 15:23:44', '2011-03-21 15:23:44')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.3ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'user') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('user', 1, '2011-03-21 15:23:44', '2011-03-21 15:23:44')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'anonymous') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('anonymous', 1, '2011-03-21 15:23:44', '2011-03-21 15:23:44')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053149')[0m
+Migrating to CreateUserDetailSettings (20110310053223)
+  [1m[35mSQL (9.6ms)[0m  CREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053223')[0m
+Migrating to CreateUserDetails (20110310053233)
+  [1m[35mSQL (16.4ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053233')[0m
+Migrating to CreatePages (20110310053303)
+  [1m[35mSQL (14.6ms)[0m  CREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053303')[0m
+Migrating to CreatePageVariableSettings (20110310053316)
+  [1m[35mSQL (10.8ms)[0m  CREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053316')[0m
+Migrating to CreatePageVariables (20110310053324)
+  [1m[35mSQL (25.3ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110310053324')[0m
+Migrating to CreateSettings (20110314065704)
+  [1m[35mSQL (12.6ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110314065704')[0m
+Migrating to CreateUsers (20110314065928)
+  [1m[35mSQL (9.9ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (14.0ms)[0m  CREATE INDEX `index_users_on_login` ON `users` (`login`)
+  [1m[36mSQL (1.1ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (12.5ms)[0m  CREATE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110314065928')[0m
+Migrating to AddSessionsTable (20110315144448)
+  [1m[35mSQL (9.0ms)[0m  CREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW KEYS FROM `sessions`[0m
+  [1m[35mSQL (11.8ms)[0m  CREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW KEYS FROM `sessions`[0m
+  [1m[35mSQL (20.4ms)[0m  CREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110315144448')[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `menus`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `menus`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `menusets`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `page_variable_settings`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `page_variable_settings`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `page_variables`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `page_variables`
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `pages`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `pages`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `sessions`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `settings`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `settings`
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `user_detail_settings`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_detail_settings`
+  [1m[36mSQL (0.5ms)[0m  [1mdescribe `user_details`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_details`
+  [1m[36mSQL (1.0ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (10.6ms)[0m  DROP TABLE `menus`
+  [1m[36mSQL (9.7ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.1ms)[0m  [1mDROP TABLE `menusets`[0m
+  [1m[35mSQL (8.6ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.3ms)[0m  DROP TABLE `page_variable_settings`
+  [1m[36mSQL (15.4ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.5ms)[0m  [1mDROP TABLE `page_variables`[0m
+  [1m[35mSQL (35.4ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.2ms)[0m  DROP TABLE `pages`
+  [1m[36mSQL (7.8ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.9ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.2ms)[0m  [1mDROP TABLE `roles`[0m
+  [1m[35mSQL (10.7ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.1ms)[0m  DROP TABLE `sessions`
+  [1m[36mSQL (17.3ms)[0m  [1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (9.7ms)[0m  [1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (18.7ms)[0m  [1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.1ms)[0m  [1mDROP TABLE `settings`[0m
+  [1m[35mSQL (9.7ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.3ms)[0m  DROP TABLE `user_detail_settings`
+  [1m[36mSQL (10.2ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (1.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (19.7ms)[0m  [1mDROP TABLE `user_details`[0m
+  [1m[35mSQL (10.3ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.3ms)[0m  DROP TABLE `users`
+  [1m[36mSQL (10.0ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (18.1ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (14.5ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Header') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Header', 'Header Menu for RlingCMS', '2011-03-21 15:23:59', '2011-03-21 15:23:59')
+  [1m[36mSQL (6.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Footer') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Footer', 'Footer Menu for RlingCMS', '2011-03-21 15:23:59', '2011-03-21 15:23:59')
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Anonymous') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  describe `roles`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Anonymous', 0, '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (6.1ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'User') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('User', 0, '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Administrator') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Administrator', 0, '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `settings`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_user_register_user', 'Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute', 'false', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_admin_register_user', 'Should the System allow administrators to self register users to the website', 'true', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('send_welcome_email', 'If a user is registered, should there be a welcome email sent to the user on registration', 'false', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('is_login_type_email', 'Should the login to the website be done using the login or by using the email address of the user', 'false', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_user', 'Should the System send activation email when the user registers into the website', 'false', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_admin', 'Should the System send activation email when the admin registers the user using admin panel in the website', 'false', 'boolean', '2011-03-21 15:23:59', '2011-03-21 15:23:59')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('site_url', 'URL of the Site that is required to go out as external links. e.g. in emails, on pages, etc.,', 'http://localhost:3000', 'string', '2011-03-21 15:23:59', '2011-03-21 15:23:59')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (10.4ms)[0m  DROP TABLE `menus`
+  [1m[36mSQL (10.1ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.1ms)[0m  [1mDROP TABLE `menusets`[0m
+  [1m[35mSQL (11.2ms)[0m  CREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.7ms)[0m  DROP TABLE `page_variable_settings`
+  [1m[36mSQL (9.1ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.5ms)[0m  [1mDROP TABLE `page_variables`[0m
+  [1m[35mSQL (14.6ms)[0m  CREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (1.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.7ms)[0m  DROP TABLE `pages`
+  [1m[36mSQL (9.4ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.1ms)[0m  [1mDROP TABLE `roles`[0m
+  [1m[35mSQL (19.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.9ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.9ms)[0m  DROP TABLE `sessions`
+  [1m[36mSQL (8.6ms)[0m  [1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (13.2ms)[0m  [1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (10.3ms)[0m  [1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.0ms)[0m  [1mDROP TABLE `settings`[0m
+  [1m[35mSQL (10.8ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.9ms)[0m  DROP TABLE `user_detail_settings`
+  [1m[36mSQL (8.0ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.0ms)[0m  [1mDROP TABLE `user_details`[0m
+  [1m[35mSQL (13.3ms)[0m  CREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.1ms)[0m  DROP TABLE `users`
+  [1m[36mSQL (7.7ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (12.3ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (11.8ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (1.0ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Header') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Header', 'Header Menu for RlingCMS', '2011-03-21 15:24:13', '2011-03-21 15:24:13')
+  [1m[36mSQL (7.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'Footer') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('Footer', 'Footer Menu for RlingCMS', '2011-03-21 15:24:13', '2011-03-21 15:24:13')
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Anonymous') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  describe `roles`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Anonymous', 0, '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (6.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'User') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('User', 0, '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'Administrator') LIMIT 1
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('Administrator', 0, '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `settings`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_user_register_user', 'Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute', 'false', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('allow_admin_register_user', 'Should the System allow administrators to self register users to the website', 'true', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('send_welcome_email', 'If a user is registered, should there be a welcome email sent to the user on registration', 'false', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('is_login_type_email', 'Should the login to the website be done using the login or by using the email address of the user', 'false', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_user', 'Should the System send activation email when the user registers into the website', 'false', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('user_activation_required_on_admin', 'Should the System send activation email when the admin registers the user using admin panel in the website', 'false', 'boolean', '2011-03-21 15:24:13', '2011-03-21 15:24:13')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `settings` (`name`, `desc_text`, `setting_value`, `setting_type`, `created_at`, `updated_at`) VALUES ('site_url', 'URL of the Site that is required to go out as external links. e.g. in emails, on pages, etc.,', 'http://localhost:3000', 'string', '2011-03-21 15:24:13', '2011-03-21 15:24:13')[0m
+  [1m[35mSQL (0.2ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.5ms)[0m  DROP DATABASE IF EXISTS `rling_test`
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE DATABASE `rling_test` DEFAULT CHARACTER SET `utf8`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.8ms)[0m  [1mCREATE TABLE `menus` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `position` int(11) DEFAULT 0, `level` int(11) DEFAULT 0, `image_path` varchar(255), `hover_image_path` varchar(255), `link_path` varchar(255), `parent_id` int(11) DEFAULT 0, `menuset_id` int(11), `page_id` int(11), `menu_view_type` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.4ms)[0m  [1mCREATE TABLE `menusets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (13.5ms)[0m  [1mCREATE TABLE `page_variable_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `default_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (8.8ms)[0m  [1mCREATE TABLE `page_variables` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `page_id` int(11), `page_variable_setting_id` int(11), `variable_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (17.4ms)[0m  [1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `body` text, `perma_link` varchar(255), `home_page` tinyint(1) DEFAULT 0, `page_view_type` int(11) DEFAULT 0, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (7.7ms)[0m  [1mCREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role_type` varchar(255), `is_deletable` tinyint(1) DEFAULT 1, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (13.5ms)[0m  [1mCREATE TABLE `sessions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `session_id` varchar(255) NOT NULL, `data` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (15.8ms)[0m  [1mCREATE INDEX `index_sessions_on_session_id` ON `sessions` (`session_id`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (9.3ms)[0m  [1mCREATE INDEX `index_sessions_on_updated_at` ON `sessions` (`updated_at`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (14.3ms)[0m  [1mCREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `desc_text` varchar(255), `setting_value` text, `setting_type` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (8.7ms)[0m  [1mCREATE TABLE `user_detail_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `field_name` varchar(255), `field_type` varchar(255), `field_values` text, `default_value` varchar(255), `mandatory` tinyint(1) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (12.4ms)[0m  [1mCREATE TABLE `user_details` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `user_detail_setting_id` int(11), `selected_value` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (13.9ms)[0m  [1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `role_id` int(11), `hashed_password` varchar(255), `salt` varchar(255), `activation_key` varchar(255), `is_activated` tinyint(1) DEFAULT 0, `reset_password_key` varchar(255), `login_count` int(11) DEFAULT 0, `failed_login_count` int(11) DEFAULT 0, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (11.6ms)[0m  [1mCREATE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `users`
+  [1m[36mSQL (16.4ms)[0m  [1mCREATE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW TABLES
+  [1m[36mSQL (7.1ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `schema_migrations`
+  [1m[36mSQL (15.0ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110315144448')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110314065704')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053149')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053233')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053223')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053324')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053303')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110310053107')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053316')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110314065928')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110310053117')
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-21 20:54:58 +0530
+  Processing by SessionsController#new as HTML
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Administrator' LIMIT 1[0m
+  [1m[35mSQL (18.2ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+  [1m[36mPageVariableSetting Load (0.3ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.2ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (28.6ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (67.1ms)
+Rendered layouts/_header.erb (92.1ms)
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.3ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (5.5ms)
+Rendered sessions/new.html.erb within layouts/application (149.8ms)
+Completed 200 OK in 472ms (Views: 126.9ms | ActiveRecord: 50.0ms)
+
+
+Started GET "/sessions/first_user" for 127.0.0.1 at 2011-03-21 20:55:07 +0530
+  Processing by SessionsController#first_user as HTML
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Administrator' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_sessions_first_user_html_erb__820329403_96907680_934805090 at /ravikiran/rling-gitcode/rling/app/views/sessions/first_user.html.erb:17)
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (93.2ms)
+Rendered layouts/_header.erb (117.4ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (5.3ms)
+Rendered sessions/first_user.html.erb within layouts/application (186.2ms)
+Completed 200 OK in 289ms (Views: 192.8ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/sessions/first_user_create" for 127.0.0.1 at 2011-03-21 20:55:24 +0530
+  Processing by SessionsController#first_user_create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CGFlJJuW2Chyh4osux7ERi9a75bRQGEpCxEguhFEJIw=", "user"=>{"login"=>"", "email"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "is_login_type_email"=>"", "site_url"=>"http://localhost:3000", "allow_user_register_user"=>"1", "allow_admin_register_user"=>"1", "user_activation_required_on_user"=>"1", "user_activation_required_on_admin"=>"1", "send_welcome_email"=>"1", "commit"=>"Create Rling First User"}
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Administrator' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Administrator' LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`role_id` = 3 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'ravikiran@heurion.com') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'ravikiran@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  describe `users`
+  [1m[36mAREL (18.2ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('ravikiran@heurion.com', 'ravikiran@heurion.com', 3, 'e80922fe95bea61220679ef0d9f834f683c04194', 'Ndihu6BjLl', NULL, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-21 15:25:24', '2011-03-21 15:25:24')[0m
+  [1m[35mSQL (7.0ms)[0m  COMMIT
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-21 15:25:25' WHERE `settings`.`id` = 4[0m
+  [1m[35mSQL (9.8ms)[0m  COMMIT
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-21 15:25:25' WHERE `settings`.`id` = 1[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'send_welcome_email' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-21 15:25:25' WHERE `settings`.`id` = 3[0m
+  [1m[35mSQL (0.3ms)[0m  COMMIT
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSetting Load (0.2ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_user' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-21 15:25:25' WHERE `settings`.`id` = 5
+  [1m[36mSQL (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSetting Load (0.3ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_admin' LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE `settings` SET `setting_value` = 'true', `updated_at` = '2011-03-21 15:25:25' WHERE `settings`.`id` = 6
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/sessions/new
+Completed 302 Found in 218ms
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2011-03-21 20:55:25 +0530
+  Processing by SessionsController#new as HTML
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'Administrator' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (`users`.role_id = 3)[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.3ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (38.1ms)
+Rendered layouts/_header.erb (63.7ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.1ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered sessions/new.html.erb within layouts/application (121.1ms)
+Completed 200 OK in 231ms (Views: 127.6ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-21 20:55:30 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CGFlJJuW2Chyh4osux7ERi9a75bRQGEpCxEguhFEJIw=", "login"=>"ravikiran@heurion.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'ravikiran@heurion.com') LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 40ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-21 20:55:30 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (37.2ms)
+Rendered layouts/_header.erb (61.3ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered admin/dashboard.html.erb within layouts/application (92.5ms)
+Completed 200 OK in 116ms (Views: 99.1ms | ActiveRecord: 44.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-21 20:55:32 +0530
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (40.6ms)
+Rendered layouts/_header.erb (67.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.2ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered users/index.html.erb within layouts/application (178.4ms)
+Completed 200 OK in 201ms (Views: 184.2ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/user_detail_settings" for 127.0.0.1 at 2011-03-21 20:55:34 +0530
+  Processing by UserDetailSettingsController#index as HTML
+  [1m[35mUserDetailSetting Load (0.5ms)[0m  SELECT `user_detail_settings`.* FROM `user_detail_settings`
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (92.6ms)
+Rendered layouts/_header.erb (118.7ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (5.2ms)
+Rendered user_detail_settings/index.html.erb within layouts/application (151.0ms)
+Completed 200 OK in 191ms (Views: 158.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-21 20:55:40 +0530
+  Processing by UsersController#new as HTML
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT `roles`.* FROM `roles`
+Rendered users/_form.html.erb (36.6ms)
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (89.9ms)
+Rendered layouts/_header.erb (115.1ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered users/new.html.erb within layouts/application (183.2ms)
+Completed 200 OK in 274ms (Views: 188.5ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-03-21 20:55:50 +0530
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CGFlJJuW2Chyh4osux7ERi9a75bRQGEpCxEguhFEJIw=", "user"=>{"email"=>"satish@heurion.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "role_id"=>"2"}, "commit"=>"Create User"}
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'satish@heurion.com') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'satish@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  describe `users`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('satish@heurion.com', 'satish@heurion.com', 2, '98d98505d1e3d16311a9ea298fd8bdcb9e4a96c5', 'NcbhwaV34S', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-21 15:25:51', '2011-03-21 15:25:51')[0m
+  [1m[35mSQL (11.4ms)[0m  COMMIT
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'send_welcome_email' LIMIT 1[0m
+Rendered notifier/welcome_email.html.erb (0.7ms)
+
+Sent mail to satish@heurion.com (5663ms)
+Date: Mon, 21 Mar 2011 20:55:51 +0530
+From: heurion.com
+To: satish@heurion.com
+Message-ID: <4d876dff69f5e_33fb5952aa423329@heurionpc.mail>
+Subject: Welcome satish@heurion.com
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome satish@heurion.com,
+<p>
+You have been successfully registered to RlingCMS. You can now login with your login, password provided at the time of registration.
+</p>
+Thanks and Regards<br/>
+<p>
+Team Website
+</p>
+  [1m[35mSetting Load (0.4ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_user' LIMIT 1
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'user_activation_required_on_admin' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+DEPRECATION WARNING: save(false) is deprecated, please give save(:validate => false) instead. (called from create_activation_key at /ravikiran/rling-gitcode/rling/app/models/user.rb:63)
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `users` SET `activation_key` = '363b13a16f04f488a0c2caea54e5f0eb0a2db74a', `updated_at` = '2011-03-21 15:25:57' WHERE `users`.`id` = 2[0m
+  [1m[35mSQL (12.7ms)[0m  COMMIT
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'site_url' LIMIT 1[0m
+Rendered notifier/activation_key.html.erb (0.6ms)
+
+Sent mail to satish@heurion.com (2884ms)
+Date: Mon, 21 Mar 2011 20:55:57 +0530
+From: heurion.com
+To: satish@heurion.com
+Message-ID: <4d876e05108d8_33fb5952aa423432@heurionpc.mail>
+Subject: Link to activate account
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+welcome satish@heurion.com
+Below is the link to activate your account
+http://localhost:3000/users/363b13a16f04f488a0c2caea54e5f0eb0a2db74a/activate
+Redirected to http://localhost:3000/users
+Completed 302 Found in 8914ms
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-21 20:55:59 +0530
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (37.9ms)
+Rendered layouts/_header.erb (62.6ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.1ms)
+Rendered layouts/_footer.erb (5.0ms)
+Rendered users/index.html.erb within layouts/application (120.0ms)
+Completed 200 OK in 144ms (Views: 126.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-21 20:56:02 +0530
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-21 20:56:03 +0530
+  Processing by DisplayController#index as HTML
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (37.3ms)
+Rendered layouts/_header.erb (61.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.2ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered display/index.erb within layouts/application (115.0ms)
+Completed 200 OK in 154ms (Views: 121.6ms | ActiveRecord: 53.5ms)

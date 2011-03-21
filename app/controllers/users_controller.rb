@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   before_filter :require_user, :except => [:new,:create,:activate]
-  before_filter :require_admin, :except => [:new,:create,:activate,:show,:edit,:user_details,:update_details]
+  before_filter :require_admin, :except => [:new,:create,:activate,:show,:update,:edit,:user_details,:update_details]
   def index
     @users = User.all
     respond_to do |format|
