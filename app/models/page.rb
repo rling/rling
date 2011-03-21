@@ -7,10 +7,11 @@ after_save :set_menu
 #Associations
 has_one :menu ,:dependent => :destroy
 has_many :page_variables ,:dependent => :destroy
-
+regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
 #validations
 validates :title ,:presence=>true
-validates :perma_link ,:presence=>true, :uniqueness=>true
+validates :perma_link ,:presence=>true, :uniqueness=>true ,:format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets and numbers and -"}
+
 
 #instance methods
 def menu_menuset_id

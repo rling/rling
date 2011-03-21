@@ -1,3 +1,6 @@
+<%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -17,15 +20,26 @@
 
 <p>
   <b>Home page:</b>
-  <%= @page.home_page %>
+  <% if @page.home_page.eql?(false) %>
+      <%= "No" %>
+  <% else %>
+       <% "Yes" %>
+   <% end %> 
 </p>
 
 <p>
   <b>Page view type:</b>
-  <%= @page.page_view_type %>
+  <% if @page.page_view_type.eql?(0) %>
+     <%= "Computer and Mobile Browsers "%>
+  <% elsif @page.page_view_type.eql?(1) %>
+      <%= "Computer Browsers" %>
+   <% else %>
+<% Mobile Browsers %>
+ <% end %>
+ 
 </p>
 
 
 
 <%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to 'Back', pages_path %>|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
