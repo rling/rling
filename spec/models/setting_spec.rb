@@ -30,3 +30,17 @@ describe Setting do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: settings
+#
+#  id            :integer(4)      not null, primary key
+#  name          :string(255)
+#  desc_text     :string(255)
+#  setting_value :text
+#  setting_type  :string(255)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+

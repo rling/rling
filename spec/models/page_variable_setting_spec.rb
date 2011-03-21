@@ -37,3 +37,15 @@ describe PageVariableSetting do
 end
  #*****************************************END******************************************************#
 
+
+# == Schema Information
+#
+# Table name: page_variable_settings
+#
+#  id            :integer(4)      not null, primary key
+#  name          :string(255)
+#  default_value :text
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+

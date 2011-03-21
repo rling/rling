@@ -34,3 +34,15 @@ describe Role do
 
    
 end
+
+# == Schema Information
+#
+# Table name: roles
+#
+#  id           :integer(4)      not null, primary key
+#  role_type    :string(255)
+#  is_deletable :boolean(1)      default(TRUE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+

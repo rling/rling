@@ -197,3 +197,28 @@ describe User do
   end 
 
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer(4)      not null, primary key
+#  login              :string(255)     not null
+#  email              :string(255)     not null
+#  role_id            :integer(4)
+#  hashed_password    :string(255)
+#  salt               :string(255)
+#  activation_key     :string(255)
+#  is_activated       :boolean(1)      default(FALSE)
+#  reset_password_key :string(255)
+#  login_count        :integer(4)      default(0)
+#  failed_login_count :integer(4)      default(0)
+#  last_request_at    :datetime
+#  current_login_at   :datetime
+#  last_login_at      :datetime
+#  current_login_ip   :string(255)
+#  last_login_ip      :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+

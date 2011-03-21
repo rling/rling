@@ -188,3 +188,19 @@ it  "tests perma_link generations " do
    
 end
 #****************************************END***************************************************************#
+
+# == Schema Information
+#
+# Table name: pages
+#
+#  id             :integer(4)      not null, primary key
+#  title          :string(255)
+#  body           :text
+#  perma_link     :string(255)
+#  home_page      :boolean(1)      default(FALSE)
+#  page_view_type :integer(4)      default(0)
+#  user_id        :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

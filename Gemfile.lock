@@ -30,6 +30,7 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     acts_as_tree (0.1.1)
+    annotate (2.4.0)
     arel (2.0.9)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -91,6 +92,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_tree
+  annotate
   autotest
   ckeditor
   factory_girl

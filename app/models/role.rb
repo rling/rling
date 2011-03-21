@@ -11,3 +11,15 @@ class Role < ActiveRecord::Base
 	    self.find_by_role_type(name.to_s.camelize)
 	  end
 end
+
+# == Schema Information
+#
+# Table name: roles
+#
+#  id           :integer(4)      not null, primary key
+#  role_type    :string(255)
+#  is_deletable :boolean(1)      default(TRUE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+

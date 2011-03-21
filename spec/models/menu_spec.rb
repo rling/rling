@@ -90,3 +90,23 @@ describe Menu do
     @menu.treename.should eql(@menu.name)
   end
 end
+
+# == Schema Information
+#
+# Table name: menus
+#
+#  id               :integer(4)      not null, primary key
+#  name             :string(255)
+#  position         :integer(4)      default(0)
+#  level            :integer(4)      default(0)
+#  image_path       :string(255)
+#  hover_image_path :string(255)
+#  link_path        :string(255)
+#  parent_id        :integer(4)      default(0)
+#  menuset_id       :integer(4)
+#  page_id          :integer(4)
+#  menu_view_type   :integer(4)      default(0)
+#  created_at       :datetime
+#  updated_at       :datetime
+#
+

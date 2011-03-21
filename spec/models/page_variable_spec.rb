@@ -25,3 +25,16 @@ describe PageVariable do
  end
 end
 #*************************************************END****************************************************#
+
+# == Schema Information
+#
+# Table name: page_variables
+#
+#  id                       :integer(4)      not null, primary key
+#  page_id                  :integer(4)
+#  page_variable_setting_id :integer(4)
+#  variable_value           :text
+#  created_at               :datetime
+#  updated_at               :datetime
+#
+
