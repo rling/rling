@@ -15586,3 +15586,696 @@ Rendered layouts/_nolistmenu.erb (1.6ms)
 Rendered layouts/_footer.erb (3.5ms)
 Rendered pagelets/index.html.erb within layouts/application (213.5ms)
 Completed 200 OK in 240ms (Views: 221.4ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-22 21:03:53 +0530
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (36.9ms)
+Rendered layouts/_header.erb (61.4ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.4ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered users/index.html.erb within layouts/application (120.1ms)
+Completed 200 OK in 179ms (Views: 161.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-22 21:03:55 +0530
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-22 21:03:55 +0530
+  Processing by DisplayController#index as HTML
+  [1m[36mPage Load (0.2ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (78.9ms)
+Rendered layouts/_header.erb (102.4ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.1ms)
+Rendered layouts/_footer.erb (4.7ms)
+Rendered display/index.erb within layouts/application (179.9ms)
+Completed 200 OK in 237ms (Views: 189.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:04:01 +0530
+  Processing by SessionsController#new as HTML
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (36.4ms)
+Rendered layouts/_header.erb (60.7ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.0ms)
+Rendered layouts/_footer.erb (4.6ms)
+Rendered sessions/new.html.erb within layouts/application (172.6ms)
+Completed 200 OK in 184ms (Views: 182.2ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-22 21:04:03 +0530
+  Processing by UsersController#new as HTML
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+Rendered users/_form.html.erb (20.6ms)
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.7ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (50.4ms)
+Rendered layouts/_header.erb (124.1ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered users/new.html.erb within layouts/application (178.3ms)
+Completed 200 OK in 226ms (Views: 182.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:04:06 +0530
+  Processing by SessionsController#new as HTML
+  [1m[35mPageVariableSetting Load (0.2ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (61.7ms)
+Rendered layouts/_header.erb (101.5ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Rendered layouts/_footer.erb (7.1ms)
+Rendered sessions/new.html.erb within layouts/application (193.5ms)
+Completed 200 OK in 205ms (Views: 203.3ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-22 21:04:11 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XrSov6RnKnVP26xba8St1K7e6r8kgmTmZX6zM62GT9E=", "login"=>"ravi", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'ravi') LIMIT 1[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 60ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-03-22 21:04:11 +0530
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1
+  [1m[36mUserDetailSetting Load (0.1ms)[0m  [1mSELECT `user_detail_settings`.* FROM `user_detail_settings`[0m
+  [1m[35mUserDetail Load (0.4ms)[0m  SELECT `user_details`.* FROM `user_details` WHERE `user_details`.`user_id` = 3 AND `user_details`.`user_detail_setting_id` = 3 LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (79.2ms)
+Rendered layouts/_header.erb (103.7ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.0ms)
+Rendered layouts/_footer.erb (4.6ms)
+Rendered users/show.html.erb within layouts/application (183.0ms)
+Completed 200 OK in 223ms (Views: 192.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:04:18 +0530
+  Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 16ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-03-22 21:04:18 +0530
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[35mUserDetailSetting Load (0.1ms)[0m  SELECT `user_detail_settings`.* FROM `user_detail_settings`
+  [1m[36mUserDetail Load (0.1ms)[0m  [1mSELECT `user_details`.* FROM `user_details` WHERE `user_details`.`user_id` = 3 AND `user_details`.`user_detail_setting_id` = 3 LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (46.8ms)
+Rendered layouts/_header.erb (71.9ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered users/show.html.erb within layouts/application (189.4ms)
+Completed 200 OK in 213ms (Views: 194.5ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-22 21:04:20 +0530
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-22 21:04:20 +0530
+  Processing by DisplayController#index as HTML
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (35.2ms)
+Rendered layouts/_header.erb (59.0ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.2ms)
+Rendered layouts/_footer.erb (4.8ms)
+Rendered display/index.erb within layouts/application (112.7ms)
+Completed 200 OK in 211ms (Views: 118.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:04:21 +0530
+  Processing by SessionsController#new as HTML
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (117.8ms)
+Rendered layouts/_header.erb (158.4ms)
+  [1m[35mMenuset Load (7.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (12.7ms)
+Rendered sessions/new.html.erb within layouts/application (252.7ms)
+Completed 200 OK in 264ms (Views: 255.1ms | ActiveRecord: 8.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-22 21:04:25 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XrSov6RnKnVP26xba8St1K7e6r8kgmTmZX6zM62GT9E=", "login"=>"sandeep", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep') LIMIT 1[0m
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 77ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:04:25 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (51.5ms)
+Rendered layouts/_header.erb (126.3ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (5.6ms)
+Rendered admin/dashboard.html.erb within layouts/application (155.9ms)
+Completed 200 OK in 175ms (Views: 161.1ms | ActiveRecord: 46.4ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:04:30 +0530
+  Processing by SessionsController#new as HTML
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 26ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:04:30 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (37.4ms)
+Rendered layouts/_header.erb (62.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered admin/dashboard.html.erb within layouts/application (136.1ms)
+Completed 200 OK in 155ms (Views: 141.3ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/account" for 127.0.0.1 at 2011-03-22 21:04:33 +0530
+  Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mUserDetailSetting Load (0.2ms)[0m  [1mSELECT `user_detail_settings`.* FROM `user_detail_settings`[0m
+  [1m[35mUserDetail Load (0.1ms)[0m  SELECT `user_details`.* FROM `user_details` WHERE `user_details`.`user_id` = 1 AND `user_details`.`user_detail_setting_id` = 3 LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (37.7ms)
+Rendered layouts/_header.erb (131.9ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered users/show.html.erb within layouts/application (234.5ms)
+Completed 200 OK in 296ms (Views: 244.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-22 21:04:35 +0530
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (87.5ms)
+Rendered layouts/_header.erb (111.7ms)
+  [1m[35mMenuset Load (0.7ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.9ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (9.4ms)
+Rendered layouts/_footer.erb (13.4ms)
+Rendered users/index.html.erb within layouts/application (174.5ms)
+Completed 200 OK in 196ms (Views: 178.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-22 21:04:36 +0530
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (66.2ms)
+Rendered layouts/_header.erb (108.1ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (3.2ms)
+Rendered layouts/_footer.erb (7.5ms)
+Rendered users/index.html.erb within layouts/application (255.2ms)
+Completed 200 OK in 290ms (Views: 264.6ms | ActiveRecord: 33.0ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:04:37 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (78.0ms)
+Rendered layouts/_header.erb (102.0ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.1ms)
+Rendered layouts/_footer.erb (4.7ms)
+Rendered admin/dashboard.html.erb within layouts/application (131.4ms)
+Completed 200 OK in 165ms (Views: 140.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:05:45 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.2ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (54.5ms)
+Rendered layouts/_header.erb (96.3ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.3ms)
+Rendered layouts/_footer.erb (5.7ms)
+Rendered admin/dashboard.html.erb within layouts/application (196.8ms)
+Completed 200 OK in 223ms (Views: 206.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-22 21:05:48 +0530
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-22 21:05:48 +0530
+  Processing by DisplayController#index as HTML
+  [1m[36mPage Load (0.2ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (37.2ms)
+Rendered layouts/_header.erb (60.7ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.3ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.2ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered display/index.erb within layouts/application (127.6ms)
+Completed 200 OK in 194ms (Views: 138.7ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2011-03-22 21:05:53 +0530
+  Processing by UsersController#new as HTML
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mSetting Load (0.2ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'is_login_type_email' LIMIT 1[0m
+Rendered users/_form.html.erb (36.5ms)
+  [1m[35mPageVariableSetting Load (0.7ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (60.5ms)
+Rendered layouts/_header.erb (100.5ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Rendered layouts/_footer.erb (6.9ms)
+Rendered users/new.html.erb within layouts/application (187.9ms)
+Completed 200 OK in 317ms (Views: 247.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-22 21:05:55 +0530
+  Processing by DisplayController#index as HTML
+  [1m[36mPage Load (0.1ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`home_page` = 1 AND (page_view_type IN ('0','1'))[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (98.4ms)
+Rendered layouts/_header.erb (137.2ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered display/index.erb within layouts/application (217.6ms)
+Completed 200 OK in 260ms (Views: 227.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-22 21:05:57 +0530
+  Processing by SessionsController#new as HTML
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_user_register_user' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (41.4ms)
+Rendered layouts/_header.erb (80.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (2.2ms)
+Rendered layouts/_footer.erb (5.1ms)
+Rendered sessions/new.html.erb within layouts/application (168.0ms)
+Completed 200 OK in 180ms (Views: 177.8ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-22 21:06:04 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XrSov6RnKnVP26xba8St1K7e6r8kgmTmZX6zM62GT9E=", "login"=>"sandeep", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE (login = 'sandeep') LIMIT 1
+Redirected to http://localhost:3000/admin/dashboard
+Completed 302 Found in 60ms
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:06:04 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[36mPageVariableSetting Load (0.2ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (36.5ms)
+Rendered layouts/_header.erb (73.4ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (1.8ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered admin/dashboard.html.erb within layouts/application (117.7ms)
+Completed 200 OK in 153ms (Views: 127.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/settings" for 127.0.0.1 at 2011-03-22 21:06:06 +0530
+  Processing by SettingsController#index as HTML
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT `settings`.* FROM `settings`[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (37.7ms)
+Rendered layouts/_header.erb (63.1ms)
+  [1m[36mMenuset Load (0.5ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered settings/index.html.erb within layouts/application (152.1ms)
+Completed 200 OK in 203ms (Views: 161.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/settings/2/edit" for 127.0.0.1 at 2011-03-22 21:06:09 +0530
+  Processing by SettingsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSetting Load (0.4ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`id` = 2 LIMIT 1
+Rendered settings/_form.html.erb (18.0ms)
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.3ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (123.0ms)
+Rendered layouts/_header.erb (161.9ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (2.1ms)
+Rendered layouts/_footer.erb (4.9ms)
+Rendered settings/edit.html.erb within layouts/application (224.5ms)
+Completed 200 OK in 280ms (Views: 233.7ms | ActiveRecord: 23.7ms)
+
+
+Started POST "/settings/2" for 127.0.0.1 at 2011-03-22 21:06:14 +0530
+  Processing by SettingsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XrSov6RnKnVP26xba8St1K7e6r8kgmTmZX6zM62GT9E=", "setting"=>{"setting_type"=>"boolean", "setting_value"=>"false"}, "commit"=>"Update Setting", "id"=>"2"}
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.5ms)[0m  [1mUPDATE `settings` SET `setting_value` = 'false', `updated_at` = '2011-03-22 15:36:14' WHERE `settings`.`id` = 2[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/settings/2
+Completed 302 Found in 64ms
+
+
+Started GET "/settings/2" for 127.0.0.1 at 2011-03-22 21:06:14 +0530
+  Processing by SettingsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`id` = 2 LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (69.1ms)
+Rendered layouts/_header.erb (112.3ms)
+  [1m[36mMenuset Load (0.2ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (3.3ms)
+Rendered layouts/_footer.erb (7.6ms)
+Rendered settings/show.html.erb within layouts/application (180.8ms)
+Completed 200 OK in 292ms (Views: 191.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/settings" for 127.0.0.1 at 2011-03-22 21:06:16 +0530
+  Processing by SettingsController#index as HTML
+  [1m[35mSetting Load (0.5ms)[0m  SELECT `settings`.* FROM `settings`
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (83.0ms)
+Rendered layouts/_header.erb (107.5ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (1.9ms)
+Rendered layouts/_footer.erb (4.5ms)
+Rendered settings/index.html.erb within layouts/application (165.7ms)
+Completed 200 OK in 217ms (Views: 175.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:06:19 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (36.8ms)
+Rendered layouts/_header.erb (61.1ms)
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (1.8ms)
+Rendered layouts/_footer.erb (4.4ms)
+Rendered admin/dashboard.html.erb within layouts/application (102.2ms)
+Completed 200 OK in 139ms (Views: 112.3ms | ActiveRecord: 20.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-22 21:06:21 +0530
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mMenu Load (0.2ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position[0m
+Rendered layouts/_dropdownmenu.erb (65.9ms)
+Rendered layouts/_header.erb (107.6ms)
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mMenu Load (0.2ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Rendered layouts/_footer.erb (7.2ms)
+Rendered users/index.html.erb within layouts/application (249.2ms)
+Completed 200 OK in 285ms (Views: 258.6ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-22 21:06:25 +0530
+  Processing by UsersController#new as HTML
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+Redirected to http://localhost:3000/users
+Completed 302 Found in 53ms
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-22 21:06:25 +0530
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mSetting Load (1.5ms)[0m  [1mSELECT `settings`.* FROM `settings` WHERE `settings`.`name` = 'allow_admin_register_user' LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.2ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (64.9ms)
+Rendered layouts/_header.erb (108.8ms)
+  [1m[36mMenuset Load (0.7ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.3ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (3.0ms)
+Rendered layouts/_footer.erb (7.6ms)
+Rendered users/index.html.erb within layouts/application (202.8ms)
+Completed 200 OK in 227ms (Views: 210.1ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-03-22 21:06:28 +0530
+  Processing by AdminController#dashboard as HTML
+  [1m[35mPageVariableSetting Load (0.1ms)[0m  SELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Description' LIMIT 1
+  [1m[36mPageVariableSetting Load (0.1ms)[0m  [1mSELECT `page_variable_settings`.* FROM `page_variable_settings` WHERE `page_variable_settings`.`name` = 'SEO Meta Keywords' LIMIT 1[0m
+  [1m[35mMenuset Load (0.1ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Header' LIMIT 1[0m
+  [1m[35mMenu Load (0.1ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`menuset_id` = 1 AND `menus`.`level` = 1 AND (menu_view_type IN ('0','1')) ORDER BY position
+Rendered layouts/_dropdownmenu.erb (38.0ms)
+Rendered layouts/_header.erb (61.8ms)
+  [1m[36mMenuset Load (0.1ms)[0m  [1mSELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `menusets`.* FROM `menusets` WHERE `menusets`.`name` = 'Footer' LIMIT 1
+  [1m[36mMenu Load (0.1ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`level` = 1 AND `menus`.`menuset_id` = 2 ORDER BY position[0m
+Rendered layouts/_nolistmenu.erb (1.8ms)
+Rendered layouts/_footer.erb (4.3ms)
+Rendered admin/dashboard.html.erb within layouts/application (158.0ms)
+Completed 200 OK in 191ms (Views: 167.8ms | ActiveRecord: 5.9ms)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateMenusets (20110310053107)
+Migrating to CreateMenus (20110310053117)
+Migrating to CreateRoles (20110310053149)
+Migrating to CreateUserDetailSettings (20110310053223)
+Migrating to CreateUserDetails (20110310053233)
+Migrating to CreatePages (20110310053303)
+Migrating to CreatePageVariableSettings (20110310053316)
+Migrating to CreatePageVariables (20110310053324)
+Migrating to CreateSettings (20110314065704)
+Migrating to CreateUsers (20110314065928)
+Migrating to AddSessionsTable (20110315144448)
+Migrating to CreatePagelets (20110322121125)
+  [1m[35mSQL (64.3ms)[0m  CREATE TABLE `pagelets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `handle` varchar(255), `display_text` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110322121125')[0m
+Migrating to CreateAssets (20110322141816)
+  [1m[35mSQL (3.8ms)[0m  CREATE TABLE `assets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `file_name` varchar(255), `file_content_type` varchar(255), `file_size` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20110322141816')[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.7ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `assets`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `assets`
+  [1m[36mSQL (1.3ms)[0m  [1mdescribe `menus`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `menus`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `menusets`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `page_variable_settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `page_variable_settings`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `page_variables`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `page_variables`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `pagelets`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `pagelets`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `pages`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `pages`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `sessions`[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW KEYS FROM `sessions`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `settings`
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `user_detail_settings`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `user_detail_settings`
+  [1m[36mSQL (1.4ms)[0m  [1mdescribe `user_details`[0m
+  [1m[35mSQL (0.4ms)[0m  SHOW KEYS FROM `user_details`
+  [1m[36mSQL (1.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (1.0ms)[0m  SHOW KEYS FROM `users`

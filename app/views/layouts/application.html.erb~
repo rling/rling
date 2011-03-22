@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%#= get_page_variable "SEO Meta Title" %></title>
+  <META name="description" content="<%= get_page_variable "SEO Meta Description" %>" >
+  <META name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" >
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :ckeditor %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="layout">
+<div id="header">
+<div id="top_bar">
+<% if current_user %>
+        <% if current_user %>
+              Logged in as: <%= link_to(current_user.login,account_url) %> |
+        <% end %>
+	<% if current_user.admin? %>
+		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+	<% end %>
+	<%= link_to "Logout", "/logout" %>
+<% else %>
+ <% setting = Setting.find_by_name("allow_user_register_user") %>
+ <% if setting.setting_data %>
+ <%= link_to 'Register', new_user_path %> |
+ <% end %>
+ <%= link_to "Login","/login" %>
+<% end %>
+</div>
+<%= render :partial=>"layouts/header" %>
+</div>
+<div id="middle">
+<%if flash[:notice]%>
+<div id="flash_notice">
+<%= flash[:notice]  %>
+</div>
+<%end%>
+<%= yield  %>
+</div>
+<div id="footer">
+<%= render :partial=>"layouts/footer" %>
+</div>
+</body>
+</html>

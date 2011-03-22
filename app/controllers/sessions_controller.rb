@@ -51,6 +51,15 @@ def first_user_create
 end
 
 def new
+  unless current_user.nil?
+    if current_user.admin?
+      redirect_to admin_dashboard_path
+    else
+      redirect_to :controller => "users", :action => "show", :id => current_user.id
+    end
+  else
+    render :action=>:new
+  end
 end
  
 def create

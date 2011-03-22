@@ -1,5 +1,3 @@
-<h3>RlingCMS Setup Process</h3>
-Welcome to RlingCMS. This is your first step towards using a great system to build your dream website. As a first time entry, you need to first create the administrator of the website. You can also allocate necessary details as to how to make the best utilization of the website. As a first step, please fill out the Administration form and then continue to use the website.
 <script language="javascript">
 function disablelogin(entity)
 {
@@ -24,7 +22,7 @@ function disablelogin(entity)
         <%= text_field "user", "login", :size => 20 %>
      </td>
      <td>
-        <%=  error_message_on(:user, :login, options={}) %>
+        <%=  error_message_on(:user, :login, options={}) %><span>
      </td>
  </tr>
  <tr>
@@ -65,30 +63,7 @@ function disablelogin(entity)
       <td>
          <%=  error_message_on(:user, :password_confirmation, options={}) %>
       </td>
-   </tr>
-     <tr>
-      <td>
-        <label for="Site URL">URL of the Site that you would use</label>
-      </td>
-      <td>
-         <%= text_field_tag "site_url", "http://localhost:3000", :size => 20 %>
-      </td>
-   </tr>
-  
-   <tr>
-       <td colspan=3>
-         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in th website, Is it allowed
-       </td>
-   </tr>
-   <tr>
-       <td colspan=3>
-         <%= check_box_tag "allow_admin_register_user" %>Can the admin register a user in the website
-       </td>
-   </tr>
-   <tr>
-       <td colspan=3>
-         <%= check_box_tag "user_activation_required_on_user" %>When the user registers, should an activation email sent to him to activate himself before using the system
-       </td>
+   </tr>  
    </tr>
    <tr>
        <td colspan=3>
@@ -105,5 +80,6 @@ function disablelogin(entity)
 
 
 
-<%= submit_tag "Create Rling First User"%>
+<%= submit_tag "Create User"%> |
+<%= link_to 'Back to Dashboard' %>
 <% end %>

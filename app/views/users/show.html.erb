@@ -1,5 +1,6 @@
-<%= link_to 'Edit Information', edit_user_path(@user)  %> |
-<%= link_to 'Edit User Details', user_details_user_path(@user) %>
+<%= link_to 'Edit Information', edit_user_path(@user)  %>
+| <%= link_to 'Edit User Details', user_details_user_path(@user) %>
+
 <h3>Displaying <%= @user.login %>'s information</h3>
 <% @user_detail_settings.each do |user_detail_setting| %>
 <p>

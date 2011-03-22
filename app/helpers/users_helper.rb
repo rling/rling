@@ -16,7 +16,8 @@ module UsersHelper
          output << radio_button_tag("form_field[#{user_detail_setting.field_name}]",radiobuttonvalue,(radiobuttonvalue == user_detail_setting_value))+radiobuttonvalue
 			   end
 			    return raw(output)
-                           
+      when "File"
+         return file_field_tag("form_field[#{user_detail_setting.field_name}]",)
        		end
 	end
 end

@@ -1,4 +1,18 @@
-<%= form_for(@user_detail_setting) do |f| %>
+<script type="text/javascript">
+function findselected(){
+var state = document.getElementById('user_detail_setting_field_type');
+var field_value = document.getElementById('field_value');
+  if(state.value == "Dropdown" ||state.value == "Radiobutton" )
+  {
+    field_value.show();
+  }
+  else
+    {
+      field_value.hide();
+    }
+}
+</script>
+<%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
   <% if @user_detail_setting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user_detail_setting.errors.count, "error") %> prohibited this user_detail_setting from being saved:</h2>
@@ -16,12 +30,12 @@
   <%= f.text_field :field_name %><br />
   </div>
 
-  <div class="field">
+  <div class="field"">
   <%= f.label :field_type %><br />
-  <%= f.select :field_type,["Textfield","Textarea","Dropdown","Checkbox","Radiobutton"] %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />
   </div>
 
-  <div class="field">
+  <div class="field" id="field_value">
   <%= f.label :field_values %><br />
   <%= f.text_area :field_values %><br />
   </div>
