@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315144448) do
+ActiveRecord::Schema.define(:version => 20110322121125) do
 
   create_table "menus", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(:version => 20110315144448) do
     t.integer  "page_id"
     t.integer  "page_variable_setting_id"
     t.text     "variable_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pagelets", :force => true do |t|
+    t.string   "handle"
+    t.text     "display_text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

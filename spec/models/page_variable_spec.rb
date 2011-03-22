@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PageVariable do
  before(:each) do 
-  @page_attributes={ :perma_link =>'/perma_link' ,:title=>'title' }
+  @page_attributes={ :perma_link =>'/permalink' ,:title=>'title' }
   @page=Page.create!(@page_attributes)
   @pagevariablesetting=PageVariableSetting.create :name=>'keyword'
  end

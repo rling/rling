@@ -1,5 +1,5 @@
-<%= link_to 'New Page', new_page_path %>|
-<%= link_to 'New Page variable setting', new_page_variable_setting_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New Page', new_page_path %>| <%= link_to 'Clear Cache', clear_cache_pages_path %>| <%= link_to 'Page Variable Settings', page_variable_settings_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= get_pagelet"help pagelet" %>
 <h1>Listing pages</h1>
 
 <table>
@@ -38,11 +38,11 @@
     <td><%= link_to image_tag("show.png",:class=>"image_link"), page %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
     <td><%= link_to image_tag("delete.png",:class=>"image_link"), page, :confirm => 'Are you sure?', :method => :delete %></td>
+   
   </tr>
 <% end %>
 </table>
 
 <br />
+<%= link_to 'New Page', new_page_path %>| <%= link_to 'Clear Cache', clear_cache_pages_path %>| <%= link_to 'Page Variable Settings', page_variable_settings_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 
-<%= link_to 'New Page', new_page_path %>|
-<%= link_to 'New Page variable setting', new_page_variable_setting_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />

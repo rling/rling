@@ -56,5 +56,10 @@ def get_all_menus(record)
   def get_setting(settingname)
     setting = Setting.find_by_name(settingname)
     return (setting.nil? ? nil : setting.setting_data)
-  end   
+  end
+
+  def get_pagelet(handle) 
+  
+   render :partial=>"shared/pagelet",:locals=>{:handle=>handle}
+  end
 end

@@ -1,6 +1,6 @@
 class DisplayController < ApplicationController
-#cache_sweeper :page_sweeper, :only => [:show_page]
 
+ 
   def index
    @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])   
   end

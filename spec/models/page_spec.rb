@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Page do
  before (:each) do
-  @page_attributes={ :perma_link =>'/perma_link' ,:title=>'title' }
+  @page_attributes={ :perma_link =>'/permalink' ,:title=>'title' }
   @menu_attributes={ :name=>'name',:menuset_id=>'1'}
   @menuset_attributes ={:name=>'name'}
   @page_variable_attributes={:variable_value=>'value'} 
@@ -79,7 +79,7 @@ describe Page do
    
 #*****************************************Tests Dependent Destroy***************************************#
    it "should destroy associated menu" do
-     page=Page.create!(@page_attributes.merge(:perma_link=>'some_perma_link'))
+     page=Page.create!(@page_attributes.merge(:perma_link=>'/somepermalink'))
      menu=Menu.create!(@menu_attributes.merge(:page_id=>page.id))
      page.destroy
      Menu.find_by_id(menu.id).should be_nil
@@ -87,7 +87,7 @@ describe Page do
 
 
    it "should destroy associated page variables"  do
-       page=Page.create!(@page_attributes.merge(:perma_link=>'some_perma_link'))
+       page=Page.create!(@page_attributes.merge(:perma_link=>'/somepermalink'))
       first_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id => page.id))
       second_page_variable=PageVariable.create!(@page_variable_attributes.merge(:page_id => page.id))
       page.destroy
@@ -99,17 +99,11 @@ describe Page do
 
    
 
-    it "should test before_save  callback " do
-         page=Page.new(@page_attributes.merge(:perma_link=>'some_perma_link'))
-        
-         page.should_receive(:perma_link_generate)
-         page.save
-       
-       end
+   
 
    it "should  test after_create  callback " do
 
-       page=Page.new(@page_attributes.merge(:perma_link=>'some_perma_link')) 
+       page=Page.new(@page_attributes.merge(:perma_link=>'/somepermalink')) 
        
        page.should_receive(:set_menu)
      
@@ -170,9 +164,9 @@ describe Page do
 
 #8
   it "tests permalnk=(value) method " do
-    perma_link=@page.permalnk=('some_perma_link')
+    perma_link=@page.permalnk=('/somepermalink')
     perma_link.should_not be_nil
-    perma_link.should eql('some_perma_link')
+    perma_link.should eql('/somepermalink')
     page= Page.create!(@page_attributes.merge( :perma_link=>perma_link ))
     page.perma_link .should eql(perma_link)
  end

@@ -46,7 +46,6 @@ doc\:clobber_rails=
 doc\:guides=
 doc\:plugins=
 doc\:plugins\:acts_as_tree=
-doc\:plugins\:dynamic_form=
 doc\:plugins\:rails-dynamic_form-ebb0321=
 doc\:rails=
 doc\:reapp=

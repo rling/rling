@@ -1,4 +1,6 @@
 Rling::Application.routes.draw do
+  resources :pagelets
+
   resources :menus do
     collection do
      post 'update_position'
@@ -7,7 +9,11 @@ Rling::Application.routes.draw do
   
 
   resources :menusets
-  resources :pages
+  resources :pages do
+    collection do
+      get 'clear_cache'
+     end
+  end
   resources :page_variable_settings
   resources :roles
   resources :users do

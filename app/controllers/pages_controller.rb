@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
- 
+cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+
 include PermalinkHelper
   # GET /pages
   # GET /pages.xml
@@ -109,6 +110,23 @@ include PermalinkHelper
       format.xml  { head :ok }
     end
   end
+
+  def clear_cache
+  root_path = Rails.root.to_s + "/tmp/cache"
+  entries = Dir.entries(root_path)
+  entries.each do |entry|
+   unless (entry == "." || entry == "..")
+       FileUtils.rm_rf(root_path + "/"+ entry)
+   end
+  end
+  flash[:notice] = "Cache is empty."
+  respond_to do |format|
+      format.html { redirect_to(pages_url) }
+      format.xml  { head :ok }
+    end 
+  end
+    
+  
   
 private 
 
