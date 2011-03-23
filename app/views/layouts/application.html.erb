@@ -20,7 +20,7 @@
               Logged in as: <%= link_to(current_user.login,account_url) %> |
         <% end %>
 	<% if current_user.admin? %>
-		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> |
+		<%= link_to "Administration", :controller=>"admin", :action=>"dashboard" %> | 
 	<% end %>
 	<%= link_to "Logout", "/logout" %>
 <% else %>
