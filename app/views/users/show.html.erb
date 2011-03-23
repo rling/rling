@@ -2,17 +2,6 @@
 | <%= link_to 'Edit User Details', user_details_user_path(@user) %>
 
 <h3>Displaying <%= @user.login %>'s information</h3>
-<% @user_detail_settings.each do |user_detail_setting| %>
-<p>
-  <b><%= user_detail_setting.field_name %>:</b>
-  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id) %>
-  <% unless user_detail.nil? %>
-  <%= user_detail.selected_value %>
-  <% else %>
-  <% "" %>
-  <% end %>
-</p>
-<%end%>
 <p>
   <b>Login:</b>
   <%=@user.login %>
@@ -29,14 +18,27 @@
   is not admin
   <% end %> 
 </p>
+
+<% @user_detail_settings.each do |user_detail_setting| %>
 <p>
-  <b>Login count:</b>
-  <%=@user.login_count %>
+  <b><%= user_detail_setting.field_name %>:</b>
+  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id) %>
+  <% unless user_detail.nil? %>
+    <% case user_detail_setting.field_type %>
+      <% when "File" %>
+        <%  if !user_detail.selected_value.blank? && user_detail.selected_value.to_i != 0 %>
+          <% asset=Asset.find(user_detail.selected_value) %>
+           <%= check_content_type(asset,@user) %>
+          <%#= link_to "#{asset.upload_file_name}",asset.upload.url %>
+        <% end  %>
+      <% else %>
+        <%= user_detail.selected_value %>
+      <% end %>
+  <% else %>
+    <% "" %>
+  <% end %>
 </p>
-<p>
-  <b>Current login ip:</b>
-  <%=@user.current_login_ip %>
-</p>
+<% end %>
 <% if current_user.admin? %>
 <%= link_to 'Back',:action=>"index" %>
 <% end %>

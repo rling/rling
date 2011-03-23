@@ -21,6 +21,7 @@ Rling::Application.routes.draw do
       get 'activate'
       get 'user_details'
       post 'update_details'
+      get 'delete_asset'
     end
   end
   resources :settings

@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(:version => 20110322141816) do
 
   create_table "assets", :force => true do |t|
-    t.string   "file_name"
-    t.string   "file_content_type"
-    t.string   "file_size"
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

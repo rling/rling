@@ -59,6 +59,10 @@ notes\:custom=Enumerate a custom annotation, specify with ANNOTATION=CUSTOM
 notes\:fixme=
 notes\:optimize=
 notes\:todo=
+paperclip\:clean=Cleans out invalid attachments. Useful after you've added new validations.
+paperclip\:refresh=Refreshes both metadata and thumbnails.
+paperclip\:refresh\:metadata=Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT).
+paperclip\:refresh\:thumbnails=Regenerates thumbnails for a given CLASS (and optional ATTACHMENT).
 rails\:freeze\:edge=
 rails\:freeze\:gems=
 rails\:template=Applies the template supplied by LOCATION=/path/to/template

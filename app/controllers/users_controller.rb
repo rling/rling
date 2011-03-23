@@ -30,19 +30,25 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
    if current_user?
-    setting = Setting.find_by_name("allow_admin_register_user")
-    if current_user.admin? && !setting.setting_data
-     flash[:notice] = "Admin cannot create a new User"
-     respond_to do |format|
-      format.html {redirect_to users_path }
-     end   
-    else
-      @user = User.new
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @user }
-      end
-    end
+     setting = Setting.find_by_name("allow_admin_register_user")
+     if current_user.admin? && !setting.setting_data
+       flash[:notice] = "Admin cannot create a new User"
+       respond_to do |format|
+       format.html {redirect_to users_path }
+       end
+     else
+       if current_user.admin? && setting.setting_data
+       @user = User.new
+       respond_to do |format|
+         format.html # new.html.erb
+         format.xml  { render :xml => @user }
+         end
+       else
+       respond_to do |format|
+         format.html {redirect_to :controller=>"users", :action=> "show", :id=> current_user.id }
+         end
+       end
+     end
   else
     setting = Setting.find_by_name("allow_user_register_user")
     unless setting.setting_data
@@ -164,33 +170,62 @@ class UsersController < ApplicationController
     form_field=params[:form_field]
     mandatory_failed = false
     UserDetailSetting.all.each do |user_detail_setting|
-    if user_detail_setting.mandatory && params[:form_field][user_detail_setting.field_name].blank?
-      mandatory_failed = true
-      break
-    end
-    user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
-    user_detail=UserDetail.new if user_detail.nil?
-    user_detail.user_id=user_id if user_detail.user_id.nil?
-    user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
-    if params[:form_field][user_detail_setting.field_name].nil? && user_detail_setting.field_type == "Checkbox"
-      user_detail.selected = "0"
+      if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
+        mandatory_failed = true
+        break
+      end
+      user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
+      user_detail=UserDetail.new if user_detail.nil?
+      user_detail.user_id=user_id if user_detail.user_id.nil?
+      user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
+      case user_detail_setting.field_type
+      when "File"
+        unless form_field[user_detail_setting.field_name].nil?
+          asset = Asset.new
+          asset.upload = form_field[user_detail_setting.field_name]
+          asset.sizes = user_detail_setting.default_value
+          asset.save
+          Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
+          user_detail.selected_value = asset.id.to_s
+        end
+      when "Checkbox"
+        if form_field[user_detail_setting.field_name].nil?
+        user_detail.selected = "0"
+        else
+          user_detail.selected_value=form_field[user_detail_setting.field_name]
+        end
+      else
+        user_detail.selected_value=form_field[user_detail_setting.field_name]
+      end
+      user_detail.save
+     end
+    if mandatory_failed
+      @user = User.find(user_id)
+      @userdetailsettings = UserDetailSetting.all
+      flash[:notice]="All the mandatory fields are necessary"
+      redirect_to user_details_user_path(@user)
     else
-      user_detail.selected_value=params[:form_field][user_detail_setting.field_name]
+      flash[:notice]="Successfully updated"
+      if current_user.admin?
+        redirect_to users_path
+      else
+        redirect_to account_path
+      end
     end
-    user_detail.save
-   end
-  if mandatory_failed
-    @user = User.find(user_id)
-    @userdetailsettings = UserDetailSetting.all
-    flash[:notice]="All the mandatory fields are necessary"
-    redirect_to user_details_user_path(@user)
-  else
-    flash[:notice]="Successfully updated"
-    if current_user.admin?
-      redirect_to users_path
-    else
-      redirect_to account_path
   end
+
+  def delete_asset
+    user_detail = UserDetail.find(params[:id])
+    unless user_detail.nil?
+      asset = Asset.find(user_detail.selected_value)
+      asset.destroy unless asset.nil?
+      user_detail.selected_value = nil
+      user_detail.save
+    end
+    respond_to do |format|
+      format.html { redirect_to(user_details_user_path(user_detail.user_id)) }
+      format.xml  { head :ok }
+    end
   end
+
  end
-end
