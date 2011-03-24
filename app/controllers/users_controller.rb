@@ -182,8 +182,8 @@ class UsersController < ApplicationController
       when "File"
         unless form_field[user_detail_setting.field_name].nil?
           asset = Asset.new
-          asset.upload = form_field[user_detail_setting.field_name]
           asset.sizes = user_detail_setting.default_value
+          asset.upload = form_field[user_detail_setting.field_name]
           asset.save
           Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
           user_detail.selected_value = asset.id.to_s

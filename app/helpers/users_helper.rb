@@ -24,6 +24,7 @@ module UsersHelper
       return raw(output)
     when "File"
       display_file = ""
+      user_detail_setting_value = nil if user_detail.nil?
       unless user_detail_setting_value.blank?
         asset = Asset.find(user_detail_setting_value)
         display_file = raw("<a href=#{asset.upload.url}>[#{asset.upload_file_name}]</a>")+link_to("[X]",delete_asset_user_path(user_detail.id))

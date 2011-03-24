@@ -1,7 +1,15 @@
 class SessionsController < ApplicationController
 def first_user
-@user = User.new
+@user = User.find(:first)
+  if @user
+   if @user.nil?
+      redirect_to first_user_sessions_path
+   else
+      redirect_to login_path
+  end
+ end
 end
+
 def first_user_create
 #Create the First User
    role=Role.find_by_role_type("Administrator")
@@ -63,27 +71,29 @@ def new
 end
  
 def create
- if current_user.nil?
-  @user =User.authenticate(params[:login], params[:password])
-  unless @user.nil?
-      flash[:notice] = "Login successful!"
-      self.current_user = @user
-      if params[:remember_me]="1"
-          cookies[:remember_me] = { :value => @user.id, :expires => Time.now + 3600}
-
-      end
-      if @user.admin?
-        redirect_to :controller=>"admin",:action=>"dashboard"
-      else
-        redirect_to :controller => "users", :action => "show", :id => @user.id
-      end
-   else
-     flash[:notice]="Incorrect password"
-     render :action => :new
-   end
+  if current_user.nil?
+     @user =User.authenticate(params[:login], params[:password])
+     unless @user.nil?
+              flash[:notice] = "Login successful!"
+              if params[:remember_me]="1" 
+                    cookies[:remember_me] = { :value   => @user.id,:expires => 45.minutes.from_now.utc }
+              end
+             self.current_user = @user
+              @user.login_count+=1
+	      @user.save
+              if current_user.admin?
+                redirect_to :controller=>"admin",:action=>"dashboard"
+              else
+                redirect_to :controller => "users", :action => "show", :id => @user.id
+              end
+       else
+          flash[:notice]="Incorrect password"
+          render :action => :new
+       end
+   
  else
-     flash[:notice]="Incorrect password"
-     render :action => :new
+    flash[:notice]="Incorrect password"
+    render :action => :new
  end
 end
 
@@ -106,10 +116,11 @@ def forgot
 end
 
 def destroy
+     
     cookies.delete :remember_me
     session[:user] = nil
     flash[:notice] = "You have been logged out."
-    redirect_to('/')
+    redirect_to login_path
 end
 
 
