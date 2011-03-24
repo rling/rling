@@ -10,12 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110323132948) do
+ActiveRecord::Schema.define(:version => 20110324120934) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "form_components", :force => true do |t|
+    t.integer  "object_form_id"
+    t.string   "component_name"
+    t.string   "component_type"
+    t.text     "component_values"
+    t.string   "default_value"
+    t.boolean  "mandatory",        :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mailers", :force => true do |t|
+    t.string   "handle"
+    t.string   "subject"
+    t.text     "body"
+    t.boolean  "is_deletable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

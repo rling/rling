@@ -1,0 +1,31 @@
+<h1>Listing mailers</h1>
+
+<table>
+  <tr>
+    <th>Handle</th>
+    <th>Subject</th>
+    <th>Body</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mailers.each do |mailer| %>
+  <tr>
+    <td><%= mailer.handle %></td>
+    <td><%= mailer.subject %></td>
+    <td><%= mailer.body %></td>
+    <td><%= link_to image_tag('show.png',:class=>'image_link'), mailer %></td>
+    
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_mailer_path(mailer) %></td>
+    <% unless mailer.is_deletable == false %>
+    <td><%= link_to image_tag('delete.png',:class=>'image_link'), mailer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Mailer', new_mailer_path %> |
+<%= link_to 'Back to Dashboard',admin_dashboard_path %>

@@ -1,4 +1,5 @@
 Rling::Application.routes.draw do
+  resources :mailers
   resources :pagelets
 
   resources :menus do

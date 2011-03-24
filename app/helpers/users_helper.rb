@@ -1,4 +1,5 @@
 module UsersHelper
+
 	def check_field_type(user_detail_setting,user)
      user_detail_setting_value = user_detail_setting.default_value
       user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(user.id,user_detail_setting.id)
@@ -27,21 +28,20 @@ module UsersHelper
       user_detail_setting_value = nil if user_detail.nil?
       unless user_detail_setting_value.blank?
         asset = Asset.find(user_detail_setting_value)
-        display_file = raw("<a href=#{asset.upload.url}>[#{asset.upload_file_name}]</a>")+link_to("[X]",delete_asset_user_path(user_detail.id))
+        display_file = link_to("#{asset.upload_file_name}", asset.upload.url,:target=>"_blank")+" "+link_to("[X]",delete_asset_user_path(user_detail.id))
        end
        return file_field_tag("form_field[#{user_detail_setting.field_name}]") + display_file
 	  end
   end
 
-  def check_content_type(asset,user)
-
-    case asset.upload_content_type
+  def check_content_type(asset)
+     case asset.upload_content_type
       when "image/jpeg"
-        return image_tag (asset.upload.url)
+        return image_tag(asset.upload.url(:thumb))
       when  "image/png"
-        return image_tag (asset.upload.url)
+        return image_tag(asset.upload.url(:thumb))
       else
-       link_to "#{asset.upload_file_name}",asset.upload.url
+        return link_to("#{asset.upload_file_name}", asset.upload.url) #"/system/assets/#{asset.id}/original/#{asset.upload_file_name}")
     end
   end
 end

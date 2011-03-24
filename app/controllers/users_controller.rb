@@ -86,7 +86,7 @@ class UsersController < ApplicationController
         #Write code for Send welcome email if setting is true
         if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
           @user.create_activation_key
-          Notifier.activation_key(@user).deliver
+          Notifier.activation_email(@user).deliver
           flash[:notice] = "User created successfully, An email has been sent to you, please follow the instructions to activate yourself to the website"
         else
           @user.is_activated = true

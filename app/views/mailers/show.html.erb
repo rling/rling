@@ -1,0 +1,18 @@
+<p>
+  <b>Handle:</b>
+  <%= @mailer.handle %>
+</p>
+<p>
+  <b>Subject:</b>
+  <%= @mailer.subject %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @mailer.body %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_mailer_path(@mailer) %> |
+<%= link_to 'Back', mailers_path %>
