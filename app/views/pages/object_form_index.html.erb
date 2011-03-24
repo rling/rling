@@ -1,0 +1,48 @@
+<%= link_to 'New Object Form', new_object_form_pages_path %> |<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<h1>Listing Object Forms</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Perma link</th>
+    <th>Home page</th>
+    <th>Page view type</th>
+    <th>Email</th>
+    
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.title %></td>
+    <td><%= raw page.body %></td>
+    <td><%= page.perma_link %></td>
+      
+      
+    <% if page.home_page.eql?(false) %>
+         <td><%= "No" %></td>
+     <% else %>
+          <td><%= "Yes" %></td>
+     <% end %>
+      
+    <% if page.page_view_type.eql?(0) %>
+          <td><%= "Computer & mobile browsers"%></td>
+      <% elsif page.page_view_type.eql?(1) %>
+          <td><%= "Computer browsers"%></td>
+       <td><%= "Mobile browsers"%></td>
+     <% end %>
+    <td><%= page.email %></td>
+    <td><%= link_to image_tag("show.png",:class=>"image_link"), :action=>"show",:id=>page %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
+    <td><%= link_to image_tag("delete.png",:class=>"image_link"), {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
+   
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Object Form', new_object_form_pages_path %> |<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+
