@@ -1,7 +1,6 @@
 <%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
-
-<p id="notice"><%= notice %></p>
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %><br />
+<h1><b><%=  @page.type == "ObjectForm" ? "Show Object Form Details" : "Show Page Details"%><b></h1
 
 <p>
   <b>Title:</b>
@@ -39,7 +38,9 @@
  
 </p>
 
-
+<p>
+  <%= raw("<b>Email  </b> : #{@page.email}") if @page.type == "ObjectForm" %>
+</p>
 
 <%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %>

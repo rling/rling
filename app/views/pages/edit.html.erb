@@ -1,10 +1,10 @@
 
-<%= link_to 'Back', pages_path %>|
-|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
-<h1>Editing page</h1>
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %><br />
+
+<h1><b><%=  @page.type == "ObjectForm" ? "Editiong Object Form " : " Editing Page"%><b></h1>
 
 <%= render 'form' %>
 
-<%= link_to image_tag('show.png',:class=>'image_link'), @page %> |
-<%= link_to 'Back', pages_path %>|
-|<%= link_to 'Back to Dashboard',admin_dashboard_path %><br />
+<%= link_to image_tag('show.png',:class=>'image_link'), {:action=>"show",:id=>@page} %> |
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %><br />
+

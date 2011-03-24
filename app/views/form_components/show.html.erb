@@ -1,0 +1,35 @@
+
+
+<p>
+  <b>Object form:</b>
+  <%= @form_component.object_form_id %>
+</p>
+
+<p>
+  <b>Component name:</b>
+  <%= @form_component.component_name %>
+</p>
+
+<p>
+  <b>Component type:</b>
+  <%= @form_component.component_type %>
+</p>
+
+<p>
+  <b>Component values:</b>
+  <%= @form_component.component_values %>
+</p>
+
+<p>
+  <b>Default value:</b>
+  <%= @form_component.default_value %>
+</p>
+
+<p>
+  <b>Mandatory:</b>
+  <%= @form_component.mandatory %>
+</p>
+
+
+<%= link_to 'Edit', edit_object_form_form_component_path(@page,@form_component) %> |
+<%= link_to 'Back', object_form_form_components_path %>

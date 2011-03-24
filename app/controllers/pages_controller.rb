@@ -5,13 +5,20 @@ include PermalinkHelper
   # GET /pages
   # GET /pages.xml
   before_filter :require_user, :require_admin
-  #before_filter :require_admin,:except=>[:edit,:update,:destroy,:show]
 
   def index
-    @pages = Page.all
+    @pages = Page.pages
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @pages }
+     # format.xml  { render :xml => @pages }
+    end
+  end
+  
+  def object_form_index
+      @pages = Page.object_forms
+      respond_to do |format|
+      format.html # index.html.erb
+      #format.xml  { render :xml => @pages }
     end
   end
 
@@ -29,7 +36,17 @@ include PermalinkHelper
   # GET /pages/new
   # GET /pages/new.xml
   def new
+   @page_type='Page'
     @page = Page.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @page }
+    end
+  end
+
+   def new_object_form
+   @page_type='ObjectForm'
+   @page = ObjectForm.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @page }
@@ -39,25 +56,35 @@ include PermalinkHelper
   # GET /pages/1/edit
   def edit
     @page = Page.find(params[:id])
+    @page_type = "Page"
+    @page_type = "ObjectForm" if @page.type == "ObjectForm"
   end
 
   # POST /pages
   # POST /pages.xml
   def create
-    @page = Page.new(params[:page])
-    if params[:permalnk] == "1"
-     @page.perma_link_generate
-    end
-    @page.home_page = params[:home_page]
+      @page_type= params[:page_type]
+      if @page_type == "ObjectForm"
+        @page =ObjectForm.new(params[:object_form])
+      else
+        @page = Page.new(params[:page])
+      end 
+      if params[:permalnk] == "1"
+           @page.perma_link_generate
+      end
+        @page.home_page = params[:home_page]  
+   
     respond_to do |format|
       if @page.save
           unless params[:page_variables].nil?
 	  update_page_variables(params[:page_variables],@page)
           end
-        flash[:notice] = 'Page was successfully created.'
-        format.html { redirect_to(@page) }
-        format.xml  { render :xml => @page, :status => :created, :location => @page }
+        flash[:notice] = "#{@page_type} was successfully created."
+      
+        format.html { redirect_to(:action=>'show',:id=>@page) }
+        #format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
+    
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
@@ -67,31 +94,35 @@ include PermalinkHelper
   # PUT /pages/1
   # PUT /pages/1.xml
   def update 
+    @page_type = params[:page_type]
+    page_params = params[:page]
+    if @page_type == "ObjectForm"
+     page_params = params[:object_form]
+    end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
    	@page.perma_link_generate
     end
-    
-    unless params[:page][:menu_name].empty?
+    unless page_params[:menu_name].empty?
 	    menu = Menu.find_by_page_id(@page.id)
 	    if menu.nil?
 	     menu = Menu.new
 	    end
-	    menu.name = params[:page][:menu_name]
-	    menu.parent_id = params[:page][:menu_parent_id]
+	    menu.name = page_params[:menu_name]
+	    menu.parent_id = page_params[:menu_parent_id]
 	    menu.page_id = @page.id
-            menu.menu_view_type = params[:page][:page_view_type]
+            menu.menu_view_type = page_params[:page_view_type]
 	    menu.save
     end
     respond_to do |format|
-      if @page.update_attributes(params[:page])
+      if @page.update_attributes(page_params)
    	  unless params[:page_variables].nil?
 	  update_page_variables(params[:page_variables],@page)
           end
          @page.home_page = params[:home_page] 
          @page.save
-        flash[:notice] = 'Page was successfully updated.'
-        format.html { redirect_to(@page) }
+        flash[:notice] = "#{@page_type} was successfully updated."
+        format.html { redirect_to(:action=>'show' ,:id=>@page) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -104,30 +135,14 @@ include PermalinkHelper
   # DELETE /pages/1.xml
   def destroy
     @page = Page.find(params[:id])
-    @page.destroy
+    Page.delete(params[:id])
     respond_to do |format|
-      format.html { redirect_to(pages_url) }
+      format.html { redirect_to((@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url)) }
       format.xml  { head :ok }
     end
   end
 
-  def clear_cache
-  root_path = Rails.root.to_s + "/tmp/cache"
-  entries = Dir.entries(root_path)
-  entries.each do |entry|
-   unless (entry == "." || entry == "..")
-       FileUtils.rm_rf(root_path + "/"+ entry)
-   end
-  end
-  flash[:notice] = "Cache is empty."
-  respond_to do |format|
-      format.html { redirect_to(pages_url) }
-      format.xml  { head :ok }
-    end 
-  end
     
-  
-  
 private 
 
 def update_page_variables(page_variables,page)

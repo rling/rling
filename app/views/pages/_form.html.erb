@@ -1,6 +1,6 @@
  <%= javascript_include_tag :ckeditor %>
 
-<%= form_for(@page) do |form| %>
+<%= form_for(@page ,:url=>{:action=>(@page.id.nil? ? 'create' : 'update') }) do |form| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -12,6 +12,11 @@
       </ul>
     </div>
   <% end %>
+
+<div class="field">
+   <%= hidden_field_tag "page_type", @page_type %>
+  </div>
+    
 
   <div class="field">
     <%= form.label :title %><br />
@@ -36,10 +41,13 @@
       <% else %>
       <%= form.text_field :perma_link %>
       <% end %>
-      
-  <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
+    <% if @page_type.eql?('ObjectForm') %>
+  <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('object_form_perma_link').disabled = true;} else {$('object_form_perma_link').disabled = false;}") %>
 Generate permalink automatically<br />
- 
+   <% else %>
+      <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+   <% end %>
   </div> 
   
 
@@ -68,7 +76,12 @@ Generate permalink automatically<br />
 </div>
    </div>
 
-
+<% if @page_type.eql?('ObjectForm') %>
+ <div class="field">
+    <%= form.label :email %><br />
+    <%= form.text_field :email %>
+  </div>
+ <% end %>
 
 
  <div>

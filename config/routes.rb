@@ -11,9 +11,14 @@ Rling::Application.routes.draw do
   resources :menusets
   resources :pages do
     collection do
-      get 'clear_cache'
+     
+      get 'object_form_index'
+      get 'new_object_form'	
      end
-  end
+   end
+   resources :object_forms do
+     resources :form_components
+   end
   resources :page_variable_settings
   resources :roles
   resources :users do
@@ -45,6 +50,7 @@ Rling::Application.routes.draw do
   match "logout" => "sessions#destroy"
   match "register" => "users#new"
   match "admin/dashboard" =>"admin#dashboard"
+  match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"
   match "display/error_page_display"=>"display#error_page_display"
   

@@ -1,0 +1,39 @@
+<%= form_for([@page,@form_component]) do |f| %>
+  <% if @form_component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form_component.errors.count, "error") %> prohibited this form_component from being saved:</h2>
+
+      <ul>
+      <% @form_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   
+  
+  <div class="field">
+    <%= f.label :component_name %><br />
+    <%= f.text_field :component_name %>
+  </div>
+  <div class="field">
+    <%= f.label :component_type %><br />
+    <%= f.text_field :component_type %>
+  </div>
+  <div class="field">
+    <%= f.label :component_values %><br />
+    <%= f.text_area :component_values %>
+  </div>
+  <div class="field">
+    <%= f.label :default_value %><br />
+    <%= f.text_field :default_value %>
+  </div>
+  <div class="field">
+    <%= f.label :mandatory %><br />
+    <%= f.check_box :mandatory %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
