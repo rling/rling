@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110322141816) do
+ActiveRecord::Schema.define(:version => 20110323132948) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20110322141816) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.string   "email"
   end
 
   create_table "roles", :force => true do |t|
