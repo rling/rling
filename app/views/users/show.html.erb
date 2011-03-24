@@ -1,5 +1,7 @@
 <%= link_to 'Edit Information', edit_user_path(@user)  %>
+<% if !@user_detail_settings.empty? %>
 | <%= link_to 'Edit User Details', user_details_user_path(@user) %>
+<% end %>
 
 <h3>Displaying <%= @user.login %>'s information</h3>
 <p>

@@ -72,28 +72,35 @@ end
  
 def create
   if current_user.nil?
-     @user =User.authenticate(params[:login], params[:password])
-     unless @user.nil?
-              flash[:notice] = "Login successful!"
-              if params[:remember_me]="1" 
-                    cookies[:remember_me] = { :value   => @user.id,:expires => 45.minutes.from_now.utc }
-              end
-             self.current_user = @user
-              @user.login_count+=1
-	      @user.save
-              if current_user.admin?
-                redirect_to :controller=>"admin",:action=>"dashboard"
-              else
-                redirect_to :controller => "users", :action => "show", :id => @user.id
-              end
-       else
-          flash[:notice]="Incorrect password"
+     @user = User.find_by_login(params[:login])
+     user =User.authenticate(params[:login], params[:password])
+     if @user.nil? 
+          flash[:notice]="Incorrect Login"
           render :action => :new
-       end
-   
- else
-    flash[:notice]="Incorrect password"
-    render :action => :new
+     elsif !@user.is_activated
+	  flash[:notice]="User Not yet activated. Please check your actiavation email."
+          render :action => :new
+     elsif user.nil?
+          @user.failed_login_count += 1
+          @user.save
+         flash[:notice]="Login correct Incorrect password"
+         render :action => :new
+     else
+         flash[:notice] = "Login successful!"
+         self.current_user = @user
+         if params[:remember_me]=="1"
+           cookies[:remember_me_code] = {:value => current_user.salt, :expires => 30.days.from_now }
+         end
+         @user.current_login_ip=request.remote_ip
+         @user.last_login_ip=@user.current_login_ip
+         @user.login_count+=1 
+	 @user.save
+         if current_user.admin?
+            redirect_to :controller=>"admin",:action=>"dashboard"
+         else
+            redirect_to :controller => "users", :action => "show", :id => @user.id
+         end
+     end
  end
 end
 
@@ -117,7 +124,7 @@ end
 
 def destroy
      
-    cookies.delete :remember_me
+    cookies.delete :remember_me_code
     session[:user] = nil
     flash[:notice] = "You have been logged out."
     redirect_to login_path

@@ -46,6 +46,7 @@ Rling::Application.routes.draw do
   match "register" => "users#new"
   match "admin/dashboard" =>"admin#dashboard"
   match "/:permalink"=> "display#show_page"
+  match "display/error_page_display"=>"display#error_page_display"
   
   root :to => "display#index"
 

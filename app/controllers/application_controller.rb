@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper :all
   helper_method :current_user,:current_user?
-  before_filter :check_browser,:check_admin
+  before_filter :check_browser,:check_admin,:check_cookie
   layout :set_layout
   
   private
@@ -18,6 +18,16 @@ class ApplicationController < ActionController::Base
     def current_user?
      return !session[:user].nil?
     end
+
+    def check_cookie
+     unless current_user?
+       unless cookies[:remember_me_code].nil?
+          u = User.find(:first,:conditions=>["salt=?",cookies[:remember_me_code]])
+          self.current_user = u unless u.nil?
+        end
+     end
+    end
+
 
     def require_user
        unless current_user?

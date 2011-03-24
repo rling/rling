@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(:version => 20110323132948) do
     t.string   "perma_link"
     t.boolean  "home_page",      :default => false
     t.integer  "page_view_type", :default => 0
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"

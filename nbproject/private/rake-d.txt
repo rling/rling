@@ -46,6 +46,7 @@ doc\:clobber_rails=
 doc\:guides=
 doc\:plugins=
 doc\:plugins\:acts_as_tree=
+doc\:plugins\:paperclip=
 doc\:plugins\:rails-dynamic_form-ebb0321=
 doc\:rails=
 doc\:reapp=
@@ -59,10 +60,10 @@ notes\:custom=Enumerate a custom annotation, specify with ANNOTATION=CUSTOM
 notes\:fixme=
 notes\:optimize=
 notes\:todo=
-paperclip\:clean=Cleans out invalid attachments. Useful after you've added new validations.
-paperclip\:refresh=Refreshes both metadata and thumbnails.
-paperclip\:refresh\:metadata=Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT).
-paperclip\:refresh\:thumbnails=Regenerates thumbnails for a given CLASS (and optional ATTACHMENT).
+paperclip\:clean=Cleans out invalid attachments. Useful after you've added new validations. / Cleans out invalid attachments. Useful after you've added new validations.
+paperclip\:refresh=Refreshes both metadata and thumbnails. / Refreshes both metadata and thumbnails.
+paperclip\:refresh\:metadata=Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT). / Regenerates content_type/size metadata for a given CLASS (and optional ATTACHMENT).
+paperclip\:refresh\:thumbnails=Regenerates thumbnails for a given CLASS (and optional ATTACHMENT). / Regenerates thumbnails for a given CLASS (and optional ATTACHMENT).
 rails\:freeze\:edge=
 rails\:freeze\:gems=
 rails\:template=Applies the template supplied by LOCATION=/path/to/template

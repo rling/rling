@@ -115,7 +115,7 @@ class UsersController < ApplicationController
             format.xml {render :xml =>@user}
       end
     else
-    flash[:notice]="Sorry, no such user exists"
+    flash[:notice]="Sorry, no user found"
       if current_user? && current_user.admin?
         redirect_to admin_dashboard_path
       else

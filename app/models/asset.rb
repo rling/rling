@@ -5,13 +5,13 @@ class Asset < ActiveRecord::Base
                     :styles => lambda { |a|
                                                  if a.instance.thumbnailable?
                                                    {:thumb => [a.instance.sizes]}
-						 else
   						 end
                                                }
-  attr_accessor :sizes
+attr_accessor :sizes
+before_post_process :thumbnailable?  
 
   def thumbnailable?
     return false unless upload.content_type
     return ['image/jpeg', 'image/pjpeg', 'image/gif', 'image/png', 'image/x-png', 'image/jpg'].join('').include?(upload.content_type)
-  end
+
 end
