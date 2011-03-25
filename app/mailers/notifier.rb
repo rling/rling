@@ -50,4 +50,11 @@ end
    #setup
     mail(:to=> to,:cc=> cc,:bcc=> bcc,:subject=> subject,:body=> body)
   end
+
+  def form_submitted(submission_form)
+   #setup
+   subject = "Form has been submitted for #{submission_form.object_form.title} page"
+   body = "Someone has submitted a form on your #{submission_form.object_form.title} page. The details are as follows\n" + submission_form.emailable_format
+   mail(:to=>submission_form.object_form.email,:subject=>subject,:body=>body)
+  end
 end

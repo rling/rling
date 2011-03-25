@@ -4,12 +4,23 @@ var state = document.getElementById('user_detail_setting_field_type');
 var field_value = document.getElementById('field_value');
   if(state.value == "Dropdown" ||state.value == "Radiobutton" )
   {
-    field_value.show();
-  }
+    $('field_value').show();
+   }
   else
     {
       field_value.hide();
     }
+
+  if(state.value == "File")
+  {
+     $('default_value').hide();
+    $('thumbnail').show();
+  }else
+    {
+       $('default_value').show();
+    $('thumbnail').hide();
+    }
+
 }
 </script>
 <%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
@@ -41,12 +52,13 @@ var field_value = document.getElementById('field_value');
   </div>
 
   <div class="field">
-  <%= f.label "Default value (if type is file then enter the sizes (wxh) you want to create separte by comma for multiple sizes)"  %><br />
+  <span id="thumbnail" style="display:none;"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
+  <span id="default_value"><%= f.label "Default value"  %></span><br />
   <%= f.text_field :default_value %><br />
   </div>
 
   <div class="field">
-  <%= f.label :mandatory,'Is this field mandatory for users' %><br />
+  <%= f.label 'Is this field mandatory?' %><br />
   <%= f.check_box :mandatory %><br />
   </div>
 

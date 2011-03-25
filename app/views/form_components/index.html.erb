@@ -1,13 +1,12 @@
-<h1>Listing form_components</h1>
+<h1>Listing Form Components for <%= @page.title.capitalize %> </h1>
 
 <table>
   <tr>
-    <th>Object form</th>
     <th>Component name</th>
     <th>Component type</th>
     <th>Component values</th>
     <th>Default value</th>
-    <th>Mandatory</th>
+    <th>Mandatory Field?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,7 +14,7 @@
 
 <% @form_components.each do |form_component| %>
   <tr>
-    <td><%= form_component.object_form_id %></td>
+   
     <td><%= form_component.component_name %></td>
     <td><%= form_component.component_type %></td>
     <td><%= form_component.component_values %></td>

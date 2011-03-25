@@ -1,4 +1,5 @@
 Rling::Application.routes.draw do
+
   resources :mailers do
     member do
       get 'sendmail'
@@ -23,9 +24,16 @@ Rling::Application.routes.draw do
       get 'new_object_form'	
      end
    end
+
    resources :object_forms do
-     resources :form_components
+     resources :form_components 
+     resources :submission_forms do
+      member do
+ 	get 'delete_asset'
+      end 
+     end
    end
+
   resources :page_variable_settings
   resources :roles
   resources :users do
@@ -60,6 +68,7 @@ Rling::Application.routes.draw do
   match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"
   match "display/error_page_display"=>"display#error_page_display"
+  match "display/create_submissions/:id"=>"display#create_submissions"
 
   root :to => "display#index"
 

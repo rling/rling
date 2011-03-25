@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110324120934) do
+ActiveRecord::Schema.define(:version => 20110325095443) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -27,6 +27,14 @@ ActiveRecord::Schema.define(:version => 20110324120934) do
     t.text     "component_values"
     t.string   "default_value"
     t.boolean  "mandatory",        :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "form_data", :force => true do |t|
+    t.integer  "form_component_id"
+    t.integer  "submission_form_id"
+    t.string   "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -92,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20110324120934) do
     t.integer  "page_view_type", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
     t.string   "email"
+    t.string   "type"
   end
 
   create_table "roles", :force => true do |t|
@@ -118,6 +126,12 @@ ActiveRecord::Schema.define(:version => 20110324120934) do
     t.string   "desc_text"
     t.text     "setting_value"
     t.string   "setting_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submission_forms", :force => true do |t|
+    t.integer  "object_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

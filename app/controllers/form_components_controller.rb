@@ -1,4 +1,6 @@
 class FormComponentsController < ApplicationController
+  cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+
   # GET /form_components
   # GET /form_components.xml
  before_filter :get_object_form
@@ -75,7 +77,7 @@ class FormComponentsController < ApplicationController
   # DELETE /form_components/1
   # DELETE /form_components/1.xml
   def destroy
-    @form_component = FormComponent.find(params[:id])
+    @form_component = @page.form_components.find(params[:id])
     @form_component.destroy
 
     respond_to do |format|

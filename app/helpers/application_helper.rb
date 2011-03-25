@@ -62,4 +62,33 @@ def get_all_menus(record)
   
    render :partial=>"shared/pagelet",:locals=>{:handle=>handle}
   end
+
+  def get_form_data(type,value)
+    case type
+
+    when "Checkbox"
+      return value.blank? ? "" : (value == "1" ? "Yes" : "No")
+    when "File"
+      unless value.blank?
+       asset = Asset.find(value)
+       return check_content_type(asset)
+      end
+    else
+      return value
+
+    end
+  end
+
+   def check_content_type(asset)
+     case asset.upload_content_type
+      when "image/jpeg"
+        return image_tag(asset.upload.url(:thumb))
+      when  "image/png"
+        return image_tag(asset.upload.url(:thumb))
+      else
+        return link_to("#{asset.upload_file_name}", asset.upload.url) #"/system/assets/#{asset.id}/original/#{asset.upload_file_name}")
+    end
+  end
+ 
+  
 end

@@ -36,6 +36,7 @@
      <% end %>
     <td><%= page.email %></td>
     <td><%= link_to "Form Components",[page,:form_components] %></td>
+    <td><%= link_to "Submissions",[page,:submission_forms] %></td>
     <td><%= link_to image_tag("show.png",:class=>"image_link"), :action=>"show",:id=>page %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
     <td><%= link_to image_tag("delete.png",:class=>"image_link"), {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
