@@ -8,12 +8,18 @@ after_save :set_menu
 has_one :menu ,:dependent => :destroy
 has_many :page_variables ,:dependent => :destroy
 regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
+email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
 #validations
 validates :title ,:presence=>true
 validates :perma_link ,:presence=>true, :uniqueness=>true ,:format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets and numbers and -"}
+validates :email, :format=> {:with => email_regex } ,:allow_blank =>true
 
-
+#named scope
+scope :pages ,  :conditions =>"type is null"
+scope :object_forms,  :conditions =>"type = 'ObjectForm'"
 #instance methods
+
 def menu_menuset_id
  unless self.menu.nil?
    return self.menu.menuset_id
