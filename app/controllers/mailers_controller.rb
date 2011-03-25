@@ -74,11 +74,31 @@ class MailersController < ApplicationController
   # DELETE /mailers/1.xml
   def destroy
     @mailer = Mailer.find(params[:id])
-    @mailer.destroy
+
+    unless @mailer.is_deletable
+      flash[:notice] = "Cannot delete standard mailers"
+    else
+          @mailer.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(mailers_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def sendmail
+    @mailer = Mailer.find(params[:id])
+  end
+  def preparemail
+    mailer = params[:mailer]
+    if mailer[:to].blank? && mailer[:cc].blank? && mailer[:bcc].blank?
+      flash[:notice] = "Needs atleast one email address in to, cc or bcc feilds"
+      redirect_to :back
+    else
+      Notifier.send_mailers_email(mailer[:to],mailer[:cc],mailer[:bcc],mailer[:subject],mailer[:body]).deliver
+      flash[:notice]="Mail sent to given emails successfully"
+      redirect_to mailers_path
     end
   end
 end

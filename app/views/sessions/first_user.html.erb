@@ -68,13 +68,20 @@ function disablelogin(entity)
    </tr>
      <tr>
       <td>
-        <label for="Site URL">URL of the Site that you would use</label>
+        <label for="Site URL">URL of the Site that you would use (can be configured later using Settings Administration in Administration Dashboard)</label>
       </td>
       <td>
-         <%= text_field_tag "site_url", "http://localhost:3000", :size => 20 %>
+         <%= text_field_tag "site_url", get_setting("site_url"), :size => 20 %>
       </td>
    </tr>
-  
+    <tr>
+      <td>
+        <label for="SMTP Settings">SMTP Settings that you can use to send email. Please ensure this has the same formats as in the given example. i.e. SETTINGNAME:SETTINGVALUE; (This can be configured later using Settings Administration in Administration Dashboard)</label>
+      </td>
+      <td>
+         <%= text_field_tag "smtp_settings", get_setting("smtp_settings"), :size => 20 %>
+      </td>
+   </tr>
    <tr>
        <td colspan=3>
          <%= check_box_tag "allow_user_register_user" %>Can a user register himself in th website, Is it allowed

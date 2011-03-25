@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @mailers.each do |mailer| %>
@@ -15,6 +16,9 @@
     <td><%= mailer.handle %></td>
     <td><%= mailer.subject %></td>
     <td><%= mailer.body %></td>
+    <td><% unless mailer.is_deletable == false %>
+        <%= link_to 'Send Mail',sendmail_mailer_path(mailer) %>
+        <% end %></td>
     <td><%= link_to image_tag('show.png',:class=>'image_link'), mailer %></td>
     
     <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_mailer_path(mailer) %></td>

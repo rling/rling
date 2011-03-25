@@ -1,5 +1,11 @@
 Rling::Application.routes.draw do
-  resources :mailers
+  resources :mailers do
+    member do
+      get 'sendmail'
+      post 'preparemail'
+    end
+  end
+
   resources :pagelets
 
   resources :menus do
@@ -54,7 +60,7 @@ Rling::Application.routes.draw do
   match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"
   match "display/error_page_display"=>"display#error_page_display"
-  
+
   root :to => "display#index"
 
   # The priority is based upon order of creation:

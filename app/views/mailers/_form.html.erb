@@ -1,3 +1,4 @@
+ <%= javascript_include_tag :ckeditor %>
 <%= form_for(@mailer) do |f| %>
   <% if @mailer.errors.any? %>
     <div id="error_explanation">
@@ -25,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= raw(f.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
   </div>
   <div class="actions">
     <%= f.submit %>
