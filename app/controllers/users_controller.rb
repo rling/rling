@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   before_filter :require_admin, :except => [:new,:create,:activate,:show,:update,:edit,:user_details,:update_details]
   def index
     @users = User.all
+    @user_detail_settings=UserDetailSetting.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }

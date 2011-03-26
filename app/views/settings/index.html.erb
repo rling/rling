@@ -1,4 +1,4 @@
-<h1>Listing settings</h1>
+<h1>Configurable settings</h1>
 
 <table>
   <tr>
@@ -10,11 +10,11 @@
 
 <% @settings.each do |setting| %>
   <tr>
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_setting_path(setting)%></td>
     <td><%= setting.name %></td>
     <td><%= setting.desc_text %></td>
     <td><%= setting.setting_type %></td>
     <td><%= setting.setting_value %></td>
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_setting_path(setting)%></td>
   </tr>
 
 <% end %>

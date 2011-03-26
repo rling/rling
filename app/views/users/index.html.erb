@@ -12,7 +12,9 @@
   <tr>
     <td><%= user.login %></td>
     <td><%= user.email %></td>
+    <% unless @user_detail_settings.empty? %>
     <td><%= link_to 'User Details', user_details_user_path(user) %></td>
+    <% end %>
     <td><%= link_to image_tag('show.png',:class=>'image_link'), user %></td>
     <td> <%= link_to image_tag('edit.png',:class=>'image_link'), edit_user_path(user) %></td>
     <td><%= link_to image_tag('delete.png',:class=>'image_link'), user, :confirm => 'Are you sure?', :method => :delete %></td>
