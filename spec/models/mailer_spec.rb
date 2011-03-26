@@ -19,8 +19,13 @@ describe Mailer do
     second_handle.should_not be_valid
   end
 
-    it "should have subject" do
+  it "should have subject" do
     mailer = Mailer.new(@attr.merge(:subject => ''))
     mailer.should_not be_valid
+  end
+
+  it "should have default value 'false' for is_deletable" do
+    mailer = Mailer.create!(@attr)
+    mailer.is_deletable.should == true
   end
 end

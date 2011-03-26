@@ -83,11 +83,11 @@ def get_all_menus(record)
    def check_content_type(asset)
      case asset.upload_content_type
       when "image/jpeg"
-        return image_tag(asset.upload.url(:thumb))
+        return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
       when  "image/png"
-        return image_tag(asset.upload.url(:thumb))
+        return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
       else
-        return link_to("#{asset.upload_file_name}", asset.upload.url) #"/system/assets/#{asset.id}/original/#{asset.upload_file_name}")
+        return link_to("#{asset.upload_file_name}", asset.upload.url)
     end
   end
  

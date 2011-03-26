@@ -5,7 +5,7 @@ class UserDetailSetting < ActiveRecord::Base
   
 #validation
   name_regex = /^[a-zA-Z]+$/
-  validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3,:maximum=>8},
+  validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3,:maximum=>10},
             :format=> {:with => name_regex }
   validates :field_type, :presence=>true
 end

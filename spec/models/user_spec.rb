@@ -27,7 +27,7 @@ describe User do
     second_user.should_not be_valid
   end
 
-  it "validates length of login with minimum 4 characters" do
+  it "validates length of login with minimum 4 and maximum 244 characters" do
     user=User.new(@attr.merge(:login => "123"))
     user.valid?.should be_false
     long = 'a' * 255

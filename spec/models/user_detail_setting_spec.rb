@@ -40,14 +40,14 @@ describe UserDetailSetting do
    @user_detail_setting.should have(2).user_details
   end
 
-  it "validates length of name minimum 3 characters" do
+  it "validates length of field_name minimum 3 characters" do
     name = 'a' * 2
     field_name = UserDetailSetting.new(@attr.merge(:field_name=> name))
     field_name.valid?.should be_false
   end
 
-  it "validates length of name maximum 8 characters" do
-    name = 'a' * 9
+  it "validates length of field_name maximum 10 characters" do
+    name = 'a' * 11
     field_name = UserDetailSetting.new(@attr.merge(:field_name=> name))
     field_name.valid?.should be_false
   end
