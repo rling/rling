@@ -20,13 +20,15 @@
     <td><%= form_component.component_values %></td>
     <td><%= form_component.default_value %></td>
     <td><%= form_component.mandatory %></td>
-    <td><%= link_to 'Show',object_form_form_component_path(@page,form_component) %></td>
-    <td><%= link_to 'Edit', edit_object_form_form_component_path(@page,form_component) %></td>
-    <td><%= link_to 'Destroy', ([@page,form_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=  link_to image_tag("show.png",:class=>"image_link"),object_form_form_component_path(@page,form_component) %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_form_form_component_path(@page,form_component) %></td>
+    <td><%= link_to image_tag("delete.png",:class=>"image_link"), ([@page,form_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Form component', new_object_form_form_component_path %>
+<%= link_to 'New Form component', new_object_form_form_component_path %>|
+<%= link_to 'Back', object_form_index_pages_path %>
+

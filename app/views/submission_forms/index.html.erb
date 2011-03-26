@@ -23,8 +23,8 @@
         <td></td>
     <% end %>
    
-    <td><%= link_to 'Edit', edit_object_form_submission_form_path(@page,submission_form) %></td>
-    <td><%= link_to 'Destroy', [@page,submission_form], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_form_submission_form_path(@page,submission_form) %></td>
+    <td><%=link_to image_tag("delete.png",:class=>"image_link"), [@page,submission_form], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
   <td><%= link_to 'Back', object_form_index_pages_path %></td>
