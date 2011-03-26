@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
     t.integer  "page_view_type", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
     t.string   "email"
+    t.string   "type"
   end
 
   create_table "roles", :force => true do |t|

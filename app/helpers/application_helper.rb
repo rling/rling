@@ -42,9 +42,10 @@ def get_all_menus(record)
      returnvalue = ""
      unless pcv.nil?
 	returnvalue = pcv.default_value
-      page = Page.find_by_perma_link(request.headers["REQUEST_PATH"])
+      page = Page.find_by_perma_link(request.env["REQUEST_URI"].gsub("http://#{request.env['HTTP_HOST']}",''))
+      puts page.inspect
       unless page.nil?
-       pv = PageVariable.find_by_page_id_and_page_config_variable_id(page.id,pcv.id)
+       pv = PageVariable.find_by_page_id_and_page_variable_setting_id(page.id,pcv.id)
 	 unless pv.nil?
         returnvalue = pv.variable_value
        end 
