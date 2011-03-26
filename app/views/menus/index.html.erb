@@ -1,7 +1,7 @@
 <h1>Listing menus</h1>
 <%= link_to 'New menu', new_menu_path %> |
 <%= link_to "Back to Dashboard", :controller=>"admin", :action=>"dashboard" %><br/><br/>
-<% form_tag update_position_menus_path do %>
+<%= form_tag update_position_menus_path do %>
 <table>
 <% @all_menus.each do |m| %>
  <tr>
