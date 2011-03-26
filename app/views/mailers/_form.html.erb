@@ -26,6 +26,19 @@
   </div>
   <div class="field">
     <%= f.label :body %><br />
+    <% unless @mailer.is_deletable && @mailer.allowable_tags.blank? %>
+    You can use the following tags as part of the email you are sending
+    and the tags will be replaced with the actual values. The tags available for you are
+    <% tags = @mailer.allowable_tags.split(',') %>
+    <%  tags.each do |tag| %>
+    <%  obj = Kernel.const_get(tag) %>
+      <% unless obj.nil? %>
+        <% obj.send('tags',@mailer.handle).each do |method| %>
+        <%= "<RLING::#{tag.upcase}::#{method.upcase}> " %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% end %>
     <%= raw(f.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
   </div>
   <div class="actions">

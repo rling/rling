@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.boolean  "is_deletable", :default => true
+    t.string   "allowable_tags"
+    t.boolean  "is_deletable",   :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

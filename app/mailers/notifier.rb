@@ -33,6 +33,7 @@ def activation_email(user)
   @url= "#{get_setting("site_url")}/users/#{@activation_key}/activate"
   subject=mailer.subject
   body=mailer.body
+  body = verify_tags(body,user)
   mail(:to => user.email, :subject => subject, :body=>body + @url)
 end
 
@@ -43,6 +44,7 @@ end
   mailer=Mailer.find_by_subject('Welcome Mail')
   subject=mailer.subject
   body=mailer.body
+  body = verify_tags(body,user)
   mail(:to=> user.email,:subject=> subject,:body=> body)
   end
 
@@ -56,5 +58,35 @@ end
    subject = "Form has been submitted for #{submission_form.object_form.title} page"
    body = "#{submission_form.object_form.title} page Form has been submitted. The details are as follows\n" + submission_form.emailable_format
    mail(:to=>submission_form.object_form.email,:subject=>subject,:body=>body)
+  end
+
+  private
+
+  def verify_tags(body,entity)
+    output = body
+    codes = body.split("&lt;RLING::")
+    if codes.size > 0
+       first = true
+       hash = Hash.new
+       codes.each do |code|
+         if first
+           first = false
+           next
+         end
+         tag = code.split('&gt;')[0]
+         splits = tag.split("::")
+         objectname = splits[0]
+         variablename = splits[1]
+         hash[tag] = [objectname,variablename]
+       end
+       hash.each do |k,v|
+         objectname = v[0]
+         varname = v[1]
+         if entity.respond_to?(varname.downcase)
+             output = output.gsub("&lt;RLING::#{k}&gt;",entity.send(varname.downcase).to_s)
+           end if entity.class.to_s == objectname.capitalize
+       end
+    end
+    return output
   end
 end

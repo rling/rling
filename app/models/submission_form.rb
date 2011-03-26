@@ -2,6 +2,7 @@ class SubmissionForm < ActiveRecord::Base
 belongs_to :object_form
 has_many   :form_datas, :dependent => :destroy,:order=>"form_component_id"
 
+
 def emailable_format
   output = ""
   self.form_datas.each do |form_data|
@@ -17,5 +18,6 @@ def emailable_format
   end
   return output
 end
+
 
 end

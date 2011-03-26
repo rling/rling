@@ -15,7 +15,7 @@
   <tr>
     <td><%= mailer.handle %></td>
     <td><%= mailer.subject %></td>
-    <td><%= mailer.body %></td>
+    <td><%= raw(mailer.body) %></td>
     <td><% unless mailer.is_deletable == false %>
         <%= link_to 'Send Mail',sendmail_mailer_path(mailer) %>
         <% end %></td>

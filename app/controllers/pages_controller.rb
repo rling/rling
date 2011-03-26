@@ -5,7 +5,7 @@ include PermalinkHelper
   # GET /pages
   # GET /pages.xml
   before_filter :require_user, :require_admin
-
+  
   def index
     @pages = Page.pages
     respond_to do |format|

@@ -29,6 +29,14 @@ class User < ActiveRecord::Base
     return (User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated) ? u : nil
   end
 
+  def self.tags(handle)
+    tagarray = ["login","email","password","activation_key","reset_password_key"] 
+    UserDetailSetting.all.each do |uds|
+       tagarray << uds.field_name
+    end 
+    return tagarray
+  end
+
 #Instance Methods
   def in_role?(role)
     role == @role
@@ -90,6 +98,7 @@ class User < ActiveRecord::Base
    def create_welcome_msg
      @create = true
    end
+
 
 #Private Methods
  private

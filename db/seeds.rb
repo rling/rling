@@ -18,6 +18,6 @@ Setting.create(:name=>"site_url",:desc_text=>"URL of the Site that is required t
 Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings required to send emails from the CMS",:setting_type=>"string",:setting_value=>"address:smtp.rlingcms.com;port:25;domain:mail.rlingcms.com;authentication:plain;user_name:myusername;password:mypassword;")
 
 #Create Mailer Settings
-Mailer.create(:handle=>"welcome",:subject=>"Welcome Mail",:body=>"Welcome to Rling CMS. You have been registered successfully",:is_deletable=>"false")
-Mailer.create(:handle=>"activation",:subject=>"Activation Mail",:body=>"Welcome to Rling CMS. Click on the activation link below to activate your account",:is_deletable=>"false")
-Mailer.create(:handle=>"forgot",:subject=>"Reset Password",:body=>"Click on the link below to reset your password",:is_deletable=>"false")
+Mailer.create(:handle=>"welcome",:subject=>"Welcome Mail",:body=>"Welcome to Rling CMS. You have been registered successfully",:is_deletable=>"false",:allowable_tags=>"user")
+Mailer.create(:handle=>"activation",:subject=>"Activation Mail",:body=>"Welcome to Rling CMS. Click on the activation link below to activate your account",:is_deletable=>"false",:allowable_tags=>"user")
+Mailer.create(:handle=>"forgot",:subject=>"Reset Password",:body=>"Click on the link below to reset your password",:is_deletable=>"false",:allowable_tags=>"user")

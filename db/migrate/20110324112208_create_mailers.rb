@@ -4,6 +4,7 @@ class CreateMailers < ActiveRecord::Migration
       t.string :handle
       t.string :subject
       t.text :body
+      t.string :allowable_tags
       t.boolean :is_deletable, :default=>true
 
       t.timestamps
