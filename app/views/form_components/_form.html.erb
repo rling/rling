@@ -41,8 +41,13 @@ var component_value = document.getElementById('field_value');
   
   <div class="field">
     <%= f.label :component_name %><br />
-    <%= f.text_field :component_name %>
+    <%= f.text_field :component_name ,%>
   </div>
+
+ <div class="field">
+    <%= f.label :component_display_name %><br />
+    <%= f.text_field :component_display_name %>
+ </div>
   <div class="field">
     <%= f.label :component_type %><br />
     <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />

@@ -38,7 +38,7 @@ class DisplayController < ApplicationController
         end
       end
       unless mandatoryfailed
-        submission = SubmissionForm.create(:object_form_id=>object_form.id)
+        submission = FormSubmission.create(:object_form_id=>object_form.id)
         object_form.form_components.each do |component|
          case component.component_type
 
@@ -48,10 +48,10 @@ class DisplayController < ApplicationController
             asset.sizes = component.default_value
             asset.upload = form_data[component.component_name]
             asset.save
-            FormData.create(:submission_form_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
+            FormData.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
           end
          else
-           FormData.create(:submission_form_id=>submission.id,:form_component_id=>component.id,:data_value=>form_data[component.component_name])
+           FormData.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_data[component.component_name])
          end
         end
         message = "All details have been stored successfully"

@@ -1,0 +1,73 @@
+
+<script type="text/javascript">
+function findselected(){
+var state = document.getElementById('model_component_component_type');
+var component_value = document.getElementById('field_value');
+  if(state.value == "Dropdown" ||state.value == "Radiobutton" )
+  {
+    component_value.show();
+  }
+  else
+    {
+      component_value.hide();
+    }
+     if(state.value == "File")
+  {
+     $('default_value').hide();
+    $('thumbnail').show();
+  }else
+    {
+       $('default_value').show();
+    $('thumbnail').hide();
+    }
+}
+
+</script>
+
+<%= form_for([@object,@model_component]) do |f| %>
+  <% if @model_component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@model_component.errors.count, "error") %> prohibited this model_component from being saved:</h2>
+
+      <ul>
+      <% @model_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="field" >
+    <%= f.label :component_name %><br />
+    <%= f.text_field :component_name , %>
+  </div>
+ <div class="field">
+    <%= f.label :component_display_name %><br />
+    <%= f.text_field :component_display_name %>
+ </div>
+  <div class="field">
+    <%= f.label :component_type %><br />
+    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />
+  </div>
+<div class="field" id="field_value" style="<% ["DropDown","Radiobutton"].include?(@model_component.component_type) ? '' : 'display:none' %>">
+    <%= f.label :component_values %><br />
+    <%= f.text_area :component_values %>
+  </div>
+  <div class="field">
+  <span id="thumbnail" style="<%= (@model_component.component_type != "File") ? 'display:none' : '' %>"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
+  <span id="default_value" style="<%= (@model_component.component_type == "File") ? 'display:none' : '' %>"><%= f.label "Default value"  %></span><br />
+  <%= f.text_field :default_value %><br />
+  </div>
+  <div class="field">
+    <%= f.label 'Is this field mandatory?' %><br />
+    <%= f.check_box :is_mandatory %>
+  </div>
+  <div class="field">
+    <%= f.label 'Is this component deletable?' %><br />
+    <%= f.check_box :is_deletable %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  
+<% end %>

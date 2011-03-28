@@ -1,5 +1,10 @@
 Rling::Application.routes.draw do
 
+ resources :object_models do
+   resources :model_components
+ end
+
+
   resources :mailers do
     member do
       get 'sendmail'
@@ -27,7 +32,7 @@ Rling::Application.routes.draw do
 
    resources :object_forms do
      resources :form_components 
-     resources :submission_forms do
+     resources :form_submissions do
       member do
  	get 'delete_asset'
       end 
@@ -67,6 +72,8 @@ Rling::Application.routes.draw do
   match "admin/dashboard" =>"admin#dashboard"
   match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"
+  #match "/:permalinkparent "=> "display#show_page"
+
   match "display/error_page_display"=>"display#error_page_display"
   match "display/create_submissions/:id"=>"display#create_submissions"
 

@@ -3,8 +3,8 @@ require 'spec_helper'
 describe FormComponent do
  before (:each) do
   @object_form_attributes={ :perma_link =>'/permalink' ,:title=>'title' }
-  @formcomponent_attributes={:object_form_id=>'1', :component_name =>'name' ,:component_type=>'type' }
-  @form_data_attributes={ :form_component_id=>'1',:submission_form_id=>'1'}
+  @formcomponent_attributes={:object_form_id=>'1', :component_name =>'name' ,:component_type=>'type',:component_display_name=>'dname' }
+  @form_data_attributes={ :form_component_id=>'1',:form_submission_id=>'1'}
   @form_component=FormComponent.create!( @formcomponent_attributes )
   @form_data=FormData.create!( @form_data_attributes )
   @object_form=ObjectForm.create!( @object_form_attributes)
@@ -25,22 +25,35 @@ it "should create at valid attributes" do
    form_component=FormComponent.new(@formcomponent_attributes.merge(:component_name=>nil))
    form_component.should_not be_valid
   end
-
-  it "should not be valid without a component type" do
-   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_type=>nil))
+  it "should not be valid without a component display name" do
+   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_display_name=>nil,:component_name=>'name1'))
    form_component.should_not be_valid
 
-   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_type=>nil))
+   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_display_name=>nil,:component_name=>'name2'))
+   form_component.should_not be_valid
+  end
+
+  it "should not be valid without a component type" do
+   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_type=>nil,:component_name=>'name2'))
+   form_component.should_not be_valid
+
+   form_component=FormComponent.new(@formcomponent_attributes.merge(:component_type=>nil,:component_name=>'name3'))
    form_component.should_not be_valid
 
   end
   it "should have a unique component name " do
-   form_component=FormComponent.new(@formcomponent_attributes.merge(:object_form_id=>'2', :component_name =>'name' ,:component_type=>'type2'))
+   form_component=FormComponent.new(@formcomponent_attributes.merge(:object_form_id=>'2', :component_name =>'name' ,:component_type=>'type2',:component_display_name=>'dname2'))
    form_component.should_not be_valid
   end
    it "should have a minimum length 3 for component name " do
    form_component=FormComponent.new(@formcomponent_attributes.merge( :component_name =>'ab' ))
    form_component.should_not be_valid
+  end
+
+
+  #*******************************************************************************************************#
+  it "should test is_mandatory dfault value " do
+     @form_component.mandatory.should eql(false)
   end
   #************************************Tests Associations*************************************************#
    it "belongs to a object form" do

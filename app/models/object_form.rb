@@ -1,7 +1,7 @@
 class ObjectForm < Page
 #Associations
 has_many :form_components ,:dependent => :destroy
-has_many :submission_forms,:dependent => :destroy
+has_many :form_submissions,:dependent => :destroy
 
 after_create :create_email_template
  def create_email_template
@@ -12,7 +12,7 @@ after_create :create_email_template
     mailer.subject=subject
     mailer.body=body
     mailer.is_deletable=false
-    mailer.allowable_tags='FormData'
+   
     mailer.save
   end
 end

@@ -1,0 +1,40 @@
+<h1>Listing model_components</h1>
+
+<table>
+  <tr>
+    <th>Component name</th>
+    <th>Component Display name</th>
+    <th>Component type</th>
+    <th>Component values</th>
+    <th>Default value</th>
+    <th>Mandatory Field?</th>
+     <th>Deletable Component?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @model_components.each do |model_component| %>
+  <tr>
+
+    <td><%= model_component.component_name %></td>
+    <td><%= model_component.component_display_name %></td>
+    <td><%= model_component.component_type %></td>
+    <td><%= model_component.component_values %></td>
+    <td><%= model_component.default_value %></td>
+    <td><%= model_component.is_mandatory %></td>
+    <td><%= model_component.is_deletable %></td>
+    <td><%=  link_to image_tag("show.png",:class=>"image_link"),object_model_model_component_path(@object,model_component) %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_component_path(@object,model_component) %></td>
+    <%  unless model_component.is_deletable.eql?(false) %>
+    <td><%= link_to image_tag("delete.png",:class=>"image_link"), ([@object,model_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Model component', new_object_model_model_component_path %>
+<%= link_to 'back', object_models_path %>
+

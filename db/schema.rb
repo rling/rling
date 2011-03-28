@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325095443) do
+ActiveRecord::Schema.define(:version => 20110328094304) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -26,15 +26,22 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
     t.string   "component_type"
     t.text     "component_values"
     t.string   "default_value"
-    t.boolean  "mandatory",        :default => false
+    t.boolean  "mandatory",              :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "component_display_name"
   end
 
   create_table "form_data", :force => true do |t|
     t.integer  "form_component_id"
-    t.integer  "submission_form_id"
     t.string   "data_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "form_submission_id"
+  end
+
+  create_table "form_submissions", :force => true do |t|
+    t.integer  "object_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,8 +50,7 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.string   "allowable_tags"
-    t.boolean  "is_deletable",   :default => true
+    t.boolean  "is_deletable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66,6 +72,44 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
 
   create_table "menusets", :force => true do |t|
     t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "model_components", :force => true do |t|
+    t.integer  "object_model_id"
+    t.string   "component_name"
+    t.string   "component_display_name"
+    t.string   "component_type"
+    t.text     "component_values"
+    t.text     "default_value"
+    t.boolean  "is_mandatory",           :default => false
+    t.boolean  "is_deletable",           :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "model_data", :force => true do |t|
+    t.integer  "model_component_id"
+    t.integer  "model_submission_id"
+    t.string   "data_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "model_submissions", :force => true do |t|
+    t.integer  "object_model_id"
+    t.string   "perma_link"
+    t.boolean  "home_page"
+    t.integer  "page_view_type",  :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "object_models", :force => true do |t|
+    t.string   "name"
+    t.string   "perma_link_parent"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -101,8 +145,8 @@ ActiveRecord::Schema.define(:version => 20110325095443) do
     t.integer  "page_view_type", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
     t.string   "email"
+    t.string   "type"
   end
 
   create_table "roles", :force => true do |t|
