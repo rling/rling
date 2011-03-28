@@ -35,7 +35,7 @@ Feature: Menu Page
   Scenario: User clicks on Show Page
     Given I go to menu index page
     Then I should see "Home" on the index page
-    And I follow "Show"
+    And I click "Show"
     Then I should see "Home" for "Name" on the show page
     And I should see "Header" for "Parent Menu" on the show page
     And I should see "1" for "Position" on the show page

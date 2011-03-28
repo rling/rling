@@ -58,12 +58,12 @@ Feature: User detail setting Page
     And I should see "male,female" on the user detail settings page
     And I should see "male" on the user detail settings page
     And I should see "true" on the user detail settings page
-    And I follow "Show"
-    Then I should see "sex" for "Field Name" on the page
-    And I should see "Field Type" for "Radiobutton" on the page
-    And I should see "Field Values" for "male,female" on the page
-    And I should see "Default Value" for "male" on the page
-    And I should see "Is this field mandatory for users" for "true" on the page
+    When I click "Show"
+    Then I should see "sex" for "Field Name" on the user detail setting show page
+    And I should see "Radiobutton" for "Field Type" on the user detail setting show page
+    And I should see "male,female" for "Field Type" on the user detail setting show page
+    And I should see "male" for "Default Value" on the user detail setting show page
+    And I should see "true" for "Is this field mandatory for users" on the user detail setting show page
 
   Scenario: Edit a User detail setting item
     Given I go to user_detail_setting index page 
@@ -84,6 +84,6 @@ Feature: User detail setting Page
   Scenario: Delete an item from user detail setting page
     Given I go to user_detail_setting index page
     Then I should see "sex" on the index page
-    And I follow "Delete"
+    When I click "Delete"
     Then I should not see "sex" on the index page
 

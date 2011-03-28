@@ -13,10 +13,10 @@ Feature:Login
     When I go to login
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
-#    When I check "remember_me"
+#    When I check "Remember me"
     And I press "Login"
     Then I should see "Login successful!" on the page
- #   Then the "remember_me" should be checked
+#    And the "Remember me" should be checked
 
     
    

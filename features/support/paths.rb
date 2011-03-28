@@ -69,6 +69,10 @@ module NavigationHelpers
 
     when /new mailer/
       new_mailer_path
+
+    when /new pagelet/
+      new_pagelet_path
+
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

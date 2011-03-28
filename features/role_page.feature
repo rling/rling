@@ -46,5 +46,5 @@ Feature: Role Page
   Scenario: Delete an item from role
     Given I go to role index page
     Then I should see "Admin" on the role index page
-    And I follow "Delete"
+    When I click "Delete"
     Then I should not see "Admin" on the role index page

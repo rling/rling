@@ -49,4 +49,40 @@ Feature: Mailer Page
     When I press "Create Mailer"
     Then I should see "can't be blank" for "Subject" on that mailer page
 
+#  Scenario: User clicks on Show Page
+#    Given I go to mailer index page
+#    Then I should see "Thank you" on the mailer index page
+#    And I should see "Thank you mail" on the mailer index page
+#    And I should see "Thank you for joining us" on the mailer index page
+#    And I should see "Send Mail" on the mailer index page
+#    When I click "Show"
+#    Then I should see "Thank you" for "Handle" on the mailer show page
+#    And I should see "Thank you mail" for "Subject" on the mailer show page
+#    And I should see "Thank you for joining us" for "Body" on the mailer show page
 
+#  Scenario: Edit a Mailer item
+#    Given I go to mailer index page 
+#    When I press "Edit" for "Thank you" on the mailer index page
+#    Then I should see "Editing mailer" on the edit mailer page 
+#    And I fill in "mailer_hendle" with "Thank you"
+#    And I fill in "mailer_subject" with "Thank you mail"
+#    And I fill in "mailer_body_editor" with "Thank you for joining us"
+#    When I press "Update Mailer"
+#    Then I should see "Thank you" for "Handle" on the page
+#    And I should see "Thank you mail" for "Subject" on the page
+#    And I should see "Thank you for joining us" for "Body" on the page
+
+  Scenario: Delete an item from mailer
+    Given I go to mailer index page
+    Then I should see "Thank you" on the mailer index page
+    When I click "Delete"
+    Then I should not see "Thank you" on the mailer index page
+
+#  Scenario: Send Mail
+#     Given I go to mailer index page
+#     Then I click "Send Mail"
+#     And I fill in "mailer_to" with "amit.mandal@gmail.com"
+#     And I fill in "mailer_subject" with "Thank you mail"
+#     And I fill in "mailer_body_editor" With "Thank you for joining us"
+#     When I press "Send Mail"
+#     Then I should see "Mail sent to given emails successfully" no the mailer index page
