@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration
     t.string    :activation_key
     t.boolean   :is_activated, :default=>false
     t.string    :reset_password_key
-    
     t.integer   :login_count,:default => 0
     t.integer   :failed_login_count,:default => 0
     t.datetime  :last_request_at

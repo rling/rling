@@ -19,33 +19,41 @@ end
 def forgot_password(user)
       #setup
       @user = user.login
-      @reset_password_key= user.reset_password_key if user.recently_reset?
-      @url= "#{get_setting("site_url")}/password_resets/#{@reset_password_key}/reset"
-      mail(:to => user.email, :subject => "link to create a password")
+      mailer=Mailer.find_by_handle('forgot')
+      subject=mailer.subject
+      body=mailer.body
+      body = verify_tags(body,user)
+      mail(:to => user.email, :subject => subject,:body=>body)
 end
 
 
 def activation_email(user)
   #setup
   @user=user.login
-  mailer=Mailer.find_by_subject('Activation Mail')
-  @activation_key= user.activation_key if user.recently_activated?
-  @url= "#{get_setting("site_url")}/users/#{@activation_key}/activate"
+  mailer=Mailer.find_by_handle('activation')
   subject=mailer.subject
   body=mailer.body
   body = verify_tags(body,user)
-  mail(:to => user.email, :subject => subject, :body=>body + @url)
+  mail(:to => user.email, :subject => subject, :body=>body)
 end
 
   def welcome_email(user)
-
   #setup
   @user=user.login
-  mailer=Mailer.find_by_subject('Welcome Mail')
+  mailer=Mailer.find_by_handle('welcome')
   subject=mailer.subject
   body=mailer.body
   body = verify_tags(body,user)
   mail(:to=> user.email,:subject=> subject,:body=> body)
+  end
+
+  def delete_user(user)
+    @user=user.login
+    mailer=Mailer.find_by_handle('delete')
+    subject=mailer.subject
+    body=mailer.body
+    body = verify_tags(body,user)
+    mail(:to=> user.email,:subject=> subject,:body=>body)
   end
 
   def send_mailers_email(to,cc,bcc,subject,body)
@@ -53,11 +61,15 @@ end
     mail(:to=> to,:cc=> cc,:bcc=> bcc,:subject=> subject,:body=> body)
   end
 
-  def form_submitted(submission_form)
-   #setup
-   subject = "Form has been submitted for #{submission_form.object_form.title} page"
-   body = "#{submission_form.object_form.title} page Form has been submitted. The details are as follows\n" + submission_form.emailable_format
-   mail(:to=>submission_form.object_form.email,:subject=>subject,:body=>body)
+  def form_submitted(submission)
+   unless submission.object_form.email.blank?
+      #setup
+      mailer=Mailer.find_by_handle(submission.object_form.perma_link)
+      subject=mailer.subject
+      body=mailer.body
+      body=verify_tags(body,submission)
+      mail(:to=>submission.object_form.email,:subject=>subject,:body=>body)
+   end
   end
 
   private
@@ -82,9 +94,9 @@ end
        hash.each do |k,v|
          objectname = v[0]
          varname = v[1]
-         if entity.respond_to?(varname.downcase)
-             output = output.gsub("&lt;RLING::#{k}&gt;",entity.send(varname.downcase).to_s)
-           end if entity.class.to_s == objectname.capitalize
+         if entity.class.to_s.upcase == objectname
+         	output = output.gsub("&lt;RLING::#{k}&gt;",entity.send("get_variable_info",varname.downcase).to_s)
+         end 
        end
     end
     return output

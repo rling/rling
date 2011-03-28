@@ -1,10 +1,9 @@
-<h1>Listing mailers</h1>
+<h1>Listing Email Templates</h1>
 
 <table>
   <tr>
     <th>Handle</th>
     <th>Subject</th>
-    <th>Body</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,7 +14,6 @@
   <tr>
     <td><%= mailer.handle %></td>
     <td><%= mailer.subject %></td>
-    <td><%= raw(mailer.body) %></td>
     <td><% unless mailer.is_deletable == false %>
         <%= link_to 'Send Mail',sendmail_mailer_path(mailer) %>
         <% end %></td>
@@ -31,5 +29,5 @@
 
 <br />
 
-<%= link_to 'New Mailer', new_mailer_path %> |
+<%= link_to 'New Email Template', new_mailer_path %> |
 <%= link_to 'Back to Dashboard',admin_dashboard_path %>

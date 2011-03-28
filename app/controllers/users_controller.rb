@@ -87,6 +87,7 @@ class UsersController < ApplicationController
         #Write code for Send welcome email if setting is true
         if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
           @user.create_activation_key
+          @user.activation_url
           Notifier.activation_email(@user).deliver
           flash[:notice] = "User created successfully, An email has been sent to you, please follow the instructions to activate yourself to the website"
         else
@@ -152,8 +153,9 @@ class UsersController < ApplicationController
               flash[:notice] = "Atleast one administrator required to execute website activities"
      end
     else
-       @user.destroy
-       flash[:notice] = "User deleted successfully"
+      Notifier.delete_user(@user).deliver
+      @user.destroy
+      flash[:notice] = "User deleted successfully"
     end
     respond_to do |format|
       format.html { redirect_to(users_url) }
@@ -170,6 +172,7 @@ class UsersController < ApplicationController
     user_id=params[:user_id]
     form_field=params[:form_field]
     mandatory_failed = false
+    unless form_field.nil?
     UserDetailSetting.all.each do |user_detail_setting|
       if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
         mandatory_failed = true
@@ -195,11 +198,14 @@ class UsersController < ApplicationController
         else
           user_detail.selected_value=form_field[user_detail_setting.field_name]
         end
+      when "Date"
+        user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
       else
         user_detail.selected_value=form_field[user_detail_setting.field_name]
       end
       user_detail.save
      end
+    end
     if mandatory_failed
       @user = User.find(user_id)
       @userdetailsettings = UserDetailSetting.all
@@ -213,8 +219,7 @@ class UsersController < ApplicationController
         redirect_to account_path
       end
     end
-  end
-
+ end 
   def delete_asset
     user_detail = UserDetail.find(params[:id])
     unless user_detail.nil?

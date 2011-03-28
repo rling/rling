@@ -19,5 +19,16 @@ def emailable_format
   return output
 end
 
+def get_variable_info(variablename)
+     output = ""
+     form_component = FormComponent.find_by_component_name_and_object_form_id(variablename,self.object_form_id)
+     unless form_component.nil?
+       form_data = FormData.find_by_submission_form_id_and_form_component_id(self.id,form_component.id)
+       unless form_data.nil?
+         output = form_data.data_value
+       end
+     end
+     return output
+end
 
 end

@@ -32,6 +32,7 @@
           <td><%= "Computer & mobile browsers"%></td>
       <% elsif page.page_view_type.eql?(1) %>
           <td><%= "Computer browsers"%></td>
+         <% else %>
        <td><%= "Mobile browsers"%></td>
      <% end %>
     <td><%= page.email %></td>
@@ -46,5 +47,5 @@
 </table>
 
 <br />
-<%= link_to 'New Object Form', new_object_form_pages_path %> |<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New Object Form', new_object_form_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 

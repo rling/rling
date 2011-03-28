@@ -12,7 +12,7 @@
 
     <% page.form_components.each do |form_component| %>
     <p>
-      <%= form_component.component_name %>:
+      <%= form_component.component_display_name %>:
       <%= check_component_type(form_component) %>
       <%= form_component.mandatory ? "*" : "" %>
     </p>

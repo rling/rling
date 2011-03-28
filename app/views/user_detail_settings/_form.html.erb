@@ -43,7 +43,7 @@ var field_value = document.getElementById('field_value');
 
   <div class="field"">
   <%= f.label :field_type %><br />
-  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date"], {},{:onchange=>"return findselected();"} %><br />
   </div>
 
   <div class="field" id="field_value">

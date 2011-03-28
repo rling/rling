@@ -2,19 +2,19 @@
 <%= form_tag preparemail_mailer_path(@mailer) do %>
   <div class="field">
     <%= label_tag :to %><br />
-    <%= text_field_tag "mailer[to]" %>
+    <%= text_field_tag "mailer[to]",nil,:size=>40 %>
   </div>
   <div class="field">
     <%= label_tag :cc %><br />
-    <%= text_field_tag "mailer[cc]" %>
+    <%= text_field_tag "mailer[cc]",nil,:size=>40 %>
   </div>
   <div class="field">
     <%= label_tag :bcc %><br />
-    <%= text_field_tag "mailer[bcc]" %>
+    <%= text_field_tag "mailer[bcc]",nil,:size=>40 %>
   </div>
   <div class="field">
     <%= label_tag :subject %><br />
-    <%= text_field :mailer,:subject %>
+    <%= text_field :mailer,:subject,:size=>40 %>
   </div>
   <div class="field">
     <%= label_tag :body %><br />

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include ApplicationHelper
 #Associations
   belongs_to :role
   has_many :user_details, :dependent=> :destroy
@@ -30,7 +31,7 @@ class User < ActiveRecord::Base
   end
 
   def self.tags(handle)
-    tagarray = ["login","email","password","activation_key","reset_password_key"] 
+    tagarray = ["login","email","password","activation_url","reset_password_url"]
     UserDetailSetting.all.each do |uds|
        tagarray << uds.field_name
     end 
@@ -71,16 +72,21 @@ class User < ActiveRecord::Base
     save(false)
   end
 
+  def activation_url
+    return "#{get_setting("site_url")}/users/#{self.activation_key}/activate"
+  end
+
+  def reset_password_url
+    return "#{get_setting("site_url")}/password_resets/#{self.reset_password_key}/reset"
+  end
   def delete_reset_code
     self.attributes = {:reset_password_key => nil}
     save(false)
   end
-
   def delete_activation_key
     self.attributes = {:activation_key => nil}
     save(false)
   end
-
   
    def active?
      activation_key.nil?
@@ -99,7 +105,11 @@ class User < ActiveRecord::Base
      @create = true
    end
 
-
+   def get_variable_info(variablename)
+     if self.respond_to?(variablename.downcase)
+      self.send(variablename.downcase)
+     end
+   end
 #Private Methods
  private
  

@@ -8,12 +8,13 @@ def create
       respond_to do |format|
       if user
        user.create_reset_code
+       user.reset_password_url
         Notifier.forgot_password(user).deliver
         flash[:notice] = "Reset code sent to your email. Follow instructions in the email."
         format.html { redirect_to login_path }
         format.xml { render :xml => user.email, :status => :created }
       else
-        flash[:notice] = "#{params[:user][:email]} does not exist in system. Please try again"
+        flash[:notice] = "#{params[:user][:email]} does not exist in system. Please try again or contact administrator at #{User.admins.first.email}"
         format.html {render :action=>'new'}
         format.xml { render :xml => user.email, :status => :unprocessable_entity }
        end

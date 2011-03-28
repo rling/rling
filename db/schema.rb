@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110328094304) do
+ActiveRecord::Schema.define(:version => 20110328131027) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -50,7 +50,8 @@ ActiveRecord::Schema.define(:version => 20110328094304) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.boolean  "is_deletable", :default => true
+    t.string   "allowable_tags"
+    t.boolean  "is_deletable",   :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -145,8 +146,8 @@ ActiveRecord::Schema.define(:version => 20110328094304) do
     t.integer  "page_view_type", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
     t.string   "type"
+    t.string   "email"
   end
 
   create_table "roles", :force => true do |t|
@@ -171,12 +172,6 @@ ActiveRecord::Schema.define(:version => 20110328094304) do
     t.string   "desc_text"
     t.text     "setting_value"
     t.string   "setting_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "submission_forms", :force => true do |t|
-    t.integer  "object_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -206,8 +201,10 @@ ActiveRecord::Schema.define(:version => 20110328094304) do
     t.string   "hashed_password"
     t.string   "salt"
     t.string   "activation_key"
+    t.string   "activation_url"
     t.boolean  "is_activated",       :default => false
     t.string   "reset_password_key"
+    t.string   "reset_password_url"
     t.integer  "login_count",        :default => 0
     t.integer  "failed_login_count", :default => 0
     t.datetime "last_request_at"
