@@ -78,7 +78,7 @@ def create
           flash[:notice]="Incorrect Login"
           render :action => :new
      elsif !@user.is_activated
-	  flash[:notice]="User Not yet activated. Please check your actiavation email."
+	  flash[:notice]="User not yet activated. Please check your activation email."
           render :action => :new
      elsif user.nil?
           @user.failed_login_count += 1

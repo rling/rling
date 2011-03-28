@@ -201,10 +201,8 @@ ActiveRecord::Schema.define(:version => 20110328131027) do
     t.string   "hashed_password"
     t.string   "salt"
     t.string   "activation_key"
-    t.string   "activation_url"
     t.boolean  "is_activated",       :default => false
     t.string   "reset_password_key"
-    t.string   "reset_password_url"
     t.integer  "login_count",        :default => 0
     t.integer  "failed_login_count", :default => 0
     t.datetime "last_request_at"

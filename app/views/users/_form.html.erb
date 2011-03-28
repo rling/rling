@@ -39,7 +39,7 @@
   </div>
   <div class="field">
   <% if current_user? && current_user.admin? %>
-  Select role <%= select(:user, :role_id, Role.all.map{|p|[p.role_type,p.id]}) %><br />
+  Select role <%= select(:user, :role_id, Role.all.collect{|p|[p.role_type,p.id]}.reject { |(role_type, id)| role_type == 'Anonymous'}) %><br />
   <% else %>
   <%= hidden_field_tag "user[role_id]", "2" %>
   <% end %>

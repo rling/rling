@@ -164,8 +164,13 @@ class UsersController < ApplicationController
   end
 
   def user_details
-    @user=User.find(params[:id])
-    @user_detail_settings=UserDetailSetting.find(:all)
+      @user_detail_settings=UserDetailSetting.find(:all)
+         unless @user_detail_settings.empty?
+           @user=User.find(params[:id])
+           render :action=>"user_details"
+          else
+            redirect_to users_path
+          end
   end
 
  def update_details

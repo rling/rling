@@ -69,6 +69,7 @@ Rling::Application.routes.draw do
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
   match "register" => "users#new"
+  match "admin"=>"admin#dashboard"
   match "admin/dashboard" =>"admin#dashboard"
   match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"

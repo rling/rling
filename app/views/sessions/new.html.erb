@@ -1,10 +1,13 @@
 <h1>Login</h1>
 
 <%= form_tag sessions_path do  %>
-
-  <%= label_tag :login %><br />
-  <%= text_field_tag :login %><br />
-  <br />
+  <% unless get_setting("is_login_type_email") %> 
+     <%= label_tag :login %><br />
+     <%= text_field_tag :login %><br />
+  <% else %>
+      <%= label_tag :email %><br />
+      <%= text_field_tag :login %><br />
+  <% end %>
   <%= label_tag :password %><br />
   <%= password_field_tag :password %><br />
   <%= label_tag :remember_me %>
