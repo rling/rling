@@ -1,5 +1,40 @@
-<p id="notice"><%= notice %></p>
+
+<h1>Show Model  Component Details</h1>
+
+<p>
+  <b>Component name:</b>
+  <%= @model_component.component_name %>
+</p>
+
+<p>
+  <b>Component Display name:</b>
+  <%= @model_component.component_display_name %>
+</p>
+
+<p>
+  <b>Component type:</b>
+  <%= @model_component.component_type %>
+</p>
+
+<p>
+  <b>Component values:</b>
+  <%= @model_component.component_values %>
+</p>
+
+<p>
+  <b>Default value:</b>
+  <%= @model_component.default_value %>
+</p>
+
+<p>
+  <b>Mandatory:</b>
+  <%= @model_component.is_mandatory %>
+</p>
+<p>
+  <b> deletable:</b>
+  <%= @model_component.is_deletable %>
+</p>
 
 
-<%= link_to 'Edit', edit_model_component_path(@model_component) %> |
-<%= link_to 'Back', model_components_path %>
+<%= link_to 'Edit', edit_object_model_model_component_path(@object,@model_component) %> |
+<%= link_to 'Back', object_model_model_components_path %>

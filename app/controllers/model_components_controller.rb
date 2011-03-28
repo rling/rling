@@ -46,7 +46,7 @@ class ModelComponentsController < ApplicationController
 
     respond_to do |format|
       if @model_component.save
-        format.html { redirect_to(@model_component, :notice => 'Model component was successfully created.') }
+        format.html { redirect_to([@object,@model_component], :notice => 'Model component was successfully created.') }
         format.xml  { render :xml => @model_component, :status => :created, :location => @model_component }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class ModelComponentsController < ApplicationController
 
     respond_to do |format|
       if @model_component.update_attributes(params[:model_component])
-        format.html { redirect_to(@model_component, :notice => 'Model component was successfully updated.') }
+        format.html { redirect_to([@object,@model_component], :notice => 'Model component was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,7 +78,7 @@ class ModelComponentsController < ApplicationController
     @model_component.destroy
 
     respond_to do |format|
-      format.html { redirect_to(model_components_url) }
+      format.html { redirect_to(object_model_model_components_path) }
       format.xml  { head :ok }
     end
   end

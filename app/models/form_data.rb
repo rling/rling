@@ -1,6 +1,8 @@
 class FormData < ActiveRecord::Base
+  #Associations
   belongs_to :form_component
   belongs_to :form_submission
+  #instance methods
 
   def self.tags(handle)
     objform = ObjectForm.find_by_perma_link(handle)

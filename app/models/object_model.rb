@@ -6,8 +6,10 @@ class ObjectModel < ActiveRecord::Base
   #Validations
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true
   validates :name ,:presence=>true, :uniqueness=>true
-
+#call backs
   after_create :create_2_model_components
+
+# instance Methods
 
 
   def permalnkparent
