@@ -46,7 +46,7 @@ module NavigationHelpers
     when /edit user/
        edit_user_path
 
-    when /user details setting/
+    when /user_detail_settings/
       user_detail_settings_path
 
     when /new user_detail_setting/
@@ -72,6 +72,15 @@ module NavigationHelpers
 
     when /new pagelet/
       new_pagelet_path
+
+    when /new pages /
+      new_page_path
+   
+    when /edit pages/
+      edit_page_path
+
+    when /new page_variable_setting/
+      new_page_variable_setting_path
 
     
     # Add more mappings here.

@@ -25,7 +25,7 @@ Feature: Mailer Page
     And I fill in "mailer_handle" with "Thank you"
     And I fill in "mailer_subject" with "Thank you mail"
     And I fill in "mailer_body_editor" with "Thank you for joining us"
-    When I press "Create Mailer"
+    When I press "Create Template"
     Then I should see "Thank you" for "Handle" on the page
     And I should see "Thank you mail" for "Subject" on the page
     And I should see "Thank you for joining us" for "Body" on the page
@@ -33,34 +33,36 @@ Feature: Mailer Page
 
   Scenario: Error in Creating new Mailer( when Handle & Subject are blank )
     Given I go to the new mailer page
-    When I press "Create Mailer"
+    When I press "Create Template"
     Then I should see "can't be blank" for "Handle" on that mailer page
     Then I should see "can't be blank" for "Subject" on that mailer page
 
   Scenario: Error in Creating new Mailer( when Handle is blank )
     Given I go to the new mailer page
     And I fill in "mailer_subject" with "Thank you mail"
-    When I press "Create Mailer"
+    When I press "Create Template"
     Then I should see "can't be blank" for "Handle" on that mailer page
 
   Scenario: Error in Creating new Mailer( when Subject is blank )
     Given I go to the new mailer page
     And I fill in "mailer_handle" with "Thank you"
-    When I press "Create Mailer"
+    When I press "Create Template"
     Then I should see "can't be blank" for "Subject" on that mailer page
 
-#  Scenario: User clicks on Show Page
-#    Given I go to mailer index page
-#    Then I should see "Thank you" on the mailer index page
-#    And I should see "Thank you mail" on the mailer index page
-#    And I should see "Thank you for joining us" on the mailer index page
-#    And I should see "Send Mail" on the mailer index page
-#    When I click "Show"
-#    Then I should see "Thank you" for "Handle" on the mailer show page
-#    And I should see "Thank you mail" for "Subject" on the mailer show page
-#    And I should see "Thank you for joining us" for "Body" on the mailer show page
+  Scenario: User clicks on Show Page
+    Given I have a menu in mailer index page
+    Given I go to mailer index page
+    Then I should see "Thank you" on the mailer index page
+    And I should see "Thank you mail" on the mailer index page
+    And I should see "Thank you for joining us" on the mailer index page
+    And I should see "Send Mail" on the mailer index page
+    When I press "Show" for "Thank you" on the mailer page
+    Then I should see "Thank you" for "Handle" on the mailer show page
+    And I should see "Thank you mail" for "Subject" on the mailer show page
+    And I should see "Thank you for joining us" for "Body" on the mailer show page
 
 #  Scenario: Edit a Mailer item
+#    Given I have a menu in mailer index page
 #    Given I go to mailer index page 
 #    When I press "Edit" for "Thank you" on the mailer index page
 #    Then I should see "Editing mailer" on the edit mailer page 

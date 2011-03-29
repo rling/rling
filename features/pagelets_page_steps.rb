@@ -17,10 +17,12 @@ end
 #  end
 #end
 
-#Then /^I should see "([^"]*)" on the edit pagelet page$/ do |arg1|
-#  page.find("#middle").text.index(arg1).should_not eq(0)
-#end
+Then /^I should see "([^"]*)" on the edit pagelet page$/ do |arg1|
+  page.find("#middle").text.index(arg1).should_not eq(0)
+end
 
 Then /^I should not see "([^"]*)" on the pagelet index page$/ do |arg1|
   page.find("#middle").text.index(arg1) == nil
 end
+
+

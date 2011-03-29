@@ -33,18 +33,20 @@ Feature: Menu Page
     Then I should see "can't be blank" for "Name" on that page
 
   Scenario: User clicks on Show Page
-    Given I go to menu index page
+    Given I have a menu in menu index page
+    Given I go to menu index page     
     Then I should see "Home" on the index page
-    And I click "Show"
+    When I press "Show" for the "Home"
     Then I should see "Home" for "Name" on the show page
     And I should see "Header" for "Parent Menu" on the show page
     And I should see "1" for "Position" on the show page
 
 
   Scenario: Edit a Menu item
+    Given I have a menu in menu index page
     Given I go to menu index page 
     When I press "Edit" for the "Home"
-    Then I should see "Editing Menu" on the edit menuset page 
+    Then I should see "Editing Menu" on the edit menu page 
     And I fill in "menu_name" with "Home"
     And I select "Computer & Mobile Browsers" from "menu_menu_view_type"
     And I select "Header" from "menu_parent_id"
@@ -59,6 +61,7 @@ Feature: Menu Page
 
 
   Scenario: Delete an item from menu
+    Given I have a menu in menu index page
     Given I go to menu index page
     Then I should see "Home" on the index page
     And I follow "Delete"

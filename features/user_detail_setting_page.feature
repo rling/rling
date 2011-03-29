@@ -53,12 +53,13 @@ Feature: User detail setting Page
     Then I should see "is invalid" for "Field name" on that user detail setting page
 
   Scenario: User clicks on Show Page
+    Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page
     Then I should see "sex" on the user detail settings page
     And I should see "male,female" on the user detail settings page
     And I should see "male" on the user detail settings page
     And I should see "true" on the user detail settings page
-    When I click "Show"
+    When I press "Show" for the "sex" on the page
     Then I should see "sex" for "Field Name" on the user detail setting show page
     And I should see "Radiobutton" for "Field Type" on the user detail setting show page
     And I should see "male,female" for "Field Type" on the user detail setting show page
@@ -66,12 +67,12 @@ Feature: User detail setting Page
     And I should see "true" for "Is this field mandatory for users" on the user detail setting show page
 
   Scenario: Edit a User detail setting item
+    Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page 
-    When I press "Edit" for "sex" on the user_detail_setting index page
+    When I press "Edit" for the "sex" on the page
     Then I should see "Editing user_detail_setting" on the edit user_detail_setting page 
     And I fill in "user_detail_setting_field_name" with "sex"
     And I select "Radiobutton" from "user_detail_setting_field_type"
-    And I fill in "user_detail_setting_field_name" with "sex"
     And I fill in "user_detail_setting_field_values" with "male,female"
     And I check "user_detail_setting_mandatory"
     When I press "Update User detail setting"
@@ -82,8 +83,8 @@ Feature: User detail setting Page
     And I should see "true" for "Is this field mandatory for users" on the page
 
   Scenario: Delete an item from user detail setting page
+    Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page
     Then I should see "sex" on the index page
     When I click "Delete"
     Then I should not see "sex" on the index page
-
