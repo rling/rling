@@ -32,6 +32,12 @@ describe Role do
     role.should respond_to(:users)
   end
 
+  it "should destroy associated permissions on its deletion" do
+    role=Role.create!(:role_type=>"test")
+    permission=Permission.create!(:role_id=>role.id,:permission_object=>'page',:permission_type=>'page',:activity_code=>'create')
+    role.destroy
+    Permission.find_by_id(permission.id).should be_nil
+  end
    
 end
 

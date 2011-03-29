@@ -194,7 +194,14 @@ describe User do
   it "should be false if the passwords don't match" do
       user=User.create!(@attr)
       user.has_password?("invalid").should be_false
-  end 
+  end
+
+  it "should call before_save callback" do
+    user=User.new(@attr)
+    user.should_receive(:update_salt_and_hash)
+    user.should_receive(:update_salt_and_hash)
+    user.save
+  end
 
 end
 

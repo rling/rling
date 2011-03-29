@@ -5,5 +5,9 @@
         <data xmlns="http://www.netbeans.org/ns/rails-project/1">
             <name>rling</name>
         </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>html</word>
+            <word>xml</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>

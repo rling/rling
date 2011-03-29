@@ -47,15 +47,6 @@ end
   mail(:to=> user.email,:subject=> subject,:body=> body)
   end
 
-  def delete_user(user)
-    @user=user.login
-    mailer=Mailer.find_by_handle('delete')
-    subject=mailer.subject
-    body=mailer.body
-    body = verify_tags(body,user)
-    mail(:to=> user.email,:subject=> subject,:body=>body)
-  end
-
   def send_mailers_email(to,cc,bcc,subject,body)
    #setup
     mail(:to=> to,:cc=> cc,:bcc=> bcc,:subject=> subject,:body=> body)

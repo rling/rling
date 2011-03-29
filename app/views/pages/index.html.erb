@@ -1,4 +1,4 @@
-<%= link_to 'New Page', new_page_path %>| <%= link_to 'Page Variable Settings', page_variable_settings_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New Page', new_page_path %> | <%= link_to 'Page Variable Settings', page_variable_settings_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 
 <h1>Listing pages</h1>
 
@@ -9,7 +9,6 @@
     <th>Perma link</th>
     <th>Home page</th>
     <th>Page view type</th>
-
     <th></th>
     <th></th>
     <th></th>
@@ -32,6 +31,7 @@
           <td><%= "Computer & mobile browsers"%></td>
       <% elsif page.page_view_type.eql?(1) %>
           <td><%= "Computer browsers"%></td>
+      <% else %>
        <td><%= "Mobile browsers"%></td>
      <% end %>
    
@@ -44,5 +44,5 @@
 </table>
 
 <br />
-<%= link_to 'New Page', new_page_path %> <%= link_to 'Page Variable Settings', page_variable_settings_path %>|<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New Page', new_page_path %> | <%= link_to 'Page Variable Settings', page_variable_settings_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 

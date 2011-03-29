@@ -153,7 +153,6 @@ class UsersController < ApplicationController
               flash[:notice] = "Atleast one administrator required to execute website activities"
      end
     else
-      Notifier.delete_user(@user).deliver
       @user.destroy
       flash[:notice] = "User deleted successfully"
     end

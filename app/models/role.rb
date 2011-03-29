@@ -1,7 +1,7 @@
 class Role < ActiveRecord::Base
 #Associations
   has_many :users
-
+  has_many :permissions, :dependent=> :destroy
 #Validations
   validates :role_type, :presence=> true, :uniqueness=>true
 

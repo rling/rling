@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
-
+include ApplicationHelper
 include PermalinkHelper
   # GET /pages
   # GET /pages.xml
@@ -55,9 +55,17 @@ include PermalinkHelper
 
   # GET /pages/1/edit
   def edit
+#    role_id=current_user.role_id
+#    permission=Permission.find_by_role_id_and_permission_type_and_activity_code(role_id,"Pages","edit")
+#    if permission.status == true
+    
     @page = Page.find(params[:id])
     @page_type = "Page"
     @page_type = "ObjectForm" if @page.type == "ObjectForm"
+#    else
+ #     flash[:notice]=>'You do not have access to this action'
+#      redirect_to :controller=>"users",:action=>"show",:id=>current_user.id
+#    end
   end
 
   # POST /pages

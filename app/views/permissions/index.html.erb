@@ -1,0 +1,32 @@
+<h1>Listing permissions</h1>
+
+<table>
+  <tr>
+    <th>Role ID</th>
+    <th>Permission object</th>
+    <th>Permission type</th>
+    <th>Activity display text</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @permissions.each do |permission| %>
+  <tr>
+    <td><%= permission.role_id %></td>
+    <td><%= permission.permission_object %></td>
+    <td><%= permission.permission_type %></td>
+    <td><%= permission.activity_display_text %></td>
+    <td><%= permission.status %></td>
+    <td><%= link_to image_tag('show.png',:class=>'image_link'), permission %></td>
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_permission_path(permission) %></td>
+    <td><%= link_to image_tag('delete.png',:class=>'image_link'), permission, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Permission', new_permission_path %>
+| <%= link_to "Back to Dashboard",admin_dashboard_path %>
