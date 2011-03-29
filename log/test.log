@@ -1423,3 +1423,1428 @@
   [1m[36mSQL (0.0ms)[0m  [1mROLLBACK[0m
   [1m[35mSQL (0.0ms)[0m  BEGIN
   [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.0ms)[0m  describe `form_components`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  describe `form_submissions`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (19.8ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33', 'dname')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  describe `object_models`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mSQL (0.9ms)[0m  describe `model_components`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (1, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (1, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') AND (`object_models`.id <> 1) LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') AND (`object_models`.id <> 1) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mObjectModel Load (0.4ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mAREL (0.6ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (2, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (2, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link2') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.8ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` IS NULL) LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link3') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY ' ') LIMIT 1
+  [1m[36mSQL (1.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:33', '2011-03-29 14:27:33')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (3, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (3, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:33', '2011-03-29 14:27:33')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (1.2ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` IS NULL) LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name2') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name3 ') LIMIT 1[0m
+  [1m[35mSQL (2.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (4, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (4, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (5, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (5, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name1') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mObjectModel Load (0.2ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (6, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (6, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (6, 'name', 'dname', 'type', NULL, NULL, 0, 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (6, 'name2', 'dname', 'type', NULL, NULL, 0, 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mSELECT COUNT(*) FROM `model_components` WHERE (`model_components`.object_model_id = 6)[0m
+  [1m[35mModelComponent Load (0.3ms)[0m  SELECT `model_components`.* FROM `model_components` WHERE (`model_components`.object_model_id = 6)
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (7, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (7, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (7, 'name', 'dname', 'type', NULL, NULL, 0, 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mModelComponent Load (0.3ms)[0m  SELECT `model_components`.* FROM `model_components` WHERE (`model_components`.object_model_id = 7)
+  [1m[36mModelData Load (0.9ms)[0m  [1mSELECT `model_data`.* FROM `model_data` WHERE (`model_data`.model_component_id = 15)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `model_components` WHERE `model_components`.`id` = 15
+  [1m[36mModelData Load (0.3ms)[0m  [1mSELECT `model_data`.* FROM `model_data` WHERE (`model_data`.model_component_id = 16)[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `model_components` WHERE `model_components`.`id` = 16
+  [1m[36mModelData Load (0.3ms)[0m  [1mSELECT `model_data`.* FROM `model_data` WHERE (`model_data`.model_component_id = 17)[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `model_components` WHERE `model_components`.`id` = 17
+  [1m[36mModelSubmission Load (0.4ms)[0m  [1mSELECT `model_submissions`.* FROM `model_submissions` WHERE (`model_submissions`.object_model_id = 7)[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `object_models` WHERE `object_models`.`id` = 7
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mModelComponent Load (0.3ms)[0m  SELECT `model_components`.* FROM `model_components` WHERE `model_components`.`id` = 17 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.3ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (8, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (8, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (1.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mModelSubmission Load (0.4ms)[0m  [1mSELECT `model_submissions`.`id` FROM `model_submissions` WHERE (`model_submissions`.`perma_link` = BINARY '/perma_link2') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.4ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/permalink') LIMIT 1
+  [1m[36mObjectModel Load (0.3ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (2.0ms)[0m  INSERT INTO `object_models` (`name`, `perma_link_parent`, `description`, `created_at`, `updated_at`) VALUES ('name', '/permalink', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (9, 'title', 'Title', 'Textfield', NULL, 'Enter The title', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `model_components` (`object_model_id`, `component_name`, `component_display_name`, `component_type`, `component_values`, `default_value`, `is_mandatory`, `is_deletable`, `created_at`, `updated_at`) VALUES (9, 'body', 'Body', 'Textarea', NULL, 'Enter The content', 1, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mModelSubmission Load (0.1ms)[0m  [1mSELECT `model_submissions`.`id` FROM `model_submissions` WHERE (`model_submissions`.`perma_link` = BINARY '/perma_link2') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY '') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'admin') LIMIT 1[0m
+  [1m[35mSQL (1.2ms)[0m  describe `roles`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('admin', 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mRole Load (0.4ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'admin') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'User') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('User', 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT `roles`.* FROM `roles` WHERE `roles`.`role_type` = 'User' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mRole Load (0.4ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'test') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('test', 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mRole Load (1.6ms)[0m  SELECT `roles`.`id` FROM `roles` WHERE (`roles`.`role_type` = BINARY 'test') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `roles` (`role_type`, `is_deletable`, `created_at`, `updated_at`) VALUES ('test', 1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.4ms)[0m  describe `permissions`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `permissions` (`role_id`, `permission_object`, `permission_type`, `activity_code`, `activity_display_text`, `status`, `created_at`, `updated_at`) VALUES (4, 'page', 'page', 'create', NULL, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPermission Load (6.5ms)[0m  SELECT `permissions`.* FROM `permissions` WHERE (`permissions`.role_id = 4)
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `permissions` WHERE `permissions`.`id` = 1[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `roles` WHERE `roles`.`id` = 4
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPermission Load (0.4ms)[0m  SELECT `permissions`.* FROM `permissions` WHERE `permissions`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.4ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'test') LIMIT 1
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `menusets`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('test', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'test') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.8ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'header') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('header', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'header') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('header', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'header') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('header', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUserDetailSetting Load (0.4ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (1.3ms)[0m  describe `user_detail_settings`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `user_detail_settings` (`field_name`, `field_type`, `field_values`, `default_value`, `mandatory`, `created_at`, `updated_at`) VALUES ('name', 'textbox', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUserDetailSetting Load (0.3ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUserDetailSetting Load (0.3ms)[0m  SELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` IS NULL) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUserDetailSetting Load (0.2ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` IS NULL) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUserDetail Load (2.1ms)[0m  SELECT `user_details`.* FROM `user_details` WHERE `user_details`.`id` IS NULL LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUserDetailSetting Load (0.4ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'aa') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUserDetailSetting Load (0.5ms)[0m  SELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'aaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUserDetailSetting Load (0.4ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'ravi') LIMIT 1[0m
+  [1m[35mUserDetailSetting Load (0.5ms)[0m  SELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'kiran') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUserDetailSetting Load (0.4ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'ravi@11') LIMIT 1[0m
+  [1m[35mUserDetailSetting Load (0.4ms)[0m  SELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'Ravi.k') LIMIT 1
+  [1m[36mUserDetailSetting Load (0.4ms)[0m  [1mSELECT `user_detail_settings`.`id` FROM `user_detail_settings` WHERE (`user_detail_settings`.`field_name` = BINARY 'ravi_com') LIMIT 1[0m
+  [1m[35mSQL (1.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mModelSubmission Load (0.1ms)[0m  [1mSELECT `model_submissions`.`id` FROM `model_submissions` WHERE (`model_submissions`.`perma_link` = BINARY '/perma_link2') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mModelSubmission Load (0.2ms)[0m  SELECT `model_submissions`.`id` FROM `model_submissions` WHERE (`model_submissions`.`perma_link` = BINARY '/perma_link2') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `form_data`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  describe `pages`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'ObjectForm', NULL)[0m
+  [1m[35mMailer Load (0.4ms)[0m  SELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1
+  [1m[36mSQL (1.4ms)[0m  [1mdescribe `mailers`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 1)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'ObjectForm', NULL)[0m
+  [1m[35mMailer Load (0.3ms)[0m  SELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 4)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 4)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) FROM `form_data` WHERE (`form_data`.form_submission_id = 4)[0m
+  [1m[35mFormData Load (0.4ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_submission_id = 4) ORDER BY form_component_id
+  [1m[36mSQL (0.8ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.4ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (2.2ms)[0m  INSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 1)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'ObjectForm', NULL)[0m
+  [1m[35mMailer Load (0.4ms)[0m  SELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 6)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFormData Load (0.5ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE `form_data`.`id` = 7 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mFormData Load (0.4ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_submission_id = 6) ORDER BY form_component_id
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `form_data` WHERE `form_data`.`id` = 7[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `form_submissions` WHERE `form_submissions`.`id` = 6
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFormData Load (0.4ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE `form_data`.`id` = 7 LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (2.1ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.4ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (2, 'name2', 'Textfield', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (8, 'value', '2011-03-29 14:27:34', '2011-03-29 14:27:34', 7)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFormData Load (0.4ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_submission_id = 7) ORDER BY form_component_id
+  [1m[36mFormComponent Load (0.4ms)[0m  [1mSELECT `form_components`.* FROM `form_components` WHERE `form_components`.`id` = 8 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (2, 'name3', 'File', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (9, 'value', '2011-03-29 14:27:34', '2011-03-29 14:27:34', 8)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFormData Load (0.4ms)[0m  [1mSELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_submission_id = 8) ORDER BY form_component_id[0m
+  [1m[35mFormComponent Load (0.4ms)[0m  SELECT `form_components`.* FROM `form_components` WHERE `form_components`.`id` = 9 LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (2, 'name4', 'Checkbox', NULL, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', 'dname')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_submissions` (`object_form_id`, `created_at`, `updated_at`) VALUES (1, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (10, '1', '2011-03-29 14:27:34', '2011-03-29 14:27:34', 9)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mFormData Load (0.4ms)[0m  SELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_submission_id = 9) ORDER BY form_component_id
+  [1m[36mFormComponent Load (0.4ms)[0m  [1mSELECT `form_components`.* FROM `form_components` WHERE `form_components`.`id` = 10 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  describe `pages`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPageVariableSetting Load (0.5ms)[0m  SELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1
+  [1m[36mSQL (1.2ms)[0m  [1mdescribe `page_variable_settings`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (2.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPageVariableSetting Load (0.4ms)[0m  [1mSELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.5ms)[0m  [1mdescribe `menus`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.5ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') AND (`pages`.id <> 8) LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.4ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mPage Load (1.0ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` IS NULL) LIMIT 1[0m
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.4ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:34', '2011-03-29 14:27:34')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:34', '2011-03-29 14:27:34')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (2.3ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (4.5ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, 14, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (1.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, 14, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMenu Load (0.5ms)[0m  SELECT `menus`.* FROM `menus` WHERE (`menus`.page_id = 14) LIMIT 1
+  [1m[36mSQL (3.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.4ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (2.0ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  describe `page_variables`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (16, NULL, 'value', '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (16, NULL, 'value', '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.1ms)[0m  SELECT COUNT(*) FROM `page_variables` WHERE (`page_variables`.page_id = 16)
+  [1m[36mPageVariable Load (0.4ms)[0m  [1mSELECT `page_variables`.* FROM `page_variables` WHERE (`page_variables`.page_id = 16)[0m
+  [1m[35mSQL (0.9ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.5ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (2.2ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/somepermalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/somepermalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, 19, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenu Load (0.4ms)[0m  SELECT `menus`.* FROM `menus` WHERE (`menus`.page_id = 19) LIMIT 1
+  [1m[36mMenu Load (0.4ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`parent_id` = 14[0m
+  [1m[35mMenu Load (0.5ms)[0m  SELECT `menus`.* FROM `menus` WHERE (`menus`.parent_id = 14) ORDER BY position
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `menus` WHERE `menus`.`id` = 14[0m
+  [1m[35mPageVariable Load (0.4ms)[0m  SELECT `page_variables`.* FROM `page_variables` WHERE (`page_variables`.page_id = 19)
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `pages` WHERE `pages`.`id` = 19[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMenu Load (0.4ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`id` = 14 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (2.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/somepermalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/somepermalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (21, NULL, 'value', '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (21, NULL, 'value', '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenu Load (0.4ms)[0m  SELECT `menus`.* FROM `menus` WHERE (`menus`.page_id = 21) LIMIT 1
+  [1m[36mPageVariable Load (0.4ms)[0m  [1mSELECT `page_variables`.* FROM `page_variables` WHERE (`page_variables`.page_id = 21)[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `page_variables` WHERE `page_variables`.`id` = 3
+  [1m[36mAREL (0.3ms)[0m  [1mDELETE FROM `page_variables` WHERE `page_variables`.`id` = 4[0m
+  [1m[35mAREL (0.3ms)[0m  DELETE FROM `pages` WHERE `pages`.`id` = 21
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPageVariable Load (0.3ms)[0m  SELECT `page_variables`.* FROM `page_variables` WHERE `page_variables`.`id` = 3 LIMIT 1
+  [1m[36mPageVariable Load (0.3ms)[0m  [1mSELECT `page_variables`.* FROM `page_variables` WHERE `page_variables`.`id` = 3 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/somepermalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/somepermalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 18, 24, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMenu Load (0.4ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE (`menus`.page_id = 24) LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 123, 25, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenu Load (0.5ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`id` = 21 LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 1, NULL, NULL, NULL, 21, 1, 26, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMenu Load (0.4ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`page_id` = 26 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenu Load (0.4ms)[0m  SELECT `menus`.* FROM `menus` WHERE `menus`.`id` = 23 LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 1, NULL, NULL, NULL, 23, 1, 27, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (1.2ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 22, 28, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mMenu Load (0.4ms)[0m  [1mSELECT `menus`.* FROM `menus` WHERE `menus`.`page_id` = 28 LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('menu_name', 0, 0, NULL, NULL, NULL, 0, 23, 29, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.4ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mMenuset Load (0.3ms)[0m  SELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/somepermalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/somepermalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMenuset Load (0.3ms)[0m  [1mSELECT `menusets`.`id` FROM `menusets` WHERE (`menusets`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mAREL (1.8ms)[0m  INSERT INTO `menusets` (`name`, `description`, `created_at`, `updated_at`) VALUES ('name', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('name', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPage Load (0.3ms)[0m  SELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/home') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('home', NULL, '/home', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', NULL, NULL)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home' LIMIT 1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home-0' LIMIT 1
+  [1m[36mPage Load (0.5ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home' LIMIT 1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home-0' LIMIT 1
+  [1m[36mPage Load (0.4ms)[0m  [1mSELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home2' LIMIT 1[0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT `pages`.* FROM `pages` WHERE `pages`.`perma_link` = '/home2' LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.4ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.5ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.6ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (1.0ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.2ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.6ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.2ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.2ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.2ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.2ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.2ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.2ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mObjectModel Load (0.1ms)[0m  SELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`perma_link_parent` = BINARY '/perma_link1') LIMIT 1
+  [1m[36mObjectModel Load (0.1ms)[0m  [1mSELECT `object_models`.`id` FROM `object_models` WHERE (`object_models`.`name` = BINARY 'name') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (2.9ms)[0m  describe `users`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, 'c8a7123516888952b3254eed89b7a0364f8ad887', '4CR3iIGbzS', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY '') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '1622d33d7420c10bc3275a1cf80cf7725871a52a', 'pvZbtzEP7m', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'some@email.com') LIMIT 1[0m
+  [1m[35mSQL (0.8ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY '123') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '74dfe737b3cbedfd838338e58a47a0c51592005d', 'DSBcI13CUB', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  describe `user_details`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `user_details` (`user_id`, `user_detail_setting_id`, `selected_value`, `created_at`, `updated_at`) VALUES (3, 1, 'test', '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUserDetail Load (0.3ms)[0m  SELECT `user_details`.* FROM `user_details` WHERE (`user_details`.user_id = 3)
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM `user_details` WHERE `user_details`.`id` = 1[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `users` WHERE `users`.`id` = 3
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUserDetail Load (0.2ms)[0m  SELECT `user_details`.* FROM `user_details` WHERE `user_details`.`id` = 1 LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY '') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'user@foo.com') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'THE_USER@foo.bar.org') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'first.last@foo.jp') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'user@foo,com') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'user_at_foo.org') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'example.user@foo.') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'aaa') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '5427a2664ef94e2734b93d2e1e0f896fcfb5d5dc', 'sPfcfmpA3i', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'somelogin') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (8.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '1a2ed22651c4f2856c272494c614c4a5e73af5cf', 'pGm5YFFilk', NULL, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '0f712a4a7402960b921b2ccf9061a9b8d39bf230', '7yCbIoNg4Q', NULL, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '8c2ae2e23702ff426cb823d4daaa98bbbe31afcd', 'x3sty6HcpK', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '14b9de62d03ea499ff4bd9ace7326766921907f9', 'WihtfbjTfo', NULL, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep@heurion.com', 'sandeep@heurion.com', 1, '93fb46f6fe43f1eb3d9de974bdc71eebb9005da0', 'f2f8chzEVI', NULL, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '1c6c806810c055273534a11de6483a843f1bc7e3', 'oxXFLWddHl', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (login = 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '90d452fe9bf3f6dcd2d20edaa2298c2f5c9f2ce1', 'RVw8aUONFU', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, '2883bb475b0591dafef91714711153c360b79daf', 'yjJd6xFPtM', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, 'afa2af053277a6092bf8de97090bd6cb7bb88f18', 'WO1b6XY4WQ', NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.`id` FROM `users` WHERE (`users`.`login` = BINARY 'sandeep') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE (`users`.`email` = BINARY 'sandeep@heurion.com') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`login`, `email`, `role_id`, `hashed_password`, `salt`, `activation_key`, `is_activated`, `reset_password_key`, `login_count`, `failed_login_count`, `last_request_at`, `current_login_at`, `last_login_at`, `current_login_ip`, `last_login_ip`, `created_at`, `updated_at`) VALUES ('sandeep', 'sandeep@heurion.com', 1, NULL, NULL, NULL, 0, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.0ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mPagelet Load (0.3ms)[0m  SELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` IS NULL) LIMIT 1
+  [1m[36mPagelet Load (0.3ms)[0m  [1mSELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` = BINARY ' ') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mPagelet Load (0.3ms)[0m  SELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` = BINARY 'handle') LIMIT 1
+  [1m[36mPagelet Load (0.1ms)[0m  [1mSELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` = BINARY 'handle') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPagelet Load (0.2ms)[0m  [1mSELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` = BINARY 'handle') LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  describe `pagelets`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `pagelets` (`handle`, `display_text`, `created_at`, `updated_at`) VALUES ('handle', 'text', '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mPagelet Load (0.3ms)[0m  [1mSELECT `pagelets`.`id` FROM `pagelets` WHERE (`pagelets`.`handle` = BINARY 'handle') LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPageVariableSetting Load (0.3ms)[0m  [1mSELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 3, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mPageVariableSetting Load (0.3ms)[0m  [1mSELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` IS NULL) LIMIT 1[0m
+  [1m[35mPageVariableSetting Load (0.4ms)[0m  SELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY '') LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPageVariableSetting Load (0.3ms)[0m  SELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 4, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPageVariableSetting Load (0.3ms)[0m  SELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPageVariableSetting Load (0.3ms)[0m  SELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 5, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPageVariableSetting Load (0.3ms)[0m  [1mSELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'description') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('description', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 6, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 6, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM `page_variables` WHERE (`page_variables`.page_variable_setting_id = 6)
+  [1m[36mPageVariable Load (0.3ms)[0m  [1mSELECT `page_variables`.* FROM `page_variables` WHERE (`page_variables`.page_variable_setting_id = 6)[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPageVariableSetting Load (0.3ms)[0m  [1mSELECT `page_variable_settings`.`id` FROM `page_variable_settings` WHERE (`page_variable_settings`.`name` = BINARY 'keyword') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `page_variable_settings` (`name`, `default_value`, `created_at`, `updated_at`) VALUES ('keyword', NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `page_variables` (`page_id`, `page_variable_setting_id`, `variable_value`, `created_at`, `updated_at`) VALUES (NULL, 7, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mPageVariable Load (0.3ms)[0m  SELECT `page_variables`.* FROM `page_variables` WHERE (`page_variables`.page_variable_setting_id = 7)
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM `page_variables` WHERE `page_variables`.`id` = 10[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `page_variable_settings` WHERE `page_variable_settings`.`id` = 7
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mPageVariable Load (0.3ms)[0m  SELECT `page_variables`.* FROM `page_variables` WHERE `page_variables`.`id` = 10 LIMIT 1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mMailer Load (0.4ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '') LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY 'test') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('test', 'testing', 'Hello this is for test only', NULL, 1, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mMailer Load (0.3ms)[0m  SELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY 'test') LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY 'test') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mMailer Load (0.1ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY 'test') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('test', 'testing', 'Hello this is for test only', NULL, 1, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.0ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (2.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (1.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:35', '2011-03-29 14:27:35', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (3.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (18, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (18, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM `form_data` WHERE (`form_data`.form_component_id = 18)
+  [1m[36mFormData Load (0.3ms)[0m  [1mSELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_component_id = 18)[0m
+  [1m[35mSQL (0.6ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.3ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_components` (`object_form_id`, `component_name`, `component_type`, `component_values`, `default_value`, `mandatory`, `created_at`, `updated_at`, `component_display_name`) VALUES (1, 'name', 'type', NULL, NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'dname')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (1, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mPage Load (0.3ms)[0m  [1mSELECT `pages`.`id` FROM `pages` WHERE (`pages`.`perma_link` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `pages` (`title`, `body`, `perma_link`, `home_page`, `page_view_type`, `created_at`, `updated_at`, `type`, `email`) VALUES ('title', NULL, '/permalink', 0, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 'ObjectForm', NULL)
+  [1m[36mMailer Load (0.6ms)[0m  [1mSELECT `mailers`.`id` FROM `mailers` WHERE (`mailers`.`handle` = BINARY '/permalink') LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `mailers` (`handle`, `subject`, `body`, `allowable_tags`, `is_deletable`, `created_at`, `updated_at`) VALUES ('/permalink', 'Form has been submitted for title page', 'Sample body template. Please Modify once all the form components are created', NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36')
+  [1m[36mSQL (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `form_data` (`form_component_id`, `data_value`, `created_at`, `updated_at`, `form_submission_id`) VALUES (20, NULL, '2011-03-29 14:27:36', '2011-03-29 14:27:36', 1)[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFormData Load (0.3ms)[0m  [1mSELECT `form_data`.* FROM `form_data` WHERE `form_data`.`id` = 24 LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mFormData Load (0.3ms)[0m  [1mSELECT `form_data`.* FROM `form_data` WHERE (`form_data`.form_component_id = 20)[0m
+  [1m[35mAREL (0.2ms)[0m  DELETE FROM `form_data` WHERE `form_data`.`id` = 24
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM `form_components` WHERE `form_components`.`id` = 20[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mFormData Load (0.2ms)[0m  [1mSELECT `form_data`.* FROM `form_data` WHERE `form_data`.`id` = 24 LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  ROLLBACK
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `menus` (`name`, `position`, `level`, `image_path`, `hover_image_path`, `link_path`, `parent_id`, `menuset_id`, `page_id`, `menu_view_type`, `created_at`, `updated_at`) VALUES ('test', 0, 0, NULL, NULL, NULL, 0, 1, NULL, 0, '2011-03-29 14:27:36', '2011-03-29 14:27:36')[0m
+  [1m[35mSQL (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.5ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mROLLBACK[0m

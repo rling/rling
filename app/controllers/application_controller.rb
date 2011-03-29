@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   layout :set_layout
   
   private
+
        
     def current_user
       return session[:user]

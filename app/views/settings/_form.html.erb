@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <b><%= f.label :setting_type %></b><br />
-    <%= f.select :setting_type,['boolean','integer','float','string','date','datetime'] %>
+    <%= f.label @setting.setting_type %>
   </div>
   <div class="field">
     <b><%= f.label :setting_value,'Setting Value' %></b><br />

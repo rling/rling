@@ -30,8 +30,7 @@
   
   
   <div class="field">
-    <%= form.label :page_view_type %><br />
-    <%= form.select :page_view_type,{'Computer & Mobile Browsers'=>0,'Computer Browser only'=>1,'Mobile Browser only'=>2} %>
+     <%= hidden_field_tag "page_type", @page_type %>
   </div>
  
   <div class="field">

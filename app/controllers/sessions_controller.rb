@@ -125,7 +125,7 @@ end
 def destroy
      
     cookies.delete :remember_me_code
-    session[:user] = nil
+    session[:user]=nil
     flash[:notice] = "You have been logged out."
     redirect_to login_path
 end

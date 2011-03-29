@@ -21,6 +21,22 @@
   <% end %> 
 </p>
 
+<p><b> Login count:</b>
+<%= @user.login_count %>
+</p>
+
+<p><b>Failed Login Count:</b>
+<%= @user.failed_login_count %>
+</p>
+
+<p><b>Current Login ip:</b>
+<%= @user.current_login_ip %>
+</p>
+
+<p><b>Previous Login ip:</b>
+<%= @user.last_login_ip %>
+</p>
+
 <% @user_detail_settings.each do |user_detail_setting| %>
 <p>
   <b><%= user_detail_setting.field_name %>:</b>

@@ -1,6 +1,8 @@
 class PageVariableSettingsController < ApplicationController
   # GET /page_variable_settings
   # GET /page_variable_settings.xml
+  before_filter :require_user
+  before_filter :require_admin
   def index
     @page_variable_settings = PageVariableSetting.all
 
