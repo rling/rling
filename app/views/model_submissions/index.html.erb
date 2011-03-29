@@ -1,0 +1,42 @@
+<%= link_to 'New Model Submision', new_object_model_model_submission_path %>|
+<%= link_to 'Back', object_models_path %></td>
+
+
+
+<h1>Listing model Submissions for <%= @object.name %> </h1>
+
+<table>
+
+<tr>
+
+<% @object.model_components.each do |model_component|   %>
+  <th><h4><%=model_component.component_display_name.capitalize %></h4>
+    <%   break %>
+</th>
+
+ <% end %>
+
+
+</tr>
+<% @model_submissions.each do |model_submission| %>
+  <tr>
+
+
+   <%  model_submission.model_datas.each do |model_data| %>
+      <td><%= get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
+      <% break %>
+   <% end %>
+   
+    <td><%= link_to image_tag("show.png",:class=>"image_link"), object_model_model_submission_path(@object,model_submission) %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %></td>
+    <td><%=link_to image_tag("delete.png",:class=>"image_link"), [@object,model_submission], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+  </table>
+  <%= link_to 'New Model Submision', new_object_model_model_submission_path %>|
+  <%= link_to 'Back', object_models_path %></td>
+
+
+
+
+

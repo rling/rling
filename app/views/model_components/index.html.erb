@@ -1,4 +1,11 @@
-<h1>Listing model_components</h1>
+
+<%= link_to 'New Model component', new_object_model_model_component_path %>|
+<%= link_to 'back', object_models_path %>
+
+
+
+
+<h1>Listing Model Components for <u><%= @object.name %></u> Object Model</h1>
 
 <table>
   <tr>
@@ -8,7 +15,6 @@
     <th>Component values</th>
     <th>Default value</th>
     <th>Mandatory Field?</th>
-     <th>Deletable Component?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,7 +29,6 @@
     <td><%= model_component.component_values %></td>
     <td><%= model_component.default_value %></td>
     <td><%= model_component.is_mandatory %></td>
-    <td><%= model_component.is_deletable %></td>
     <td><%=  link_to image_tag("show.png",:class=>"image_link"),object_model_model_component_path(@object,model_component) %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_component_path(@object,model_component) %></td>
     <%  unless model_component.is_deletable.eql?(false) %>
@@ -35,6 +40,6 @@
 
 <br />
 
-<%= link_to 'New Model component', new_object_model_model_component_path %>
+<%= link_to 'New Model component', new_object_model_model_component_path %>|
 <%= link_to 'back', object_models_path %>
 

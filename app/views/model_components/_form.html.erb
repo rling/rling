@@ -37,34 +37,68 @@ var component_value = document.getElementById('field_value');
     </div>
   <% end %>
 <div class="field" >
+ 
     <%= f.label :component_name %><br />
-    <%= f.text_field :component_name , %>
+   <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
+    <%= f.text_field :component_name ,:disabled=>'disabled' %>
+   <% else %>
+     <%= f.text_field :component_name  %>
+   <% end %>
+
   </div>
  <div class="field">
     <%= f.label :component_display_name %><br />
     <%= f.text_field :component_display_name %>
  </div>
+
   <div class="field">
     <%= f.label :component_type %><br />
-    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />
+ 
+ <% if  @model_component.component_name.eql?('body') %>
+    <%= f.select :component_type,options_for_select(["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"],:disabled=>["Dropdown","Textfield","Checkbox","Radiobutton","File"]), {},{:onchange=>"return findselected();"} %><br />
+ <% elsif @model_component.component_name.eql?('title') %>
+    <%= f.select :component_type,options_for_select(["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"],:disabled=>["Dropdown","Textarea","Checkbox","Radiobutton","File"]), {},{:onchange=>"return findselected();"} %><br />
+ <% else %>
+    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %>
+  <% end %>
+
   </div>
+
+ <% unless @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
 <div class="field" id="field_value" style="<% ["DropDown","Radiobutton"].include?(@model_component.component_type) ? '' : 'display:none' %>">
     <%= f.label :component_values %><br />
     <%= f.text_area :component_values %>
   </div>
+<% end %>
+
   <div class="field">
   <span id="thumbnail" style="<%= (@model_component.component_type != "File") ? 'display:none' : '' %>"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
   <span id="default_value" style="<%= (@model_component.component_type == "File") ? 'display:none' : '' %>"><%= f.label "Default value"  %></span><br />
   <%= f.text_field :default_value %><br />
   </div>
   <div class="field">
-    <%= f.label 'Is this field mandatory?' %><br />
-    <%= f.check_box :is_mandatory %>
+     <%= f.label 'Is this field mandatory?' %><br />
+  
+ <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
+   <%=   f.check_box :is_mandatory ,:disabled=>true %>
+ <% else  %>
+   <%=   f.check_box :is_mandatory  %>
+  <% end %>
+
   </div>
+
+
   <div class="field">
-    <%= f.label 'Is this component deletable?' %><br />
-    <%= f.check_box :is_deletable %>
+     <%= f.label 'Is this component deletable?' %><br />
+  
+  <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
+   <%=   f.check_box :is_deletable ,:disabled=>true %>
+  <% else  %>
+   <%=   f.check_box :is_deletable  %>
+  <% end %>
+
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

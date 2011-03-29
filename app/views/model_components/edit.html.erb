@@ -1,4 +1,9 @@
-<h1>Editing model_component</h1>
+
+
+<%= link_to image_tag("show.png",:class=>"image_link"), [@object,@model_component] %> |
+<%= link_to 'Back', object_model_model_components_path %>
+
+<h1>Editing Model Component  <u><%= @object.name %> </u> Object Model </h1>
 
 <%= render 'form' %>
 

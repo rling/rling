@@ -1,0 +1,27 @@
+<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>|
+<p>
+  <b>Perma link:</b>
+  <%= @model_submission.perma_link %>
+</p>
+
+<p>
+  <b>Page View Type:</b>
+  <%= "computer and Mobile Browsers" %>
+</p>
+
+<p>
+  <b>Home page:</b>
+  <% if @model_submission.home_page.eql?(false) %>
+      <%= "No" %>
+  <% else %>
+       <%= "Yes" %>
+   <% end %>
+</p>
+
+
+<% @model_submission.model_datas.each do |model_data| %>
+        <%= model_data.model_component.component_display_name %>:
+	<%= get_model_data(model_data.model_component.component_type,model_data.data_value) %><br />
+<% end %>
+
+<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>

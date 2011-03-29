@@ -79,7 +79,7 @@ def generate_perma_link(perma_link)
   end
 
  def perma_link_generate
-     self.perma_link = "/" + generate_perma_link(create_permalink(self.title))
+     self.perma_link = "/" + generate_perma_link(create_permalink(@title))
  end
 
 

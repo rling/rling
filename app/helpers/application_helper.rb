@@ -79,12 +79,39 @@ def get_all_menus(record)
     end
   end
 
+  def get_model_data(type,value)
+    case type
+
+    when "Checkbox"
+      return value.blank? ? "" : (value == "1" ? "Yes" : "No")
+    when "File"
+      unless value.blank?
+       asset = Asset.find(value)
+       return check_content_type_show(asset)
+      end
+    else
+      return value
+
+    end
+  end
+
    def check_content_type(asset)
      case asset.upload_content_type
       when "image/jpeg"
         return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
       when  "image/png"
         return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
+      else
+        return link_to("#{asset.upload_file_name}", asset.upload.url)
+    end
+  end
+
+   def check_content_type_show(asset)
+     case asset.upload_content_type
+      when "image/jpeg"
+        return link_to("#{asset.upload.url(:thumb)}",asset.upload.url)
+      when  "image/png"
+        return link_to("#{asset.upload.url(:thumb)}",asset.upload.url)
       else
         return link_to("#{asset.upload_file_name}", asset.upload.url)
     end

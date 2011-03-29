@@ -41,10 +41,7 @@ it "should create at valid attributes" do
    form_component.should_not be_valid
 
   end
-  it "should have a unique component name " do
-   form_component=FormComponent.new(@formcomponent_attributes.merge(:object_form_id=>'2', :component_name =>'name' ,:component_type=>'type2',:component_display_name=>'dname2'))
-   form_component.should_not be_valid
-  end
+ 
    it "should have a minimum length 3 for component name " do
    form_component=FormComponent.new(@formcomponent_attributes.merge( :component_name =>'ab' ))
    form_component.should_not be_valid

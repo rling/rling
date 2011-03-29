@@ -1,0 +1,59 @@
+<% unless @object.model_components.eql?([]) %>
+
+<%= form_for([@object,@model_submission], :html => { :multipart => :true })  do |form| %>
+  <% if @model_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@model_submission.errors.count, "error") %> prohibited this model_submission from being saved:</h2>
+
+      <ul>
+      <% @model_submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <div class="field">
+      <%= form.label :perma_link %><br />
+      <% if @model_submission.perma_link.nil? %>
+      <%= form.text_field :perma_link, :disabled=>"disabled"  %>
+      <% else %>
+      <%= form.text_field :perma_link %>
+      <% end %>
+  
+      <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+
+  </div>
+
+<div>
+  <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
+Show on Home Page
+</div>
+ <% if ModelSubmission.find_by_id_and_object_model_id(@model_submission.id,@object.id).nil? %>
+<% @object.model_components.each do |model_component| %>
+    <p>
+      <%= model_component.component_display_name %>:
+      <%= check_model_component_type(model_component) %>
+     <%= model_component.is_mandatory ? "*" : "" %>
+    </p>
+<% end %>
+ <%  else  %>
+    <% @model_submission.model_datas.each do |model_data| %>
+    <p>
+      <%= model_data.model_component.component_display_name %>:
+      <%= edit_model_component_type(model_data) %>
+     <%= model_data.model_component.is_mandatory ? "*" : "" %>
+    </p>
+<% end %>
+    <% end %>
+
+  <div class="actions">
+   <%= form.submit %>
+  </div>
+<% end %>
+<% end %>
+
+
+
+ 

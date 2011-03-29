@@ -1,4 +1,4 @@
-<h1>Listing object_models</h1>
+<h1>Listing Object Models</h1>
 
 <table>
   <tr>
@@ -14,7 +14,7 @@
     <td><%= raw object_model.description%></td>
     <td><%= object_model.perma_link_parent %></td>
     <td><%= link_to "model Components",[object_model,:model_components] %></td>
-
+    <td><%= link_to "Submissions",[object_model,:model_submissions] %></td>
     <td><%= link_to 'Show', object_model %></td>
     <td><%= link_to 'Edit', edit_object_model_path(object_model) %></td>
     <td><%= link_to 'Destroy', object_model, :confirm => 'Are you sure?', :method => :delete %></td>
