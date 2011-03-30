@@ -1,6 +1,6 @@
 class Permission < ActiveRecord::Base
   #Associations
-  belongs_to :role
+  has_many :permission_roles, :dependent=>:destroy
 
   #Validations
   name_regex = /^[a-zA-Z0-9]+$/

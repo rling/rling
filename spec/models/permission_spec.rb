@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Permission do
    before(:each) do
-       @attr={:role_id=>1,:activity_code=>'create'}
+       @attr={:activity_code=>'create'}
    end
 
   it "should create a new permission given valid attributes" do

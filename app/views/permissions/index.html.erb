@@ -2,31 +2,19 @@
 
 <table>
   <tr>
-    <th>Role ID</th>
-    <th>Permission object</th>
-    <th>Permission type</th>
-    <th>Activity display text</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Permission Name</th>
+    <% for role in Role.find(:all) %>
+     <th> <%= role.role_type %></th>
+     <% end %>
   </tr>
-
-<% @permissions.each do |permission| %>
+  <% @permissions.each do |permission| %>
   <tr>
-    <td><%= permission.role_id %></td>
-    <td><%= permission.permission_object %></td>
-    <td><%= permission.permission_type %></td>
     <td><%= permission.activity_display_text %></td>
-    <td><%= permission.status %></td>
-    <td><%= link_to image_tag('show.png',:class=>'image_link'), permission %></td>
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_permission_path(permission) %></td>
-    <td><%= link_to image_tag('delete.png',:class=>'image_link'), permission, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% for role in Role.all %>
+    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]" %>
+      
+    <% end %>
   </tr>
-<% end %>
+  <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Permission', new_permission_path %>
-| <%= link_to "Back to Dashboard",admin_dashboard_path %>
+<%= submit_tag "Update" %>

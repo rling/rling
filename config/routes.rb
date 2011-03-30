@@ -1,4 +1,7 @@
 Rling::Application.routes.draw do
+  resources :permission_roles
+
+ resources :permissions
 
  resources :object_models do
    resources :model_components
