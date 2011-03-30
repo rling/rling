@@ -81,10 +81,9 @@ Rling::Application.routes.draw do
   match "admin/dashboard" =>"admin#dashboard"
   match "admin/clear_cache"=>"admin#clear_cache"
   match "/:permalink"=> "display#show_page"
-  match "/:permalinkparent/:permalink"=> "display#show_model_data"
-
   match "display/error_page_display"=>"display#error_page_display"
   match "display/create_submissions/:id"=>"display#create_submissions"
+  match "/:permalinkparent/:permalink"=> "display#show_model_data"
 
   root :to => "display#index"
 

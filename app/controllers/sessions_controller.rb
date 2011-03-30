@@ -91,8 +91,8 @@ def create
          if params[:remember_me]=="1"
            cookies[:remember_me_code] = {:value => current_user.salt, :expires => 30.days.from_now }
          end
-         @user.current_login_ip=request.remote_ip
          @user.last_login_ip=@user.current_login_ip
+         @user.current_login_ip=request.remote_ip
          @user.login_count+=1 
 	 @user.save
          if current_user.admin?

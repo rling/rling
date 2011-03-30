@@ -24,17 +24,16 @@ class DisplayController < ApplicationController
    @object= ObjectModel.find_by_perma_link_parent("/"+params[:permalinkparent])
    if @object.nil?
      redirect_to :action=>"error_page_display"
+   else 
+     @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
+     if @model_submission.nil?
+	redirect_to :action=>"error_page_display"
+     else
+	@model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)		
+     end
    end
-   @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
-  if @model_submission.nil?
-     redirect_to :action=>"error_page_display"
   end
-   @model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)
-   puts @model_datas.inspect
-   #if $USE_SHADOW
-   #  render :layout=>false
-   #end
-  end
+  
   
   def error_page_display
 

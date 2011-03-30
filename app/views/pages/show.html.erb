@@ -26,17 +26,7 @@
    <% end %> 
 </p>
 
-<p>
-  <b>Page view type:</b>
-  <% if @page.page_view_type.eql?(0) %>
-     <%= "Computer and Mobile Browsers "%>
-  <% elsif @page.page_view_type.eql?(1) %>
-      <%= "Computer Browsers" %>
-   <% else %>
-<% Mobile Browsers %>
- <% end %>
- 
-</p>
+
 
 <p>
   <%= raw("<b>Email  </b> : #{@page.email}") if @page.type == "ObjectForm" %>

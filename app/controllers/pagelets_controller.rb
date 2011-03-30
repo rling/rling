@@ -1,5 +1,5 @@
 class PageletsController < ApplicationController
-before_filter :require_user
+before_filter :require_user,:require_admin
   # GET /pagelets
   # GET /pagelets.xml
   def index
