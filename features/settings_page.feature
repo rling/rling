@@ -25,7 +25,6 @@ Feature: Setting Page
     Given I go to setting index page 
     When I press "Edit" for "allow_user_register_user" on the setting index page
     Then I should see "Editing setting" on the edit setting page 
-    And I select "boolean" from "setting_setting_type"
     And I fill in "setting_setting_value" with "false"
     When I press "Update Setting"
     Then I should see "allow_user_register_user" for "Setting Name" on the page

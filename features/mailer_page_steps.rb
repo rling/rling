@@ -2,7 +2,7 @@ Then /^I should see "([^"]*)" on the mailer index page$/ do |arg1|
   page.find('#middle').text.index(arg1).should_not eq(0)
 end
 
-Given /^I have a menu in mailer index page$/ do
+Given /^I have a mailer in mailer index page$/ do
   @mailer = Mailer.create(:handle=>"Thank you", :subject=>"Thank you mail", :body=>"Thank you for joining us")
 end
 

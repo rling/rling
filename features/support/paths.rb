@@ -82,6 +82,9 @@ module NavigationHelpers
     when /new page_variable_setting/
       new_page_variable_setting_path
 
+    when /account page/
+      account_path
+  
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

@@ -14,21 +14,12 @@ Feature: Pages Page
     And I press "Login"
     Then I should see "Login successful!" on the page
 
-  Scenario: User on pages index page
-    Given I go to pages index page
-    Then I should see "Services" on the pages index page
-    And I should see " 	This is Heurion services" on the pages index page
-    And I should see "/blog" on the pages index page
-    And I should see "Yes" on the pages index page
-    And I should see "Computer & mobile browsers" on the pages index page
 
-  Scenario: Create a new Pagelet page successfully
-    Given I go to new pages page
+  Scenario: Create a new Pages page successfully
+    Given I go to the new pages page
     And I fill in "page_title" with "Client"
     And I fill in "page_body_editor" with "Google"
-    And I select "Computer & Mobile Browsers" from "page_page_view_type"
-    When I press "Create Page"
-    Then I should see "Page was successfully created."
+    When I click "Create Page"
     And I should see "Client" on the pages index page
     And I should see "Google" on the pages index page
     And I should see "/client" on the pages index page
@@ -55,17 +46,18 @@ Feature: Pages Page
     And I should see "No" on the pages show page
     And I should see "Computer & Mobile Browsers" on the pages show page
 
-#  Scenario: Edit a pages item
-#    Given I go to pages index page 
-#    When I click "Edit" for "Client" on the pages index page
-#    Then I should see "Editing page" on the edit pages page 
-#    And I fill in "page_title" with "Client"
-#    And I fill in "page_body_editor" with "Google"
-#    And I select "Computer & Mobile Browsers" from "page_page_view_type"
-#    When I press "Update Page"
-#    Then I should see "Page was successfully updated"
+  Scenario: Edit a pages item
+    Given I go to pages index page 
+    When I click "Edit" for "Client" on the pages index page
+    Then I should see "Editing page" on the edit pages page 
+    And I fill in "page_title" with "Client"
+    And I fill in "page_body_editor" with "Google"
+    And I select "Computer & Mobile Browsers" from "page_page_view_type"
+    When I press "Update Page"
+    Then I should see "Page was successfully updated"
 
   Scenario: Delete an item from page
+    Given I have a page in page index page
     Given I go to pages index page
     Then I should see "Client" on the pages index page
     When I click "Delete"

@@ -19,6 +19,7 @@ Feature: User Page
     Then I should see "amit" on the user index page
     And I should see "amit@heurion.com" on the user index page
 
+
 #  Scenario: User Details
 #    Given I go to user index page
 #    When I click "User Details"
@@ -44,7 +45,7 @@ Feature: User Page
   Scenario: Edit a User item
     Given I go to user index page 
     When I press "Edit" for "amit" on the user index page
-    Then I should see "Editing User" on the edit user page 
+    Then I should see "Editing user" on the edit user page 
     And I fill in "user_email" with "amit@heurion.com"
     And I fill in "user_password" with "test123"
     And I fill in "user_password_confirmation" with "test123"

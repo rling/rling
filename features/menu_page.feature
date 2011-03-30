@@ -27,7 +27,7 @@ Feature: Menu Page
     And I should see "Header" on the show page
     And I should see "1" on the show page
 
-  Scenario: Error in Creating new menuset
+  Scenario: Error in Creating new menu
     Given I go to the new menu page
     When I press "Create Menu"
     Then I should see "can't be blank" for "Name" on that page

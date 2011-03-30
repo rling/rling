@@ -47,21 +47,24 @@ Feature: Role Page
     Then I should see "can't be blank" for "Display text" on that pagelet page
 
   Scenario: User clicks on Show Page
+    Given I have a pagelet in pagelet index page
     Given I go to pagelet index page
     Then I should see "Home" on the pagelet index page
     And I should see "This is home menu" on the pagelet index page
-    When I click "Show"
-    Then I should see "Home" on the pagelet show page
-    And I should see "This is home menu" on the pagelet show page
+    When I press "Show" for "Home" on the pagelet index page
+    Then I should see "Home" for "Handle" on the pagelet show page
+    And I should see "This is home menu" for "Display text" on the pagelet show page
 
-#  Scenario: Edit a pagelet item
-#    Given I go to pagelet index page 
-#    When I press "Edit" for "Home" on the pagelet index page
-#    Then I should see "Editing pagelet" on the edit pagelet page 
-#    And I fill in "pagelet_handle" with "Home"
-#    And I fill in "pagelet_display_text" with "This is home menu"
-#    When I press "Update Pagelet"
-#    Then I should see "Pagelet was successfully updated"
+  Scenario: Edit a pagelet item
+    Given I have a pagelet in pagelet index page
+    Given I go to pagelet index page 
+    When I press "Edit" for "Home" on the pagelet index page
+    Then I should see "Editing pagelet" on the edit pagelet page 
+    And I fill in "pagelet_handle" with "Home"
+    And I fill in "pagelet_display_text" with "This is home menu"
+    When I press "Update Pagelet"
+    Then I should see "Home" for "Handle" on the pagelet show page
+    And I should see "This is home menu" for "Display text" on the pagelet show page
 
   Scenario: Delete an item from pagelet
     Given I go to pagelet index page

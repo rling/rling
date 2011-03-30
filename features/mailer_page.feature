@@ -50,7 +50,7 @@ Feature: Mailer Page
     Then I should see "can't be blank" for "Subject" on that mailer page
 
   Scenario: User clicks on Show Page
-    Given I have a menu in mailer index page
+    Given I have a mailer in mailer index page
     Given I go to mailer index page
     Then I should see "Thank you" on the mailer index page
     And I should see "Thank you mail" on the mailer index page
@@ -61,18 +61,18 @@ Feature: Mailer Page
     And I should see "Thank you mail" for "Subject" on the mailer show page
     And I should see "Thank you for joining us" for "Body" on the mailer show page
 
-#  Scenario: Edit a Mailer item
-#    Given I have a menu in mailer index page
-#    Given I go to mailer index page 
-#    When I press "Edit" for "Thank you" on the mailer index page
-#    Then I should see "Editing mailer" on the edit mailer page 
-#    And I fill in "mailer_hendle" with "Thank you"
-#    And I fill in "mailer_subject" with "Thank you mail"
-#    And I fill in "mailer_body_editor" with "Thank you for joining us"
-#    When I press "Update Mailer"
-#    Then I should see "Thank you" for "Handle" on the page
-#    And I should see "Thank you mail" for "Subject" on the page
-#    And I should see "Thank you for joining us" for "Body" on the page
+  Scenario: Edit a Mailer item
+    Given I have a mailer in mailer index page
+    Given I go to mailer index page 
+    When I press "Edit" for "Thank you" on the mailer page
+    Then I should see "Editing mailer" on the edit mailer page 
+    And I fill in "mailer_handle" with "Thank you"
+    And I fill in "mailer_subject" with "Thank you mail"
+    And I fill in "mailer_body_editor" with "Thank you for joining us"
+    When I press "Create Template"
+    Then I should see "Thank you" for "Handle" on the page
+    And I should see "Thank you mail" for "Subject" on the page
+    And I should see "Thank you for joining us" for "Body" on the page
 
   Scenario: Delete an item from mailer
     Given I go to mailer index page
