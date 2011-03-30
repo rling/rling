@@ -1,8 +1,6 @@
 class Page < ActiveRecord::Base
 include PermalinkHelper
 
-#callbacks
-after_save :set_menu
 
 #Associations
 has_one :menu ,:dependent => :destroy
@@ -12,12 +10,18 @@ email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 #validations
 validates :title ,:presence=>true
-validates :perma_link ,:presence=>true, :uniqueness=>true ,:format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets and numbers and -"}
+validates :perma_link ,:presence=>true, :uniqueness=>true ,:format=>{:with=>regex_pattern ,:message=>"Should contain a / and alphabets /alpabets and numbers/ and may have - separator "}
 validates :email, :format=> {:with => email_regex } ,:allow_blank =>true
 
 #named scope
 scope :pages ,  :conditions =>"type is null"
 scope :object_forms,  :conditions =>"type = 'ObjectForm'"
+
+#callbacks
+after_save :set_menu ,:clear_cache
+after_update :clear_cache
+after_destroy :clear_cache
+
 #instance methods
 
 def menu_menuset_id
@@ -89,9 +93,10 @@ private
 
  def set_menu
    unless @menu_name.blank?
+      unless @menu_name.empty?
       menu = self.menu
       if menu.nil?
-	  menu = Menu.new
+	    menu = Menu.new
       end 
       menu.name = @menu_name
       menu.parent_id = @parent_id
@@ -105,6 +110,7 @@ private
       menu.save
     end
   end
+ end
 
 
 
@@ -112,8 +118,17 @@ def destroy_menu
  unless self.menu.nil?
    self.menu.destroy
  end 
-end 
+end
 
+def clear_cache
+  root_path = Rails.root.to_s + "/tmp/cache"
+  entries = Dir.entries(root_path)
+  entries.each do |entry|
+   unless (entry == "." || entry == "..")
+       FileUtils.rm_rf(root_path + "/"+ entry)
+   end
+end
+end
 end
 
 

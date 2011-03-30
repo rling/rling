@@ -1,3 +1,5 @@
+<%= javascript_include_tag :ckeditor %>
+
 <% unless @object.model_components.eql?([]) %>
 
 <%= form_for([@object,@model_submission], :html => { :multipart => :true })  do |form| %>
@@ -13,43 +15,64 @@
     </div>
   <% end %>
 
- <div class="field">
-      <%= form.label :perma_link %><br />
-      <% if @model_submission.perma_link.nil? %>
-      <%= form.text_field :perma_link, :disabled=>"disabled"  %>
-      <% else %>
-      <%= form.text_field :perma_link %>
-      <% end %>
-  
-      <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
-Generate permalink automatically<br />
-
-  </div>
-
-<div>
-  <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
-Show on Home Page
-</div>
- <% if ModelSubmission.find_by_id_and_object_model_id(@model_submission.id,@object.id).nil? %>
+ 
+ <% if @model_submission.id.nil? %>
 <% @object.model_components.each do |model_component| %>
     <p>
       <%= model_component.component_display_name %>:
+   
       <%= check_model_component_type(model_component) %>
-     <%= model_component.is_mandatory ? "*" : "" %>
+      <%= model_component.is_mandatory ? "*" : "" %>
+      <% if model_component.component_name.eql?('title') %>
+     <div class="field">
+       <%= form.label :perma_link %><br />
+       <% if @model_submission.perma_link.nil? %>
+       <%= form.text_field :perma_link, :disabled=>"disabled"  %>
+       <% else %>
+       <%= form.text_field :perma_link %>
+       <% end %>
+
+       <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+        </div>
     </p>
+     <%  end %>
+
 <% end %>
  <%  else  %>
     <% @model_submission.model_datas.each do |model_data| %>
     <p>
       <%= model_data.model_component.component_display_name %>:
       <%= edit_model_component_type(model_data) %>
-     <%= model_data.model_component.is_mandatory ? "*" : "" %>
+      <%= model_data.model_component.is_mandatory ? "*" : "" %>
+      <% if model_data.model_component.component_name.eql?('title') %>
+  
+     <div class="field">
+       <%= form.label :perma_link %><br />
+       <% if @model_submission.perma_link.nil? %>
+       <%= form.text_field :perma_link, :disabled=>"disabled"  %>
+       <% else %>
+       <%= form.text_field :perma_link %>
+       <% end %>
+
+       <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+        </div>
     </p>
+    <%  end %>
+    
 <% end %>
     <% end %>
 
+        
+   
+<div>
+  <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
+Show on Home Page
+</div>
+
   <div class="actions">
-   <%= form.submit %>
+   <%= form.submit "#{(@model_submission.id.nil? ? "Create" : "Update")} #{@object.name.capitalize}"%> 
   </div>
 <% end %>
 <% end %>

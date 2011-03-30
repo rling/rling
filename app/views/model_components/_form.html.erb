@@ -86,20 +86,7 @@ var component_value = document.getElementById('field_value');
   <% end %>
 
   </div>
-
-
-  <div class="field">
-     <%= f.label 'Is this component deletable?' %><br />
-  
-  <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
-   <%=   f.check_box :is_deletable ,:disabled=>true %>
-  <% else  %>
-   <%=   f.check_box :is_deletable  %>
-  <% end %>
-
-  </div>
-
-  <div class="actions">
+ <div class="actions">
     <%= f.submit %>
   </div>
 

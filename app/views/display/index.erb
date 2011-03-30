@@ -1,3 +1,14 @@
 <% @pages.each do |page| %>
 	<%= render :partial => 'page_data',:locals=>{:page=>page} %>
 <% end %>
+<% unless @models.eql?([]) %>
+    <% @models.each do |model_submission| %>
+    <% cache ("#{model_submission.perma_link}") do %>
+      <% unless model_submission.model_datas.eql?([]) %>
+        <%  model_submission.model_datas.each do |model_data| %>
+        <%= render :partial=>"model_data", :locals=>{:model_data => model_data} %>
+        <% end %>
+     <%  end %>
+    <% end %>
+<% end %>
+<%  end %>

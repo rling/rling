@@ -1,12 +1,13 @@
-module ModelSubmissionsHelper
+ module ModelSubmissionsHelper
 
-  def check_model_component_type(model_component)
+def check_model_component_type(model_component)
      model_component_value = model_component.default_value
     case model_component.component_type
     when "Textfield"
       return text_field_tag("form_field[#{model_component.component_name}]",model_component_value)
     when "Textarea"
       return text_area_tag("form_field[#{model_component.component_name}]",model_component_value)
+   
     when "Dropdown"
       dropdown = model_component.component_values.split(',')
       return select_tag("form_field[#{model_component.component_name}]",options_for_select(dropdown,:selected=>model_component_value))

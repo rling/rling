@@ -1,11 +1,8 @@
-
-<%= link_to 'New Model component', new_object_model_model_component_path %>|
+<% @model="new " << "component of " << @object.name.capitalize  %>
+<%= link_to @model, new_object_model_model_component_path %>|
 <%= link_to 'back', object_models_path %>
 
-
-
-
-<h1>Listing Model Components for <u><%= @object.name %></u> Object Model</h1>
+<h1>Listing  Components of  <u><%= @object.name %></u> </h1>
 
 <table>
   <tr>
@@ -40,6 +37,6 @@
 
 <br />
 
-<%= link_to 'New Model component', new_object_model_model_component_path %>|
+<%= link_to @model, new_object_model_model_component_path %>|
 <%= link_to 'back', object_models_path %>
 

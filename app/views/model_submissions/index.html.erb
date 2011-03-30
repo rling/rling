@@ -1,20 +1,19 @@
-<%= link_to 'New Model Submision', new_object_model_model_submission_path %>|
-<%= link_to 'Back', object_models_path %></td>
+ <% @model= "New " << @object.name.capitalize %>
+
+   <%= link_to @model, new_object_model_model_submission_path %>|
+ <%= link_to 'Back to Dashboard', admin_dashboard_path %>
 
 
-
-<h1>Listing model Submissions for <%= @object.name %> </h1>
+<h1>Listing  <%= @object.name.capitalize %> </h1>
 
 <table>
 
 <tr>
-
+<% unless @object.model_submissions.eql?([]) %>
 <% @object.model_components.each do |model_component|   %>
-  <th><h4><%=model_component.component_display_name.capitalize %></h4>
+   <th><h4><%=model_component.component_display_name.capitalize %></h4>
     <%   break %>
-</th>
-
- <% end %>
+   </th><% end %>
 
 
 </tr>
@@ -31,10 +30,15 @@
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %></td>
     <td><%=link_to image_tag("delete.png",:class=>"image_link"), [@object,model_submission], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+ <% end %>
+  <% else %>
+  <%= "You don't have any  Submissions!!! ,want to add detail ? click on New " << @object.name.capitalize %><br/>
+  <% end %>
   </table>
-  <%= link_to 'New Model Submision', new_object_model_model_submission_path %>|
-  <%= link_to 'Back', object_models_path %></td>
+ 
+
+   <%= link_to @model, new_object_model_model_submission_path %>|
+   <%= link_to 'Back to Dashboard', admin_dashboard_path %>
 
 
 

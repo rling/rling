@@ -120,7 +120,7 @@ class ModelSubmissionsController < ApplicationController
      end
    
     if params[:permalnk] == "1"
-   	@model_submission.perma_link_generate
+   	@model_submission.perma_link_generate(@title)
     end
     @model_submission.home_page = params[:home_page]
  

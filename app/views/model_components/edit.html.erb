@@ -2,8 +2,8 @@
 
 <%= link_to image_tag("show.png",:class=>"image_link"), [@object,@model_component] %> |
 <%= link_to 'Back', object_model_model_components_path %>
-
-<h1>Editing Model Component  <u><%= @object.name %> </u> Object Model </h1>
+<% component_name = @model_component.component_name %>
+<h1>Editing  <%= component_name.capitalize << " of " << @object.name %>  </h1>
 
 <%= render 'form' %>
 

@@ -1,7 +1,8 @@
 <%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_component_path %>|
 <%= link_to 'Back', object_model_model_components_path %>
 
-<h1>Show Model  Component Details</h1>
+<% component_name = @model_component.component_name %>
+<h1>Show Details of <%= component_name.capitalize << " of " << @object.name %>  </h1>
 
 <p>
   <b>Component name:</b>

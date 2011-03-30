@@ -30,6 +30,7 @@ def create_permalink(string, separator = '-', max_size = 127)
   return permalink.gsub(/^\\#{separator}+|\\#{separator}+$/, '')
   
 end
+
 def create_permalink_parent(string, separator = '-', max_size = 127)
 
   # words to ignore, usually the same words ignored by search engines
@@ -41,13 +42,15 @@ def create_permalink_parent(string, separator = '-', max_size = 127)
     ignore_re << word + '\b|\b'
   }
   ignore_re = '\b' + ignore_re + '\b'
+    
 
   # replace apostrophes with separator
+ string=string.pluralize
   permalink = string.gsub("'", separator)
    permalink = string.gsub(" ", separator)
   # delete ignore words
   permalink.gsub!(ignore_re, '')
-  permalink << 's'
+
   # all down
   permalink.downcase!
 

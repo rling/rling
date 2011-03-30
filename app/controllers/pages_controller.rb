@@ -111,7 +111,8 @@ include PermalinkHelper
     if params[:permalnk] == "1"
    	@page.perma_link_generate
     end
-    unless page_params[:menu_name].empty?
+     unless page_params[:menu_name]..nil?
+     unless page_params[:menu_name].empty?
 	    menu = Menu.find_by_page_id(@page.id)
 	    if menu.nil?
 	     menu = Menu.new
@@ -121,7 +122,8 @@ include PermalinkHelper
 	    menu.page_id = @page.id
             menu.menu_view_type = page_params[:page_view_type]
 	    menu.save
-    end
+     end
+     end
     respond_to do |format|
       if @page.update_attributes(page_params)
    	  unless params[:page_variables].nil?

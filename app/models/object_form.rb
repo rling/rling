@@ -3,7 +3,8 @@ class ObjectForm < Page
 has_many :form_components ,:dependent => :destroy
 has_many :form_submissions,:dependent => :destroy
 #call backs
-after_create :create_email_template
+after_create :create_email_template 
+
 #instance methods
  def create_email_template
     subject= "Form has been submitted for #{self.title} page"

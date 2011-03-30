@@ -1,4 +1,6 @@
-<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>|
+<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,@model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>|
+<h1>Details of  <%= @object.name.capitalize %>  </h1>
+
 <p>
   <b>Perma link:</b>
   <%= @model_submission.perma_link %>
@@ -21,7 +23,7 @@
 
 <% @model_submission.model_datas.each do |model_data| %>
         <%= model_data.model_component.component_display_name %>:
-	<%= get_model_data(model_data.model_component.component_type,model_data.data_value) %><br />
+	<%= get_form_data(model_data.model_component.component_type,model_data.data_value) %><br />
 <% end %>
 
-<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>
+<%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,@model_submission) %>|<%= link_to 'Back', object_model_model_submissions_path %>

@@ -8,4 +8,11 @@
 <%= link_to "Object Forms Administration" ,object_form_index_pages_path %><br/>
 <%= link_to "Object Models Administration" ,object_models_path %><br/>
 <%= link_to "Pagelets Administration" ,pagelets_path %><br/>
-
+<% unless @objects.eql?([]) %>
+<h1><u><%= "Models Administration " %></u></h1>
+<% @objects.each do |object_model| %>
+ <% @link=object_model.name.capitalize.pluralize %>
+ <% @link<< " Administration" %>
+ <%= link_to @link,[object_model,:model_submissions] %> <br/>
+<% end %>
+<% end %>

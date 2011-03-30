@@ -5,7 +5,7 @@ class ModelSubmission < ActiveRecord::Base
   belongs_to :object_model
   #validations
   regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
-  validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets and numbers and -"}
+  validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contain - separator"}
 
   #instance methods
   def permalnk

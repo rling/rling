@@ -14,9 +14,9 @@
   <tr>
     <td><%= pagelet.handle %></td>
     <td><%= pagelet.display_text %></td>
-    <td><%= link_to 'Show', pagelet %></td>
-    <td><%= link_to 'Edit', edit_pagelet_path(pagelet) %></td>
-    <td><%= link_to 'Destroy', pagelet, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to image_tag("show.png",:class=>"image_link") , pagelet %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_pagelet_path(pagelet) %></td>
+    <td><%=  link_to image_tag("delete.png",:class=>"image_link"), pagelet, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

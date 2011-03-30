@@ -2,7 +2,8 @@ class DisplayController < ApplicationController
 
 
   def index
-   @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])   
+   @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
+   @models=ModelSubmission.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
   end
 
   def mobile_index
@@ -29,6 +30,7 @@ class DisplayController < ApplicationController
      redirect_to :action=>"error_page_display"
   end
    @model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)
+   puts @model_datas.inspect
    #if $USE_SHADOW
    #  render :layout=>false
    #end

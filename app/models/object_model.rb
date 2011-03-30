@@ -5,7 +5,7 @@ class ObjectModel < ActiveRecord::Base
   has_many :model_submissions ,:dependent=>:destroy
   #Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
-  validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets and numbers and -"}
+  validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabetsor alphabets and numbers and may contailn - separator"}
   validates :name ,:presence=>true, :uniqueness=>true
 #call backs
   after_create :create_2_model_components
