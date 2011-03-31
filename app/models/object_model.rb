@@ -56,10 +56,10 @@ def generate_perma_link(perma_link)
     model_component2.object_model_id=self.id
     model_component2.component_name='body'
     model_component2.component_display_name='Body'
-    model_component2.component_type='Textarea'
+    model_component2.component_type='cktext_area'
     model_component2.default_value='Enter The content'
     model_component2.is_deletable=false
-    model_component2.is_mandatory=true
+    model_component2.is_mandatory=false
     model_component2.save
     
  end

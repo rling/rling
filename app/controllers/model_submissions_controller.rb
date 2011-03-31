@@ -36,10 +36,11 @@ class ModelSubmissionsController < ApplicationController
   # GET /model_submissions/1/edit
   def edit
     @model_submission =  @object.model_submissions.find(params[:id])
-  end
+     
+ end
 
   # POST /model_submissions
-  # POST /model_submissions.xml
+  # POST /model_submissions.xmlmodel_data
   def create
      message= "Your details have been submitted successfully"
     if @object.nil?
@@ -47,6 +48,7 @@ class ModelSubmissionsController < ApplicationController
 
     else
     @model_submission =  @object.model_submissions.new(params[:model_submission])
+
     model_data=params[:form_field]
       mandatoryfailed = false
     @object.model_components.each do |component|
@@ -108,13 +110,16 @@ class ModelSubmissionsController < ApplicationController
       message= "Could not submit your details. Please try again"
     else
      @model_submission =  @object.model_submissions.find(params[:id])
-    model_data=params[:form_field]
+     model_data=params[:form_field]
+
+
       mandatoryfailed = false
     @object.model_components.each do |component|
         if  component.component_name.eql?('title')
          @title =model_data[component.component_name]
         elsif  component.is_mandatory && model_data[component.component_name].blank?
          mandatoryfailed = true
+        
           break;
         end
      end
@@ -132,6 +137,7 @@ class ModelSubmissionsController < ApplicationController
           if model_data_obj.nil?
           model_data_obj = ModelData.new(:model_submission_id=>@model_submission.id,:model_component_id=>component.id)
           end
+
           case component.component_type
           when "File"
             unless model_data[component.component_name].nil?
@@ -146,7 +152,9 @@ class ModelSubmissionsController < ApplicationController
               model_data_obj.data_value = asset.id.to_s
             end
           else
-           model_data_obj.data_value = model_data[component.component_name]
+             
+               model_data_obj.data_value = model_data[component.component_name]
+       
           end
           model_data_obj.save
         end

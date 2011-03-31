@@ -102,7 +102,7 @@ include PermalinkHelper
     if params[:permalnk] == "1"
    	@page.perma_link_generate
     end
-     unless page_params[:menu_name]..nil?
+     unless page_params[:menu_name].nil?
      unless page_params[:menu_name].empty?
 	    menu = Menu.find_by_page_id(@page.id)
 	    if menu.nil?

@@ -8,7 +8,7 @@
       <% page.form_components.each do |form_component| %>
       <p>
       <%= form_component.component_display_name %>:
-      <%= check_component_type(form_component) %>
+      <%= check_component_type(form_component,@form_submission) %>
       <%= form_component.mandatory ? "*" : "" %>
       </p>
       <% end %>

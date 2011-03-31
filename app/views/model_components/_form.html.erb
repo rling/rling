@@ -57,9 +57,9 @@ var component_value = document.getElementById('field_value');
  <% if  @model_component.component_name.eql?('body') %>
     <%= f.select :component_type,options_for_select(["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"],:disabled=>["Dropdown","Textfield","Checkbox","Radiobutton","File"]), {},{:onchange=>"return findselected();"} %><br />
  <% elsif @model_component.component_name.eql?('title') %>
-    <%= f.select :component_type,options_for_select(["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"],:disabled=>["Dropdown","Textarea","Checkbox","Radiobutton","File"]), {},{:onchange=>"return findselected();"} %><br />
+    <%= f.select :component_type,options_for_select(["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","Date","File"],:disabled=>["Dropdown","Textarea","Checkbox","Radiobutton","File"]), {},{:onchange=>"return findselected();"} %><br />
  <% else %>
-    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %>
+    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","Date","File"], {},{:onchange=>"return findselected();"} %>
   <% end %>
 
   </div>

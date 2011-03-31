@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
- <% @form_submission.form_datas.each do |form_data| %>
+ <% @page.form_components.each do |form_component| %>
     <p>
-      <%= form_data.form_component.component_name %>:
-      <%= edit_component_type(form_data) %>
-      <%= form_data.form_component.mandatory ? "*" : "" %>
+      <%= form_component.component_name %>:
+      <%= check_component_type(form_component,@form_submission) %>
+      <%= form_component.mandatory ? "*" : "" %>
     </p>
     <% end %>
     <p> <%= submit_tag "Update" %> </p>

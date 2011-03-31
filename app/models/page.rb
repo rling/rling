@@ -55,9 +55,9 @@ end
 
 
 def menu_name
-unless self.id.nil?
- menu = Menu.find_by_page_id(self.id)
- unless menu.nil?
+  unless self.id.nil?
+  menu = Menu.find_by_page_id(self.id)
+  unless menu.nil?
    return menu.name
  end
 end
@@ -92,7 +92,7 @@ def generate_perma_link(perma_link)
 private
 
  def set_menu
-   unless @menu_name.blank?
+   unless @menu_name.nil?
       unless @menu_name.empty?
       menu = self.menu
       if menu.nil?

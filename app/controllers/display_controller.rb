@@ -12,6 +12,11 @@ class DisplayController < ApplicationController
 
   def show_page
     @page = Page.find_by_perma_link("/"+params[:permalink])
+     unless @page.nil? 
+       if  @page.type.eql?('ObjectForm')
+        @form_submission =  @page.form_submissions.new
+       end
+    end
    if @page.nil?
      redirect_to :action=>"error_page_display"
    end
