@@ -1,7 +1,11 @@
 Rling::Application.routes.draw do
   resources :permission_roles
 
- resources :permissions
+ resources :permissions do
+  collection do
+   post 'save_permission_roles'
+  end
+ end
 
  resources :object_models do
    resources :model_components

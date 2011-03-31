@@ -1,5 +1,5 @@
 <h1>Listing permissions</h1>
-
+<%= form_tag save_permission_roles_permissions_path do %>
 <table>
   <tr>
     <th>Permission Name</th>
@@ -11,10 +11,10 @@
   <tr>
     <td><%= permission.activity_display_text %></td>
     <% for role in Role.all %>
-    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]" %>
-      
+    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]" %></td>
     <% end %>
   </tr>
   <% end %>
-</table>
-<%= submit_tag "Update" %>
+  </table>
+  <%= submit_tag "Update" %>
+<% end %>

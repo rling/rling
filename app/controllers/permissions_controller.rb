@@ -24,11 +24,11 @@ class PermissionsController < ApplicationController
   # GET /permissions/new
   # GET /permissions/new.xml
   def new
-    @permission = Permission.new
+    @permission_role = PermissionRole.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @permission }
+      format.xml  { render :xml => @permission_role }
     end
   end
 
@@ -40,10 +40,10 @@ class PermissionsController < ApplicationController
   # POST /permissions
   # POST /permissions.xml
   def create
-    @permission = Permission.new(params[:permission])
+    @permission_role = PermissionRole.new(params[:permission_role])
 
     respond_to do |format|
-      if @permission.save
+      if @permission_role.save
         format.html { redirect_to(@permission, :notice => 'Permission was successfully created.') }
         format.xml  { render :xml => @permission, :status => :created, :location => @permission }
       else
@@ -57,7 +57,6 @@ class PermissionsController < ApplicationController
   # PUT /permissions/1.xml
   def update
     @permission = Permission.find(params[:id])
-
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
         format.html { redirect_to(@permission, :notice => 'Permission was successfully updated.') }
@@ -80,4 +79,18 @@ class PermissionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def save_permission_roles
+    #@permission=Permission.find(params[:id])
+    @permission_role = PermissionRole.new#(params[:permission_role])
+    @permission_role.permission_id=params[:permission_role]['permission.id']
+    @permission_role.role_id=params[:permission_role]['role.id']
+    #@permission_role.value=(params[:permission_role].nil? ? "false" : "true")
+    @permission_role.save
+      if @permission_role.save
+      redirect_to admin_dashboard_path, :notice=>"Settings have been updated"
+      else
+       redirect_to permissions_path, :notice=>"Your settings are not saved. Please try again."
+      end
+    end
 end

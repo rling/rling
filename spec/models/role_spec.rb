@@ -34,9 +34,9 @@ describe Role do
 
   it "should destroy associated permission_roles on its deletion" do
     role=Role.create!(:role_type=>"test")
-    permission_role=PermissionRole.create!(:permission_object=>'page',:permission_type=>'page',:activity_code=>'create')
+    permission_role=PermissionRole.create!(:permission_id=>'1',:role_id=>role.id)
     role.destroy
-    permission_role.find_by_id(permission_role.id).should be_nil
+    PermissionRole.find_by_id(permission_role.id).should be_nil
   end   
 end
 
