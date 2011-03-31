@@ -14,7 +14,7 @@ When /^I press "([^"]*)" for the "([^"]*)" on the page_variable_setting page$/ d
   if arg1 == "Edit" 
     visit edit_page_variable_setting_path(@page_variable_setting)
   elsif arg1 == "Show"
-    visit page_variable_setting_path(@mailer)
+    visit page_variable_setting_path(@page_variable_setting)
   end
 end
 

@@ -84,6 +84,18 @@ module NavigationHelpers
 
     when /account page/
       account_path
+
+    when /object_form_index page/
+      object_form_index_pages_path
+
+    when /new object_form page/
+      new_object_form_pages_path
+
+    when /new object_model/
+      new_object_model_path
+
+    when /new model_components/
+      new_object_model_model_component_path @object_model
   
     
     # Add more mappings here.

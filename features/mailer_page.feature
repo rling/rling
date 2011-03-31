@@ -12,7 +12,7 @@ Feature: Mailer Page
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
     And I press "Login"
-    Then I should see "Login successful!" on the page
+#    Then I should see "Login successful!" on the page
 
   Scenario: User on mailer index page
     Given I go to mailer index page
@@ -80,11 +80,12 @@ Feature: Mailer Page
     When I click "Delete"
     Then I should not see "Thank you" on the mailer index page
 
-#  Scenario: Send Mail
-#     Given I go to mailer index page
-#     Then I click "Send Mail"
-#     And I fill in "mailer_to" with "amit.mandal@gmail.com"
-#     And I fill in "mailer_subject" with "Thank you mail"
-#     And I fill in "mailer_body_editor" With "Thank you for joining us"
-#     When I press "Send Mail"
-#     Then I should see "Mail sent to given emails successfully" no the mailer index page
+  Scenario: Send Mail
+     Given I have a mailer in mailer index page
+     Given I go to mailer index page
+     Then I press "Send Mail" for "Thank you" on the mailer page
+     And I fill in "mailer_to" with "amit.mandal@gmail.com"
+     And I fill in "mailer_subject" with "Thank you mail"
+     And I fill in "mailer_body_editor" with "Thank you for joining us"
+     When I press "Send Mail"
+     Then I should see "Mail sent to given emails successfully" on the mailer index page
