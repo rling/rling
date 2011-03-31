@@ -1,4 +1,4 @@
-<h1>Configurable settings</h1>
+<h1>Configurable Settings</h1>
 
 <table>
   <tr>
@@ -11,11 +11,11 @@
 
 <% @settings.each do |setting| %>
   <tr>
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_setting_path(setting)%></td>
     <td><%= setting.name %></td>
     <td><%= setting.desc_text %></td>
     <td><%= setting.setting_type %></td>
     <td><%= setting.setting_value %></td>
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_setting_path(setting)%></td>
   </tr>
 
 <% end %>
@@ -23,6 +23,6 @@
 
 <br />
 <h1>Non-Configurable Settings</h1>
-<p>Caching by default stores all the Pages, object forms and the pagelets. You can delete all the cached data and allow them to be procured from the database. Click on below link to Clear the cache”</p>
+<p>Caching by default stores all the Pages, Object Forms and the Pagelets. You can delete all the cached data and allow them to be procured from the database. Click on below link to Clear the cache”</p>
 <p><%= link_to "Clear Cache", admin_clear_cache_path %></p>
 <%= link_to 'Back to Dashboard',admin_dashboard_path %>

@@ -8,7 +8,6 @@
     <th>Body</th>
     <th>Perma link</th>
     <th>Home page</th>
-    <th>Page view type</th>
     <th></th>
     <th></th>
     <th></th>
@@ -27,13 +26,7 @@
           <td><%= "Yes" %></td>
      <% end %>
       
-    <% if page.page_view_type.eql?(0) %>
-          <td><%= "Computer & mobile browsers"%></td>
-      <% elsif page.page_view_type.eql?(1) %>
-          <td><%= "Computer browsers"%></td>
-      <% else %>
-       <td><%= "Mobile browsers"%></td>
-     <% end %>
+   
    
     <td><%= link_to image_tag("show.png",:class=>"image_link"), page %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>

@@ -8,10 +8,12 @@ def setup
 
  setting = Setting.find_by_name("smtp_settings")
  smtp_setting_string = setting.setting_data
- smtp_settings = smtp_setting_string.split(';')
+ smtp_chomp=smtp_setting_string.chomp
+ smtp_settings = smtp_chomp.split(';')
  smtp_hash = Hash.new
  smtp_settings.each do |smtp_setting|
-   smtp_entries = smtp_setting.split(':')
+   smtp_chomp= smtp_setting.chomp
+   smtp_entries = smtp_chomp.split(':')
    smtp_hash[smtp_entries[0]]=smtp_entries[1]
  end
  Notifier.smtp_settings = smtp_hash

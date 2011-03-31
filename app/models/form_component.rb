@@ -3,7 +3,8 @@ class FormComponent < ActiveRecord::Base
 belongs_to :object_form
 has_many   :form_datas ,:dependent => :destroy
 #Validations
-validates :component_name, :presence=>true,:length=>{:minimum=>3}
+name_regex = /^[a-zA-Z0-9\-_]+$/
+validates :component_name, :presence=>true,:length=>{:minimum=>3},:format=> {:with => name_regex}
 validates :component_type, :presence=>true
 validates :component_display_name, :presence=>true
 

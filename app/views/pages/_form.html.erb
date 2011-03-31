@@ -27,7 +27,9 @@
     <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5')  %>
   </div>
   
-  
+   <div class="field">
+      <%= form.hidden_field :page_view_type, :value => 1 %>
+   </div>
   
  
   <div class="field">
