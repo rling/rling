@@ -96,6 +96,12 @@ module NavigationHelpers
 
     when /new model_components/
       new_object_model_model_component_path @object_model
+
+    when /admin page/
+      admin_path
+
+    when /new model_submissions page/
+      new_object_model_model_submission_path @object_model
   
     
     # Add more mappings here.

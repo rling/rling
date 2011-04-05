@@ -15,7 +15,7 @@ Feature:Login
     And I fill in "password" with "test123"
 #    When I check "Remember me"
     And I press "Login"
-#    Then I should see "Login successful!" on the page
+    Then I should see "Login successful!" on the page
 #    And the "Remember me" should be checked
 
     

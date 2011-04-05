@@ -12,7 +12,7 @@ Feature: Object Model Page
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
     And I press "Login"
-#    Then I should see "Login successful!" on the page
+    Then I should see "Login successful!" on the page
 
   Scenario: User on Object Model index page
     Given I go to object_model index page
@@ -46,7 +46,7 @@ Feature: Object Model Page
     And I should see "Blog page" for "Description" on the object_model show page
     And I should see "/blogs" for "Perma link Parent" on the object_model show page
 
-  Scenario: Edit a Mailer item
+  Scenario: Edit a Object Model item
     Given I have a object_model in object_model index page
     Given I go to object_model index page
     When I press "Edit" for "Blog" on the object_model index page
@@ -91,6 +91,8 @@ Feature: Object Model Page
     And I should see "24" for "Default value" on the model_components show page
     And I should see "false" for "Mandatory" on the model_components show page
     And I should see "true" for "deletable" on the model_components show page
+    When I go to admin page
+    Then I should see "Blogs Administration" on the admin page
 
   Scenario: Error in Creating new Object Model( when Component name & Component display name are blank )
     Given I have a object_model in object_model index page
@@ -100,3 +102,56 @@ Feature: Object Model Page
     Then I should see "can't be blank" for "Component name" on that model_component page
     Then I should see "is too short (minimum is 3 characters)" for "Component name" on that model_component page
     Then I should see "can't be blank" for "Component display name" on that model_component page
+
+  Scenario: User on Model Administration
+    Given I go to admin page
+    Then I should see "Blogs Administration" on the admin page
+    When I click "Blogs Administration"
+    Then I am on model_submissions index page
+
+  Scenario: Create a new Model Submission page successfully
+    Given I have a object_model in object_model index page
+    Given I have a model_component in model_component index page
+    Given I go to new model_submissions page
+    And I fill in "form_field_title" with "Enter The title"
+#    And I fill in "form_field_body" with "Enter The content"
+#    And I fill in "form_field_age" with "Enter the age1"
+    When I click "Create Blog"
+    Then I am on model_submissions index page
+    Then I should see "Enter the title" on the model_submissions index page
+
+  Scenario: User clicks on Show Page
+    Given I have a object_model in object_model index page
+    Given I have a model_submission in model_submissions index page
+    Given I go to model_submissions index page
+    Then I should see "Enter the title" on the model_submissions index page
+    When I press "Show" for "Enter the title" on the model_submissions index page
+    Then I should see "/enter-the-title " on the model_submissions show page
+    And I should see "computer and Mobile Browsers " on the model_submissions show page
+    And I should see "No" on the model_submissions show page
+    And I should see "Enter the title" on the model_submissions show page
+    And I should see "Enter the content" on the model_submissions show page
+    And I should see "Enter the age1" on the model_submissions show page
+
+  Scenario: Edit a Model Submission item
+    Given I have a object_model in object_model index page
+    Given I have a model_submission in model_submissions index page
+    Given I go to model_submissions index page
+    When I press "Edit" for "Enter the title" on the model_submissions index page
+    Then I should see "Editing Blog" on the edit model_submission page 
+    And I fill in "form_field_title" with "Enter The title"
+    And I fill in "model_submission_perma_link" with "/enter-the-title"
+    And I fill in "form_field_body" with "Enter The content"
+    And I fill in "form_field_age" with "Enter the age1"
+    When I press "Update Blog"
+    Then I should see "Enter The title" on the model_submissions index page
+
+  Scenario: Delete an item from Model Submission
+    Given I have a object_model in object_model index page
+    Given I have a model_submission in model_submissions index page
+    Given I go to model_submissions index page
+    Then I should see "Enter The title" on the model_submissions index page
+    When I press "Delete" for "Enter The title" on the model_submissions index page
+    Then I should not see "Enter The title" on the model_submissions index page
+    
+    

@@ -11,7 +11,7 @@ Feature: Menu Page
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
     And I press "Login"
-#    Then I should see "Login successful!" on the page
+    Then I should see "Login successful!" on the page
 
   Scenario: User adds a new menu
     Given I go to the new menu page
@@ -66,4 +66,12 @@ Feature: Menu Page
     Then I should see "Home" on the index page
     And I follow "Delete"
     Then I should not see "Home" on the index page
+
+  Scenario: Update position
+    Given I have a menu in menu index page
+    Given I go to menu index page
+    Then I should see "0" on the menu index page
+    And I fill in "1" with "1"
+    When I press "Update Positions"
+    Then I should see "1" on the menu index page
 

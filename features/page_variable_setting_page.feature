@@ -12,7 +12,7 @@ Feature: Page Variable Setting Page
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
     And I press "Login"
-#    Then I should see "Login successful!" on the page
+    Then I should see "Login successful!" on the page
 
   Scenario: User on Page Variable Setting index page
     Given I go to page_variable_setting index page
