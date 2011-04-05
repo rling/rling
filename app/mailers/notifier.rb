@@ -17,6 +17,8 @@ def setup
    smtp_hash[smtp_entries[0]]=smtp_entries[1]
  end
  Notifier.smtp_settings = smtp_hash
+ puts 3333333333333333
+ puts smtp_hash.inspect
 end
 def forgot_password(user)
       #setup
@@ -30,7 +32,7 @@ end
 
 
 def activation_email(user)
-  #setup
+  setup
   @user=user.login
   mailer=Mailer.find_by_handle('activation')
   subject=mailer.subject
@@ -40,7 +42,7 @@ def activation_email(user)
 end
 
   def welcome_email(user)
-  #setup
+  setup
   @user=user.login
   mailer=Mailer.find_by_handle('welcome')
   subject=mailer.subject
