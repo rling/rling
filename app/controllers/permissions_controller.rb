@@ -81,7 +81,6 @@ class PermissionsController < ApplicationController
   end
 
   def save_permission_roles
-    #@permission=Permission.find(params[:id])
     @permission_role = PermissionRole.new#(params[:permission_role])
     @permission_role.permission_id=params[:permission_role]['permission.id']
     @permission_role.role_id=params[:permission_role]['role.id']

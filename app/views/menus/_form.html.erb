@@ -17,8 +17,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :display_menu_on %><br />
-    <%= f.select :menu_view_type,{'Computer & Mobile Browsers'=>0,'Computer Browser only'=>1,'Mobile Browser only'=>2} %>
+    <%= f.hidden_field :page_view_type, :value => 1 %>
   </div>
 
   <div class="field">
