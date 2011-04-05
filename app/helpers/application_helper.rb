@@ -91,15 +91,3 @@ def get_all_menus(record)
     end
   end
 end 
-
-#  def get_perm(role_id,activity_code)
-#    perm=Permission.find_by_role_id_and_activity_code(role_id,activity_code)
-#    unless perm.nil?
-#      if perm.status==true
-#        return true
-#      else
-#        redirect_to "/"
-#      end
-#    end
-#  end
-  

@@ -1,6 +1,7 @@
 class ModelSubmissionsController < ApplicationController
 
-  before_filter :get_object_model
+  before_filter :get_object_model,:verify_permission
+
   # GET /model_submissions
   # GET /model_submissions.xml
    def index
@@ -35,9 +36,12 @@ class ModelSubmissionsController < ApplicationController
 
   # GET /model_submissions/1/edit
   def edit
-    @model_submission =  @object.model_submissions.find(params[:id])
-     
- end
+      @model_submission =  @object.model_submissions.find(params[:id])
+     respond_to do |format|
+      format.html # edit.html.erb
+      format.xml  { render :xml => @model_submission }
+    end
+  end
 
   # POST /model_submissions
   # POST /model_submissions.xmlmodel_data
@@ -60,7 +64,7 @@ class ModelSubmissionsController < ApplicationController
         end
      end
      if params[:permalnk] == "1"
-           @model_submission.perma_link_generate(@title)
+        @model_submission.perma_link_generate(@title)
      end
         @model_submission.home_page = params[:home_page]
      unless mandatoryfailed

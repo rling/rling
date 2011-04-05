@@ -1,13 +1,38 @@
 class ApplicationController < ActionController::Base
+  include Userstamp
   protect_from_forgery
   helper :all
   helper_method :current_user,:current_user?
   before_filter :check_browser,:check_admin,:check_cookie
   layout :set_layout
-  
-  private
+   
+  def verify_permission
 
-       
+      activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewlist"}
+      activity = activities[params[:action]]
+      if["edit" , "delete"].include?(activity)
+        if current_user.nil?
+         activity = "#{activity}other"
+        else
+         @model_submission =  @object.model_submissions.find(params[:id])
+         if(@model_submission.creator_id != current_user.id)
+           activity = "#{activity}other"
+         end
+       end
+      end
+
+      unless activity.nil?
+        permission_type = @object.class.to_s
+        permission_object = @object.name
+        permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
+        role_id = current_user.nil? ? 1 : current_user.role_id
+        permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+        if permissionrole.nil? || !permissionrole.value
+           redirect_to :controller=>"display",:action=>"no_permissions"
+        end
+      end
+    end
+
     def current_user
       return session[:user]
     end
@@ -98,5 +123,7 @@ class ApplicationController < ActionController::Base
 
     def set_layout
 		return (session[:browser] == 2) ? "mobile_application" : "application" 
-    end 
+    end
+
+   
 end

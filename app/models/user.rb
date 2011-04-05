@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include ApplicationHelper
+  model_stamper
 #Associations
   belongs_to :role
   has_many :user_details, :dependent=> :destroy

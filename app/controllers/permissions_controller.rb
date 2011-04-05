@@ -3,6 +3,7 @@ class PermissionsController < ApplicationController
   # GET /permissions.xml
   def index
     @permissions = Permission.all
+    @roles = Role.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,15 +82,20 @@ class PermissionsController < ApplicationController
   end
 
   def save_permission_roles
-    @permission_role = PermissionRole.new#(params[:permission_role])
-    @permission_role.permission_id=params[:permission_role]['permission.id']
-    @permission_role.role_id=params[:permission_role]['role.id']
-    #@permission_role.value=(params[:permission_role].nil? ? "false" : "true")
-    @permission_role.save
-      if @permission_role.save
-      redirect_to admin_dashboard_path, :notice=>"Settings have been updated"
-      else
-       redirect_to permissions_path, :notice=>"Your settings are not saved. Please try again."
+    PermissionRole.update_all(:value=>false)
+    params[:permission_role].each do |k,v|
+      v.each do |k1,v1|
+        permission_role=PermissionRole.find_by_permission_id_and_role_id(k,k1)
+        if permission_role.nil?
+          permission_role=PermissionRole.new
+          permission_role.permission_id=k
+          permission_role.role_id=k1
+        end
+        permission_role.value=true
+        permission_role.save
       end
     end
+    flash[:notice]="Permissions saved successfully"
+    redirect_to admin_dashboard_path
+  end
 end

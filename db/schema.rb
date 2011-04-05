@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405104514) do
+ActiveRecord::Schema.define(:version => 20110405150335) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(:version => 20110405104514) do
     t.integer  "page_view_type",  :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "object_models", :force => true do |t|

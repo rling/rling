@@ -1,5 +1,8 @@
 class ModelSubmission < ActiveRecord::Base
   include PermalinkHelper
+  
+  stampable
+
   #Associations
   has_many :model_datas ,:dependent=>:destroy
   belongs_to :object_model

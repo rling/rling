@@ -3,17 +3,19 @@
 <table>
   <tr>
     <th>Permission Name</th>
-    <% for role in Role.find(:all) %>
+    <% @roles.each do |role| %>
      <th> <%= role.role_type %></th>
      <% end %>
   </tr>
   <% @permissions.each do |permission| %>
   <tr>
     <td><%= permission.activity_display_text %></td>
-    <% for role in Role.all %>
-    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]" %></td>
+    <% for role in Role.all
+    permissionrole = PermissionRole.find_by_role_id_and_permission_id(role.id,permission.id)
+    %>
+    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]",'1',permissionrole.nil? ? nil : permissionrole.value %> </td>
     <% end %>
-  </tr>
+</tr>
   <% end %>
   </table>
   <%= submit_tag "Update" %>

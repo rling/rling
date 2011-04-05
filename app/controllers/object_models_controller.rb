@@ -1,11 +1,9 @@
 class ObjectModelsController < ApplicationController
-
   include PermalinkHelper
   # GET /object_models
   # GET /object_models.xml
   def index
     @object_models = ObjectModel.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @object_models }
@@ -27,10 +25,9 @@ class ObjectModelsController < ApplicationController
   # GET /object_models/new.xml
   def new
     @object_model = ObjectModel.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @object_model }
+   respond_to do |format|
+    format.html # new.html.erb
+    format.xml  { render :xml => @object_model }
     end
   end
 
