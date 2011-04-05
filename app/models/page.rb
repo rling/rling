@@ -16,6 +16,7 @@ validates :email, :format=> {:with => email_regex } ,:allow_blank =>true
 #named scope
 scope :pages ,  :conditions =>"type is null"
 scope :object_forms,  :conditions =>"type = 'ObjectForm'"
+scope :views,  :conditions => "type = 'View'"
 
 #callbacks
 after_save :set_menu ,:clear_cache

@@ -1,9 +1,8 @@
 module DisplayHelper
-
-  def check_component_type(form_component,form_submission)
-
+ def check_component_type(form_component,form_submission)
+   unless form_submission.nil?
    form_data=FormData.find_by_form_submission_id_and_form_component_id(form_submission.id,form_component.id)
-   unless form_data.nil?
+  
    value = (form_submission.id.nil? ? form_component.default_value : ( form_data.data_value unless form_data.nil? ) )
    else
     value=form_component.default_value

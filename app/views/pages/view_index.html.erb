@@ -1,0 +1,47 @@
+<%= link_to 'New Oview', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+
+<h1>Listing Object Forms</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Perma link</th>
+    <th>Home page</th>
+    <th> View Type</th>
+    <th>View For</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.title %></td>
+    <td><%= raw page.body %></td>
+    <td><%= page.perma_link %></td>
+      
+      
+    <% if page.home_page.eql?(false) %>
+         <td><%= "No" %></td>
+     <% else %>
+          <td><%= "Yes" %></td>
+     <% end %>
+    <td><%=  page.view_type %></td>
+    <td><%= ObjectModel.find_by_id(page.view_for).name.pluralize %></td>
+
+    
+    
+    
+    <td><%= link_to "View Components",[page,:view_components] %></td>
+    <td><%= link_to image_tag("show.png",:class=>"image_link"), :action=>"show",:id=>page %></td>
+    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
+    <td><%= link_to image_tag("delete.png",:class=>"image_link"), {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
+   
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New View', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+

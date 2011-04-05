@@ -1,4 +1,5 @@
 Rling::Application.routes.draw do
+
   resources :permission_roles
 
  resources :permissions do
@@ -38,7 +39,9 @@ Rling::Application.routes.draw do
     collection do
      
       get 'object_form_index'
-      get 'new_object_form'	
+      get 'new_object_form'
+      get 'new_view'
+      get 'view_index'
      end
    end
 
@@ -50,6 +53,10 @@ Rling::Application.routes.draw do
       end 
      end
    end
+
+  resources :views do
+      resources :view_components
+ end
 
   resources :page_variable_settings
   resources :roles

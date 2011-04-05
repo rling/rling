@@ -20,6 +20,14 @@ include PermalinkHelper
       #format.xml  { render :xml => @pages }
     end
   end
+   def view_index
+      @pages = Page.views
+      respond_to do |format|
+      format.html # index.html.erb
+      #format.xml  { render :xml => @pages }
+    end
+  end
+
 
   # GET /pages/1
   # GET /pages/1.xml
@@ -52,11 +60,22 @@ include PermalinkHelper
     end
   end
 
+    def new_view
+   @page_type='View'
+   @page = View.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @page }
+    end
+  end
+
+
   # GET /pages/1/edit
   def edit
     @page = Page.find(params[:id])
     @page_type = "Page"
     @page_type = "ObjectForm" if @page.type == "ObjectForm"
+    @page_type = "View"   if @page.type == "View"
   end
 
   # POST /pages
@@ -65,8 +84,10 @@ include PermalinkHelper
       @page_type= params[:page_type]
       if @page_type == "ObjectForm"
         @page =ObjectForm.new(params[:object_form])
+      elsif @page_type == "View"
+        @page = View.new(params[:view])
       else
-        @page = Page.new(params[:page])
+         @page =Page.new(params[:page])
       end 
       if params[:permalnk] == "1"
            @page.perma_link_generate
@@ -98,6 +119,9 @@ include PermalinkHelper
     if @page_type == "ObjectForm"
      page_params = params[:object_form]
     end
+     if @page_type == "View"
+        page_params = params[:view]
+     end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
    	@page.perma_link_generate

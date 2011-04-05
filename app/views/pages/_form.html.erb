@@ -42,8 +42,11 @@
     <% if @page_type.eql?('ObjectForm') %>
   <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('object_form_perma_link').disabled = true;} else {$('object_form_perma_link').disabled = false;}") %>
 Generate permalink automatically<br />
-   <% else %>
-      <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
+   <% elsif @page_type.eql?('View')  %>
+      <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('view_perma_link').disabled = true;} else {$('view_perma_link').disabled = false;}") %>
+Generate permalink automatically<br />
+  <% else %>
+    <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('page_perma_link').disabled = true;} else {$('page_perma_link').disabled = false;}") %>
 Generate permalink automatically<br />
    <% end %>
   </div> 
@@ -79,6 +82,20 @@ Generate permalink automatically<br />
     <%= form.text_field :email %>
   </div>
  <% end %>
+
+<% if @page_type.eql?('View') %>
+ <div class="field">
+    <%= form.label :view_type %><br />
+    <%= form.text_field :view_type %>
+  </div>
+
+<div class="field">
+    <%= form.label :view_for%><br />
+    <%= form.select :view_for ,ObjectModel.find(:all).collect{|m|[ m.name.pluralize,m.id]}%>
+  </div>
+
+  <% end %>
+
 
 
  <div>

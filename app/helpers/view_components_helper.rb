@@ -1,0 +1,2 @@
+module ViewComponentsHelper
+end

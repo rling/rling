@@ -1,0 +1,29 @@
+<h1>Listing view components</h1>
+
+<table>
+  <tr>
+    
+    <th>Name</th>
+    <th></th>
+    <th>Is linked?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @view_components.each do |view_component| %>
+  <tr>
+    
+    <td><%= view_component.name %></td>
+    <th></th>
+    <td><%= view_component.is_linked %></td>
+   
+    <td><%= link_to 'Edit', edit_view_view_component_path(@page,view_component) %></td>
+    <td><%= link_to 'Destroy',[@page, view_component], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add component', new_view_view_component_path %>

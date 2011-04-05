@@ -1,0 +1,26 @@
+<%= form_for([@page,@view_component]) do |f| %>
+  <% if @view_component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@view_component.errors.count, "error") %> prohibited this view_component from being saved:</h2>
+
+      <ul>
+      <% @view_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.select:name,@page.not_added_components.collect{|m| m },{:prompt => 'Select component'} %>
+  </div>
+  <div class="field">
+    <%= f.label :is_linked %><br />
+    <%= f.check_box :is_linked %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>

@@ -1,9 +1,10 @@
 class DisplayController < ApplicationController
-
+before_filter :require_user, :require_admin
 
   def index
    @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
    @models=ModelSubmission.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
+  
   end
 
   def mobile_index
