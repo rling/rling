@@ -22,6 +22,20 @@
     <%= form.label :title %><br />
     <%= form.text_field :title %>
   </div>
+
+  <% if @page_type.eql?('View') %>
+ <div class="field">
+    <%= form.label :view_type %><br />
+    <%= form.select :view_type,["Table" ,"Grid"] %>
+  </div>
+
+<div class="field">
+    <%= form.label :view_for%><br />
+    <%= form.select :view_for ,ObjectModel.find(:all).collect{|m| [ m.name.pluralize,m.id]} %>
+  </div>
+
+  <% end %>
+
   <div class="field">
     <%= form.label :body %><br />
     <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5')  %>
@@ -83,18 +97,6 @@ Generate permalink automatically<br />
   </div>
  <% end %>
 
-<% if @page_type.eql?('View') %>
- <div class="field">
-    <%= form.label :view_type %><br />
-    <%= form.text_field :view_type %>
-  </div>
-
-<div class="field">
-    <%= form.label :view_for%><br />
-    <%= form.select :view_for ,ObjectModel.find(:all).collect{|m|[ m.name.pluralize,m.id]}%>
-  </div>
-
-  <% end %>
 
 
 

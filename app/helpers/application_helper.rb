@@ -80,14 +80,30 @@ def get_all_menus(record)
     end
   end
 
+ def get_submission_model_data(submission,component_name)
+  mc = ModelComponent.find_by_object_model_id_and_component_name(submission.object_model.id,component_name)
+  if mc.nil?
+    unless ["created_at","updated_at"].include?(component_name)
+      return ""
+    else
+      return submission.send(component_name)
+    end
+  else
+    md= ModelData.find_by_model_submission_id_and_model_component_id(submission.id,mc.id)
+    if md.nil?
+      return ""
+    else
+      return get_form_data(mc.component_type,md.data_value)
+    end
+  end
+ end
+
    def check_content_type(asset)
-     case asset.upload_content_type
-      when "image/jpeg"
-        return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
-      when  "image/png"
-        return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
+
+      if asset.upload_content_type.match(/^image/)
+       return image_tag(asset.upload.url(:thumb))
       else
         return link_to("#{asset.upload_file_name}", asset.upload.url)
-    end
+      end
   end
 end 

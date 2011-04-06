@@ -1,0 +1,24 @@
+<div id="table_view_<%=page.view_for%>">
+  <table>
+    <tr>
+      <% page.view_components.each do |vc| %>
+         <th><%= vc.name %></th>
+      <% end %>
+    </tr>
+    <% output = ""
+    om = ObjectModel.find(page.view_for)
+    om.model_submissions.each do |ms|
+       output << "<tr>"
+       page.view_components.each do |vc2|
+        value = get_submission_model_data(ms,vc2.name)
+        if vc2.is_linked
+          value = link_to( value,"#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
+        end
+        output << "<td>#{value}</td>"
+       end
+       output<<"</tr>"
+    end
+   %>
+    <%= raw(output) %>
+  </table>
+</div>

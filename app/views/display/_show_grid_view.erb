@@ -1,0 +1,18 @@
+<div id="grid_view_<%=page.view_for%>">
+ 
+    <% output = ""
+    om = ObjectModel.find(page.view_for)
+    om.model_submissions.each do |ms|
+        output << "<div class='grid_element'>"
+       page.view_components.each do |vc2|
+         value = get_submission_model_data(ms,vc2.name)
+        if vc2.is_linked
+          value = link_to( value,"#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
+        end
+        output << "<div class='grid_component grid_component_#{vc2.name}'>#{ value}</div>"
+       end
+       output<<"</div>"
+    end
+   %>
+    <%= raw(output) %>
+</div>

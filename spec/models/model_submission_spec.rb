@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ModelSubmission do
   before(:each) do
-  @object_model_attributes={ :perma_link_parent =>'/perma_link1' ,:name=>'name' }
+  @object_model_attributes={ :perma_link_parent =>'/permalink1' ,:name=>'name' }
   @object_model=ObjectModel.create!(@object_model_attributes)
-  @model_submission_attributes={:object_model_id=>'1', :perma_link=>'/perma_link2' }
+  @model_submission_attributes={:object_model_id=>'1', :perma_link=>'/permalink2' }
   @model_submission=ModelSubmission.create!(@model_submission_attributes)
   @model_data_attributes={:model_component_id=>1,:model_submission_id=>1,:data_value=>'value'}
 end

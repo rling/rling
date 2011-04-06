@@ -14,10 +14,10 @@
   
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.select:name,@page.not_added_components.collect{|m| m },{:prompt => 'Select component'} %>
+    <%= f.select:name,@page.not_added_components.collect{|m| m } %>
   </div>
   <div class="field">
-    <%= f.label :is_linked %><br />
+    <%= f.label :is_linked %>
     <%= f.check_box :is_linked %>
   </div>
   <div class="actions">

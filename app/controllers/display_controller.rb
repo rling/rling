@@ -44,6 +44,10 @@ class DisplayController < ApplicationController
 
   end
 
+  def no_permissions
+    
+  end
+
   def create_submissions
     object_form = ObjectForm.find(params[:id])
     message= "Your details have been submitted successfully"

@@ -2,21 +2,10 @@
 <p>
 <%= raw page.body %>
 </p>
- 
+<% end %>
 <% if page.type.eql?('ObjectForm') %>
-   <% unless page.form_components.eql?([]) %>
-    <%= form_tag "/display/create_submissions/#{page.id}", :multipart=>true do %>
-      <% page.form_components.each do |form_component| %>
-      <p>
+ <%= render :partial=>"show_form",:locals=>{:page=>page}  %>
+<% elsif page.type.eql?('View')%>
+ <%= render :partial=>"show_view",:locals=>{:page=>page}  %>
+<% end %>
 
-      <%= form_component.mandatory ? "*" : "" %>
-      <%= form_component.component_display_name %>:
-      <%= check_component_type(form_component,@form_submission) %>
-      
-      </p>
-      <% end %>
-    <p> <%= submit_tag "Submit" %> </p>
-    <% end %>
-  <% end %>
-<% end %>
-<% end %>

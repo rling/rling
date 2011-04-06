@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ModelData do
  before(:each) do
-  @model_submission_attributes={:object_model_id=>'1', :perma_link=>'/perma_link2' }
+  @model_submission_attributes={:object_model_id=>'1', :perma_link=>'/permalink2' }
   @model_submission=ModelSubmission.create!(@model_submission_attributes)
   @modelcomponent_attributes={:object_model_id=>'1', :component_name =>'name' ,:component_type=>'type',:component_display_name=>'dname' }
   @model_component=ModelComponent.create!( @modelcomponent_attributes )

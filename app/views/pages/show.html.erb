@@ -30,7 +30,17 @@
 
 <p>
   <%= raw("<b>Email  </b> : #{@page.email}") if @page.type == "ObjectForm" %>
+
+</p>
+<p>
+  <%= raw("<b>View Type  </b> : #{@page.view_type}") if @page.type == "View" %>
+
+</p>
+<p>
+  <%= raw("<b>View For </b> : #{@page.get_view_for}") if @page.type == "View" %>
+
 </p>
 
+
 <%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
-<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %>
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url)) %>

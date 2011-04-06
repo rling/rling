@@ -1,6 +1,6 @@
-<%= link_to 'New Oview', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New view', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 
-<h1>Listing Object Forms</h1>
+<h1>Listing Views</h1>
 
 <table>
   <tr>
@@ -27,8 +27,10 @@
      <% else %>
           <td><%= "Yes" %></td>
      <% end %>
-    <td><%=  page.view_type %></td>
-    <td><%= ObjectModel.find_by_id(page.view_for).name.pluralize %></td>
+     <td><%=  page.view_type %></td>
+    
+     <td><%= page.get_view_for %></td>
+
 
     
     

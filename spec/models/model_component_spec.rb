@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ModelComponent do
   before (:each) do
-   @object_model_attributes={ :perma_link_parent =>'/perma_link1' ,:name=>'name' }
+   @object_model_attributes={ :perma_link_parent =>'/permalink1' ,:name=>'name' }
    @object_model=ObjectModel.create!(@object_model_attributes)
    @modelcomponent_attributes={:object_model_id=>'1', :component_name =>'name' ,:component_type=>'type',:component_display_name=>'dname' }
    @model_component=ModelComponent.create!( @modelcomponent_attributes )

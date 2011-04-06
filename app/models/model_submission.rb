@@ -1,6 +1,6 @@
 class ModelSubmission < ActiveRecord::Base
   include PermalinkHelper
-  
+  include ApplicationHelper
   stampable
 
   #Associations
@@ -9,6 +9,10 @@ class ModelSubmission < ActiveRecord::Base
   #validations
   regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contain - separator"}
+  #callbacks
+  after_create  :clear_cache
+  after_update  :clear_cache
+  after_destroy :clear_cache
 
   #instance methods
   def permalnk
@@ -37,5 +41,19 @@ class ModelSubmission < ActiveRecord::Base
      self.perma_link = "/" + generate_perma_link(create_permalink(title))
  end
 
+
+
+ #private method
+private
+
+ def clear_cache
+  root_path = Rails.root.to_s + "/tmp/cache"
+  entries = Dir.entries(root_path)
+  entries.each do |entry|
+   unless (entry == "." || entry == "..")
+       FileUtils.rm_rf(root_path + "/"+ entry)
+   end
+end
+end
 
 end

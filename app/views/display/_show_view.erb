@@ -1,0 +1,5 @@
+<% if page.view_type == "Grid" %>
+<%=  render :partial=>"show_grid_view",:locals=>{:page=>page} %>
+<% elsif page.view_type ==  "Table" %>
+<%=  render :partial=>"show_table_view",:locals=>{:page=>page} %>
+<%  end %>
