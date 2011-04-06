@@ -114,8 +114,8 @@ Feature: Object Model Page
     Given I have a model_component in model_component index page
     Given I go to new model_submissions page
     And I fill in "form_field_title" with "Enter The title"
-#    And I fill in "form_field_body" with "Enter The content"
-#    And I fill in "form_field_age" with "Enter the age1"
+    And I fill in "form_field_body" with "Enter The content"
+    And I fill in "form_field_age" with "Enter the age1"
     When I click "Create Blog"
     Then I am on model_submissions index page
     Then I should see "Enter the title" on the model_submissions index page
@@ -123,9 +123,10 @@ Feature: Object Model Page
   Scenario: User clicks on Show Page
     Given I have a object_model in object_model index page
     Given I have a model_submission in model_submissions index page
+    Given I have a model_component in model_component index page
     Given I go to model_submissions index page
     Then I should see "Enter the title" on the model_submissions index page
-    When I press "Show" for "Enter the title" on the model_submissions index page
+    When I press "Show" for "Enter The title" on the model_submissions index page
     Then I should see "/enter-the-title " on the model_submissions show page
     And I should see "computer and Mobile Browsers " on the model_submissions show page
     And I should see "No" on the model_submissions show page
@@ -137,8 +138,8 @@ Feature: Object Model Page
     Given I have a object_model in object_model index page
     Given I have a model_submission in model_submissions index page
     Given I go to model_submissions index page
-    When I press "Edit" for "Enter the title" on the model_submissions index page
-    Then I should see "Editing Blog" on the edit model_submission page 
+    When I press "Edit" for "Enter The title" on the model_submissions index page
+    Then I should see "Edit Blog" on the edit model_submission page 
     And I fill in "form_field_title" with "Enter The title"
     And I fill in "model_submission_perma_link" with "/enter-the-title"
     And I fill in "form_field_body" with "Enter The content"

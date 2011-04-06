@@ -103,6 +103,8 @@ module NavigationHelpers
     when /new model_submissions page/
       new_object_model_model_submission_path @object_model
   
+    when /user_details page/
+      user_details_user_path @user
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

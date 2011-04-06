@@ -16,7 +16,6 @@ Feature: Menu Page
   Scenario: User adds a new menu
     Given I go to the new menu page
     And I fill in "menu_name" with "Home"
-    And I select "Computer & Mobile Browsers" from "menu_menu_view_type"
     And I select "Header" from "menu_parent_id"
     And I fill in "menu_position" with "1"
     And I fill in "menu_link_path" with "http://www.heurionconsulting.com/"
@@ -48,7 +47,6 @@ Feature: Menu Page
     When I press "Edit" for the "Home"
     Then I should see "Editing Menu" on the edit menu page 
     And I fill in "menu_name" with "Home"
-    And I select "Computer & Mobile Browsers" from "menu_menu_view_type"
     And I select "Header" from "menu_parent_id"
     And I fill in "menu_position" with "1"
     And I fill in "menu_link_path" with "http://www.heurionconsulting.com/"

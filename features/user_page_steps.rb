@@ -22,6 +22,10 @@ When /^I click "([^"]*)"$/ do |arg1|
   visit user_details_user_path(@user)
 end
 
+Given /^I have user details setting in user_detail_setting page$/ do
+  @user_detail_settings = UserDetailSetting.create(:field_name=>"Name", :field_type=>"Textfield", :default_value=>"amit", :mandatory=>"1")
+end
+
 #Then /^I select "([^"]*)"$/ do |field|
 # field = find_radio(field)
 #  field.set

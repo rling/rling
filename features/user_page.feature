@@ -19,13 +19,16 @@ Feature: User Page
     Then I should see "amit" on the user index page
     And I should see "amit@heurion.com" on the user index page
 
-
-#  Scenario: User Details
-#    Given I go to user index page
-#    When I click "User Details"
-#    Then I select "form_field_sex_male"
-#    And I press "Submit"
-#    Then I should see "Successfully updated" on the user index page
+  Scenario: User Details
+    Given I have user details setting in user_detail_setting page
+    Given I go to user index page
+    When I click "User Details"
+    Then I am on user_details page
+    Then I fill in "form_field_Name" with "amit kumar mandal"
+    When I press "Submit"
+    Then I should see "Successfully updated" on the user index page
+    And I go to account page
+    And I should see "amit kumar mandal" on the account page
 
   Scenario: User clicks on Show Page
     Given I go to user index page
@@ -35,7 +38,6 @@ Feature: User Page
     And I should see "amit@heurion.com" for "Email" on the page
     And I should see "is admin" for "Role" on the page
     
-
   Scenario: Delete an item from user
     Given I go to user index page
     Then I should see "amit" on the user index page

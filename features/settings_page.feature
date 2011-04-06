@@ -31,3 +31,9 @@ Feature: Setting Page
     And I should see "Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute " for "Descriptive Text" on the page
     And I should see "boolean" for "Setting Type" on the page
     And I should see "false" for "Setting Value:" on the page
+
+  Scenario: Clear Cache
+    Given I go to setting index page
+    When I click "Clear Cache"
+    Then I am on admin page
+    And I should see "Cache is empty." on the admin page

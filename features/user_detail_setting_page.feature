@@ -23,16 +23,14 @@ Feature: User detail setting Page
 
   Scenario: Create a new User Detail Setting page successfully
     Given I go to new user_detail_setting page
-    And I fill in "user_detail_setting_field_name" with "sex"
-    And I select "Radiobutton" from "user_detail_setting_field_type"
-    And I fill in "user_detail_setting_field_name" with "sex"
-    And I fill in "user_detail_setting_field_values" with "male,female"
+    And I fill in "user_detail_setting_field_name" with "Name"
+    And I select "Textfield" from "user_detail_setting_field_type"
+    And I fill in "user_detail_setting_default_value" with "amit"
     And I check "user_detail_setting_mandatory"
     When I press "Create User detail setting"
-    Then I should see "sex" for "Field Name" on the page
-    And I should see "Radiobutton" for "Field Type" on the page
-    And I should see "male,female" for "Field Values" on the page
-    And I should see "male" for "Default Value" on the page
+    Then I should see "Name" for "Field Name" on the page
+    And I should see "Textfield" for "Field Type" on the page
+    And I should see "amit" for "Default Value" on the page
     And I should see "true" for "Is this field mandatory for users" on the page
 
   Scenario: Error in Creating new User_detail_setting( Field name is blank)
@@ -42,7 +40,7 @@ Feature: User detail setting Page
 
   Scenario: Error in Creating new User_detail_setting( Field name lenght is less than 3 characters )
     Given I go to new user_detail_setting page
-    And I fill in "user_detail_setting_field_name" with "se"
+    And I fill in "user_detail_setting_field_name" with "na"
     When I press "Create User detail setting"
     Then I should see "is too short (minimum is 3 characters)" for "Field name" on that user detail setting page
 
@@ -55,36 +53,35 @@ Feature: User detail setting Page
   Scenario: User clicks on Show Page
     Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page
-    Then I should see "sex" on the user detail settings page
-    And I should see "male,female" on the user detail settings page
-    And I should see "male" on the user detail settings page
+    Then I should see "Name" on the user detail settings page
+    And I should see "Textfield" on the user detail settings page
+    And I should see "amit" on the user detail settings page
     And I should see "true" on the user detail settings page
-    When I press "Show" for the "sex" on the page
-    Then I should see "sex" for "Field Name" on the user detail setting show page
-    And I should see "Radiobutton" for "Field Type" on the user detail setting show page
-    And I should see "male,female" for "Field Type" on the user detail setting show page
-    And I should see "male" for "Default Value" on the user detail setting show page
+    When I press "Show" for the "Name" on the page
+    Then I should see "Name" for "Field Name" on the user detail setting show page
+    And I should see "Textfield" for "Field Type" on the user detail setting show page
+    And I should see "amit" for "Default Value" on the user detail setting show page
     And I should see "true" for "Is this field mandatory for users" on the user detail setting show page
 
   Scenario: Edit a User detail setting item
     Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page 
-    When I press "Edit" for the "sex" on the page
+    When I press "Edit" for the "Name" on the page
     Then I should see "Editing user_detail_setting" on the edit user_detail_setting page 
-    And I fill in "user_detail_setting_field_name" with "sex"
-    And I select "Radiobutton" from "user_detail_setting_field_type"
-    And I fill in "user_detail_setting_field_values" with "male,female"
+    And I fill in "user_detail_setting_field_name" with "Name"
+    And I select "Textfield" from "user_detail_setting_field_type"
+    And I fill in "user_detail_setting_default_value" with "amit"
     And I check "user_detail_setting_mandatory"
     When I press "Update User detail setting"
-    Then I should see "sex" for "Field Name" on the page
-    And I should see "Radiobutton" for "Field Type" on the page
-    And I should see "male,female" for "Field Values" on the page
-    And I should see "male" for "Default Value" on the page
+    Then I should see "Name" for "Field Name" on the page
+    And I should see "Textfield" for "Field Type" on the page
+    And I should see "amit" for "Default Value" on the page
     And I should see "true" for "Is this field mandatory for users" on the page
 
   Scenario: Delete an item from user detail setting page
     Given I have a user detail setting on the index page
     Given I go to user_detail_setting index page
-    Then I should see "sex" on the index page
+    Then I should see "Name" on the index page
     When I click "Delete"
-    Then I should not see "sex" on the index page
+    Then I should not see "Name" on the index page
+ 
