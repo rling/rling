@@ -9,6 +9,7 @@
 <%= link_to "Views Administration" ,view_index_pages_path %><br/>
 <%= link_to " Models Administration" ,object_models_path %><br/>
 <%= link_to "Pagelets Administration" ,pagelets_path %><br/>
+<%= link_to "Permissions",permissions_path %>
 <% unless @objects.eql?([]) %>
 <h1><u><%= "Models Administration " %></u></h1>
 <% @objects.each do |object_model| %>

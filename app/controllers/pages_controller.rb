@@ -3,7 +3,7 @@ cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 include PermalinkHelper
   # GET /pages
   # GET /pages.xml
-  before_filter :require_user, :require_admin
+  #before_filter :verify_page_permission
   
   def index
     @pages = Page.pages
@@ -167,6 +167,29 @@ include PermalinkHelper
     end
   end
 
+  def verify_page_permission
+  activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewall"}
+      activity = activities[params[:action]]
+      if current_user.nil?
+         activity = "#{activity}other"
+        else
+         @page = Page.find(params[:id])
+         if(@page.creator_id != current_user.id)
+           activity = "#{activity}other"
+        end
+      end if ["edit" , "delete"].include?(activity)
+
+      unless activity.nil?
+        permission_type = 'Page'
+        permission_object = 'page'
+        permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
+        role_id = current_user.nil? ? 1 : current_user.role_id
+        permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+        if permissionrole.nil? || !permissionrole.value
+           redirect_to :controller=>"display",:action=>"no_permissions"
+        end
+      end
+   end
     
 private 
 

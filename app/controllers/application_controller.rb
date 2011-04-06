@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   layout :set_layout
    
   def verify_permission
-
       activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewlist"}
       activity = activities[params[:action]]
       if["edit" , "delete"].include?(activity)

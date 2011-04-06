@@ -20,8 +20,7 @@ class UsersController < ApplicationController
     userid = current_user.id if userid.nil?
     @user = User.find(userid)
     @user_detail_settings=UserDetailSetting.find(:all)
- #   @user_details=UserDetail.find(:all)
-    respond_to do |format|
+     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
     end

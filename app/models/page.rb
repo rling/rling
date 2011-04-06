@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
 include PermalinkHelper
-
+stampable
 
 #Associations
 has_one :menu ,:dependent => :destroy
@@ -112,8 +112,6 @@ private
     end
   end
  end
-
-
 
 def destroy_menu
  unless self.menu.nil?

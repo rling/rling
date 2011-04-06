@@ -21,3 +21,4 @@ Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings r
 Mailer.create(:handle=>"welcome",:subject=>"Welcome Mail",:body=>"Welcome to Rling CMS. You have been registered successfully",:is_deletable=>"false",:allowable_tags=>"User")
 Mailer.create(:handle=>"activation",:subject=>"Activation Mail",:body=>"Welcome to Rling CMS. Click on the activation link below to activate your account",:is_deletable=>"false",:allowable_tags=>"User")
 Mailer.create(:handle=>"forgot",:subject=>"Reset Password",:body=>"Click on the link below to reset your password",:is_deletable=>"false",:allowable_tags=>"User")
+

@@ -3,19 +3,14 @@
 <table>
   <tr>
     <th>Role Type</th>
-    <th>Is it deletable</th>
+    
   </tr>
 
 <% @roles.each do |role| %>
   <tr>
-    <td><%= role.role_type %>
-    <% if role.is_deletable == true %>
-    <td><%= 'Yes' %></td>
-    <% else %>
-    <td><%= 'No' %></td>
-    <% end %>
+    <td><%= role.role_type %></td>
     <% if current_user.admin? %>
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'),edit_role_path(role) %>
+    <td><%= link_to image_tag('edit.png',:class=>'image_link'),edit_role_path(role) %></td>
     <% end %>
     <% if role.is_deletable == true %>
     <td><%= link_to image_tag('delete.png',:class=>'image_link'), role, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110405150335) do
+ActiveRecord::Schema.define(:version => 20110406111545) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -152,6 +152,8 @@ ActiveRecord::Schema.define(:version => 20110405150335) do
     t.string   "email"
     t.string   "view_type"
     t.integer  "view_for"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "permission_roles", :force => true do |t|
