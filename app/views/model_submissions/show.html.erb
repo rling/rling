@@ -22,7 +22,7 @@
 
 
 <% @model_submission.model_datas.each do |model_data| %>
-        <%= model_data.model_component.component_display_name %>:
+    <b><%= model_data.model_component.component_display_name %>:</b>
 	<%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %><br />
 <% end %>
 

@@ -1,5 +1,8 @@
 body { background-color: #fff;height:100%,min-height:600px; }
-
+img
+{
+border:none;
+}
 body, td{
   background-color:#F4F4ED;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -8,7 +11,7 @@ body, td{
 }
 a { color: white;text-decoration:none; }
 a:visited { color: white;text-decoration:none; }
-a:hover { color: white; background:#BF2E1B; text-decoration:none;}
+
 #layout
 {
 margin:auto;
