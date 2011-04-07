@@ -1,6 +1,6 @@
 <%= link_to image_tag('edit.png',:class=>'image_link'), edit_page_path(@page) %> |
 <%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url) %><br />
-<h3><b><%=  @page.type == "ObjectForm" ? "Details of #{@page.title} Form" : "Details of #{@page.title}"%><b></h3>
+<h3><b><%=  @page.type == "ObjectForm" ? "Details of #{@page.title} Form" : "Details of #{@page.title} Page" %><b></h3>
 
 <p>
   <b>Title:</b>

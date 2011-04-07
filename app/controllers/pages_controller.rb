@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+before_filter :require_user,:require_admin
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 include PermalinkHelper
   # GET /pages
@@ -85,7 +86,7 @@ include PermalinkHelper
       if @page_type == "ObjectForm"
         @page =ObjectForm.new(params[:object_form])
       elsif @page_type == "View"
-        @page = View.new(params[:view])
+         @page = View.new(params[:view])
       else
          @page =Page.new(params[:page])
       end 
@@ -120,7 +121,7 @@ include PermalinkHelper
      page_params = params[:object_form]
     end
      if @page_type == "View"
-        page_params = params[:view]
+       page_params = params[:view]
      end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
