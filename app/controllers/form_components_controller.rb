@@ -1,4 +1,5 @@
 class FormComponentsController < ApplicationController
+  include CacheHelper
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 
   # GET /form_components
@@ -84,6 +85,13 @@ class FormComponentsController < ApplicationController
       format.html { redirect_to(object_form_form_components_path(@page)) }
       format.xml  { head :ok }
     end
+  end
+
+  def update_position
+      FormComponent.find_all_by_object_form_id(@page.id).each do  |form_component|
+     form_component.update_attribute(:position,params["#{form_component.id}"])
+  end
+    redirect_to :action => 'index'
   end
  
   def get_object_form

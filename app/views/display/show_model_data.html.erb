@@ -2,6 +2,7 @@
 <% cache do %>
 
 <% @model_datas.each do |model_data| %>
+
 <%= render :partial=>"model_data", :locals=>{:model_data => model_data} %>
 <% end %>
 <% end %>

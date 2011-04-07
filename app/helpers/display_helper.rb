@@ -25,12 +25,21 @@ module DisplayHelper
       return raw(output)
     when "File"
       display_file = ""
+      unless form_submission.id.nil?
       unless value.blank?
        asset = Asset.find(value)
+     
        display_file = link_to("#{asset.upload_file_name}", asset.upload.url,:target=>"_blank")+" "+link_to("[X]",delete_asset_object_form_form_submission_path(form_data.form_submission.object_form,form_data.id))
        end
        return file_field_tag("form_field[#{form_component.component_name}]") + display_file
+      else
+        return file_field_tag("form_field[#{form_component.component_name}]")
+      end
+
+
 	  end
   end
+
+ 
 
 end

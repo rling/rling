@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 before_filter :require_user,:require_admin
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 include PermalinkHelper
+include CacheHelper
   # GET /pages
   # GET /pages.xml
   #before_filter :verify_page_permission
@@ -159,11 +160,11 @@ include PermalinkHelper
 
   # DELETE /pages/1
   # DELETE /pages/1.xml
-  def destroy
+   def destroy
     @page = Page.find(params[:id])
     Page.delete(params[:id])
     respond_to do |format|
-      format.html { redirect_to((@page.type == "ObjectForm" ? object_form_index_pages_url : pages_url)) }
+      format.html { redirect_to((@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
       format.xml  { head :ok }
     end
   end

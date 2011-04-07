@@ -1,5 +1,5 @@
 class ModelSubmissionsController < ApplicationController
-
+include CacheHelper
   before_filter :get_object_model,:verify_permission,:require_user,:require_admin
 
   # GET /model_submissions

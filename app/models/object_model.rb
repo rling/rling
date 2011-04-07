@@ -1,7 +1,7 @@
 class ObjectModel < ActiveRecord::Base
   include PermalinkHelper
   #Associations
-  has_many :model_components ,:dependent=>:destroy
+  has_many :model_components ,:dependent=>:destroy ,:order =>:position
   has_many :model_submissions ,:dependent=>:destroy
   #Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i

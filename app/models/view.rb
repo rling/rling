@@ -1,7 +1,11 @@
 class View < Page
 #Associations
-has_many :view_components ,:dependent => :destroy
+has_many :view_components ,:dependent => :destroy ,:order =>:position
 
+ #call_backs
+ after_create :clear_cache
+ after_destroy :clear_cache
+ after_update :clear_cache
 
 
 #instance methods

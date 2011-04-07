@@ -10,7 +10,7 @@
     om.model_submissions.each do |ms|
        output << "<tr>"
        page.view_components.each do |vc2|
-        value = get_submission_model_data(ms,vc2.name)
+        value =raw  (get_submission_model_data(ms,vc2.name))
         if vc2.is_linked
           value = link_to( value,"#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
         end

@@ -153,4 +153,6 @@ border: none;
 {
     float:left;
     display:block;
+    text_align:center;
+    margin :5px;
 }

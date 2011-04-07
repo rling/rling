@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   before_filter :require_admin, :except => [:new,:create,:activate,:show,:update,:edit,:user_details,:update_details]
   def index
     @users = User.all
-    @user_detail_settings=UserDetailSetting.all
+   @user_detail_settings = UserDetailSetting.all(:order =>'position')
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     userid = params[:id]
     userid = current_user.id if userid.nil?
     @user = User.find(userid)
-    @user_detail_settings=UserDetailSetting.find(:all)
+    @user_detail_settings=UserDetailSetting.all
      respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -162,7 +163,7 @@ class UsersController < ApplicationController
   end
 
   def user_details
-      @user_detail_settings=UserDetailSetting.find(:all)
+      @user_detail_settings=UserDetailSetting.all
          unless @user_detail_settings.empty?
            @user=User.find(params[:id])
            render :action=>"user_details"

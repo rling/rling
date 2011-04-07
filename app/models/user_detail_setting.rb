@@ -1,7 +1,8 @@
 class UserDetailSetting < ActiveRecord::Base
 #Association
   has_many :user_details,:dependent=>:destroy
-#Attribute
+#scope
+ scope :all,  :order=>"position"
   
 #validation
   name_regex = /^[a-zA-Z]+$/

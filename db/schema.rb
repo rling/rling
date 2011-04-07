@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110406111545) do
+ActiveRecord::Schema.define(:version => 20110407134119) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "component_display_name"
+    t.integer  "position",               :default => 0
   end
 
   create_table "form_data", :force => true do |t|
@@ -50,8 +51,7 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.string   "allowable_tags"
-    t.boolean  "is_deletable",   :default => true
+    t.boolean  "is_deletable", :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.boolean  "is_deletable",           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",               :default => 0
   end
 
   create_table "model_data", :force => true do |t|
@@ -148,8 +149,8 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.integer  "page_view_type", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "type"
     t.string   "email"
+    t.string   "type"
     t.string   "view_type"
     t.integer  "view_for"
     t.integer  "creator_id"
@@ -207,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.boolean  "mandatory",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",      :default => 0
   end
 
   create_table "user_details", :force => true do |t|
@@ -246,6 +248,7 @@ ActiveRecord::Schema.define(:version => 20110406111545) do
     t.boolean  "is_linked",  :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",   :default => 0
   end
 
 end

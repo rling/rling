@@ -3,7 +3,7 @@ class UserDetailSettingsController < ApplicationController
   # GET /user_detail_settings
   # GET /user_detail_settings.xml
   def index
-    @user_detail_settings = UserDetailSetting.all
+    @user_detail_settings = UserDetailSetting.all(:order =>'position')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,5 +80,13 @@ class UserDetailSettingsController < ApplicationController
       format.html { redirect_to(user_detail_settings_url) }
       format.xml  { head :ok }
     end
+  end
+
+
+  def update_position
+     UserDetailSetting.all.each do  |user_detail_setting|
+    user_detail_setting.update_attribute(:position,params["#{user_detail_setting.id}"])
+  end
+    redirect_to :action => 'index'
   end
 end

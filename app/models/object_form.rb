@@ -1,6 +1,6 @@
 class ObjectForm < Page
 #Associations
-has_many :form_components ,:dependent => :destroy
+has_many :form_components ,:dependent => :destroy ,:order=> :position
 has_many :form_submissions,:dependent => :destroy
 #call backs
 after_create :create_email_template ,:clear_cache

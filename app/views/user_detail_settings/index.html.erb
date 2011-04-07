@@ -8,7 +8,7 @@
     <th>Default Value</th>
     <th>Mandatory</th>
   </tr>
-
+<%= form_tag update_position_user_detail_settings_path do %>
 <% @user_detail_settings.each do |user_detail_setting| %>
   <tr>
     <td><%= user_detail_setting.field_name %></td>
@@ -16,12 +16,17 @@
     <td><%= user_detail_setting.field_values %></td>
     <td><%= user_detail_setting.default_value %></td>
     <td><%= user_detail_setting.mandatory %></td>
+    <th></th>
+     <td align=right><%= text_field_tag "#{user_detail_setting.id}",user_detail_setting.position, :size=>2 %></td>
     <td><%= link_to image_tag('show.png',:class=>'image_link'), user_detail_setting %></td>
     <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_user_detail_setting_path(user_detail_setting) %></td>
     <td><%= link_to image_tag('delete.png',:class=>'image_link'), user_detail_setting, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+<%= submit_tag 'Update Positions' %>
+<% end %>
+
 
 <br />
 

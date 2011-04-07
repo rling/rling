@@ -10,10 +10,8 @@
 
 <tr>
 <% unless @object.model_submissions.eql?([]) %>
-<% @object.model_components.each do |model_component|   %>
-   <th><h4><%=model_component.component_display_name.capitalize %></h4>
-    <%   break %>
-   </th><% end %>
+<%= "Title" %>
+
 
 
 </tr>
@@ -22,7 +20,7 @@
 
 
    <%  model_submission.model_datas.each do |model_data| %>
-      <td><%= get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
+      <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
       <% break %>
    <% end %>
    

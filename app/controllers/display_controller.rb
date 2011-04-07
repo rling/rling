@@ -15,8 +15,13 @@ class DisplayController < ApplicationController
      unless @page.nil? 
        if  @page.type.eql?('ObjectForm')
         @form_submission =  @page.form_submissions.new
+       elsif @page.type.eql?('View')
+         @object_model=ObjectModel.find_by_id(@page.view_for)
+         
        end
     end
+
+
    if @page.nil?
      redirect_to :action=>"error_page_display"
    end

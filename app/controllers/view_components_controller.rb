@@ -2,6 +2,8 @@ class ViewComponentsController < ApplicationController
   # GET /view_components
   # GET /view_components.xml
   before_filter :get_view
+
+
   def index
     @view_components = @page.view_components.all
 
@@ -82,9 +84,18 @@ class ViewComponentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+ def update_position
 
+  ViewComponent.find_all_by_view_id(@page.id).each do  |view_component|
+     view_component.update_attribute(:position,params["#{view_component.id}"])
+    end
+    redirect_to :action => 'index'
+  end
+
+  
   def get_view
 
   @page=View.find(params[:view_id])
   end
+ 
 end

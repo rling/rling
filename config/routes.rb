@@ -9,7 +9,11 @@ Rling::Application.routes.draw do
  end
 
  resources :object_models do
-   resources :model_components
+   resources :model_components do
+     collection do
+          post 'update_position'
+        end
+   end
    resources :model_submissions do
       member do
  	    get 'delete_asset'
@@ -46,7 +50,11 @@ Rling::Application.routes.draw do
    end
 
    resources :object_forms do
-     resources :form_components 
+     resources :form_components  do
+       collection do
+          post 'update_position'
+        end
+     end
      resources :form_submissions do
       member do
  	get 'delete_asset'
@@ -55,7 +63,12 @@ Rling::Application.routes.draw do
    end
 
   resources :views do
-      resources :view_components
+      resources :view_components do
+        collection do
+          post 'update_position'
+        end
+      end
+
  end
 
   resources :page_variable_settings
@@ -69,7 +82,11 @@ Rling::Application.routes.draw do
     end
   end
   resources :settings
-  resources :user_detail_settings
+  resources :user_detail_settings do
+    collection do
+          post 'update_position'
+        end
+  end
   resources :password_resets do
    member do
      get 'reset'

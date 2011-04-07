@@ -1,4 +1,4 @@
-<% @model="New " << "Component Of " << @object.name.capitalize  %>
+<% @model="New " << "Component for " << @object.name.capitalize  %>
 <%= link_to @model, new_object_model_model_component_path %>|
 <%= link_to 'back', object_models_path %>
 
@@ -16,7 +16,7 @@
     <th></th>
     <th></th>
   </tr>
-
+<%= form_tag update_position_object_model_model_components_path do %>
 <% @model_components.each do |model_component| %>
   <tr>
 
@@ -26,6 +26,8 @@
     <td><%= model_component.component_values %></td>
     <td><%= model_component.default_value %></td>
     <td><%= model_component.is_mandatory %></td>
+    <td></td>
+    <td align=right><%= text_field_tag "#{model_component.id}",model_component.position, :size=>2 %></td>
     <td><%=  link_to image_tag("show.png",:class=>"image_link"),object_model_model_component_path(@object,model_component) %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_component_path(@object,model_component) %></td>
     <%  unless model_component.is_deletable.eql?(false) %>
@@ -34,9 +36,11 @@
   </tr>
 <% end %>
 </table>
+<%= submit_tag 'Update Positions' %>
+<% end %>
 
 <br />
 
 <%= link_to @model, new_object_model_model_component_path %>|
-<%= link_to 'Back', object_models_path %>
+<%= link_to 'back', object_models_path %>
 

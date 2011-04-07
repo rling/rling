@@ -83,6 +83,14 @@ class ModelComponentsController < ApplicationController
     end
   end
 
+
+  def update_position
+     ModelComponent.find_all_by_object_model_id(@object.id).each do  |model_component|
+     model_component.update_attribute(:position,params["#{model_component.id}"])
+  end
+    redirect_to :action => 'index'
+  end
+
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end

@@ -64,4 +64,5 @@ def create_permalink_parent(string, separator = '-', max_size = 127)
   return permalink.gsub(/^\\#{separator}+|\\#{separator}+$/, '')
 
 end
+
 end
