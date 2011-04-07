@@ -17,17 +17,15 @@ def setup
    smtp_hash[smtp_entries[0]]=smtp_entries[1]
  end
  Notifier.smtp_settings = smtp_hash
- puts 3333333333333333
- puts smtp_hash.inspect
 end
 def forgot_password(user)
-      #setup
+      setup
       @user = user.login
       mailer=Mailer.find_by_handle('forgot')
       subject=mailer.subject
       body=mailer.body
       body = verify_tags(body,user)
-      mail(:to => user.email, :subject => subject,:body=>body)
+      mail(:from=>User.admins.first.email, :to => user.email, :subject => subject,:body=>body)
 end
 
 
@@ -38,7 +36,7 @@ def activation_email(user)
   subject=mailer.subject
   body=mailer.body
   body = verify_tags(body,user)
-  mail(:to => user.email, :subject => subject, :body=>body)
+  mail(:from=>User.admins.first.email,:to => user.email, :subject => subject, :body=>body)
 end
 
   def welcome_email(user)
@@ -48,22 +46,22 @@ end
   subject=mailer.subject
   body=mailer.body
   body = verify_tags(body,user)
-  mail(:to=> user.email,:subject=> subject,:body=> body)
+  mail(:from=>User.admins.first.email,:to=> user.email,:subject=> subject,:body=> body)
   end
 
   def send_mailers_email(to,cc,bcc,subject,body)
-   #setup
-    mail(:to=> to,:cc=> cc,:bcc=> bcc,:subject=> subject,:body=> body)
+   setup
+    mail(:from=>User.admins.first.email,:to=> to,:cc=> cc,:bcc=> bcc,:subject=> subject,:body=> body)
   end
 
   def form_submitted(submission)
    unless submission.object_form.email.blank?
-      #setup
+      setup
       mailer=Mailer.find_by_handle(submission.object_form.perma_link)
       subject=mailer.subject
       body=mailer.body
       body=verify_tags(body,submission)
-      mail(:to=>submission.object_form.email,:subject=>subject,:body=>body)
+      mail(:from=>User.admins.first.email,:to=>submission.object_form.email,:subject=>subject,:body=>body)
    end
   end
 
