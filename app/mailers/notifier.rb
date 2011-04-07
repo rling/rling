@@ -1,6 +1,8 @@
 class Notifier < ActionMailer::Base
 include ApplicationHelper
 
+default :content_type=>"text/html"
+
 def setup
 
  # sample setting test looks like this

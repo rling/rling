@@ -8,8 +8,9 @@
     <th>Body</th>
     <th>Perma link</th>
     <th>Home page</th>
-    <th> View Type</th>
+    <th>View Type</th>
     <th>View For</th>
+    <th>Allow Create on Permission</th>
     <th></th>
     <th></th>
     <th></th>
@@ -27,11 +28,11 @@
      <% else %>
           <td><%= "Yes" %></td>
      <% end %>
-     <td><%=  page.view_type %></td>
+     <td><%= page.view_type %></td>
     
      <td><%= page.get_view_for %></td>
 
-
+     <td><%= page.allow_create_on_permission %> </td>
     
     
     

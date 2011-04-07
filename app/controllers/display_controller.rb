@@ -1,5 +1,5 @@
 class DisplayController < ApplicationController
-
+include ApplicationHelper
   def index
    @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
    @models=ModelSubmission.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
@@ -31,17 +31,21 @@ class DisplayController < ApplicationController
   end
 
   def show_model_data
-   @object= ObjectModel.find_by_perma_link_parent("/"+params[:permalinkparent])
-   if @object.nil?
-     redirect_to :action=>"error_page_display"
-   else 
-     @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
-     if @model_submission.nil?
-	redirect_to :action=>"error_page_display"
+    @object= ObjectModel.find_by_perma_link_parent("/"+params[:permalinkparent])
+    if @object.nil?
+      redirect_to :action=>"error_page_display"
+    else
+      if validate_permission("view",@object)
+        @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
+        if @model_submission.nil?
+	        redirect_to :action=>"error_page_display"
+        else
+	        @model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)
+        end
      else
-	@model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)		
+       redirect_to :action=>"no_permissions"
      end
-   end
+    end
   end
   
   

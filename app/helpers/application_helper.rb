@@ -101,9 +101,26 @@ def get_all_menus(record)
    def check_content_type(asset)
 
       if asset.upload_content_type.match(/^image/)
-       return image_tag(asset.upload.url(:thumb))
+       return link_to (image_tag(asset.upload.url(:thumb))),asset.upload.url
       else
         return link_to("#{asset.upload_file_name}", asset.upload.url)
       end
   end
+
+  def validate_permission(call_type,model, submission=nil)
+   role_id = current_user.nil? ? 1 : current_user.role_id
+   if ["edit","delete"].include?(call_type)
+     unless current_user?
+       call_type = "#{call_type}other"
+     else
+       unless submission.creator_id == current_user.id
+         call_type = "#{call_type}other"
+       end
+     end
+   end
+   permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",model.class.to_s,model.name,call_type])
+   permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+   return permissionrole.nil? ? false : permissionrole.value
+  end
+
 end 

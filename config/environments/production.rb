@@ -58,6 +58,4 @@ Rling::Application.configure do
   :user_name=>"admin@railsparty.com",
   :password =>"password"
 }
-
-  SITE_URL  = "localhost:3000"  
 end

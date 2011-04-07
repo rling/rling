@@ -1,11 +1,18 @@
 class ModelSubmissionsController < ApplicationController
-include CacheHelper
-  before_filter :get_object_model,:verify_permission,:require_user,:require_admin
+  include ApplicationHelper
+  include CacheHelper
+  before_filter :get_object_model,:verify_permission
 
   # GET /model_submissions
   # GET /model_submissions.xml
    def index
-   @model_submissions = @object.model_submissions.all
+   @model_submissions = []
+   unless validate_permission("viewlist",@object)
+      @model_submissions = @object.model_submissions.find(:all,:conditions=>["creator_id=?",current_user.id]) unless current_user.nil?
+   else
+      @model_submissions = @object.model_submissions.all
+   end
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @form_submissions }

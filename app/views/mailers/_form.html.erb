@@ -26,7 +26,7 @@
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <% unless @mailer.is_deletable && @mailer.allowable_tags.blank? %>
+    <% unless @mailer.is_deletable.blank? && @mailer.allowable_tags.blank? %>
     You can use the following tags as part of the email you are sending
     and the tags will be replaced with the actual values. The tags available for you are
     <% tags = @mailer.allowable_tags.split(',') %>
@@ -42,6 +42,6 @@
     <%= raw(f.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Template" %>
   </div>
 <% end %>

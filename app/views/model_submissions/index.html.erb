@@ -1,8 +1,15 @@
  <% @model= "New " << @object.name.capitalize %>
 
-   <%= link_to @model, new_object_model_model_submission_path %>|
- <%= link_to 'Back to Dashboard', admin_dashboard_path %>
-
+   <% if validate_permission("create",@object) %>
+   <%= link_to @model, new_object_model_model_submission_path %> |
+   <% end  %>
+    <% if current_user?
+      if current_user.admin? %>
+     <%= link_to 'Back to Dashboard', admin_dashboard_path %>
+     <% else %>
+     <%= link_to 'Back', :controller=>"users",:action=>"show",:id=>current_user.id %>
+     <% end
+   end %>
 
 <h1>Listing  <%= @object.name.capitalize.pluralize %> </h1>
 
@@ -10,15 +17,14 @@
 
 <tr>
 <% unless @object.model_submissions.eql?([]) %>
-<%= "Title" %>
-
-
+<% @object.model_components.each do |model_component|   %>
+   <th><h4><%=model_component.component_display_name.capitalize %></h4>
+    <%   break %>
+   </th><% end %>
 
 </tr>
 <% @model_submissions.each do |model_submission| %>
   <tr>
-
-
    <%  model_submission.model_datas.each do |model_data| %>
       <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
       <% break %>
@@ -34,11 +40,14 @@
   <% end %>
   </table>
  
-
-   <%= link_to @model, new_object_model_model_submission_path %>|
+   <% if validate_permission("create",@object) %>
+   <%= link_to @model, new_object_model_model_submission_path %> |
+   <% end  %>
+   <% if current_user? %>
+   <% if current_user.admin? %>
    <%= link_to 'Back to Dashboard', admin_dashboard_path %>
-
-
-
-
+   <% else %>
+   <%= link_to 'Back', :controller=>"users",:action=>"show",:id=>current_user.id %>
+   <% end %>
+   <% end %>
 
