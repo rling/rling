@@ -16,7 +16,17 @@ def setup
    smtp_entries = smtp_chomp.split(':')
    smtp_hash[smtp_entries[0]]=smtp_entries[1]
  end
- Notifier.smtp_settings = smtp_hash
+ #Notifier.delivery_method = :smtp
+ #Notifier.default_content_type = "text/html"
+ Notifier.smtp_settings[:address] = smtp_hash["address"] unless smtp_hash["address"].nil?
+ Notifier.smtp_settings[:port] = smtp_hash["port"].to_i unless smtp_hash["port"].nil?
+ Notifier.smtp_settings[:domain] = smtp_hash["domain"] unless smtp_hash["domain"].nil?
+ Notifier.smtp_settings[:authentication] = smtp_hash["authentication"] unless smtp_hash["authentication"].nil?
+ Notifier.smtp_settings[:user_name] = smtp_hash["user_name"] unless smtp_hash["user_name"].nil?
+ Notifier.smtp_settings[:password] = smtp_hash["password"] unless smtp_hash["password"].nil?
+ unless smtp_hash["enable_starttls_auto"].nil? 
+  Notifier.smtp_settings[:enable_starttls_auto]= (smtp_hash["enable_starttls_auto"]=="true")
+ end
 end
 def forgot_password(user)
       setup

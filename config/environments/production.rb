@@ -47,5 +47,17 @@ Rling::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  ActionMailer::Base.delivery_method=:smtp
+  ActionMailer::Base.default_content_type="text/html"
+  ActionMailer::Base.smtp_settings = {
+  :address=>"mail.railsparty.com",
+  :port=>25,
+  :domain=>"www.railsparty.com",
+  :authentication => :plain,
+  :enable_starttls_auto=>false,
+  :user_name=>"admin@railsparty.com",
+  :password =>"password"
+}
+
   SITE_URL  = "localhost:3000"  
 end
