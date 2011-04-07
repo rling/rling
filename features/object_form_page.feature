@@ -38,7 +38,7 @@ Feature: Object Form Page
     Given I go to the new object_form page
     When I press "Create Object form"
     Then I should see "can't be blank" for "Title" on that pages page
-    Then I should see "Should contain a  / and alphabets and numbers and -" for "Perma link" on that pages page
+    Then I should see "Perma link Should contain a / and alphabets /alpabets and numbers/ and may have - separator " on that form page
 
   Scenario: User clicks on Show Page
    Given I have a object_form in object_form_index page

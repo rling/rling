@@ -88,8 +88,6 @@ Generate permalink automatically<br />
 <%= form.label "Parent Menu" %><br />
 <%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %><br />
 </div>
-   </div>
-
 <% if @page_type.eql?('ObjectForm') %>
  <div class="field">
     <%= form.label :email %><br />

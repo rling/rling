@@ -13,12 +13,15 @@ Feature:Login
     When I go to login
     And I fill in "login" with "amit"
     And I fill in "password" with "test123"
-#    When I check "Remember me"
+    When I check "Remember me"
     And I press "Login"
     Then I should see "Login successful!" on the page
-#    And the "Remember me" should be checked
+#    And the "Remember me" checkbox should be checked
 
     
-   
+   Scenario: Logout
+     Given I am logged in
+     When I go to logout page
+     Then I should see "You have been logged out." on the logout page
 
 

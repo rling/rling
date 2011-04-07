@@ -25,6 +25,9 @@ module NavigationHelpers
     when /login/
         new_session_path
 
+    when /logout page/
+        logout_path
+
     when /menuset destroy/
         menuset_path
  
@@ -105,7 +108,20 @@ module NavigationHelpers
   
     when /user_details page/
       user_details_user_path @user
+
+    when /view_index page/
+      view_index_pages_path
+
+    when /new_view page/
+      new_view_pages_path
+
+    when /new view_component page/
+      new_view_view_component_path @view
+
     
+    
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
