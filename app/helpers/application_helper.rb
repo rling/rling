@@ -15,6 +15,22 @@ def login_links
     end
     output << link_to("Login","/login")
   end
+  return output
+end
+
+def flash_notice
+ output = ""
+ if flash[:notice]
+   output << "<div id='notice'>#{flash[:notice]}</div>"
+ end
+ return output
+end
+
+def show_menu(type,name)
+  output = ""
+   unless Menuset.find_by_name(name).nil?
+     output << render(:partial=>"layouts/#{type}", :locals=>{:menusetname=>name})
+   end
 end
 
 def get_all_menus(record)
