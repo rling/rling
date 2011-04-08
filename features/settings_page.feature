@@ -34,6 +34,5 @@ Feature: Setting Page
 
   Scenario: Clear Cache
     Given I go to setting index page
-    When I click "Clear Cache"
-    Then I am on admin page
-    And I should see "Cache is empty." on the admin page
+    When I follow "Clear Cache"
+    And I should see "Cache is empty."

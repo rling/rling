@@ -61,13 +61,12 @@ Feature: View Page
     Given I have a view in view_index page
     Given I go to view_index page 
     When I press "Edit" for "Developer" on the view_index page 
-    And I fill in "view_title" with "Developer"
-    And I fill in "view_body_editor" with "This is Developer view"
-    And I select "/developer" from "perma_link"
+    And I fill in "view_title" with "Developer2"
+    And I fill in "view_body_editor" with "This is Developer2 view"
     When I press "Update View"
     Then I should see "View was successfully updated"
-    Then I should see "Developer" on the show page
-    And I should see "This is Developer view" on the show page
+    Then I should see "Developer2" on the show page
+    And I should see "This is Developer2 view" on the show page
     And I should see "/developer" on the show page
     And I should see "No" on the show page
     And I should see "Table" on the show page
@@ -78,7 +77,7 @@ Feature: View Page
     Given I go to view_index page
     Then I should see "Developer" on that view_index page
     When I press "Delete" for "Developer" on the view_index page
-    Then I should not see "Developer" on the view_index page
+    Then I should not see "Developer" on that view_index page
 
   Scenario: View Component
     Given I have a view in view_index page
@@ -94,3 +93,11 @@ Feature: View Page
     When I press "Add"
     Then I should see "View component was successfully created." on the view_component index page
 
+  Scenario: Delete an item from View Component
+    Given I have a view in view_index page
+    Given I go to view_component index page
+    Then I should see "title" on that view_component index page
+    When I press "Delete" for "title" on the view_index page
+    Then I should not see "title" on that view_component index page
+
+  

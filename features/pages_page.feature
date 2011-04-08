@@ -17,14 +17,14 @@ Feature: Pages Page
 
   Scenario: Create a new Pages page successfully
     Given I go to the new pages page
-    And I fill in "page_title" with "Client"
-    And I fill in "page_body_editor" with "Google"
+    And I fill in "page_title" with "Home"
+    And I fill in "page_body_editor" with "This is home page"
     When I click "Create Page"
-    And I should see "Client" on the pages index page
-    And I should see "Google" on the pages index page
-    And I should see "/client" on the pages index page
+    And I should see "Home" on the pages index page
+    And I should see "This is home page" on the pages index page
+    And I should see "/home" on the pages index page
     And I should see "No" on the pages index page
-    And I should see "Computer & Mobile Browsers" on the pages index page
+    And I should see "No" on the pages index page
 
   Scenario: Error in Creating new Page( when Title is blank )
     Given I go to the new pages page
@@ -33,32 +33,33 @@ Feature: Pages Page
     Then I should see "Perma link Should contain a / and alphabets /alpabets and numbers/ and may have - separator " on that pages page
 
   Scenario: User clicks on Show Page
+    Given I have a page item in pages page
     Given I go to pages index page
-    Then I should see "Client" on the pages index page
-    And I should see "Google" on the pages index page
-    And I should see "/client" on the pages index page
+    Then I should see "Home" on the pages index page
+    And I should see "This is home page" on the pages index page
+    And I should see "/home" on the pages index page
     And I should see "No" on the pages index page
-    And I should see "Computer & Mobile Browsers" on the pages index page
-    When I press "Show" for "Client" on the pages index page
-    Then I should see "Client" on the pages show page
-    And I should see "Google" on the pages show page
-    And I should see "/client" on the pages show page
+    When I press "Show" for "Home" on the pages index page
+    Then I should see "Home" on the pages show page
+    And I should see "This is home page" on the pages show page
+    And I should see "/home" on the pages show page
     And I should see "No" on the pages show page
-    And I should see "Computer & Mobile Browsers" on the pages show page
+    And I should see "No" on the pages show page
 
   Scenario: Edit a pages item
+    Given I have a page item in pages page
     Given I go to pages index page 
-    When I press "Edit" for "Client" on the pages index page
+    When I press "Edit" for "Home" on the pages index page
     Then I should see "Editing page" on the edit pages page 
-    And I fill in "page_title" with "Client"
-    And I fill in "page_body_editor" with "Google"
-    And I select "Computer & Mobile Browsers" from "page_page_view_type"
+    And I fill in "page_title" with "Home"
+    And I fill in "page_body_editor" with "This is home page"
+    And I select "Header" from "page_menu_parent_id"
     When I press "Update Page"
     Then I should see "Page was successfully updated"
 
   Scenario: Delete an item from page
-    Given I have a page in page index page
+    Given I have a page item in pages page
     Given I go to pages index page
     Then I should see "Client" on the pages index page
-    When I click "Delete"
+    When I press "Delete" for "Home" on the pages index page
     Then I should not see "Client" on the pages index page

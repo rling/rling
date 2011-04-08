@@ -49,7 +49,10 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that model_component page$/ do |a
 end
 
 Given /^I have a model_component in model_component index page$/ do
-  @model_comp = ModelComponent.create(:object_model_id=>"4", :component_name=>"title", :component_display_name=>"Title", :component_type=>"Textfield", :default_value=>"Enter The title", :is_mandatory=>"1", :is_deletable=>"0")
+  @object_model = ObjectModel.create(:name=>"Blog", :perma_link_parent=>"/blogs", :description=>"Blog page")
+  @object_model_component = @object_model.model_components.create(:component_name=>"title", :component_display_name=>"Title", :component_type=>"Textfield", :default_value=>"Enter The title", :is_mandatory=>"1", :is_deletable=>"0", :position=>"0")
+  @object_model_component = @object_model.model_components.create(:component_name=>"body", :component_display_name=>"Body", :component_type=>"cktext_area", :default_value=>"Enter The content", :is_mandatory=>"0", :is_deletable=>"0", :position=>"0")
+  @object_model_component = @object_model.model_components.create(:component_name=>"name", :component_display_name=>"name", :component_type=>"Textfield", :is_mandatory=>"1", :is_deletable=>"1", :position=>"0")
 end
 
 Then /^I should see "([^"]*)" on the admin page$/ do |arg1|
@@ -61,16 +64,21 @@ Then /^I should see "([^"]*)" on the model_submissions index page$/ do |arg1|
 end
 
 Given /^I have a model_submission in model_submissions index page$/ do
-  @model_submission = ModelSubmission.create(:object_model_id=>"4",:perma_link=>"/enter-the-title", :home_page=>"0", :page_view_type=>"0",:creator_id=>"1", :updater_id=>"1")
+  @object_model = ObjectModel.create(:name=>"Blog", :perma_link_parent=>"/blogs", :description=>"Blog page")
+  @object_model_component = @object_model.model_components.create(:component_name=>"title", :component_display_name=>"Title", :component_type=>"Textfield", :default_value=>"Enter The title", :is_mandatory=>"1", :is_deletable=>"0", :position=>"0")
+  @object_model_component = @object_model.model_components.create(:component_name=>"body", :component_display_name=>"Body", :component_type=>"cktext_area", :default_value=>"Enter The content", :is_mandatory=>"0", :is_deletable=>"0", :position=>"0")
+  @object_model_component = @object_model.model_components.create(:component_name=>"name", :component_display_name=>"name", :component_type=>"Textfield", :is_mandatory=>"1", :is_deletable=>"1", :position=>"0")
+  @model_submission = @object_model.model_submissions.create(:object_model_id=>@object_model.id,:perma_link=>"/enter-the-title", :home_page=>"0", :page_view_type=>"0",:creator_id=>"1", :updater_id=>"1")
+  @model_data=@model_submission.model_datas.create(:model_submission_id=>@model_submission.id,:model_component_id=>@object_model_component.id,:data_value=>"Enter The title")
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the model_submissions index page$/ do |arg1, arg2|
   if arg1 == "Edit" 
-    visit edit_object_model_model_submission_path(@object_model,@model_submission)
+    visit edit_object_model_model_submission_path(@object_model,@model_data)
   elsif arg1 == "Show"
-    visit object_model_model_submission_path(@object_model,@model_submission)
+    visit object_model_model_submission_path(@object_model,@model_data)
   elsif arg1 == "Delete"
-    visit object_model_model_submission_path(@object_model,@model_submission)
+    visit object_model_model_submission_path(@object_model,@model_data)
   end
 end
 

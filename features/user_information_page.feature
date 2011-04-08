@@ -26,9 +26,10 @@ Feature: User Information/Account Page
     And I should see "male" on the account page
 
   Scenario: Edit a user informatione
+    Given I have a user information in user information page
     Given I go to account page 
     When I follow "Edit Information"
-    Then I should see "Editing user" on the edit user page 
+    Then I should see "Edit user amit " on the edit user page 
     And I fill in "user_email" with "amit@heurion.com"
     And I fill in "user_password" with "test123"
     And I fill in "user_password_confirmation" with "test123"
@@ -36,5 +37,5 @@ Feature: User Information/Account Page
     When I press "Update User"
     Then I should see "amit" for "Login" on the page
     And I should see "amit@heurion.com" for "Email" on the page
-    And I should see "is admin" for "Role" on the page
+
     

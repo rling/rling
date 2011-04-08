@@ -53,4 +53,9 @@ Feature: Page Variable Setting Page
     Then I should see "Seo Meta Keywords" for "Name" on the page_variable_setting show page
     And I should see "keywords" for "Default value" on the page_variable_setting show page
 
-
+  Scenario: Delete an item from page
+    Given I have a page_variable_setting in index page
+    Given I go to page_variable_setting index page 
+    Then I should see "SEO Meta Keywords" on the page_varible_setting index page
+    When I press "Delete" for "SEO Meta Keywords" on the pages index page
+    Then I should not see "SEO Meta Keywords" on the page_varible_setting index page

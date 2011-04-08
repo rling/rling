@@ -7,18 +7,25 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that view page$/ do |error_messag
 end
 
 Given /^I have a view in view_index page$/ do
-  @view = View.create(:title=>"Developer", :body=>"This is Developer view", :perma_link=>"/developer", :home_page=>"0", :page_view_type=>"1", :type=>"View", :view_type=>"table", :view_for=>"4", :creator_id=>"1", :updater_id=>"1")
+  object_model = ObjectModel.create(:name=>"Blog", :perma_link_parent=>"/blogs", :description=>"Blog page")
+  object_model.model_components.create(:component_name=>"title", :component_display_name=>"Title", :component_type=>"Textfield", :default_value=>"Enter The title", :is_mandatory=>"1", :is_deletable=>"0")
+  object_model.model_components.create(:component_name=>"body", :component_display_name=>"Body", :component_type=>"Textarea", :default_value=>"", :is_deletable=>"0")
+  @view = View.create(:title=>"Developer", :body=>"This is Developer view", :perma_link=>"/developer", :home_page=>"0", :page_view_type=>"1", :type=>"View", :view_type=>"table", :view_for=>object_model.id, :creator_id=>"1", :updater_id=>"1")
 end
 
 Then /^I should see "([^"]*)" on that view_index page$/ do |arg1|
   page.find('#middle').text.index(arg1).should_not eq(0)
 end
 
+Then /^I should not see "([^"]*)" on that view_index page$/ do |arg1|
+  page.find('#middle').text.index(arg1) == nil
+end
+
 When /^I press "([^"]*)" for "([^"]*)" on the view_index page$/ do |arg1, arg2|
-  if arg1 == "Show" && arg2 == @view
-    visit page_path(arg2)
-  elsif arg1 == "Edit" && arg2 == @view
-    visit edit_page_path(arg2)
+  if arg1 == "Show"
+    visit page_path(@view)
+  elsif arg1 == "Edit"
+    visit edit_page_path(@view)
   end
 end
 
@@ -44,3 +51,10 @@ Then /^I should see "([^"]*)" on that view page$/ do |arg1|
   page.find('li',:text=>arg1)
 end
 
+Then /^I should see "([^"]*)" on that view_component index page$/ do |arg1|
+  page.find('#middle').text.index(arg1).should_not eq(0)
+end
+
+Then /^I should not see "([^"]*)" on that view_component index page$/ do |arg1|
+  page.find('#middle').text.index(arg1) == nil
+end

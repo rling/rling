@@ -14,6 +14,18 @@ Feature: Role Page
     And I press "Login"
     Then I should see "Login successful!" on the page
 
+  Scenario: Create a new Role page successfully
+    Given I go to new role page
+    And I fill in "role_role_type" with "Admin"
+    When I press "Create Role"
+    Then I should see "Role was successfully created." on role index page
+    Then I should see "Admin" on the role index page
+
+  Scenario: Error in Creating new Role page
+    Given I go to new role page
+    When I press "Create Role"
+    Then I should see "can't be blank" for "Role type" on that role page
+
   Scenario: User on role index page
     Given I go to role index page
     Then I should see "Anonymous" on the role index page
@@ -23,28 +35,18 @@ Feature: Role Page
     And I should see "Administrator" on the role index page
     And I should see "no" on the role index page
 
-  Scenario: Create a new Role page successfully
-    Given I go to new role page
-    And I fill in "role_role_type" with "Admin"
-    When I press "Create Role"
-    Then I should see "Admin" on the role index page
-    Then I should see "Yes" on the role index page
-
-  Scenario: Error in Creating new Role page
-    Given I go to new role page
-    When I press "Create Role"
-    Then I should see "can't be blank" for "Role type" on that role page
-
   Scenario: Edit a role item
+    Given I have a role in role page
     Given I go to role index page 
-    When I press "Edit" for "Administrator" on the role index page
-    Then I should see "Editing role" on the edit role page 
-    And I fill in "role_role_type" with "Administrator"
+    When I press "Edit" for "Admin" on the role index page
+    Then I should see "Edit Role Admin" on the edit role page 
+    And I fill in "role_role_type" with "Admin"
     When I press "Update Role"
     Then I should see "Role was successfully updated"
 
   Scenario: Delete an item from role
+    Given I have a role in role page
     Given I go to role index page
     Then I should see "Admin" on the role index page
-    When I click "Delete"
+    When I press "Delete" for "Admin" on the role index page
     Then I should not see "Admin" on the role index page

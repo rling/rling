@@ -26,4 +26,14 @@ Then /^I should see "([^"]*)" on that pages page$/ do |arg1|
   page.find('li', :text=>arg1)
 end
 
+Given /^I have a page item in pages page$/ do
+  @page = Page.create(:title=>"Home", :body=>"This is home page", :perma_link=>"/home", :home_page=>"0", :page_view_type=>"0", :allow_create_on_permission=>"0")
+end
 
+When /^I press "([^"]*)" for "([^"]*)" on the pages index page$/ do |arg1, arg2|
+  if arg1 == "Show"
+    visit page_path @page
+  elsif arg1 == "Edit"
+    visit edit_page_path @page
+  end
+end
