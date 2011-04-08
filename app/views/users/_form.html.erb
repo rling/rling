@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+
   <% unless get_setting("is_login_type_email")%>
  <div class="field">
   <%= f.label :login %><br />
@@ -20,6 +21,7 @@
   <% end %>
   </div>
   <% end %>
+
  <div class="field">
  <%= f.label :email %><br />
   <% if get_setting("is_login_type_email") && !@user.new_record? %>
@@ -33,10 +35,12 @@
   <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
   <%= f.password_field :password %><br />
   </div>
+
   <div class="field">
   <%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %><br />
   </div>
+
   <div class="field">
   <% if current_user? && current_user.admin? %>
   Select role <%= select(:user, :role_id, Role.all.collect{|p|[p.role_type,p.id]}.reject { |(role_type, id)| role_type == 'Anonymous'}) %><br />
@@ -44,7 +48,9 @@
   <%= hidden_field_tag "user[role_id]", "2" %>
   <% end %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

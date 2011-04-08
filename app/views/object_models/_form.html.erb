@@ -15,6 +15,7 @@
     <%= form.label :name %><br />
     <%= form.text_field :name%>
   </div>
+
   <div class="field">
     <%= form.label :description %><br />
     <%= raw(form.cktext_area :description, :toolbar=>'Full',:cols=>'100', :rows=>'5')  %>
@@ -38,4 +39,5 @@ Generate permalink parent  automatically<br />
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>

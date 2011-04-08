@@ -14,8 +14,9 @@
  <% @page.form_components.each do |form_component| %>
     <p>
       <%= form_component.component_name %>:
+        <%= form_component.mandatory ? "*" : "" %>
       <%= check_component_type(form_component,@form_submission) %>
-      <%= form_component.mandatory ? "*" : "" %>
+    
     </p>
     <% end %>
     <p> <%= submit_tag "Update" %> </p>

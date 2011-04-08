@@ -155,7 +155,7 @@ class ModelSubmissionsController < ApplicationController
               unless model_data_obj.data_value.blank?
                 asset = Asset.find(model_data_obj.data_value)
                 asset.destroy
-	            end
+	            end       
               asset = Asset.new
               asset.sizes = component.default_value
               asset.upload = model_data[component.component_name]

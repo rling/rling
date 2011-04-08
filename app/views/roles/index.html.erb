@@ -1,3 +1,4 @@
+<%= link_to 'New Role', new_role_path %> | <%= link_to 'Back to Users' ,users_path %>
 <h1>Listing Roles</h1>
 
 <table>
@@ -10,10 +11,10 @@
   <tr>
     <td><%= role.role_type %></td>
     <% if current_user.admin? %>
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'),edit_role_path(role) %></td>
+    <td><%= link_to "Edit",edit_role_path(role) %></td>
     <% end %>
     <% if role.is_deletable == true %>
-    <td><%= link_to image_tag('delete.png',:class=>'image_link'), role, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Destroy", role, :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>
 <% end %>

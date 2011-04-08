@@ -1,3 +1,4 @@
+<%=  link_to "Edit", edit_object_form_form_component_path(@page,@form_component) %> | <%=  link_to 'Back', object_form_form_components_path %>
 <h3>Details of <%= @form_component.component_name %> component</h3>
 
 <p>
@@ -31,5 +32,5 @@
 </p>
 
 
-<%=  link_to image_tag("edit.png",:class=>"image_link"), edit_object_form_form_component_path(@page,@form_component) %> |
+<%=  link_to "Edit", edit_object_form_form_component_path(@page,@form_component) %> |
 <%=  link_to 'Back', object_form_form_components_path %>

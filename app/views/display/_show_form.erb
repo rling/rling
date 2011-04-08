@@ -4,8 +4,9 @@
       <p>
 
       <%= form_component.component_display_name %>:
-      <%= check_component_type(form_component,@form_submission) %>
       <%= form_component.mandatory ? "*" : "" %>
+      <%= check_component_type(form_component,@form_submission) %>
+     
 
       </p>
       <% end %>

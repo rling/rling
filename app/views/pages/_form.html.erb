@@ -79,15 +79,15 @@ Generate permalink automatically<br />
    <% if @menu.nil? %>
   <%= check_box('','add_menu',  :checked=> "false", :onclick => "if (this.checked){$('show_menu').show();} else        {$('show_menu').hide();}") %>
   Add Menu for this Page
-  <div id="show_menu" style="display:none;">
-<% else %>
-<% end %>
-<div id="show_menu">
+ <% end %>
+
+<div id="show_menu" style="display:none;">
 <%= form.label :menu_name %><br />
 <%= form.text_field :menu_name %><br />
 <%= form.label "Parent Menu" %><br />
 <%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %><br />
 </div>
+
 <% if @page_type.eql?('ObjectForm') %>
  <div class="field">
     <%= form.label :email %><br />
@@ -99,13 +99,17 @@ Generate permalink automatically<br />
   <%= check_box('','home_page',  :checked=> @page.home_page) %>
 Show on Home Page
 </div>
+
 <% if  @page_type.eql?('View')  %>
+
 <div class="field">
   <%= check_box('','allow_create_on_permission',  :checked=> @page.allow_create_on_permission) %>
   Allow Create On Permission
 </div>
 <% end %>
+
 <div class="actions">
     <%= form.submit  %>
     </div>
 <% end %>
+

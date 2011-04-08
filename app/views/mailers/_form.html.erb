@@ -20,10 +20,12 @@
     <%= @mailer.handle %>
     <% end %>
   </div>
+
   <div class="field">
     <%= f.label :subject %><br />
     <%= f.text_field :subject %>
   </div>
+
   <div class="field">
     <%= f.label :body %><br />
     <% unless @mailer.is_deletable.blank? && @mailer.allowable_tags.blank? %>
@@ -41,7 +43,9 @@
     <% end %>
     <%= raw(f.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
   </div>
+
   <div class="actions">
     <%= f.submit "Create Template" %>
   </div>
+
 <% end %>

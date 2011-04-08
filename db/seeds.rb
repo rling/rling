@@ -8,7 +8,7 @@ Role.create(:role_type=>"User",:is_deletable=>false)
 Role.create(:role_type=>"Administrator",:is_deletable=>false)
 
 #Create Login Settings
-Setting.create(:name=>"allow_user_register_user",:desc_text=>"Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute",:setting_type=>"boolean",:setting_value=>"false")
+Setting.create(:name=>"allow_user_register_user",:desc_text=>"Should the System allow users to sign up to the website on their own. i.e. Should there be a register link for the user to execute", :setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"allow_admin_register_user",:desc_text=>"Should the System allow administrators to self register users to the website",:setting_type=>"boolean",:setting_value=>"true")
 Setting.create(:name=>"send_welcome_email",:desc_text=>"If a user is registered, should there be a welcome email sent to the user on registration",:setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"is_login_type_email",:desc_text=>"Should the login to the website be done using the login or by using the email address of the user",:setting_type=>"boolean",:setting_value=>"false")

@@ -1,5 +1,5 @@
 <h1>Listing  <%= @page.title.pluralize.capitalize %> </h1>
-
+<%= link_to 'Back', object_form_index_pages_path %>
 <table>
 
 <tr>
@@ -23,12 +23,14 @@
         <td></td>
     <% end %>
 
-    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_form_form_submission_path(@page,form_submission) %></td>
-    <td><%=link_to image_tag("delete.png",:class=>"image_link"), [@page,form_submission], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Edit", edit_object_form_form_submission_path(@page,form_submission) %></td>
+    <td><%=link_to "Destroy", [@page,form_submission], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
-  <td><%= link_to 'Back', object_form_index_pages_path %></td>
+
 </table>
+
+<p><%= link_to 'Back', object_form_index_pages_path %></p>
 
 <br />
 

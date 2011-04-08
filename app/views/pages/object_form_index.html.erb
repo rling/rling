@@ -1,4 +1,4 @@
-<%= link_to 'New Form', new_object_form_pages_path %> |<%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<%= link_to 'New Form', new_object_form_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 <h1>Listing Forms</h1>
 
 <table>
@@ -31,9 +31,9 @@
     <td><%= page.email %></td>
     <td><%= link_to "Form Components",[page,:form_components] %></td>
     <td><%= link_to "Submissions",[page,:form_submissions] %></td>
-    <td><%= link_to image_tag("show.png",:class=>"image_link"), :action=>"show",:id=>page %></td>
-    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_page_path(page) %></td>
-    <td><%= link_to image_tag("delete.png",:class=>"image_link"), {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Show", :action=>"show",:id=>page %></td>
+    <td><%= link_to "Edit", edit_page_path(page) %></td>
+    <td><%= link_to "Destroy", {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
    
   </tr>
 <% end %>

@@ -1,3 +1,12 @@
+<% if current_user.admin? %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+<% else %>
+<%= link_to 'Back', account_path %>
+
+<% end %>
+
 <h1>Edit user <%= @user.login %> </h1>
 
 

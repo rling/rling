@@ -1,5 +1,5 @@
-<%= link_to 'User Detail Settings', user_detail_settings_path %> |
-<%= link_to 'Role Management', roles_path %>
+<%= link_to 'User Detail Settings', user_detail_settings_path %> | <%= link_to 'Role Management', roles_path %><br/>
+<%= link_to 'New User', new_user_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %> 
 <h1>Listing all registered members</h1>
 
 <table>
@@ -15,9 +15,9 @@
     <% unless @user_detail_settings.empty? %>
     <td><%= link_to 'User Details', user_details_user_path(user) %></td>
     <% end %>
-    <td><%= link_to image_tag('show.png',:class=>'image_link'), user %></td>
-    <td> <%= link_to image_tag('edit.png',:class=>'image_link'), edit_user_path(user) %></td>
-    <td><%= link_to image_tag('delete.png',:class=>'image_link'), user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Show", user %></td>
+    <td> <%= link_to "Edit", edit_user_path(user) %></td>
+    <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

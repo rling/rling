@@ -1,3 +1,5 @@
+<%= link_to 'New Email Template', new_mailer_path %> |
+<%= link_to 'Back to Dashboard',admin_dashboard_path %>
 <h1>Listing Email Templates</h1>
 
 <table>
@@ -17,11 +19,11 @@
     <td><% unless mailer.is_deletable == false %>
         <%= link_to 'Send Mail',sendmail_mailer_path(mailer) %>
         <% end %></td>
-    <td><%= link_to image_tag('show.png',:class=>'image_link'), mailer %></td>
+    <td><%= link_to "Show", mailer %></td>
     
-    <td><%= link_to image_tag('edit.png',:class=>'image_link'), edit_mailer_path(mailer) %></td>
+    <td><%= link_to "Edit", edit_mailer_path(mailer) %></td>
     <% unless mailer.is_deletable == false %>
-    <td><%= link_to image_tag('delete.png',:class=>'image_link'), mailer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Destroy", mailer, :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>
 <% end %>

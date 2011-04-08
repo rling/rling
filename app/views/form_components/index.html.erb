@@ -1,3 +1,4 @@
+<%= link_to 'New Form Component', new_object_form_form_component_path %> | <%= link_to 'Back', object_form_index_pages_path %>
 <h1>Listing Form Components for <%= @page.title.capitalize %> </h1>
 
 <table>
@@ -24,17 +25,17 @@
     <td><%= form_component.mandatory %></td>
     <th></th>
      <td align=right><%= text_field_tag "#{form_component.id}",form_component.position, :size=>2 %></td>
-    <td><%=  link_to image_tag("show.png",:class=>"image_link"),object_form_form_component_path(@page,form_component) %></td>
-    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_form_form_component_path(@page,form_component) %></td>
-    <td><%= link_to image_tag("delete.png",:class=>"image_link"), ([@page,form_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=  link_to "Show",object_form_form_component_path(@page,form_component) %></td>
+    <td><%= link_to "Edit", edit_object_form_form_component_path(@page,form_component) %></td>
+    <td><%= link_to "Destroy", ([@page,form_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 <%= submit_tag 'Update Positions' unless @page.form_components.empty? %>
 <% end %>
 
-<br />
+<br /><br/>
 
-<%= link_to 'New Form Component', new_object_form_form_component_path %>|
+<%= link_to 'New Form Component', new_object_form_form_component_path %> |
 <%= link_to 'Back', object_form_index_pages_path %>
 

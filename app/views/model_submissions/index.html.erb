@@ -30,9 +30,9 @@
       <% break %>
    <% end %>
    
-    <td><%= link_to image_tag("show.png",:class=>"image_link"), object_model_model_submission_path(@object,model_submission) %></td>
-    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_model_submission_path(@object,model_submission) %></td>
-    <td><%=link_to image_tag("delete.png",:class=>"image_link"), [@object,model_submission], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>
+    <td><%= link_to "Edit", edit_object_model_model_submission_path(@object,model_submission) %></td>
+    <td><%=link_to "Destroy", [@object,model_submission], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
  <% end %>
   <% else %>

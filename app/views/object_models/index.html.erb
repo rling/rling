@@ -1,4 +1,4 @@
-<%= link_to 'New  Model', new_object_model_path %>| <%= link_to 'Back to Dashboard', admin_dashboard_path %>
+<%= link_to 'New  Model', new_object_model_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>
 
 <h1>Listing  Models</h1>
 
@@ -16,13 +16,13 @@
     <td><%= raw object_model.description%></td>
     <td><%= object_model.perma_link_parent %></td>
     <td><%= link_to "Model Components",[object_model,:model_components] %></td>
-    <td><%= link_to image_tag("show.png",:class=>"image_link"), object_model %></td>
-    <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_path(object_model) %></td>
-    <td><%=  link_to image_tag("delete.png",:class=>"image_link"),  object_model, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "Show", object_model %></td>
+    <td><%= link_to "Edit", edit_object_model_path(object_model) %></td>
+    <td><%=  link_to "Destroy",  object_model, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Model', new_object_model_path %>| <%= link_to 'Back to Dashboard', admin_dashboard_path %>
+<%= link_to 'New Model', new_object_model_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>
