@@ -1,4 +1,22 @@
 module ApplicationHelper
+
+def login_links
+  output = ""
+  if current_user?
+     output << "Logged in as: #{link_to(current_user.login,account_url)} |"
+     if current_user.admin? %>
+	output << link_to("Administration", :controller=>"admin", :action=>"dashboard")+ " | "
+     end
+     output << link_to("Logout", "/logout")
+  else
+    setting = Setting.find_by_name("allow_user_register_user") %>
+    if setting.setting_data 
+       output << link_to('Register', new_user_path)+" | "
+    end
+    output << link_to("Login","/login")
+  end
+end
+
 def get_all_menus(record)
     menu = Array.new
     Menuset.all.each do |menuset|
