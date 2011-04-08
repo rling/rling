@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407134119) do
+ActiveRecord::Schema.define(:version => 20110407141454) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -51,7 +51,8 @@ ActiveRecord::Schema.define(:version => 20110407134119) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.boolean  "is_deletable", :default => true
+    t.string   "allowable_tags"
+    t.boolean  "is_deletable",   :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -145,16 +146,17 @@ ActiveRecord::Schema.define(:version => 20110407134119) do
     t.string   "title"
     t.text     "body"
     t.string   "perma_link"
-    t.boolean  "home_page",      :default => false
-    t.integer  "page_view_type", :default => 0
+    t.boolean  "home_page",                  :default => false
+    t.integer  "page_view_type",             :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
     t.string   "type"
+    t.string   "email"
     t.string   "view_type"
     t.integer  "view_for"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.boolean  "allow_create_on_permission", :default => false
   end
 
   create_table "permission_roles", :force => true do |t|
