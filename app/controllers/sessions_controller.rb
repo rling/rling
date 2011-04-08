@@ -22,7 +22,7 @@ def first_user_create
    @user.role = role
    @user.is_activated = true
    if @user.save
-      # Save all the 6 settings
+      # Save all
       # Login / Email Authentication Setting
        setting = Setting.find_by_name("is_login_type_email")
        setting.setting_value = (params[:is_login_type_email].nil? ? "false" : "true")
@@ -47,7 +47,14 @@ def first_user_create
        setting = Setting.find_by_name("user_activation_required_on_admin")
        setting.setting_value = (params[:user_activation_required_on_admin].nil? ? "false" : "true")
        setting.save
-     
+     # URL Setting
+       setting = Setting.find_by_name("site_url")
+       setting.setting_value = params[:site_url]
+       setting.save
+     # Smtp Setting
+       setting = Setting.find_by_name("smtp_settings")
+       setting.setting_value = params[:smtp_settings]
+       setting.save
     redirect_to :action => :new
    else
     render :action=>"first_user"
