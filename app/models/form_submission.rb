@@ -4,16 +4,16 @@ class FormSubmission < ActiveRecord::Base
   has_many   :form_datas, :dependent => :destroy,:order=>"form_component_id"
 
 #Class methods
-def self.tags(handle)
+ #Used to get all the Tags to create Email Template
+ def self.tags(handle)
     objform = ObjectForm.find_by_perma_link(handle)
-    array = Array.new
-    objform.form_components.each do |form_component|
-      array << form_component.component_name
-    end
+    array = objform.form_components.collect {|fc| fc.component_name } unless objform.nil? && objform.form_components.size == 0
    return array
-end
+ end
 
 #Instance Methods
+
+#Format as necessary to go in the email. to check for File and Checkbox.
 def emailable_format
   output = ""
   self.form_datas.each do |form_data|
@@ -30,15 +30,28 @@ def emailable_format
   return output
 end
 
+#Get the value set in a submission for a particular component. Used for display purpose
 def get_variable_info(variablename)
      output = ""
-     form_component = FormComponent.find_by_component_name_and_object_form_id(variablename,self.object_form_id)
+     form_component = self.object_form.form_components.find(:first,:conditions=>["component_name=?",variablename]) 
      unless form_component.nil?
-       form_data = FormData.find_by_form_submission_id_and_form_component_id(self.id,form_component.id)
+       form_data = self.form_data.find(:first,:conditions["form_component_id=?",form_component.id])
        unless form_data.nil?
          output = form_data.data_value
        end
      end
      return output
 end
+
 end
+
+# == Schema Information
+#
+# Table name: form_submissions
+#
+#  id             :integer(4)      not null, primary key
+#  object_form_id :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

@@ -1,20 +1,21 @@
 class ObjectModel < ActiveRecord::Base
   include PermalinkHelper
+
   #Associations
   has_many :model_components ,:dependent=>:destroy ,:order =>:position
   has_many :model_submissions ,:dependent=>:destroy
+
   #Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
   validates :name ,:presence=>true, :uniqueness=>true
-#call backs
+
+  #call backs
   after_create :create_2_model_components
   after_create :create_permissions
   after_destroy :remove_permissions
 
-# instance Methods
-
-
+  #Instance Methods
   def permalnkparent
   return self.perma_link
   end
@@ -23,7 +24,7 @@ class ObjectModel < ActiveRecord::Base
   @permalnk = value
   end
 
-def generate_perma_link(perma_link)
+  def generate_perma_link(perma_link)
    object_model = ObjectModel.find_by_perma_link_parent("/"+perma_link)
     if object_model.nil?
       return perma_link
@@ -40,30 +41,14 @@ def generate_perma_link(perma_link)
      self.perma_link_parent = "/" + generate_perma_link(create_permalink_parent(self.name))
  end
  
- def create_2_model_components
+private 
 
-    model_component1=ModelComponent.new
-    model_component1.object_model_id=self.id
-    model_component1.component_name='title'
-    model_component1.component_display_name='Title'
-    model_component1.component_type='Textfield'
-    model_component1.default_value='Enter The title'
-    model_component1.is_deletable=false
-    model_component1.is_mandatory=true
-    model_component1.save
-    
-    model_component2=ModelComponent.new
-    model_component2.object_model_id=self.id
-    model_component2.component_name='body'
-    model_component2.component_display_name='Body'
-    model_component2.component_type='cktext_area'
-    model_component2.default_value='Enter The content'
-    model_component2.is_deletable=false
-    model_component2.is_mandatory=false
-    model_component2.save
-    
+ def create_2_model_components
+    self.model_components.create(:component_name=>'title',:component_display_name=>"Title",:component_type=>"Textfield",:default_value=>"Enter a title",:is_deletable=>false,:is_mandatory=>true)
+    self.model_components.create(:component_name=>'body',:component_display_name=>"Body",:component_type=>"Textarea",:default_value=>"Enter a Content",:is_deletable=>false,:is_mandatory=>false)
  end
-def create_permissions
+
+ def create_permissions
     perm = Permission.create(:activity_code=>"create",:activity_display_text=>"Create a #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
     perm = Permission.create(:activity_code=>"edit",:activity_display_text=>"Modify your own #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
@@ -78,7 +63,7 @@ def create_permissions
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
     perm = Permission.create(:activity_code=>"viewlist",:activity_display_text=>"View all #{self.name.capitalize.pluralize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
-end
+ end
 
  def remove_permissions
     permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=?","ObjectModel",self.name])
@@ -88,3 +73,16 @@ end
  end
 
 end
+
+# == Schema Information
+#
+# Table name: object_models
+#
+#  id                :integer(4)      not null, primary key
+#  name              :string(255)
+#  perma_link_parent :string(255)
+#  description       :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+

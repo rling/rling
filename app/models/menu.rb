@@ -2,12 +2,15 @@ class Menu < ActiveRecord::Base
 #Associations
   belongs_to :menuset
   belongs_to :page
+
 #Validations
   validates :name, :presence=>true
   validates :menu_view_type, :presence=>true
+
 #Callbacks 
   before_save :set_level
   before_destroy :set_children
+
 #Additions
   acts_as_tree :order => :position
 

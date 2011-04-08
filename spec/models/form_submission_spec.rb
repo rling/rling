@@ -64,3 +64,14 @@ describe FormSubmission do
     end
 
 end
+
+# == Schema Information
+#
+# Table name: form_submissions
+#
+#  id             :integer(4)      not null, primary key
+#  object_form_id :integer(4)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

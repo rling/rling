@@ -53,3 +53,19 @@ it "should not be valid without a perma link" do
 
 
  end
+
+# == Schema Information
+#
+# Table name: model_submissions
+#
+#  id              :integer(4)      not null, primary key
+#  object_model_id :integer(4)
+#  perma_link      :string(255)
+#  home_page       :boolean(1)
+#  page_view_type  :integer(4)      default(0)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  creator_id      :integer(4)
+#  updater_id      :integer(4)
+#
+

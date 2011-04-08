@@ -73,3 +73,16 @@ describe ObjectModel do
  end
 
 end
+
+# == Schema Information
+#
+# Table name: object_models
+#
+#  id                :integer(4)      not null, primary key
+#  name              :string(255)
+#  perma_link_parent :string(255)
+#  description       :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+

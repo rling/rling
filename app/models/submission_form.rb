@@ -1,8 +1,11 @@
 class SubmissionForm < ActiveRecord::Base
+#Associations
 belongs_to :object_form
 has_many   :form_datas, :dependent => :destroy,:order=>"form_component_id"
 
+#Instance methods
 
+#Get the emailable formats as necessary for Form Submitting Emails.
 def emailable_format
   output = ""
   self.form_datas.each do |form_data|

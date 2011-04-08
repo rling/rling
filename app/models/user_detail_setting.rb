@@ -11,6 +11,7 @@ class UserDetailSetting < ActiveRecord::Base
   validates :field_type, :presence=>true
 end
 
+
 # == Schema Information
 #
 # Table name: user_detail_settings
@@ -23,5 +24,6 @@ end
 #  mandatory     :boolean(1)      default(FALSE)
 #  created_at    :datetime
 #  updated_at    :datetime
+#  position      :integer(4)      default(0)
 #
 
