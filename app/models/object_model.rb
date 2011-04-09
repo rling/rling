@@ -16,29 +16,16 @@ class ObjectModel < ActiveRecord::Base
   after_destroy :remove_permissions
 
   #Instance Methods
-  def permalnkparent
-  return self.perma_link
-  end
+ # def permalnkparent
+ # return self.perma_link
+ # end
 
-  def permalnkparent=(value)
-  @permalnk = value
-  end
-
-  def generate_perma_link(perma_link)
-   object_model = ObjectModel.find_by_perma_link_parent("/"+perma_link)
-    if object_model.nil?
-      return perma_link
-    else
-      count = 0
-      until (ObjectModel.find_by_perma_link_parent("/"+perma_link + "-" + count.to_s).nil?)
-        count+=1
-      end
-      return perma_link + "-" + count.to_s
-    end
-  end
+ # def permalnkparent=(value)
+ # @permalnk = value
+ # end
 
  def perma_link_generate
-     self.perma_link_parent = "/" + generate_perma_link(create_permalink_parent(self.name))
+     self.perma_link_parent = "/" + generate_perma_link(ObjectModel,create_permalink(self.name,'plural'))
  end
  
 private 
@@ -49,18 +36,25 @@ private
  end
 
  def create_permissions
+   #Create
     perm = Permission.create(:activity_code=>"create",:activity_display_text=>"Create a #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
-    PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
+    [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
+   #Edit 
     perm = Permission.create(:activity_code=>"edit",:activity_display_text=>"Modify your own #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
-    PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
+    [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
+   #Edit Others 
     perm = Permission.create(:activity_code=>"editother",:activity_display_text=>"Modify others' #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
+   #Delete 
     perm = Permission.create(:activity_code=>"delete",:activity_display_text=>"Delete your own #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
-    PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
+    [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
+   #Delete Others
     perm = Permission.create(:activity_code=>"deleteother",:activity_display_text=>"Delete others' #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
+   #View 
     perm = Permission.create(:activity_code=>"view",:activity_display_text=>"View a #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
+   #View All 
     perm = Permission.create(:activity_code=>"viewlist",:activity_display_text=>"View all #{self.name.capitalize.pluralize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
  end

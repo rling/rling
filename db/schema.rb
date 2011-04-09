@@ -69,7 +69,8 @@ ActiveRecord::Schema.define(:version => 20110409103039) do
     t.string   "handle"
     t.string   "subject"
     t.text     "body"
-    t.boolean  "is_deletable", :default => true
+    t.string   "allowable_tags"
+    t.boolean  "is_deletable",   :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -167,8 +168,8 @@ ActiveRecord::Schema.define(:version => 20110409103039) do
     t.integer  "page_view_type",             :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
     t.string   "type"
+    t.string   "email"
     t.string   "view_type"
     t.integer  "view_for"
     t.integer  "creator_id"

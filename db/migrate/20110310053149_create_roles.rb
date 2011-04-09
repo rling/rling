@@ -6,9 +6,6 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
-  Role.create :role_type => "admin"
-  Role.create :role_type => "user"
-  Role.create :role_type => "anonymous"
   end
 
   def self.down

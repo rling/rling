@@ -47,14 +47,17 @@ def menu_parent_id=(value)
  @parent_id=value
 end
 
-def permalnk
-return self.perma_link
-end
+#def permalnk
+#return self.perma_link
+#end
 
-def permalnk=(value)
- @permalnk = value
-end
+#def permalnk=(value)
+# @permalnk = value
+#end
 
+def perma_link_generate
+     self.perma_link = "/" + generate_perma_link(Page,create_permalink(self.title))
+end
 
 def menu_name
   unless self.id.nil?
@@ -68,27 +71,6 @@ end
 def menu_name=(value)
  @menu_name=value
 end
-
-
-
-def generate_perma_link(perma_link)
-    page = Page.find_by_perma_link("/"+perma_link)
-    if page.nil?
-      return perma_link
-    else
-      count = 0
-      until (Page.find_by_perma_link("/"+perma_link + "-" + count.to_s).nil?)
-        count+=1
-      end
-      return perma_link + "-" + count.to_s
-    end
-  end
-
- def perma_link_generate
-     self.perma_link = "/" + generate_perma_link(create_permalink(self.title))
- end
-
-
 
 #private methods
 private

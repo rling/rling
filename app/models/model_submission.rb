@@ -17,30 +17,16 @@ class ModelSubmission < ActiveRecord::Base
   after_destroy :clear_cache
 
   #instance methods
-  def permalnk
-  return self.perma_link
-  end
+ # def permalnk
+ # return self.perma_link
+ # end
 
-  def permalnk=(value)
-  @permalnk = value
-  end
-
-  def generate_perma_link(perma_link)
-   model_submission = ModelSubmission.find_by_perma_link("/"+perma_link)
-    if model_submission.nil?
-      return perma_link
-    else
-      count = 0
-      until (ModelSubmission.find_by_perma_link("/"+perma_link + "-" + count.to_s).nil?)
-        count+=1
-      end
-      return perma_link + "-" + count.to_s
-    end
-  end
+ # def permalnk=(value)
+ # @permalnk = value
+ # end
 
  def perma_link_generate(title)
-
-     self.perma_link = "/" + generate_perma_link(create_permalink(title))
+     self.perma_link = "/" + generate_perma_link(ModelSubmission,create_permalink(title))
  end
 
 end
