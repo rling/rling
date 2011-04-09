@@ -135,7 +135,7 @@ def get_all_menus(record)
    def check_content_type(asset)
 
       if asset.upload_content_type.match(/^image/)
-       return link_to(image_tag(asset.upload.url(:thumb))),asset.upload.url
+       return link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
       else
         return link_to("#{asset.upload_file_name}", asset.upload.url)
       end

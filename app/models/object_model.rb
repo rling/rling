@@ -45,7 +45,7 @@ private
 
  def create_2_model_components
     self.model_components.create(:component_name=>'title',:component_display_name=>"Title",:component_type=>"Textfield",:default_value=>"Enter a title",:is_deletable=>false,:is_mandatory=>true)
-    self.model_components.create(:component_name=>'body',:component_display_name=>"Body",:component_type=>"Textarea",:default_value=>"Enter a Content",:is_deletable=>false,:is_mandatory=>false)
+    self.model_components.create(:component_name=>'body',:component_display_name=>"Body",:component_type=>"RichtextEditor",:default_value=>"Enter a Content",:is_deletable=>false,:is_mandatory=>false)
  end
 
  def create_permissions

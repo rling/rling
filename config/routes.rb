@@ -101,6 +101,14 @@ Rling::Application.routes.draw do
      post 'first_user_create'
     end
   end
+
+
+namespace :ckeditor do
+   resources :pictures, :only => [:index, :create, :destroy]
+   resources :attachments, :only => [:index, :create, :destroy]
+   resources :attachment_files, :only => [:index, :create, :destroy]
+  end
+
   match "account"=> "users#show"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"

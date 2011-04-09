@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :body %><br />
-    <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5')  %>
+    <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5' , :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id})  %>
   </div>
   
    <div class="field">
