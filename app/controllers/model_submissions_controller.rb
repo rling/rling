@@ -210,8 +210,6 @@ class ModelSubmissionsController < ApplicationController
    def get_object_model
    @object=ObjectModel.find(params[:object_model_id])
   end
-
-
 end
 
 
