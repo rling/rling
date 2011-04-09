@@ -1,10 +1,11 @@
 class FormComponentsController < ApplicationController
   include CacheHelper
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+ before_filter :require_admin
+ before_filter :get_object_form
 
   # GET /form_components
   # GET /form_components.xml
- before_filter :get_object_form
   def index
     @form_components = @page.form_components.all
 

@@ -32,9 +32,11 @@
     
      <td><%= page.get_view_for %></td>
 
-     <td><%= page.allow_create_on_permission %> </td>
-    
-    
+    <% if page.allow_create_on_permission.eql?(false) %>
+         <td><%= "No" %></td>
+     <% else %>
+          <td><%= "Yes" %></td>
+     <% end %>
     
     <td><%= link_to "View Components",[page,:view_components] %></td>
     <td><%= link_to "Show", :action=>"show",:id=>page %></td>

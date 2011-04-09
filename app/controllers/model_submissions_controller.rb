@@ -5,7 +5,7 @@ class ModelSubmissionsController < ApplicationController
 
   # GET /model_submissions
   # GET /model_submissions.xml
-   def index
+  def index
    @model_submissions = []
    unless validate_permission("viewlist",@object)
       @model_submissions = @object.model_submissions.find(:all,:conditions=>["creator_id=?",current_user.id]) unless current_user.nil?

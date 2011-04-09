@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :body %><br />
-    <% unless @mailer.is_deletable.blank? && @mailer.allowable_tags.blank? %>
+    <% unless @mailer.is_deletable=true && @mailer.allowable_tags.blank? %>
     You can use the following tags as part of the email you are sending
     and the tags will be replaced with the actual values. The tags available for you are
     <% tags = @mailer.allowable_tags.split(',') %>

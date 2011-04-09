@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-before_filter :require_user, :require_admin
+before_filter :require_admin
 
 def dashboard
    @objects=ObjectModel.all
@@ -20,6 +20,4 @@ def clear_cache
       format.xml  { head :ok }
     end 
   end
-
-
 end

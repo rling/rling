@@ -1,7 +1,7 @@
 class FormSubmission < ActiveRecord::Base
 #Associations
   belongs_to :object_form
-  has_many   :form_datas, :dependent => :destroy,:order=>"form_component_id"
+  has_many   :form_datas, :dependent => :destroy
 
 #Class methods
  #Used to get all the Tags to create Email Template
@@ -35,7 +35,7 @@ def get_variable_info(variablename)
      output = ""
      form_component = self.object_form.form_components.find(:first,:conditions=>["component_name=?",variablename]) 
      unless form_component.nil?
-       form_data = self.form_data.find(:first,:conditions["form_component_id=?",form_component.id])
+       form_data = self.form_datas.find(:first,:conditions=>["form_component_id=?",form_component.id])
        unless form_data.nil?
          output = form_data.data_value
        end

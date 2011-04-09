@@ -1,5 +1,5 @@
 class ObjectModelsController < ApplicationController
- 
+  before_filter :require_admin
   include PermalinkHelper
   # GET /object_models
   # GET /object_models.xml

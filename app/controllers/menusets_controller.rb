@@ -1,9 +1,8 @@
 class MenusetsController < ApplicationController
+  before_filter :require_admin
+
   # GET /menusets
   # GET /menusets.xml
-
-  before_filter :require_user, :require_admin
-
   def index
     @menusets = Menuset.all
 

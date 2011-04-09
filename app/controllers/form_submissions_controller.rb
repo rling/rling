@@ -1,10 +1,11 @@
 class FormSubmissionsController < ApplicationController
+ before_filter :require_admin
  before_filter :get_object_form
 
 
   # GET /form_submissions
   # GET /form_submissions.xml
-    def index
+  def index
    @form_submissions = @page.form_submissions.all
     respond_to do |format|
       format.html # index.html.erb

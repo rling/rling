@@ -1,5 +1,5 @@
 class MailersController < ApplicationController
-  before_filter :require_user,:require_admin
+  before_filter :require_admin
   # GET /mailers
   # GET /mailers.xml
   def index

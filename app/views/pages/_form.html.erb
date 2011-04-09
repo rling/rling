@@ -101,9 +101,8 @@ Show on Home Page
 </div>
 
 <% if  @page_type.eql?('View')  %>
-
 <div class="field">
-  <%= check_box('','allow_create_on_permission',  :checked=> @page.allow_create_on_permission) %>
+  <%= form.check_box(:allow_create_on_permission,  :checked=> @page.allow_create_on_permission) %>
   Allow Create On Permission
 </div>
 <% end %>

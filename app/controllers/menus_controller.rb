@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   include ApplicationHelper
-  before_filter :require_user, :require_admin
+  before_filter :require_admin
 
   # GET /menus
   # GET /menus.xml

@@ -3,6 +3,7 @@ class Mailer < ActiveRecord::Base
   validates :handle, :presence=>true, :uniqueness=>true
   validates :subject, :presence=>true
 
+#  belongs_to :object_form
 end
 
 # == Schema Information

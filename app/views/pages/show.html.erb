@@ -38,6 +38,7 @@
   <%= raw("<b>View For </b> : #{@page.get_view_for}") if @page.type == "View" %>
 
 </p>
+<% if  @page.type.eql?('View')  %>
 <p>
   <b>Allow Create on Permission:</b>
   <% if @page.allow_create_on_permission.eql?(false) %>
@@ -46,7 +47,7 @@
        <%= "Yes" %>
    <% end %>
 </p>
-
+<% end %>
 
 <%= link_to "Edit", edit_page_path(@page) %> |
 <%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url)) %>

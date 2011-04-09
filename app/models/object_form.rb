@@ -4,18 +4,17 @@ class ObjectForm < Page
 #Associations
 has_many :form_components ,:dependent => :destroy ,:order=> :position
 has_many :form_submissions,:dependent => :destroy
+has_one :mailer, :dependent => :destroy
 
 #call backs
 after_create :create_email_template ,:clear_cache
-after_destroy :clear_cache
 after_update :clear_cache
-
 #instance methods
  #Create email template that would be used when any submissions occur
  def create_email_template
     subject= "Form has been submitted for #{self.title} page"
     body='Sample body template. Please Modify once all the form components are created'
-    Mailer.create(:handle=>self.perma_link,:subject=>subject,:body=>body,:is_deletable=>false)
+    self.create_mailer(:handle=>self.perma_link,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'FormSubmission')
  end
 
 end

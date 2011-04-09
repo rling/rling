@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+  before_filter :require_user, :except => [:new,:create,:activate]
+  before_filter :require_admin, :only => [:index,:destroy]
+
   # GET /users
   # GET /users.xml
-  before_filter :require_user, :except => [:new,:create,:activate]
-  before_filter :require_admin, :except => [:new,:create,:activate,:show,:update,:edit,:user_details,:update_details]
   def index
     @users = User.all
-   @user_detail_settings = UserDetailSetting.all(:order =>'position')
+    @user_detail_settings = UserDetailSetting.all(:order =>'position')
   
     respond_to do |format|
       format.html # index.html.erb
@@ -53,24 +54,23 @@ class UsersController < ApplicationController
   else
     setting = Setting.find_by_name("allow_user_register_user")
     unless setting.setting_data
-     flash[:notice] = "User is not authorized to register into the site"
-     respond_to do |format|
-      format.html {redirect_to "/"}
-     end
+      flash[:notice] = "User is not authorized to register into the site"
+      respond_to do |format|
+        format.html {redirect_to "/"}
+      end
     else
-     @user = User.new
-     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-     end
+      @user = User.new
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @user }
+      end
     end
-   end
+  end
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-   
   end
 
   # POST /users

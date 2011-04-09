@@ -1,9 +1,9 @@
 class ViewComponentsController < ApplicationController
-  # GET /view_components
-  # GET /view_components.xml
+  before_filter :require_admin
   before_filter :get_view
 
-
+  # GET /view_components
+  # GET /view_components.xml
   def index
     @view_components = @page.view_components.all
 
@@ -91,10 +91,8 @@ class ViewComponentsController < ApplicationController
     end
     redirect_to :action => 'index'
   end
-
-  
+ 
   def get_view
-
   @page=View.find(params[:view_id])
   end
  
