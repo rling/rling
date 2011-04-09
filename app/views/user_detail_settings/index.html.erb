@@ -25,7 +25,7 @@
   </tr>
 <% end %>
 </table>
-<%= submit_tag 'Update Positions' %>
+<%= submit_tag 'Update Positions' unless @user_detail_settings.size == 0 %>
 <% end %>
 
 
