@@ -29,7 +29,7 @@ def change
   @user = User.find_by_email_and_reset_password_key(params[:user][:email],params[:user][:reset_password_key])
   if @user.update_attributes(params[:user])
      @user.delete_reset_code
-     flash[:notice] ="password has been changed successfully"
+     flash[:notice] ="Password has been changed successfully"
      respond_to do |format|
             format.html {redirect_to login_path}
             format.xml {render :xml =>@user}

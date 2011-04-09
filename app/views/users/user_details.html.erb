@@ -1,5 +1,5 @@
 <%= link_to "Back",users_path %>
-<h3>Edit user <%= current_user.login %> details </h3>
+<h3>Edit <%= current_user.login %> details </h3>
 <%= form_tag update_details_user_path(@user),:multipart=>true, :method => :post do %>
 <%= hidden_field_tag 'user_id',@user.id %>
   <% @user_detail_settings.each do |user_detail_setting| %>
