@@ -1,8 +1,8 @@
 class DisplayController < ApplicationController
 include ApplicationHelper
   def index
-    @pages = Page.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
-    @models=ModelSubmission.find_all_by_home_page(true,:conditions => ["page_view_type IN (?)",["0","1"]])
+   @pages = Page.find_all_by_home_page(true)
+   @models=ModelSubmission.find_all_by_home_page(true)
   end
 
   def mobile_index
@@ -18,7 +18,6 @@ include ApplicationHelper
           @object_model=ObjectModel.find_by_id(@page.view_for)
         end
       end
-
       if @page.nil?
         redirect_to :action=>"error_page_display"
       end
@@ -27,21 +26,20 @@ include ApplicationHelper
    #end
   end
 
-  def show_model_data
+   def show_model_data
     @object= ObjectModel.find_by_perma_link_parent("/"+params[:permalinkparent])
+    @model_submission= nil
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
       if validate_permission("view",@object)
         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
         if @model_submission.nil?
-	        redirect_to :action=>"error_page_display"
-        else
-	        @model_datas=ModelData.find_all_by_model_submission_id(@model_submission.id)
+          redirect_to :action=>"error_page_display"
         end
-      else
-        redirect_to :action=>"no_permissions"
-      end
+     else
+       redirect_to :action=>"no_permissions"
+     end
     end
   end
   
@@ -70,7 +68,6 @@ include ApplicationHelper
       unless mandatoryfailed
         submission = FormSubmission.create(:object_form_id=>object_form.id)
         object_form.form_components.each do |component|
-
         case component.component_type
           when "File"
             unless form_data[component.component_name].nil?

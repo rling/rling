@@ -1,11 +1,8 @@
-<div id="display_modification_links">
+<div id="display_modification_link">
 <%= link_to "Edit",edit_object_model_model_submission_path(@object,@model_submission) if validate_permission("edit",@object,@model_submission) %>&nbsp;&nbsp;
 <%= link_to("Destroy", [@object,@model_submission], :confirm => 'Are you sure?', :method => :delete) if validate_permission("delete",@object,@model_submission) %>
 <br/>
 </div>
 <% cache do %>
-
-<% @model_datas.each do |model_data| %>
-<%= render :partial=>"model_data", :locals=>{:model_data => model_data} %>
-<% end %>
+<%= render :partial=>"model_data", :locals=>{:model_submission => @model_submission} %>
 <% end %>

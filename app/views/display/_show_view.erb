@@ -1,3 +1,4 @@
+<div id="view_<%= page.id %>" class="page_view">
 <%  unless  @object_model.nil? %>
 
    <% if @object_model.model_submissions.empty? %>
@@ -12,5 +13,6 @@
   <% end %>
 
 <%  else %>
-  <%= "there is no such model!!!"  %>
+  No Model Found
 <% end  %>
+</div>

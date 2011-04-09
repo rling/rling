@@ -157,4 +157,45 @@ border: none;
     margin :5px;
 }
 
-  
+
+/* CSS for Page*/
+.page_heading
+{
+ float:left;
+ display:none;
+}
+#page_4 .page_title_value 
+{
+ display:none;
+}  
+
+#page_2 .page_title_value
+{
+ font-size: 16px;
+ font-weight: bold;
+ 
+}
+
+.form_component
+{
+ width:100%;
+}
+.form_component_heading,.mandatory_component,.form_component_value
+{
+  float:left;
+}
+.form_submit
+{
+ width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
