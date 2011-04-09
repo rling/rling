@@ -22,6 +22,15 @@ class UsersController < ApplicationController
     userid = current_user.id if userid.nil?
     @user = User.find(userid)
     @user_detail_settings=UserDetailSetting.all
+    @objects= [] 
+    ObjectModel.all.each do |om|
+      permission = Permission.where(:activity_code=>"viewlist",:permission_type=>"ObjectModel",:permission_object=>om.name)
+      unless permission.nil?
+        pm = PermissionRole.where(:role_id=>@user.role_id,:permission_id=>permission[0].id)
+        @objects << om if !pm.empty? && pm[0].value
+      end
+    end
+
      respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }

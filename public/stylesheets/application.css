@@ -12,6 +12,12 @@ body, td{
 a { color: white;text-decoration:none; }
 a:visited { color: white;text-decoration:none; }
 
+h1
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+
 #layout
 {
 margin:auto;
@@ -189,13 +195,15 @@ border: none;
  width: 100%;
 }
 
+#dashboard_left
+{
+    float:left;
+    padding-left: 10px;
+    width: 470px;
+}
 
-
-
-
-
-
-
-
-
-
+#dashboard_right
+{
+    float:left;
+    padding-left: 10px;
+}

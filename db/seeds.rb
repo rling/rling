@@ -24,9 +24,9 @@ Mailer.create(:handle=>"welcome",:subject=>"Rails Party Welcome Email",:body=>"D
 Welcome to RailsParty, your one stop testing application of RLingCMS. The following are your access details
 
 
-Username/Login Name: <RLING::USER::LOGIN>
+Username/Login Name: &lt;RLING::USER::LOGIN&gt;
 
-Password: <RLING::USER::PASSWORD>
+Password: &lt;RLING::USER::PASSWORD&gt;
 
 We look forward to have a pleasant stay with us.
 
@@ -38,7 +38,7 @@ Mailer.create(:handle=>"activation",:subject=>"You need to activate yourself to 
 You have been successfully registered into RailsParty. However in order to access the system, we need to make sure that you are the person who registered. Please click on the below activation URL or copy the url to your browser and activate.
 
 
-Activation URL: <RLING::USER::ACTIVATION_URL>
+Activation URL: &lt;RLING::USER::ACTIVATION_URL&gt;
 
 We once again welcome you to use RailsParty, the one stop testing box for RLingCMS
 
@@ -48,7 +48,7 @@ Mailer.create(:handle=>"forgot",:subject=>"Sending RailsParty Reset Password Cod
 
 You have requested to reset your password and we are herewith sending the Reset Password URL which you can use to change your password. You can click on the below url or copy the url and paste it into the browser's address bar.
 
-RESET PASSWORD URL : <RLING::USER::RESET_PASSWORD_URL>
+RESET PASSWORD URL : &lt;RLING::USER::RESET_PASSWORD_URL&gt;
 
 If you have not requested to reset your password, do not worry, you can still login with your old password only.
 

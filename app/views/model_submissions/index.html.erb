@@ -10,18 +10,12 @@
      <%= link_to 'Back', :controller=>"users",:action=>"show",:id=>current_user.id %>
      <% end
    end %>
-
 <h1>Listing  <%= @object.name.capitalize.pluralize %> </h1>
-
 <table>
-
 <tr>
 <% unless @object.model_submissions.eql?([]) %>
-<% @object.model_components.each do |model_component|   %>
-   <th><h4><%=model_component.component_display_name.capitalize %></h4>
-    <%   break %>
-   </th><% end %>
-
+<% model_component =  @object.model_components.first %>
+   <th><%=model_component.component_display_name.capitalize %></th>
 </tr>
 <% @model_submissions.each do |model_submission| %>
   <tr>

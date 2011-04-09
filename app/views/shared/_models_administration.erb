@@ -1,0 +1,8 @@
+<% unless @objects.eql?([]) %>
+<h1><u><%= "Models Administration " %></u></h1>
+  <% @objects.each do |object_model| %>
+    <% @link=object_model.name.capitalize.pluralize %>
+    <% @link << " Administration" %>
+    <%= link_to @link,[object_model,:model_submissions] %> <br/>
+  <% end %>
+<% end %>

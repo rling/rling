@@ -1,3 +1,4 @@
+<div id="dashboard_left">
 <%= link_to 'Edit Information', edit_user_path(@user)  %>
 <% if !@user_detail_settings.empty? %>
 | <%= link_to 'Edit User Details', user_details_user_path(@user) %>
@@ -79,3 +80,7 @@
 <% if current_user.admin? %>
 <%= link_to 'Back',:action=>"index" %>
 <% end %>
+</div>
+<div id="dashboard_right">
+ <%= render :partial=>"shared/models_administration" %>
+</div>
