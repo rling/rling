@@ -11,18 +11,26 @@
     </div>
   <% end %>
 
-  
+  <% if @view_component.id.nil? %>
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.select:name,@page.not_added_components.collect{|m| m } %>
+    <%= f.select:name,(@page.get_view_for.nil? ? " blank list" : @page.not_added_components.collect{|m| m } ) %>
   </div>
-  <div class="field">
+ <% end %>
+    <div>
+    <%= f.label :display_name %>
+    <%= f.text_field :display_name %>
+  </div>
+
+   
+   <div>
     <%= f.label :is_linked %>
     <%= f.check_box :is_linked %>
   </div>
 
+
   <div class="actions">
-    <%= f.submit "Add" %>
+    <%= f.submit (@view_component.id.nil? ? "Add" : "Update") %>
   </div>
 
 <% end %>

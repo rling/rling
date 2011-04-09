@@ -17,7 +17,7 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 	  data.url
 	end
 	
-	def url_thumb
+ def url_thumb
 	  extname = File.extname(filename)
     
     case extname.to_s
@@ -33,8 +33,8 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 	
 	def to_json(options = {})
 	  options[:methods] ||= []
-	  options[:methods] << :url_content
-	  options[:methods] << :url_thumb
+	  options[:methods] << send(url(:url_content))
+	  options[:methods] << send(url(:url_thumb))
 	  super options
   end
 end

@@ -10,6 +10,7 @@ CKEDITOR.editorConfig = function( config )
   config.PreserveSessionOnFileBrowser = true;
   // Define changes to default configuration here. For example:
   config.language = 'ru';
+  config.filebrowserBrowseUrl = 'someURL' 
   // config.uiColor = '#AADC6E';
 
   //config.ContextMenu = ['Generic','Anchor','Flash','Select','Textarea','Checkbox','Radio','TextField','HiddenField','ImageButton','Button','BulletedList','NumberedList','Table','Form'] ;
@@ -41,3 +42,19 @@ CKEDITOR.editorConfig = function( config )
         ['Image','Embed','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
     ];
 };
+
+CKEDITOR.replace( 'editor1',
+{
+   // Link dialog, "Browse Server" button
+   //filebrowserBrowseUrl : '/ckfinder/ckfinder.html',
+   // Image dialog, "Browse Server" button
+  // filebrowserImageBrowseUrl : '/ckfinder/ckfinder.html?type=Images',
+   // Flash dialog, "Browse Server" button
+   //filebrowserFlashBrowseUrl : '/ckfinder/ckfinder.html?type=Flash',
+   // Upload tab in the Link dialog
+   filebrowserUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+   // Upload tab in the Image dialog
+   filebrowserImageUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+   // Upload tab in the Flash dialog
+   filebrowserFlashUploadUrl : '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+}  );

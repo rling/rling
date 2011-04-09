@@ -14,6 +14,7 @@ has_many :view_components ,:dependent => :destroy ,:order =>:position
 #Components to be displayed which are to be added to the select of view components form
 def not_added_components
  model=ObjectModel.find_by_id(self.view_for)
+ 
  m_component = model.model_components.collect{|mc|mc.component_name}
  m_component << "created_at"
  m_component << "updated_at"
@@ -24,7 +25,7 @@ end
 #Get the View For Name
 def get_view_for
   model=ObjectModel.find_by_id(self.view_for)
-  return model.name.capitalize.pluralize unless model.nil?
+  return ( model.nil? ? nil :  model.name.capitalize.pluralize )
 end
 
 end

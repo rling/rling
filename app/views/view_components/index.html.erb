@@ -7,8 +7,11 @@
   <tr>
     
     <th>Name</th>
+     <th></th>
+    <th>Display Name</th>
     <th></th>
     <th>Is linked?</th>
+    
     <th></th>
     <th></th>
     <th></th>
@@ -18,10 +21,13 @@
   <tr>
     
     <td><%= view_component.name %></td>
+    <th></th> 
+    <td><%= view_component.display_name %></td>
     <th></th>
     <td><%= view_component.is_linked %></td>
     <th></th>
      <td align=right><%= text_field_tag "#{view_component.id}",view_component.position, :size=>2 %></td>
+    <td><%= link_to "Edit", edit_view_view_component_path(@page,view_component) %></td>
 
     <td><%=  link_to image_tag("delete.png",:class=>"image_link"),[@page, view_component], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

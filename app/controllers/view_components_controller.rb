@@ -64,7 +64,7 @@ class ViewComponentsController < ApplicationController
 
     respond_to do |format|
       if @view_component.update_attributes(params[:view_component])
-        format.html { redirect_to([@page,@view_component], :notice => 'View component was successfully updated.') }
+        format.html { redirect_to(view_view_components_path, :notice => 'View component was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
