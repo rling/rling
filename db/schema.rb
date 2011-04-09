@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110409103040) do
+ActiveRecord::Schema.define(:version => 20110409103041) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20110409103040) do
     t.boolean  "is_deletable",   :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "object_form_id"
   end
 
   create_table "menus", :force => true do |t|
