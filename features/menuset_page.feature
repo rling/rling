@@ -35,26 +35,24 @@ Feature: Menuset Page
   Scenario: User clicks on Show Page
     Given I go to menuset index page
     Then I should see "Header" on the index page
-    And I follow "Show"
+    And I press "Show" for "Header"
     Then I should see "Header" for "Name" on the page
     And I should see "Header menus for rlingCMS" for "Description" on the page
-
   
   Scenario: Edit a Menuset item
     Given I go to menuset index page 
     When I press "Edit" for "Header"
-    Then I should see "Editing Page" on the edit menuset page 
+    Then I should see "Edit Header Menuset" on the edit menuset page 
     And I fill in "menuset_name" with "Header1"
     And I fill in "menuset_description" with "Header1 Menu for RlingCMS"
     When I press "Update Menuset"
     Then I should see "Header1" for "Name" on the page
     And I should see "Header1 Menu for rlingCMS" for "Description" on the page
     
-
   Scenario: Delete an item from menuset
     Given I go to menuset index page
     Then I should see "Header" on the index page
-    And I follow "Delete"
+    And I press "Destroy" for "Header"
     Then I should not see "Header" on the index page
 
 

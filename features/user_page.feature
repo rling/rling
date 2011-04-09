@@ -40,7 +40,7 @@ Feature: User Page
   Scenario: Delete an item from user
     Given I go to user index page
     Then I should see "amit" on the user index page
-    And I follow "Delete"
+    And I follow "Destroy"
     Then I should not see "amit" on the user index page
 
   Scenario: Edit a User item

@@ -77,7 +77,7 @@ Feature: Mailer Page
   Scenario: Delete an item from mailer
     Given I go to mailer index page
     Then I should see "Thank you" on the mailer index page
-    When I click "Delete"
+    When I follow "Delete"
     Then I should not see "Thank you" on the mailer index page
 
   Scenario: Send Mail

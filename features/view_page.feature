@@ -47,14 +47,14 @@ Feature: View Page
     And I should see "This is Developer view" on that view_index page
     And I should see "/developer" on that view_index page
     And I should see "No" on that view_index page
-    And I should see "Table" on that view_index page
+#    And I should see "Table" on that view_index page
     And I should see "Blogs" on that view_index page
     When I press "Show" for "Developer" on the view_index page
     Then I should see "Developer" on the show page
     And I should see "This is Developer view" on the show page
     And I should see "/developer" on the show page
     And I should see "No" on the show page
-    And I should see "Table" on the show page
+#    And I should see "Table" on the show page
     And I should see "Blogs" on the show page
 
   Scenario: Edit a view item

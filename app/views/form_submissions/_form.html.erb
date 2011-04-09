@@ -1,4 +1,4 @@
-<%= form_tag  ([@page,@form_submission]),:multipart=>true ,:method=>'put' do %>
+<%= form_tag([@page,@form_submission],:multipart=>true ,:method=>'put') do %>
   <% if @form_submission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@form_submission.errors.count, "error") %> prohibited this form_submission from being saved:</h2>

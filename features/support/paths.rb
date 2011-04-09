@@ -118,6 +118,12 @@ module NavigationHelpers
     when /new view_component page/
       new_view_view_component_path @view
 
+    when /new form_component page/
+      new_object_form_form_component_path @object
+
+    when /admission page/
+      '/admission'
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

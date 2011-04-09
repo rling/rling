@@ -106,7 +106,7 @@ Feature: Object Model Page
   Scenario: User on Model Administration
     Given I go to admin page
     Then I should see "Blogs Administration" on the admin page
-    When I click "Blogs Administration"
+    When I follow "Blogs Administration"
     Then I am on model_submissions index page
 
   Scenario: Create a new Model Submission page successfully
@@ -115,7 +115,7 @@ Feature: Object Model Page
     And I fill in "form_field_title" with "Enter The title"
     And I fill in "form_field_body_editor" with "Enter The content"
     And I fill in "form_field_name" with "amit kumar mandal"
-    When I click "Create Blog"
+    When I follow "Create Blog"
     Then I am on model_submissions index page
     Then I should see "Enter the title" on the model_submissions index page
 

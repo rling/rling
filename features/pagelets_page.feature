@@ -69,7 +69,7 @@ Feature: Pagelet Page
   Scenario: Delete an item from pagelet
     Given I go to pagelet index page
     Then I should see "Home" on the pagelet index page
-    When I click "Delete"
+    When I follow "Delete"
     Then I should not see "Home" on the pagelet index page
     
     
