@@ -48,7 +48,7 @@ include ApplicationHelper
   end
 
   def no_permissions
-    
+
   end
 
   def create_submissions
