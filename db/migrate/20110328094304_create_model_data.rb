@@ -3,7 +3,7 @@ class CreateModelData < ActiveRecord::Migration
     create_table :model_data do |t|
       t.integer :model_component_id
       t.integer :model_submission_id
-      t.string :data_value
+      t.text :data_value
 
       t.timestamps
     end
