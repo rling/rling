@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110409103041) do
+ActiveRecord::Schema.define(:version => 20110411131127) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -37,6 +37,36 @@ ActiveRecord::Schema.define(:version => 20110409103041) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "fk_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_assetable_type"
   add_index "ckeditor_assets", ["user_id"], :name => "fk_user"
+
+  create_table "comment_components", :force => true do |t|
+    t.integer  "object_model_id"
+    t.string   "component_name"
+    t.string   "component_display_name"
+    t.string   "component_type"
+    t.text     "component_values"
+    t.string   "default_value"
+    t.boolean  "mandatory",              :default => false
+    t.integer  "position",               :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_data", :force => true do |t|
+    t.integer  "comment_component_id"
+    t.integer  "comment_submission_id"
+    t.string   "data_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_submissions", :force => true do |t|
+    t.integer  "model_submission_id"
+    t.integer  "parent_id"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "form_components", :force => true do |t|
     t.integer  "object_form_id"
@@ -137,6 +167,9 @@ ActiveRecord::Schema.define(:version => 20110409103041) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comment_component_id"
+    t.boolean  "allow_comments",       :default => false
+    t.boolean  "is_comment_recursive", :default => false
   end
 
   create_table "page_variable_settings", :force => true do |t|

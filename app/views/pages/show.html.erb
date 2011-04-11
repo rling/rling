@@ -19,11 +19,8 @@
 
 <p>
   <b>Home page:</b>
-  <% if @page.home_page.eql?(false) %>
-      <%= "No" %>
-  <% else %>
-       <%= "Yes" %>
-   <% end %> 
+  <%= ( @page.home_page  ? "Yes" : "No") %>
+    
 </p>
 
 <p>

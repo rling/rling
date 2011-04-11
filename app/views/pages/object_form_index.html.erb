@@ -19,15 +19,7 @@
     <td><%= page.title %></td>
     <td><%= raw page.body %></td>
     <td><%= page.perma_link %></td>
-      
-      
-    <% if page.home_page.eql?(false) %>
-         <td><%= "No" %></td>
-     <% else %>
-          <td><%= "Yes" %></td>
-     <% end %>
-      
-    
+    <td> <%=  page.home_page ? "Yes" : "No" %></td>
     <td><%= page.email %></td>
     <td><%= link_to "Form Components",[page,:form_components] %></td>
     <td><%= link_to "Submissions",[page,:form_submissions] %></td>

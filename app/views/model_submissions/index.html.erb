@@ -13,7 +13,7 @@
 <h1>Listing  <%= @object.name.capitalize.pluralize %> </h1>
 <table>
 <tr>
-<% unless @object.model_submissions.eql?([]) %>
+<% unless @object.model_submissions.empty? %>
 <% model_component =  @object.model_components.first %>
    <th><%=model_component.component_display_name.capitalize %></th>
 </tr>

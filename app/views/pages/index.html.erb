@@ -18,16 +18,7 @@
     <td><%= page.title %></td>
     <td><%= raw page.body %></td>
     <td><%= page.perma_link %></td>
-      
-      
-    <% if page.home_page.eql?(false) %>
-         <td><%= "No" %></td>
-     <% else %>
-          <td><%= "Yes" %></td>
-     <% end %>
-      
-   
-   
+    <td> <%=  page.home_page ? "Yes" : "No" %></td>
     <td><%= link_to "Show", page %></td>
     <td><%= link_to "Edit", edit_page_path(page) %></td>
     <td><%= link_to "Destroy", page, :confirm => 'Are you sure?', :method => :delete %></td>

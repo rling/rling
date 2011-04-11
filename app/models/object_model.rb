@@ -3,6 +3,7 @@ class ObjectModel < ActiveRecord::Base
 
   #Associations
   has_many :model_components ,:dependent=>:destroy ,:order =>:position
+  has_many :comment_components ,:dependent=>:destroy ,:order =>:position
   has_many :model_submissions ,:dependent=>:destroy
 
   #Validations

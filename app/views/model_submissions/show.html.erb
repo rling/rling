@@ -9,11 +9,7 @@
 
 <p>
   <b>Home page:</b>
-  <% if @model_submission.home_page.eql?(false) %>
-      <%= "No" %>
-  <% else %>
-       <%= "Yes" %>
-   <% end %>
+  <%=  @model_submission.home_page ? "Yes" : "No" %>
 </p>
 
 <p>
