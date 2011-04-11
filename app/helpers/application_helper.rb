@@ -3,7 +3,7 @@ module ApplicationHelper
 def login_links
   output = ""
   if current_user?
-     output << "Logged in as: #{link_to(current_user.login,account_url)} |"
+     output << "Logged in as: #{link_to(current_user.login,account_url)} | "
      if current_user.admin?
 	output << "#{link_to("Administration", :controller=>"admin", :action=>"dashboard")} | "
      end
