@@ -30,17 +30,19 @@ Feature: User Page
     And I should see "amit kumar mandal" on the account page
 
   Scenario: User clicks on Show Page
+    Given I have user details setting in user_detail_setting page
     Given I go to user index page
     Then I should see "amit" on the user index page
-    And I follow "Show"
+    When I press "Show" for "amit" on the user index page
     Then I should see "amit" for "Login" on the user show page
     And I should see "amit@heurion.com" for "Email" on the user show page
     And I should see "is admin" for "Role" on the user show page
     
   Scenario: Delete an item from user
+    Given I have user details setting in user_detail_setting page
     Given I go to user index page
     Then I should see "amit" on the user index page
-    And I follow "Destroy"
+    When I press "Destroy" for "amit" on the user index page
     Then I should not see "amit" on the user index page
 
   Scenario: Edit a User item

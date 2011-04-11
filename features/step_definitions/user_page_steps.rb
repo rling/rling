@@ -14,6 +14,10 @@ When /^I press "([^"]*)" for "([^"]*)" on the user index page$/ do |arg1, arg2|
   @user=User.find(:all)
   if arg1 == "Edit" 
     visit edit_user_path(@user)
+  elsif arg1 == "Show" 
+    visit user_path(@user)
+  elsif arg1 == "Destroy" 
+    visit user_path(@user)
   end
 end
 
