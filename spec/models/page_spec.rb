@@ -157,29 +157,8 @@ describe Page do
      menu.name.should eql('menu_name')
   end 
 
-#7
-  it "tests permalnk method" do
-  @page.permalnk.should eql(@page.perma_link)
- end
 
-#8
-  it "tests permalnk=(value) method " do
-    perma_link=@page.permalnk=('/somepermalink')
-    perma_link.should_not be_nil
-    perma_link.should eql('/somepermalink')
-    page= Page.create!(@page_attributes.merge( :perma_link=>perma_link ))
-    page.perma_link .should eql(perma_link)
- end
-#9
-it  "tests perma_link generations " do
 
-      page=Page.create :perma_link => '/home',:title => 'home'
-      Page.new.generate_perma_link("home").should_not be_nil
-      Page.new.generate_perma_link("home").should eql("home-0")
-      Page.new.generate_perma_link("home2").should_not be_nil
-      Page.new.generate_perma_link("home2").should eql("home2")
-  end
-   
 end
 #****************************************END***************************************************************#
 

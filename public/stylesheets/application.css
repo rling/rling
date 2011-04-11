@@ -207,3 +207,9 @@ border: none;
     float:left;
     padding-left: 10px;
 }
+
+.user_information .user_section_heading
+{
+   font-weight:bold;
+}
+
