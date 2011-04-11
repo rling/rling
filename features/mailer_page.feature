@@ -75,9 +75,10 @@ Feature: Mailer Page
     And I should see "Thank you for joining us" for "Body" on the page
 
   Scenario: Delete an item from mailer
+    Given I have a mailer in mailer index page
     Given I go to mailer index page
     Then I should see "Thank you" on the mailer index page
-    When I follow "Delete"
+    When I press "Destroy" for "Thank you" on the mailer page
     Then I should not see "Thank you" on the mailer index page
 
   Scenario: Send Mail

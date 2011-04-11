@@ -19,6 +19,8 @@ When /^I press "([^"]*)" for "([^"]*)" on the pagelet index page$/ do |arg1, arg
     visit edit_pagelet_path(@pagelet)
   elsif arg1 == "Show"
     visit pagelet_path(@pagelet)
+  elsif arg1 == "Destroy"
+    visit pagelet_path(@pagelet)
   end
 end
 

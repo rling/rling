@@ -104,6 +104,7 @@ Feature: Object Model Page
     Then I should see "can't be blank" for "Component display name" on that model_component page
 
   Scenario: User on Model Administration
+    Given I have a object_model in object_model index page
     Given I go to admin page
     Then I should see "Blogs Administration" on the admin page
     When I follow "Blogs Administration"
@@ -115,7 +116,7 @@ Feature: Object Model Page
     And I fill in "form_field_title" with "Enter The title"
     And I fill in "form_field_body_editor" with "Enter The content"
     And I fill in "form_field_name" with "amit kumar mandal"
-    When I follow "Create Blog"
+    When I press "Create Blog"
     Then I am on model_submissions index page
     Then I should see "Enter the title" on the model_submissions index page
 

@@ -4,7 +4,7 @@ Given /^I have a form_component in form_component page$/ do
 end
 
 Then /^I should see "([^"]*)" on the admission page$/ do |arg1|
-  page.find('p',:text=>arg1)
+  page.find('#middle').text.index(arg1).should_not eq(0)
 end
 
 Then /^I should see "([^"]*)" on that admission page$/ do |arg1|

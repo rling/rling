@@ -33,9 +33,9 @@ Feature: User Page
     Given I go to user index page
     Then I should see "amit" on the user index page
     And I follow "Show"
-    Then I should see "amit" for "Login" on the page
-    And I should see "amit@heurion.com" for "Email" on the page
-    And I should see "is admin" for "Role" on the page
+    Then I should see "amit" for "Login" on the user show page
+    And I should see "amit@heurion.com" for "Email" on the user show page
+    And I should see "is admin" for "Role" on the user show page
     
   Scenario: Delete an item from user
     Given I go to user index page
@@ -52,9 +52,9 @@ Feature: User Page
     And I fill in "user_password_confirmation" with "test123"
     And I select "Administrator" from "user_role_id"
     When I press "Update User"
-    Then I should see "amit" for "Login" on the page
-    And I should see "amit@heurion.com" for "Email" on the page
-    And I should see "is admin" for "Role" on the page
+    Then I should see "amit" for "Login" on the user show page
+    And I should see "amit@heurion.com" for "Email" on the user show page
+    And I should see "is admin" for "Role" on the user show page
     
 
   

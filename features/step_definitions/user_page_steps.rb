@@ -21,3 +21,8 @@ Given /^I have user details setting in user_detail_setting page$/ do
   @user_detail_settings = UserDetailSetting.create(:field_name=>"Name", :field_type=>"Textfield", :default_value=>"amit", :mandatory=>"1")
 end
 
+Then /^I should see "([^"]*)" for "([^"]*)" on the user show page$/ do |arg1, arg2|
+  page.find('div',:text=>arg1)
+  page.find('div',:text=>arg2)
+end
+

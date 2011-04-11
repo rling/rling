@@ -16,6 +16,8 @@ When /^I press "([^"]*)" for "([^"]*)" on the mailer page$/ do |arg1, arg2|
     visit edit_mailer_path(@mailer)
   elsif arg1 == "Show"
     visit mailer_path(@mailer)
+  elsif arg1 == "Destroy"
+    visit mailer_path(@mailer)
   elsif arg1 == "Send Mail"
     visit sendmail_mailer_path(@mailer)
   end

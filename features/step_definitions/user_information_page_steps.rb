@@ -10,3 +10,7 @@ Given /^I have a user information in user information page$/ do
   @user1 = User.create(:login=>"amit", :email=>"amit@heurion.com", :role_id=>"3")
 end
 
+Then /^I should see "([^"]*)" for "([^"]*)" on the user information show page$/ do |arg1, arg2|
+  page.find('div',:text=>arg1)
+  page.find('div',:text=>arg2)
+end

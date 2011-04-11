@@ -35,7 +35,7 @@ Feature: User Information/Account Page
     And I fill in "user_password_confirmation" with "test123"
     And I select "Administrator" from "user_role_id"
     When I press "Update User"
-    Then I should see "amit" for "Login" on the page
-    And I should see "amit@heurion.com" for "Email" on the page
+    Then I should see "amit" for "Login" on the user information show page
+    And I should see "amit@heurion.com" for "Email" on the user information show page
 
     

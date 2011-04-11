@@ -67,9 +67,10 @@ Feature: Pagelet Page
     And I should see "This is home menu" for "Display text" on the pagelet show page
 
   Scenario: Delete an item from pagelet
+    Given I have a pagelet in pagelet index page
     Given I go to pagelet index page
     Then I should see "Home" on the pagelet index page
-    When I follow "Delete"
+    When I press "Destroy" for "Home" on the pagelet index page
     Then I should not see "Home" on the pagelet index page
     
     
