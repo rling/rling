@@ -1,0 +1,69 @@
+<script type="text/javascript">
+function findselected(){
+var state = document.getElementById('user_detail_setting_field_type');
+var field_value = document.getElementById('field_value');
+  if(state.value == "Dropdown" ||state.value == "Radiobutton" )
+  {
+    $('field_value').show();
+   }
+  else
+    {
+      field_value.hide();
+    }
+
+  if(state.value == "File")
+  {
+     $('default_value').hide();
+    $('thumbnail').show();
+  }else
+    {
+       $('default_value').show();
+    $('thumbnail').hide();
+    }
+
+}
+</script>
+<%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
+  <% if @user_detail_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_detail_setting.errors.count, "error") %> prohibited this user_detail_setting from being saved:</h2>
+
+      <ul>
+      <% @user_detail_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= f.label :field_name %><br />
+  <%= f.text_field :field_name %><br />
+  </div>
+
+  <div class="field"">
+  <%= f.label :field_type %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","label"], {},{:onchange=>"return findselected();"} %><br />
+  </div>
+
+  <div class="field" id="field_value">
+  <%= f.label :field_values %><br />
+  <%= f.text_area :field_values %><br />
+  </div>
+
+  <div class="field">
+  <span id="thumbnail" style="display:none;"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
+  <span id="default_value"><%= f.label "Default value"  %></span><br />
+  <%= f.text_field :default_value %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label 'Is this field mandatory?' %><br />
+  <%= f.check_box :mandatory %><br />
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -1,0 +1,23 @@
+<h3>Details of <%= @user_detail_setting.field_name %> field setting</h3> 
+<p>
+<b>Field Name:</b>
+<%= @user_detail_setting.field_name %>
+</p>
+<p>
+<b>Field Type:</b>
+<%= @user_detail_setting.field_type %>
+</p>
+<p>
+<b>Field Values:</b>
+<%= @user_detail_setting.field_values %>
+</p>
+<p>
+<b>Default Value:</b>
+<%= @user_detail_setting.default_value %>
+</p>
+<p>
+<b>Is this field mandatory for users:</b>
+<%= @user_detail_setting.mandatory %>
+</p>
+<%= link_to 'Edit', edit_user_detail_setting_path(@user_detail_setting) %> |
+<%= link_to 'Back', user_detail_settings_path %>

@@ -4,7 +4,6 @@
 <table>
   <tr>
     <th>Title</th>
-    <th>Body</th>
     <th>Perma link</th>
     <th>Home page</th>
     <th>Email</th>
@@ -17,7 +16,6 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.title %></td>
-    <td><%= raw page.body %></td>
     <td><%= page.perma_link %></td>
     <td> <%=  page.home_page ? "Yes" : "No" %></td>
     <td><%= page.email %></td>

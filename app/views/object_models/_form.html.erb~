@@ -1,0 +1,43 @@
+<%= form_for(@object_model) do |form| %>
+  <% if @object_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@object_model.errors.count, "error") %> prohibited this object_model from being saved:</h2>
+
+      <ul>
+      <% @object_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= raw(form.cktext_area :description, :toolbar=>'Full',:cols=>'100',:height=>200 :rows=>'5')  %>
+  </div>
+
+
+  <div class="field">
+      <%= form.label :perma_link_parent %><br />
+      <% if @object_model.perma_link_parent.nil? %>
+      <%= form.text_field :perma_link_parent, :disabled=>"disabled"  %>
+      <% else %>
+      <%= form.text_field :perma_link_parent %>
+      <% end %>
+
+
+      <%= check_box('','permalnkparent',  :checked=> (@object_model.perma_link_parent.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('object_model_perma_link_parent').disabled = true;} else {$('object_model_perma_link_parent').disabled = false;}") %>
+Generate permalink parent  automatically<br />
+
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

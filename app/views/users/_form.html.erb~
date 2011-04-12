@@ -1,0 +1,50 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% unless get_setting("is_login_type_email")%>
+ <div class="field">
+  <%= f.label :login %><br />
+  <% if @user.new_record? %>
+  <%= f.text_field :login %>
+  <% else %>
+  <%= @user.login %>
+  <% end %>
+  </div>
+  <% end %>
+ <div class="field">
+ <%= f.label :email %><br />
+  <% if get_setting("is_login_type_email") && !@user.new_record? %>
+  <%= @user.email %><br />
+  <% else %>
+  <%= f.text_field :email %>
+  <% end %>
+ </div>
+  
+  <div class="field">
+  <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+  <%= f.password_field :password %><br />
+  </div>
+  <div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %><br />
+  </div>
+  <div class="field">
+  <% if current_user? && current_user.admin? %>
+  Select role <%= select(:user, :role_id, Role.all.collect{|p|[p.role_type,p.id]}.reject { |(role_type, id)| role_type == 'Anonymous'}) %><br />
+  <% else %>
+  <%= hidden_field_tag "user[role_id]", "2" %>
+  <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

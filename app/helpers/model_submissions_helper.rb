@@ -10,6 +10,8 @@
       return text_field_tag("form_field[#{model_component.component_name}]",value)
     when "Textarea"
       return text_area_tag("form_field[#{model_component.component_name}]",value)
+    when "Label"
+      return label_tag("form_field[#{model_component.component_name}]",value)
     when "RichtextEditor"
       ckoutput =  ckeditor_textarea("form_field","#{model_component.component_name}",:toolbar=>'Full',:cols=>'100', :rows=>'5')
       ckoutput << raw("<script> $('form_field_#{model_component.component_name}_editor').value = #{value}; </script>")

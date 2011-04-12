@@ -1,0 +1,18 @@
+<div id="view_<%= page.id %>" class="page_view">
+<%  unless  @object_model.nil? %>
+
+   <% if @object_model.model_submissions.empty? %>
+      <%= " No Record for #{@object_model.name}"  %>
+  
+   <% else %>
+      <% if page.view_type == "Grid" %>
+      <%=  render :partial=>"show_grid_view",:locals=>{:page=>page} %>
+      <% elsif page.view_type ==  "Table" %>
+      <%=  render :partial=>"show_table_view",:locals=>{:page=>page} %>
+      <%  end %>
+  <% end %>
+
+<%  else %>
+  No Model Found
+<% end  %>
+</div>

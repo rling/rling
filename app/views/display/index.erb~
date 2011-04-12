@@ -1,0 +1,10 @@
+<% @pages.each do |page| 
+@object_model=ObjectModel.find_by_id(page.view_for) if page.type == "View" 
+@form_submission =  @page.form_submissions.new if page.type == "ObjectForm"
+%>
+	<%= render :partial => 'page_data',:locals=>{:page=>page } %>
+<% end %>
+<% @models.each do |model_submission| %>
+        <%= render :partial=>"model_data", :locals=>{:model_submission => model_submission} %>
+<% end %>
+

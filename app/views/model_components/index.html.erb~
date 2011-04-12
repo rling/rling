@@ -1,0 +1,44 @@
+<% @model="New " << "Component for " << @object.name.capitalize  %>
+<%= link_to @model, new_object_model_model_component_path %> |
+<%= link_to 'Back', object_models_path %>
+
+<h1>Listing  Components for <%= @object.name %> </h1>
+
+<table>
+  <tr>
+    <th>Component name</th>
+    <th>Component Display name</th>
+    <th>Component type</th>
+    <th>Mandatory Field?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<%= form_tag update_position_object_model_model_components_path do %>
+<% @model_components.each do |model_component| %>
+  <tr>
+
+    <td><%= model_component.component_name %></td>
+    <td><%= model_component.component_display_name %></td>
+    <td><%= model_component.component_type %></td>
+    <td><%= model_component.component_values %></td>
+    <td><%= model_component.default_value %></td>
+    <td><%= model_component.is_mandatory %></td>
+    <td></td>
+    <td align=right><%= text_field_tag "#{model_component.id}",model_component.position, :size=>2 %></td>
+    <td><%=  link_to "Show",object_model_model_component_path(@object,model_component) %></td>
+    <td><%= link_to "Edit", edit_object_model_model_component_path(@object,model_component) %></td>
+    <%  unless model_component.is_deletable.eql?(false) %>
+    <td><%= link_to "Destroy", ([@object,model_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<%= submit_tag 'Update Positions' %>
+<% end %>
+
+<br /><br/>
+
+<%= link_to @model, new_object_model_model_component_path %> |
+<%= link_to 'Back', object_models_path %>
+

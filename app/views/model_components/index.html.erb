@@ -9,8 +9,6 @@
     <th>Component name</th>
     <th>Component Display name</th>
     <th>Component type</th>
-    <th>Component values</th>
-    <th>Default value</th>
     <th>Mandatory Field?</th>
     <th></th>
     <th></th>
@@ -23,8 +21,6 @@
     <td><%= model_component.component_name %></td>
     <td><%= model_component.component_display_name %></td>
     <td><%= model_component.component_type %></td>
-    <td><%= model_component.component_values %></td>
-    <td><%= model_component.default_value %></td>
     <td><%= model_component.is_mandatory %></td>
     <td></td>
     <td align=right><%= text_field_tag "#{model_component.id}",model_component.position, :size=>2 %></td>

@@ -51,7 +51,7 @@ var component_value = document.getElementById('field_value');
 
   <div class="field">
     <%= f.label :component_type %><br />
-    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File"], {},{:onchange=>"return findselected();"} %><br />
+    <%= f.select :component_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Label"], {},{:onchange=>"return findselected();"} %><br />
   </div>
 
 <div class="field" id="field_value" style="<% ["DropDown","Radiobutton"].include?(@form_component.component_type) ? '' : 'display:none' %>">

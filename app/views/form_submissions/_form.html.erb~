@@ -1,0 +1,24 @@
+<%= form_tag  ([@page,@form_submission]),:multipart=>true ,:method=>'put' do %>
+  <% if @form_submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form_submission.errors.count, "error") %> prohibited this form_submission from being saved:</h2>
+
+      <ul>
+      <% @form_submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <% @page.form_components.each do |form_component| %>
+    <p>
+      <%= form_component.component_name %>:
+      <%= check_component_type(form_component,@form_submission) %>
+      <%= form_component.mandatory ? "*" : "" %>
+    </p>
+    <% end %>
+    <p> <%= submit_tag "Update" %> </p>
+
+
+ <% end %>

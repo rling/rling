@@ -5,8 +5,6 @@
   <tr>
     <th>Field Name</th>
     <th>Field Type</th>
-    <th>Field Values</th>
-    <th>Default Value</th>
     <th>Mandatory</th>
   </tr>
 <%= form_tag update_position_user_detail_settings_path do %>
@@ -14,8 +12,6 @@
   <tr>
     <td><%= user_detail_setting.field_name %></td>
     <td><%= user_detail_setting.field_type %></td>
-    <td><%= user_detail_setting.field_values %></td>
-    <td><%= user_detail_setting.default_value %></td>
     <td><%= user_detail_setting.mandatory %></td>
     <th></th>
      <td align=right><%= text_field_tag "#{user_detail_setting.id}",user_detail_setting.position, :size=>2 %></td>

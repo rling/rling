@@ -12,6 +12,8 @@ module DisplayHelper
       return text_field_tag("form_field[#{form_component.component_name}]",value)
     when "Textarea"
       return text_area_tag("form_field[#{form_component.component_name}]",value)
+   when "Label"
+      return label_tag("form_field[#{form_component.component_name}]",value)
     when "Dropdown"
       dropdown = form_component.component_values.split(',')
       return select_tag("form_field[#{form_component.component_name}]",options_for_select(dropdown,:selected=>value))

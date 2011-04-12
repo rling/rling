@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title><%= get_page_variable "SEO Meta Title" %></title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="en" />
+  <meta name="generator" content="RlingCMS -- www.rlingcms.com"/>">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="robots" content="index,follow">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="distribution" content="worldwide">
+  <meta name="description" content="<%= get_page_variable "SEO Meta Description" %>" >
+  <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" >
+  <meta name="author" content="<%= get_page_variable "AUTHOR" %>
+
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'scaffold' %>
+
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :ckeditor %>
+  <%= csrf_meta_tag %>
+ </head>
+ <body>
+  <div id="layout">
+   <div id="header">
+    <div id="top_bar">
+      <%= login_links %>
+    </div>
+    <div id="header_text">
+      <h1>Welcome to RlingCMS</h1>
+      <h3>Faster CMS for Faster minds</h3>
+    </div>
+    <div id="header_menu">
+     <%= show_menu 'dropdownmenu','Header' %>
+    </div>
+   </div>
+   <div id="middle">
+    <%= flash_notice %>
+    <%= yield  %>
+   </div>
+   <div id="footer">
+    <div id="footer_menu">
+     <%= show_menu 'nolistmenu','Footer' %>     
+    </div>
+    <div id="developer">
+       Developed by Heurion<br/>
+       contact: <a href="mailto:info@heurion.com" >info@heurion.com</a>
+       website: <a href="http://www.heurion.com">www.heurion.com</a>
+    </div>
+  
+  </div>
+ </body>
+</html>

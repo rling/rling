@@ -1,0 +1,33 @@
+<%= link_to 'New User Detail Setting', new_user_detail_setting_path %> | <%= link_to 'Back to Users', users_path %>
+<h1>User Detail Settings Page</h1>
+
+<table>
+  <tr>
+    <th>Field Name</th>
+    <th>Field Type</th>
+    <th>Mandatory</th>
+  </tr>
+<%= form_tag update_position_user_detail_settings_path do %>
+<% @user_detail_settings.each do |user_detail_setting| %>
+  <tr>
+    <td><%= user_detail_setting.field_name %></td>
+    <td><%= user_detail_setting.field_type %></td>
+    <td><%= user_detail_setting.field_values %></td>
+    <td><%= user_detail_setting.default_value %></td>
+    <td><%= user_detail_setting.mandatory %></td>
+    <th></th>
+     <td align=right><%= text_field_tag "#{user_detail_setting.id}",user_detail_setting.position, :size=>2 %></td>
+    <td><%= link_to "Show", user_detail_setting %></td>
+    <td><%= link_to "Edit", edit_user_detail_setting_path(user_detail_setting) %></td>
+    <td><%= link_to "Destroy", user_detail_setting, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= submit_tag 'Update Positions' unless @user_detail_settings.size == 0 %>
+<% end %>
+
+
+<br /><br/>
+
+<%= link_to 'New User Detail Setting', new_user_detail_setting_path %> |
+<%= link_to 'Back to Users', users_path %>

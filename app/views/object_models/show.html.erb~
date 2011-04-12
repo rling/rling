@@ -1,0 +1,19 @@
+<h3>Details of <%= @object_model.name %>  Model </h3>
+<p>
+  <b>Name:</b>
+  <%= @object_model.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= raw @object_model.description %>
+</p>
+
+<p>
+  <b>Perma link Parent:</b>
+  <%= @object_model.perma_link_parent %>
+</p>
+
+
+<%= link_to 'Edit', edit_object_model_path(@object_model) %> |
+<%= link_to 'Back', object_models_path %>

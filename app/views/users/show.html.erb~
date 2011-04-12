@@ -1,0 +1,81 @@
+<%= link_to 'Edit Information', edit_user_path(@user)  %>
+<% if !@user_detail_settings.empty? %>
+| <%= link_to 'Edit User Details', user_details_user_path(@user) %>
+<% end %>
+
+<div id= user_<%= @user.id %> class="user_information">
+<h3>Details of  <%= @user.login %></h3>
+
+<div class="user_section user_section_login">
+  <div class="user_section_heading user_section_login_heading">Login:</div>
+  <div class="user_section_value user_section_login_value"><%=@user.login %></div>
+</div>
+
+<div class="email">
+    <div class="user_section_heading user_section_email_heading">Email:</div>
+    <div class="user_section_value user_section_email_value"><%=@user.email %></div>
+</div>
+
+<div class="role">
+   <div class="user_section_heading user_section_email_heading">Role:</div>
+   <div class="user_section_value user_section_email_value">
+      <% if @user.admin? %>
+        is admin
+      <% else %>
+        is not admin
+      <% end %> 
+  </div>
+</div>
+
+<div class= "login_count">  
+  <div class="user_section_heading user_section_login_count_heading">Login Count:</div>
+  <div class="user_section_value user_section_login_count_value"><%= @user.login_count %></div>
+</div>
+
+<div class="failed_login_count">
+  <div class="user_section_heading user_section_failed_login_count_heading">Failed Login Count:</div>
+  <div class="user_section_value user_section_failed_login_count_value"><%= @user.failed_login_count %></div>
+</div>
+
+<div class="current_login_IP">
+  <div class="user_section_heading user_section_current_login_IP_heading">Current Login IP:</div>
+ <div class="user_section_value user_section_failed_login_IP_value"><%= @user.current_login_ip %></div>
+</div>
+
+<div class="previous_login">
+ <div class="user_section_heading user_section_previous_login_heading">Previous Login IP:</div>
+ <div class="user_section_value user_section_previous_login_value"><%= @user.last_login_ip %></div>
+</div>
+
+
+<% @user_detail_settings.each do |user_detail_setting| %>
+ <div class="user_section user_section_field_<%=user_detail_setting.field_name %>">
+  <div class="user_section_heading user_section_field_<%=user_detail_setting.field_name %>_heading">    
+      <%= user_detail_setting.field_name %>:
+  </div> 
+  <div class="user_section_value user_section_field_<%=user_detail_setting.field_name %>_value">
+  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id) 
+   unless user_detail.nil? %>
+  <% case user_detail_setting.field_type %>
+      <% when "File" %>
+       <% if !user_detail.selected_value.blank? && user_detail.selected_value.to_i != 0 %>
+           <% asset=Asset.find(user_detail.selected_value) %>
+           <%= check_content_type(asset) %>
+        <% else %>
+           <%= "No files uploaded." %>
+        <% end  %>
+      <% else %>
+        <%= user_detail.selected_value %>
+      <% end %>
+  <% else %>
+    <% "" %>
+  <% end %>
+ </div>
+</div>
+<% end %>
+</div>
+
+<br/>
+<% if current_user.admin? %>
+<%= link_to 'Back',:action=>"index" %>
+<% end %>
