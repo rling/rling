@@ -1,0 +1,18 @@
+<% unless object_model.comment_components.empty? %>
+
+    
+    <%= form_tag "/display/create_comment_submissions/#{object_model.id}", :multipart=>true do %>
+      <% object_model.comment_components.each do |comment_component| %>
+       <div class="comment_component">
+         <div class="comment_component_heading comment_component_heading_<%= comment_component.component_name %>">
+            <%= comment_component.component_display_name %>:
+         </div>
+         <div class="mandatory_component"><%= comment_component.mandatory ? "*" : "" %></div>
+         <div class="comment_component_value comment_component_value_<%= comment_component.component_name %>">
+           <%= check_component_type(comment_component,@comment_submission,CommentData) %>
+         </div>
+      </div>
+      <% end %>
+    <div class="form_submit"><%= submit_tag "Submit" %></div>
+    <% end %>
+  <% end %>

@@ -1,0 +1,35 @@
+<h3>Details of <%= @comment_component.component_name %> component</h3>
+
+<p>
+  <b>Component name:</b>
+  <%= @comment_component.component_name %>
+</p>
+
+<p>
+  <b>Component Display name:</b>
+  <%= @comment_component.component_display_name %>
+</p>
+
+<p>
+  <b>Component type:</b>
+  <%= @comment_component.component_type %>
+</p>
+
+<p>
+  <b>Component values:</b>
+  <%= @comment_component.component_values %>
+</p>
+
+<p>
+  <b>Default value:</b>
+  <%= @comment_component.default_value %>
+</p>
+
+<p>
+  <b>Mandatory:</b>
+  <%= @comment_component.mandatory %>
+</p>
+
+
+<%= link_to 'Edit', edit_object_model_comment_component_path(@comment_component) %> |
+<%= link_to 'Back', object_model_comment_components_path %>

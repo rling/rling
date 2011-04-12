@@ -1,7 +1,11 @@
 module DisplayHelper
- def check_component_type(form_component,form_submission)
+ def check_component_type(form_component,form_submission,data_obj)
    unless form_submission.nil?
-   form_data=FormData.find_by_form_submission_id_and_form_component_id(form_submission.id,form_component.id)
+  if data_obj == FormData      
+   fdata=data_obj.find_by_form_submission_id_and_form_component_id(form_submission.id,form_component.id) 
+  else
+   form_data=data_obj.find_by_comment_submission_id_and_comment_component_id(form_component.id,form_submission.id)
+   end 
   
    value = (form_submission.id.nil? ? form_component.default_value : ( form_data.data_value unless form_data.nil? ) )
    else
@@ -42,6 +46,27 @@ module DisplayHelper
 	  end
   end
 
+ def get_all_comments(record,model_submission)
+    comment_submission = Array.new
+
+    top_items = CommentSubmission.find_all_by_parent_id_and_level_model_submission_id(0,1,model_submission.id)
+
+    top_items.each { |item| add_item_to_comment_submission(record, item, comment_submission)}
+
+    return comment_submission
+  end
+
+  def add_item_to_comment_submision(record, item, comment)
+      unless record.nil?
+	      unless record.id == item.id
+	comment << item #"#{leader}#{item.name}"
+		item.children.each { |child| add_item_to_comment_submission(record, child, comment) }
+	      end
+      else
+	    comment << item #"#{leader}#{item.name}"
+		item.children.each { |child| add_item_to_comment_submission(record, child,comment) }
+      end
+  end
  
 
 end

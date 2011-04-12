@@ -7,6 +7,9 @@
     <th>Name</th>
     <th>Description</th>
     <th>Perma link parent</th>
+    <th> Allow comments  </th>
+    <th> Is comment Recursive ?  </th>
+    <th> Email On comment ? </th>
   </tr>
 
 <% @object_models.each do |object_model| %>
@@ -15,6 +18,12 @@
     <td><%= object_model.name %></td>
     <td><%= raw object_model.description%></td>
     <td><%= object_model.perma_link_parent %></td>
+    <td><%= object_model.allow_comments %></td>
+    <td><%= object_model.is_comment_recursive %></td>
+    <td><%= object_model.email_comment %></td>
+    <% unless object_model.allow_comments %>
+    <td><%= link_to "comment Components",[object_model,:comment_components] %></td>
+    <% end %>
     <td><%= link_to "Model Components",[object_model,:model_components] %></td>
     <td><%= link_to image_tag("show.png",:class=>"image_link"), object_model %></td>
     <td><%= link_to image_tag("edit.png",:class=>"image_link"), edit_object_model_path(object_model) %></td>

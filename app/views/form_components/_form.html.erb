@@ -1,5 +1,5 @@
 
-<script type="text/javascript">
+<script src="jquery.js" type="text/javascript">
 function findselected(){
 var state = document.getElementById('form_component_component_type');
 var component_value = document.getElementById('field_value');
@@ -13,12 +13,12 @@ var component_value = document.getElementById('field_value');
     }
      if(state.value == "File")
   {
-     $('default_value').hide();
-    $('thumbnail').show();
+     $('#default_value').hide();
+    $('#thumbnail').show();
   }else
     {
-       $('default_value').show();
-    $('thumbnail').hide();
+       $('#default_value').show();
+    $('#thumbnail').hide();
     }
 }
 </script>

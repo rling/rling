@@ -17,8 +17,14 @@ Rling::Application.routes.draw do
    resources :model_submissions do
       member do
  	    get 'delete_asset'
+
       end
+      resources :comment_submissions
+       
    end
+   resources :comment_components
+
+
  end
 
 
@@ -119,6 +125,7 @@ namespace :ckeditor do
   match "display/error_page_display"=>"display#error_page_display"
   match "display/no_permissions"=>"display#no_permissions"
   match "display/create_submissions/:id"=>"display#create_submissions"
+  match "display/create_comment_submissions/:id"=>"display#create_comment_submissions"
   match "/:permalink"=> "display#show_page"
   match "/:permalinkparent/:permalink"=> "display#show_model_data"
 

@@ -1,0 +1,9 @@
+    <% @all_menus.each do |m| %>
+ <% if m[1] < 0 %>
+<td><%= m[0] %></td>
+<% else %>
+<% menu = Menu.find(m[1])
+ menu.level.times do %>
+<td></td>
+<% end %>
+<td><%= m[0] %></td>

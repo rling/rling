@@ -15,7 +15,7 @@
     <p>
       <%= form_component.component_name %>:
         <%= form_component.mandatory ? "*" : "" %>
-      <%= check_component_type(form_component,@form_submission) %>
+      <%= check_component_type(form_component,@form_submission,FormData) %>
     
     </p>
     <% end %>

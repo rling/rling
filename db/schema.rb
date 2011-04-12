@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110411131127) do
+ActiveRecord::Schema.define(:version => 20110412061323) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20110411131127) do
     t.integer  "updater_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "level",               :default => 0
   end
 
   create_table "form_components", :force => true do |t|
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20110411131127) do
     t.integer  "comment_component_id"
     t.boolean  "allow_comments",       :default => false
     t.boolean  "is_comment_recursive", :default => false
+    t.boolean  "email_on_comment",     :default => false
   end
 
   create_table "page_variable_settings", :force => true do |t|

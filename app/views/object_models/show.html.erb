@@ -15,6 +15,25 @@
   <%= @object_model.perma_link_parent %>
 </p>
 
+<p>
+  <b> Allow Comments: </b>
+   <%= @object_model.allow_comments ? "Yes" : "No"  %>
+</p>
+ <% if @object_model.allow_comments.eql?(true) %>
+
+<p>
+  <b> Is comment recursive ? : </b>
+   <%= @object_model.is_comment_recursive ? "Yes" : "No"  %>
+</p>
+<p>
+  <b> Email on Comment: </b>
+   <%= @object_model.email_on_comment ? "Yes" : "No"  %>
+</p>
+<% end %>
+
+
+
+
 
 <%= link_to 'Edit', edit_object_model_path(@object_model) %> |
 <%= link_to 'Back', object_models_path %>

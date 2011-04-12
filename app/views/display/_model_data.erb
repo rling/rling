@@ -26,5 +26,9 @@
       <div class="model_data_value model_data_updated_at_value"><%= model_submission.updated_at %></div>
     </div>
   </div>
+
+   <div>
+     <%= render :partial=>"show_comment_form",:locals=>{:object_model=>model_submission.object_model}  %>
+   </div>
 <% end %>
 
