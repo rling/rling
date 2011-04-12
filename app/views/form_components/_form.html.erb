@@ -1,26 +1,29 @@
 
-<script src="jquery.js" type="text/javascript">
-function findselected(){
-var state = document.getElementById('form_component_component_type');
-var component_value = document.getElementById('field_value');
-  if(state.value == "Dropdown" ||state.value == "Radiobutton" )
-  {
-    component_value.show();
-  }
-  else
-    {
-      component_value.hide();
-    }
-     if(state.value == "File")
-  {
-     $('#default_value').hide();
-    $('#thumbnail').show();
-  }else
-    {
+<script  type="text/javascript">
+$(function(){
+     $("#form_component_component_type").change(function(){            
+      var test=$("#form_component_component_type").val();
+     
+      if(test=="Dropdown"|| test=="Radiobutton") 
+     {
+	$("#field_value").show();
+     }
+     else
+     {
+        $("#field_value").hide();	    
+     }
+     if(test=="File")
+     {
+        $('#default_value').hide();
+        $('#thumbnail').show();
+     }
+     else
+     {
        $('#default_value').show();
-    $('#thumbnail').hide();
-    }
-}
+       $('#thumbnail').hide();
+     }
+   });
+});
 </script>
 
 

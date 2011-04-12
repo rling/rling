@@ -31,7 +31,7 @@
       <% end %>
 
 
-      <%= check_box('','permalnkparent',  :checked=> (@object_model.perma_link_parent.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('object_model_perma_link_parent').disabled = true;} else {$('object_model_perma_link_parent').disabled = false;}") %>
+      <%= check_box('','permalnkparent',  :checked=> (@object_model.perma_link_parent.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#object_model_perma_link_parent').attr('disabled','disabled');} else {$('#object_model_perma_link_parent').removeAttr('disabled');}") %>
 Generate permalink parent  automatically<br />
 
   </div>

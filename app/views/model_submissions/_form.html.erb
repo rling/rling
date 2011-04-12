@@ -30,7 +30,7 @@
                   <%= form.text_field :perma_link %>
                 <% end %>
                <%= hidden_field_tag "model_submission[page_view_type]","1" %>
-              <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
+              <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#model_submission_perma_link').attr('disabled','disabled');} else {$('#model_submission_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
              </div>
           <%  end %>

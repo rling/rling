@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
 def first_user
 @user = User.find(:first)
   if @user
-   if @user.nil?
-      redirect_to first_user_sessions_path
+   unless @user.nil?
+        redirect_to login_path
    else
-      redirect_to login_path
+      redirect_to first_user_sessions_path
   end
  end
 end
@@ -66,6 +66,8 @@ def first_user_create
 end
 
 def new
+  @user = User.find(:first)
+ unless @user.nil?
   unless current_user.nil?
     if current_user.admin?
       redirect_to admin_dashboard_path
@@ -75,6 +77,9 @@ def new
   else
     render :action=>:new
   end
+ else
+    redirect_to first_user_sessions_path
+ end
 end
  
 def create

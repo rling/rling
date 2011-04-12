@@ -19,7 +19,7 @@
    <% @object.model_components.each do |model_component| %>
         <p>
        <%= model_component.component_display_name %>:
-     style="<%=color: red<%= model_component.is_mandatory ? "*" : "" %>"
+     <%= model_component.is_mandatory ? "*" : "" %>
       <%= check_model_component_type(model_component ,@model_submission) %>
            <% if model_component.component_name.eql?('title') %>
               <div class="field">
@@ -30,7 +30,7 @@
                   <%= form.text_field :perma_link %>
                 <% end %>
                <%= hidden_field_tag "model_submission[page_view_type]","1" %>
-              <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('model_submission_perma_link').disabled = true;} else {$('model_submission_perma_link').disabled = false;}") %>
+              <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#model_submission_perma_link').('disabled','disabled');} else {$('#model_submission_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
              </div>
           <%  end %>

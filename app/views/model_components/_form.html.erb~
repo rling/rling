@@ -1,5 +1,29 @@
 
 <script type="text/javascript">
+$(function(){
+     $("#user_detail_setting_field_type").change(function(){            
+      var test=$("#user_detail_setting_field_type").val();
+     
+      if(test=="Dropdown"|| test=="Radiobutton") 
+     {
+	$("#field_value").show();
+     }
+     else
+     {
+        $("#field_value").hide();	    
+     }
+     if(test=="File")
+     {
+        $('#default_value').hide();
+        $('#thumbnail').show();
+     }
+     else
+     {
+       $('#default_value').show();
+       $('#thumbnail').hide();
+     }
+   });
+});
 function findselected(){
 var state = document.getElementById('model_component_component_type');
 var component_value = document.getElementById('field_value');
@@ -53,7 +77,7 @@ var component_value = document.getElementById('field_value');
 
   <div class="field">
     <%= f.label :component_type %><br />
-    <%= f.select :component_type,["Dropdown","Textfield","Textarea","RichtextEditor","Checkbox","Radiobutton","Date","File"], {},{:onchange=>"return findselected();"} %>
+    <%= f.select :component_type,["Dropdown","Textfield","Textarea","RichtextEditor","Checkbox","Radiobutton","Date","File","Label"], {},{:onchange=>"return findselected();"} %>
 
 
   </div>

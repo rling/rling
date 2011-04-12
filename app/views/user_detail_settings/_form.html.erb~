@@ -1,27 +1,28 @@
 <script type="text/javascript">
-function findselected(){
-var state = document.getElementById('user_detail_setting_field_type');
-var field_value = document.getElementById('field_value');
-  if(state.value == "Dropdown" ||state.value == "Radiobutton" )
-  {
-    $('field_value').show();
-   }
-  else
-    {
-      field_value.hide();
-    }
-
-  if(state.value == "File")
-  {
-     $('default_value').hide();
-    $('thumbnail').show();
-  }else
-    {
-       $('default_value').show();
-    $('thumbnail').hide();
-    }
-
-}
+$(function(){
+     $("#user_detail_setting_field_type").change(function(){            
+      var test=$("#user_detail_setting_field_type").val();
+     
+      if(test=="Dropdown"|| test=="Radiobutton") 
+     {
+	$("#field_value").show();
+     }
+     else
+     {
+        $("#field_value").hide();	    
+     }
+     if(test=="File")
+     {
+        $('#default_value').hide();
+        $('#thumbnail').show();
+     }
+     else
+     {
+       $('#default_value').show();
+       $('#thumbnail').hide();
+     }
+   });
+});
 </script>
 <%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
   <% if @user_detail_setting.errors.any? %>
@@ -43,7 +44,7 @@ var field_value = document.getElementById('field_value');
 
   <div class="field"">
   <%= f.label :field_type %><br />
-  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","label"], {},{:onchange=>"return findselected();"} %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","Label"], {},{:onchange=>"return findselected();"} %><br />
   </div>
 
   <div class="field" id="field_value">
