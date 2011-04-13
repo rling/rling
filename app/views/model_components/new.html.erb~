@@ -1,9 +1,0 @@
-
-<%= link_to 'Back', object_model_model_components_path %>
-
-
-<h1>New Component for <u> <%= @object.name %></u>   </h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', object_model_model_components_path %>

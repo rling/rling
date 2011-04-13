@@ -1,5 +1,0 @@
-<h1>New  Model</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', object_models_path %>

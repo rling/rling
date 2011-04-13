@@ -1,6 +1,0 @@
-
-<h3>Details of <%= @menuset.name %> Menuset</h3>
-<b>Name</b>: <%= @menuset.name %></p>
-<p><b>Description</b>: <%= @menuset.description %></p>
-<%= link_to "Edit", edit_menuset_path(@menuset) %> |
-<%= link_to 'Back', menusets_path %>

@@ -1,8 +1,0 @@
-<%= link_to 'Show', object_model_model_submission_path(@object,@model_submission) %> | <%= link_to 'Back', object_model_model_submissions_path %>
-
-
-<h1>Edit  <%=  @object.name.capitalize %> </h1>
-<%= render 'form' %>
-
-
-<%= link_to 'Back', object_model_model_submissions_path %>

@@ -1,9 +1,0 @@
-<%= link_to "Back", users_path %>
-<h1>New User</h1>
-
-<%= render 'form' %>
-<% if current_user && current_user.admin? %>
- <td><%= link_to "Back", users_path %></td>
-<% else %>
-<%= link_to 'Back', root_path %>
-<% end %>
