@@ -1,9 +1,23 @@
-    <% @all_menus.each do |m| %>
- <% if m[1] < 0 %>
-<td><%= m[0] %></td>
-<% else %>
-<% menu = Menu.find(m[1])
- menu.level.times do %>
-<td></td>
+<% unless model_submission.comment_submissions.empty? %>
+<% get_all_comments(CommentSubmission.new,model_submission).each do |comment| %>
+<div class="display_comment">
+<%  comment.level.times do %>
+&nbsp;&nbsp;&nbsp;
 <% end %>
-<td><%= m[0] %></td>
+<% comment.model_submission.object_model.comment_components.each do |cc| %>
+
+<%= cc.component_display_name %>
+
+          <% comment_data = comment.comment_datas.first(:conditions=>["comment_component_id=?",cc.id] )
+          unless comment_data.nil? %>
+            <%= raw get_form_data(cc.component_type,comment_data.data_value) %>
+          <% end %>
+
+<% end %>
+|<%= link_to 'Delete Comment',[model_submission.object_model,model_submission, comment], :confirm => 'Are you sure?', :method => :delete %>|
+<% if comment.model_submission.object_model.is_comment_recursive.eql?(true) %>
+    <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>comment.id }   %>
+ <% end  %>
+</div>
+<% end %>
+<% end  %>

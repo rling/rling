@@ -1,4 +1,5 @@
 class CommentSubmission < ActiveRecord::Base
+  include CacheHelper
    stampable
 
   #Associations
@@ -8,14 +9,19 @@ class CommentSubmission < ActiveRecord::Base
   before_destroy :set_children
 
  #Additions
-  acts_as_tree :order => :level
+  acts_as_tree
+
+   #callbacks
+  after_create  :clear_cache
+  after_update  :clear_cache
+  after_destroy :clear_cache
 
 
   private
 
   def set_children() 
     CommentSubmission.find_all_by_parent_id(self.id).each do |comment_submission|
-      comment_submission.update_attribute("parent_id",nil)
+      comment_submission.destroy
     end	 
   end
 

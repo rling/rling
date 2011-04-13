@@ -3,7 +3,7 @@ class ObjectModel < ActiveRecord::Base
 
   #Associations
   has_many :model_components ,:dependent=>:destroy ,:order =>:position
-  has_many :comment_components ,:dependent=>:destroy ,:order =>:position
+  has_many :comment_components ,:dependent=>:destroy 
   has_many :model_submissions ,:dependent=>:destroy
 
   #Validations
@@ -12,9 +12,11 @@ class ObjectModel < ActiveRecord::Base
   validates :name ,:presence=>true, :uniqueness=>true
 
   #call backs
-  after_create :create_2_model_components
+  after_create :create_2_model_components, :verify_comments 
   after_create :create_permissions
   after_destroy :remove_permissions
+  after_save :verify_comments
+  after_update :verify_comments 
 
   #Instance Methods
  # def permalnkparent
@@ -67,7 +69,43 @@ private
     end
  end
 
+ def verify_comments
+    unless self.allow_comments
+    
+     self.comment_components.each do |comment_component|
+       comment_component.destroy
+     end
+
+     self.model_submissions.each do |model_submission|
+         model_submission.comment_submissions.each do |comment_submission|
+           comment_submission.destroy
+            
+            end
+         end
+
+    else
+      if self.comment_components.find_by_component_name('comment').nil?
+      self.comment_components.create(:component_name=>'comment',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
+      end
+   end
+  
+ end
+
+ def remove_comments
+    self.comment_components.each do |comment_component|
+       comment_component.destroy
+     end
+
+     self.model_submissions.each do |model_submission|
+         model_submission.comment_submissions.each do |comment_submission|
+           comment_submission.destroy
+          
+         end
+     end
+ end
 end
+
+
 
 # == Schema Information
 #

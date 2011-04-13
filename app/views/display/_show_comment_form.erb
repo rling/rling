@@ -1,0 +1,23 @@
+<% unless model_submission.object_model.comment_components.empty? %>
+<a id="add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>" onclick="document.getElementById('comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='';document.getElementById('add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='none';"> Add Comment</a>
+<div  id="comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>" style="display:none;" >
+  <%= form_tag "/display/create_comment_submissions/#{model_submission.id}", :multipart=>true do %>
+       <% model_submission.object_model.comment_components.each do |comment_component| %>
+         <div class="comment_component">
+             <div class="comment_component_heading comment_component_heading_<%= comment_component.component_name %>">
+             <%= comment_component.component_display_name %>:
+             </div>
+             <div class="mandatory_component"><%= comment_component.mandatory ? "*" : "" %></div>
+             <div class="comment_component_value comment_component_value_<%= comment_component.component_name %>">
+             <%= check_component_type(comment_component,@comment_submission,CommentData) %>
+             </div>
+       </div>
+      <% end %>
+      <%= hidden_field_tag 'parent_id', parent_id  %>
+
+    <div class="form_submit"><%= submit_tag "Submit" %> <a onclick="document.getElementById('comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='none';document.getElementById('add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='';"> Cancel</a>
+</div>
+    <% end %>
+        </div>
+   <% end %>
+ 

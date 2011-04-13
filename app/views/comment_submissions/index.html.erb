@@ -1,21 +1,32 @@
 <h1>Listing Comment Submissions</h1>
 
 <table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  
 
-<% @comment_submissions.each do |comment_submission| %>
+<% @comment_submissions.each do |comment| %>
   <tr>
-    <td><%= link_to 'Show', model_submission_comment_submission_path(@model,comment_submission) %></td>
-    <td><%= link_to 'Edit', edit_model_submission_comment_submission_path(@model,comment_submission) %></td>
-    <td><%= link_to 'Destroy',[@model, comment_submission], :confirm => 'Are you sure?', :method => :delete %></td>
+  <% comment.level.times do %>
+  <td></td>
+   <% end %>
+
+  <td>
+  <% comment.model_submission.object_model.comment_components.each do |cc| %>
+          <%= cc.component_display_name %>
+          <% comment_data = comment.comment_datas.first(:conditions=>["comment_component_id=?",cc.id] )
+          unless comment_data.nil? %>
+           
+           <%= raw get_form_data(cc.component_type,comment_data.data_value) %>
+          <% end %>
+          <hr/>
+
+<% end %>
+</td>
+
+    <td><%= link_to 'Destroy',[@object,@model, comment], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Comment submission', new_model_submission_comment_submission_path %>
+

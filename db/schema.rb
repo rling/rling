@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20110412061323) do
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
-    t.text     "data_value"
+    t.string   "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -264,6 +264,7 @@ ActiveRecord::Schema.define(:version => 20110412061323) do
     t.boolean  "mandatory",     :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",      :default => 0
   end
 
   create_table "user_details", :force => true do |t|

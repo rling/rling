@@ -34,20 +34,21 @@ include ApplicationHelper
     else
       if validate_permission("view",@object)
         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
-      
-         
         if @model_submission.nil?
+       
           redirect_to :action=>"error_page_display"
         end
 
 
      else
-          unless @model_submission.object_model.comment_components.empty?
-          @comment_submission=@model_submission.comment_submissions.new
-          end
-          unless @model_submissions.comment_submissions.empty?
-           @all_comment_submissions= get_all_comments(CommentSubmission.new).collect{|m|[m.id]}
-          end
+        unless @model_submission.object_model.allow_comments
+         unless @model_submission.object_model.comment_components.empty?
+           @comment_submission=@model_submission.comment_submissions.new
+         end
+        end
+
+
+         
        redirect_to :action=>"no_permissions"
      end
     end
@@ -110,13 +111,14 @@ include ApplicationHelper
       comment_data = params[:form_field]
       mandatoryfailed = false
       model_submission.object_model.comment_components.each do |component|
-        if component.mandatory && form_data[component.component_name].blank?
+        if component.mandatory && comment_data[component.component_name].blank?
           mandatoryfailed = true
           break;
         end
       end
       unless mandatoryfailed
-        submission = CommentSubmission.new(:model_submission_id=>model_submission.id ,:parent_id=>0)
+        submission = CommentSubmission.new(:model_submission_id=>model_submission.id )
+        submission.parent_id=params[:parent_id]
         submission.save
       model_submission.object_model.comment_components.each do |component|
         case component.component_type

@@ -6,7 +6,7 @@ class ModelSubmission < ActiveRecord::Base
 
   #Associations
   has_many :model_datas ,:dependent=>:destroy 
-  has_many  :comment_submissions ,:dependent => :destroy,:order =>:level
+  has_many  :comment_submissions ,:dependent => :destroy
   belongs_to :object_model
   #validations
   regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
