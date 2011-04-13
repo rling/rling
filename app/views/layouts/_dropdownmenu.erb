@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'dropdownmenu' %>
-<%= javascript_include_tag 'dropdownmenu' %>
+<%= javascript_include_tag 'menu_down' %>
+
 <% output = ""
 menuset = Menuset.find_by_name(menusetname)
 menus = Menu.find_all_by_menuset_id_and_level(menuset.id,1,:conditions => ["menu_view_type IN (?)",["0","#{session[:browser].to_s}"]],:order=>"position")

@@ -1,24 +1,22 @@
 <h3>RlingCMS Setup Process</h3>
 Welcome to RlingCMS. This is your first step towards using a great system to build your dream website. As a first time entry, you need to first create the administrator of the website. You can also allocate necessary details as to how to make the best utilization of the website. As a first step, please fill out the Administration form and then continue to use the website.
-<script language="javascript">
+<script language="text/javascript">
 
-function disablelogin(entity)
-{
-  if(entity.checked)
-  {
-   $('login_field').hide();
-  }
-  else
-  {
-   $('login_field').show();
-  }
-}
-
+$(function(){
+      $('#is_login_type_email').click(function(){  
+        if($('#is_login_type_email').attr('checked',true))
+          $('#login_field').hide();
+        else
+          $('#login_field').show();
+  });
+});
+        
+    
 </script>
 <%= form_tag first_user_create_sessions_path do %>
 <table>
-  <tr id="login_field">
-    <td>
+ <tr id="login_field">
+   <td>
        <label for="user_login">Login</label>
     </td>
      <td>
@@ -27,7 +25,7 @@ function disablelogin(entity)
      <td>
         <%=  error_message_on(:user, :login, options={}) %>
      </td>
- </tr>
+</tr>
  <tr>
        <td>
           <label for="user_email">Email</label>
@@ -42,7 +40,7 @@ function disablelogin(entity)
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "is_login_type_email","",false ,:onclick=>"disablelogin(this);" %>Login to system is via Login name or email.
+         <%= check_box_tag "is_login_type_email","",false %>Login to system is via Login name or email.
        </td>
    </tr>
    <tr>
@@ -110,6 +108,7 @@ function disablelogin(entity)
    </tr>
    
 </table>
+
 
 
 

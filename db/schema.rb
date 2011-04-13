@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412061323) do
+ActiveRecord::Schema.define(:version => 20110413125424) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20110412061323) do
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
-    t.string   "data_value"
+    t.text     "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(:version => 20110412061323) do
     t.boolean  "allow_comments",       :default => false
     t.boolean  "is_comment_recursive", :default => false
     t.boolean  "email_on_comment",     :default => false
+    t.string   "layout"
   end
 
   create_table "page_variable_settings", :force => true do |t|
@@ -211,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20110412061323) do
     t.integer  "creator_id"
     t.integer  "updater_id"
     t.boolean  "allow_create_on_permission", :default => false
+    t.string   "layout"
   end
 
   create_table "permission_roles", :force => true do |t|
