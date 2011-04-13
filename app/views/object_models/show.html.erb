@@ -30,6 +30,12 @@
    <%= @object_model.email_on_comment ? "Yes" : "No"  %>
 </p>
 <% end %>
+<% unless @object_model.layout.nil? %>
+<p>
+  <b> Layout: </b>
+  <%= @object_model.layout %>
+</p>
+<% end %>
 
 
 

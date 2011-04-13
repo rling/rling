@@ -11,46 +11,36 @@ include ApplicationHelper
 
   def show_page
     @page = Page.find_by_perma_link("/"+params[:permalink])
-      unless @page.nil?
-        if  @page.type.eql?('ObjectForm')
-          @form_submission =  @page.form_submissions.new
-        elsif @page.type.eql?('View')
-          @object_model=ObjectModel.find_by_id(@page.view_for)
-        end
-      end
       if @page.nil?
         redirect_to :action=>"error_page_display"
       end
-   #if $USE_SHADOW
-   #  render :layout=>false
-   #end
+    render :layout=>@page.layout unless @page.blank? || @page.layout.blank? || !File.exists?("#{RAILS_ROOT}/app/views/layouts/#{@page.layout}.erb")
   end
 
    def show_model_data
+   
     @object= ObjectModel.find_by_perma_link_parent("/"+params[:permalinkparent])
     @model_submission= nil
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
-      if validate_permission("view",@object)
-        @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
+     if validate_permission("view",@object)
+         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id("/"+params[:permalink],@object.id)
         if @model_submission.nil?
-       
           redirect_to :action=>"error_page_display"
         end
-
-
-     else
         unless @model_submission.object_model.allow_comments
          unless @model_submission.object_model.comment_components.empty?
            @comment_submission=@model_submission.comment_submissions.new
          end
         end
 
-
-         
+     else
        redirect_to :action=>"no_permissions"
      end
+    end
+    unless (@object.nil? || @model_submission.nil?)
+      render :layout=>@object.layout if !@object.layout.blank? && File.exists?("#{RAILS_ROOT}/app/views/layouts/#{@object.layout}.erb")
     end
   end
   
@@ -102,7 +92,7 @@ include ApplicationHelper
     redirect_to :back
   end
 
-  def create_comment_submissions
+   def create_comment_submissions
     model_submission = ModelSubmission.find(params[:id])
     message= "Your details have been submitted successfully"
     if model_submission.nil?

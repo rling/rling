@@ -1,4 +1,5 @@
 <div id="view_<%= page.id %>" class="page_view">
+<% @object_model=ObjectModel.find_by_id(page.view_for) %>
 <%  unless  @object_model.nil? %>
    <% if @object_model.model_submissions.empty? %>
       <%= " No Record for #{@object_model.name}"  %>

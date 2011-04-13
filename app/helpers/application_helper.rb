@@ -155,14 +155,60 @@ def get_all_menus(record)
      unless current_user?
        call_type = "#{call_type}other"
      else
-       unless submission.creator_id == current_user.id
+       unless submission.nil?
+        unless submission.creator_id == current_user.id
          call_type = "#{call_type}other"
+        end
        end
      end
    end
    permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",model.class.to_s,model.name,call_type])
    permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
    return permissionrole.nil? ? false : permissionrole.value
+  end
+  
+  def process_page(pagebody)
+    #evaluate the page for following options
+    #&lt; Upcase
+    pagebody = evaluate_page(pagebody,"&lt;","&gt;",true)
+    #&lt; Downcase
+    pagebody = evaluate_page(pagebody,"&lt;","&gt;",false)
+    # < Upcase
+    pagebody = evaluate_page(pagebody,"<",">",true)
+    # < Downcase
+    pagebody = evaluate_page(pagebody,"<",">",false)
+    pagebody
+  end
+
+  def evaluate_page(pagebody,open_tag,close_tag,upcase)
+    #Split Code with &lt;
+    separator = "#{open_tag}RLING::"
+    separator = separator.downcase unless upcase
+    codes = pagebody.split(separator)
+    puts 33333333333
+    puts codes.inspect
+    hash = Hash.new
+    if codes.size > 1
+       codes.each_with_index do |code,i|
+         next if i==0
+         tag = code.split(close_tag)[0]
+         splits = tag.split("::")
+         hash[tag] = splits[1]
+       end
+    end
+    hash.each do |k,v|
+     newpage = Page.find_by_perma_link("/"+v.downcase)
+     unless newpage.nil?
+       page_content = render(:partial=>"page_data",:locals=>{:page=>newpage})
+       pagetype = newpage.type.nil? ? "PAGE" : (newpage.type == "ObjectForm" ? "OBJECTFORM" : "VIEW")
+       code = "#{open_tag}RLING::#{pagetype}::#{v}#{close_tag}"
+       code = code.downcase unless upcase
+       code2 = "#{open_tag}/RLING::#{pagetype}::#{v}#{close_tag}"
+       pagebody = pagebody.gsub(code,page_content)
+       pagebody = pagebody.gsub(code2,"")
+     end
+    end
+    return pagebody
   end
 
 end 

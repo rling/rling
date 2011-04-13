@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 before_filter :require_admin
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+include ApplicationHelper
 include PermalinkHelper
 include CacheHelper
 

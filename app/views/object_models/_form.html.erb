@@ -35,11 +35,10 @@
 Generate permalink parent  automatically<br />
 
   </div>
-<div>
+<div class="field">
   <%= form.label :allow_comments %><br/>
   <%= form.check_box :allow_comments,  :checked=> @object_model.allow_comments, :onclick => "if (this.checked){$('#show_comment_details').show();} else        {$('#show_comment_details').hide();}" %>
 </div>
-
 
 <div id="show_comment_details" style="display:none;">
 <%= form.label :is_comment_recursive %><br />
@@ -48,6 +47,21 @@ Generate permalink parent  automatically<br />
 <%= form.check_box :email_on_comment,:checked=> @object_model.email_on_comment %><br />
 </div>
 
+<% if @object_model.layout.nil? %>
+<div class="field">
+  <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
+  Do you want separate layout?
+</div>
+<div id="show_layout" style="display:none;">
+  <%= form.label :layout %>
+  <%= form.text_field :layout %>
+</div>
+<% else %>
+<div id="field">
+  <%= form.label :layout %>
+  <%= form.text_field :layout %>
+</div>
+<% end %>
   <div class="actions">
     <%= form.submit %>
   </div>
