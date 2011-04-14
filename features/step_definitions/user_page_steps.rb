@@ -22,7 +22,7 @@ When /^I press "([^"]*)" for "([^"]*)" on the user index page$/ do |arg1, arg2|
 end
 
 Given /^I have user details setting in user_detail_setting page$/ do
-  @user_detail_settings = UserDetailSetting.create(:field_name=>"Name", :field_type=>"Textfield", :default_value=>"amit", :mandatory=>"1")
+  @user_detail_settings = Factory(:user_detail_setting)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on the user show page$/ do |arg1, arg2|

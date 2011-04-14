@@ -3,7 +3,7 @@ Then /^I should see "([^"]*)" on the setting index page$/ do |arg1|
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the setting index page$/ do |arg1, arg2|
-  @setting=Setting.find_by_name(arg2)
+  @setting=Factory(:setting)
   if arg1 == "Edit" 
     visit edit_setting_path(@setting)
   end

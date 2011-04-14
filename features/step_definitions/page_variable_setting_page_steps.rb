@@ -7,7 +7,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that page_variable_setting index 
 end
 
 Given /^I have a page_variable_setting in index page$/ do
-  @page_variable_setting = PageVariableSetting.create(:name=>"SEO Meta Keywords", :default_value=>"keywords")
+  @page_variable_setting = Factory(:page_variable_setting)
 end
 
 When /^I press "([^"]*)" for the "([^"]*)" on the page_variable_setting page$/ do |arg1, arg2|

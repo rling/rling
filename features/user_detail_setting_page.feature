@@ -48,7 +48,6 @@ Feature: User detail setting Page
     Given I go to user_detail_setting index page
     Then I should see "Name" on user detail settings page
     And I should see "Textfield" on user detail settings page
-    And I should see "amit" on user detail settings page
     And I should see "true" on user detail settings page
 
   Scenario: User clicks on Show Page

@@ -1,5 +1,5 @@
 Given /^I have a user detail setting on the index page$/ do
-  @user_detail_setting = UserDetailSetting.create(:field_name=>"Name",:field_type=>"Textfield",:default_value=>"amit",:mandatory=>1,:position=>"0")
+  @user_detail_setting = Factory(:user_detail_setting)
 end
 
 Then /^I should see "([^"]*)" on user detail settings page$/ do |arg1|

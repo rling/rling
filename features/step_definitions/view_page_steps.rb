@@ -7,10 +7,9 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that view page$/ do |error_messag
 end
 
 Given /^I have a view in view_index page$/ do
-  object_model = ObjectModel.create(:name=>"Blog", :perma_link_parent=>"/blogs", :description=>"Blog page")
-  object_model.model_components.create(:component_name=>"title", :component_display_name=>"Title", :component_type=>"Textfield", :default_value=>"Enter The title", :is_mandatory=>"1", :is_deletable=>"0")
-  object_model.model_components.create(:component_name=>"body", :component_display_name=>"Body", :component_type=>"Textarea", :default_value=>"", :is_deletable=>"0")
-  @view = View.create(:title=>"Developer", :body=>"This is Developer view", :perma_link=>"/developer", :home_page=>"0", :page_view_type=>"1", :type=>"View", :view_type=>"table", :view_for=>object_model.id, :creator_id=>"1", :updater_id=>"1")
+  @object_model = Factory(:object_model)
+  Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"text")
+  @view = Factory(:view, :view_for=>@object_model.id)
 end
 
 Then /^I should see "([^"]*)" on that view_index page$/ do |arg1|
@@ -26,6 +25,8 @@ When /^I press "([^"]*)" for "([^"]*)" on the view_index page$/ do |arg1, arg2|
     visit page_path(@view)
   elsif arg1 == "Edit"
     visit edit_page_path(@view)
+  elsif arg1 == "Destroy"
+    visit page_path(@view)
   end
 end
 

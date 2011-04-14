@@ -7,7 +7,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that pages page$/ do |error_messa
 end
 
 Given /^I have a page in page index page$/ do
-  @page = Page.create(:title=>"Client", :body=>"Google")
+  @page = Factory(:page)
 end
 
 Then /^I should see "([^"]*)" on the pages show page$/ do |arg1|
@@ -27,7 +27,7 @@ Then /^I should see "([^"]*)" on that pages page$/ do |arg1|
 end
 
 Given /^I have a page item in pages page$/ do
-  @page = Page.create(:title=>"Home", :body=>"This is home page", :perma_link=>"/home", :home_page=>"0", :page_view_type=>"0", :allow_create_on_permission=>"0")
+  @page = Factory(:page)
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the pages index page$/ do |arg1, arg2|

@@ -11,7 +11,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that role page$/ do |arg1, arg2|
 end
 
 Given /^I have a role in role page$/ do
-  @role=Role.create(:role_type=>"Admin", :is_deletable=>"1")
+  @role = Factory(:role)
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the role index page$/ do |arg1, arg2|

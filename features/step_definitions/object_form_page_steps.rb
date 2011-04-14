@@ -3,7 +3,7 @@ Then /^I should see "([^"]*)" on the object_form_index page$/ do |arg1|
 end
 
 Given /^I have a object_form in object_form_index page$/ do
-  @object=ObjectForm.create(:title=>"Admission", :body=>"Admission form for MCA", :perma_link=>"/admission", :home_page=>"0", :email=>"amit@heurion.com")
+  @object=Factory(:object_form)
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the object_form_index page$/ do |arg1, arg2|
@@ -48,8 +48,8 @@ Then /^I should see "([^"]*)" for "([^"]*)" on the new form_component page$/ do 
 end
 
 Given /^I have a form_component in form_componet_index page$/ do
-  @object=ObjectForm.create(:title=>"Admission", :body=>"Admission form for MCA", :perma_link=>"/admission", :home_page=>"0", :email=>"amit@heurion.com")
-  @form_component = @object.form_components.create(:object_form_id=>@object.id, :component_name=>"email", :component_display_name=>"E-mail", :component_type=>"Textfield", :default_value=>"mail@mail.com", :mandatory=>"0", :position=>"0")
+  @object=Factory(:object_form)
+  @form_component = Factory(:form_component, :object_form_id=>@object.id, :default_value=>"mail@mail.com")
 end
 
 When /^I press "([^"]*)" for the "([^"]*)" on the form_component_index page$/ do |arg1, arg2|
@@ -83,9 +83,9 @@ Then /^I should see "([^"]*)" on the form_submissions index page$/ do |arg1|
 end
 
 Given /^I have a form_submission in form_submission page$/ do
-  @object=ObjectForm.create(:title=>"Admission", :body=>"Admission form for MCA", :perma_link=>"/admission", :home_page=>"0", :email=>"amit@heurion.com")
-  @form_component = @object.form_components.create(:object_form_id=>@object.id, :component_name=>"email", :component_display_name=>"E-mail", :component_type=>"Textfield", :mandatory=>"1", :position=>"0")
-  @form_submission = FormSubmission.create(:object_form_id=>@object.id)
+  @object=Factory(:object_form)
+  @form_component = Factory(:form_component, :object_form_id=>@object.id)
+  @form_submission = Factory(:form_submission, :object_form_id=>@object.id)
 end
 
 When /^I press "([^"]*)" for the "([^"]*)" on the form_submissions index page$/ do |arg1, arg2|

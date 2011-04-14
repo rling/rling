@@ -3,7 +3,7 @@ Then /^I should see "([^"]*)" on the mailer index page$/ do |arg1|
 end
 
 Given /^I have a mailer in mailer index page$/ do
-  @mailer = Mailer.create(:handle=>"Thank you", :subject=>"Thank you mail", :body=>"Thank you for joining us")
+  @mailer = Factory(:mailer)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on that mailer page$/ do |arg1, arg2|

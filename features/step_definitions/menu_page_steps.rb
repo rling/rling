@@ -19,7 +19,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that page$/ do |error_message, er
 end
 
 Given /^I have a menu in menu index page$/ do
-   @menu = Menu.create(:name=>"Home",:position=>"0",:level=>1,:parent_id=>0,:menuset_id=>1,:menu_view_type=>0)
+   @menu = Factory(:menu)
  end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on the show page$/ do |arg1, arg2|

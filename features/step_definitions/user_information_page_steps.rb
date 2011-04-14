@@ -7,7 +7,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on the edit user information page$/ 
 end
 
 Given /^I have a user information in user information page$/ do
-  @user1 = User.create(:login=>"amit", :email=>"amit@heurion.com", :role_id=>"3")
+  Factory.build(:user)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on the user information show page$/ do |arg1, arg2|

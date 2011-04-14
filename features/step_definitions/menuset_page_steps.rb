@@ -12,7 +12,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that menuset page$/ do |error_mes
 end
 
 When /^I press "([^"]*)" for "([^"]*)"$/ do |arg1, arg2|
-  @menuset=Menuset.find_by_name(arg2)
+  @menuset=Factory(:menuset)
   if arg1 == "Edit" 
     visit edit_menuset_path(@menuset)
   elsif arg1 == "Show"

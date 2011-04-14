@@ -41,8 +41,8 @@ Feature: Menuset Page
   
   Scenario: Edit a Menuset item
     Given I go to menuset index page 
-    When I press "Edit" for "Header"
-    Then I should see "Edit Header Menuset" on the edit menuset page 
+    When I press "Edit" for "Header2"
+    Then I should see "Edit Header2 Menuset" on the edit menuset page 
     And I fill in "menuset_name" with "Header1"
     And I fill in "menuset_description" with "Header1 Menu for RlingCMS"
     When I press "Update Menuset"

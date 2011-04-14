@@ -11,7 +11,7 @@ Then /^I should see "([^"]*)" on the pagelet show page$/ do |arg1|
 end
 
 Given /^I have a pagelet in pagelet index page$/ do
-  @pagelet = Pagelet.create(:handle=>"Home", :display_text=>"This is home menu")
+  @pagelet = Factory(:pagelet)
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the pagelet index page$/ do |arg1, arg2|
