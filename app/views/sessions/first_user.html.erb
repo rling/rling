@@ -1,19 +1,20 @@
 <h3>RlingCMS Setup Process</h3>
 Welcome to RlingCMS. This is your first step towards using a great system to build your dream website. As a first time entry, you need to first create the administrator of the website. You can also allocate necessary details as to how to make the best utilization of the website. As a first step, please fill out the Administration form and then continue to use the website.
-<script language="text/javascript">
+<script>
 
 $(function(){
-      $('#is_login_type_email').click(function(){  
-        if($('#is_login_type_email').attr('checked',true))
-          $('#login_field').hide();
-        else
-          $('#login_field').show();
+      $('#is_login_type_email').click(function(){
+      if($('#is_login_type_email').attr('checked'))
+         $('#login_field').hide();
+       else
+         $('#login_field').show();
+          
   });
 });
-        
-    
 </script>
+
 <%= form_tag first_user_create_sessions_path do %>
+
 <table>
  <tr id="login_field">
    <td>

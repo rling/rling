@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 $(function(){
      $("#user_detail_setting_field_type").change(function(){ 
@@ -23,7 +24,10 @@ $(function(){
    });
  
 });
+
 </script>
+
+
 <%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
   <% if @user_detail_setting.errors.any? %>
     <div id="error_explanation">
