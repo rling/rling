@@ -14,7 +14,9 @@
           <% end %>
 
 <% end %>
+<%  if validate_permission("deletecomment",model_submission.object_model,comment) %>
 |<%= link_to 'Delete Comment',[model_submission.object_model,model_submission, comment], :confirm => 'Are you sure?', :method => :delete %>|
+<%end%>
 <% if comment.model_submission.object_model.is_comment_recursive.eql?(true) %>
     <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>comment.id }   %>
  <% end  %>

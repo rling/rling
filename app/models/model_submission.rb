@@ -7,6 +7,7 @@ class ModelSubmission < ActiveRecord::Base
   #Associations
   has_many :model_datas ,:dependent=>:destroy 
   has_many  :comment_submissions ,:dependent => :destroy
+
   belongs_to :object_model
   #validations
   regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
@@ -17,6 +18,7 @@ class ModelSubmission < ActiveRecord::Base
   after_update  :clear_cache
   after_destroy :clear_cache
 
+
   #instance methods
  # def permalnk
  # return self.perma_link
@@ -25,6 +27,9 @@ class ModelSubmission < ActiveRecord::Base
  # def permalnk=(value)
  # @permalnk = value
  # end
+
+ 
+
 
  def perma_link_generate(title)
      self.perma_link = "/" + generate_perma_link(ModelSubmission,create_permalink(title))

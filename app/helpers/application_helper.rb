@@ -150,8 +150,9 @@ def get_all_menus(record)
   end
 
   def validate_permission(call_type,model, submission=nil)
+    
    role_id = current_user.nil? ? 1 : current_user.role_id
-   if ["edit","delete"].include?(call_type)
+   if ["edit","delete","deletecomment"].include?(call_type)
      unless current_user?
        call_type = "#{call_type}other"
      else
@@ -185,8 +186,7 @@ def get_all_menus(record)
     separator = "#{open_tag}RLING::"
     separator = separator.downcase unless upcase
     codes = pagebody.split(separator)
-    puts 33333333333
-    puts codes.inspect
+  
     hash = Hash.new
     if codes.size > 1
        codes.each_with_index do |code,i|

@@ -5,7 +5,7 @@ class ObjectModel < ActiveRecord::Base
   has_many :model_components ,:dependent=>:destroy ,:order =>:position
   has_many :comment_components ,:dependent=>:destroy 
   has_many :model_submissions ,:dependent=>:destroy
-
+  has_one  :mailer
   #Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
@@ -60,6 +60,18 @@ private
    #View All 
     perm = Permission.create(:activity_code=>"viewlist",:activity_display_text=>"View all #{self.name.capitalize.pluralize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
+
+   if self.allow_comments
+    #Can comment
+    perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
+    #Delete my comments
+    perm = Permission.create(:activity_code=>"deletecomment",:activity_display_text=>"Delete my comments for #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    #Delete comments for my blog
+    perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    #Delete comments for others blog
+    #perm = Permission.create(:activity_code=>"deleteall",:activity_display_text=>"Delete comments for other #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+   end
  end
 
  def remove_permissions
@@ -71,22 +83,25 @@ private
 
  def verify_comments
     unless self.allow_comments
-    
      self.comment_components.each do |comment_component|
-       comment_component.destroy
-     end
+      comment_component.destroy
+    end
 
-     self.model_submissions.each do |model_submission|
-         model_submission.comment_submissions.each do |comment_submission|
-           comment_submission.destroy
-            
-            end
-         end
+    self.model_submissions.each do |model_submission|
+     model_submission.comment_submissions.each do |comment_submission|
+      comment_submission.destroy
+     end
+    end
 
     else
-      if self.comment_components.find_by_component_name('comment').nil?
-      self.comment_components.create(:component_name=>'comment',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
-      end
+     if self.comment_components.find_by_component_name('comment_text').nil?
+      self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
+     end
+     if self.email_on_comment
+       subject= "comment has been submitted "
+       body='Sample body template. Please Modify once all the form components are created'
+       self.create_mailer(:handle=>self.perma_link_parent,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'CommentSubmission')
+     end
    end
   
  end

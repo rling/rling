@@ -11,7 +11,7 @@
 
   <td>
   <% comment.model_submission.object_model.comment_components.each do |cc| %>
-          <%= cc.component_display_name %>
+    <b><%= cc.component_display_name %> :</b>
           <% comment_data = comment.comment_datas.first(:conditions=>["comment_component_id=?",cc.id] )
           unless comment_data.nil? %>
            
@@ -21,8 +21,9 @@
 
 <% end %>
 </td>
-
+     <% if validate_permission("deletecomment",comment.model_submission.object_model,comment) %>
     <td><%= link_to 'Destroy',[@object,@model, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+     <% end %>
   </tr>
 <% end %>
 </table>

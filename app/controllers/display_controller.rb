@@ -94,6 +94,7 @@ include ApplicationHelper
 
    def create_comment_submissions
     model_submission = ModelSubmission.find(params[:id])
+  #if validate_permission("create",model_submission.object_model)
     message= "Your details have been submitted successfully"
     if model_submission.nil?
       message= "Could not submit your details. Please try again"
@@ -110,7 +111,7 @@ include ApplicationHelper
         submission = CommentSubmission.new(:model_submission_id=>model_submission.id )
         submission.parent_id=params[:parent_id]
         submission.save
-      model_submission.object_model.comment_components.each do |component|
+        model_submission.object_model.comment_components.each do |component|
         case component.component_type
           when "File"
             unless form_data[component.component_name].nil?
@@ -125,7 +126,7 @@ include ApplicationHelper
         end
         end
         message = "All details have been stored successfully"
-        #Notifier.form_submitted(submission).deliver unless object_form.email.blank?
+        submission.send_email
       else
         message = "Ensure you have added all the mandatory fields"
       end
@@ -133,4 +134,5 @@ include ApplicationHelper
     flash[:notice] = message
     redirect_to :back
   end
+  # end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110413125424) do
+ActiveRecord::Schema.define(:version => 20110414074048) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -101,10 +101,11 @@ ActiveRecord::Schema.define(:version => 20110413125424) do
     t.string   "subject"
     t.text     "body"
     t.string   "allowable_tags"
-    t.boolean  "is_deletable",   :default => true
+    t.boolean  "is_deletable",    :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "object_form_id"
+    t.integer  "object_model_id"
   end
 
   create_table "menus", :force => true do |t|
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(:version => 20110413125424) do
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
-    t.text     "data_value"
+    t.string   "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

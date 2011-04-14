@@ -77,6 +77,28 @@ end
    end
   end
 
+   def comment_submitted(submission)
+    object_model = submission.model_submission.object_model
+   if object_model.email_on_comment
+      setup
+      mailer=Mailer.find_by_handle(object_model.perma_link_parent)
+      subject=mailer.subject
+      body=mailer.body
+      body=verify_tags(body,submission)
+      if submission.parent_id == 0
+      to_user=User.find_by_id(submission.model_submission.creator_id)
+      else
+        comment_submission=CommentSubmission.find_by_id(submission.parent_id)
+        to_user=User.find_by_id(comment_submission.creator_id)
+      end
+      from_user=User.find_by_id(submission.creator_id)
+     
+     
+      mail(:from=>from_user.email,:to=>to_user.email,:subject=>subject,:body=>body)
+      
+   end
+  end
+
   private
 
   def verify_tags(body,entity)

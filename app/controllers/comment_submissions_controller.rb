@@ -1,5 +1,6 @@
 class CommentSubmissionsController < ApplicationController
  include DisplayHelper
+ include ApplicationHelper
   before_filter :require_admin
   before_filter :get_model_submission
   # GET /comment_submissions
@@ -17,13 +18,16 @@ class CommentSubmissionsController < ApplicationController
   # DELETE /comment_submissions/1
   # DELETE /comment_submissions/1.xml
   def destroy
-    @comment_submission = @model.comment_submissions.find(params[:id])
-    @comment_submission.destroy
 
+    @comment_submission = @model.comment_submissions.find(params[:id])
+   
+    @comment_submission.destroy
+     
     respond_to do |format|
       format.html { redirect_to :back }
       format.xml  { head :ok }
     end
+   
   end
 
   def get_model_submission
