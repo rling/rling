@@ -110,6 +110,7 @@ Show on Home Page
 </div>
 <% end %>
 
+<% if @page.layout.nil? %>
 <div class="field">
   <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
   Do you want separate layout?
@@ -119,7 +120,12 @@ Show on Home Page
   <%= form.label :layout %>
   <%= form.text_field :layout %>
 </div>
-
+  <% else %>
+<div id="field">
+  <%= form.label :layout %>
+  <%= form.text_field :layout %>
+</div>
+<% end %>
 <div class="actions">
     <%= form.submit  %>
     </div>

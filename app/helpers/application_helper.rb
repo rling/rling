@@ -168,25 +168,41 @@ def get_all_menus(record)
    return permissionrole.nil? ? false : permissionrole.value
   end
   
-  def process_page(pagebody)
+def process_page(pagebody)
     #evaluate the page for following options
     #&lt; Upcase
-    pagebody = evaluate_page(pagebody,"&lt;","&gt;",true)
+    #pagebody = evaluate_page(pagebody,"&lt;","&gt;",true)
     #&lt; Downcase
-    pagebody = evaluate_page(pagebody,"&lt;","&gt;",false)
+    #pagebody = evaluate_page(pagebody,"&lt;","&gt;",false)
     # < Upcase
-    pagebody = evaluate_page(pagebody,"<",">",true)
+    #pagebody = evaluate_page(pagebody,"<",">",true)
     # < Downcase
-    pagebody = evaluate_page(pagebody,"<",">",false)
+    #pagebody = evaluate_page(pagebody,"<",">",false)
+    pagebody = evaluate2_page(pagebody,"&lt;%=display_rling_page(&quot;","&quot;)%&gt;")
     pagebody
   end
+
+  def evaluate2_page(pagebody,open_tag,close_tag)
+    #<%=display_rling_page("contact-us")%>
+    #&lt;%=display_rling_page("contact-us")%&gt;
+        codes = pagebody.split(open_tag)
+        hash = Hash.new
+        if codes.size > 1
+          codes.each_with_index do |code,i|
+          next if i==0
+          @tag = code.split(close_tag)[0]
+          puts 22222222222222222222
+          puts @tag
+          end
+        end
+       return display_rling_page('@tag')
+      end
 
   def evaluate_page(pagebody,open_tag,close_tag,upcase)
     #Split Code with &lt;
     separator = "#{open_tag}RLING::"
     separator = separator.downcase unless upcase
     codes = pagebody.split(separator)
-  
     hash = Hash.new
     if codes.size > 1
        codes.each_with_index do |code,i|
@@ -199,7 +215,7 @@ def get_all_menus(record)
     hash.each do |k,v|
      newpage = Page.find_by_perma_link("/"+v.downcase)
      unless newpage.nil?
-       page_content = render(:partial=>"page_data",:locals=>{:page=>newpage})
+       page_content = render(:partial=>"display/page_data",:locals=>{:page=>newpage})
        pagetype = newpage.type.nil? ? "PAGE" : (newpage.type == "ObjectForm" ? "OBJECTFORM" : "VIEW")
        code = "#{open_tag}RLING::#{pagetype}::#{v}#{close_tag}"
        code = code.downcase unless upcase
@@ -209,6 +225,12 @@ def get_all_menus(record)
      end
     end
     return pagebody
+  end
+  def display_rling_page(perma)
+    newpage = Page.find_by_perma_link("/"+perma.to_s)
+    unless newpage.nil?
+      return render(:partial=>"display/page_data",:locals=>{:page=>newpage})
+      end
   end
 
 end 

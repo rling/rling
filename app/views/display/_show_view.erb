@@ -7,9 +7,9 @@
    <% else %>
       <%= link_to "Create "+@object_model.name.capitalize, new_object_model_model_submission_path(@object_model) if validate_permission("create",@object_model) && page.allow_create_on_permission==true %>
       <% if page.view_type == "Grid" %>
-      <%=  render :partial=>"show_grid_view",:locals=>{:page=>page} %>
+      <%=  render :partial=>"display/show_grid_view",:locals=>{:page=>page} %>
       <% elsif page.view_type ==  "Table" %>
-      <%=  render :partial=>"show_table_view",:locals=>{:page=>page} %>
+      <%=  render :partial=>"display/show_table_view",:locals=>{:page=>page} %>
       <%  end %>
      <%= link_to "Create "+@object_model.name.capitalize, new_object_model_model_submission_path(@object_model) if validate_permission("create",@object_model) && page.allow_create_on_permission==true %>
   <% end %>

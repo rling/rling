@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user,:current_user?
   before_filter :check_browser,:check_admin,:check_cookie
   layout :set_layout
-   
+  
   def verify_permission
     activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewlist"}
     activity = activities[params[:action]]

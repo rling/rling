@@ -7,7 +7,7 @@
 </div>
 
 <% if page.type.eql?('ObjectForm') %>
- <%= render :partial=>"show_form",:locals=>{:page=>page} %>
+ <%= render :partial=>"display/show_form",:locals=>{:page=>page} %>
 <% elsif page.type.eql?('View')%>
- <%= render :partial=>"show_view",:locals=>{:page=>page}  %>
+ <%= render :partial=>"display/show_view",:locals=>{:page=>page}  %>
 <% end %>

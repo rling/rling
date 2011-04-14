@@ -45,7 +45,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Create Template" %>
+    <%= f.submit "#{(@mailer.id.nil? ? "Create" : "Update")} Template" %>
   </div>
 
 <% end %>
