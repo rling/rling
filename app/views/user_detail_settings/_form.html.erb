@@ -1,7 +1,6 @@
 
 <script type="text/javascript">
-$(function(){
-     $("#user_detail_setting_field_type").change(function(){ 
+$(document).ready(function(){
        var test=$("#user_detail_setting_field_type").val();
        if(test=="Dropdown"|| test=="Radiobutton") 
        {
@@ -21,7 +20,30 @@ $(function(){
           $('#default_value').show();
           $('#thumbnail').hide();
        }
-   });
+ });
+ 
+$(function(){
+       $('#user_detail_setting_field_type').change(function(){ 
+       var test=$("#user_detail_setting_field_type").val();
+       if(test=="Dropdown"|| test=="Radiobutton") 
+       {
+	   $("#field_value").show();
+       }
+       else
+       {
+           $("#field_value").hide();	    
+       }
+       if(test=="File")
+       { 
+          $('#default_value').hide();
+          $('#thumbnail').show();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#thumbnail').hide();
+       }
+ });
  
 });
 
@@ -48,7 +70,7 @@ $(function(){
 
   <div class="field"">
   <%= f.label :field_type %><br />
-  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","Label"], {} %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","Label"], {},{:onchange=>"return findselected();"}%><br />
   </div>
 
   <div class="field" id="field_value">

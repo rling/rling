@@ -11,13 +11,11 @@
     when "Textarea"
       return text_area_tag("form_field[#{model_component.component_name}]",value)
     when "Label"
-    
-      label_tag("form_field[#{model_component.component_name}]",value)
-
-              
-    when "RichtextEditor"
+   
+     return label_tag("form_field[#{model_component.component_name}]",value)
+   when "RichtextEditor"
       ckoutput =  ckeditor_textarea("form_field","#{model_component.component_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
-      ckoutput << raw("<script> $('form_field_#{model_component.component_name}_editor').value = #{value}; </script>")
+      ckoutput << raw("<script> $('#form_field_#{model_component.component_name}_editor').val(#{value});</script>")
       return ckoutput
     when "Dropdown"
       dropdown = model_component.component_values.split(',')

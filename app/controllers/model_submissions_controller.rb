@@ -74,6 +74,8 @@ class ModelSubmissionsController < ApplicationController
         @model_submission.perma_link_generate(@title)
      end
         @model_submission.home_page = params[:home_page]
+        @model_submission.status=params[:status]
+     
      unless mandatoryfailed
 
             if @model_submission.save
@@ -93,7 +95,9 @@ class ModelSubmissionsController < ApplicationController
                        ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>asset.id.to_s)
                        end
                    else
+                 
                      ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>model_data[component.component_name])
+                     
                    end
                  end
 
@@ -139,6 +143,7 @@ class ModelSubmissionsController < ApplicationController
    	@model_submission.perma_link_generate(@title)
     end
     @model_submission.home_page = params[:home_page]
+    @model_submission.status=params[:status] 
  
         unless mandatoryfailed
 

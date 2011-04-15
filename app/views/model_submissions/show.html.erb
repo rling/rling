@@ -19,4 +19,9 @@
 <% end %>
 </p>
 
+<p>
+ <b>Status:</b>
+ <%= @model_submission.status %>
+</p>
+
 <%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> | <%= link_to 'Back', object_model_model_submissions_path %>

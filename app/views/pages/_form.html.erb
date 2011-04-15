@@ -110,6 +110,7 @@ Show on Home Page
 </div>
 <% end %>
 
+
 <% if @page.layout.nil? %>
 <div class="field">
   <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
@@ -120,14 +121,24 @@ Show on Home Page
   <%= form.label :layout %>
   <%= form.text_field :layout %>
 </div>
-  <% else %>
+<% else %>
 <div id="field">
   <%= form.label :layout %>
   <%= form.text_field :layout %>
 </div>
 <% end %>
+
+
+<div id="status">
+    <%= form.label :status %><br />
+    <%= form.select :status,["Draft" ,"Published"] %>
+</div>
+
+
 <div class="actions">
     <%= form.submit  %>
-    </div>
+</div>
+
+
 <% end %>
 

@@ -33,7 +33,9 @@
               <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#model_submission_perma_link').attr('disabled','disabled');} else {$('#model_submission_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
              </div>
+             
           <%  end %>
+           
   
       </p>
     <% end %>
@@ -44,7 +46,14 @@ Generate permalink automatically<br />
   <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
 Show on Home Page
 </div>
+<br/>
+             
+<div id="modelsubmission_status">
+ <%= label_tag 'Status:' %>
+ <%= select_tag :status, options_for_select([ "Draft", "Published"],:selected=>@model_submission.status) %>
+</div>
 
+<br/>
   <div class="actions">
    <%= form.submit "#{(@model_submission.id.nil? ? "Create" : "Update")} #{@object.name.capitalize}"%> 
   </div>

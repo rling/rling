@@ -51,5 +51,10 @@
   <%= @page.layout %>
 </p>
 
+<p>
+  <b> Status: </b>
+  <%= @page.status %>
+</p>
+
 <%= link_to "Edit", edit_page_path(@page) %> |
 <%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url)) %>
