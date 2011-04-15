@@ -55,6 +55,28 @@ def get_all_menus(record)
       end
   end
 
+  def get_all_categories(record)
+    category = Array.new
+    Categoryset.all.each do |categoryset|
+    top_items = Category.find_all_by_categoryset_id_and_level(categoryset.id,1,:order => 'position')
+    category << categoryset
+    top_items.each { |item| add_item_to_category(record, item, category)}
+    end
+    return category
+  end
+
+  def add_item_to_category(record, item, category)
+      unless record.nil?
+	      unless record.id == item.id
+		category << item #"#{leader}#{item.name}"
+		item.children.each { |child| add_item_to_category(record, child, category) }
+	      end
+      else
+	      category << item #"#{leader}#{item.name}"
+		item.children.each { |child| add_item_to_category(record, child, category) }
+      end
+  end
+
   def login_strip
 	return (!current_user) ? link_to("Admin Login", :controller=>"user_sessions", :action=>"new") : loggedin_strip
   end

@@ -213,8 +213,18 @@ class ModelSubmissionsController < ApplicationController
    end
 
    def get_object_model
-   @object=ObjectModel.find(params[:object_model_id])
-  end
+     @object=ObjectModel.find(params[:object_model_id])
+   end
+
+   def add_category
+     @model_submission =  @object.model_submissions.find(params[:id])
+     @categories=@model_submission.categories
+
+   end
+
+   def category_add
+     
+   end
 end
 
 

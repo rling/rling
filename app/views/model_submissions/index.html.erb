@@ -16,19 +16,25 @@
 <% unless @object.model_submissions.empty? %>
 <% model_component =  @object.model_components.first %>
    <th><%=model_component.component_display_name.capitalize %></th>
+   <th>Categories</th>
 </tr>
 <% @model_submissions.each do |model_submission| %>
   <tr>
    <%  model_submission.model_datas.each do |model_data| %>
-      <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
+   <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
       <% break %>
    <% end %>
-      <% if @object.allow_comments %>
+      <td>
+          <%= link_to "Add", add_category_object_model_model_submission_path(@object,model_submission)%>
+      </td>
+    <% if @object.allow_comments %>
        <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>
-      <% end %>
-    <% if validate_permission("view",@object,model_submission) %>
-    <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>
     <% end %>
+
+    <% if validate_permission("view",@object,model_submission) %>
+      <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>
+    <% end %>
+
     <% if validate_permission("edit",@object,model_submission) %>
       <td><%= link_to "Edit", edit_object_model_model_submission_path(@object,model_submission) %></td>
     <% end %>

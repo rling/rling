@@ -1,9 +1,11 @@
 class CategoriesController < ApplicationController
+  include ApplicationHelper
+  before_filter :require_admin
+  
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.all
-
+    @all_categories = get_all_categories(Category.new).collect{|c|[c.treename,c.id]}
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }
@@ -79,5 +81,12 @@ class CategoriesController < ApplicationController
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def update_position
+     Category.all.each do |category|
+      category.update_attribute(:position,params["#{category.id}"])
+    end
+    redirect_to :action => 'index'
   end
 end

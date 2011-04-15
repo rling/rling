@@ -11,6 +11,23 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :parent_category %><br />
+    <%= f.select :parent_id, get_all_categories(@category).collect{|c|[c.levelname,c.id]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position, :value=>"0" %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

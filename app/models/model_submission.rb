@@ -7,6 +7,8 @@ class ModelSubmission < ActiveRecord::Base
   #Associations
   has_many :model_datas ,:dependent=>:destroy 
   has_many  :comment_submissions ,:dependent => :destroy
+  has_many :categorizations, :dependent=> :destroy
+  has_many :categories, :through=> :categorizations
 
   belongs_to :object_model
   #validations

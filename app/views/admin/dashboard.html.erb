@@ -31,6 +31,12 @@ Manage creation of Views and Models in the site<br/>
 Configure Emails on how you want the emails to look like when they are sent<br/>
 <%= link_to 'E-mail Template Configuration',mailers_path %><br />
 </p>
+
+<p>
+  Configure Category and CategorySets<br/>
+  <%= link_to "CategorySet Administration", categorysets_path %><br/>
+  <%= link_to "Category Administration", categories_path %><br/>
+</p>
 </div>
 <div id="dashboard_right">
  <%= render :partial=>"shared/models_administration" %>

@@ -36,14 +36,14 @@ Generate permalink parent  automatically<br />
 
   </div>
 <div class="field">
-  <%= form.label :allow_comments %><br/>
   <%= form.check_box :allow_comments,  :checked=> @object_model.allow_comments, :onclick => "if (this.checked){$('#show_comment_details').show();} else        {$('#show_comment_details').hide();}" %>
+  <%= form.label :allow_comments %>
 </div>
 
 <div id="show_comment_details" style="display:none;">
-<%= form.label :is_comment_recursive %><br />
+<%= form.label :is_comment_recursive %>
 <%= form.check_box :is_comment_recursive ,:checked=> @object_model.is_comment_recursive %><br />
-<%= form.label :email_on_comment %><br />
+<%= form.label :email_on_comment %>
 <%= form.check_box :email_on_comment,:checked=> @object_model.email_on_comment %><br />
 </div>
 
@@ -62,6 +62,13 @@ Generate permalink parent  automatically<br />
   <%= form.text_field :layout %>
 </div>
 <% end %>
+
+
+<div class="field">
+  <%= form.label "Select Categoryset" %>
+  <%= form.select :categoryset_id, Categoryset.all.collect{|c|[c.name,c.id]}%>
+</div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

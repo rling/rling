@@ -1,36 +1,36 @@
 Rling::Application.routes.draw do
 
-  resources :categories
+  resources :categories do
+    collection do
+      post 'update_position'
+    end
+   end  
 
   resources :categorysets
 
   resources :permission_roles
 
- resources :permissions do
-  collection do
-   post 'save_permission_roles'
+  resources :permissions do
+    collection do
+      post 'save_permission_roles'
+    end
   end
- end
 
- resources :object_models do
-   resources :model_components do
-     collection do
-          post 'update_position'
-        end
-   end
-   resources :model_submissions do
+  resources :object_models do
+    resources :model_components do
+      collection do
+        post 'update_position'
+      end
+    end
+    resources :model_submissions do
       member do
- 	    get 'delete_asset'
-
+        get 'delete_asset'
+        get 'add_category'
       end
       resources :comment_submissions
-       
+    end
+      resources :comment_components
    end
-   resources :comment_components
-
-
- end
-
 
   resources :mailers do
     member do

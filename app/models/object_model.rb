@@ -6,6 +6,7 @@ class ObjectModel < ActiveRecord::Base
   has_many :comment_components ,:dependent=>:destroy 
   has_many :model_submissions ,:dependent=>:destroy
   has_one  :mailer
+  belongs_to :categoryset
   #Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
