@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @categoryset.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @categoryset.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_categoryset_path(@categoryset) %> |
+<%= link_to 'Back', categorysets_path %>

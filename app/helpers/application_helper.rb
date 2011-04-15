@@ -178,24 +178,32 @@ def process_page(pagebody)
     #pagebody = evaluate_page(pagebody,"<",">",true)
     # < Downcase
     #pagebody = evaluate_page(pagebody,"<",">",false)
-    pagebody = evaluate2_page(pagebody,"&lt;%=display_rling_page(&quot;","&quot;)%&gt;")
+    pagebody = evaluate2_page(pagebody,"&lt;%=","display_rling_page(&quot;","&quot;)%&gt;")
     pagebody
   end
 
-  def evaluate2_page(pagebody,open_tag,close_tag)
+  def evaluate2_page(pagebody,first,second,third)
     #<%=display_rling_page("contact-us")%>
     #&lt;%=display_rling_page("contact-us")%&gt;
-        codes = pagebody.split(open_tag)
-        hash = Hash.new
-        if codes.size > 1
-          codes.each_with_index do |code,i|
-          next if i==0
-          @tag = code.split(close_tag)[0]
-          puts 22222222222222222222
-          puts @tag
-          end
-        end
-       return display_rling_page('@tag')
+    #To be used in all places
+    #result = text.scan(/<%=display_rling_page\("[a-zA-Z0-9-]*"\)%>/)
+    #/<RLING::PAGE::[a-zA-Z0-9-]*>/
+        bodyone = pagebody.split(first)
+        body = (bodyone.to_s).strip
+        bodytwo = body.split(second)
+        bodythree = bodytwo.split(third)
+        puts 111111111111111111111111
+        puts bodythree
+#        hash = Hash.new
+#        if codes.size > 1
+#          codes.each_with_index do |code,i|
+#          next if i==0
+#          @tag = code.split(close_tag)[0]
+#          puts 22222222222222222222
+#          puts @tag
+#          end
+#
+#       return display_rling_page('@tag')
       end
 
   def evaluate_page(pagebody,open_tag,close_tag,upcase)

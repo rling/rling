@@ -10,12 +10,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110414074048) do
+ActiveRecord::Schema.define(:version => 20110415071942) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "categoryset_id"
+    t.integer  "parent_id",      :default => 0
+    t.integer  "level",          :default => 0
+    t.integer  "position",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorysets", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

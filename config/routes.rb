@@ -1,5 +1,9 @@
 Rling::Application.routes.draw do
 
+  resources :categories
+
+  resources :categorysets
+
   resources :permission_roles
 
  resources :permissions do
