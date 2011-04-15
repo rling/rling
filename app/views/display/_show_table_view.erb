@@ -15,7 +15,7 @@
     </tr>
     <% output = ""
    
-   model_conditions(page).each do |ms|
+  om.model_submissions.each do |ms|
        output << "<tr class='table_view_tr_value #{cycle('odd','even')}'>"
        page.view_components.each do |vc2|
         value =raw  (get_submission_model_data(ms,vc2.name))
