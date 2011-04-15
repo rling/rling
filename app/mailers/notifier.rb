@@ -92,9 +92,11 @@ end
         to_user=User.find_by_id(comment_submission.creator_id)
       end
       from_user=User.find_by_id(submission.creator_id)
-     
+      unless from_user == nil
      
       mail(:from=>from_user.email,:to=>to_user.email,:subject=>subject,:body=>body)
+
+      end
       
    end
   end

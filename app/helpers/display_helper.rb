@@ -45,6 +45,12 @@ module DisplayHelper
 
 	  end
   end
+
+ 
+
+
+
+
  
  def get_all_comments(record,model_submission)
     comment_submission = Array.new
@@ -72,3 +78,5 @@ module DisplayHelper
  
 
 end
+
+

@@ -3,7 +3,7 @@ class View < Page
 
 #Associations
 has_many :view_components ,:dependent => :destroy ,:order =>:position
-
+has_many :conditions ,:dependent => :destroy
  #call_backs
  after_create :clear_cache
  after_destroy :clear_cache
@@ -22,11 +22,27 @@ def not_added_components
  return  (m_component - v_component)
 end
 
+def not_added_condition_components
+ model=ObjectModel.find_by_id(self.view_for)
+
+ m_component = model.model_components.collect{|mc|mc.component_name}
+ m_component << "created_at"
+ m_component << "updated_at"
+ m_component << "creator_Id"
+ m_component << "id"
+ m_component  << "limit"
+
+ c_component = self.conditions.collect{|c| c.condition_name}
+ return  (m_component - c_component)
+end
+
+
 #Get the View For Name
 def get_view_for
   model=ObjectModel.find_by_id(self.view_for)
   return ( model.nil? ? nil :  model.name.capitalize.pluralize )
 end
+
 
 end
 
