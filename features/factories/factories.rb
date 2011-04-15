@@ -72,6 +72,20 @@ Factory.define(:object_model) do |f|
   f.name "Blog"
   f.perma_link_parent "/blogs"
   f.description "Blog page"
+  f.allow_comments "1"
+end
+
+Factory.define(:comment_component) do |f|
+  f.component_name "user"
+  f.component_display_name "User"
+  f.component_type "Textfield"
+  f.mandatory "1"
+end
+
+Factory.define(:component_submission) do |f|
+  f.parent_id "0"
+  f.creator_id "1"
+  f.updater_id "1"
 end
 
 Factory.define(:model_component) do |f|
@@ -82,9 +96,9 @@ Factory.define(:model_component) do |f|
 end
 
 Factory.define(:model_submission) do |f|
-  f.perma_link "/enter-the-title"
+  f.perma_link "/enter-the-title-0"
   f.home_page "0"
-  f.page_view_type "0"
+  f.page_view_type "1"
   f.creator_id "1"
   f.updater_id "1"
 end

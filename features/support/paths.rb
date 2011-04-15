@@ -97,11 +97,20 @@ module NavigationHelpers
     when /new object_model/
       new_object_model_path
 
+    when /model_components_index page/
+      object_model_model_components_path @object_model
+
     when /new model_components/
       new_object_model_model_component_path @object_model
 
     when /admin page/
       admin_path
+
+    when /comment_components_index page/
+      object_model_comment_components_path @object_model
+
+    when /new comment_components page/
+      new_object_model_comment_component_path @object_model
 
     when /new model_submissions page/
       new_object_model_model_submission_path @object_model
@@ -124,6 +133,8 @@ module NavigationHelpers
     when /admission page/
       '/admission'
 
+    when /Blog_comment page/
+      '/blogs/enter-a-title-0'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

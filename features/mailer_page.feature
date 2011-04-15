@@ -69,7 +69,7 @@ Feature: Mailer Page
     And I fill in "mailer_handle" with "Thank you"
     And I fill in "mailer_subject" with "Thank you mail"
     And I fill in "mailer_body_editor" with "Thank you for joining us"
-    When I press "Create Template"
+    When I press "Update Template"
     Then I should see "Thank you" for "Handle" on the page
     And I should see "Thank you mail" for "Subject" on the page
     And I should see "Thank you for joining us" for "Body" on the page
