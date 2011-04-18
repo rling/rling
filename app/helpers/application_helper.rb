@@ -166,79 +166,30 @@ def validate_permission(call_type,model, submission=nil)
   end
   
 def process_page(pagebody)
-    pagebody = evaluate2_page(pagebody,"amp;")
-    pagebody = evaluate2_page(pagebody)
+    pagebody = evaluate_page(pagebody,"amp;")
+    pagebody = evaluate_page(pagebody)
     pagebody
   end
 
-  def evaluate2_page(pagebody, tag="tag")
+  def evaluate_page(pagebody, tag="tag")
+   text = pagebody.gsub("&nbsp;","")
    if tag == "tag"
-    codes = pagebody.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)  
+    codes = text.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)  
    else
-    codes = pagebody.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)  
+    codes = text.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)  
    end
+   if codes.size > 0
     codes.each do |code|
      perma = code.gsub("<%=","").gsub("display_rling_page","").gsub("%>","").gsub("(","").gsub(")","").gsub("\"","").gsub("&lt;%=","").gsub("%&gt;","").gsub("&quot;","").strip
      newpage = Page.find_by_perma_link(perma.downcase)
      unless newpage.nil?
        page_content = render(:partial=>"display/page_data",:locals=>{:page=>newpage})
-       #pagebody = pagebody.gsub("",page_content)
+       text = text.gsub(code,page_content)
      end
     end
-    return pagebody
-  end
-
-  def evaluate3_page(pagebody,first,second,third)
-    #<%=display_rling_page("contact-us")%>
-    #&lt;%=display_rling_page("contact-us")%&gt;
-    #To be used in all places
-    #result = text.scan(/<%=display_rling_page\("[a-zA-Z0-9-]*"\)%>/)
-    #/<RLING::PAGE::[a-zA-Z0-9-]*>/
-        bodyone = pagebody.split(first)
-        body = (bodyone.to_s).strip
-        bodytwo = body.split(second)
-        bodythree = bodytwo.split(third)
-        puts 111111111111111111111111
-        puts bodythree
-#        hash = Hash.new
-#        if codes.size > 1
-#          codes.each_with_index do |code,i|
-#          next if i==0
-#          @tag = code.split(close_tag)[0]
-#          puts 22222222222222222222
-#          puts @tag
-#          end
-#
-#       return display_rling_page('@tag')
-      end
-
-  def evaluate_page(pagebody,open_tag,close_tag,upcase)
-    #Split Code with &lt;
-    separator = "#{open_tag}RLING::"
-    separator = separator.downcase unless upcase
-    codes = pagebody.split(separator)
-    hash = Hash.new
-    if codes.size > 1
-       codes.each_with_index do |code,i|
-         next if i==0
-         tag = code.split(close_tag)[0]
-         splits = tag.split("::")
-         hash[tag] = splits[1]
-       end
-    end
-    hash.each do |k,v|
-     newpage = Page.find_by_perma_link("/"+v.downcase)
-     unless newpage.nil?
-       page_content = render(:partial=>"display/page_data",:locals=>{:page=>newpage})
-       pagetype = newpage.type.nil? ? "PAGE" : (newpage.type == "ObjectForm" ? "OBJECTFORM" : "VIEW")
-       code = "#{open_tag}RLING::#{pagetype}::#{v}#{close_tag}"
-       code = code.downcase unless upcase
-       code2 = "#{open_tag}/RLING::#{pagetype}::#{v}#{close_tag}"
-       pagebody = pagebody.gsub(code,page_content)
-       pagebody = pagebody.gsub(code2,"")
-     end
-    end
-    return pagebody
+    pagebody = text
+   end
+   return pagebody
   end
 
   # Display the page content for a particular page

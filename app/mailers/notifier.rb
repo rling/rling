@@ -101,7 +101,7 @@ end
 #Replace tags in email with data as necessary from the object information. 
   def verify_tags(body,entity)
     output = body
-    codes = text.scan(/&lt;RLING::[a-zA-Z]*::[a-zA-Z0-9]*&gt;/)  
+    codes = body.scan(/&lt;RLING::[a-zA-Z]*::[a-zA-Z0-9]*&gt;/)  
     unless codes.nil?
       codes.each do |code|
          code = code.gsub("&lt;","").gsub("&gt;","").strip
