@@ -22,6 +22,6 @@ Feature:Login
    Scenario: Logout
      Given I am logged in
      When I go to logout page
-     Then I should see "You have been logged out." on the logout page
+     Then I should see "You have been logged out successfully." on the logout page
 
 

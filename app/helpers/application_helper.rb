@@ -73,7 +73,7 @@ end
   def add_item_to_group(record, item, group)
       if record.nil? || record.id != item.id
 	  group << item
-	  item.children.each { |child| add_item_to_menu(record, child, menu) }
+	  item.children.each { |child| add_item_to_group(record, child, group) }
       end
   end
 

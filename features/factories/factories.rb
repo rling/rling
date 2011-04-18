@@ -20,7 +20,7 @@ end
 Factory.define(:object_form) do |f|
   f.title "Admission"
   f.body "Admission form for MCA"
-  f.perma_link "/admission"
+  f.perma_link "admission"
   f.home_page "0"
   f.email "amit@heurion.com"
 end
@@ -44,7 +44,7 @@ end
 Factory.define(:page) do |f|
   f.title "Home"
   f.body "This is home page"
-  f.perma_link "/home"
+  f.perma_link "home"
   f.home_page "0"
   f.page_view_type "0"
   f.allow_create_on_permission "0"
@@ -70,7 +70,7 @@ end
 
 Factory.define(:object_model) do |f|
   f.name "Blog"
-  f.perma_link_parent "/blogs"
+  f.perma_link_parent "blogs"
   f.description "Blog page"
   f.allow_comments "1"
 end
@@ -80,6 +80,10 @@ Factory.define(:comment_component) do |f|
   f.component_display_name "User"
   f.component_type "Textfield"
   f.mandatory "1"
+end
+
+Factory.define(:form_data) do |f|
+  f.data_value "amit@heurion.com"
 end
 
 Factory.define(:component_submission) do |f|
@@ -133,4 +137,16 @@ Factory.define(:view) do |f|
   f.view_type "table"
   f.creator_id "1"
   f.updater_id "1"
+end
+
+Factory.define(:categoryset) do |f|
+  f.name "Technology"
+  f.description "For latest technology"
+end
+
+Factory.define(:category) do |f|
+  f.name "Ruby"
+  f.parent_id "0"
+  f.level "1"
+  f.position "0"
 end

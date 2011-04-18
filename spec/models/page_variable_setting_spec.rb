@@ -4,7 +4,7 @@ describe PageVariableSetting do
   before (:each) do
 
    @page_variable_setting_attributes={ :name => 'keyword'}
-   @page_variable_setting=PageVariableSetting.create! (@page_variable_setting_attributes)
+   @page_variable_setting=PageVariableSetting.create!(@page_variable_setting_attributes)
    @page_variable=PageVariable.create :page_variable_setting_id => @page_variable_setting.id
  end
 #********************************Tests Validatitons************************************************#
@@ -24,7 +24,7 @@ describe PageVariableSetting do
  
  #*******************************Tests Association***********************************************#
   it "should have many page variables" do
-    pvs=PageVariableSetting.create! (@page_variable_setting_attributes.merge(:name=> 'description'))
+    pvs=PageVariableSetting.create!(@page_variable_setting_attributes.merge(:name=> 'description'))
     pvs.page_variables << PageVariable.new(:page_variable_setting_id => pvs.id)
     pvs.page_variables << PageVariable.new(:page_variable_setting_id => pvs.id)
     pvs.should have(2).page_variables

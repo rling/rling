@@ -136,6 +136,19 @@ module NavigationHelpers
     when /Blog_comment page/
       '/blogs/enter-a-title-0'
 
+    when /new categoryset page/
+      new_categoryset_path
+
+    when /new category page/
+      new_category_path
+
+    when /category_index page/
+      categories_path
+
+
+
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

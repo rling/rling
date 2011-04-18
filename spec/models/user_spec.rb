@@ -98,7 +98,7 @@ describe User do
   end
 
   it "validates uniqueness of email" do
-    @first_user=User.create! (@attr)
+    @first_user=User.create!(@attr)
     @second_user=User.new(@attr.merge(:login=>"somelogin",:password=>"somepass"))
     @second_user.should_not be_valid
   end

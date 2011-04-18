@@ -1,6 +1,7 @@
 Given /^I have a form_component in form_component page$/ do
   @object=Factory(:object_form)
   @form_component = Factory(:form_component, :object_form_id=>@object.id, :default_value=>"mail@mail.com", :mandatory=>"0")
+ # @form_data = Factory(:form_data, :form_component_id=>@form_component.id)
 end
 
 Then /^I should see "([^"]*)" on the admission page$/ do |arg1|
