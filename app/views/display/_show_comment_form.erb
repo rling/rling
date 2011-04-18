@@ -1,5 +1,5 @@
 <% unless model_submission.object_model.comment_components.empty? %>
-<%  if validate_permission("createcomment",model_submission.object_model) %>
+<% if validate_permission("createcomment",model_submission.object_model) %>
 <a id="add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>" onclick="document.getElementById('comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='';document.getElementById('add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='none';"> Add Comment</a>
 <div  id="comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>" style="display:none;" >
   <%= form_tag "/display/create_comment_submissions/#{model_submission.id}", :multipart=>true do %>

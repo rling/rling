@@ -1,4 +1,4 @@
- <% @model= "New " << @object.name.capitalize %>
+<% @model= "New " << @object.name.capitalize %>
 
    <% if validate_permission("create",@object) %>
    <%= link_to @model, new_object_model_model_submission_path %> |
@@ -25,7 +25,13 @@
       <% break %>
    <% end %>
       <td>
-          <%= link_to "Add", add_category_object_model_model_submission_path(@object,model_submission)%>
+          <% model_submission.categories.each do |category| %>
+          <%= category.name %>
+          <%= link_to "[Remove]",category_remove_object_model_model_submission_path(@object,model_submission,:category_id=>category.id) %>
+          <% end %>
+          <% unless model_submission.unenrolled_categories.empty? %>
+          <%= link_to "[Add]", add_category_object_model_model_submission_path(@object,model_submission)%>
+          <% end %>
       </td>
     <% if @object.allow_comments %>
        <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>

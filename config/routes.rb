@@ -26,7 +26,10 @@ Rling::Application.routes.draw do
       member do
         get 'delete_asset'
         get 'add_category'
+        post 'category_add'
+        get 'category_remove'
       end
+
       resources :comment_submissions
     end
       resources :comment_components

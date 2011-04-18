@@ -8,7 +8,6 @@ class ModelSubmissionsController < ApplicationController
   # GET /object_model/1/model_submissions
   # GET /object_model/1/model_submissions.xml
   def index
- 
    @model_submissions = []
    unless validate_permission("viewlist",@object)
       @model_submissions = @object.model_submissions.find(:all,:conditions=>["creator_id=?",current_user.id]) unless current_user.nil?
@@ -88,7 +87,7 @@ class ModelSubmissionsController < ApplicationController
           message = "All details have been stored successfully"
           flash[:notice] = message
           respond_to do |format|
-            format.html { redirect_to object_model_model_submissions_path(@model_submission) }
+            format.html { redirect_to (object_model_model_submissions_path(@model_submission)) }
             format.xml  { render :xml => @model_submission, :status => :created, :location => @model_submission}
           end
         else 
@@ -151,7 +150,7 @@ class ModelSubmissionsController < ApplicationController
           end
           flash[:notice] = "Submission Form Updated"
           respond_to do |format|
-            format.html { redirect_to object_model_model_submissions_path(@model_submission) }
+            format.html { redirect_to (object_model_model_submissions_path(@model_submission)) }
             format.xml  { head :ok }
           end
         else
@@ -193,7 +192,7 @@ class ModelSubmissionsController < ApplicationController
      model_data.save
     end
     respond_to do |format|
-      format.html { redirect_to(edit_object_model_model_submission_path(@object,model_data.model_submission)) }
+      format.html { redirect_to(edit_object_model_model_submission_path(@categories)) }
       format.xml  { head :ok }
     end
    end
@@ -202,26 +201,46 @@ class ModelSubmissionsController < ApplicationController
   # GET /object_model/1/model_submissions/1/add_category.xml
   def add_category
      @model_submission =  @object.model_submissions.find(params[:id])
-     @categories=@model_submission.categories
+     @categories=Category.find(:all,:conditions=>{:categoryset_id=>@object.categoryset_id})
      respond_to do |format|
       format.html #add_category.html.erb
       format.xml  { render :xml=>@model_submission }
     end
-   end
+  end
 
+  # POST /object_model/1/model_submissions/1/add_category
+  # POST /object_model/1/model_submissions/1/add_category.xml
    def category_add
-     
+     @model_submission =  @object.model_submissions.find(params[:id])
+     @category=Category.find(params[:category])
+     unless @model_submission.enrolled_in?(@category)
+       @model_submission.categories << @category
+     end
+     flash[:notice]="Category is successfully added"
+     respond_to do |format|
+       format.html { redirect_to(object_model_model_submissions_path(@object)) }
+       format.xml  { head :ok }
+     end
    end
 
-private
+  # DELETE /object_model/1/model_submissions/1/category_remove
+  # DELETE /object_model/1/model_submissions/1/category_remove.xml
+   def category_remove
+     @model_submission =  @object.model_submissions.find(params[:id])
+     @category=Category.find(params[:category_id])
+     if @model_submission.enrolled_in?(@category)
+       @model_submission.categories.delete(@category)
+     end
+     flash[:notice]="Category successfully removed"
+     respond_to do |format|
+       format.html { redirect_to(object_model_model_submissions_path(@object)) }
+       format.xml  { head :ok }
+     end
+   end
+
+   private
   #Get the object model as required for model submissions to be associated to 
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end
-
-
 end
-
-
-
- 

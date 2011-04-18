@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
     <%= f.label :parent_category %><br />
     <%= f.select :parent_id, get_all_categories(@category).collect{|c|[c.levelname,c.id]} %>
   </div>

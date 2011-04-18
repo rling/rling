@@ -23,7 +23,7 @@
     <td><%= object_model.email_on_comment ? "Yes" : "No" %></td>
     <td><%= link_to "Model Components",[object_model,:model_components] %></td>
      <% if object_model.allow_comments.eql?(true) %>
-    <td><%= link_to "comment Components",[object_model,:comment_components] %></td>
+    <td><%= link_to "Comment Components",[object_model,:comment_components] %></td>
      <% else %>
     <td></td>
      <% end %>

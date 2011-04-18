@@ -6,7 +6,7 @@ class ModelSubmission < ActiveRecord::Base
 
   #Associations
   belongs_to :object_model
-  has_many :model_datas ,:dependent=>:destroy 
+  has_many :model_datas ,:dependent=>:destroy
   has_many  :comment_submissions ,:dependent => :destroy
   has_many :categorizations, :dependent=> :destroy
   has_many :categories, :through=> :categorizations
@@ -28,6 +28,13 @@ class ModelSubmission < ActiveRecord::Base
      self.perma_link = generate_perma_link(ModelSubmission,create_permalink(title))
  end
 
+ def enrolled_in?(category)
+    self.categories.include?(category)
+ end
+
+  def unenrolled_categories
+    Category.find(:all,:conditions=>{:categoryset_id=>self.object_model.categoryset_id}) - self.categories
+  end
 end
 
 

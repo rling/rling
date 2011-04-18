@@ -1,5 +1,5 @@
  <%  om = ObjectModel.find(page.view_for) %>
-<% page.view_components.each do |vc2|
+ <% page.view_components.each do |vc2|
           if vc2.is_linked
            @linked_component=vc2
           end
@@ -20,7 +20,7 @@
        page.view_components.each do |vc2|
         value =raw  (get_submission_model_data(ms,vc2.name))
         if vc2.is_linked
-          value = link_to( value,"#{ms.object_model.perma_link_parent}#{ms.perma_link}")
+          value = link_to( value,"/#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
         end
         output << "<td class='table_view_td_value'>#{value}</td>"
        end

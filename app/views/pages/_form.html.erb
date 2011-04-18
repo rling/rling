@@ -39,7 +39,7 @@
 
   <div class="field">
     <%= form.label :body %><br />
-    You can display other pages into the body of this page. For this you insert code in this format: &lt;RLING::PAGE_TYPE::PERMA_LINK&gt;
+    You can display other pages into the body of this page. For this you insert code in this format:<br/> &lt;%=display_rling_page("perma-link of page")%&gt;
     <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5',:height=>200 ,:swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id})  %>
   </div>
   
