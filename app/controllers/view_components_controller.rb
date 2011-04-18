@@ -1,9 +1,10 @@
 class ViewComponentsController < ApplicationController
+  # FILTERS
   before_filter :require_admin
   before_filter :get_view
 
-  # GET /view_components
-  # GET /view_components.xml
+  # GET /views/1/view_components
+  # GET /views/1/view_components.xml
   def index
     @view_components = @page.view_components.all
 
@@ -13,8 +14,8 @@ class ViewComponentsController < ApplicationController
     end
   end
 
-  # GET /view_components/1
-  # GET /view_components/1.xml
+  # GET /views/1/view_components/1
+  # GET /views/1/view_components/1.xml
   def show
     @view_component = @page.view_components.find(params[:id])
 
@@ -24,8 +25,8 @@ class ViewComponentsController < ApplicationController
     end
   end
 
-  # GET /view_components/new
-  # GET /view_components/new.xml
+  # GET /views/1/view_components/new
+  # GET /views/1/view_components/new.xml
   def new
     @view_component = @page.view_components.new
     
@@ -36,13 +37,13 @@ class ViewComponentsController < ApplicationController
     end
   end
 
-  # GET /view_components/1/edit
+  # GET /views/1/view_components/1/edit
   def edit
     @view_component = @page.view_components.find(params[:id])
   end
 
-  # POST /view_components
-  # POST /view_components.xml
+  # POST /views/1/view_components
+  # POST /views/1/view_components.xml
   def create
     @view_component = @page.view_components.new(params[:view_component])
 
@@ -57,8 +58,8 @@ class ViewComponentsController < ApplicationController
     end
   end
 
-  # PUT /view_components/1
-  # PUT /view_components/1.xml
+  # PUT /views/1/view_components/1
+  # PUT /views/1/view_components/1.xml
   def update
     @view_component = @page.view_components.find(params[:id])
 
@@ -73,8 +74,8 @@ class ViewComponentsController < ApplicationController
     end
   end
 
-  # DELETE /view_components/1
-  # DELETE /view_components/1.xml
+  # DELETE /views/1/view_components/1
+  # DELETE /views/1/view_components/1.xml
   def destroy
     @view_component = @page.view_components.find(params[:id])
     @view_component.destroy
@@ -84,14 +85,21 @@ class ViewComponentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # POST /views/1/view_components/update_position
+  # POST /views/1/view_components/update_position.xml
  def update_position
-
   ViewComponent.find_all_by_view_id(@page.id).each do  |view_component|
      view_component.update_attribute(:position,params["#{view_component.id}"])
     end
-    redirect_to :action => 'index'
+    respond_to do |format|
+      format.html { redirect_to(view_view_components_path(@page)) }
+      format.xml  { head :ok }
+    end
   end
  
+private
+  #Get the Parent View (Page) Object to identify the nested URL
   def get_view
   @page=View.find(params[:view_id])
   end

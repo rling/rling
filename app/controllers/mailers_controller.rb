@@ -1,10 +1,11 @@
 class MailersController < ApplicationController
+  #FILTERS
   before_filter :require_admin
+
   # GET /mailers
   # GET /mailers.xml
   def index
     @mailers = Mailer.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @mailers }
@@ -15,7 +16,6 @@ class MailersController < ApplicationController
   # GET /mailers/1.xml
   def show
     @mailer = Mailer.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @mailer }
@@ -26,7 +26,6 @@ class MailersController < ApplicationController
   # GET /mailers/new.xml
   def new
     @mailer = Mailer.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @mailer }
@@ -42,7 +41,6 @@ class MailersController < ApplicationController
   # POST /mailers.xml
   def create
     @mailer = Mailer.new(params[:mailer])
-
     respond_to do |format|
       if @mailer.save
         format.html { redirect_to(@mailer, :notice => 'Mailer was successfully created.') }
@@ -58,7 +56,6 @@ class MailersController < ApplicationController
   # PUT /mailers/1.xml
   def update
     @mailer = Mailer.find(params[:id])
-
     respond_to do |format|
       if @mailer.update_attributes(params[:mailer])
         format.html { redirect_to(@mailer, :notice => 'Mailer was successfully updated.') }
@@ -74,31 +71,44 @@ class MailersController < ApplicationController
   # DELETE /mailers/1.xml
   def destroy
     @mailer = Mailer.find(params[:id])
-
     unless @mailer.is_deletable
       flash[:notice] = "Cannot delete standard mailers"
     else
           @mailer.destroy
     end
-
     respond_to do |format|
       format.html { redirect_to(mailers_url) }
       format.xml  { head :ok }
     end
   end
 
+  # GET /mailers/1/sendmail
+  # GET /mailers/1/sendmail.xml
   def sendmail
     @mailer = Mailer.find(params[:id])
+    respond_to do |format|
+      format.html # sendmail.html.erb
+      format.xml  { render :xml => @mailer }
+    end
   end
+
+  # POST /mailers/1/preparemail
+  # GET /mailers/1/preparemail.xml
   def preparemail
     mailer = params[:mailer]
     if mailer[:to].blank? && mailer[:cc].blank? && mailer[:bcc].blank?
       flash[:notice] = "Needs atleast one email address in to, cc or bcc feilds"
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.xml  { head :ok }
+      end
     else
       Notifier.send_mailers_email(mailer[:to],mailer[:cc],mailer[:bcc],mailer[:subject],mailer[:body]).deliver
       flash[:notice]="Mail sent to given emails successfully"
-      redirect_to mailers_path
+      respond_to do |format|
+        format.html { redirect_to(mailers_url) }
+        format.xml  { head :ok }
+      end
     end
   end
 end

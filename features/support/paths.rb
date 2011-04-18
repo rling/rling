@@ -23,7 +23,7 @@ module NavigationHelpers
         first_user_sessions_path
 
     when /login/
-        new_session_path
+        login_path
 
     when /logout page/
         logout_path

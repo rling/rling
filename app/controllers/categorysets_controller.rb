@@ -3,7 +3,6 @@ class CategorysetsController < ApplicationController
   # GET /categorysets.xml
   def index
     @categorysets = Categoryset.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categorysets }
@@ -14,7 +13,6 @@ class CategorysetsController < ApplicationController
   # GET /categorysets/1.xml
   def show
     @categoryset = Categoryset.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @categoryset }
@@ -25,7 +23,6 @@ class CategorysetsController < ApplicationController
   # GET /categorysets/new.xml
   def new
     @categoryset = Categoryset.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @categoryset }
@@ -41,7 +38,6 @@ class CategorysetsController < ApplicationController
   # POST /categorysets.xml
   def create
     @categoryset = Categoryset.new(params[:categoryset])
-
     respond_to do |format|
       if @categoryset.save
         format.html { redirect_to(@categoryset, :notice => 'Categoryset was successfully created.') }
@@ -57,7 +53,6 @@ class CategorysetsController < ApplicationController
   # PUT /categorysets/1.xml
   def update
     @categoryset = Categoryset.find(params[:id])
-
     respond_to do |format|
       if @categoryset.update_attributes(params[:categoryset])
         format.html { redirect_to(@categoryset, :notice => 'Categoryset was successfully updated.') }
@@ -74,7 +69,6 @@ class CategorysetsController < ApplicationController
   def destroy
     @categoryset = Categoryset.find(params[:id])
     @categoryset.destroy
-
     respond_to do |format|
       format.html { redirect_to(categorysets_url) }
       format.xml  { head :ok }

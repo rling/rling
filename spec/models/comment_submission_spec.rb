@@ -2,11 +2,13 @@ require 'spec_helper'
 
 describe CommentSubmission do
    before(:each) do
-  @model_submission_attributes={:object_model_id=>'1', :perma_link=>'/permalink2' }
+  @object_model_attributes={ :perma_link_parent =>'/permalink' ,:name=>'name',:allow_comments=>true}
+  @object_model = ObjectModel.create!(@object_model_attributes)
+  @model_submission_attributes={:object_model_id=>@object_model.id, :perma_link=>'/permalink2' }
   @model_submission=ModelSubmission.create!(@model_submission_attributes)
-  @comment_submission_attributes={:model_submission_id=>'1' }
+  @comment_submission_attributes={:model_submission_id=>@model_submission.id }
   @comment_submission=CommentSubmission.create!(@comment_submission_attributes)
-  @comment_data_attributes={:comment_component_id=>1,:comment_submission_id=>1,:data_value=>'value'}
+  @comment_data_attributes={:comment_component_id=>1,:comment_submission_id=>@comment_submission.id,:data_value=>'value'}
 end
 
 
@@ -42,3 +44,18 @@ end
 
 
 end
+
+# == Schema Information
+#
+# Table name: comment_submissions
+#
+#  id                  :integer(4)      not null, primary key
+#  model_submission_id :integer(4)
+#  parent_id           :integer(4)
+#  creator_id          :integer(4)
+#  updater_id          :integer(4)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  level               :integer(4)      default(0)
+#
+

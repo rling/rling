@@ -1,11 +1,11 @@
 class RolesController < ApplicationController
+#Filters
   before_filter :require_admin
   
   # GET /roles
   # GET /roles.xml
   def index
     @roles = Role.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @roles }
@@ -16,7 +16,6 @@ class RolesController < ApplicationController
   # GET /roles/1.xml
   def show
     @role = Role.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @role }
@@ -27,7 +26,6 @@ class RolesController < ApplicationController
   # GET /roles/new.xml
   def new
     @role = Role.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @role }
@@ -43,7 +41,6 @@ class RolesController < ApplicationController
   # POST /roles.xml
   def create
     @role = Role.new(params[:role])
-
     respond_to do |format|
       if @role.save
         format.html { redirect_to(roles_path, :notice => 'Role was successfully created.') }
@@ -59,7 +56,6 @@ class RolesController < ApplicationController
   # PUT /roles/1.xml
   def update
     @role = Role.find(params[:id])
-
     respond_to do |format|
       if @role.update_attributes(params[:role])
         format.html { redirect_to(@role, :notice => 'Role was successfully updated.') }
@@ -76,7 +72,6 @@ class RolesController < ApplicationController
   def destroy
     @role = Role.find(params[:id])
     @role.destroy
-
     respond_to do |format|
       format.html { redirect_to(roles_url, :notice=> 'Role deleted') }
       format.xml  { head :ok }

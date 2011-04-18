@@ -1,10 +1,11 @@
 class FormSubmissionsController < ApplicationController
+
+ #FILTERS
  before_filter :require_admin
  before_filter :get_object_form
 
-
-  # GET /form_submissions
-  # GET /form_submissions.xml
+  # GET /object_form/1/form_submissions
+  # GET /object_form/1/form_submissions.xml
   def index
    @form_submissions = @page.form_submissions.all
     respond_to do |format|
@@ -13,8 +14,8 @@ class FormSubmissionsController < ApplicationController
     end
   end
 
-  # GET /form_submissions/1
-  # GET /form_submissions/1.xml
+  # GET /object_form/1/form_submissions/1
+  # GET /object_form/1/form_submissions/1.xml
   def show
     @form_submission = @page.form_submissions.find(params[:id])
     @form_submission.form_data
@@ -24,17 +25,13 @@ class FormSubmissionsController < ApplicationController
     end
   end
 
-
-
-  # GET /form_submissions/1/edit
+  # GET /object_form/1/form_submissions/1/edit
   def edit
     @form_submission = @page.form_submissions.find(params[:id])
   end
 
-
-
-  # PUT /form_submissions/1
-  # PUT /form_submissions/1.xml
+  # PUT /object_form/1/form_submissions/1
+  # PUT /object_form/1/form_submissions/1.xml
   def update
       @form_submission = FormSubmission.find(params[:id])
       form_data = params[:form_field]
@@ -48,9 +45,7 @@ class FormSubmissionsController < ApplicationController
       unless mandatoryfailed
         @page.form_components.each do |component|
           form_data_obj = FormData.find_by_form_submission_id_and_form_component_id(@form_submission.id,component.id)
-          if form_data_obj.nil?
-            form_data_obj = FormData.new(:form_submission_id=>@form_submission.id,:form_component_id=>component.id)
-          end
+          form_data_obj = FormData.new(:form_submission_id=>@form_submission.id,:form_component_id=>component.id) if form_data_obj.nil?
           case component.component_type
           when "File"
             unless form_data[component.component_name].nil?
@@ -58,10 +53,7 @@ class FormSubmissionsController < ApplicationController
                 asset = Asset.find(form_data_obj.data_value)
                 asset.destroy
 	      end
-              asset = Asset.new
-              asset.sizes = component.default_value
-              asset.upload = form_data[component.component_name]
-              asset.save
+              asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
               form_data_obj.data_value = asset.id.to_s
             end
           else
@@ -70,15 +62,21 @@ class FormSubmissionsController < ApplicationController
           form_data_obj.save
         end
        flash[:notice] = "Submission Form Updated"
-       redirect_to object_form_form_submissions_path(@path)
+       respond_to do |format|
+        format.html {redirect_to object_form_form_submissions_path(@path)}
+        format.xml  { render :xml => @form_submission }
+       end
       else
        flash[:notice] = "Ensure all fields having Mandatory * are filled"
-       render :action=>'edit'
+       respond_to do |format|
+        format.html { render :action=>"edit" }
+        format.xml { render :xml => @form_submission.errors, :status => :unprocessable_entity }
+       end
       end
   end
 
-  # DELETE /form_submissions/1
-  # DELETE /form_submissions/1.xml
+  # DELETE /object_form/1/form_submissions/1
+  # DELETE /object_form/1/form_submissions/1.xml
   def destroy
     @form_submission = @page.form_submissions.find(params[:id])
     @form_submission.destroy
@@ -89,6 +87,8 @@ class FormSubmissionsController < ApplicationController
     end
   end
 
+  # DELETE /object_form/1/form_submissions/1/delete_asset
+  # DELETE /object_form/1/form_submissions/1/delete_asset.xml
   def delete_asset
      form_data = FormData.find(params[:id])
      unless form_data.blank?
@@ -103,6 +103,8 @@ class FormSubmissionsController < ApplicationController
     end
   end
 
+private
+ #GET the Object Form to which teh form submissions are made.
   def get_object_form
    @page=ObjectForm.find(params[:object_form_id])
   end

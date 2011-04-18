@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   include ApplicationHelper
+
+  #FILTERS
   before_filter :require_user, :except => [:new,:create,:activate]
   before_filter :require_admin, :only => [:index,:destroy]
 
@@ -56,8 +58,9 @@ class UsersController < ApplicationController
          end
        else
        respond_to do |format|
-         format.html {redirect_to :controller=>"users", :action=> "show", :id=> current_user.id }
-         end
+         format.html {redirect_to account_url }
+         format.xml  { render :xml => @user }
+       end
        end
      end
   else
@@ -90,9 +93,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:notice] = "User registered successfully"
-        if get_setting("send_welcome_email")
-          Notifier.welcome_email(@user).deliver
-        end
+        Notifier.welcome_email(@user).deliver if get_setting("send_welcome_email")
         #Write code for Send welcome email if setting is true
         if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
           @user.create_activation_key
@@ -104,33 +105,34 @@ class UsersController < ApplicationController
           @user.save
         end
         if current_user? and current_user.admin?
-        format.html {redirect_to users_path }
+          format.html {redirect_to users_path }
         else
-        format.html { redirect_to '/login'}
+          format.html { redirect_to '/login'}
         end
- #         format.xml { render :xml => user.email, :status => :created }
+        format.xml { render :xml => user.email, :status => :created }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
      end
   end
-
+ 
+  # GET /users/1/activate
+  # GET /users/1/activate.xml
   def activate
     @user = User.find_by_activation_key(params[:id]) unless params[:id].nil?
     unless @user.nil?
-    @user.is_activated=true
-    @user.delete_activation_key
+      @user.is_activated=true
+      @user.delete_activation_key
       respond_to do |format|
             format.html {redirect_to login_path, :notice=>'Your account has been activated'}
             format.xml {render :xml =>@user}
       end
     else
-    flash[:notice]="No user found"
-      if current_user? && current_user.admin?
-        redirect_to admin_dashboard_path
-      else
-        redirect_to login_path
+      flash[:notice]="No user found"
+      respond_to do |format|
+        format.html {redirect_to login_path}
+        format.xml {render :xml =>@user}
       end
     end
   end
@@ -159,7 +161,7 @@ class UsersController < ApplicationController
        @user.destroy
        flash[:notice] = "User deleted successfully"
      else
-              flash[:notice] = "Atleast one administrator required to execute website activities"
+       flash[:notice] = "Atleast one administrator required to execute website activities"
      end
     else
       @user.destroy
@@ -171,68 +173,79 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/1/user_details
+  # GET /users/1/user_details.xml
   def user_details
-      @user_detail_settings=UserDetailSetting.all
-         unless @user_detail_settings.empty?
-           @user=User.find(params[:id])
-           render :action=>"user_details"
-          else
-            redirect_to users_path
-          end
+    @user_detail_settings=UserDetailSetting.all
+    respond_to do |format|
+      unless @user_detail_settings.empty?
+        @user=User.find(params[:id])
+        format.html {render :action=>"user_details"}
+      else
+        format.html {redirect_to users_path}
+      end
+      format.xml  { render :xml=>@user_detail_settings }
+    end
   end
 
+  # POST /users/1/update_details
+  # POST /users/1/update_details.xml
  def update_details
     user_id=params[:user_id]
     form_field=params[:form_field]
     mandatory_failed = false
     unless form_field.nil?
-    UserDetailSetting.all.each do |user_detail_setting|
-      if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
-        mandatory_failed = true
-        break
-      end
-      user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
-      user_detail=UserDetail.new if user_detail.nil?
-      user_detail.user_id=user_id if user_detail.user_id.nil?
-      user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
-      case user_detail_setting.field_type
-      when "File"
-        unless form_field[user_detail_setting.field_name].nil?
-          asset = Asset.new
-          asset.sizes = user_detail_setting.default_value
-          asset.upload = form_field[user_detail_setting.field_name]
-          asset.save
-          Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
-          user_detail.selected_value = asset.id.to_s
+      UserDetailSetting.all.each do |user_detail_setting|
+        if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
+          mandatory_failed = true
+          break
         end
-      when "Checkbox"
-        if form_field[user_detail_setting.field_name].nil?
-        user_detail.selected = "0"
+        user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
+        user_detail=UserDetail.new if user_detail.nil?
+        user_detail.user_id=user_id if user_detail.user_id.nil?
+        user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
+        case user_detail_setting.field_type
+        when "File"
+          unless form_field[user_detail_setting.field_name].nil?
+            asset = Asset.create(:sizes=>user_detail_setting.default_value,:upload=>form_field[user_detail_setting.field_name])
+            Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
+            user_detail.selected_value = asset.id.to_s
+          end
+        when "Checkbox"
+          if form_field[user_detail_setting.field_name].nil?
+            user_detail.selected = "0"
+          else
+            user_detail.selected_value=form_field[user_detail_setting.field_name]
+          end
+        when "Date"
+          user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
         else
           user_detail.selected_value=form_field[user_detail_setting.field_name]
         end
-      when "Date"
-        user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
-      else
-        user_detail.selected_value=form_field[user_detail_setting.field_name]
-      end
-      user_detail.save
-     end
-    end
-    if mandatory_failed
-      @user = User.find(user_id)
-      @userdetailsettings = UserDetailSetting.all
-      flash[:notice]="All the mandatory fields are necessary"
-      redirect_to user_details_user_path(@user)
-    else
-      flash[:notice]="Successfully updated"
-      if current_user.admin?
-        redirect_to users_path
-      else
-        redirect_to account_path
+        user_detail.save
       end
     end
- end 
+    respond_to do |format|
+      if mandatory_failed
+        @user = User.find(user_id)
+        @userdetailsettings = UserDetailSetting.all
+        flash[:notice]="All the mandatory fields are necessary"
+        format.html {redirect_to user_details_user_path(@user)}
+        format.xml {render :xml=>@user,:status=>:unprocessable_entity}
+      else
+        flash[:notice]="Successfully updated"
+        if current_user.admin?
+          format.html {redirect_to users_path}
+        else
+          format.html {redirect_to account_path}
+        end
+        format.xml {render :xml=>@user,:notice=>flash[:notice]}
+      end
+    end
+ end
+
+  # GET /users/1/delete_asset
+  # GET /users/1/delete_asset.xml 
   def delete_asset
     user_detail = UserDetail.find(params[:id])
     unless user_detail.nil?

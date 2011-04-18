@@ -2,12 +2,13 @@ class ObjectModel < ActiveRecord::Base
   include PermalinkHelper
 
   #Associations
-  has_many :model_components ,:dependent=>:destroy ,:order =>:position
-  has_many :comment_components ,:dependent=>:destroy 
-  has_many :model_submissions ,:dependent=>:destroy
+  has_many :model_components, :dependent=>:destroy ,:order =>:position
+  has_many :model_submissions, :dependent=>:destroy
+  has_many :comment_components, :dependent=>:destroy 
   has_one  :mailer
   belongs_to :categoryset
-  #Validations
+  
+#Validations
     regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
   validates :name ,:presence=>true, :uniqueness=>true
@@ -15,21 +16,14 @@ class ObjectModel < ActiveRecord::Base
   #call backs
   after_create :create_2_model_components, :verify_comments 
   after_create :create_permissions
-  after_destroy :remove_permissions
   after_save :verify_comments
   after_update :verify_comments 
 
   #Instance Methods
- # def permalnkparent
- # return self.perma_link
- # end
-
- # def permalnkparent=(value)
- # @permalnk = value
- # end
 
  def perma_link_generate
-     self.perma_link_parent = "/" + generate_perma_link(ObjectModel,create_permalink(self.name,'plural'))
+     #self.perma_link_parent = "/" + generate_perma_link(ObjectModel,create_permalink(self.name,'plural'))
+     self.perma_link_parent = generate_perma_link(ObjectModel,create_permalink(self.name,'plural')) 
  end
  
 private 
@@ -107,19 +101,8 @@ private
   
  end
 
- def remove_comments
-    self.comment_components.each do |comment_component|
-       comment_component.destroy
-     end
-
-     self.model_submissions.each do |model_submission|
-         model_submission.comment_submissions.each do |comment_submission|
-           comment_submission.destroy
-          
-         end
-     end
- end
 end
+
 
 
 
@@ -127,11 +110,17 @@ end
 #
 # Table name: object_models
 #
-#  id                :integer(4)      not null, primary key
-#  name              :string(255)
-#  perma_link_parent :string(255)
-#  description       :text
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id                   :integer(4)      not null, primary key
+#  name                 :string(255)
+#  perma_link_parent    :string(255)
+#  description          :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  comment_component_id :integer(4)
+#  allow_comments       :boolean(1)      default(FALSE)
+#  is_comment_recursive :boolean(1)      default(FALSE)
+#  email_on_comment     :boolean(1)      default(FALSE)
+#  layout               :string(255)
+#  categoryset_id       :integer(4)
 #
 

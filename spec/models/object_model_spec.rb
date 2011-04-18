@@ -60,29 +60,41 @@ describe ObjectModel do
 
   it "should have many model submissions" do
 
-   @model_submission1=ModelSubmission.create!( @model_submission_attributes.merge(:object_model_id=>@object_model.id))
-   @model_submission2=ModelSubmission.create!( @model_submission_attributes.merge(:object_model_id=>@object_model.id,:perma_link=>'/permalink3'))
+   @model_submission1=ModelSubmission.create!( @model_submission_attributes)
+   @model_submission2=ModelSubmission.create!( @model_submission_attributes.merge(:perma_link=>'/permalink3'))
+   @object_model.model_submissions << @model_submission1
+   @object_model.model_submissions << @model_submission2
+   @object_model.save
    @object_model.should have(2).model_submissions
   end
 
 
-   it "should destroy associated model submissions" do
-   @model_submission1=ModelSubmission.create!( @model_submission_attributes.merge(:object_model_id=>@object_model.id))
+ it "should destroy associated model submissions" do
+  @model_submission1=ModelSubmission.create!( @model_submission_attributes)
+  @object_model.model_submissions << @model_submission1
+  @object_model.save
   @object_model.destroy
   ModelSubmission.find_by_id(@model_submission1.id).should be_nil
  end
 
 end
 
+
 # == Schema Information
 #
 # Table name: object_models
 #
-#  id                :integer(4)      not null, primary key
-#  name              :string(255)
-#  perma_link_parent :string(255)
-#  description       :text
-#  created_at        :datetime
-#  updated_at        :datetime
+#  id                   :integer(4)      not null, primary key
+#  name                 :string(255)
+#  perma_link_parent    :string(255)
+#  description          :text
+#  created_at           :datetime
+#  updated_at           :datetime
+#  comment_component_id :integer(4)
+#  allow_comments       :boolean(1)      default(FALSE)
+#  is_comment_recursive :boolean(1)      default(FALSE)
+#  email_on_comment     :boolean(1)      default(FALSE)
+#  layout               :string(255)
+#  categoryset_id       :integer(4)
 #
 

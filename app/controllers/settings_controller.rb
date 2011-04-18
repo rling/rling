@@ -1,11 +1,11 @@
 class SettingsController < ApplicationController
+#FILTER
   before_filter  :require_admin
   
   # GET /settings
   # GET /settings.xml
   def index
     @settings = Setting.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @settings }
@@ -16,7 +16,6 @@ class SettingsController < ApplicationController
   # GET /settings/1.xml
   def show
     @setting = Setting.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @setting }
@@ -27,7 +26,6 @@ class SettingsController < ApplicationController
   # GET /settings/new.xml
   def new
     @setting = Setting.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @setting }
@@ -43,7 +41,6 @@ class SettingsController < ApplicationController
   # POST /settings.xml
   def create
     @setting = Setting.new(params[:setting])
-
     respond_to do |format|
       if @setting.save
         format.html { redirect_to(@setting, :notice => 'Setting was successfully created.') }
@@ -59,7 +56,6 @@ class SettingsController < ApplicationController
   # PUT /settings/1.xml
   def update
     @setting = Setting.find(params[:id])
-
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
         format.html { redirect_to(@setting, :notice => 'Setting was successfully updated.') }
@@ -76,7 +72,6 @@ class SettingsController < ApplicationController
   def destroy
     @setting = Setting.find(params[:id])
     @setting.destroy
-
     respond_to do |format|
       format.html { redirect_to(settings_url) }
       format.xml  { head :ok }

@@ -56,7 +56,8 @@ end
 #end
 
 def perma_link_generate
-     self.perma_link = "/" + generate_perma_link(Page,create_permalink(self.title))
+     #self.perma_link = "/" + generate_perma_link(Page,create_permalink(self.title))
+     self.perma_link = generate_perma_link(Page,create_permalink(self.title))
 end
 
 def menu_name
@@ -108,6 +109,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: pages
@@ -127,5 +129,7 @@ end
 #  creator_id                 :integer(4)
 #  updater_id                 :integer(4)
 #  allow_create_on_permission :boolean(1)      default(FALSE)
+#  layout                     :string(255)
+#  status                     :string(255)
 #
 

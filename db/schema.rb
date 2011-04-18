@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110415082539) do
+ActiveRecord::Schema.define(:version => 20110415122005) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20110415082539) do
     t.integer  "parent_id",      :default => 0
     t.integer  "level",          :default => 0
     t.integer  "position",       :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", :force => true do |t|
+    t.integer  "model_submission_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -165,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20110415082539) do
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
-    t.text     "data_value"
+    t.string   "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -193,6 +200,7 @@ ActiveRecord::Schema.define(:version => 20110415082539) do
     t.boolean  "is_comment_recursive", :default => false
     t.boolean  "email_on_comment",     :default => false
     t.string   "layout"
+    t.integer  "categoryset_id"
   end
 
   create_table "page_variable_settings", :force => true do |t|

@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
   include ApplicationHelper
+  #FILTERS
   before_filter :require_admin
 
   # GET /menus
@@ -83,11 +84,15 @@ class MenusController < ApplicationController
     end
   end
 
+  # POST /menus/update_position
+  # POST /menus/update_position.xml
   def update_position
-   
      Menu.all.each do |menu|
       menu.update_attribute(:position,params["#{menu.id}"])
     end
-    redirect_to :action => 'index'
+    respond_to do |format|
+      format.html { redirect_to(menus_url) }
+      format.xml  { head :ok }
+    end
   end
 end

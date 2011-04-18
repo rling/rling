@@ -14,6 +14,7 @@ class FormSubmission < ActiveRecord::Base
 #Instance Methods
 
 #Format as necessary to go in the email. to check for File and Checkbox.
+#this is no longer used...TO RECHECK
 def emailable_format
   output = ""
   self.form_datas.each do |form_data|

@@ -5,12 +5,13 @@ class ModelSubmission < ActiveRecord::Base
   stampable
 
   #Associations
+  belongs_to :object_model
   has_many :model_datas ,:dependent=>:destroy 
   has_many  :comment_submissions ,:dependent => :destroy
   has_many :categorizations, :dependent=> :destroy
   has_many :categories, :through=> :categorizations
 
-  belongs_to :object_model
+
   #validations
   regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contain - separator"}
@@ -20,24 +21,15 @@ class ModelSubmission < ActiveRecord::Base
   after_update  :clear_cache
   after_destroy :clear_cache
 
-
   #instance methods
- # def permalnk
- # return self.perma_link
- # end
-
- # def permalnk=(value)
- # @permalnk = value
- # end
-
  
-
-
  def perma_link_generate(title)
-     self.perma_link = "/" + generate_perma_link(ModelSubmission,create_permalink(title))
+     #self.perma_link = "/" + generate_perma_link(ModelSubmission,create_permalink(title))
+     self.perma_link = generate_perma_link(ModelSubmission,create_permalink(title))
  end
 
 end
+
 
 # == Schema Information
 #
@@ -52,5 +44,6 @@ end
 #  updated_at      :datetime
 #  creator_id      :integer(4)
 #  updater_id      :integer(4)
+#  status          :string(255)
 #
 

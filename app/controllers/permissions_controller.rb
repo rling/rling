@@ -1,4 +1,5 @@
 class PermissionsController < ApplicationController
+ #FILTERS
   before_filter :require_admin
   
   # GET /permissions
@@ -83,6 +84,8 @@ class PermissionsController < ApplicationController
     end
   end
 
+  # POST /permissions/save_permission_roles
+  # POST /permissions/save_permission_roles.xml
   def save_permission_roles
     PermissionRole.update_all(:value=>false)
     params[:permission_role].each do |k,v|
@@ -98,6 +101,9 @@ class PermissionsController < ApplicationController
       end
     end
     flash[:notice]="Permissions saved successfully"
-    redirect_to admin_dashboard_path
+    respond_to do |format|
+      format.html { redirect_to admin_dashboard_path }
+      format.xml  { head :ok }
+    end
   end
 end

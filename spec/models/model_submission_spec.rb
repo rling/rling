@@ -54,6 +54,7 @@ it "should not be valid without a perma link" do
 
  end
 
+
 # == Schema Information
 #
 # Table name: model_submissions
@@ -67,5 +68,6 @@ it "should not be valid without a perma link" do
 #  updated_at      :datetime
 #  creator_id      :integer(4)
 #  updater_id      :integer(4)
+#  status          :string(255)
 #
 

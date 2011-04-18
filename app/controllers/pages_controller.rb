@@ -1,9 +1,14 @@
 class PagesController < ApplicationController
-before_filter :require_admin
-cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 include ApplicationHelper
 include PermalinkHelper
 include CacheHelper
+
+#SWEEPER
+cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+
+#FILTER
+before_filter :require_admin
+
 
   # GET /pages
   # GET /pages.xml
@@ -11,25 +16,29 @@ include CacheHelper
     @pages = Page.pages
     respond_to do |format|
       format.html # index.html.erb
-     # format.xml  { render :xml => @pages }
-    end
-  end
-  
-  def object_form_index
-      @pages = Page.object_forms
-      respond_to do |format|
-      format.html # index.html.erb
-      #format.xml  { render :xml => @pages }
-    end
-  end
-   def view_index
-      @pages = Page.views
-      respond_to do |format|
-      format.html # index.html.erb
-      #format.xml  { render :xml => @pages }
+      format.xml  { render :xml => @pages }
     end
   end
 
+  # GET /pages/object_form_index
+  # GET /pages/object_from_index.xml
+  def object_form_index
+      @pages = Page.object_forms
+      respond_to do |format|
+      format.html # object_form_index.html.erb
+      format.xml  { render :xml => @pages }
+      end
+  end
+
+  # GET /pages/view_index
+  # GET /pages/view_index.xml
+   def view_index
+      @pages = Page.views
+      respond_to do |format|
+      format.html # view_index.html.erb
+      format.xml  { render :xml => @pages }
+    end
+  end
 
   # GET /pages/1
   # GET /pages/1.xml
@@ -53,20 +62,25 @@ include CacheHelper
     end
   end
 
+
+  # GET /pages/new_object_form
+  # GET /pages/new_object_form.xml
    def new_object_form
    @page_type='ObjectForm'
    @page = ObjectForm.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new_object_form.html.erb
       format.xml  { render :xml => @page }
     end
   end
 
+  # GET /pages/new_view
+  # GET /pages/new_view.xml
     def new_view
    @page_type='View'
    @page = View.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new_view.html.erb
       format.xml  { render :xml => @page }
     end
   end
@@ -195,6 +209,7 @@ include CacheHelper
     
 private 
 
+#UPDATE PAGE VARIABLES AFTER CREATE AND UPDATE OF PAGES IF ANY
 def update_page_variables(page_variables,page)
  page_variables.each do |k,v|
   pv = PageVariable.find_by_page_id_and_page_variable_setting_id(page.id,k)

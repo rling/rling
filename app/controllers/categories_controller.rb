@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   include ApplicationHelper
+  #FILTER
   before_filter :require_admin
   
   # GET /categories
@@ -16,7 +17,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1.xml
   def show
     @category = Category.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @category }
@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
   # GET /categories/new.xml
   def new
     @category = Category.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @category }
@@ -43,7 +42,6 @@ class CategoriesController < ApplicationController
   # POST /categories.xml
   def create
     @category = Category.new(params[:category])
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to(@category, :notice => 'Category was successfully created.') }
@@ -59,7 +57,6 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category = Category.find(params[:id])
-
     respond_to do |format|
       if @category.update_attributes(params[:category])
         format.html { redirect_to(@category, :notice => 'Category was successfully updated.') }
@@ -76,17 +73,21 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-
     respond_to do |format|
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
     end
   end
 
+  # POST /categories/update_position
+  # POST /categories/update_position.xml
   def update_position
      Category.all.each do |category|
       category.update_attribute(:position,params["#{category.id}"])
     end
-    redirect_to :action => 'index'
+    respond_to do |format|
+      format.html { redirect_to(categories_url) }
+      format.xml  { head :ok }
+    end
   end
 end

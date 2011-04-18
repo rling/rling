@@ -1,6 +1,9 @@
 class ObjectModelsController < ApplicationController
-  before_filter :require_admin
   include PermalinkHelper
+  
+  #FILTERS
+  before_filter :require_admin
+  
   # GET /object_models
   # GET /object_models.xml
   def index
@@ -15,7 +18,6 @@ class ObjectModelsController < ApplicationController
   # GET /object_models/1.xml
   def show
     @object_model = ObjectModel.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @object_model }
@@ -44,7 +46,6 @@ class ObjectModelsController < ApplicationController
     if params[:permalnkparent] == "1"
            @object_model.perma_link_generate
     end
-
     respond_to do |format|
       if @object_model.save
         format.html { redirect_to(@object_model, :notice => 'Object model was successfully created.') }
@@ -79,7 +80,6 @@ class ObjectModelsController < ApplicationController
   def destroy
     @object_model = ObjectModel.find(params[:id])
     @object_model.destroy
-
     respond_to do |format|
       format.html { redirect_to(object_models_url) }
       format.xml  { head :ok }

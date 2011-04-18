@@ -1,6 +1,5 @@
 class PageSweeper < ActionController::Caching::Sweeper
   observe Page
-  
   def after_save(page)
     expire_cache(page)
   end

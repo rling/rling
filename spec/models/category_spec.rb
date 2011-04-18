@@ -46,3 +46,19 @@ describe Category do
   end
 
 end
+
+# == Schema Information
+#
+# Table name: categories
+#
+#  id             :integer(4)      not null, primary key
+#  name           :string(255)
+#  description    :text
+#  categoryset_id :integer(4)
+#  parent_id      :integer(4)      default(0)
+#  level          :integer(4)      default(0)
+#  position       :integer(4)      default(0)
+#  created_at     :datetime
+#  updated_at     :datetime
+#
+

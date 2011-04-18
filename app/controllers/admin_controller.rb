@@ -1,11 +1,18 @@
 class AdminController < ApplicationController
-before_filter :require_user,:require_admin
 
+#Filters
+before_filter :require_admin
+
+# MATCH admin/dashboard
 def dashboard
    @objects=ObjectModel.all
-  
+   respond_to do |format|
+      format.html #dashboard.html.erb
+      format.xml  { head :ok }
+    end   
 end
 
+# MATCH admin/clear_cache
 def clear_cache
   root_path = Rails.root.to_s + "/tmp/cache"
   entries = Dir.entries(root_path)

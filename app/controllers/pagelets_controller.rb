@@ -1,11 +1,11 @@
 class PageletsController < ApplicationController
+#FILTERS
 before_filter :require_admin
 
   # GET /pagelets
   # GET /pagelets.xml
   def index
     @pagelets = Pagelet.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @pagelets }
@@ -16,7 +16,6 @@ before_filter :require_admin
   # GET /pagelets/1.xml
   def show
     @pagelet = Pagelet.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @pagelet }
@@ -27,7 +26,6 @@ before_filter :require_admin
   # GET /pagelets/new.xml
   def new
     @pagelet = Pagelet.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @pagelet }
@@ -43,7 +41,6 @@ before_filter :require_admin
   # POST /pagelets.xml
   def create
     @pagelet = Pagelet.new(params[:pagelet])
-
     respond_to do |format|
       if @pagelet.save
         format.html { redirect_to(@pagelet, :notice => 'Pagelet was successfully created.') }
@@ -59,7 +56,6 @@ before_filter :require_admin
   # PUT /pagelets/1.xml
   def update
     @pagelet = Pagelet.find(params[:id])
-
     respond_to do |format|
       if @pagelet.update_attributes(params[:pagelet])
         format.html { redirect_to(@pagelet, :notice => 'Pagelet was successfully updated.') }
@@ -76,7 +72,6 @@ before_filter :require_admin
   def destroy
     @pagelet = Pagelet.find(params[:id])
     @pagelet.destroy
-
     respond_to do |format|
       format.html { redirect_to(pagelets_url) }
       format.xml  { head :ok }

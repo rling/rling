@@ -67,3 +67,18 @@ end
   
 
 end
+
+# == Schema Information
+#
+# Table name: comment_submissions
+#
+#  id                  :integer(4)      not null, primary key
+#  model_submission_id :integer(4)
+#  parent_id           :integer(4)
+#  creator_id          :integer(4)
+#  updater_id          :integer(4)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  level               :integer(4)      default(0)
+#
+

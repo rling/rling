@@ -1,4 +1,6 @@
 class UserDetailSettingsController < ApplicationController
+
+ #FILTERS
   before_filter :require_admin
   
   # GET /user_detail_settings
@@ -83,11 +85,15 @@ class UserDetailSettingsController < ApplicationController
     end
   end
 
-
+  # POST /user_detail_settings/update_position
+  # POST /user_detail_settings/update_position.xml
   def update_position
-     UserDetailSetting.all.each do  |user_detail_setting|
-    user_detail_setting.update_attribute(:position,params["#{user_detail_setting.id}"])
-  end
-    redirect_to :action => 'index'
+    UserDetailSetting.all.each do  |user_detail_setting|
+     user_detail_setting.update_attribute(:position,params["#{user_detail_setting.id}"])
+    end
+    respond_to do |format|
+      format.html { redirect_to(user_detail_settings_url) }
+      format.xml  { head :ok }
+    end
   end
 end

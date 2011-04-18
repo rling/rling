@@ -1,22 +1,22 @@
 class FormComponentsController < ApplicationController
   include CacheHelper
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
+#Filters
  before_filter :require_admin
  before_filter :get_object_form
 
-  # GET /form_components
-  # GET /form_components.xml
+  # GET /object_form/1/form_components
+  # GET /object_form/1/form_components.xml
   def index
     @form_components = @page.form_components.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @form_components }
     end
   end
 
-  # GET /form_components/1
-  # GET /form_components/1.xml
+  # GET /object_form/1/form_components/1
+  # GET /object_form/1/form_components/1.xml
   def show
     @form_component = @page.form_components.find(params[:id])
 
@@ -26,8 +26,8 @@ class FormComponentsController < ApplicationController
     end
   end
 
-  # GET /form_components/new
-  # GET /form_components/new.xml
+  # GET /object_form/1/form_components/new
+  # GET /object_form/1/form_components/new.xml
   def new
     @page = ObjectForm.find(params[:object_form_id])
     @form_component = @page.form_components.new
@@ -38,13 +38,13 @@ class FormComponentsController < ApplicationController
     end
   end
 
-  # GET /form_components/1/edit
+  # GET /object_form/1/form_components/1/edit
   def edit
     @form_component = @page.form_components.find(params[:id])
   end
 
-  # POST /form_components
-  # POST /form_components.xml
+  # POST /object_form/1/form_components
+  # POST /object_form/1/form_components.xml
   def create
   
     @form_component = @page.form_components.new(params[:form_component])
@@ -60,8 +60,8 @@ class FormComponentsController < ApplicationController
     end
   end
 
-  # PUT /form_components/1
-  # PUT /form_components/1.xml
+  # PUT /object_form/1/form_components/1
+  # PUT /object_form/1/form_components/1.xml
   def update
     @form_component = @page.form_components.find(params[:id])
 
@@ -76,27 +76,31 @@ class FormComponentsController < ApplicationController
     end
   end
 
-  # DELETE /form_components/1
-  # DELETE /form_components/1.xml
+  # DELETE /object_form/1/form_components/1
+  # DELETE /object_form/1/form_components/1.xml
   def destroy
     @form_component = @page.form_components.find(params[:id])
     @form_component.destroy
-
     respond_to do |format|
       format.html { redirect_to(object_form_form_components_path(@page)) }
       format.xml  { head :ok }
     end
   end
 
+  # POST /object_form/1/form_components/update_position
+  # POST /object_form/1/form_components/update_position.xml
   def update_position
       FormComponent.find_all_by_object_form_id(@page.id).each do  |form_component|
      form_component.update_attribute(:position,params["#{form_component.id}"])
   end
-    redirect_to :action => 'index'
+    respond_to do |format|
+      format.html { redirect_to(object_form_form_components_path(@page)) }
+      format.xml  { head :ok }
+    end
   end
- 
+ private
+  # Get the Object Form (Page Object) to which the form components are associated to. 
   def get_object_form
-
   @page=ObjectForm.find(params[:object_form_id])
   end
 end

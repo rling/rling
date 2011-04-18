@@ -1,11 +1,11 @@
 class MenusetsController < ApplicationController
+#FILTERS
   before_filter :require_admin
 
   # GET /menusets
   # GET /menusets.xml
   def index
     @menusets = Menuset.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @menusets }
@@ -16,7 +16,6 @@ class MenusetsController < ApplicationController
   # GET /menusets/1.xml
   def show
     @menuset = Menuset.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @menuset }
@@ -27,7 +26,6 @@ class MenusetsController < ApplicationController
   # GET /menusets/new.xml
   def new
     @menuset = Menuset.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @menuset }
@@ -43,7 +41,6 @@ class MenusetsController < ApplicationController
   # POST /menusets.xml
   def create
     @menuset = Menuset.new(params[:menuset])
-
     respond_to do |format|
       if @menuset.save
         format.html { redirect_to(@menuset, :notice => 'Menuset was successfully created.') }
@@ -59,7 +56,6 @@ class MenusetsController < ApplicationController
   # PUT /menusets/1.xml
   def update
     @menuset = Menuset.find(params[:id])
-
     respond_to do |format|
       if @menuset.update_attributes(params[:menuset])
         format.html { redirect_to(@menuset, :notice => 'Menuset was successfully updated.') }
@@ -76,7 +72,6 @@ class MenusetsController < ApplicationController
   def destroy
     @menuset = Menuset.find(params[:id])
     @menuset.destroy
-
     respond_to do |format|
       format.html { redirect_to(menusets_url) }
       format.xml  { head :ok }

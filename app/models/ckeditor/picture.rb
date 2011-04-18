@@ -21,3 +21,22 @@ class Ckeditor::Picture < Ckeditor::Asset
 	  super options
   end
 end
+
+# == Schema Information
+#
+# Table name: ckeditor_assets
+#
+#  id                :integer(4)      not null, primary key
+#  data_file_name    :string(255)     not null
+#  data_content_type :string(255)
+#  data_file_size    :integer(4)
+#  assetable_id      :integer(4)
+#  assetable_type    :string(30)
+#  type              :string(25)
+#  guid              :string(10)
+#  locale            :integer(1)      default(0)
+#  user_id           :integer(4)
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+

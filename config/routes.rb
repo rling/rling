@@ -51,7 +51,6 @@ Rling::Application.routes.draw do
   resources :menusets
   resources :pages do
     collection do
-     
       get 'object_form_index'
       get 'new_object_form'
       get 'new_view'

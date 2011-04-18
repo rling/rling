@@ -11,3 +11,21 @@ validates :component_type, :presence=>true
 validates :component_display_name, :presence=>true
 
 end
+
+# == Schema Information
+#
+# Table name: comment_components
+#
+#  id                     :integer(4)      not null, primary key
+#  object_model_id        :integer(4)
+#  component_name         :string(255)
+#  component_display_name :string(255)
+#  component_type         :string(255)
+#  component_values       :text
+#  default_value          :string(255)
+#  mandatory              :boolean(1)      default(FALSE)
+#  position               :integer(4)      default(0)
+#  created_at             :datetime
+#  updated_at             :datetime
+#
+
