@@ -13,7 +13,7 @@ class ModelSubmission < ActiveRecord::Base
 
 
   #validations
-  regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
+  regex_pattern = /(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contain - separator"}
 
   #callbacks

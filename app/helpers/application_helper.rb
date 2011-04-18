@@ -72,7 +72,7 @@ end
 #Add Children to the (Menu/Category) Tree
   def add_item_to_group(record, item, group)
       if record.nil? || record.id != item.id
-	  menu << item
+	  group << item
 	  item.children.each { |child| add_item_to_menu(record, child, menu) }
       end
   end
@@ -173,9 +173,9 @@ def process_page(pagebody)
 
   def evaluate2_page(pagebody, tag="tag")
    if tag == "tag"
-    codes = text.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)  
+    codes = pagebody.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)  
    else
-    codes = text.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)  
+    codes = pagebody.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)  
    end
     codes.each do |code|
      perma = code.gsub("<%=","").gsub("display_rling_page","").gsub("%>","").gsub("(","").gsub(")","").gsub("\"","").gsub("&lt;%=","").gsub("%&gt;","").gsub("&quot;","").strip

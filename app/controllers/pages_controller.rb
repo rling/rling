@@ -43,7 +43,11 @@ before_filter :require_admin
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @page = Page.find(params[:id])
+     if params[:id].to_i == 0
+      @page = Page.find_by_perma_link(params[:id])
+     else
+      @page = Page.find_by_id(params[:id])
+     end
     @menu = Menu.find_by_page_id(@page.id)
     respond_to do |format|
       format.html # show.html.erb

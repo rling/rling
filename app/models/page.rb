@@ -6,7 +6,7 @@ stampable
 #Associations
 has_one :menu ,:dependent => :destroy
 has_many :page_variables ,:dependent => :destroy
-regex_pattern = /\/(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
+regex_pattern = /(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
 email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 #validations
