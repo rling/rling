@@ -14,7 +14,7 @@ include ApplicationHelper
   # MATCH "/:permalink"=> "display#show_page"
   # DISPLAY ALL THE PAGES / FORMS / VIEWS IDENTIFIED BY THE PERMALINK
   def show_page
-    @page = Page.find_by_perma_link(params[:permalink])
+    @page = Page.find_by_perma_link_and_status(params[:permalink],:published)
       if @page.nil?
         redirect_to :action=>"error_page_display"
       end
@@ -24,13 +24,14 @@ include ApplicationHelper
    # MATCH "/:permalinkparent/:permalink"=> "display#show_model_data"
    # DISPLAY ALL THE MODEL SUBMISSIONS FOR GIVEN PERMALINK AND ITS PARENT
    def show_model_data
+   
     @object= ObjectModel.find_by_perma_link_parent(params[:permalinkparent])
     @model_submission= nil
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
      if validate_permission("view",@object)
-         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id(params[:permalink],@object.id)
+         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id_and_status(params[:permalink],@object.id,:published)
          redirect_to :action=>"error_page_display" if @model_submission.nil?
          @comment_submission=@model_submission.comment_submissions.new if !@model_submission.object_model.allow_comments && !@model_submission.object_model.comment_components.empty?        
      else

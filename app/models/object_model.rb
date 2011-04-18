@@ -19,6 +19,9 @@ class ObjectModel < ActiveRecord::Base
   after_save :verify_comments
   after_update :verify_comments 
 
+  #named_scopes
+  scope :published,where(:order=> "Published") 
+
   #Instance Methods
 
  def perma_link_generate

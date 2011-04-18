@@ -24,6 +24,32 @@ $(function(){
      }
    });
 });
+
+$(document).ready(function(){
+          
+      var test=$("#form_component_component_type").val();
+     
+      if(test=="Dropdown"|| test=="Radiobutton") 
+     {
+	$("#field_value").show();
+     }
+     else
+     {
+        $("#field_value").hide();	    
+     }
+     if(test=="File")
+     {
+        $('#default_value').hide();
+        $('#thumbnail').show();
+     }
+     else
+     {
+       $('#default_value').show();
+       $('#thumbnail').hide();
+     }
+   
+});
+
 </script>
 
 
