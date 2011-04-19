@@ -18,7 +18,7 @@ class FormSubmissionsController < ApplicationController
   # GET /object_form/1/form_submissions/1.xml
   def show
     @form_submission = @page.form_submissions.find(params[:id])
-    @form_submission.form_data
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @form_submission }

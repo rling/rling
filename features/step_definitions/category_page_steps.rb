@@ -11,8 +11,15 @@ Given /^I have a category in category index page$/ do
   @category = Factory(:category, :categoryset_id=>@categoryset.id)
 end
 
+Then /^I should see "([^"]*)" for "([^"]*)" on the show category page$/ do |arg1, arg2|
+  page.find("p",:text=>arg1)
+  page.find("b",:text=>arg2)
+end
+
 When /^I press "([^"]*)" for "([^"]*)" on the category index page$/ do |arg1, arg2|
-  if arg1 == "Edit"
+  if arg1 == "Show"
+    visit category_path(@category)
+  elsif arg1 == "Edit"
     visit edit_category_path(@category)
   elsif arg1 == "Destroy"
     visit category_path(@category)

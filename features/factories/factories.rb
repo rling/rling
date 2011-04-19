@@ -23,6 +23,7 @@ Factory.define(:object_form) do |f|
   f.perma_link "admission"
   f.home_page "0"
   f.email "amit@heurion.com"
+  f.status "Published"
 end
 
 Factory.define(:form_component) do |f|
@@ -34,6 +35,10 @@ end
 
 Factory.define(:form_submission) do |f|
 
+end
+
+Factory.define(:form_data) do |f|
+  f.data_value "amit@heurion.com"
 end
 
 Factory.define(:pagelet) do |f|
@@ -82,10 +87,6 @@ Factory.define(:comment_component) do |f|
   f.mandatory "1"
 end
 
-Factory.define(:form_data) do |f|
-  f.data_value "amit@heurion.com"
-end
-
 Factory.define(:component_submission) do |f|
   f.parent_id "0"
   f.creator_id "1"
@@ -100,15 +101,17 @@ Factory.define(:model_component) do |f|
 end
 
 Factory.define(:model_submission) do |f|
-  f.perma_link "/enter-the-title-0"
+  f.perma_link "information"
   f.home_page "0"
   f.page_view_type "1"
   f.creator_id "1"
   f.updater_id "1"
+  f.status "Published"
+  f.created_at "2011-04-19 09:26:55"
 end
 
 Factory.define(:model_data) do |f|
-  f.data_value "Enter The title"
+  
 end
 
 Factory.define(:setting) do |f|
@@ -146,7 +149,12 @@ end
 
 Factory.define(:category) do |f|
   f.name "Ruby"
+  f.description "Object Oriented Programming Language"
   f.parent_id "0"
   f.level "1"
   f.position "0"
+end
+
+Factory.define(:categorization) do |f|
+
 end

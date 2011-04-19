@@ -27,12 +27,14 @@ Feature: Object Form Page
     And I fill in "object_form_title" with "Admission"
     And I fill in "object_form_body_editor" with "Admission form for MCA"
     And I fill in "object_form_email" with "amit@heurion.com"
+    And I select "Published" from "object_form_status"
     When I press "Create Object form"
     Then I should see "Admission" for "Title" on the page
     And I should see "Admission form for MCA" for "Body" on the page
     And I should see "/admission" for "Perma link" on the page
     And I should see "No" for "Home page" on the page
     And I should see "amit@heurion.com" for "Email" on the page
+    And I should see "Published" for "Status" on the page
 
   Scenario: Error in Creating new Pagelet( when Title is blank )
     Given I go to the new object_form page
@@ -43,18 +45,13 @@ Feature: Object Form Page
   Scenario: User clicks on Show Page
    Given I have a object_form in object_form_index page
     Given I go to object_form_index page
-    Then I should see "Admission" on the object_form_index page
-    And I should see "Admission form for MCA" on the object_form_index page
-    And I should see "/admission" on the object_form_index page
-    And I should see "No" on the object_form_index page
-    And I should see "amit@heurion.com" on the object_form_index page
     When I press "Show" for "Admission" on the object_form_index page
     Then I should see "Admission" on the object_form show page
     And I should see "Admission form for MCA" on the object_form show page
-    And I should see "/admission" on the object_form show page
+    And I should see "admission" on the object_form show page
     And I should see "No" on the object_form show page
     And I should see "amit@heurion.com" on the object_form show page
-    And I should see "No" on the object_form show page
+    And I should see "Published" on the object_form show page
 
   Scenario: Edit an Object Form item
     Given I have a object_form in object_form_index page
@@ -64,11 +61,13 @@ Feature: Object Form Page
     And I fill in "object_form_title" with "Admission"
     And I fill in "object_form_body_editor" with "Admission form for MCA"
     And I fill in "object_form_email" with "amit@heurion.com"
+    And I select "Published" from "object_form_status"
     When I press "Update Object form"
     Then I should see "Admission" for "Title" on the page
     And I should see "/admission" for "Perma link" on the page
     And I should see "No" for "Home page" on the page
     And I should see "amit@heurion.com" for "Email" on the page
+    And I should see "Published" for "Status" on the page
 
   Scenario: Delete an Object Form item
     Given I have a object_form in object_form_index page
@@ -152,6 +151,11 @@ Feature: Object Form Page
     And I fill in "form_component_default_value" with "mail@mail.com"
     When I press "Update Form component"
     Then I should see "Form component was successfully updated." on the show form_component page
+    And I should see "email" on the form_component show page
+    And I should see "E-mail" on the form_component show page
+    And I should see "Textfield" on the form_component show page
+    And I should see "mail@mail.com" on the form_component show page
+    And I should see "false" on the form_component show page
 
   Scenario: User deletes an item from form_component
     Given I have a form_component in form_componet_index page
@@ -159,12 +163,6 @@ Feature: Object Form Page
     Then I should see "email" on form_component index page
     When I press "Destroy" for the "email" on the form_component_index page
     Then I should not see "email" on form_component index page
-
-  Scenario: User on Form Component page
-    Given I have a object_form in object_form_index page
-    Given I go to object_form_index page
-    When I follow "Form Components"
-    Then I should see "Listing Form Components for Admission " on the form_component_index page
   
   Scenario: User on Submissions Page
     Given I have a form_component with mandatory field in form_component page
@@ -181,9 +179,9 @@ Feature: Object Form Page
     When I press "Update"
     Then I should see "Submission Form Updated" on the form_submission index page
 
-#  Scenario: User deletes an item from form_submission page
-#    Given I have a form_submission in form_submission page
-#    Given I go to form_submissions index page
-#    Then I should see "amit@heurion.com" on form_submissions index page
-#    When I press "Destroy" for the "amit@heurion.com" on the form_submissions index page
-#    Then I should not see "amit@heurion.com" on form_submissions index page
+  Scenario: User deletes an item from form_submission page
+    Given I have a form_submission in form_submission page
+    Given I go to form_submissions index page
+    Then I should see "amit@heurion.com" on form_submissions index page
+    When I press "Destroy" for the "amit@heurion.com" on the form_submissions index page
+    Then I should not see "amit@heurion.com" on form_submissions index page

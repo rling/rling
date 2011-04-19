@@ -14,7 +14,7 @@ Feature: Object Form Submission Page
     And I press "Login"
     Then I should see "Login successful!" on the page
 
-  Scenario: Form Submission for Form Component ( When Field is not NOT MANDATORY)
+  Scenario: Form Submission for Form Component ( When Field is NOT MANDATORY)
     Given I have a form_component in form_component page
     Given I go to admission page
     Then I should see "Admission form for MCA" on the admission page
@@ -22,7 +22,7 @@ Feature: Object Form Submission Page
     When I press "Submit"
     Then I should see "All details have been stored successfully" on that admission page
 
-  Scenario: Form Submission for Form Component ( When Field is not MANDATORY)
+  Scenario: Form Submission for Form Component ( When Field is MANDATORY)
     Given I have a form_component with mandatory field in form_component page
     Given I go to admission page
     Then I should see "Admission form for MCA" on the admission page

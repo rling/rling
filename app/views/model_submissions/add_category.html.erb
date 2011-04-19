@@ -1,5 +1,5 @@
 <h1>Select categories for <%= @model_submission.perma_link.capitalize%></h1>
- <% form_tag(category_add_object_model_model_submission_path(@object,@model_submission)) do %>
+ <%= form_tag(category_add_object_model_model_submission_path(@object,@model_submission)) do %>
   <%= select_tag(:category, options_from_collection_for_select(@model_submission.unenrolled_categories, :id, :name)) %>
   <%= submit_tag 'Add' %>
  <% end %>

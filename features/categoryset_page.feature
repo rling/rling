@@ -44,7 +44,7 @@ Feature: Categoryset Page
     Given I have a categoryset in categoryset index page
     Given I go to category index page 
     When I press "Edit" for "Technology" on the categoryset index page
-    Then I should see "Editing categoryset" on the edit categoryset page 
+    Then I should see "Editing Technology" on the edit categoryset page 
     And I fill in "categoryset_name" with "Technology1"
     And I fill in "categoryset_description" with "For latest technology1"
     When I press "Update Categoryset"

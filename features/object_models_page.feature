@@ -15,14 +15,16 @@ Feature: Object Model Page
     Then I should see "Login successful!" on the page
     
   Scenario: Create a new object model page successfully
+    Given I have a categoryset in categoryset index page
     Given I go to new object_model page
     And I fill in "object_model_name" with "Blog"
     And I fill in "object_model_description_editor" with "Blog page"
     And I check "object_model_allow_comments"
+    And I select "Technology" from "object_model_categoryset_id"
     When I press "Create Object model"
     Then I should see "Blog" for "Name" on the object_model show page
     And I should see "Blog page" for "Description" on the object_model show page
-    And I should see "/blogs" for "Perma link Parent" on the object_model show page
+    And I should see "blogs" for "Perma link Parent" on the object_model show page
     And I should see "Yes" for "Allow Comments" on the object_model show page
     And I should see "No" for "Is comment recursive ?" on the object_model show page
     And I should see "No" for "Email on Comment" on the object_model show page
@@ -56,12 +58,14 @@ Feature: Object Model Page
 
   Scenario: Edit a Object Model item
     Given I have a object_model in object_model index page
+    Given I have a categoryset in categoryset index page
     Given I go to object_model index page
     When I press "Edit" for "Blog" on the object_model index page
     Then I should see "Editing Blog" on the edit object_model page 
     And I fill in "object_model_name" with "Blog"
     And I fill in "object_model_description_editor" with "Blog page"
     And I check "object_model_allow_comments"
+    And I select "Technology" from "object_model_categoryset_id"
     When I press "Update Object model"
     Then I should see "Blog" for "Name" on the object_model show page
     And I should see "Blog page" for "Description" on the object_model show page

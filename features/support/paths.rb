@@ -134,7 +134,7 @@ module NavigationHelpers
       '/admission'
 
     when /Blog_comment page/
-      '/blogs/enter-a-title-0'
+      '/blogs/information'
 
     when /new categoryset page/
       new_categoryset_path
