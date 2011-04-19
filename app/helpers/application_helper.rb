@@ -181,7 +181,7 @@ def process_page(pagebody)
    if codes.size > 0
     codes.each do |code|
      perma = code.gsub("<%=","").gsub("display_rling_page","").gsub("%>","").gsub("(","").gsub(")","").gsub("\"","").gsub("&lt;%=","").gsub("%&gt;","").gsub("&quot;","").strip
-     newpage = Page.find_by_perma_link(perma.downcase)
+     newpage = Page.find_by_perma_link_and_status(perma.downcase,:published)
      unless newpage.nil?
        page_content = render(:partial=>"display/page_data",:locals=>{:page=>newpage})
        text = text.gsub(code,page_content)
@@ -194,7 +194,7 @@ def process_page(pagebody)
 
   # Display the page content for a particular page
   def display_rling_page(perma)
-    newpage = Page.find_by_perma_link(perma.to_s.downcase)
+    newpage = Page.find_by_perma_link_and_status(perma.to_s.downcase,:published)
     unless newpage.nil?
       return render(:partial=>"display/page_data",:locals=>{:page=>newpage})
       end
