@@ -18,15 +18,18 @@ class ObjectModel < ActiveRecord::Base
   after_create :create_permissions
   after_save :verify_comments
   after_update :verify_comments 
+  after_destroy :remove_permissions
 
-  #named_scopes
-  scope :published,where(:order=> "Published") 
 
   #Instance Methods
 
  def perma_link_generate
      #self.perma_link_parent = "/" + generate_perma_link(ObjectModel,create_permalink(self.name,'plural'))
      self.perma_link_parent = generate_perma_link(ObjectModel,create_permalink(self.name,'plural')) 
+ end
+
+ def published_model_submissions
+   return self.model_submissions.find(:all,:conditions=>["status =?","Published"])
  end
  
 private 
