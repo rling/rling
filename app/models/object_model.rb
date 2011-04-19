@@ -61,8 +61,11 @@ private
    #View All 
     perm = Permission.create(:activity_code=>"viewlist",:activity_display_text=>"View all #{self.name.capitalize.pluralize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
+    create_comment_permissions
+ end
 
-   if self.allow_comments
+def create_comment_permissions
+   if self.allow_comments && Permission.where(:permission_type=>"ObjectModel",:permission_object=>self.name).size == 0
     #Can comment
     perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>"ObjectModel",:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
@@ -71,9 +74,21 @@ private
     #Delete comments for my blog
     perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
     #Delete comments for others blog
-    #perm = Permission.create(:activity_code=>"deleteall",:activity_display_text=>"Delete comments for other #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"deletemycomments",:activity_display_text=>"Delete comments for my #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
    end
- end
+
+end
+
+def remove_comment_permission
+  unless self.allow_comments
+    ["createcomment","deletecomment","deletecommentother","deletemycomments"].each do |code|
+      permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=? and activity_code=>?","ObjectModel",self.name,code])
+      permissions.each do |permission|
+        permission.destroy
+      end
+    end
+  end
+end
 
  def remove_permissions
     permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=?","ObjectModel",self.name])
@@ -84,19 +99,19 @@ private
 
  def verify_comments
     unless self.allow_comments
-     self.comment_components.each do |comment_component|
-      comment_component.destroy
-    end
-
-    self.model_submissions.each do |model_submission|
-     model_submission.comment_submissions.each do |comment_submission|
-      comment_submission.destroy
-     end
-    end
-
+      remove_comment_permissions
+      self.comment_components.each do |comment_component|
+       comment_component.destroy
+      end
+      self.model_submissions.each do |model_submission|
+        model_submission.comment_submissions.each do |comment_submission|
+         comment_submission.destroy
+        end
+      end
     else
+     create_comment_permissions
      if self.comment_components.find_by_component_name('comment_text').nil?
-      self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
+       self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
      end
      if self.email_on_comment
        subject= "comment has been submitted "
