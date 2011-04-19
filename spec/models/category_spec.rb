@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Category do
   before(:each) do
+    @model_submission = ModelSubmission.create!(:object_model_id=>'1',:perma_link=>'test')
     @category = Category.new(:name => 'name')
   end
 
@@ -45,6 +46,22 @@ describe Category do
     @category.categoryset.should eql(@categoryset)
   end
 
+  it "has many categorizations" do
+    @category.categorizations<< Categorization.new(:category_id=>@category.id)
+    @category.categorizations<< Categorization.new(:category_id=>@category.id)
+    @category.should have(2).categorizations
+  end
+
+  it "has many model submissions through categorizations" do
+    @category.categorizations<< Categorization.new(:model_submission_id=>@model_submission.id)
+    @category.categorizations<< Categorization.new(:model_submission_id=>@model_submission.id)
+    @category.should have(2).categorizations
+  end
+
+  it "should destroy associated categorizations" do
+    @category.destroy
+    Categorization.find_by_category_id(@category.id).should be_nil
+  end
 end
 
 # == Schema Information

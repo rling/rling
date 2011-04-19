@@ -27,17 +27,21 @@
       <%= raw(login_links) %>
     </div>
     <div id="header_text">
+      <div id="search_bar">
+          <%= raw(search_bar) %>
+        </div>
       <h1>Welcome to RlingCMS</h1>
       <h3>Faster CMS for Faster minds</h3>
-     
+      
     </div>
     <div id="header_menu">
      <%= raw(show_menu 'dropdownmenu','Header') %>
+      
     </div>
    </div>
    <div id="middle">
     <%= raw(flash_notice) %>
-
+        
     <%= yield  %>
    </div>
    <div id="footer">

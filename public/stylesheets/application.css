@@ -213,5 +213,10 @@ border: none;
    font-weight:bold;
 }
 
+#search_bar
+{
+float: right;
+}
+
 
 

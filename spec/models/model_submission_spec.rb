@@ -41,18 +41,33 @@ it "should not be valid without a perma link" do
 
 
   it "testing the association of model datas" do
-  ModelSubmission.reflect_on_association(:model_datas).should_not  be_nil
+    ModelSubmission.reflect_on_association(:model_datas).should_not  be_nil
   end
 
   it "should destroy associated model data" do
-
     @model_data=ModelData.create!( @model_data_attributes.merge(:model_submission_id=>@model_submission.id))
     @model_submission.destroy
     ModelData.find_by_id(@model_data.id).should be_nil
-   end
+  end
 
+  it "has many categorizations" do
+    @model_submission.categorizations<< Categorization.new(:model_submission_id=>@model_submission.id)
+    @model_submission.categorizations<< Categorization.new(:model_submission_id=>@model_submission.id)
+    @model_submission.should have(2).categorizations
+  end
 
- end
+  it "should destroy associated categorizations" do
+    @model_submission.destroy
+    Categorization.find_by_model_submission_id(@model_submission.id).should be_nil
+  end
+
+  it "has many categories through categorizations" do
+    @category = Category.new(:name => 'name')
+    @model_submission.categorizations<< Categorization.new(:category_id=>@category.id)
+    @model_submission.categorizations<< Categorization.new(:category_id=>@category.id)
+    @model_submission.should have(2).categorizations
+  end
+end
 
 
 # == Schema Information

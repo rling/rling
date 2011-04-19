@@ -47,7 +47,7 @@ Generate permalink parent  automatically<br />
 <%= form.check_box :email_on_comment,:checked=> @object_model.email_on_comment %><br />
 </div>
 
-<% if @object_model.layout.nil? %>
+<% if @object_model.layout.nil? || @object_model.layout.empty? %>
 <div class="field">
   <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
   Do you want separate layout?
@@ -66,7 +66,7 @@ Generate permalink parent  automatically<br />
 
 <div class="field">
   <%= form.label "Select Categoryset" %>
-  <%= form.select :categoryset_id, Categoryset.all.collect{|c|[c.name,c.id]}%>
+  <%= form.select :categoryset_id,Categoryset.all.collect{|c|[c.name,c.id]}, {:include_blank => 'None'}%>
 </div>
 
   <div class="actions">

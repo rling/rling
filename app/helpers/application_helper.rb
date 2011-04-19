@@ -27,6 +27,11 @@ end
      return output
   end
 
+  #display search bar
+  def search_bar(type="all",query="")
+    return render(:partial=>"shared/search_form",:locals=>{:type => type,:query=>query})
+  end
+
 #Display Flash Notice when ever necessary
 def flash_notice
  return "<div id='notice'>#{flash[:notice]}</div>"  if flash[:notice]

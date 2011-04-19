@@ -35,6 +35,12 @@ class ModelSubmission < ActiveRecord::Base
   def unenrolled_categories
     Category.find(:all,:conditions=>{:categoryset_id=>self.object_model.categoryset_id}) - self.categories
   end
+
+  def title
+    title = self.object_model.model_components.find_by_component_name("title")
+    model_data = self.model_datas.find_by_model_component_id(title.id)
+    return model_data.nil? ? "" : model_data.data_value
+  end
 end
 
 

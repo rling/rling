@@ -1,4 +1,3 @@
- <%  om = ObjectModel.find(page.view_for) %>
  <div id="table_view_<%=page.id %>"  >
   <table id="table_table_view_<%=page.id %>">
     <tr class="table_view_tr_heading">
@@ -15,7 +14,7 @@
     #output2  << view_order.order
     #output2 << "'"
 
-  om.model_submissions.each do |ms|
+  @object_model.published_model_submissions.each do |ms|
        output << "<tr class='table_view_tr_value #{cycle('odd','even')}'>"
        page.view_components.each do |vc2|
         value =raw  (get_submission_model_data(ms,vc2.name))

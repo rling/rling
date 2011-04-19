@@ -101,13 +101,13 @@ end
 #Replace tags in email with data as necessary from the object information. 
   def verify_tags(body,entity)
     output = body
-    codes = body.scan(/&lt;RLING::[a-zA-Z]*::[a-zA-Z0-9]*&gt;/)
+    codes = body.scan(/&lt;RLING::[a-zA-Z]*::[a-zA-Z0-9_]*&gt;/)
     unless codes.nil?
       codes.each do |code|
          code = code.gsub("&lt;","").gsub("&gt;","").strip
          splits = code.split("::")
-         if entity.class.to_s.upcase == splits[1]
-            output = output.gsub("&lt;RLING::#{splits[1]}::{#splits[2]}&gt;",entity.send("get_variable_info",splits[2].downcase).to_s)
+          if entity.class.to_s.upcase == splits[1]
+            output = output.gsub("&lt;RLING::#{splits[1]}::#{splits[2]}&gt;",entity.send("get_variable_info",splits[2].downcase).to_s)
          end 
       end
     end

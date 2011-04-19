@@ -87,7 +87,7 @@ class ModelSubmissionsController < ApplicationController
           message = "All details have been stored successfully"
           flash[:notice] = message
           respond_to do |format|
-            format.html { redirect_to (object_model_model_submissions_path) }
+            format.html { redirect_to (object_model_model_submission_path(@object,@model_submission)) }
             format.xml  { render :xml => @model_submission, :status => :created, :location => @model_submission}
           end
         else 
@@ -150,7 +150,7 @@ class ModelSubmissionsController < ApplicationController
           end
           flash[:notice] = "Submission Form Updated"
           respond_to do |format|
-            format.html { redirect_to (object_model_model_submissions_path) }
+            format.html { redirect_to (object_model_model_submission_path(@object,@model_submission)) }
             format.xml  { head :ok }
           end
         else

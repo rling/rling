@@ -1,0 +1,19 @@
+<div id="list_view_<%=page.id%>">
+
+    <% output = ""
+    @object_model.published_model_submissions.each do |ms|
+      output << "<li class='list_element'>"
+      page.view_components.each do |vc2|
+        value = raw (get_submission_model_data(ms,vc2.name))
+        if vc2.is_linked
+          value = link_to( value,"#{ms.object_model.perma_link_parent}#{ms.perma_link}")
+        end
+        output << "<div class='list_component list_component_#{vc2.name}'>#{ value}</div>"
+      end
+      output<<"</li>"
+    end
+   %>
+ <ul>
+   <%= raw(output) %>
+ </ul>
+</div>
