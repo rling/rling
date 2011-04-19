@@ -1,0 +1,32 @@
+<h1>Listing View Conditions</h1>
+
+<table>
+  <tr>
+   
+    <th>Name</th>
+    <th>Value</th>
+    <th>Operator</th>
+    <th>Relation with</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @view_conditions.each do |view_condition| %>
+  <tr>
+   
+    <td><%= view_condition.name %></td>
+    <td><%= view_condition.value %></td>
+    <td><%= view_condition.operator %></td>
+    <td><%= view_condition.relation_with %></td>
+    <td><%= link_to 'Show',view_view_condition_path(@page,view_condition) %></td>
+    <td><%= link_to 'Edit', edit_view_view_condition_path(@page,view_condition) %></td>
+    <td><%= link_to 'Destroy', [@page,view_condition], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New View condition', new_view_view_condition_path %>
+<%= link_to 'Back', view_index_pages_path%>

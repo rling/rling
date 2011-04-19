@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110415122005) do
+ActiveRecord::Schema.define(:version => 20110419064739) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -337,6 +337,24 @@ ActiveRecord::Schema.define(:version => 20110415122005) do
     t.datetime "updated_at"
     t.integer  "position",     :default => 0
     t.string   "display_name"
+  end
+
+  create_table "view_conditions", :force => true do |t|
+    t.integer  "view_id"
+    t.string   "name"
+    t.string   "value"
+    t.string   "operator"
+    t.string   "relation_with"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "view_orders", :force => true do |t|
+    t.integer  "view_id"
+    t.string   "name"
+    t.string   "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

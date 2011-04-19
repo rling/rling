@@ -1,0 +1,2 @@
+module ViewConditionsHelper
+end

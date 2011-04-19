@@ -1,0 +1,22 @@
+
+
+<%  unless @view_order.nil? %>
+
+<p>
+  <b>Name:</b>
+  <%= @view_order.name %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @view_order.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_view_view_order_path(@page) %> |
+<%= link_to 'Back', view_view_orders_path %>
+<% else  %>
+<p> Click New View order ... </p>
+
+  <%= link_to 'New View Order', new_view_view_order_path(@page) %> |
+<% end %>

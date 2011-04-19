@@ -1,5 +1,9 @@
 Rling::Application.routes.draw do
 
+  
+
+ 
+
   resources :categories do
     collection do
       post 'update_position'
@@ -80,6 +84,8 @@ Rling::Application.routes.draw do
           post 'update_position'
         end
       end
+      resources :view_conditions
+      resources :view_orders
 
  end
 
@@ -120,7 +126,7 @@ namespace :ckeditor do
    resources :attachments, :only => [:index, :create, :destroy]
    resources :attachment_files, :only => [:index, :create, :destroy]
   end
-
+ 
   match "account"=> "users#show"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
@@ -134,6 +140,7 @@ namespace :ckeditor do
   match "display/create_comment_submissions/:id"=>"display#create_comment_submissions"
   match "/:permalink"=> "display#show_page"
   match "/:permalinkparent/:permalink"=> "display#show_model_data"
+ 
 
   root :to => "display#index"
 

@@ -1,0 +1,26 @@
+<%= form_for([@page,@view_order]) do |f| %>
+  <% if @view_order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@view_order.errors.count, "error") %> prohibited this view_order from being saved:</h2>
+
+      <ul>
+      <% @view_order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.select :name , @page.not_added_condition_components.collect{|c| c } %>
+  </div>
+  <div class="field">
+    <%= f.label :order %><br />
+    <%= f.select :order,["DESC","ASC"] %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

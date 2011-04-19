@@ -1,0 +1,28 @@
+<h1>Listing View Orders</h1>
+
+<table>
+  <tr>
+ 
+    <th>Name</th>
+    <th>Order</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @view_orders.each do |view_order| %>
+  <tr>
+   
+    <td><%= view_order.name %></td>
+    <td><%= view_order.order %></td>
+    <td><%= link_to 'Show', view_view_order_path(@page, view_order) %></td>
+    <td><%= link_to 'Edit', edit_view_view_order_path(@page,view_order) %></td>
+    <td><%= link_to 'Destroy', [@page,view_order], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%  if @view_orders.empty? %>
+<%= link_to 'New View order', new_view_view_order_path %>
+<% end %>

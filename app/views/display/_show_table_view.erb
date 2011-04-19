@@ -1,12 +1,5 @@
  <%  om = ObjectModel.find(page.view_for) %>
- <% page.view_components.each do |vc2|
-          if vc2.is_linked
-           @linked_component=vc2
-          end
-     end
- %>
-
-<div id="table_view_<%=page.id %>"  >
+ <div id="table_view_<%=page.id %>"  >
   <table id="table_table_view_<%=page.id %>">
     <tr class="table_view_tr_heading">
       <% page.view_components.each do |vc| %>
@@ -14,7 +7,14 @@
       <% end %>
     </tr>
     <% output = ""
-   
+
+    #output2 ="'"
+    #view_order=page.view_orders.first
+    #output2 << view_order.name
+    #output2 << " "
+    #output2  << view_order.order
+    #output2 << "'"
+
   om.model_submissions.each do |ms|
        output << "<tr class='table_view_tr_value #{cycle('odd','even')}'>"
        page.view_components.each do |vc2|
