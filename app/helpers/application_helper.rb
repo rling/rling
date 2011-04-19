@@ -211,7 +211,7 @@ def process_page(pagebody)
         ckoutput << raw("<script> $('#form_field_#{field_name}_editor').val(#{field_value});</script>")
         return ckoutput
       when "Label"
-        return label_tag("form_field[#{field_name}]",field_value)
+        return field_value
       when "Dropdown"
         dropdown = field_values.split(',')
         return select_tag("form_field[#{field_name}]",options_for_select(dropdown,:selected=>field_value))

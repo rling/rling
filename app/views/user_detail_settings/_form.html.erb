@@ -20,6 +20,20 @@ $(document).ready(function(){
           $('#default_value').show();
           $('#thumbnail').hide();
        }
+       if(test=="Label")
+       { 
+          $('#default_value').hide();
+          $('#user_setting_default').hide();
+          $('#mandatory').hide();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#user_setting_default').show();
+          $('#mandatory').show();
+       }
+    
+    
  });
  
 $(function(){
@@ -42,6 +56,18 @@ $(function(){
        {
           $('#default_value').show();
           $('#thumbnail').hide();
+       }
+        if(test=="Label")
+       { 
+          $('#default_value').hide();
+          $('#user_setting_default').hide();
+          $('#mandatory').hide();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#user_setting_default').show();
+          $('#mandatory').show();
        }
  });
  
@@ -81,10 +107,10 @@ $(function(){
   <div class="field">
   <span id="thumbnail" style="display:none;"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
   <span id="default_value"><%= f.label "Default value"  %></span><br />
-  <%= f.text_field :default_value %><br />
+  <span id="user_setting_default"><%= f.text_field :default_value %></span><br />
   </div>
 
-  <div class="field">
+  <div class="field" id="mandatory">
   <%= f.label 'Is this field mandatory?' %><br />
   <%= f.check_box :mandatory %><br />
   </div>
