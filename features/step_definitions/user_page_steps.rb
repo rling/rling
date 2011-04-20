@@ -30,3 +30,10 @@ Then /^I should see "([^"]*)" for "([^"]*)" on the user show page$/ do |arg1, ar
   page.find('div',:text=>arg2)
 end
 
+Given /^I have user details setting with 'Field_type = File' in user_detail_setting page$/ do
+  @user_detail_settings = Factory(:user_detail_setting, :field_name=>"File", :field_type=>"File")
+end
+
+Then /^I should see "([^"]*)" on account page$/ do |arg1|
+  page.find("a",:text=>arg1)
+end

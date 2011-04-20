@@ -58,5 +58,13 @@ Feature: User Page
     And I should see "amit@heurion.com" for "Email" on the user show page
     And I should see "is admin" for "Role" on the user show page
     
-
+  Scenario: User Details ( When user selects "Field_type = File" in User Detail Settings Page )
+    Given I have user details setting with 'Field_type = File' in user_detail_setting page
+    Given I go to user index page
+    When I follow "User Details"
+    Then I attach the file "../rling/features/support/test_file" to "form_field_File"
+    When I press "Submit"
+    Then I should see "Successfully updated" on the user index page
+    And I go to account page
+    And I should see "test_file" on account page
   

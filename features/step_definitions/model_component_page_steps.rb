@@ -44,7 +44,5 @@ end
 
 Given /^I have a model_component in model_component index page$/ do
   @object_model = Factory(:object_model)
-  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"title",:is_mandatory=>"1")
-  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:is_mandatory=>"0")
-  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"body",:is_mandatory=>"1")
-end
+  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:component_display_name=>"Name",:component_type=>"Textfield",:is_deletable=>"1",:is_mandatory=>"0")
+ end

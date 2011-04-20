@@ -66,7 +66,7 @@ Factory.define(:role) do |f|
 end
 
 Factory.define(:user_detail_setting) do |f|
-  f.field_name"Name"
+  f.field_name "Name"
   f.field_type "Textfield"
   f.default_value "amit"
   f.mandatory "1"
@@ -87,6 +87,17 @@ Factory.define(:comment_component) do |f|
   f.mandatory "1"
 end
 
+Factory.define(:comment_submission) do |f|
+  f.parent_id "0"
+  f.creator_id "1"
+  f.updater_id "1"
+  f.level "1"
+end
+
+Factory.define(:comment_data) do |f|
+
+end
+
 Factory.define(:component_submission) do |f|
   f.parent_id "0"
   f.creator_id "1"
@@ -94,10 +105,7 @@ Factory.define(:component_submission) do |f|
 end
 
 Factory.define(:model_component) do |f|
-  f.component_display_name "Title"
-  f.component_type "Textfield"
-  f.default_value "Enter The title"
-  f.is_deletable "0"
+
 end
 
 Factory.define(:model_submission) do |f|

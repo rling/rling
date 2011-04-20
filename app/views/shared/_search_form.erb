@@ -1,4 +1,4 @@
-<% form_tag "/display/search_result" do %>
+<%= form_tag "/display/search_result" do %>
   <%= text_field_tag :search ,query %>
   <%= hidden_field_tag :type, type %>
   <%= submit_tag 'Search' %>

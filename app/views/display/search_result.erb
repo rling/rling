@@ -1,7 +1,11 @@
 <%= render :partial=>"shared/search_form",:locals=>{:type=>@type,:query=>@query} %>
 
-<h1>Search Results</h1>
+<h1><p>
+Search Results
+</p></h1>
+<p>
 <%= @msg %>
+</p>
 <% unless @results.empty? %>
 <p>
   The following are the pages with the search criteria

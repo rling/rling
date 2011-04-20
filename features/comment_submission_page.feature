@@ -24,6 +24,7 @@ Feature: Comment Submission Page
   Scenario: Add Comment
     Given I have a comment_component in comment_component page
     Given I go to Blog_comment page
-    When I follow "Add Comment"
     Then I fill in "form_field_comment_text" with "This is very good work by Heurion Consulting"
     Then I fill in "form_field_user" with "amit"
+    When I press "Submit"
+    Then I should see "All details have been stored successfully" on the Blog_comment page
