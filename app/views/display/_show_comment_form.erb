@@ -1,6 +1,35 @@
+<script>
+$(function(){
+$("#add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").mouseover(function() {
+    $(this).css('cursor', 'pointer');
+  });
+});
+
+$(function(){
+$("#add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").click(function() {
+   $('#comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display', '');
+   $('#add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display','none');
+});
+});
+
+$(function(){
+$("#cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").mouseover(function() {
+    $(this).css('cursor', 'pointer');
+  });
+});
+
+$(function(){
+$("#cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").click(function() {
+   $('#comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display','none');
+   $('#add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display','');
+});
+});
+
+</script>
+
 <% unless model_submission.object_model.comment_components.empty? %>
 <% if validate_permission("createcomment",model_submission.object_model) %>
-<a id="add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>" onclick="document.getElementById('comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='';document.getElementById('add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='none';"> Add Comment</a>
+<a id="add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>"> Add Comment</a>
 <div  id="comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>" style="display:none;" >
   <%= form_tag "/display/create_comment_submissions/#{model_submission.id}", :multipart=>true do %>
        <% model_submission.object_model.comment_components.each do |comment_component| %>
@@ -16,7 +45,8 @@
       <% end %>
       <%= hidden_field_tag 'parent_id', parent_id  %>
 
-    <div class="form_submit"><%= submit_tag "Submit" %> <a onclick="document.getElementById('comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='none';document.getElementById('add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').style.display='';"> Cancel</a>
+    <div class="form_submit"><%= submit_tag "Submit" %> 
+    <a id="cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>"> Cancel</a>
 </div>
     <% end %>
         </div>
