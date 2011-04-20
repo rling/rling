@@ -1,9 +1,19 @@
 <div id="view_<%= page.id %>" class="page_view">
-<% object_model=ObjectModel.find_by_id(page.view_for)
-    order = sort = ""
+<%  order = sort = ""
     sort = @sort if defined? @sort
     order = @order if defined? @order
-     @model_submissions = get_view_model_submission(object_model,page,sort,order) %>
+    if defined?(@category) && !@category.blank?
+      category = Category.find(@category)
+      @model_submissions = []
+      category.categoryset.object_models.each do |object_model|
+        ms = category.model_submissions.find(:all,:conditions=>["object_model_id=? and status ='Published'",object_model.id])
+        @model_submissions = @model_submissions + get_view_model_submission(object_model,page,ms,sort,order)
+      end
+    else
+      object_model=ObjectModel.find_by_id(page.view_for)
+      ms = object_model.published_model_submissions unless object_model.nil?
+      @model_submissions = get_view_model_submission(object_model,page,ms,sort,order) 
+    end %>
    <% if @model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
   

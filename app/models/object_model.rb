@@ -9,7 +9,7 @@ class ObjectModel < ActiveRecord::Base
   belongs_to :categoryset
   
 #Validations
-    regex_pattern = /(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
+  regex_pattern = /(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
   validates :name ,:presence=>true, :uniqueness=>true
 
@@ -41,22 +41,22 @@ private
 
  def create_permissions
    #Create
-    perm = Permission.create(:activity_code=>"create",:activity_display_text=>"Create a #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"create",:activity_display_text=>"Create a #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
    #Edit 
-    perm = Permission.create(:activity_code=>"edit",:activity_display_text=>"Modify your own #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"edit",:activity_display_text=>"Modify your own #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
    #Edit Others 
-    perm = Permission.create(:activity_code=>"editother",:activity_display_text=>"Modify others' #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"editother",:activity_display_text=>"Modify others' #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
    #Delete 
-    perm = Permission.create(:activity_code=>"delete",:activity_display_text=>"Delete your own #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"delete",:activity_display_text=>"Delete your own #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     [2,3].each {|role| PermissionRole.create(:role_id=>role, :permission_id=>perm.id, :value=>true)}
    #Delete Others
-    perm = Permission.create(:activity_code=>"deleteother",:activity_display_text=>"Delete others' #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"deleteother",:activity_display_text=>"Delete others' #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     PermissionRole.create(:role_id=>3, :permission_id=>perm.id, :value=>true)
    #View 
-    perm = Permission.create(:activity_code=>"view",:activity_display_text=>"View a #{self.name.capitalize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"view",:activity_display_text=>"View a #{self.name.capitalize}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
    #View All 
     perm = Permission.create(:activity_code=>"viewlist",:activity_display_text=>"View all #{self.name.capitalize.pluralize}",:permission_type=>"ObjectModel",:permission_object=>self.name)
@@ -65,24 +65,24 @@ private
  end
 
 def create_comment_permissions
-   if self.allow_comments && Permission.where(:permission_type=>"ObjectModel",:permission_object=>self.name).size == 0
+   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment').size == 0
     #Can comment
-    perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
     #Delete my comments
-    perm = Permission.create(:activity_code=>"deletecomment",:activity_display_text=>"Delete my comments for #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"deletecomment",:activity_display_text=>"Delete my comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
     #Delete comments for my blog
-    perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
     #Delete comments for others blog
-    perm = Permission.create(:activity_code=>"deletemycomments",:activity_display_text=>"Delete comments for my #{self.name}",:permission_type=>"ObjectModel",:permission_object=>self.name)
+    perm = Permission.create(:activity_code=>"deletemycomments",:activity_display_text=>"Delete comments for my #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
    end
 
 end
 
-def remove_comment_permission
+def remove_comment_permissions
   unless self.allow_comments
     ["createcomment","deletecomment","deletecommentother","deletemycomments"].each do |code|
-      permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=? and activity_code=>?","ObjectModel",self.name,code])
+      permissions = Permission.find(:all,:conditions=>["permission_type=? and activity_code=?",self.class.to_s,code])
       permissions.each do |permission|
         permission.destroy
       end
@@ -91,7 +91,7 @@ def remove_comment_permission
 end
 
  def remove_permissions
-    permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=?","ObjectModel",self.name])
+    permissions = Permission.find(:all,:conditions=>["permission_type=?",self.class.to_s])
     permissions.each do |permission|
       permission.destroy
     end

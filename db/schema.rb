@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110420092056) do
+ActiveRecord::Schema.define(:version => 20110420151009) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20110420092056) do
     t.string   "default_sort_order"
     t.string   "default_sort_order_value"
     t.integer  "limit"
+    t.integer  "associated_view"
   end
 
   create_table "permission_roles", :force => true do |t|

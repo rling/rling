@@ -1,5 +1,6 @@
 <%= link_to "Back to Dashboard",admin_dashboard_path %>
 <h1>Listing Permissions</h1>
+<% unless @permissions.empty? %>
 <%= form_tag save_permission_roles_permissions_path do %>
 <table>
   <tr>
@@ -20,5 +21,8 @@
   <% end %>
   </table>
   <%= submit_tag "Update" %>
+<% end %>
+<% else %>
+<%= 'You do not have any permissions. Permissions will be automatically created after creating model.' %>
 <% end %>
 <br/><%= link_to "Back to Dashboard",admin_dashboard_path %>

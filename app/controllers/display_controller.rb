@@ -17,6 +17,7 @@ include ApplicationHelper
   def show_page
     @sort= params[:sort]
     @order= params[:order]
+    @category = params[:category]
     @page = Page.find_by_perma_link_and_status(params[:permalink],:published)
       if @page.nil?
         redirect_to :action=>"error_page_display"

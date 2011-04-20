@@ -19,10 +19,10 @@
           <% end %>
           <hr/>
 
-<% end %>
-</td>
-     <% if validate_permission("deletecomment",comment.model_submission.object_model,comment) %>
-    <td><%= link_to 'Destroy',[@object,@model, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+   <% end %>
+  </td>
+    <% if (validate_permission("deletecomment",comment.model_submission.object_model,comment) || validate_permission("deletemycomments",comment.model_submission.object_model,comment)) %>
+      <td><%= link_to 'Destroy',[@object,@model, comment], :confirm => 'Are you sure?', :method => :delete %></td>
      <% end %>
   </tr>
 <% end %>

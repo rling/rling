@@ -1,7 +1,6 @@
 <%= link_to 'New Object model', new_object_model_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>
-
 <h1>Listing Object Models</h1>
-
+<% unless @object_models.empty? %>
 <table>
   <tr>
     <th>Name</th>
@@ -33,7 +32,9 @@
   </tr>
 <% end %>
 </table>
-
+<% else %>
+<%= 'You do not have any models. Create a model now.' %>
 <br />
+<% end %>
 
 <%= link_to 'New Object Model', new_object_model_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %>

@@ -40,6 +40,16 @@ before_filter :require_admin
     end
   end
 
+  # GET /pages/category_view_index
+  # GET /pages/category_view_index.xml
+   def category_view_index
+      @pages = Page.category_views
+      respond_to do |format|
+      format.html # category_view_index.html.erb
+      format.xml  { render :xml => @pages }
+    end
+  end
+
   # GET /pages/1
   # GET /pages/1.xml
   def show
@@ -80,7 +90,7 @@ before_filter :require_admin
 
   # GET /pages/new_view
   # GET /pages/new_view.xml
-    def new_view
+  def new_view
    @page_type='View'
    @page = View.new
     respond_to do |format|
@@ -89,6 +99,16 @@ before_filter :require_admin
     end
   end
 
+  # GET /pages/new_category_view
+  # GET /pages/new_category_view.xml
+  def new_category_view
+   @page_type='CategoryView'
+   @page = CategoryView.new
+    respond_to do |format|
+      format.html # new_category_view.html.erb
+      format.xml  { render :xml => @page }
+    end
+  end
 
   # GET /pages/1/edit
   def edit
@@ -106,6 +126,8 @@ before_filter :require_admin
         @page =ObjectForm.new(params[:object_form])
       elsif @page_type == "View"
          @page = View.new(params[:view])
+      elsif @page_type == "CategoryView"
+         @page = CategoryView.new(params[:category_view])
       else
          @page =Page.new(params[:page])
       end 
@@ -137,20 +159,23 @@ before_filter :require_admin
     @page_type = params[:page_type]
     page_params = params[:page]
     if @page_type == "ObjectForm"
-     page_params = params[:object_form]
+      page_params = params[:object_form]
     end
-     if @page_type == "View"
-       page_params = params[:view]
-     end
+    if @page_type == "View"
+      page_params = params[:view]
+    end
+    if @page_type== "CategoryView"
+      page_params = params[:category_view]
+    end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
    	@page.perma_link_generate
     end
-     unless page_params[:menu_name].nil?
-     unless page_params[:menu_name].empty?
-	    menu = Menu.find_by_page_id(@page.id)
+    unless page_params[:menu_name].nil?
+      unless page_params[:menu_name].empty?
+	      menu = Menu.find_by_page_id(@page.id)
 	    if menu.nil?
-	     menu = Menu.new
+	      menu = Menu.new
 	    end
 	    menu.name = page_params[:menu_name]
 	    menu.parent_id = page_params[:menu_parent_id]

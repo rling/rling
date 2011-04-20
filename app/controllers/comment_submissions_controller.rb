@@ -9,6 +9,7 @@ class CommentSubmissionsController < ApplicationController
   # GET /object_model/1/model_submissions/1/comment_submissions.xml
   def index
     @comment_submissions = get_all_comments(CommentSubmission.new,@model)
+    @model_submission = ModelSubmission.find(params[:model_submission_id])
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comment_submissions }

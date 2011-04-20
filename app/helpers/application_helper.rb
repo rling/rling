@@ -67,6 +67,15 @@ def get_all_menus(record)
     return group
   end
 
+#Get the CategorySet Tree
+  def get_all_categories_for_category_set(categoryset)
+    record = nil
+    group = Array.new
+    group << categoryset
+    Category.find_all_by_categoryset_id_and_level(categoryset.id,1,:order => 'position').each { |item| add_item_to_group(record, item, group)}
+    return group
+  end
+
 #Get all Comments for Model
 def get_all_comments(record,model_submission)
     group = Array.new
@@ -154,7 +163,7 @@ end
   end
 
 #This method Validates the Permission of the user to access particular model submission.
-def validate_permission(call_type,model, submission=nil)
+ def validate_permission(call_type,model, submission=nil)
    role_id = current_user.nil? ? 1 : current_user.role_id
    if ["edit","delete","deletecomment"].include?(call_type)
      unless current_user?
@@ -165,10 +174,19 @@ def validate_permission(call_type,model, submission=nil)
        end
      end
    end
-   permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",model.class.to_s,model.name,call_type])
-   permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
-   return permissionrole.nil? ? false : permissionrole.value
-  end
+   if ["deletemycomments"].include?(call_type)
+     if !submission.nil? && @model_submission.creator_id == current_user.id
+       call_type=call_type
+     else
+       call_type='nopermission'
+     end
+   end
+   permission = Permission.find(:first,:conditions=>["permission_type=? and activity_code=?",model.class.to_s,call_type])
+   unless permission.nil?
+     permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+     return permissionrole.nil? ? false : permissionrole.value
+   end
+ end
   
 def process_page(pagebody)
     pagebody = evaluate_page(pagebody,"amp;")

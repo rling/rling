@@ -1,0 +1,15 @@
+<div id="category_view_<%= page.id %>" class="page_category_view">
+<% @categoryset=Categoryset.find_by_id(page.view_for) %>
+<% unless  @categoryset.nil? %>
+   <% if @categoryset.categories.empty? %>
+      <%= " No Record for #{@categoryset.name}"  %>
+   <% else %>
+      <% case page.view_type %>
+        <% when "TreeView" %>
+          <%=  render :partial=>"display/show_category_tree_view",:locals=>{:page=>page} %>
+        <% end %>
+      <% end %>
+<% else %>
+  No Category Set Found
+<% end  %>
+</div>

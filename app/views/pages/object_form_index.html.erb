@@ -1,6 +1,6 @@
 <%= link_to 'New Form', new_object_form_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 <h1>Listing Forms</h1>
-
+<% unless @pages.empty? %>
 <table>
   <tr>
     <th>Title</th>
@@ -28,7 +28,9 @@
   </tr>
 <% end %>
 </table>
-
+<% else %>
+<%= 'You do not have any forms. Create now.' %>
+<% end %>
 <br />
 <%= link_to 'New Form', new_object_form_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 

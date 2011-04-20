@@ -58,13 +58,14 @@ Rling::Application.routes.draw do
       get 'new_object_form'
       get 'new_view'
       get 'view_index'
-     
-     end
-     member do
-        get  'query'
-       post 'create_query'
-     end
-   end
+      get 'new_category_view'
+      get 'category_view_index'
+    end
+    member do
+      get  'query'
+      post 'create_query'
+    end
+  end
 
    resources :object_forms do
      resources :form_components  do

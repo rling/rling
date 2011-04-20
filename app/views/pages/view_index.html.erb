@@ -1,7 +1,7 @@
 <%= link_to 'New View', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 
 <h1>Listing Views</h1>
-
+<% unless @pages.empty? %>
 <table>
   <tr>
     <th>Title</th>
@@ -25,7 +25,7 @@
     <td><%= page.allow_create_on_permission ? "Yes" : "No" %></td>
     <td><%= link_to "View Components",[page,:view_components] %></td>
     <td><%= link_to "View conditions",[page,:view_conditions] %></td>
-    <td><%= link_to " Order or limit",query_page_path(page) %></td>
+    <td><%= link_to "Order or limit",query_page_path(page) %></td>
     <td><%= link_to "Show", :action=>"show",:id=>page %></td>
     <td><%= link_to "Edit", edit_page_path(page) %></td>
     <td><%= link_to "Destroy", {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -33,7 +33,8 @@
   </tr>
 <% end %>
 </table>
-
+<% else %>
+<%= 'You do not have any views. Create one now.' %>
+<% end %>
 <br />
 <%= link_to 'New View', new_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
-

@@ -14,10 +14,9 @@ def check_component_type(form_component,form_submission,data_obj)
   return return_field_tag(form_component.component_name,value,form_component.component_type,form_component.component_values,form_submission)
 end
 
-def get_view_model_submission(object_model,view,sort="",order="")
+def get_view_model_submission(object_model,view,ms,sort="",order="")
    output = []
   unless object_model.nil?
-    ms = object_model.published_model_submissions
     ids = ms.collect{|sub|sub.id}
     conditions = ""
     view.view_conditions.each do |cond|
@@ -67,5 +66,33 @@ def get_view_model_submission_order(object_model,view,submissions,sort,order)
   return output
 end
 
+def get_category_set_tree(categoryset,page)
+ view = Page.find(page.associated_view)
+ cats = categoryset.categories.find(:all, :conditions=>"parent_id=0")
+ output = "<ul>"
+ cats.each do |cat|
+   output << "<li>"
+   output << link_to(cat.name,"/#{view.perma_link}?category=#{cat.id}")
+   output << get_child_categories(cat,view)
+   output << "</li>"
+  end
+  output << "</ul>"
+ return output
 end
 
+def get_child_categories(cat,view)
+  output = ""
+  unless cat.children.empty?
+    output = "<ul>"
+    cat.children.each do |child|
+      output << "<li>"
+      output << link_to(child.name,"/#{view.perma_link}?category=#{child.id}")
+      output << "</li>"
+      output << get_child_categories(child,view)
+    end
+    output << "</ul>"
+  end
+  return output
+end
+
+end
