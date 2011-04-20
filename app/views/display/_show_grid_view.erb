@@ -1,7 +1,7 @@
 <div id="grid_view_<%=page.id%>">
  
     <% output = ""
-    @object_model.published_model_submissions.each do |ms|
+    @model_submissions.each do |ms|
         output << "<div class='grid_element'>"
        page.view_components.each do |vc2|
          value = raw (get_submission_model_data(ms,vc2.name))

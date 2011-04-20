@@ -187,7 +187,24 @@ before_filter :require_admin
     end
   end
 
-  
+ def query
+  @page = Page.find(params[:id])
+ end
+
+ def create_query
+    id=params[:view_id]
+    page=Page.find_by_id(id)
+    page.default_sort_order=params[:default_sort_order] unless params[:default_sort_order].blank?
+    page.default_sort_order_value=params[:default_sort_order_value] unless params[:default_sort_order_value].blank?
+    page.limit=params[:limit] unless params[:limit].blank?
+   if page.save
+      flash[:notice] = "queries were successfully stored."
+    redirect_to (view_index_pages_path)
+   else
+     flash[:notice] = "Some error occured"
+     redirect_to :back
+   end
+ end
     
 private 
 

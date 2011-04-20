@@ -1,11 +1,14 @@
 <div id="view_<%= page.id %>" class="page_view">
-<% @object_model=ObjectModel.find_by_id(page.view_for) %>
-<% unless  @object_model.nil? %>
-   <% if @object_model.published_model_submissions.empty? %>
-      <%= " No Record for #{@object_model.name}"  %>
+<% object_model=ObjectModel.find_by_id(page.view_for)
+    order = sort = ""
+    sort = @sort if defined? @sort
+    order = @order if defined? @order
+     @model_submissions = get_view_model_submission(object_model,page,sort,order) %>
+   <% if @model_submissions.empty? %>
+      <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
   
    <% else %>
-      <%= link_to "Create "+@object_model.name.capitalize, new_object_model_model_submission_path(@object_model) if validate_permission("create",@object_model) && page.allow_create_on_permission==true %>
+     <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
       <% case page.view_type %>
       <% when "Grid" %>
         <%=  render :partial=>"display/show_grid_view",:locals=>{:page=>page} %>
@@ -14,9 +17,6 @@
       <% when "List" %>
         <%=  render :partial=>"display/show_list_view",:locals=>{:page=>page} %>
       <% end %>
-    <%= link_to "Create "+@object_model.name.capitalize, new_object_model_model_submission_path(@object_model) if validate_permission("create",@object_model) && page.allow_create_on_permission==true %>
+    <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
   <% end %>
-<% else %>
-  No Model Found
-<% end  %>
 </div>

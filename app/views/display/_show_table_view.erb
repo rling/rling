@@ -14,7 +14,7 @@
     #output2  << view_order.order
     #output2 << "'"
 
-  @object_model.published_model_submissions.each do |ms|
+  @model_submissions.each do |ms|
        output << "<tr class='table_view_tr_value #{cycle('odd','even')}'>"
        page.view_components.each do |vc2|
         value =raw  (get_submission_model_data(ms,vc2.name))

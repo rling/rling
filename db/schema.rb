@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419064739) do
+ActiveRecord::Schema.define(:version => 20110420092056) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -175,6 +175,8 @@ ActiveRecord::Schema.define(:version => 20110419064739) do
     t.text     "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "model_submissions", :force => true do |t|
@@ -242,6 +244,9 @@ ActiveRecord::Schema.define(:version => 20110419064739) do
     t.boolean  "allow_create_on_permission", :default => false
     t.string   "layout"
     t.string   "status"
+    t.string   "default_sort_order"
+    t.string   "default_sort_order_value"
+    t.integer  "limit"
   end
 
   create_table "permission_roles", :force => true do |t|

@@ -15,6 +15,8 @@ include ApplicationHelper
   # MATCH "/:permalink"=> "display#show_page"
   # DISPLAY ALL THE PAGES / FORMS / VIEWS IDENTIFIED BY THE PERMALINK
   def show_page
+    @sort= params[:sort]
+    @order= params[:order]
     @page = Page.find_by_perma_link_and_status(params[:permalink],:published)
       if @page.nil?
         redirect_to :action=>"error_page_display"
@@ -25,7 +27,6 @@ include ApplicationHelper
    # MATCH "/:permalinkparent/:permalink"=> "display#show_model_data"
    # DISPLAY ALL THE MODEL SUBMISSIONS FOR GIVEN PERMALINK AND ITS PARENT
    def show_model_data
-   
     @object= ObjectModel.find_by_perma_link_parent(params[:permalinkparent])
     @model_submission= nil
     if @object.nil?
@@ -187,4 +188,10 @@ include ApplicationHelper
     flash[:notice] = message
     redirect_to :back
   end
+   def update_view
+     id=params[:view_id]
+     page=Page.find_by_id(id)
+     page.update_attributes(:default_sort_order=>params[:default_sort_order],:default_sort_order_value=>params[:default_sort_order_value],:limit=>params[:limit])
+     redirect_to :back
+   end
 end

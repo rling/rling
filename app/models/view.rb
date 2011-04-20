@@ -25,13 +25,10 @@ end
 
 def not_added_condition_components
  model=ObjectModel.find_by_id(self.view_for)
+ 
  m_component = model.model_components.collect{|mc|mc.component_name}
- m_component << "created_at"
- m_component << "updated_at"
- m_component << "creator_Id"
- m_component << "Updater_id"
- c_component = self.view_conditions.collect{|c| c.name}
- return  (m_component - c_component)
+ m_component = [" "] + m_component +  ["created_at","updated_at","creator_id","updater_id"]
+ return  m_component
 end
 
 

@@ -2,11 +2,10 @@
 
 <table>
   <tr>
-   
+    <th>Relation with Previous condition</th>
     <th>Name</th>
+     <th>Operator</th>
     <th>Value</th>
-    <th>Operator</th>
-    <th>Relation with</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,12 +13,10 @@
 
 <% @view_conditions.each do |view_condition| %>
   <tr>
-   
-    <td><%= view_condition.name %></td>
-    <td><%= view_condition.value %></td>
-    <td><%= view_condition.operator %></td>
     <td><%= view_condition.relation_with %></td>
-    <td><%= link_to 'Show',view_view_condition_path(@page,view_condition) %></td>
+    <td><%= view_condition.name %></td>
+    <td><%= view_condition.operator %></td>
+    <td><%= view_condition.value %></td>
     <td><%= link_to 'Edit', edit_view_view_condition_path(@page,view_condition) %></td>
     <td><%= link_to 'Destroy', [@page,view_condition], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

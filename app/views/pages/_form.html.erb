@@ -25,15 +25,17 @@
   </div>
 
   <% if @page_type.eql?('View') %>
- <div class="field">
+
+  <div class="field">
     <%= form.label :view_type %><br />
     <%= form.select :view_type,["Table","Grid","List"] %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= form.label :view_for%><br />
     <%= form.select :view_for ,ObjectModel.find(:all).collect{|m| [ m.name.pluralize,m.id]} %>
   </div>
+
 
   <% end %>
 
