@@ -1,5 +1,8 @@
 <%= form_tag "/display/search_result" do %>
+  <% user= User.find(:first) %>
+  <% unless user.nil? %>
   <%= text_field_tag :search ,query %>
   <%= hidden_field_tag :type, type %>
   <%= submit_tag 'Search' %>
+ <% end %>
 <% end %>

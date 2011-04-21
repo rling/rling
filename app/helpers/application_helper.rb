@@ -10,8 +10,11 @@ def login_strip
     output = ""
     unless current_user?
      setting = Setting.find_by_name("allow_user_register_user")
-     output << "#{link_to('Register', new_user_path)} | " if setting.setting_data 
-     output << link_to("Login","/login")
+     user= User.find(:first)
+      unless user.nil?
+       output << "#{link_to('Register', new_user_path)} | " if setting.setting_data
+       output << link_to("Login","/login")
+      end
     end 
     return output
 end

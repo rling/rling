@@ -32,7 +32,8 @@ class User < ActiveRecord::Base
     return (User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated) ? u : nil
   end
 
-  def self.tags(handle)
+ 
+ def self.tags(handle)
     tagarray = ["login","email","password","activation_url","reset_password_url"]
     UserDetailSetting.all.each do |uds|
        tagarray << uds.field_name
