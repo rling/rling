@@ -1,5 +1,6 @@
-class DisplayController < ApplicationController
-include ApplicationHelper
+class DisplayController < ApplicationController 
+ #Includes
+ include ApplicationHelper
 
 #ALL ACTIONS OF DISPLAY CONTROLLER ARE ROUTED THROUGH MATCHES RATHER THAN RESOURCES
 #DISPLAY CONTROLLER IS NOT CONROLLED BY RESOURCES. THIS IS NOT AN RESTFUL CONTROLLER

@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+# Includes
   include ApplicationHelper
   #FILTER
   before_filter :require_admin

@@ -1,5 +1,8 @@
 class FormComponentsController < ApplicationController
+#Includes
   include CacheHelper
+
+#SWEEPER
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 #Filters
  before_filter :require_admin

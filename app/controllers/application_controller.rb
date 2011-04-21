@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #includes
   include Userstamp
   protect_from_forgery
 

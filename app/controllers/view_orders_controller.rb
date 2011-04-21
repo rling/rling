@@ -1,5 +1,5 @@
 class ViewOrdersController < ApplicationController
-
+#Filters
   before_filter :require_admin
  before_filter :get_view
   # GET /view_orders

@@ -135,7 +135,7 @@ def create
 end
 
 # DELETE /sessions/1
-# POST /sessions/1.xml
+# DELETE /sessions/1.xml
 def destroy
     cookies.delete :remember_me_code
     session[:user]=nil

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  #Includes
   include ApplicationHelper
 
   #FILTERS

@@ -1,6 +1,5 @@
 class ObjectModelsController < ApplicationController
-  include PermalinkHelper
-  
+
   #FILTERS
   before_filter :require_admin
   

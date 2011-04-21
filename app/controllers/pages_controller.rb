@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+#Includes
 include ApplicationHelper
 include PermalinkHelper
 include CacheHelper
@@ -144,7 +145,7 @@ before_filter :require_admin
         flash[:notice] = "#{@page_type} was successfully created."
       
         format.html { redirect_to(:action=>'show',:id=>@page) }
-        #format.xml  { render :xml => @page, :status => :created, :location => @page }
+        format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
     
         format.html { render :action => "new" }
@@ -212,22 +213,32 @@ before_filter :require_admin
     end
   end
 
+  # GET /pages/query
+  # GET /pages/query.xml
  def query
   @page = Page.find(params[:id])
+  respond_to do |format|
+      format.html #query.html.erb
+      format.xml  { render :xml=>@page}
+  end
  end
-
+ 
+  # POST /pages/create_query
+  # POST /pages/create_query.xml
  def create_query
-    id=params[:view_id]
-    page=Page.find_by_id(id)
-    page.default_sort_order=params[:default_sort_order] unless params[:default_sort_order].blank?
-    page.default_sort_order_value=params[:default_sort_order_value] unless params[:default_sort_order_value].blank?
-    page.limit=params[:limit] unless params[:limit].blank?
-   if page.save
+    page=Page.find_by_id(params[:view_id])
+   if  page.update_attributes(params[:view])
       flash[:notice] = "queries were successfully stored."
-    redirect_to (view_index_pages_path)
+      respond_to do |format|
+        format.html {redirect_to (view_index_pages_path)}
+        format.xml  { render :xml=>page}
+      end
    else
      flash[:notice] = "Some error occured"
-     redirect_to :back
+     respond_to do |format|
+        format.html {redirect_to (view_index_pages_path)}
+        format.xml  { render :xml=>page.errors ,:status => :unprocessable_entity}
+      end
    end
  end
     

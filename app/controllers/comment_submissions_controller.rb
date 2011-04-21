@@ -1,4 +1,5 @@
 class CommentSubmissionsController < ApplicationController
+#Includes
  include DisplayHelper
  include ApplicationHelper
 #Filters

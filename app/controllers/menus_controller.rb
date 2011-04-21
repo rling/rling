@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+#Includes
   include ApplicationHelper
   #FILTERS
   before_filter :require_admin
