@@ -43,7 +43,7 @@ class PageVariableSettingsController < ApplicationController
     @page_variable_setting = PageVariableSetting.new(params[:page_variable_setting])
     respond_to do |format|
       if @page_variable_setting.save
-        format.html { redirect_to(@page_variable_setting, :notice => 'Page variable setting was successfully created.') }
+        format.html { redirect_to(page_variable_settings_path, :notice => 'Page variable setting was successfully created.') }
         format.xml  { render :xml => @page_variable_setting, :status => :created, :location => @page_variable_setting }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class PageVariableSettingsController < ApplicationController
     @page_variable_setting = PageVariableSetting.find(params[:id])
     respond_to do |format|
       if @page_variable_setting.update_attributes(params[:page_variable_setting])
-        format.html { redirect_to(@page_variable_setting, :notice => 'Page variable setting was successfully updated.') }
+        format.html { redirect_to(page_variable_settings_path, :notice => 'Page variable setting was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

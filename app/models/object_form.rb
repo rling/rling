@@ -1,6 +1,4 @@
 class ObjectForm < Page
-#Includes
-  include CacheHelper
 
 #Associations
 has_many :form_components ,:dependent => :destroy ,:order=> :position
@@ -8,8 +6,7 @@ has_many :form_submissions,:dependent => :destroy
 has_one :mailer, :dependent => :destroy
 
 #call backs
-after_create :create_email_template ,:clear_cache
-after_update :clear_cache
+after_create :create_email_template
 
 #instance methods
  #Create email template that would be used when any submissions occur

@@ -16,10 +16,10 @@
   <tr>
 
 
-   <%  form_submission.form_datas.each do |form_data| %>
+   <%  form_submission.form_data.each do |form_data| %>
       <td><%= get_form_data(form_data.form_component.component_type,form_data.data_value) %></td>
    <% end %>
-    <% (@page.form_components.count - form_submission.form_datas.count).times do %>
+    <% (@page.form_components.count - form_submission.form_data.count).times do %>
         <td></td>
     <% end %>
 

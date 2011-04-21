@@ -3,6 +3,5 @@
 <%= link_to("Destroy", [@object,@model_submission], :confirm => 'Are you sure?', :method => :delete) if validate_permission("delete",@object,@model_submission) %>
 <br/>
 </div>
-<% cache do %>
+
 <%= render :partial=>"display/model_data", :locals=>{:model_submission => @model_submission} %>
-<% end %>

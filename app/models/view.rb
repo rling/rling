@@ -1,15 +1,9 @@
 class View < Page
-#Includes
-  include CacheHelper
 
 #Associations
 has_many :view_components ,:dependent => :destroy ,:order =>:position
 has_many :view_conditions ,:dependent => :destroy
 has_many  :view_orders ,:dependent => :destroy
- #call_backs
- after_create :clear_cache
- after_destroy :clear_cache
- after_update :clear_cache
 
 
 #instance methods

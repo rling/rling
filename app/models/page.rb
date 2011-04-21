@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
 #Includes
 include PermalinkHelper
-include CacheHelper
+
 stampable
 
 #Associations
@@ -22,9 +22,7 @@ scope :views,  :conditions => "type = 'View'"
 scope :category_views, :conditions =>"type = 'CategoryView'"
 
 #callbacks
-after_save :set_menu ,:clear_cache
-after_update :clear_cache
-after_destroy :clear_cache
+after_save :set_menu 
 
 #instance methods
 

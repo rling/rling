@@ -1,6 +1,9 @@
 class PageletsController < ApplicationController
+#SWEEPER
+cache_sweeper :pagelet_sweeper,  :only => [:create, :update, :destroy]
 #FILTERS
 before_filter :require_admin
+
 
   # GET /pagelets
   # GET /pagelets.xml
@@ -43,7 +46,7 @@ before_filter :require_admin
     @pagelet = Pagelet.new(params[:pagelet])
     respond_to do |format|
       if @pagelet.save
-        format.html { redirect_to(@pagelet, :notice => 'Pagelet was successfully created.') }
+        format.html { redirect_to(pagelets_path, :notice => 'Pagelet was successfully created.') }
         format.xml  { render :xml => @pagelet, :status => :created, :location => @pagelet }
       else
         format.html { render :action => "new" }
@@ -58,7 +61,7 @@ before_filter :require_admin
     @pagelet = Pagelet.find(params[:id])
     respond_to do |format|
       if @pagelet.update_attributes(params[:pagelet])
-        format.html { redirect_to(@pagelet, :notice => 'Pagelet was successfully updated.') }
+        format.html { redirect_to(pagelets_path, :notice => 'Pagelet was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

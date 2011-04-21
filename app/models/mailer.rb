@@ -2,6 +2,7 @@ class Mailer < ActiveRecord::Base
   #Associations
   belongs_to :model_submission
   belongs_to :object_form
+  belongs_to :object_model
 
   #Validations
   validates :handle, :presence=>true, :uniqueness=>true

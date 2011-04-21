@@ -1,7 +1,8 @@
 class ModelSubmissionsController < ApplicationController
   #Includes
   include ApplicationHelper
-  include CacheHelper
+  #SWEEPER
+ cache_sweeper :model_submission_sweeper,  :only => [:create, :update, :destroy]
   
   #FILTERS
   before_filter :get_object_model,:verify_permission

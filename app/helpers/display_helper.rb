@@ -2,7 +2,7 @@ module DisplayHelper
 
 def check_component_type(form_component,form_submission,data_obj)
   unless form_submission.nil?
-   if data_obj == FormData      
+   if data_obj == FormDatum
     form_data=data_obj.find_by_form_submission_id_and_form_component_id(form_submission.id,form_component.id)
    else
     form_data=data_obj.find_by_comment_submission_id_and_comment_component_id(form_component.id,form_submission.id)

@@ -1,6 +1,7 @@
 class ModelData < ActiveRecord::Base
 #Includes
-  stampable
+ stampable
+
   #Associations
   belongs_to :model_component
   belongs_to :model_submission

@@ -1,6 +1,4 @@
 class FormComponentsController < ApplicationController
-#Includes
-  include CacheHelper
 
 #SWEEPER
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
@@ -54,7 +52,7 @@ class FormComponentsController < ApplicationController
 
     respond_to do |format|
       if @form_component.save
-        format.html { redirect_to([@page,@form_component], :notice => 'Form component was successfully created.') }
+        format.html { redirect_to(object_form_form_components_path, :notice => 'Form component was successfully created.') }
         format.xml  { render :xml => @form_component, :status => :created, :location => @form_component }
       else
         format.html { render :action => "new" }
@@ -70,7 +68,7 @@ class FormComponentsController < ApplicationController
 
     respond_to do |format|
       if @form_component.update_attributes(params[:form_component])
-        format.html { redirect_to([@page,@form_component], :notice => 'Form component was successfully updated.') }
+        format.html { redirect_to(object_form_form_components_path, :notice => 'Form component was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

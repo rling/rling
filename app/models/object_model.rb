@@ -6,7 +6,7 @@ class ObjectModel < ActiveRecord::Base
   has_many :model_components, :dependent=>:destroy ,:order =>:position
   has_many :model_submissions, :dependent=>:destroy
   has_many :comment_components, :dependent=>:destroy 
-  has_one  :mailer
+  has_one  :mailer ,:dependent => :destroy
   belongs_to :categoryset
   
 #Validations
@@ -66,7 +66,7 @@ private
  end
 
 def create_comment_permissions
-   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>self.name).size == 0
+   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>self.name ,:activity_code=>"createcomment").empty?
     #Can comment
     perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>self.class.to_s,:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
@@ -109,6 +109,9 @@ end
          comment_submission.destroy
         end
       end
+     mailer= Mailer.find_by_handle(self.perma_link_parent)
+     mailer.destroy  unless mailer.nil?
+      
     else
      create_comment_permissions
      if self.comment_components.find_by_component_name('comment_text').nil?

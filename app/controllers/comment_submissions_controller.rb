@@ -1,7 +1,6 @@
 class CommentSubmissionsController < ApplicationController
 #Includes
- include DisplayHelper
- include ApplicationHelper
+  include ApplicationHelper
 #Filters
   before_filter :require_admin
   before_filter :get_model_submission

@@ -43,7 +43,7 @@ class MenusetsController < ApplicationController
     @menuset = Menuset.new(params[:menuset])
     respond_to do |format|
       if @menuset.save
-        format.html { redirect_to(@menuset, :notice => 'Menuset was successfully created.') }
+        format.html { redirect_to(menusets_path, :notice => 'Menuset was successfully created.') }
         format.xml  { render :xml => @menuset, :status => :created, :location => @menuset }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class MenusetsController < ApplicationController
     @menuset = Menuset.find(params[:id])
     respond_to do |format|
       if @menuset.update_attributes(params[:menuset])
-        format.html { redirect_to(@menuset, :notice => 'Menuset was successfully updated.') }
+        format.html { redirect_to(menusets_path, :notice => 'Menuset was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

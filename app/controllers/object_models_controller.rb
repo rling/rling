@@ -47,7 +47,7 @@ class ObjectModelsController < ApplicationController
     end
     respond_to do |format|
       if @object_model.save
-        format.html { redirect_to(@object_model, :notice => 'Object model was successfully created.') }
+        format.html { redirect_to(object_models_path, :notice => 'Object model was successfully created.') }
         format.xml  { render :xml => @object_model, :status => :created, :location => @object_model }
       else
         format.html { render :action => "new" }
@@ -63,9 +63,12 @@ class ObjectModelsController < ApplicationController
     if params[:permalnkparent] == "1"
    	@object_model.perma_link_generate
     end
+    
     respond_to do |format|
       if @object_model.update_attributes(params[:object_model])
-        format.html { redirect_to(@object_model, :notice => 'Object model was successfully updated.') }
+       @object_model.update_attributes(:email_on_comment => false ,:is_comment_recursive=>false) unless @object_model.allow_comments
+
+        format.html { redirect_to(object_models_path, :notice => 'Object model was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

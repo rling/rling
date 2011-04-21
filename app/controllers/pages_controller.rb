@@ -1,8 +1,5 @@
 class PagesController < ApplicationController
-#Includes
-include ApplicationHelper
-include PermalinkHelper
-include CacheHelper
+
 
 #SWEEPER
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
