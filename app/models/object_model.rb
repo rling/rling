@@ -66,7 +66,7 @@ private
  end
 
 def create_comment_permissions
-   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>self.name ,:activity_code=>"createcomment").empty?
+   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>self.name,:activity_code=>"createcomment").empty?
     #Can comment
     perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>self.class.to_s,:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }

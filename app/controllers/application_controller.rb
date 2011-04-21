@@ -68,6 +68,8 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "You must be logged in to access this page"
       redirect_to new_session_url
       return false
+    else
+      return true
     end
   end
 
@@ -89,9 +91,11 @@ class ApplicationController < ActionController::Base
   def require_admin
     if require_user
       unless current_user.admin?
-      flash[:notice] = "You do not have administrator previleges to access the page"
-      redirect_to :controller => "users", :action => "show", :id => current_user.id
-      return false
+        flash[:notice] = "You do not have administrator previleges to access the page"
+        redirect_to :controller => "users", :action => "show", :id => current_user.id
+        return false
+      else
+        return true
       end
     end
   end

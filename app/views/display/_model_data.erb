@@ -15,7 +15,15 @@
     <% end %>
     <div class="model_data">
       <div class="model_data_heading model_data_creator_id_heading"> Created By</div>
-      <div class="model_data_value model_data_creator_id_value"><%= model_submission.creator.login unless model_submission.creator_id.nil? %></div>
+      <div class="model_data_value model_data_creator_id_value">
+        <% setting = Setting.find_by_name("allow_view_user_account") %>
+        <% unless model_submission.creator_id.nil? %>
+          <% if setting.setting_data %>
+            <%= link_to "#{model_submission.creator.login}", "/profile/#{model_submission.creator_id}"%>
+          <% else %>
+            <%= model_submission.creator.login %></div>
+          <% end %>
+        <% end %>
     </div>
     <div class="model_data">
       <div class="model_data_heading model_data_created_at_heading"> Created At</div>
@@ -26,7 +34,6 @@
       <div class="model_data_value model_data_updated_at_value"><%= model_submission.updated_at %></div>
     </div>
   </div>
-<% end %>
   <% if  model_submission.object_model.allow_comments %>
    <div>
      <%= render :partial=>"show_comment" ,:locals=>{:model_submission=>model_submission} %>
@@ -36,5 +43,5 @@
      <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>"0"}  %>
    </div>
   <% end  %>
-
+<% end %>
 

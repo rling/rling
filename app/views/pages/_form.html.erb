@@ -24,12 +24,12 @@
     <%= form.text_field :title %>
   </div>
 
-  <% if @page_type.eql?('View') || @page_type.eql?('CategoryView') %>
+ <% if @page_type.eql?('View') || @page_type.eql?('CategoryView') %>
  <div class="field">
     <%= form.label :view_type %><br />
     <% if @page_type.eql?('View') %>
     <%= form.select :view_type,["Table","Grid","List"] %>
-    <%else%>
+    <% else %>
     <%= form.select :view_type,["TreeView"] %>
     <%end%>
   </div>
@@ -38,9 +38,9 @@
     <%= form.label :view_for%><br />
     <% if @page_type.eql?('View') %>
        <%= form.select :view_for ,ObjectModel.find(:all).collect{|m| [ m.name.pluralize,m.id]} %>
-    <%else%>
+    <% else %>
        <%= form.select :view_for ,Categoryset.find(:all).collect{|m| [ m.name,m.id]} %>
-    <%end%>
+    <% end %>
   </div>
   <% end %>
 

@@ -55,6 +55,10 @@ def first_user_create
        setting = Setting.find_by_name("smtp_settings")
        setting.setting_value = params[:smtp_settings]
        setting.save
+      #View users account information setting
+       setting = Setting.find_by_name("allow_view_user_account")
+       setting.setting_value = params[:allow_view_user_account]
+       setting.save
        respond_to do |format|
          flash[:notice] = "Administrator was successfully created."
          format.html { redirect_to(login_path) }

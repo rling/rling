@@ -26,11 +26,15 @@
     <%= f.label @setting.setting_type %>
   </div>
 
+  <% if @setting.setting_type=='boolean' %>
   <div class="field">
     <b><%= f.label :setting_value,'Setting Value' %></b><br />
-    <%= f.text_field :setting_value %>
+    <%= f.select :setting_value ,["true","false"]%>
   </div>
-
+  <% else %>
+    <b><%= f.label :setting_value,'Setting Value' %></b><br />
+    <%= f.text_field :setting_value %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

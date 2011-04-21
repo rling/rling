@@ -217,6 +217,15 @@ border: none;
 {
 float: right;
 }
+#left_page
+{
+    float:left;
+    width:300px;
+}
 
-
+#right_page
+{
+    float:left;
+    width:660px;
+}
 

@@ -196,4 +196,21 @@ class DisplayController < ApplicationController
      page.update_attributes(:default_sort_order=>params[:default_sort_order],:default_sort_order_value=>params[:default_sort_order_value],:limit=>params[:limit])
      redirect_to :back
    end
+
+ #MATCH  "profile/:id"=>"display/profile"
+ #THIS ACTION IS CALLED WHEN A USER CLICKS ON THE NAME OF CREATOR OF A POST(BLOG)
+  def profile
+    setting = Setting.find_by_name("allow_view_user_account")
+    if setting.setting_data
+      @user= User.find_by_id(params[:id])
+      if @user.nil?
+        flash[:notice] ="User Not found"
+        redirect_to :action=>"error_page_display"
+        return
+      end
+      @user_detail_settings=UserDetailSetting.all
+    else
+      redirect_to :action=>"error_page_display"
+    end
+  end
 end

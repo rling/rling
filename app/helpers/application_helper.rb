@@ -178,7 +178,7 @@ end
      end
    end
    if ["deletemycomments"].include?(call_type)
-     if !submission.nil? && @model_submission.creator_id == current_user.id
+     if !@model_submission.nil? && @model_submission.creator_id == current_user.id
        call_type=call_type
      else
        call_type='nopermission'
@@ -258,7 +258,7 @@ def process_page(pagebody)
         field_value = nil if field_obj.nil?
         unless field_value.blank?
           asset = Asset.find(field_value)
-          display_file = link_to("#{asset.upload_file_name}", asset.upload.url,:target=>"_blank")+" "+link_to("[X]",delete_asset_user_path(feild_obj.id))
+          display_file = link_to("#{asset.upload_file_name}", asset.upload.url,:target=>"_blank")+" "+link_to("[X]",delete_asset_user_path(field_obj.id))
         end
         return file_field_tag("form_field[#{field_name}]") + display_file
       end

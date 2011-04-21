@@ -73,7 +73,7 @@ class MenusetsController < ApplicationController
     @menuset = Menuset.find(params[:id])
     @menuset.destroy
     respond_to do |format|
-      format.html { redirect_to(menusets_url) }
+      format.html { redirect_to(menusets_url,:notice=>'Menuset deleted successfully') }
       format.xml  { head :ok }
     end
   end

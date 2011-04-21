@@ -6,7 +6,20 @@
   <b>Title:</b>
   <%= @page.title %>
 </p>
-
+<% if @page.type.eql?('CategoryView') %>
+<p>
+  <b>View Type: </b>
+  <%= @page.view_type %>
+</p>
+<p>
+  <b>View For: </b>
+  <%= @categoryset.name %>
+</p>
+<p>
+  <b>Associated View: </b>
+  <%= @associated.title %>
+</p>
+<% end %>
 <p>
   <b>Body:</b>
   <%= raw @page.body %>

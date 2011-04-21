@@ -38,9 +38,15 @@
     </div>
    </div>
    <div id="middle">
-    <%= raw(flash_notice) %>
-          <%=display_rling_page("contact-us")%>
-    <%= yield  %>
+     <div id="left_page">
+       <%= raw(display_rling_page("view1")) %>
+     </div>
+
+     <div id=""right_page">
+       <%= raw(flash_notice) %>
+
+       <%= yield  %>
+     </div>
    </div>
    <div id="footer">
     <div id="footer_menu">

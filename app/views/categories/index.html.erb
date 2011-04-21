@@ -15,7 +15,6 @@
 
 
     <td align=right><%= text_field_tag "#{category.id}",category.position, :size=>2 %></td>
-    <td align=center><%= link_to "Show", category %></td>
     <td align=center><%= link_to "Edit", edit_category_path(category) %></td>
     <td align=center><%= link_to "Destroy", category, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>

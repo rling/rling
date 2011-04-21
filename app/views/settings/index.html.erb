@@ -1,6 +1,9 @@
 <%= link_to 'Back to Dashboard',admin_dashboard_path %>
+<h1>Non-Configurable Settings</h1>
+<p>"Caching by default stores all the Pages, Object Forms and the Pagelets. You can delete all the cached data and allow them to be procured from the database. Click on below link to Clear the cache”</p>
+<p><%= link_to "Clear Cache", admin_clear_cache_path %></p>
+<br/>
 <h1>Configurable Settings</h1>
-
 <table>
   <tr>
     
@@ -23,7 +26,4 @@
 </table>
 
 <br />
-<h1>Non-Configurable Settings</h1>
-<p>"Caching by default stores all the Pages, Object Forms and the Pagelets. You can delete all the cached data and allow them to be procured from the database. Click on below link to Clear the cache”</p>
-<p><%= link_to "Clear Cache", admin_clear_cache_path %></p>
 <%= link_to 'Back to Dashboard',admin_dashboard_path %>

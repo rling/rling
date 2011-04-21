@@ -5,8 +5,8 @@
 <%= hidden_field_tag 'user_id',@user.id %>
  <% @user_detail_settings.each do |user_detail_setting| %>
  <div class="user_field">  
-   <div class="form_user_heading form_user_heading_<%= user_detail_setting.field_name %>">  
-      <%= user_detail_setting.field_name %>:  
+   <div class="form_user_heading form_user_heading_<%= user_detail_setting.display_name %>">
+      <%= user_detail_setting.display_name %>:
    </div>
    <div class="user_mandatory"><%= user_detail_setting.mandatory ? "*" : "" %></div>
    <div class="form_user_value form_user_value_<%= user_detail_setting.field_type %>">

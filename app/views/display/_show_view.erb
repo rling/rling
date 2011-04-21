@@ -12,7 +12,7 @@
     else
       object_model=ObjectModel.find_by_id(page.view_for)
       ms = object_model.published_model_submissions unless object_model.nil?
-      @model_submissions = get_view_model_submission(object_model,page,ms,sort,order) 
+      @model_submissions = get_view_model_submission(object_model,page,ms,sort,order)
     end %>
    <% if @model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>

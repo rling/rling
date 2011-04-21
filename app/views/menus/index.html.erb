@@ -17,7 +17,6 @@
 
    
     <td align=right><%= text_field_tag "#{menu.id}",menu.position, :size=>2 %></td>
-    <td align=center><%= link_to "Show", menu %></td>
     <td align=center><%= link_to "Edit", edit_menu_path(menu) %></td>
     <td align=center><%= link_to "Destroy", menu, :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>

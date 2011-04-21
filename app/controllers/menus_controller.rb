@@ -80,7 +80,7 @@ class MenusController < ApplicationController
     @menu.destroy
 
     respond_to do |format|
-      format.html { redirect_to(menus_url) }
+      format.html { redirect_to(menus_url,:notice=>'Menu deleted successfully') }
       format.xml  { head :ok }
     end
   end

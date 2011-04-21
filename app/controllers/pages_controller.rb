@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 
-
 #SWEEPER
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 
@@ -57,6 +56,8 @@ before_filter :require_admin
       @page = Page.find_by_id(params[:id])
      end
     @menu = Menu.find_by_page_id(@page.id)
+    @categoryset=Categoryset.find_by_id(@page.view_for)
+    @associated=Page.find_by_id(@page.associated_view)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @page }
@@ -114,6 +115,7 @@ before_filter :require_admin
     @page_type = "Page"
     @page_type = "ObjectForm" if @page.type == "ObjectForm"
     @page_type = "View"   if @page.type == "View"
+    @page_type = "CategoryView" if @page.type == "CategoryView"
   end
 
   # POST /pages
@@ -205,7 +207,7 @@ before_filter :require_admin
     @page = Page.find(params[:id])
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to((@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
+      format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
       format.xml  { head :ok }
     end
   end

@@ -41,7 +41,7 @@ $(function(){
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "is_login_type_email","",false %>Login to system via email.
+         <%= check_box_tag "is_login_type_email","",false %>Login to system is via Login name or email.
        </td>
    </tr>
    <tr>
@@ -84,7 +84,7 @@ $(function(){
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in the website, Is it allowed
+         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in th website, Is it allowed
        </td>
    </tr>
    <tr>
@@ -105,6 +105,11 @@ $(function(){
     <tr>
        <td colspan=3>
          <%= check_box_tag  "send_welcome_email" %>Once the user registers should an welcome email be sent.
+       </td>
+   </tr>
+       <tr>
+       <td colspan=3>
+         <%= check_box_tag  "allow_view_user_account" %>Can a user view other users account info when he clicks on the name of that user in the post submitted by that user.
        </td>
    </tr>
    

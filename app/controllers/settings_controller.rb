@@ -58,7 +58,7 @@ class SettingsController < ApplicationController
     @setting = Setting.find(params[:id])
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
-        format.html { redirect_to(@setting, :notice => 'Setting was successfully updated.') }
+        format.html { redirect_to(settings_path, :notice => 'Setting was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

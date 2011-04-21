@@ -142,6 +142,7 @@ namespace :ckeditor do
   match "display/create_comment_submissions/:id"=>"display#create_comment_submissions"
   match "display/search_result"=>"display#search_result"
   match "search"=>"display#search_result"
+  match "profile/:id"=>"display#profile"
   match "/:permalink"=> "display#show_page"
   match "/:permalinkparent/:permalink"=> "display#show_model_data"
  

@@ -10,9 +10,8 @@
 
 <% @menusets.each do |menuset| %>
   <tr>
-      <td><%= menuset.name %></td>
+    <td><%= menuset.name %></td>
     <td><%= menuset.description %></td>
-    <td><%= link_to "Show", menuset %></td>
     <td><%= link_to "Edit", edit_menuset_path(menuset) %></td>
     <td><%= link_to "Destroy", menuset, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
