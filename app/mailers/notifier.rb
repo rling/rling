@@ -20,7 +20,6 @@ def setup
    smtp_hash[smtp_entries[0]]=smtp_entries[1]
  end
 
-
  #Notifier.delivery_method = :smtp
  #Notifier.default_content_type = "text/html"
  Notifier.smtp_settings[:address] = smtp_hash["address"] unless smtp_hash["address"].nil?
@@ -113,35 +112,5 @@ end
     end
     return output
   end
-  
-=begin
-  def verify_tags_old(body,entity)
-    output = body
-    codes = body.split("&lt;RLING::")
-    if codes.size > 0
-       first = true
-       hash = Hash.new
-       codes.each do |code|
-         if first
-           first = false
-           next
-         end
-         tag = code.split('&gt;')[0]
-         splits = tag.split("::")
-         objectname = splits[0]
-         variablename = splits[1]
-         hash[tag] = [objectname,variablename]
-       end
-       hash.each do |k,v|
-         objectname = v[0]
-         varname = v[1]
-         if entity.class.to_s.upcase == objectname
-         	output = output.gsub("&lt;RLING::#{k}&gt;",entity.send("get_variable_info",varname.downcase).to_s)
-         end 
-       end
-    end
-    return output
-  end
-=end
 end
 

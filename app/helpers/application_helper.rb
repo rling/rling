@@ -188,12 +188,14 @@ end
    end
  end
   
+#Process Multi-page page
 def process_page(pagebody)
     pagebody = evaluate_page(pagebody,"amp;")
     pagebody = evaluate_page(pagebody)
     pagebody
   end
 
+#evaluate page for multiple tags
   def evaluate_page(pagebody, tag="tag")
    text = pagebody.gsub("&nbsp;","")
    if tag == "tag"

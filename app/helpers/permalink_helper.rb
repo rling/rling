@@ -37,9 +37,6 @@ def create_permalink(string, type='normal', separator = '-', max_size = 127)
 end
 
 def generate_perma_link(permaobj,perma_link)
-  puts permaobj.inspect
-  #entity = permaobj.find_by_perma_link("/"+perma_link) if permaobj != ObjectModel
-  #entity = permaobj.find_by_perma_link_parent("/"+perma_link) if permaobj == ObjectModel
   entity = permaobj.find_by_perma_link(perma_link) if permaobj != ObjectModel
   entity = permaobj.find_by_perma_link_parent(perma_link) if permaobj == ObjectModel
   
@@ -48,12 +45,10 @@ def generate_perma_link(permaobj,perma_link)
   else
     count = 0
     if permaobj== ObjectModel
-      #until (permaobj.find_by_perma_link_parent("/"+perma_link + "-" + count.to_s).nil?)
       until (permaobj.find_by_perma_link_parent(perma_link + "-" + count.to_s).nil?)
         count+=1
       end
     else 
-      #until (permaobj.find_by_perma_link("/"+perma_link + "-" + count.to_s).nil?)
       until (permaobj.find_by_perma_link(perma_link + "-" + count.to_s).nil?)
         count+=1
       end
