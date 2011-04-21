@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+#Includes
   include ApplicationHelper
   model_stamper
 #Associations

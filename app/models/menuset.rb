@@ -1,8 +1,10 @@
 class Menuset < ActiveRecord::Base
 #Associations
   has_many :menus
+
 #Validations
   validates :name ,:presence=>true,:uniqueness=>true
+
 #Instance Methods
   def levelname 
     treelevel

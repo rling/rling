@@ -22,6 +22,7 @@ end
  end
 end
 
+
 # == Schema Information
 #
 # Table name: model_data
@@ -32,5 +33,7 @@ end
 #  data_value          :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
+#  creator_id          :integer(4)
+#  updater_id          :integer(4)
 #
 

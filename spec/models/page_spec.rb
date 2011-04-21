@@ -164,6 +164,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: pages
@@ -185,5 +186,9 @@ end
 #  allow_create_on_permission :boolean(1)      default(FALSE)
 #  layout                     :string(255)
 #  status                     :string(255)
+#  default_sort_order         :string(255)
+#  default_sort_order_value   :string(255)
+#  limit                      :integer(4)
+#  associated_view            :integer(4)
 #
 

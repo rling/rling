@@ -1,5 +1,5 @@
 class UserDetail < ActiveRecord::Base
-#Association
+#Associations
  belongs_to :user
  belongs_to :user_detail_setting
 end

@@ -1,11 +1,11 @@
 class UserDetailSetting < ActiveRecord::Base
-#Association
+#Associations
   has_many :user_details,:dependent=>:destroy
-#scope
+#Scope
  scope :all,  :order=>"position"
   
-#validation
-  name_regex = /^[a-zA-Z]+$/
+#Validation
+  name_regex = /^[a-zA-Z0-9]+$/
   validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3,:maximum=>10},
             :format=> {:with => name_regex }
   validates :field_type, :presence=>true

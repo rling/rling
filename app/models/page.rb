@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+#Includes
 include PermalinkHelper
 include CacheHelper
 stampable
@@ -48,16 +49,7 @@ def menu_parent_id=(value)
  @parent_id=value
 end
 
-#def permalnk
-#return self.perma_link
-#end
-
-#def permalnk=(value)
-# @permalnk = value
-#end
-
 def perma_link_generate
-     #self.perma_link = "/" + generate_perma_link(Page,create_permalink(self.title))
      self.perma_link = generate_perma_link(Page,create_permalink(self.title))
 end
 
@@ -111,6 +103,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: pages
@@ -132,5 +125,9 @@ end
 #  allow_create_on_permission :boolean(1)      default(FALSE)
 #  layout                     :string(255)
 #  status                     :string(255)
+#  default_sort_order         :string(255)
+#  default_sort_order_value   :string(255)
+#  limit                      :integer(4)
+#  associated_view            :integer(4)
 #
 

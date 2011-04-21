@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20110420151009) do
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
-    t.text     "data_value"
+    t.string   "data_value"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"

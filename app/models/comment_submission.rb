@@ -1,6 +1,7 @@
 class CommentSubmission < ActiveRecord::Base
+#Includes
   include CacheHelper
-   stampable
+  stampable
 
   #Associations
   has_many :comment_datas ,:dependent=>:destroy
@@ -25,13 +26,11 @@ class CommentSubmission < ActiveRecord::Base
    return array
    end
 
-
    def send_email
     if self.model_submission.object_model.email_on_comment
       Notifier.comment_submitted(self).deliver
     end
   end
-
 
    def get_variable_info(variablename)
      output = ""
@@ -63,9 +62,6 @@ end
     end
   end
  end
-
-  
-
 end
 
 # == Schema Information

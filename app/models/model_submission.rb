@@ -1,4 +1,5 @@
 class ModelSubmission < ActiveRecord::Base
+#Includes
   include PermalinkHelper
   include ApplicationHelper
   include CacheHelper
@@ -24,7 +25,6 @@ class ModelSubmission < ActiveRecord::Base
   #instance methods
  
  def perma_link_generate(title)
-     #self.perma_link = "/" + generate_perma_link(ModelSubmission,create_permalink(title))
      self.perma_link = generate_perma_link(ModelSubmission,create_permalink(title))
  end
 
@@ -32,9 +32,9 @@ class ModelSubmission < ActiveRecord::Base
     self.categories.include?(category)
  end
 
-  def unenrolled_categories
+ def unenrolled_categories
     Category.find(:all,:conditions=>{:categoryset_id=>self.object_model.categoryset_id}) - self.categories
-  end
+ end
 
   def title
     title = self.object_model.model_components.find_by_component_name("title")

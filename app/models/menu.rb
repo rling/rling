@@ -17,14 +17,11 @@ class Menu < ActiveRecord::Base
 #Instance Methods
   def levelname
     lname = ""
-    self.level.times do
-      lname << "--"
-    end
+    self.level.times {lname << "--"}
     lname << name
     lname = "" if lname.blank?
     lname
   end
-
 
   def treename
     return self.name

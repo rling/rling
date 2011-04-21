@@ -1,7 +1,8 @@
 class ObjectModel < ActiveRecord::Base
+#Includes
   include PermalinkHelper
 
-  #Associations
+#Associations
   has_many :model_components, :dependent=>:destroy ,:order =>:position
   has_many :model_submissions, :dependent=>:destroy
   has_many :comment_components, :dependent=>:destroy 
@@ -13,7 +14,7 @@ class ObjectModel < ActiveRecord::Base
   validates :perma_link_parent ,:presence=>true, :uniqueness=>true , :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contailn - separator"}
   validates :name ,:presence=>true, :uniqueness=>true
 
-  #call backs
+#Call backs
   after_create :create_2_model_components, :verify_comments 
   after_create :create_permissions
   after_save :verify_comments
@@ -21,10 +22,9 @@ class ObjectModel < ActiveRecord::Base
   after_destroy :remove_permissions
 
 
-  #Instance Methods
+#Instance Methods
 
  def perma_link_generate
-     #self.perma_link_parent = "/" + generate_perma_link(ObjectModel,create_permalink(self.name,'plural'))
      self.perma_link_parent = generate_perma_link(ObjectModel,create_permalink(self.name,'plural')) 
  end
 
@@ -32,6 +32,7 @@ class ObjectModel < ActiveRecord::Base
    return self.model_submissions.find(:all,:conditions=>["status =?","Published"])
  end
  
+#Private Methods
 private 
 
  def create_2_model_components
@@ -65,16 +66,16 @@ private
  end
 
 def create_comment_permissions
-   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment').size == 0
+   if self.allow_comments && Permission.where(:permission_type=>self.class.to_s,:permission_object=>self.name).size == 0
     #Can comment
-    perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
+    perm = Permission.create(:activity_code=>"createcomment",:activity_display_text=>"Comment on #{self.name.pluralize} submissions",:permission_type=>self.class.to_s,:permission_object=>self.name)
     Role.all.each { |role| PermissionRole.create(:role_id=>role.id, :permission_id=>perm.id, :value=>true) }
     #Delete my comments
-    perm = Permission.create(:activity_code=>"deletecomment",:activity_display_text=>"Delete my comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
+    perm = Permission.create(:activity_code=>"deletecomment",:activity_display_text=>"Delete my comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     #Delete comments for my blog
-    perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
+    perm = Permission.create(:activity_code=>"deletecommentother",:activity_display_text=>"Delete comments for #{self.name}",:permission_type=>self.class.to_s,:permission_object=>self.name)
     #Delete comments for others blog
-    perm = Permission.create(:activity_code=>"deletemycomments",:activity_display_text=>"Delete comments for my #{self.name}",:permission_type=>self.class.to_s,:permission_object=>(self.name)+'comment')
+    perm = Permission.create(:activity_code=>"deletemycomments",:activity_display_text=>"Delete comments for my #{self.name}",:permission_type=>self.class.to_s,:permission_object=>self.name)
    end
 
 end
@@ -82,7 +83,7 @@ end
 def remove_comment_permissions
   unless self.allow_comments
     ["createcomment","deletecomment","deletecommentother","deletemycomments"].each do |code|
-      permissions = Permission.find(:all,:conditions=>["permission_type=? and activity_code=?",self.class.to_s,code])
+      permissions = Permission.find(:all,:conditions=>["permission_type=? and activity_code=? and permission_object=?",self.class.to_s,code,self.name])
       permissions.each do |permission|
         permission.destroy
       end
@@ -91,7 +92,7 @@ def remove_comment_permissions
 end
 
  def remove_permissions
-    permissions = Permission.find(:all,:conditions=>["permission_type=?",self.class.to_s])
+    permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=?",self.class.to_s,self.name])
     permissions.each do |permission|
       permission.destroy
     end
@@ -114,14 +115,12 @@ end
        self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
      end
      if self.email_on_comment
-       subject= "comment has been submitted "
-       body='Sample body template. Please Modify once all the form components are created'
+       subject= "Comment has been submitted to #{self.name} "
+       body='A comment has been submitted to #{self.name}. Check the details for the same.'
        self.create_mailer(:handle=>self.perma_link_parent,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'CommentSubmission')
      end
    end
-  
  end
-
 end
 
 

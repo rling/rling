@@ -1,10 +1,12 @@
 class ModelData < ActiveRecord::Base
+#Includes
   stampable
   #Associations
   belongs_to :model_component
   belongs_to :model_submission
 
 end
+
 
 # == Schema Information
 #
@@ -16,5 +18,7 @@ end
 #  data_value          :string(255)
 #  created_at          :datetime
 #  updated_at          :datetime
+#  creator_id          :integer(4)
+#  updater_id          :integer(4)
 #
 

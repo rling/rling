@@ -1,4 +1,5 @@
 class View < Page
+#Includes
   include CacheHelper
 
 #Associations
@@ -13,19 +14,13 @@ has_many  :view_orders ,:dependent => :destroy
 
 #instance methods
 #Components to be displayed which are to be added to the select of view components form
-def not_added_components
- model=ObjectModel.find_by_id(self.view_for)
- 
- m_component = model.model_components.collect{|mc|mc.component_name}
- m_component << "created_at"
- m_component << "updated_at"
+def not_added_components 
  v_component = self.view_components.collect{|vc|vc.name}
- return  (m_component - v_component)
+ return  (not_added_condition_components - v_component)
 end
 
 def not_added_condition_components
  model=ObjectModel.find_by_id(self.view_for)
- 
  m_component = model.model_components.collect{|mc|mc.component_name}
  m_component = [" "] + m_component +  ["created_at","updated_at","creator_id","updater_id"]
  return  m_component
@@ -40,6 +35,7 @@ end
 
 
 end
+
 
 
 # == Schema Information
@@ -63,5 +59,9 @@ end
 #  allow_create_on_permission :boolean(1)      default(FALSE)
 #  layout                     :string(255)
 #  status                     :string(255)
+#  default_sort_order         :string(255)
+#  default_sort_order_value   :string(255)
+#  limit                      :integer(4)
+#  associated_view            :integer(4)
 #
 

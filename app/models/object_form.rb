@@ -1,4 +1,5 @@
 class ObjectForm < Page
+#Includes
   include CacheHelper
 
 #Associations
@@ -9,6 +10,7 @@ has_one :mailer, :dependent => :destroy
 #call backs
 after_create :create_email_template ,:clear_cache
 after_update :clear_cache
+
 #instance methods
  #Create email template that would be used when any submissions occur
  def create_email_template
@@ -18,6 +20,7 @@ after_update :clear_cache
  end
 
 end
+
 
 
 
@@ -43,5 +46,9 @@ end
 #  allow_create_on_permission :boolean(1)      default(FALSE)
 #  layout                     :string(255)
 #  status                     :string(255)
+#  default_sort_order         :string(255)
+#  default_sort_order_value   :string(255)
+#  limit                      :integer(4)
+#  associated_view            :integer(4)
 #
 
