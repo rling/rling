@@ -2,7 +2,7 @@ class FormComponent < ActiveRecord::Base
 
 #Associations
 belongs_to :object_form
-has_many   :form_datas ,:dependent => :destroy
+has_many   :form_data ,:dependent => :destroy
 
 #Validations
 

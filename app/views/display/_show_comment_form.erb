@@ -39,7 +39,7 @@ $("#cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").click(fu
              </div>
              <div class="mandatory_component"><%= comment_component.mandatory ? "*" : "" %></div>
              <div class="comment_component_value comment_component_value_<%= comment_component.component_name %>">
-             <%= check_component_type(comment_component,@comment_submission,CommentData) %>
+             <%= check_component_type(comment_component,@comment_submission,CommentDatum) %>
              </div>
        </div>
       <% end %>

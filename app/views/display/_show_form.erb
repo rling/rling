@@ -8,7 +8,7 @@
          </div>
          <div class="mandatory_component"><%= form_component.mandatory ? "*" : "" %></div>
          <div class="form_component_value form_component_value_<%= form_component.component_name %>">
-           <%= check_component_type(form_component,@form_submission,FormData) %>
+           <%= check_component_type(form_component,@form_submission,FormDatum) %>
          </div>
       </div>
       <% end %>

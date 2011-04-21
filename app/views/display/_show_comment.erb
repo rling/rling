@@ -8,7 +8,7 @@
 
 <%= cc.component_display_name %>
 
-          <% comment_data = comment.comment_datas.first(:conditions=>["comment_component_id=?",cc.id] )
+          <% comment_data = comment.comment_data.first(:conditions=>["comment_component_id=?",cc.id] )
           unless comment_data.nil? %>
             <%= raw get_form_data(cc.component_type,comment_data.data_value) %>
           <% end %>

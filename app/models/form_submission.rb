@@ -1,7 +1,7 @@
 class FormSubmission < ActiveRecord::Base
 #Associations
   belongs_to :object_form
-  has_many   :form_datas, :dependent => :destroy
+  has_many   :form_data, :dependent => :destroy
 
 #Class methods
  #Used to get all the Tags to create Email Template
@@ -17,7 +17,7 @@ class FormSubmission < ActiveRecord::Base
 #this is no longer used...TO RECHECK
 def emailable_format
   output = ""
-  self.form_datas.each do |form_data|
+  self.form_data.each do |form_data|
      case form_data.form_component.component_type
      when "File"
     	output << "#{form_data.form_component.component_name} :- FILEUPLOADED "
@@ -36,7 +36,7 @@ def get_variable_info(variablename)
      output = ""
      form_component = self.object_form.form_components.find(:first,:conditions=>["component_name=?",variablename]) 
      unless form_component.nil?
-       form_data = self.form_datas.find(:first,:conditions=>["form_component_id=?",form_component.id])
+       form_data = self.form_data.find(:first,:conditions=>["form_component_id=?",form_component.id])
        unless form_data.nil?
          output = form_data.data_value
        end

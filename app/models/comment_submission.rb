@@ -4,7 +4,7 @@ class CommentSubmission < ActiveRecord::Base
   stampable
 
   #Associations
-  has_many :comment_datas ,:dependent=>:destroy
+  has_many :comment_data ,:dependent=>:destroy
   
   belongs_to :model_submission
   before_save :set_level
@@ -36,7 +36,7 @@ class CommentSubmission < ActiveRecord::Base
      output = ""
     comment_component = self.model_submission.object_model.comment_components.find(:first,:conditions=>["component_name=?",variablename])
      unless comment_component.nil?
-       comment_data = self.comment_datas.find(:first,:conditions=>["comment_component_id=?",comment_component.id])
+       comment_data = self.comment_data.find(:first,:conditions=>["comment_component_id=?",comment_component.id])
        unless comment_data.nil?
          output = comment_data.data_value
        end

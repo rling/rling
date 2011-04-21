@@ -1,7 +1,7 @@
 class CommentComponent < ActiveRecord::Base
 #Associations
 belongs_to :object_model
-has_many   :comment_datas ,:dependent => :destroy
+has_many   :comment_data ,:dependent => :destroy
 
 #Validations
 

@@ -119,10 +119,10 @@ class DisplayController < ApplicationController
     if object_form.nil?
       message= "Could not submit your details. Please try again"
     else
-      form_data = params[:form_field]
+      form_datum = params[:form_field]
       mandatoryfailed = false
       object_form.form_components.each do |component|
-        if component.mandatory && form_data[component.component_name].blank?
+        if component.mandatory && form_datum[component.component_name].blank?
           mandatoryfailed = true
           break;
         end
@@ -132,12 +132,12 @@ class DisplayController < ApplicationController
         object_form.form_components.each do |component|
         case component.component_type
           when "File"
-            unless form_data[component.component_name].nil?
-              asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
-              FormData.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
+            unless form_datum[component.component_name].nil?
+              asset = Asset.create(:sizes=>component.default_value,:upload=>form_datum[component.component_name])
+              FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
             end
         else
-            FormData.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_data[component.component_name])
+            FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_datum[component.component_name])
         end
         end
         message = "All details have been stored successfully"
@@ -173,12 +173,12 @@ class DisplayController < ApplicationController
         model_submission.object_model.comment_components.each do |component|
           case component.component_type
             when "File"
-              unless form_data[component.component_name].nil?
-                asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
-                CommentData.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
+              unless comment_data[component.component_name].nil?
+                asset = Asset.create(:sizes=>component.default_value,:upload=>comment_data[component.component_name])
+                CommentDatum.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
               end
           else
-            CommentData.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>comment_data[component.component_name])
+            CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>comment_data[component.component_name])
           end
         end
         message = "All details have been stored successfully"

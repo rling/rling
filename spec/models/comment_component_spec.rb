@@ -66,21 +66,21 @@ it "should create at valid attributes" do
 
    it "should have many comment  datas" do
 
-   @comment_data1=CommentData.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
-   @comment_data2=CommentData.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
-   @comment_component.should have(2).comment_datas
+   @comment_data1=CommentDatum.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
+   @comment_data2=CommentDatum.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
+   @comment_component.should have(2).comment_data
   end
 
 
   it "testing the association of model datas" do
-  CommentComponent.reflect_on_association(:comment_datas).should_not  be_nil
+  CommentComponent.reflect_on_association(:comment_data).should_not  be_nil
   end
 
   it "should destroy associated model data" do
 
-    @comment_data=CommentData.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
+    @comment_data=CommentDatum.create!( @comment_data_attributes.merge(:comment_component_id=>@comment_component.id))
     @comment_component.destroy
-    CommentData.find_by_id(@comment_data.id).should be_nil
+    CommentDatum.find_by_id(@comment_data.id).should be_nil
    end
 
 end
