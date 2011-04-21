@@ -30,6 +30,8 @@ Feature: User detail setting Page
     Given I go to new user_detail_setting page
     When I press "Create User detail setting"
     Then I should see "can't be blank" for "Field name" on that user detail setting page
+    Then I should see "is invalid" for "Field name" on that user detail setting page
+    Then I should see "is too short (minimum is 3 characters)" for "Field name" on that user detail setting page
 
   Scenario: Error in Creating new User_detail_setting( Field name lenght is less than 3 characters )
     Given I go to new user_detail_setting page
@@ -37,9 +39,9 @@ Feature: User detail setting Page
     When I press "Create User detail setting"
     Then I should see "is too short (minimum is 3 characters)" for "Field name" on that user detail setting page
 
-  Scenario: Error in Creating new User_detail_setting( Field name is anything than alpha)
+  Scenario: Error in Creating new User_detail_setting( Field name is invalid)
     Given I go to new user_detail_setting page
-    And I fill in "user_detail_setting_field_name" with "5lp"
+    And I fill in "user_detail_setting_field_name" with ",.ts"
     When I press "Create User detail setting"
     Then I should see "is invalid" for "Field name" on that user detail setting page
   

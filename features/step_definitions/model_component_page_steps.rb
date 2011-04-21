@@ -1,6 +1,6 @@
 Given /^I have a object_model with model_component in object_model index page$/ do
   @object_model = Factory(:object_model)
-  @model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name")
+  @model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:component_display_name=>"Name",:component_type=>"Textfield",:is_deletable=>"0",:is_mandatory=>"0")
 end
 
 When /^I press "([^"]*)" for "([^"]*)" on the model_components index page$/ do |arg1, arg2|
@@ -44,5 +44,7 @@ end
 
 Given /^I have a model_component in model_component index page$/ do
   @object_model = Factory(:object_model)
-  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:component_display_name=>"Name",:component_type=>"Textfield",:is_deletable=>"1",:is_mandatory=>"0")
+  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"title",:component_display_name=>"Title",:component_type=>"Textfield",:default_value=>"Enter a title",:is_deletable=>"0",:is_mandatory=>"1")
+  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:component_display_name=>"Name",:component_type=>"Textfield",:is_deletable=>"0",:is_mandatory=>"0")
+  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"body",:component_display_name=>"Body",:component_type=>"RichtextEditor",:default_value=>"Enter a Content",:is_deletable=>"1",:is_mandatory=>"1")
  end

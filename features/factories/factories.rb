@@ -141,13 +141,27 @@ end
 Factory.define(:view) do |f|
   f.title "Developer"
   f.body "This is Developer view"
-  f.perma_link "/developer"
+  f.perma_link "developer"
   f.home_page "0"
   f.page_view_type "1"
   f.type "View"
   f.view_type "table"
   f.creator_id "1"
   f.updater_id "1"
+  f.status "Published"
+end
+
+Factory.define(:view_component) do |f|
+  f.name "name"
+  f.is_linked "1"
+  f.position "0"
+  f.display_name "Blogs"
+end
+
+Factory.define(:view_condition) do |f|
+  f.name "name"
+  f.value "amit"
+  f.operator "="
 end
 
 Factory.define(:categoryset) do |f|

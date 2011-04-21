@@ -145,6 +145,20 @@ module NavigationHelpers
     when /category_index page/
       categories_path
 
+    when /view_components_index page/
+      view_view_components_path @view
+
+    when /new view_components page/
+      new_view_view_component_path @view
+
+    when /developer page/
+      '/developer'
+
+    when /view_conditions_index page/
+      view_view_conditions_path @view
+
+    when /new view_conditions page/
+      new_view_view_condition_path @view
 
 
 

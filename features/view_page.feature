@@ -28,7 +28,7 @@ Feature: View Page
     When I press "Create View"
     Then I should see "Developer" for "Title" on the page
     And I should see "This is Developer view" for "Body" on the page
-    And I should see "/developer" for "Perma link" on the page
+    And I should see "developer" for "Perma link" on the page
     And I should see "No" for "Home page" on the page
     And I should see "Table" for "View Type" on the page
     And I should see "Blogs" for "View For" on the page
@@ -45,13 +45,13 @@ Feature: View Page
     Given I go to view_index page
     Then I should see "Developer" on that view_index page
     And I should see "This is Developer view" on that view_index page
-    And I should see "/developer" on that view_index page
+    And I should see "developer" on that view_index page
     And I should see "No" on that view_index page
     And I should see "Blogs" on that view_index page
     When I press "Show" for "Developer" on the view_index page
     Then I should see "Developer" on the show page
     And I should see "This is Developer view" on the show page
-    And I should see "/developer" on the show page
+    And I should see "developer" on the show page
     And I should see "No" on the show page
     And I should see "Blogs" on the show page
 
@@ -65,7 +65,7 @@ Feature: View Page
     Then I should see "View was successfully updated"
     Then I should see "Developer2" on the show page
     And I should see "This is Developer2 view" on the show page
-    And I should see "/developer" on the show page
+    And I should see "developer" on the show page
     And I should see "No" on the show page
     And I should see "Table" on the show page
     And I should see "Blogs" on the show page
@@ -77,25 +77,3 @@ Feature: View Page
     When I press "Delete" for "Developer" on the view_index page
     Then I should not see "Developer" on that view_index page
 
-  Scenario: View Component
-    Given I have a view in view_index page
-    Given I go to view_index page
-    When I click "View Components" for "Developer" on the view_index page
-    And I should see "Listing view components" on the view_components index page
-
-  Scenario: Create a new view component successfully
-    Given I have a view in view_index page
-    Given I go to view_component index page
-    Then I go to new view_component page
-    And I select "title" from "view_component_name"
-    When I press "Add"
-    Then I should see "View component was successfully created." on the view_component index page
-
-  Scenario: Delete an item from View Component
-    Given I have a view in view_index page
-    Given I go to view_component index page
-    Then I should see "title" on that view_component index page
-    When I press "Delete" for "title" on the view_index page
-    Then I should not see "title" on that view_component index page
-
-  
