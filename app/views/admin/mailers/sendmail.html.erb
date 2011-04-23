@@ -1,0 +1,27 @@
+ <%= javascript_include_tag :ckeditor %>
+<%= form_tag preparemail_mailer_path(@mailer) do %>
+  <div class="field">
+    <%= label_tag :to %><br />
+    <%= text_field_tag "mailer[to]",nil,:size=>40 %>
+  </div>
+  <div class="field">
+    <%= label_tag :cc %><br />
+    <%= text_field_tag "mailer[cc]",nil,:size=>40 %>
+  </div>
+  <div class="field">
+    <%= label_tag :bcc %><br />
+    <%= text_field_tag "mailer[bcc]",nil,:size=>40 %>
+  </div>
+  <div class="field">
+    <%= label_tag :subject %><br />
+    <%= text_field :mailer,:subject,:size=>40 %>
+  </div>
+  <div class="field">
+    <%= label_tag :body %><br />
+    <%= raw(ckeditor_textarea :mailer, :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Send Mail" %>
+  </div>
+<% end %>
+<%= link_to 'Cancel', mailers_path %>

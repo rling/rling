@@ -1,0 +1,20 @@
+<% form_tag "/pages/:id/create_query" do %>
+  <div >
+   
+   <% @view=Page.find_by_id(@page.id) %>
+   <%= hidden_field_tag  "view_id", @view.id %>
+   sort By:
+    <%= select :view , :default_sort_order ,options_for_select( @view.not_added_condition_components.collect{|c| c },:selected=>@view.default_sort_order) %>
+     </div>
+   <div>
+    order  (Ascending / Descending):
+    <%= select :view, :default_sort_order_value,options_for_select([" ","DESC","ASC"],:selected=>@view.default_sort_order_value) %>
+   </div>
+  <div>
+    limit:
+    <%=  text_field :view, :limit %>
+  </div>
+  <div>
+    <%= submit_tag 'update' %>
+  </div>
+<% end %>

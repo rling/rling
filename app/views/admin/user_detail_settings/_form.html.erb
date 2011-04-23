@@ -1,0 +1,127 @@
+
+<script type="text/javascript">
+$(document).ready(function(){
+       var test=$("#user_detail_setting_field_type").val();
+       if(test=="Dropdown"|| test=="Radiobutton") 
+       {
+	   $("#field_value").show();
+       }
+       else
+       {
+           $("#field_value").hide();	    
+       }
+       if(test=="File")
+       { 
+          $('#default_value').hide();
+          $('#thumbnail').show();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#thumbnail').hide();
+       }
+       if(test=="Label")
+       { 
+          $('#default_value').hide();
+          $('#user_setting_default').hide();
+          $('#mandatory').hide();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#user_setting_default').show();
+          $('#mandatory').show();
+       }
+    
+    
+ });
+ 
+$(function(){
+       $('#user_detail_setting_field_type').change(function(){ 
+       var test=$("#user_detail_setting_field_type").val();
+       if(test=="Dropdown"|| test=="Radiobutton") 
+       {
+	   $("#field_value").show();
+       }
+       else
+       {
+           $("#field_value").hide();	    
+       }
+       if(test=="File")
+       { 
+          $('#default_value').hide();
+          $('#thumbnail').show();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#thumbnail').hide();
+       }
+        if(test=="Label")
+       { 
+          $('#default_value').hide();
+          $('#user_setting_default').hide();
+          $('#mandatory').hide();
+       }
+       else
+       {
+          $('#default_value').show();
+          $('#user_setting_default').show();
+          $('#mandatory').show();
+       }
+ });
+ 
+});
+
+</script>
+
+
+<%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
+  <% if @user_detail_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_detail_setting.errors.count, "error") %> prohibited this user_detail_setting from being saved:</h2>
+
+      <ul>
+      <% @user_detail_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= f.label :field_name %><br />
+  <%= f.text_field :field_name %><br />
+  </div>
+
+  <div class="field">
+  <%= f.label :display_name %><br />
+  <%= f.text_field :display_name %><br />
+  </div>
+
+  <div class="field"">
+  <%= f.label :field_type %><br />
+  <%= f.select :field_type,["Dropdown","Textfield","Textarea","Checkbox","Radiobutton","File","Date","Label"], {},{:onchange=>"return findselected();"}%><br />
+  </div>
+
+  <div class="field" id="field_value">
+  <%= f.label :field_values %><br />
+  <%= f.text_area :field_values %><br />
+  </div>
+
+  <div class="field">
+  <span id="thumbnail" style="display:none;"><%= f.label " If your file is Image then you can enter the size of thumbnail as WXH that you want to generate" %></span>
+  <span id="default_value"><%= f.label "Default value"  %></span><br />
+  <span id="user_setting_default"><%= f.text_field :default_value %></span><br />
+  </div>
+
+  <div class="field" id="mandatory">
+  <%= f.label 'Is this field mandatory?' %><br />
+  <%= f.check_box :mandatory %><br />
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

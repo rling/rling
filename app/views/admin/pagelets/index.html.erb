@@ -1,0 +1,26 @@
+<%= link_to 'New Pagelet', new_pagelet_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+<h1>Listing Pagelets</h1>
+
+<table>
+  <tr>
+    <th>Handle</th>
+    <th>Display text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pagelets.each do |pagelet| %>
+  <tr>
+    <td><%= pagelet.handle %></td>
+    <td><%= pagelet.display_text %></td>
+    <td><%= link_to "Show", pagelet %></td>
+    <td><%= link_to "Edit", edit_pagelet_path(pagelet) %></td>
+    <td><%=  link_to "Destroy", pagelet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pagelet', new_pagelet_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />

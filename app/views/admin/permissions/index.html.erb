@@ -1,0 +1,28 @@
+<%= link_to "Back to Dashboard",admin_dashboard_path %>
+<h1>Listing Permissions</h1>
+<% unless @permissions.empty? %>
+<%= form_tag save_permission_roles_permissions_path do %>
+<table>
+  <tr>
+    <th>Permission Name</th>
+    <% @roles.each do |role| %>
+     <th> <%= role.role_type %></th>
+     <% end %>
+  </tr>
+  <% @permissions.each do |permission| %>
+  <tr>
+    <td><%= permission.activity_display_text %></td>
+    <% for role in Role.all
+    permissionrole = PermissionRole.find_by_role_id_and_permission_id(role.id,permission.id)
+    %>
+    <td><%= check_box_tag "permission_role[#{permission.id}][#{role.id}]",'1',permissionrole.nil? ? nil : permissionrole.value %> </td>
+    <% end %>
+</tr>
+  <% end %>
+  </table>
+  <%= submit_tag "Update" %>
+<% end %>
+<% else %>
+<%= 'You do not have any permissions. Permissions will be automatically created after creating model.' %>
+<% end %>
+<br/><%= link_to "Back to Dashboard",admin_dashboard_path %>

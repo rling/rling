@@ -1,0 +1,15 @@
+<%= link_to 'Edit', edit_pagelet_path(@pagelet) %> | <%= link_to 'Back', pagelets_path %>
+<h3>Details of <%= @pagelet.handle %> Pagelet</h3>
+<p>
+  <b>Handle:</b>
+  <%= @pagelet.handle %>
+</p>
+
+<p>
+  <b>Display text:</b>
+  <%= @pagelet.display_text %>
+</p>
+
+
+<%= link_to 'Edit', edit_pagelet_path(@pagelet) %> |
+<%= link_to 'Back', pagelets_path %>

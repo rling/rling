@@ -1,0 +1,21 @@
+<%= link_to 'Edit', edit_mailer_path(@mailer) %> |
+<%= link_to 'Back', mailers_path %>
+<h3>Details of <%= @mailer.handle %> Template</h3>
+<p>
+  <b>Handle:</b>
+  <%= @mailer.handle %>
+</p>
+<p>
+  <b>Subject:</b>
+  <%= @mailer.subject %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= raw(@mailer.body) %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_mailer_path(@mailer) %> |
+<%= link_to 'Back', mailers_path %>

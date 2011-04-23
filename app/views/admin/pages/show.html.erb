@@ -1,0 +1,73 @@
+<%= link_to "Edit", edit_page_path(@page) %> |
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : (@page.type == "CategoryView" ? category_view_index_pages_url : pages_url))) %>
+<h3><b><%=  @page.type == "ObjectForm" ? "Details of #{@page.title} Form" : "Details of #{@page.title} Page" %></b></h3>
+
+<p>
+  <b>Title:</b>
+  <%= @page.title %>
+</p>
+<% if @page.type.eql?('CategoryView') %>
+<p>
+  <b>View Type: </b>
+  <%= @page.view_type %>
+</p>
+<p>
+  <b>View For: </b>
+  <%= @categoryset.name %>
+</p>
+<p>
+  <b>Associated View: </b>
+  <%= @associated.title %>
+</p>
+<% end %>
+<p>
+  <b>Body:</b>
+  <%= raw @page.body %>
+</p>
+
+<p>
+  <b>Perma link:</b>
+  <%= @page.perma_link %>
+</p>
+
+<p>
+  <b>Home page:</b>
+  <%= ( @page.home_page  ? "Yes" : "No") %>
+    
+</p>
+
+<p>
+  <%= raw("<b>Email  </b> : #{@page.email}") if @page.type == "ObjectForm" %>
+
+</p>
+<p>
+  <%= raw("<b>View Type  </b> : #{@page.view_type}") if @page.type == "View" %>
+
+</p>
+<p>
+  <%= raw("<b>View For </b> : #{@page.get_view_for}") if @page.type == "View" %>
+
+</p>
+<% if  @page.type.eql?('View')  %>
+<p>
+  <b>Allow Create on Permission:</b>
+  <% if @page.allow_create_on_permission.eql?(false) %>
+      <%= "No" %>
+  <% else %>
+       <%= "Yes" %>
+   <% end %>
+</p>
+<% end %>
+
+<p>
+  <b> Layout: </b>
+  <%= @page.layout %>
+</p>
+
+<p>
+  <b> Status: </b>
+  <%= @page.status %>
+</p>
+
+<%= link_to "Edit", edit_page_path(@page) %> |
+<%= link_to 'Back', (@page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : (@page.type == "CategoryView" ? category_view_index_pages_url : pages_url))) %>
