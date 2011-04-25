@@ -190,12 +190,7 @@ class DisplayController < ApplicationController
     flash[:notice] = message
     redirect_to :back
   end
-   def update_view
-     id=params[:view_id]
-     page=Page.find_by_id(id)
-     page.update_attributes(:default_sort_order=>params[:default_sort_order],:default_sort_order_value=>params[:default_sort_order_value],:limit=>params[:limit])
-     redirect_to :back
-   end
+  
 
  #MATCH  "profile/:id"=>"display/profile"
  #THIS ACTION IS CALLED WHEN A USER CLICKS ON THE NAME OF CREATOR OF A POST(BLOG)

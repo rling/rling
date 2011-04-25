@@ -36,10 +36,13 @@
     </div>
     <div id="header_menu">
      <%= raw(show_menu 'dropdownmenu','Header') %>
-      
+     
     </div>
    </div>
    <div id="middle">
+
+     <%= raw(show_secondary_menu(params[:permalink]))  unless params[:permalink].nil?%>
+    
     <%= raw(flash_notice) %>
         
     <%= yield  %>

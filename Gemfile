@@ -7,7 +7,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem 'userstamp'
 gem 'jquery-rails','>=0.2.6'
-
+gem 'will_paginate'
 
 group :development, :test do
  gem 'annotate'
