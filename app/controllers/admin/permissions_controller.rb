@@ -48,7 +48,7 @@ class Admin::PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission_role.save
-        format.html { redirect_to(@permission, :notice => 'Permission was successfully created.') }
+        format.html { redirect_to(@permission, :notice => t(:permission_created)) }
         format.xml  { render :xml => @permission, :status => :created, :location => @permission }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class Admin::PermissionsController < ApplicationController
     @permission = Permission.find(params[:id])
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
-        format.html { redirect_to(@permission, :notice => 'Permission was successfully updated.') }
+        format.html { redirect_to(@permission, :notice => t(:permission_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -100,7 +100,7 @@ class Admin::PermissionsController < ApplicationController
         permission_role.save
       end
     end
-    flash[:notice]="Permissions saved successfully"
+    flash[:notice]=t(:permission_saved)
     respond_to do |format|
       format.html { redirect_to admin_dashboard_path }
       format.xml  { head :ok }

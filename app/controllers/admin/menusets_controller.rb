@@ -43,7 +43,7 @@ class Admin::MenusetsController < ApplicationController
     @menuset = Menuset.new(params[:menuset])
     respond_to do |format|
       if @menuset.save
-        format.html { redirect_to(menusets_path, :notice => 'Menuset was successfully created.') }
+        format.html { redirect_to(menusets_path, :notice => t(:menuset_created)) }
         format.xml  { render :xml => @menuset, :status => :created, :location => @menuset }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class Admin::MenusetsController < ApplicationController
     @menuset = Menuset.find(params[:id])
     respond_to do |format|
       if @menuset.update_attributes(params[:menuset])
-        format.html { redirect_to(menusets_path, :notice => 'Menuset was successfully updated.') }
+        format.html { redirect_to(menusets_path, :notice => t('menu_updated')) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,7 +73,7 @@ class Admin::MenusetsController < ApplicationController
     @menuset = Menuset.find(params[:id])
     @menuset.destroy
     respond_to do |format|
-      format.html { redirect_to(menusets_url,:notice=>'Menuset deleted successfully') }
+      format.html { redirect_to(menusets_url,:notice=>t(:menu_deleted)) }
       format.xml  { head :ok }
     end
   end

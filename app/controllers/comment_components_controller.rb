@@ -44,7 +44,7 @@ class CommentComponentsController < ApplicationController
     @comment_component = @object.comment_components.new(params[:comment_component])
     respond_to do |format|
       if @comment_component.save
-        format.html { redirect_to(object_model_comment_components_path, :notice => 'Comment component was successfully created.') }
+        format.html { redirect_to(object_model_comment_components_path, :notice => t(:comment_component_created)) }
         format.xml  { render :xml => @comment_component, :status => :created, :location => @comment_component }
       else
         format.html { render :action => "new" }
@@ -59,7 +59,7 @@ class CommentComponentsController < ApplicationController
     @comment_component =@object.comment_components.find(params[:id])
     respond_to do |format|
       if @comment_component.update_attributes(params[:comment_component])
-        format.html { redirect_to(object_model_comment_components_path, :notice => 'Comment component was successfully updated.') }
+        format.html { redirect_to(object_model_comment_components_path, :notice => t(:comment_component_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

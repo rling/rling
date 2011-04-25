@@ -48,7 +48,7 @@ class Admin::MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to(menus_path, :notice => 'Menu was successfully created.') }
+        format.html { redirect_to(menus_path, :notice => t(:menu_created)) }
         format.xml  { render :xml => @menu, :status => :created, :location => @menu }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class Admin::MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.update_attributes(params[:menu])
-        format.html { redirect_to(menus_path, :notice => 'Menu was successfully updated.') }
+        format.html { redirect_to(menus_path, :notice => t(:menu_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class Admin::MenusController < ApplicationController
     @menu.destroy
 
     respond_to do |format|
-      format.html { redirect_to(menus_url,:notice=>'Menu deleted successfully') }
+      format.html { redirect_to(menus_url,:notice=>t(:menu_deleted)) }
       format.xml  { head :ok }
     end
   end

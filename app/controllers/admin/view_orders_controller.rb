@@ -46,7 +46,7 @@ class Admin::ViewOrdersController < ApplicationController
 
     respond_to do |format|
       if @view_order.save
-        format.html { redirect_to([@page,@view_order], :notice => 'View order was successfully created.') }
+        format.html { redirect_to([@page,@view_order], :notice => t(:view_order_created)) }
         format.xml  { render :xml => @view_order, :status => :created, :location => @view_order }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::ViewOrdersController < ApplicationController
 
     respond_to do |format|
       if @view_order.update_attributes(params[:view_order])
-        format.html { redirect_to([@page,@view_order], :notice => 'View order was successfully updated.') }
+        format.html { redirect_to([@page,@view_order], :notice => t(:view_order_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

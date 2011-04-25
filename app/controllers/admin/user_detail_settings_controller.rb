@@ -48,7 +48,7 @@ class Admin::UserDetailSettingsController < ApplicationController
 
     respond_to do |format|
       if @user_detail_setting.save
-        format.html { redirect_to(@user_detail_setting, :notice => 'User detail setting was successfully created.') }
+        format.html { redirect_to(@user_detail_setting, :notice => t(:user_detail_setting_created)) }
         format.xml  { render :xml => @user_detail_setting, :status => :created, :location => @user_detail_setting }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class Admin::UserDetailSettingsController < ApplicationController
 
     respond_to do |format|
       if @user_detail_setting.update_attributes(params[:user_detail_setting])
-        format.html { redirect_to(@user_detail_setting, :notice => 'User detail setting was successfully updated.') }
+        format.html { redirect_to(@user_detail_setting, :notice => t(:user_detail_setting_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

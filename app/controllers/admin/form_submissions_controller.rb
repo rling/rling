@@ -61,13 +61,13 @@ class Admin::FormSubmissionsController < ApplicationController
           end
           form_data_obj.save
         end
-       flash[:notice] = "Submission Form Updated"
+       flash[:notice] = t(:form_submission_updated)
        respond_to do |format|
         format.html {redirect_to object_form_form_submissions_path(@path)}
         format.xml  { render :xml => @form_submission }
        end
       else
-       flash[:notice] = "Ensure all fields having Mandatory * are filled"
+       flash[:notice] = t(:mandatory_fields_required)
        respond_to do |format|
         format.html { render :action=>"edit" }
         format.xml { render :xml => @form_submission.errors, :status => :unprocessable_entity }

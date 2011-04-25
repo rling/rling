@@ -49,7 +49,7 @@ class Admin::ViewComponentsController < ApplicationController
 
     respond_to do |format|
       if @view_component.save
-        format.html { redirect_to(view_view_components_path, :notice => 'View component was successfully created.') }
+        format.html { redirect_to(view_view_components_path, :notice => t(:view_component_created)) }
         format.xml  { render :xml => @view_component, :status => :created, :location => @view_component }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class Admin::ViewComponentsController < ApplicationController
 
     respond_to do |format|
       if @view_component.update_attributes(params[:view_component])
-        format.html { redirect_to(view_view_components_path, :notice => 'View component was successfully updated.') }
+        format.html { redirect_to(view_view_components_path, :notice => t(:view_component_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

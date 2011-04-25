@@ -46,7 +46,7 @@ class UsersController < ApplicationController
    if current_user?
      setting = Setting.find_by_name("allow_admin_register_user")
      if current_user.admin? && !setting.setting_data
-       flash[:notice] = "Admin cannot create a new User"
+       flash[:notice] = t(:admin_cannot_create_user)
        respond_to do |format|
        format.html {redirect_to users_path }
        end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   else
     setting = Setting.find_by_name("allow_user_register_user")
     unless setting.setting_data
-      flash[:notice] = "User is not authorized to register into the site"
+      flash[:notice] = t(:user_is_not_authorized)
       respond_to do |format|
         format.html {redirect_to "/"}
       end
@@ -93,14 +93,14 @@ class UsersController < ApplicationController
     @user.login = @user.email if @user.login.blank?
     respond_to do |format|
       if @user.save
-        flash[:notice] = "User registered successfully"
+        flash[:notice] = t(:user_registered)
         Notifier.welcome_email(@user).deliver if get_setting("send_welcome_email")
         #Write code for Send welcome email if setting is true
         if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
           @user.create_activation_key
           @user.activation_url
           Notifier.activation_email(@user).deliver
-          flash[:notice] = "User created successfully, An email has been sent to you, please follow the instructions to activate yourself to the website"
+          flash[:notice] = t(:user_created)
         else
           @user.is_activated = true
           @user.save
@@ -126,11 +126,11 @@ class UsersController < ApplicationController
       @user.is_activated=true
       @user.delete_activation_key
       respond_to do |format|
-            format.html {redirect_to login_path, :notice=>'Your account has been activated'}
+            format.html {redirect_to login_path, :notice=>t(:account_activated))}
             format.xml {render :xml =>@user}
       end
     else
-      flash[:notice]="No user found"
+      flash[:notice]=t(:user_not_found)
       respond_to do |format|
         format.html {redirect_to login_path}
         format.xml {render :xml =>@user}
@@ -144,7 +144,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(@user, :notice => t(:user_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -160,13 +160,13 @@ class UsersController < ApplicationController
     if @user.admin? 
      if User.admins.size > 1
        @user.destroy
-       flash[:notice] = "User deleted successfully"
+       flash[:notice] = t(:user_deleted)
      else
-       flash[:notice] = "Atleast one administrator required to execute website activities"
+       flash[:notice] = t(:admin_required)
      end
     else
       @user.destroy
-      flash[:notice] = "User deleted successfully"
+      flash[:notice] = t(:user_deleted)
     end
     respond_to do |format|
       format.html { redirect_to(users_url) }
@@ -230,11 +230,11 @@ class UsersController < ApplicationController
       if mandatory_failed
         @user = User.find(user_id)
         @userdetailsettings = UserDetailSetting.all
-        flash[:notice]="All the mandatory fields are necessary"
+        flash[:notice]= t(:mandatory_fields_required)
         format.html {redirect_to user_details_user_path(@user)}
         format.xml {render :xml=>@user,:status=>:unprocessable_entity}
       else
-        flash[:notice]="Successfully updated"
+        flash[:notice]= t(:updated_successfully)
         if current_user.admin?
           format.html {redirect_to users_path}
         else

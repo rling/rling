@@ -141,7 +141,7 @@ before_filter :require_admin
           unless params[:page_variables].nil?
 	  update_page_variables(params[:page_variables],@page)
           end
-        flash[:notice] = "#{@page_type} was successfully created."
+        flash[:notice] = "#{@page_type} #{t(:page_created)}"
       
         format.html { redirect_to(:action=>'show',:id=>@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
@@ -191,7 +191,7 @@ before_filter :require_admin
           end
          @page.home_page = params[:home_page] 
          @page.save
-        flash[:notice] = "#{@page_type} was successfully updated."
+        flash[:notice] ="#{@page_type} #{t(:page_updated)}"
         format.html { redirect_to(:action=>'show' ,:id=>@page) }
         format.xml  { head :ok }
       else
@@ -227,13 +227,13 @@ before_filter :require_admin
  def create_query
     page=Page.find_by_id(params[:view_id])
    if  page.update_attributes(params[:view])
-      flash[:notice] = "queries were successfully stored."
+      flash[:notice] = t(:query_stored)
       respond_to do |format|
         format.html {redirect_to (view_index_pages_path)}
         format.xml  { render :xml=>page}
       end
    else
-     flash[:notice] = "Some error occured"
+     flash[:notice] = t(:error_in_page)
      respond_to do |format|
         format.html {redirect_to (view_index_pages_path)}
         format.xml  { render :xml=>page.errors ,:status => :unprocessable_entity}

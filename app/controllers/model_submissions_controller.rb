@@ -54,9 +54,9 @@ class ModelSubmissionsController < ApplicationController
   # POST /object_model/1/model_submissions
   # POST /object_model/1/model_submissions.xmlmodel_data
   def create
-    message= "Your details have been submitted successfully"
+    message= t(:model_submission_submitted)
     if @object.nil?
-      message= "Could not submit your details. Please try again"
+      message= t(:error_in_model_submission)
     else
       @model_submission =  @object.model_submissions.new(params[:model_submission])
       model_data=params[:form_field]
@@ -86,7 +86,7 @@ class ModelSubmissionsController < ApplicationController
               ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>model_data[component.component_name])
             end
           end
-          message = "All details have been stored successfully"
+          message = t(:model_submission_stored)
           flash[:notice] = message
           respond_to do |format|
             format.html { redirect_to (object_model_model_submission_path(@object,@model_submission)) }
@@ -99,7 +99,7 @@ class ModelSubmissionsController < ApplicationController
           end   
         end
       else
-        message = "Ensure you have added all the mandatory fields"
+        message = t(:mandatory_fields_required)
         flash[:notice] = message
         respond_to do |format|
             format.html { render :action => "new" }
@@ -112,9 +112,9 @@ class ModelSubmissionsController < ApplicationController
   # PUT /object_model/1/model_submissions/1
   # PUT /object_model/1/model_submissions/1.xml
   def update
-    message= "Your details have been submitted successfully"
+    message= t(:model_submission_submitted)
     if @object.nil?
-      message= "Could not submit your details. Please try again"
+      message= t(:error_in_model_submission)
     else
       @model_submission =  @object.model_submissions.find(params[:id])
       model_data=params[:form_field]
@@ -150,7 +150,7 @@ class ModelSubmissionsController < ApplicationController
             end
             model_data_obj.save
           end
-          flash[:notice] = "Submission Form Updated"
+          flash[:notice] = t(:model_submission_updated)
           respond_to do |format|
             format.html { redirect_to (object_model_model_submission_path(@object,@model_submission)) }
             format.xml  { head :ok }
@@ -162,7 +162,7 @@ class ModelSubmissionsController < ApplicationController
           end
         end
       else
-        flash[:notice] = "Ensure all fields having Mandatory * are filled"
+        flash[:notice] = t(:mandatory_fields_required)
         respond_to do |format|
           format.html { render :action=>'edit' }
           format.xml  { render :xml=>@model_submission.errors,:status=>:unprocessable_entity }
@@ -218,7 +218,7 @@ class ModelSubmissionsController < ApplicationController
      unless @model_submission.enrolled_in?(@category)
        @model_submission.categories << @category
      end
-     flash[:notice]="Category is successfully added"
+     flash[:notice]=t(:category_added)
      respond_to do |format|
        format.html { redirect_to(object_model_model_submissions_path(@object)) }
        format.xml  { head :ok }
@@ -233,7 +233,7 @@ class ModelSubmissionsController < ApplicationController
      if @model_submission.enrolled_in?(@category)
        @model_submission.categories.delete(@category)
      end
-     flash[:notice]="Category successfully removed"
+     flash[:notice]=t(:category_removed)
      respond_to do |format|
        format.html { redirect_to(object_model_model_submissions_path(@object)) }
        format.xml  { head :ok }

@@ -21,7 +21,7 @@ def clear_cache
        FileUtils.rm_rf(root_path + "/"+ entry)
    end
   end
-  flash[:notice] = "Cache is empty."
+  flash[:notice] = t(:cache_empty)
   respond_to do |format|
       format.html { redirect_to(:action=>'dashboard',:controller=>'admin') }
       format.xml  { head :ok }

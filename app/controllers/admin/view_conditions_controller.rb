@@ -46,7 +46,7 @@ class Admin::ViewConditionsController < ApplicationController
 
     respond_to do |format|
       if @view_condition.save
-        format.html { redirect_to(view_view_conditions_path, :notice => 'View condition was successfully created.') }
+        format.html { redirect_to(view_view_conditions_path, :notice => t(:view_condition_created)) }
         format.xml  { render :xml => @view_condition, :status => :created, :location => @view_condition }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class Admin::ViewConditionsController < ApplicationController
 
     respond_to do |format|
       if @view_condition.update_attributes(params[:view_condition])
-        format.html { redirect_to(view_view_conditions_path, :notice => 'View condition was successfully updated.') }
+        format.html { redirect_to(view_view_conditions_path, :notice => t(:view_condition_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

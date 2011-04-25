@@ -47,7 +47,7 @@ class ObjectModelsController < ApplicationController
     end
     respond_to do |format|
       if @object_model.save
-        format.html { redirect_to(object_models_path, :notice => 'Object model was successfully created.') }
+        format.html { redirect_to(object_models_path, :notice => t(:object_model_created)) }
         format.xml  { render :xml => @object_model, :status => :created, :location => @object_model }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class ObjectModelsController < ApplicationController
       if @object_model.update_attributes(params[:object_model])
        @object_model.update_attributes(:email_on_comment => false ,:is_comment_recursive=>false) unless @object_model.allow_comments
 
-        format.html { redirect_to(object_models_path, :notice => 'Object model was successfully updated.') }
+        format.html { redirect_to(object_models_path, :notice => t(:object_model_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

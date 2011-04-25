@@ -45,7 +45,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.new(params[:category])
     respond_to do |format|
       if @category.save
-        format.html { redirect_to(categories_path, :notice => 'Category was successfully created.') }
+        format.html { redirect_to(categories_path, :notice => t(:category_created)) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     respond_to do |format|
       if @category.update_attributes(params[:category])
-        format.html { redirect_to(categories_path, :notice => 'Category was successfully updated.') }
+        format.html { redirect_to(categories_path, :notice => t(:category_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -75,7 +75,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to(categories_url,:notice=>'Category deleted successfully') }
+      format.html { redirect_to(categories_url,:notice=> t(:category_deleted) }
       format.xml  { head :ok }
     end
   end

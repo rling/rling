@@ -43,7 +43,7 @@ class Admin::RolesController < ApplicationController
     @role = Role.new(params[:role])
     respond_to do |format|
       if @role.save
-        format.html { redirect_to(roles_path, :notice => 'Role was successfully created.') }
+        format.html { redirect_to(roles_path, :notice => t(:role_created)) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class Admin::RolesController < ApplicationController
     @role = Role.find(params[:id])
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to(@role, :notice => 'Role was successfully updated.') }
+        format.html { redirect_to(@role, :notice => t(:role_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,7 +73,7 @@ class Admin::RolesController < ApplicationController
     @role = Role.find(params[:id])
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to(roles_url, :notice=> 'Role deleted') }
+      format.html { redirect_to(roles_url, :notice=> t(:role_deleted)) }
       format.xml  { head :ok }
     end
   end

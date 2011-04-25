@@ -1,3 +1,6 @@
+<%= t(:hello) %>
+
+
 <% @pages.each do |page| 
 @object_model=ObjectModel.find_by_id(page.view_for) if page.type == "View" 
 @form_submission =  page.form_submissions.new if page.type == "ObjectForm"

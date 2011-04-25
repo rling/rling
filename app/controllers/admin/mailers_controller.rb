@@ -43,7 +43,7 @@ class Admin::MailersController < ApplicationController
     @mailer = Mailer.new(params[:mailer])
     respond_to do |format|
       if @mailer.save
-        format.html { redirect_to(@mailer, :notice => 'Mailer was successfully created.') }
+        format.html { redirect_to(@mailer, :notice => t(:mailer_created)) }
         format.xml  { render :xml => @mailer, :status => :created, :location => @mailer }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class Admin::MailersController < ApplicationController
     @mailer = Mailer.find(params[:id])
     respond_to do |format|
       if @mailer.update_attributes(params[:mailer])
-        format.html { redirect_to(@mailer, :notice => 'Mailer was successfully updated.') }
+        format.html { redirect_to(@mailer, :notice => t(:mailer_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,7 +72,7 @@ class Admin::MailersController < ApplicationController
   def destroy
     @mailer = Mailer.find(params[:id])
     unless @mailer.is_deletable
-      flash[:notice] = "Cannot delete standard mailers"
+      flash[:notice] = t(:standard_mails_required)
     else
           @mailer.destroy
     end
@@ -97,14 +97,14 @@ class Admin::MailersController < ApplicationController
   def preparemail
     mailer = params[:mailer]
     if mailer[:to].blank? && mailer[:cc].blank? && mailer[:bcc].blank?
-      flash[:notice] = "Needs atleast one email address in to, cc or bcc feilds"
+      flash[:notice] = t(:email_address_required)
       respond_to do |format|
         format.html { redirect_to :back }
         format.xml  { head :ok }
       end
     else
       Notifier.send_mailers_email(mailer[:to],mailer[:cc],mailer[:bcc],mailer[:subject],mailer[:body]).deliver
-      flash[:notice]="Mail sent to given emails successfully"
+      flash[:notice]=t(:email_sent_successfully)
       respond_to do |format|
         format.html { redirect_to(mailers_url) }
         format.xml  { head :ok }

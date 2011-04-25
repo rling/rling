@@ -60,20 +60,20 @@ def first_user_create
        setting.setting_value = params[:allow_view_user_account]
        setting.save
        respond_to do |format|
-         flash[:notice] = "Administrator was successfully created."
+         flash[:notice] = t(:admin_created)
          format.html { redirect_to(login_path) }
          format.xml  { head:ok }
        end
      else
        respond_to do |format|
-        flash[:notice] = "Error in creation of the first user"
+        flash[:notice] = t(:error_creating_admin)
         format.html { render :action=>"first_user" }
         format.xml  { render :xml=>@user.errors,:status=>:unprocessable_entity }
        end
      end
    else
     respond_to do |format|
-         flash[:notice] = "Administrator is already available"
+         flash[:notice] = t(:admin_available)
          format.html { redirect_to(login_path) }
          format.xml  { head:ok }
        end
@@ -107,18 +107,18 @@ def create
      user =User.authenticate(params[:login], params[:password])
      respond_to do |format|
       if @user.nil? 
-          flash[:notice]="Incorrect Login"
+          flash[:notice]= t(:incorrect_login)
           format.html {render :action => :new}
       elsif !@user.is_activated
-	  flash[:notice]="User not yet activated. Please check your activation email."
+	  flash[:notice]= t(:user_activation_required)
           format.html {render :action => :new}
       elsif user.nil?
           @user.failed_login_count += 1
           @user.save
-         flash[:notice]="Login correct Incorrect password"
+         flash[:notice]= t(:incorrect_password)
          format.html{ render :action => :new }
       else
-         flash[:notice] = "Login successful!"
+         flash[:notice] = t(:logged_in)
          self.current_user = @user
          if params[:remember_me]=="1"
            cookies[:remember_me_code] = {:value => current_user.salt, :expires => 30.days.from_now }
@@ -143,7 +143,7 @@ end
 def destroy
     cookies.delete :remember_me_code
     session[:user]=nil
-    flash[:notice] = "You have been logged out successfully."
+    flash[:notice] = t(:logged_out)
     respond_to do |format|
        format.html{ redirect_to login_path }
        format.xml  { render :xml => @user }

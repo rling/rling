@@ -6,10 +6,7 @@ class ApplicationController < ActionController::Base
   #FILTERS
   helper :all
   helper_method :current_user,:current_user?
-  before_filter :check_browser,:check_admin,:check_cookie
-
-  #Set the base layout. Currently set for Application, future, use this to set for themes and mobile setup
-  layout :set_layout
+  before_filter :check_admin,:check_cookie
 
   #verify permission for users  
   def verify_permission
@@ -65,7 +62,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user?
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = t(:required_user_not_available)
       redirect_to new_session_url
       return false
     else
@@ -77,7 +74,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if current_user?
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = t(:no_user_required_for_page)
       if current_user.admin?
         redirect_to admin_url
       else
@@ -91,7 +88,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     if require_user
       unless current_user.admin?
-        flash[:notice] = "You do not have administrator previleges to access the page"
+        flash[:notice] = t(:admin_privelage_required)
         redirect_to :controller => "users", :action => "show", :id => current_user.id
         return false
       else
@@ -111,23 +108,6 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  #Check the browser for mobile or compouter browser types
-  def check_browser
-    if session[:browser].nil?
-      session[:browser] = 1
-      unless request.headers["HTTP_USER_AGENT"].nil?
-        browsers = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-	useragent = request.headers["HTTP_USER_AGENT"].downcase
-        browsers.each do |os|
-	  if useragent.match(os)
-	    session[:browser]=2
-	    break
-	  end
-	end
-      end
-    end
-  end
-
   #Check and return the admin 
   def check_admin
     if session[:admin_found].nil?
@@ -142,10 +122,5 @@ class ApplicationController < ActionController::Base
         end
       end
     end
-  end
-
-  #set layout -- Currently sets only the application. used for future uses.
-  def set_layout
-	  return (session[:browser] == 2) ? "mobile_application" : "application"
   end
 end

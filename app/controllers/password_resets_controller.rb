@@ -14,11 +14,11 @@ def create
       if user
         user.create_reset_code
         Notifier.forgot_password(user).deliver
-        flash[:notice] = "Reset code sent to your email. Follow instructions in the email."
+        flash[:notice] = t(:reset_code_sent)
         format.html { redirect_to login_path }
         format.xml { render :xml => user.email, :status => :created }
       else
-        flash[:notice] = "#{params[:user][:email]} does not exist in system. Please try again or contact administrator at #{User.admins.first.email}"
+        flash[:notice] = "#{params[:user][:email]} #{t(:email_dosent_exist)} #{User.admins.first.email}"  
         format.html {render :action=>'new'}
         format.xml { render :xml => user.email, :status => :unprocessable_entity }
        end
@@ -41,13 +41,13 @@ def change
   @user = User.find_by_email_and_reset_password_key(params[:user][:email],params[:user][:reset_password_key])
   if @user.update_attributes(params[:user])
      @user.delete_reset_code
-     flash[:notice] ="Password has been changed successfully"
+     flash[:notice] = t(:password_changed)
      respond_to do |format|
             format.html {redirect_to login_path}
             format.xml {render :xml =>@user}
       end
   else
-     flash[:notice] = "Please verify your password reset key"
+     flash[:notice] = t(:verify_reset_key)
      respond_to do |format|
             format.html {render :action => "reset" }
             format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }

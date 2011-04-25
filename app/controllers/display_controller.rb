@@ -101,12 +101,13 @@ class DisplayController < ApplicationController
           end
         end
       end
-      @msg = "You have #{@results.size} results for the given search query"
+      
+      @msg = "#{t(:search_string)} #{@results.size} #{t(:search_result)}"
     else
-      @msg = "Search query found empty, Provide the search text that you want to test"
+      @msg = t(:search_found_empty)
     end
     else
-      @msg = "Enter your search criteria in the given text field and submit"
+      @msg = t(:enter_search_criteria)
     end
   end
 
@@ -115,9 +116,9 @@ class DisplayController < ApplicationController
   #THIS ACTION IS CALLED WHEN A FORM HAS BEEN SUBMITTED FROM THE FRONT END
   def create_submissions
     object_form = ObjectForm.find(params[:id])
-    message= "Your details have been submitted successfully"
+    message= t(:object_form_submitted)
     if object_form.nil?
-      message= "Could not submit your details. Please try again"
+      message= t(:error_in_object_form)
     else
       form_datum = params[:form_field]
       mandatoryfailed = false
@@ -140,10 +141,10 @@ class DisplayController < ApplicationController
             FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_datum[component.component_name])
         end
         end
-        message = "All details have been stored successfully"
+        message = t(:object_form_stored)
         Notifier.form_submitted(submission).deliver unless object_form.email.blank?
       else
-        message = "Ensure you have added all the mandatory fields"
+        message = t(:mandatory_fields_required)
       end
     end
     flash[:notice] = message
@@ -154,9 +155,9 @@ class DisplayController < ApplicationController
   #THIS ACTION IS CALLED WHEN A COMMENT HAS BEEN SUBMITTED TO ANY MODEL SUBMISSION
   def create_comment_submissions
     model_submission = ModelSubmission.find(params[:id])
-    message= "Your details have been submitted successfully"
+    message= t(:comment_submission)
     if model_submission.nil?
-      message= "Could not submit your details. Please try again"
+      message= t(:error_in_comment_submission)
     else
       comment_data = params[:form_field]
       mandatoryfailed = false
@@ -181,16 +182,21 @@ class DisplayController < ApplicationController
             CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>comment_data[component.component_name])
           end
         end
-        message = "All details have been stored successfully"
+        message = t(:comment_submission_stored)
         submission.send_email
       else
-        message = "Ensure you have added all the mandatory fields"
+        message = t(:mandatory_fields_required)
       end
     end
     flash[:notice] = message
     redirect_to :back
   end
-  
+   def update_view
+     id=params[:view_id]
+     page=Page.find_by_id(id)
+     page.update_attributes(:default_sort_order=>params[:default_sort_order],:default_sort_order_value=>params[:default_sort_order_value],:limit=>params[:limit])
+     redirect_to :back
+   end
 
  #MATCH  "profile/:id"=>"display/profile"
  #THIS ACTION IS CALLED WHEN A USER CLICKS ON THE NAME OF CREATOR OF A POST(BLOG)
@@ -199,7 +205,7 @@ class DisplayController < ApplicationController
     if setting.setting_data
       @user= User.find_by_id(params[:id])
       if @user.nil?
-        flash[:notice] ="User Not found"
+        flash[:notice] = t(:user_not_found)
         redirect_to :action=>"error_page_display"
         return
       end
