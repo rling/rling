@@ -2,13 +2,17 @@ Then /^I should see "([^"]*)" on the view_index page$/ do |arg1|
   page.find('h1',:text=>arg1)
 end
 
+Then /^I should see "([^"]*)" for "([^"]*)" on the show view page$/ do |arg1, arg2|
+  page.find('p',:text=>arg1)
+  page.find('b',:text=>arg2)
+end
+
 Then /^I should see "([^"]*)" for "([^"]*)" on that view page$/ do |error_message, error_field|
   page.find('li',:text=>error_field+" "+error_message)
 end
 
 Given /^I have a view in view_index page$/ do
   @object_model = Factory(:object_model)
-#  @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"title",:component_display_name=>"Title",:component_type=>"Textfield",:default_value=>"Enter a title",:is_deletable=>"0",:is_mandatory=>"1")
   @view = Factory(:view, :view_for=>@object_model.id)
 end
 

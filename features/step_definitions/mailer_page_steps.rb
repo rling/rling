@@ -10,6 +10,10 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that mailer page$/ do |arg1, arg2
   page.find('ul',:text=>arg2+" "+arg1)
 end
 
+Then /^I should see "([^"]*)" on the mailer show page$/ do |arg1|
+  page.find('div',:text=>arg1)
+end
+
 
 When /^I press "([^"]*)" for "([^"]*)" on the mailer page$/ do |arg1, arg2|
   if arg1 == "Edit" 

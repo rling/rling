@@ -42,7 +42,7 @@ Feature: View Component Page
     When I press "Update"
     Then I should see "View component was successfully updated."
 
-  Scenario: Delete an item from model component
+  Scenario: Delete an item from view component
     Given I have a view_components in view_component page
     Given I go to view_components_index page
     Then I should see "name" on that view_component_index page

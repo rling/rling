@@ -17,8 +17,7 @@ Feature: Mailer Page
   Scenario: User on mailer index page
     Given I go to mailer index page
     Then I should see "welcome" on the mailer index page
-    And I should see "Welcome Mail" on the mailer index page
-    And I should see "Welcome to Rling CMS. You have been registered successfully" on the mailer index page
+    And I should see "Rails Party Welcome Email" on the mailer index page
 
   Scenario: Create a new mailer page successfully
     Given I go to new mailer page
@@ -26,10 +25,7 @@ Feature: Mailer Page
     And I fill in "mailer_subject" with "Thank you mail"
     And I fill in "mailer_body_editor" with "Thank you for joining us"
     When I press "Create Template"
-    Then I should see "Thank you" for "Handle" on the page
-    And I should see "Thank you mail" for "Subject" on the page
-    And I should see "Thank you for joining us" for "Body" on the page
-    And I should see "Send Mail" on the mailer index page
+    Then I should see "Mailer was successfully created." on the mailer show page
 
   Scenario: Error in Creating new Mailer( when Handle & Subject are blank )
     Given I go to the new mailer page
@@ -70,9 +66,7 @@ Feature: Mailer Page
     And I fill in "mailer_subject" with "Thank you mail"
     And I fill in "mailer_body_editor" with "Thank you for joining us"
     When I press "Update Template"
-    Then I should see "Thank you" for "Handle" on the page
-    And I should see "Thank you mail" for "Subject" on the page
-    And I should see "Thank you for joining us" for "Body" on the page
+    Then I should see "Mailer was successfully updated." on the mailer show page
 
   Scenario: Delete an item from mailer
     Given I have a mailer in mailer index page

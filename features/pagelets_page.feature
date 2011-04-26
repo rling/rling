@@ -63,8 +63,7 @@ Feature: Pagelet Page
     And I fill in "pagelet_handle" with "Home"
     And I fill in "pagelet_display_text" with "This is home menu"
     When I press "Update Pagelet"
-    Then I should see "Home" for "Handle" on the pagelet show page
-    And I should see "This is home menu" for "Display text" on the pagelet show page
+    Then I should see "Pagelet was successfully updated." on the pagelet show page
 
   Scenario: Delete an item from pagelet
     Given I have a pagelet in pagelet index page

@@ -25,14 +25,15 @@ Feature: Setting Page
     Given I go to setting index page 
     When I press "Edit" for "allow_user_register_user" on the setting index page
     Then I should see "Editing setting" on the edit setting page 
-    And I fill in "setting_setting_value" with "false"
+    And I select "false" from "setting_setting_value"
     When I press "Update Setting"
-    Then I should see "allow_user_register_user" for "Setting Name" on the page
-    And I should see "Should the System allow users to sign up to the website on their own. i.e. Should there be a sign up link for the user to execute " for "Descriptive Text" on the page
-    And I should see "boolean" for "Setting Type" on the page
-    And I should see "false" for "Setting Value:" on the page
+    Then I should see "Setting was successfully updated." on the setting_index page
+    Then I should see "allow_user_register_user" for "Setting Name" on the setting page
+    And I should see "Should the System allow users to sign up to the website on their own. i.e. Should there be a register link for the user to execute" for "Descriptive Text" on the setting page
+    And I should see "boolean" for "Setting Type" on the setting page
+    And I should see "false" for "Setting Value:" on the setting page
 
   Scenario: Clear Cache
     Given I go to setting index page
     When I follow "Clear Cache"
-    And I should see "Cache is empty."
+    And I should see "Cache is empty"

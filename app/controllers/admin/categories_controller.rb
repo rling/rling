@@ -75,7 +75,7 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to(categories_url,:notice=> t(:category_deleted))}
+      format.html { redirect_to(categories_url,:notice=> t(:category_deleted)) }
       format.xml  { head :ok }
     end
   end

@@ -160,6 +160,12 @@ module NavigationHelpers
     when /new view_conditions page/
       new_view_view_condition_path @view
 
+    when /new category_view page/
+      new_category_view_pages_path
+
+    when /list page/
+      '/list'
+
 
 
 

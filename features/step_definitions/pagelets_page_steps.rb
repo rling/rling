@@ -7,7 +7,7 @@ Then /^I should see "([^"]*)" for "([^"]*)" on that pagelet page$/ do |error_mes
 end
 
 Then /^I should see "([^"]*)" on the pagelet show page$/ do |arg1|
-  page.find('#middle').text.index(arg1).should_not eq(0)
+  page.find('div',:text=>arg1)
 end
 
 Given /^I have a pagelet in pagelet index page$/ do

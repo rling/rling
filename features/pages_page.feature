@@ -19,10 +19,11 @@ Feature: Pages Page
     Given I go to the new pages page
     And I fill in "page_title" with "Home"
     And I fill in "page_body_editor" with "This is home page"
+    And I select "Published" from "page_status"
     When I press "Create Page"
     And I should see "Home" on the pages index page
     And I should see "This is home page" on the pages index page
-    And I should see "/home" on the pages index page
+    And I should see "home" on the pages index page
     And I should see "No" on the pages index page
     And I should see "No" on the pages index page
 

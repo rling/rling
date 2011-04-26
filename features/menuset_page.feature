@@ -24,20 +24,14 @@ Feature: Menuset Page
     And I fill in "menuset_name" with "Header2"
     And I fill in "menuset_description" with "Header2 Menu for RlingCMS"
     When I press "Create Menuset"
+    Then I should see "Menuset was successfully created."
     Then I should see "Header2" for "Name" on the page
-    And I should see "Header2 menus for rlingCMS" for "Description" on the page
+    And I should see "Header2 Menu for RlingCMS" for "Description" on the page
 
   Scenario: Error in Creating new Menuset
     Given I go to the new menuset page
     When I press "Create Menuset"
     Then I should see "can't be blank" for "Name" on that menuset page
-
-  Scenario: User clicks on Show Page
-    Given I go to menuset index page
-    Then I should see "Header" on the index page
-    And I press "Show" for "Header"
-    Then I should see "Header" for "Name" on the page
-    And I should see "Header menus for rlingCMS" for "Description" on the page
   
   Scenario: Edit a Menuset item
     Given I go to menuset index page 
@@ -46,8 +40,7 @@ Feature: Menuset Page
     And I fill in "menuset_name" with "Header1"
     And I fill in "menuset_description" with "Header1 Menu for RlingCMS"
     When I press "Update Menuset"
-    Then I should see "Header1" for "Name" on the page
-    And I should see "Header1 Menu for rlingCMS" for "Description" on the page
+    And I should see "Menu was successfully updated."
     
   Scenario: Delete an item from menuset
     Given I go to menuset index page

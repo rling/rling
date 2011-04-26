@@ -1,3 +1,7 @@
+Then /^I should see "([^"]*)" on the categoryset_index page$/ do |arg1|
+  page.find("div",:text=>arg1)
+end
+
 Then /^I should see "([^"]*)" for "([^"]*)" on the show categoryset page$/ do |arg1, arg2|
   page.find("p",:text=>arg1)
   page.find("b",:text=>arg2)

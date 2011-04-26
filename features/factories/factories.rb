@@ -180,3 +180,18 @@ end
 Factory.define(:categorization) do |f|
 
 end
+
+Factory.define(:category_view) do |f|
+  f.title "List"
+  f.body "This is category view"
+  f.perma_link "list"
+  f.home_page "0"
+  f.page_view_type "1"
+  f.type "CategoryView"
+  f.view_type "TreeView"
+  f.view_for "1"
+  f.creator_id "1"
+  f.updater_id "1"
+  f.status "Published"
+
+end

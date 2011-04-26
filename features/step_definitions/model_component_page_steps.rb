@@ -33,9 +33,9 @@ Then /^I should see "([^"]*)" on the model_componets index page$/ do |arg1|
   page.find('td',:text=>arg1)
 end
 
-Then /^I should see "([^"]*)" for "([^"]*)" on the model_components show page$/ do |arg1, arg2|
-  page.find('b',:text=>arg2)
-  page.find('#middle').text.index(arg1).should_not eq(0)
+Then /^I should see "([^"]*)" for "([^"]*)" on the model_components index page$/ do |arg1, arg2|
+  page.find('td',:text=>arg1)
+  page.find('th',:text=>arg2)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on that model_component page$/ do |arg1, arg2|

@@ -23,9 +23,7 @@ Feature: Category Page
     And I fill in "category_position" with "1"
     When I press "Create Category"
     Then I should see "Category was successfully created." on the show category page
-    Then I should see "Ruby" for "Name" on the show category page
-    Then I should see "Object Oriented Programming Language" for "Description" on the show category page
-    Then I should see "Technology" for "Category Set" on the show category page
+    Then I should see "Ruby" on the category index page
 
   Scenario: Error in Creating new category
     Given I go to new category page

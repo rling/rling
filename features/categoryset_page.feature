@@ -19,8 +19,7 @@ Feature: Categoryset Page
     And I fill in "categoryset_name" with "Technology"
     And I fill in "categoryset_description" with "For latest technology"
     When I press "Create Categoryset"
-    Then I should see "Technology" for "Name" on the show categoryset page
-    And I should see "For latest technology" for "Description" on the show categoryset page
+    Then I should see "Categoryset was successfully created." on the categoryset_index page
 
   Scenario: User on categoryset index page
     Given I have a categoryset in categoryset index page
@@ -49,8 +48,6 @@ Feature: Categoryset Page
     And I fill in "categoryset_description" with "For latest technology1"
     When I press "Update Categoryset"
     Then I should see "Categoryset was successfully updated."
-    Then I should see "Technology1" for "Name" on the show categoryset page
-    And I should see "For latest technology1" for "Description" on the show categoryset page
 
   Scenario: Delete an item from menuset
     Given I have a categoryset in categoryset index page

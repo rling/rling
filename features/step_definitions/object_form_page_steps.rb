@@ -6,6 +6,15 @@ Given /^I have a object_form in object_form_index page$/ do
   @object=Factory(:object_form)
 end
 
+Then /^I should see "([^"]*)" for "([^"]*)" on the Object_form index page$/ do |arg1, arg2|
+  page.find('p',:text=>arg1)
+  page.find('b',:text=>arg2)
+end
+
+Then /^I should see "([^"]*)" on the show Object_form page$/ do |arg1|
+  page.find('div',:text=>arg1)
+end
+
 When /^I press "([^"]*)" for "([^"]*)" on the object_form_index page$/ do |arg1, arg2|
   
   if arg1 == "Edit" 
@@ -35,12 +44,16 @@ Then /^I should see "([^"]*)" on the new form_component page$/ do |arg1|
   page.find('h1', :text=>arg1)
 end
 
-Then /^I should see "([^"]*)" on that form_component show page$/ do |arg1|
+Then /^I should see "([^"]*)" on that form_components_index page$/ do |arg1|
   page.find('div', :text=>arg1)
 end
 
 Then /^I should see "([^"]*)" on the form_component show page$/ do |arg1|
   page.find('p', :text=>arg1)
+end
+
+Then /^I should see "([^"]*)" on the form_components_index page$/ do |arg1|
+  page.find('td', :text=>arg1)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on the new form_component page$/ do |error_massage, error_field|

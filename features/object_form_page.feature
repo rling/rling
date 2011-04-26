@@ -18,7 +18,7 @@ Feature: Object Form Page
     Given I go to object_form_index page
     Then I should see "Admission" on the object_form_index page
     And I should see " 	Admission form for MCA" on the object_form_index page
-    And I should see "/admission" on the object_form_index page
+    And I should see "admission" on the object_form_index page
     And I should see "No" on the object_form_index page
     And I should see "amit@heurion.com" on the object_form_index page
 
@@ -29,12 +29,12 @@ Feature: Object Form Page
     And I fill in "object_form_email" with "amit@heurion.com"
     And I select "Published" from "object_form_status"
     When I press "Create Object form"
-    Then I should see "Admission" for "Title" on the page
-    And I should see "Admission form for MCA" for "Body" on the page
-    And I should see "/admission" for "Perma link" on the page
-    And I should see "No" for "Home page" on the page
-    And I should see "amit@heurion.com" for "Email" on the page
-    And I should see "Published" for "Status" on the page
+    Then I should see "Admission" for "Title" on the Object_form index page
+    And I should see "Admission form for MCA" for "Body" on the Object_form index page
+    And I should see "admission" for "Perma link" on the Object_form index page
+    And I should see "No" for "Home page" on the Object_form index page
+    And I should see "amit@heurion.com" for "Email" on the Object_form index page
+    And I should see "Published" for "Status" on the Object_form index page
 
   Scenario: Error in Creating new Pagelet( when Title is blank )
     Given I go to the new object_form page
@@ -63,11 +63,12 @@ Feature: Object Form Page
     And I fill in "object_form_email" with "amit@heurion.com"
     And I select "Published" from "object_form_status"
     When I press "Update Object form"
-    Then I should see "Admission" for "Title" on the page
-    And I should see "/admission" for "Perma link" on the page
-    And I should see "No" for "Home page" on the page
-    And I should see "amit@heurion.com" for "Email" on the page
-    And I should see "Published" for "Status" on the page
+    Then I should see "ObjectForm was successfully updated." on the show Object_form page
+    Then I should see "Admission"
+    And I should see "admission"
+    And I should see "No"
+    And I should see "amit@heurion.com"
+    And I should see "Published"
 
   Scenario: Delete an Object Form item
     Given I have a object_form in object_form_index page
@@ -91,12 +92,11 @@ Feature: Object Form Page
     And I select "Textfield" from "form_component_component_type"
     And I fill in "form_component_default_value" with "mail@mail.com"
     When I press "Create Form component"
-    Then I should see "Form component was successfully created." on that form_component show page
-    And I should see "email" on the form_component show page
-    And I should see "E-mail" on the form_component show page
-    And I should see "Textfield" on the form_component show page
-    And I should see "mail@mail.com" on the form_component show page
-    And I should see "false" on the form_component show page
+    Then I should see "Form component was successfully created." on that form_components_index page
+    And I should see "email" on the form_components_index page
+    And I should see "E-mail" on the form_components_index page
+    And I should see "Textfield" on the form_components_index page
+    And I should see "false" on the form_components_index page
 
   Scenario: Error in Creating new Form Component( when Component Name & Component Display Name are blank )
     Given I have a object_form in object_form_index page
@@ -151,11 +151,10 @@ Feature: Object Form Page
     And I fill in "form_component_default_value" with "mail@mail.com"
     When I press "Update Form component"
     Then I should see "Form component was successfully updated." on the show form_component page
-    And I should see "email" on the form_component show page
-    And I should see "E-mail" on the form_component show page
-    And I should see "Textfield" on the form_component show page
-    And I should see "mail@mail.com" on the form_component show page
-    And I should see "false" on the form_component show page
+    And I should see "email" on the form_components_index page
+    And I should see "E-mail" on the form_components_index page
+    And I should see "Textfield" on the form_components_index page
+    And I should see "false" on the form_components_index page
 
   Scenario: User deletes an item from form_component
     Given I have a form_component in form_componet_index page
@@ -168,7 +167,7 @@ Feature: Object Form Page
     Given I have a form_component with mandatory field in form_component page
     Given I go to object_form_index page
     When I follow "Submissions"
-    Then I should see "Listing  Admissions " on the form_submissions index page
+    Then I should see "Listing  submissions for Admissions " on the form_submissions index page
 
   Scenario: Edit a Submissions item
     Given I have a form_submission in form_submission page

@@ -29,10 +29,9 @@ Feature: Menu Page
     And I fill in "menu_image_path" with "/root/Desktop/cucumber/rling-gitcode/rling/public/images/rails.png"
     And I fill in "menu_hover_image_path" with "/root/Desktop/cucumber/rling-gitcode/rling/public/images/show.png"
     When I press "Create Menu"
-    Then I should see "Menu was successfully created." on that show page
-    And I should see ": Home" on the show page
-    And I should see ":Root" on the show page
-    And I should see ":1" on the show page
+    Then I should see "Menu was successfully created." on that menu_index page
+    And I should see "Home" on the menu_index page
+
 
   Scenario: Error in Creating new menu
     Given I go to the new menu page
@@ -61,11 +60,8 @@ Feature: Menu Page
     And I fill in "menu_image_path" with "/root/Desktop/cucumber/rling-gitcode/rling/public/images/rails.png"
     And I fill in "menu_hover_image_path" with "/root/Desktop/cucumber/rling-gitcode/rling/public/images/show.png"
     When I press "Update Menu"
-    Then I should see "Menu was successfully updated." on that page
-    Then I should see "Home" for "Name" on the page
-    And I should see "Root" for "Parent Menu" on the page
-    And I should see "0" for "Position" on the page
-
+    Then I should see "Menu was successfully updated." on that menu_index page
+    And I should see "Home" on the menu_index page
 
   Scenario: Delete an item from menu
     Given I have a menu in menu index page

@@ -34,10 +34,10 @@ Feature: Comment Page
     And I check "comment_component_mandatory"
     When I press "Create Comment component"
     Then I should see "Comment component was successfully created." on that comment_components show page
-    And I should see "user" for "Component name" on the comment_components show page
-    And I should see "User" for "Component Display name" on the comment_components show page
-    And I should see "Textfield" for "Component type" on the comment_components show page
-    And I should see "true" for "Mandatory" on the comment_components show page
+    And I should see "user"
+    And I should see "User"
+    And I should see "Textfield"
+    And I should see "true"
 
   Scenario: Error in Creating new Comment Component( when Component name & Component display name are blank )
     Given I have a object_model in object_model index page
@@ -100,10 +100,10 @@ Feature: Comment Page
     And I check "comment_component_mandatory"
     When I press "Update Comment component"
     Then I should see "Comment component was successfully updated." on that comment_components show page
-    And I should see "user" for "Component name" on the comment_components show page
-    And I should see "User" for "Component Display name" on the comment_components show page
-    And I should see "Textfield" for "Component type" on the comment_components show page
-    And I should see "true" for "Mandatory" on the comment_components show page
+    And I should see "user"
+    And I should see "User"
+    And I should see "Textfield"
+    And I should see "true"
 
   Scenario: Delete an item from comment component
     Given I have a object_model with comment_component in object_model index page

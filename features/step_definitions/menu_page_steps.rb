@@ -6,12 +6,12 @@ Then /^I should see "([^"]*)" on the menu index page$/ do |arg1|
   page.find('td',:text=>arg1)
 end
 
-Then /^I should see "([^"]*)" on that show page$/ do |arg1|
+Then /^I should see "([^"]*)" on that menu_index page$/ do |arg1|
   page.find('div',:text=>arg1)
 end
 
-Then /^I should see "([^"]*)" on the show page$/ do |arg1|
-  page.find('p',:text=>arg1)
+Then /^I should see "([^"]*)" on the menu_index page$/ do |arg1|
+  page.find('td',:text=>arg1)
 end
 
 Then /^I should see "([^"]*)" for "([^"]*)" on that page$/ do |error_message, error_field|
@@ -35,10 +35,6 @@ When /^I press "([^"]*)" for the "([^"]*)"$/ do |arg1, arg2|
   elsif arg1 == "Destroy"
     visit menu_path(@menu)
   end
-end
-
-Then /^I should see "([^"]*)" on that page$/ do |arg1|
-  page.find('div',:text=>arg1)
 end
 
 Then /^I should see "([^"]*)" on the edit menu page$/ do |arg1|

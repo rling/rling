@@ -15,6 +15,7 @@ Feature: Page Variable Setting Page
     Then I should see "Login successful!" on the page
 
   Scenario: User on Page Variable Setting index page
+    Given I have a page_variable_setting in index page
     Given I go to page_variable_setting index page
     Then I should see "SEO Meta Keywords" on the page_variable_setting index page
     And I should see "keywords" on the page_variable_setting index page
@@ -36,10 +37,8 @@ Feature: Page Variable Setting Page
   Scenario: User clicks on Show Page
     Given I have a page_variable_setting in index page
     Given I go to page_vaiable_setting index page     
-    Then I should see "SEO Meta Keywords" on the page_variable_setting index page
-    And I should see "keywords" on the page_variable_setting index page
     When I press "Show" for the "SEO Meta Keywords" on the page_variable_setting page
-    Then I should see "Seo Meta Keywords" for "Name" on the page_variable_setting show page
+    Then I should see "SEO Meta Keywords" for "Name" on the page_variable_setting show page
     And I should see "keywords" for "Default value" on the page_variable_setting show page
 
   Scenario: Edit a Page Variable Setting item
@@ -49,9 +48,9 @@ Feature: Page Variable Setting Page
     Then I should see "Editing page variable setting" on the edit mailer page 
     And I fill in "page_variable_setting_name" with "SEO Meta Keywords"
     And I fill in "page_variable_setting_default_value" with "keywords"
-    When I press "Update Page variable setting"
-    Then I should see "Seo Meta Keywords" for "Name" on the page_variable_setting show page
-    And I should see "keywords" for "Default value" on the page_variable_setting show page
+    When I press "page_variable_setting_submit"
+    Then I should see "SEO Meta Keywords" for "Name" on the page_variable_setting_index page
+    And I should see "keywords" for "Default value" on the page_variable_setting_index page
 
   Scenario: Delete an item from page
     Given I have a page_variable_setting in index page

@@ -25,13 +25,14 @@ Feature: View Page
     And I select "Table" from "view_view_type"
     And I select "Blogs" from "view_view_for"
     And I fill in "view_body_editor" with "This is Developer view"
+    And I select "Published" from "view_status"
     When I press "Create View"
-    Then I should see "Developer" for "Title" on the page
-    And I should see "This is Developer view" for "Body" on the page
-    And I should see "developer" for "Perma link" on the page
-    And I should see "No" for "Home page" on the page
-    And I should see "Table" for "View Type" on the page
-    And I should see "Blogs" for "View For" on the page
+    Then I should see "Developer" for "Title" on the show view page
+    And I should see "This is Developer view" for "Body" on the show view page
+    And I should see "developer" for "Perma link" on the show view page
+    And I should see "No" for "Home page" on the show view page
+    And I should see "Table" for "View Type" on the show view page
+    And I should see "Blogs" for "View For" on the show view page
 
   Scenario: Error in Creating new View page( when Title is blank )
     Given I have a object_model in object_model index page
@@ -49,11 +50,11 @@ Feature: View Page
     And I should see "No" on that view_index page
     And I should see "Blogs" on that view_index page
     When I press "Show" for "Developer" on the view_index page
-    Then I should see "Developer" on the show page
-    And I should see "This is Developer view" on the show page
-    And I should see "developer" on the show page
-    And I should see "No" on the show page
-    And I should see "Blogs" on the show page
+    Then I should see "Developer" for "Title" on the show view page
+    And I should see "This is Developer view" for "Body" on the show view page
+    And I should see "developer" for "Perma link" on the show view page
+    And I should see "No" for "Home page" on the show view page
+    And I should see "Blogs" for "View For" on the show view page
 
   Scenario: Edit a view item
     Given I have a view in view_index page
@@ -63,12 +64,6 @@ Feature: View Page
     And I fill in "view_body_editor" with "This is Developer2 view"
     When I press "Update View"
     Then I should see "View was successfully updated"
-    Then I should see "Developer2" on the show page
-    And I should see "This is Developer2 view" on the show page
-    And I should see "developer" on the show page
-    And I should see "No" on the show page
-    And I should see "Table" on the show page
-    And I should see "Blogs" on the show page
 
   Scenario: Delete an item from View
     Given I have a view in view_index page

@@ -21,10 +21,10 @@ Feature: User detail setting Page
     And I fill in "user_detail_setting_default_value" with "amit"
     And I check "user_detail_setting_mandatory"
     When I press "Create User detail setting"
-    Then I should see "Name" for "Field Name" on the page
-    And I should see "Textfield" for "Field Type" on the page
-    And I should see "amit" for "Default Value" on the page
-    And I should see "true" for "Is this field mandatory for users" on the page
+    Then I should see "Name"
+    And I should see "Textfield"
+    And I should see "amit"
+    And I should see "true"
 
   Scenario: Error in Creating new User_detail_setting( Field name is blank)
     Given I go to new user_detail_setting page
@@ -71,10 +71,10 @@ Feature: User detail setting Page
     And I fill in "user_detail_setting_default_value" with "amit"
     And I check "user_detail_setting_mandatory"
     When I press "Update User detail setting"
-    Then I should see "Name" for "Field Name" on the page
-    And I should see "Textfield" for "Field Type" on the page
-    And I should see "amit" for "Default Value" on the page
-    And I should see "true" for "Is this field mandatory for users" on the page
+    Then I should see "Name"
+    And I should see "Textfield"
+    And I should see "amit"
+    And I should see "true"
 
   Scenario: Delete an item from user detail setting page
     Given I have a user detail setting on the index page

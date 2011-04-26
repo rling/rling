@@ -33,11 +33,10 @@ Feature:Model Component Page
     And I select "Textfield" from "model_component_component_type"
     And I check "model_component_is_mandatory"
     When I press "Create Model component"
-    Then I should see "name" for "Component name" on the model_components show page
-    And I should see "Name" for "Component Display name" on the model_components show page
-    And I should see "Textfield" for "Component type" on the model_components show page
-    And I should see "true" for "Mandatory" on the model_components show page
-    And I should see "true" for "deletable" on the model_components show page
+    Then I should see "name" for "Component name" on the model_components index page
+    And I should see "Name" for "Component Display name" on the model_components index page
+    And I should see "Textfield" for "Component type" on the model_components index page
+    And I should see "true" for "Mandatory" on the model_components index page
     When I go to admin page
     Then I should see "Blogs Administration" on the admin page
 
@@ -80,11 +79,11 @@ Feature:Model Component Page
     Given I have a object_model with model_component in object_model index page
     Given I go to model_components_index page
     When I press "Show" for "user" on the model_components index page
-    Then I should see "name" for "Component name" on the model_components show page
-    And I should see "Name" for "Component Display name" on the model_components show page
-    And I should see "Textfield" for "Component type" on the model_components show page
-    And I should see "true" for "Mandatory" on the model_components show page
-    And I should see "true" for "deletable" on the model_components show page
+    Then I should see "name"
+    And I should see "Name"
+    And I should see "Textfield"
+    And I should see "false"
+    And I should see "false"
 
   Scenario: Edit a Model Component item
     Given I have a object_model with model_component in object_model index page
@@ -96,12 +95,12 @@ Feature:Model Component Page
     And I select "Textfield" from "model_component_component_type"
     And I check "model_component_is_mandatory"
     When I press "Update Model component"
-    Then I should see "Model component was successfully updated." on that model_components show page
-    And I should see "name" for "Component name" on the model_components show page
-    And I should see "Name" for "Component Display name" on the model_components show page
-    And I should see "Textfield" for "Component type" on the model_components show page
-    And I should see "true" for "Mandatory" on the model_components show page
-    And I should see "true" for "deletable" on the model_components show page
+    Then I should see "Model component was successfully updated" on that model_components show page
+    And I should see "name"
+    And I should see "Name"
+    And I should see "Textfield"
+    And I should see "true"
+    And I should see "true"
 
   Scenario: Delete an item from model component
     Given I have a object_model with model_component in object_model index page

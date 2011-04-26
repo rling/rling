@@ -22,12 +22,13 @@ Feature: Object Model Page
     And I check "object_model_allow_comments"
     And I select "Technology" from "object_model_categoryset_id"
     When I press "Create Object model"
-    Then I should see "Blog" for "Name" on the object_model show page
-    And I should see "Blog page" for "Description" on the object_model show page
-    And I should see "blogs" for "Perma link Parent" on the object_model show page
-    And I should see "Yes" for "Allow Comments" on the object_model show page
-    And I should see "No" for "Is comment recursive ?" on the object_model show page
-    And I should see "No" for "Email on Comment" on the object_model show page
+    Then I should see "Object model was successfully created." on the object_model index page
+    Then I should see "Blog" for "Name" on the object_model_index page
+    And I should see "Blog page" for "Description" on the object_model_index page
+    And I should see "blogs" for "Perma link parent" on the object_model_index page
+    And I should see "Yes" for " Allow comments  " on the object_model_index page
+    And I should see "No" for " Is comment Recursive ?  " on the object_model_index page
+    And I should see "No" for " Email On comment ? " on the object_model_index page
 
   Scenario: User on Object Model index page
     Given I go to object_model index page
@@ -47,14 +48,11 @@ Feature: Object Model Page
   Scenario: User clicks on Show Page
     Given I have a object_model in object_model index page
     Given I go to object_model index page
-    Then I should see "Blog" on the object_model index page
-    And I should see "Blog page" on the object_model index page
-    And I should see "/blogs" on the object_model index page
     When I press "Show" for "Blog" on the object_model index page
-    Then I should see "Blog" for "Name" on the object_model show page
-    And I should see "Blog page" for "Description" on the object_model show page
-    And I should see "/blogs" for "Perma link Parent" on the object_model show page
-    And I should see "Yes" for "Allow Comments" on the object_model show page
+    Then I should see "Blog"
+    And I should see "Blog page"
+    And I should see "blogs"
+    And I should see "Yes"
 
   Scenario: Edit a Object Model item
     Given I have a object_model in object_model index page
@@ -67,10 +65,13 @@ Feature: Object Model Page
     And I check "object_model_allow_comments"
     And I select "Technology" from "object_model_categoryset_id"
     When I press "Update Object model"
-    Then I should see "Blog" for "Name" on the object_model show page
-    And I should see "Blog page" for "Description" on the object_model show page
-    And I should see "/blogs" for "Perma link Parent" on the object_model show page
-    And I should see "Yes" for "Allow Comments" on the object_model show page
+    Then I should see "Object model was successfully updated." on the object_model index page
+    Then I should see "Blog" for "Name" on the object_model_index page
+    And I should see "Blog page" for "Description" on the object_model_index page
+    And I should see "blogs" for "Perma link parent" on the object_model_index page
+    And I should see "Yes" for " Allow comments  " on the object_model_index page
+    And I should see "No" for " Is comment Recursive ?  " on the object_model_index page
+    And I should see "No" for " Email On comment ? " on the object_model_index page
 
   Scenario: Delete an item from object model
     Given I have a object_model in object_model index page
