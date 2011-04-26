@@ -1,4 +1,5 @@
  <%= javascript_include_tag :ckeditor %>
+<%= link_to 'Cancel', mailers_path %>
 <%= form_tag preparemail_mailer_path(@mailer) do %>
   <div class="field">
     <%= label_tag :to %><br />

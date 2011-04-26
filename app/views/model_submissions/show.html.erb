@@ -1,4 +1,6 @@
-<%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> | <%= link_to 'Back', object_model_model_submissions_path %>
+<% if validate_permission("edit",@object,@model_submission) %>
+<%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> |<% end %>
+<%= link_to 'Back', object_model_model_submissions_path %>
 <h3>Details of  <%= @object.name.capitalize %>  </h3>
 
 <p>
@@ -24,4 +26,6 @@
  <%= @model_submission.status %>
 </p>
 
-<%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> | <%= link_to 'Back', object_model_model_submissions_path %>
+<% if validate_permission("edit",@object,@model_submission) %>
+<%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> |<% end %>
+<%= link_to 'Back', object_model_model_submissions_path %>

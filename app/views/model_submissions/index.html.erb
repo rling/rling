@@ -37,9 +37,12 @@
           <% end %>
       </td>
       <% end %>
+   
+
     <% if @object.allow_comments %>
        <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>
     <% end %>
+ 
 
     <% if validate_permission("view",@object,model_submission) %>
       <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>

@@ -43,7 +43,7 @@ class Admin::CategorysetsController < ApplicationController
     @categoryset = Categoryset.new(params[:categoryset])
     respond_to do |format|
       if @categoryset.save
-        format.html { redirect_to(categorysets_path, :notice => 'Categoryset was successfully created.') }
+        format.html { redirect_to(categorysets_path, :notice => t(:categoryset_created)) }
         format.xml  { render :xml => @categoryset, :status => :created, :location => @categoryset }
       else
         format.html { render :action => "new" }
@@ -58,7 +58,7 @@ class Admin::CategorysetsController < ApplicationController
     @categoryset = Categoryset.find(params[:id])
     respond_to do |format|
       if @categoryset.update_attributes(params[:categoryset])
-        format.html { redirect_to(categorysets_path, :notice => 'Categoryset was successfully updated.') }
+        format.html { redirect_to(categorysets_path, :notice => t(:categoryset_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -73,7 +73,7 @@ class Admin::CategorysetsController < ApplicationController
     @categoryset = Categoryset.find(params[:id])
     @categoryset.destroy
     respond_to do |format|
-      format.html { redirect_to(categorysets_url,:notice=>'Categoryset deleted successfully') }
+      format.html { redirect_to(categorysets_url,:notice=> t(:category_deleted)) }
       format.xml  { head :ok }
     end
   end

@@ -13,7 +13,7 @@ menus.each do |menu|
   else
    menu_link = menu.page.perma_link
   end
-  submenus = Menu.find_all_by_parent_id(menu.id,:conditions => ["menu_view_type IN (?)",["0","#{session[:browser].to_s}"]],:order=>"position")
+  submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
   output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
   if menu.image_path.blank?
     output << menu.name
@@ -22,8 +22,8 @@ menus.each do |menu|
     if !menu.hover_image_path.blank?
      output <<  "onmouseover=\"this.src='#{menu.hover_image_path}';\" onmouseout=\"this.src='#{menu.image_path}';\""
     end
-    output << " />"
-  end
+    output << " />" 
+  end 
   output << "</a>"
   unless submenus.empty?
   	output << "<div id='m#{mnu_count}' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>"
@@ -38,9 +38,10 @@ menus.each do |menu|
   	output << "</div>"
   end
   output << "</li>"
-  mnu_count = mnu_count + 1
+  mnu_count = mnu_count + 1 
 end
 output <<"</ul>"
 %>
 <%= raw(output) %>
 <div style="clear:both"></div>
+
