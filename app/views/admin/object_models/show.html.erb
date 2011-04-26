@@ -1,0 +1,54 @@
+<%= link_to 'Edit', edit_object_model_path(@object_model) %> | <%= link_to 'Back', object_models_path %>
+<h3>Details of Model: <%= @object_model.name %> </h3>
+<p>
+  <b>Name:</b>
+  <%= @object_model.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= raw @object_model.description %>
+</p>
+
+<p>
+  <b>Perma link Parent:</b>
+  <%= @object_model.perma_link_parent %>
+</p>
+
+<p>
+  <b> Allow Comments: </b>
+   <%= @object_model.allow_comments ? "Yes" : "No"  %>
+</p>
+ <% if @object_model.allow_comments.eql?(true) %>
+
+<p>
+  <b> Is comment recursive ? : </b>
+   <%= @object_model.is_comment_recursive ? "Yes" : "No"  %>
+</p>
+<p>
+  <b> Email on Comment: </b>
+   <%= @object_model.email_on_comment ? "Yes" : "No"  %>
+</p>
+<% end %>
+
+
+<p>
+  <b> Layout: </b>
+  <%= @object_model.layout %>
+</p>
+
+
+<% unless @object_model.categoryset.nil? %>
+<p>
+  <b> CategorySet: </b>
+  <%= @object_model.categoryset.name %>
+</p>
+<% end %>
+
+
+
+
+
+
+<%= link_to 'Edit', edit_object_model_path(@object_model) %> |
+<%= link_to 'Back', object_models_path %>

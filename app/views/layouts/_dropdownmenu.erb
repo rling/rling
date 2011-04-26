@@ -3,7 +3,7 @@
 
 <% output = ""
 menuset = Menuset.find_by_name(menusetname)
-menus = Menu.find_all_by_menuset_id_and_level(menuset.id,1,:conditions => ["menu_view_type IN (?)",["0","#{session[:browser].to_s}"]],:order=>"position")
+menus = Menu.find_all_by_menuset_id_and_level(menuset.id,1,:order=>"position")
 
 output << "<ul id='sddm'>"
 mnu_count = 0
@@ -22,8 +22,8 @@ menus.each do |menu|
     if !menu.hover_image_path.blank?
      output <<  "onmouseover=\"this.src='#{menu.hover_image_path}';\" onmouseout=\"this.src='#{menu.image_path}';\""
     end
-    output << " />" 
-  end 
+    output << " />"
+  end
   output << "</a>"
   unless submenus.empty?
   	output << "<div id='m#{mnu_count}' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>"
@@ -38,10 +38,9 @@ menus.each do |menu|
   	output << "</div>"
   end
   output << "</li>"
-  mnu_count = mnu_count + 1 
+  mnu_count = mnu_count + 1
 end
 output <<"</ul>"
 %>
 <%= raw(output) %>
 <div style="clear:both"></div>
-

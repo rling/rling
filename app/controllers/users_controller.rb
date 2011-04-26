@@ -126,7 +126,7 @@ class UsersController < ApplicationController
       @user.is_activated=true
       @user.delete_activation_key
       respond_to do |format|
-            format.html {redirect_to login_path, :notice=>t(:account_activated))}
+            format.html {redirect_to login_path, :notice=>t(:account_activated)}
             format.xml {render :xml =>@user}
       end
     else

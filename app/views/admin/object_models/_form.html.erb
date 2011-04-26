@@ -1,0 +1,78 @@
+<%= form_for(@object_model) do |form| %>
+  <% if @object_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@object_model.errors.count, "error") %> prohibited this object_model from being saved:</h2>
+
+      <ul>
+      <% @object_model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= raw(form.cktext_area :description, :toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')  %>
+  </div>
+
+
+  <div class="field">
+      <%= form.label :perma_link_parent %><br />
+      <% if @object_model.perma_link_parent.nil? %>
+      <%= form.text_field :perma_link_parent, :disabled=>"disabled"  %>
+      <% else %>
+      <%= form.text_field :perma_link_parent %>
+      <% end %>
+
+
+      <%= check_box('','permalnkparent',  :checked=> (@object_model.perma_link_parent.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#object_model_perma_link_parent').attr('disabled','disabled');} else {$('#object_model_perma_link_parent').removeAttr('disabled');}") %>
+Generate permalink parent  automatically<br />
+
+  </div>
+<div class="field">
+  <div> "If Allow Comments is unchecked then all comments created earlier will be deleted!"</div>
+  <%= form.check_box :allow_comments,  :checked=> @object_model.allow_comments, :onclick => "if (this.checked){$('#show_comment_details').show();} else        {$('#show_comment_details').hide();}" %>
+  <%= form.label :allow_comments %>
+</div>
+
+<div id="show_comment_details" style="display:none;">
+<%= form.label :is_comment_recursive %>
+<%= form.check_box :is_comment_recursive ,:checked=>  @object_model.is_comment_recursive  %><br />
+<%= form.label :email_on_comment %>
+<%= form.check_box :email_on_comment,:checked=>  @object_model.email_on_comment  %><br />
+</div>
+
+
+<% if @object_model.layout.nil? || @object_model.layout.empty? %>
+<div class="field">
+  <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
+  Do you want separate layout?
+</div>
+<div id="show_layout" style="display:none;">
+  <%= form.label :layout %>
+  <%= form.text_field :layout %>
+</div>
+<% else %>
+<div id="field">
+  <%= form.label :layout %>
+  <%= form.text_field :layout %>
+</div>
+<% end %>
+
+
+<div class="field">
+  <%= form.label "Select Categoryset" %>
+  <%= form.select :categoryset_id,Categoryset.all.collect{|c|[c.name,c.id]}, {:include_blank => 'None'}%>
+</div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>

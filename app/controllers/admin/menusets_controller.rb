@@ -58,7 +58,7 @@ class Admin::MenusetsController < ApplicationController
     @menuset = Menuset.find(params[:id])
     respond_to do |format|
       if @menuset.update_attributes(params[:menuset])
-        format.html { redirect_to(menusets_path, :notice => t('menu_updated')) }
+        format.html { redirect_to(menusets_path, :notice => t(:menu_updated)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

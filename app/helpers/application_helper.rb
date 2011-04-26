@@ -44,6 +44,10 @@ end
 #Use this code snippet to display menu type, This code just calls the other codes, actual code to render shall be
 #in the name of the file as available in the layouts folder.
 def show_menu(type,name)
+  puts 11111111111111111111111111
+  puts type
+  puts 222222222222222222222222222
+  puts name
   output = ""
    unless Menuset.find_by_name(name).nil?
      output << render(:partial=>"layouts/#{type}", :locals=>{:menusetname=>name})

@@ -34,11 +34,12 @@ scope :module => "admin" do
    end
   # Menusets
   resources :menusets
+  # Menus
   resources :menus do
     collection do
-     post 'update_position'
+      post 'update_position'
     end
-   end   
+   end
   # Pages
   resources :pages do
     collection do
@@ -88,15 +89,12 @@ scope :module => "admin" do
   # User Detail Settings
   resources :user_detail_settings do
     collection do
-          post 'update_position'
-        end
+      post 'update_position'
+    end
   end
-
-end
-
   #Object Models related Resources
   resources :object_models do
-    #components associated to models 
+    #components associated to models
     resources :model_components do
       collection do
         post 'update_position'
@@ -104,6 +102,11 @@ end
     end
     # Components required by models
     resources :comment_components
+  end
+end
+
+  #Object Models related Resources
+  resources :object_models do
     # submissions made for object models
     resources :model_submissions do
       member do
@@ -115,7 +118,7 @@ end
       # all the comments submitted for model submissions
       resources :comment_submissions
     end
-   end
+  end
   
   resources :users do
     member do
