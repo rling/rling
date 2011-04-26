@@ -15,7 +15,7 @@ def check_component_type(form_component,form_submission,data_obj)
 end
 
 def get_view_model_submission(object_model,view,ms,sort="",order="")
-   output = []
+  output = []
   unless object_model.nil?
     ids = ms.collect{|sub|sub.id}
     conditions = ""

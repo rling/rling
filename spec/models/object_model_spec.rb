@@ -43,7 +43,8 @@ describe ObjectModel do
    object_model.should_not be_valid
 
   end
-   it "should have many model component" do
+  
+  it "should have many model component" do
 
    @model_component1=ModelComponent.create!( @modelcomponent_attributes.merge(:object_model_id=>@object_model.id))
    @model_component2=ModelComponent.create!( @modelcomponent_attributes.merge(:object_model_id=>@object_model.id,:component_name=>'name2'))

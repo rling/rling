@@ -68,6 +68,12 @@ describe UserDetailSetting do
     end 
   end
 
+  it "should order by position" do
+    @user_detail_setting1 = UserDetailSetting.new(:field_name=>'test1',:field_type=>'textbox',:position=>'1')
+    @user_detail_setting2 = UserDetailSetting.new(:field_name=>'test2',:field_type=>'textbox',:position=>'0')
+    @user_detail.user_detail_setting.should == [@user_detail_setting2,@user_detail_setting1]
+  end
+
 end
 
 

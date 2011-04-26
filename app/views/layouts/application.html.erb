@@ -21,31 +21,29 @@
   <%= csrf_meta_tag %>
  </head>
  <body>
-  <div id="layout">
-   <div id="header">
-    <div id="top_bar">
-      <%= raw(login_links) %>
-    </div>
-    <div id="header_text">
-      <div id="search_bar">
-          <%= raw(search_bar) %>
-        </div>
-      <h1>Welcome to RlingCMS</h1>
-      <h3>Faster CMS for Faster minds</h3>
-      
-    </div>
-    <div id="header_menu">
-     <%= raw(show_menu 'dropdownmenu','Header') %>
-     
-    </div>
-   </div>
-   <div id="middle">
+   <div id="layout">
+     <div id="header">
+       <div id="top_bar">
+         <%= raw(login_links) %>
+       </div>
+       <div id="search_bar">
+         <%= raw(search_bar) %>
+       </div>
+       <div id="header_text">
+         <h1>Welcome to RlingCMS</h1>
+         <h3>Faster CMS for Faster minds</h3>
+       </div>
+       <div id="header_menu">
+         <%= raw(show_menu 'dropdownmenu','Header') %>
+       </div>
+     </div>
+     <div id="middle">
 
-     
+     <%= raw(show_secondary_menu(params[:permalink]))  unless params[:permalink].nil?%>
     
     <%= raw(flash_notice) %>
         
-    <%= yield  %>
+    <%= yield %>
    </div>
    <div id="footer">
     <div id="footer_menu">
