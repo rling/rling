@@ -59,9 +59,11 @@ def get_view_model_submission_order(object_model,view,submissions,sort,order)
   ids = submissions.collect{|sub|sub.id}
   if view.limit.blank?
     md = ModelData.find(:all,:conditions=>["model_submission_id  IN (?) #{conditions}",ids],:order=>order_txt)
-  else
+ 
+ else
     md = ModelData.find(:all,:conditions=>["model_submission_id  IN (?) #{conditions}",ids],:order=>order_txt, :limit=>view.limit)
   end
+ 
   md.each{|data|output << data.model_submission unless output.include?(data.model_submission)}
   return output
 end
@@ -79,6 +81,7 @@ def get_category_set_tree(categoryset,page)
   output << "</ul>"
  return output
 end
+
 
 def get_child_categories(cat,view)
   output = ""

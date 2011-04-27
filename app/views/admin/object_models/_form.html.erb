@@ -36,9 +36,10 @@ Generate permalink parent  automatically<br />
 
   </div>
 <div class="field">
-  <div> "If Allow Comments is unchecked then all comments created earlier will be deleted!"</div>
+ 
   <%= form.check_box :allow_comments,  :checked=> @object_model.allow_comments, :onclick => "if (this.checked){$('#show_comment_details').show();} else        {$('#show_comment_details').hide();}" %>
   <%= form.label :allow_comments %>
+   <div> "If Allow Comments is unchecked then all comments created earlier will be deleted!"</div>
 </div>
 
 <div id="show_comment_details" style="display:none;">

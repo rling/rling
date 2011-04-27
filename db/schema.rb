@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110421065535) do
+ActiveRecord::Schema.define(:version => 20110427114746) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -197,7 +197,6 @@ ActiveRecord::Schema.define(:version => 20110421065535) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comment_component_id"
     t.boolean  "allow_comments",       :default => false
     t.boolean  "is_comment_recursive", :default => false
     t.boolean  "email_on_comment",     :default => false
@@ -248,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20110421065535) do
     t.string   "default_sort_order_value"
     t.integer  "limit"
     t.integer  "associated_view"
+    t.integer  "per_page"
   end
 
   create_table "permission_roles", :force => true do |t|

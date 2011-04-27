@@ -51,30 +51,30 @@ def show_menu(type,name)
 end
 
 #Shows Secondary menus of a page
-def show_secondary_menu(perma_link)
-  page=Page.find_by_perma_link(perma_link)
-  menu=Menu.find_by_page_id(page.id)
-  unless menu.nil?
-  submenus = Menu.find_all_by_parent_id(page.id,:conditions => ["menu_view_type IN (?)",["0","#{session[:browser].to_s}"]],:order=>"position")
- 
-    unless submenus.empty?
-    output = ""
-   output << "<ul class='menuset'>"
-   submenus.each do |menu|
-   	menulink = ""
-   	if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
-     		menulink = menu.page.perma_link
-   	else
-     		menulink = menu.link_path
-   	end
-
+def show_secondary_menu
+   output = ""
+  
+  unless params[:permalink].nil?
+   page=Page.find_by_perma_link(params[:permalink])
+   menu=Menu.find_by_page_id(page.id) unless page.nil?
+   unless menu.nil?
+     submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
+      unless submenus.empty?
+      output << "<ul class='menuset'>"
+      submenus.each do |menu|
+   	   menulink = ""
+   	   if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
+     	  	menulink = menu.page.perma_link
+   	   else
+      		menulink = menu.link_path
+   	   end
     	output << "<a href='/#{menulink}'> #{menu.name}</a>  |"
-
     	output << "</li>"
-   end
-   return output
+     end
+     end
    end
   end
+     return output
 end
 
 
@@ -206,10 +206,12 @@ end
      end
    end
    if ["deletemycomments"].include?(call_type)
+     unless current_user.nil?
      if !@model_submission.nil? && @model_submission.creator_id == current_user.id
        call_type=call_type
      else
        call_type='nopermission'
+     end
      end
    end
    permission = Permission.find(:first,:conditions=>["permission_type=? and activity_code=?",model.class.to_s,call_type])

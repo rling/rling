@@ -35,13 +35,14 @@
        </div>
        <div id="header_menu">
          <%= raw(show_menu 'dropdownmenu','Header') %>
+        
        </div>
      </div>
      <div id="middle">
 
+     <%= raw (show_secondary_menu) %>
     
-    
-    <%= raw(flash_notice) %>
+     <%= raw(flash_notice) %>
         
     <%= yield %>
    </div>

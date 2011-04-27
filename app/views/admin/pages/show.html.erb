@@ -45,15 +45,20 @@
   <%= raw("<b>View For </b> : #{@page.get_view_for}") if @page.type == "View" %>
 
 </p>
+<p>
+  <%= raw("<b>Per Page </b> : #{@page.per_page}") if @page.type == "View"  %>
+
+</p>
+
+
 <% if  @page.type.eql?('View')  %>
 <p>
   <b>Allow Create on Permission:</b>
-  <% if @page.allow_create_on_permission.eql?(false) %>
-      <%= "No" %>
-  <% else %>
-       <%= "Yes" %>
-   <% end %>
+  <%= (@page.allow_create_on_permission ? "Yes" : "NO")%>
+    
 </p>
+
+
 <% end %>
 
 <p>

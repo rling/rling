@@ -9,6 +9,7 @@
     <th>Home page</th>
     <th>View Type</th>
     <th>View For</th>
+     <th>Per Page</th>
     <th>Allow Create on Permission</th>
     <th></th>
     <th></th>
@@ -22,6 +23,7 @@
     <td><%= page.home_page ? "Yes" : "No" %></td>
     <td><%= page.view_type %></td>
     <td><%= page.get_view_for %></td>
+     <td><%= page.per_page %></td>
     <td><%= page.allow_create_on_permission ? "Yes" : "No" %></td>
     <td><%= link_to "View Components",[page,:view_components] %></td>
     <td><%= link_to "View conditions",[page,:view_conditions] %></td>

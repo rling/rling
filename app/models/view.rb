@@ -16,7 +16,7 @@ end
 def not_added_condition_components
  model=ObjectModel.find_by_id(self.view_for)
  m_component = model.model_components.collect{|mc|mc.component_name}
- m_component =   ["","created_at","updated_at","creator_id","updater_id"] +  m_component
+ m_component = ["","created_at","updated_at","creator_id","updater_id"] +  m_component
  return  m_component
 end
 

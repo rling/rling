@@ -2,28 +2,30 @@
 <%  order = sort = ""
     sort = @sort if defined? @sort
     order = @order if defined? @order
+    @page=params[:page]
+    @per_page= params[:per_page].nil? ? page.per_page : params[:per_page].to_i
+        
     if defined?(@category) && !@category.blank?
       category = Category.find(@category)
       @model_submissions = []
       category.categoryset.object_models.each do |object_model|
         ms = category.model_submissions.find(:all,:conditions=>["object_model_id=? and status ='Published'",object_model.id])
         @model_submissions = @model_submissions + get_view_model_submission(object_model,page,ms,sort,order)
+        @page_results = @model_submissions.paginate(:page=>@page,:per_page=>@per_page)
       end
     else
       object_model=ObjectModel.find_by_id(page.view_for)
       ms = object_model.published_model_submissions unless object_model.nil?
       @model_submissions = get_view_model_submission(object_model,page,ms,sort,order)
-       @page=params[:page]
-      
-       if params[:per_page].nil?
-         @per_page=5
-       else
-         @per_page=params[:per_page].to_i
-       end
+     
        @page_results = @model_submissions.paginate(:page=>@page,:per_page=>@per_page)
-       @start=1 + (@page.to_i-1)*@per_page.to_i
-       @end=@per_page.to_i+ (@page.to_i-1)*@per_page.to_i
+      
     end %>
+
+     <%
+      @start=1 + (@page.to_i-1)*@per_page.to_i
+      @end=@per_page.to_i+ (@page.to_i-1)*@per_page.to_i
+      %>
    <% if @model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
   

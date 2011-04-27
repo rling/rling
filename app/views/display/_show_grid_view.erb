@@ -18,7 +18,7 @@
        page.view_components.each do |vc2|
          value = raw (get_submission_model_data(ms,vc2.name))
         if vc2.is_linked
-          value = link_to( value,"#{ms.object_model.perma_link_parent}#{ms.perma_link}")
+          value = link_to( value,"#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
         end
         output << "<div class='grid_component grid_component_#{vc2.name}'>#{ value}</div>"
        end

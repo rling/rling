@@ -31,9 +31,10 @@
     <%= form.select :view_type,["Table","Grid","List"] %>
     <% else %>
     <%= form.select :view_type,["TreeView"] %>
-    <%end%>
-  </div>
+    <%  end %>
+ </div>
 
+   
 <div class="field">
     <%= form.label :view_for%><br />
     <% if @page_type.eql?('View') %>
@@ -43,12 +44,19 @@
     <% end %>
   </div>
   <% end %>
+<%  if @page_type == "View" %>
+<div>
+  <%= form.label :per_page %><br />
+  <%= form.text_field :per_page %>
+</div>
+<% end %>
 
  <% if @page_type.eql?('CategoryView') %>
   <div class="field">
     <%= form.label :associated_view %><br />
     <%= form.select :associated_view ,Page.views.collect{|m| [ m.title,m.id]} %>
   </div>
+
   <% end %>
 
 
