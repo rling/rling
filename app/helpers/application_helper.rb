@@ -179,7 +179,7 @@ end
 #output simple link for the file name
    def check_content_type(asset)
       if asset.upload_content_type.match(/^image/)
-       output = link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url)
+       output = link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url,:target=>'_blank')
        unless asset.sizes.nil?
          sizes = asset.sizes.split(",")
          sizes.each do |size|
@@ -206,13 +206,11 @@ end
      end
    end
    if ["deletemycomments"].include?(call_type)
-     unless current_user.nil?
      if !@model_submission.nil? && @model_submission.creator_id == current_user.id
        call_type=call_type
      else
        call_type='nopermission'
-     end
-     end
+     end if !current_user.nil?
    end
    permission = Permission.find(:first,:conditions=>["permission_type=? and activity_code=?",model.class.to_s,call_type])
    unless permission.nil?

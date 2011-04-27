@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Permission do
    before(:each) do
        @attr={:activity_code=>'create'}
+       @permission=Permission.create!(@attr)
    end
 
   it "should create a new permission given valid attributes" do
@@ -29,6 +30,12 @@ describe Permission do
       invalid_activity_code = Permission.new(@attr.merge(:activity_code => name))
       invalid_activity_code.should_not be_valid
     end
+  end
+
+  it "should have many permission roles" do
+    @permission.permission_roles<< PermissionRole.new(:permission_id=>@permission.id)
+    @permission.permission_roles<< PermissionRole.new(:permission_id=>@permission.id)
+    @permission.should have(2).permission_roles
   end
 end
 

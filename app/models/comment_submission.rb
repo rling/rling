@@ -5,19 +5,17 @@ class CommentSubmission < ActiveRecord::Base
 
   #Associations
   has_many :comment_data ,:dependent=>:destroy
-  
   belongs_to :model_submission
-  before_save :set_level
-  before_destroy :set_children
 
- #Additions
+  #Additions
   acts_as_tree
 
-   #callbacks
+  #callbacks
   after_create  :clear_cache,:send_email
-
   after_update  :clear_cache
   after_destroy :clear_cache
+  before_save :set_level
+  before_destroy :set_children
 
    def self.tags(handle)
    object_model = ObjectModel.find_by_perma_link_parent(handle)

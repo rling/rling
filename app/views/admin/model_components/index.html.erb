@@ -1,8 +1,8 @@
-<% @model="New " << "Component for " << @object.name.capitalize  %>
+<% @model="New " << "Model Component for " << @object.name.capitalize  %>
 <%= link_to @model, new_object_model_model_component_path %> |
 <%= link_to 'Back', object_models_path %>
 
-<h1>Listing  Components for <%= @object.name %> </h1>
+<h1>Listing Model Components for <%= @object.name %> </h1>
 
 <table>
   <tr>
@@ -26,7 +26,7 @@
     <td align=right><%= text_field_tag "#{model_component.id}",model_component.position, :size=>2 %></td>
     <td><%=  link_to "Show",object_model_model_component_path(@object,model_component) %></td>
     <td><%= link_to "Edit", edit_object_model_model_component_path(@object,model_component) %></td>
-    <%  unless model_component.is_deletable.eql?(false) %>
+    <% unless model_component.is_deletable.eql?(false) %>
     <td><%= link_to "Destroy", ([@object,model_component]) ,:confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>

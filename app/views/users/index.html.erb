@@ -1,6 +1,6 @@
 <% unless !get_setting("allow_admin_register_user") %>
 <%= link_to 'New User', new_user_path %> |
-<%end%>
+<% end %>
 <%= link_to 'User Detail Settings', user_detail_settings_path %> |
 <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
 <h1>Listing all registered members</h1>

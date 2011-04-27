@@ -26,6 +26,7 @@
       @start=1 + (@page.to_i-1)*@per_page.to_i
       @end=@per_page.to_i+ (@page.to_i-1)*@per_page.to_i
       %>
+   <% if validate_permission("viewlist",object_model) %>
    <% if @model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
   
@@ -41,4 +42,7 @@
       <% end %>
     <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
   <% end %>
+   <% else %>
+     <%= render :action => "no_permissions" %>
+   <% end %>
 </div>
