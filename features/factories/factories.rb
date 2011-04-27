@@ -22,7 +22,10 @@ Factory.define(:object_form) do |f|
   f.body "Admission form for MCA"
   f.perma_link "admission"
   f.home_page "0"
+  f.page_view_type "1"
+  f.type "ObjectForm"
   f.email "amit@heurion.com"
+  f.allow_create_on_permission "0"
   f.status "Published"
 end
 

@@ -67,18 +67,4 @@ Feature: Model Administration Page
     When I press "Add"
     Then I should see "Ruby" on the model_submissions index page
 
-#  Scenario: Remove a category
-#    Given I have a model_submission with categorization in model_submissions index page
-#    Given I go to model_submissions index page
-#    When I press "X" for "Ruby" on the model_submissions index page
-#    Then I should not see "Ruby" on the model_submission index page
-
-  Scenario: Show Comments
-    Given I have a model_submission with comment in model_submissions index page
-    Given I go to model_submissions index page
-    When I press "Comments" for "Information" on the model_submissions index page
-    Then I should see "Listing Comment Submissions" on the comment page
-    And I should see "This is very good work by Heurion Consulting." on the show comments page
-
-
 
