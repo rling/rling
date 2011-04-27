@@ -14,7 +14,7 @@ menus.each do |menu|
    menu_link = menu.page.perma_link
   end
   submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
-  output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+  output << "<li><a title='#{get_pagelet(menu.name)}' href='#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
   if menu.image_path.blank?
     output << menu.name
   else
