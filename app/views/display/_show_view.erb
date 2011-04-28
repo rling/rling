@@ -42,7 +42,5 @@
       <% end %>
     <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
   <% end %>
-   <% else %>
-     <%= render :action => "no_permissions" %>
-   <% end %>
+  <% end %>
 </div>
