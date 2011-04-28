@@ -1,6 +1,6 @@
 <%= link_to 'New View condition', new_view_view_condition_path %> | <%= link_to 'Back', view_index_pages_path%>
 <h1>Listing View Conditions</h1>
-
+<% unless @view_conditions.empty? %>
 <table>
   <tr>
     <th>Relation with Previous condition</th>
@@ -23,7 +23,9 @@
   </tr>
 <% end %>
 </table>
-
+<% else %>
+<%= 'No view conditions. Create one now' %>
+<% end %>
 <br />
 
 <%= link_to 'New View condition', new_view_view_condition_path %> |

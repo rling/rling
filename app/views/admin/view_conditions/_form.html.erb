@@ -11,8 +11,10 @@
     </div>
   <% end %>
   <div class="field">
+    <% unless @page.view_conditions.empty? || @page.view_conditions.first.id==@view_condition.id %>
     <%= f.label :relation_with_previous %><br />
-    <%= f.select :relation_with , ["","and","or"] %>
+    <%= f.select :relation_with , ["and","or"] %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :name %><br />

@@ -76,7 +76,7 @@ before_filter :require_admin
     @pagelet = Pagelet.find(params[:id])
     @pagelet.destroy
     respond_to do |format|
-      format.html { redirect_to(pagelets_url) }
+      format.html { redirect_to(pagelets_url,:notice => t(:pagelet_deleted)) }
       format.xml  { head :ok }
     end
   end

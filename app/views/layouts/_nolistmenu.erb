@@ -4,15 +4,16 @@
    menus = Menu.find_all_by_level_and_menuset_id(1,menuset.id, :order=>"position")
    firstmenu = true
    output << "<ul class='menuset'>"
-   menus.each do |menu| 
+   menus.each do |menu|
+        output << "<li class='"+ (firstmenu ? "menuitem_first" : "menuitem") + "'>"
    	menulink = ""
    	if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
      		menulink = menu.page.perma_link
+                output << "<a href='/#{menulink}'>#{menu.name}</a>"
    	else
      		menulink = menu.link_path
+                output << "<a href='#{menulink}'>#{menu.name}</a>"
    	end
-    	output << "<li class='"+ (firstmenu ? "menuitem_first" : "menuitem") + "'>"
-    	output << "<a href='/#{menulink}'>#{menu.name}</a>"
     	output << "</li>"
     	firstmenu = false
    end

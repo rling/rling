@@ -1,4 +1,9 @@
-<%= link_to 'New Category', new_category_path %> | <%= link_to "Back to Dashboard", admin_dashboard_path%>
+<% unless Categoryset.find(:all).empty? %>
+<%= link_to 'New Category', new_category_path %> |
+<% else %>
+<%= 'No categorysets created. Create categoryset first.' %><br/>
+<%end%>
+<%= link_to "Back to Dashboard", admin_dashboard_path%>
 <h1>Listing categories</h1>
 <%= form_tag update_position_categories_path do %>
 <table>
@@ -26,4 +31,7 @@
 <% end %>
 <br />
 
-<%= link_to 'New Category', new_category_path %> | <%= link_to "Back to Dashboard", admin_dashboard_path%>
+<% unless Categoryset.find(:all).empty? %>
+<%= link_to 'New Category', new_category_path %> |
+<%end%>
+<%= link_to "Back to Dashboard", admin_dashboard_path%>

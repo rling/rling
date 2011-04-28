@@ -205,7 +205,8 @@ before_filter :require_admin
   # DELETE /pages/1.xml
    def destroy
     @page = Page.find(params[:id])
-    flash[:notice]=t(:page_deleted)
+    @page.type='Page' if @page.type==nil
+    flash[:notice]="#{@page.type} #{t(:page_deleted)}"
     @page.destroy
     respond_to do |format|
       format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }

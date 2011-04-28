@@ -1,7 +1,7 @@
 <%= link_to 'New Categoryset', new_categoryset_path %> |
 <%= link_to "Back to Dashboard", admin_dashboard_path %>
 <h1>Listing Categorysets</h1>
-
+<% unless @categorysets.empty? %>
 <table>
   <tr>
     <th>Name</th>
@@ -20,7 +20,9 @@
   </tr>
 <% end %>
 </table>
-
+<% else %>
+<%= 'No categorysets. Create one now' %>
+<% end %>
 <br />
 
 <%= link_to 'New Categoryset', new_categoryset_path %> |
