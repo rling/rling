@@ -22,8 +22,6 @@ When /^I press "([^"]*)" for "([^"]*)" on the show category_view page$/ do |arg1
     visit page_path( @category_view)
   elsif arg1 == "Edit"
     visit edit_page_path( @category_view)
-  elsif arg1 == "Destroy"
-    visit page_path( @category_view)
   end
 end
 

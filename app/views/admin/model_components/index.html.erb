@@ -3,7 +3,7 @@
 <%= link_to 'Back', object_models_path %>
 
 <h1>Listing Model Components for <%= @object.name %> </h1>
-
+<%= form_tag update_position_object_model_model_components_path do %>
 <table>
   <tr>
     <th>Component name</th>
@@ -14,7 +14,7 @@
     <th></th>
     <th></th>
   </tr>
-<%= form_tag update_position_object_model_model_components_path do %>
+
 <% @model_components.each do |model_component| %>
   <tr>
 

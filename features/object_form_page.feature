@@ -63,7 +63,7 @@ Feature: Object Form Page
     And I fill in "object_form_email" with "amit@heurion.com"
     And I select "Published" from "object_form_status"
     When I press "Update Object form"
-    Then I should see "ObjectForm was successfully updated." on the show Object_form page
+    Then I should see "ObjectForm was successfully updated" on the show Object_form page
     Then I should see "Admission"
     And I should see "admission"
     And I should see "No"
@@ -92,7 +92,7 @@ Feature: Object Form Page
     And I select "Textfield" from "form_component_component_type"
     And I fill in "form_component_default_value" with "mail@mail.com"
     When I press "Create Form component"
-    Then I should see "Form component was successfully created." on that form_components_index page
+    Then I should see "Form component was successfully created" on that form_components_index page
     And I should see "email" on the form_components_index page
     And I should see "E-mail" on the form_components_index page
     And I should see "Textfield" on the form_components_index page

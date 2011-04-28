@@ -24,7 +24,7 @@ Feature: Menuset Page
     And I fill in "menuset_name" with "Header2"
     And I fill in "menuset_description" with "Header2 Menu for RlingCMS"
     When I press "Create Menuset"
-    Then I should see "Menuset was successfully created."
+    Then I should see "Menuset was successfully created"
     Then I should see "Header2" for "Name" on the page
     And I should see "Header2 Menu for RlingCMS" for "Description" on the page
 

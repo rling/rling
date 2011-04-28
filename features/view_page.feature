@@ -24,6 +24,7 @@ Feature: View Page
     And I fill in "view_title" with "Developer"
     And I select "Table" from "view_view_type"
     And I select "Blogs" from "view_view_for"
+    And I fill in "view_per_page" with "2"
     And I fill in "view_body_editor" with "This is Developer view"
     And I select "Published" from "view_status"
     When I press "Create View"
@@ -33,6 +34,8 @@ Feature: View Page
     And I should see "No" for "Home page" on the show view page
     And I should see "Table" for "View Type" on the show view page
     And I should see "Blogs" for "View For" on the show view page
+    And I should see "2" for "Per Page " on the show view page
+    And I should see "No" for "Allow Create on Permission" on the show view page
 
   Scenario: Error in Creating new View page( when Title is blank )
     Given I have a object_model in object_model index page

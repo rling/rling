@@ -40,3 +40,10 @@ end
 Then /^I should see "([^"]*)" on the edit menu page$/ do |arg1|
   page.find('h1',:text=>arg1)
 end
+
+Then /^the menu position should be updated\.$/ do
+  Menu.all.each do |menu|
+      menu.update_attribute(:position,@menu.id)
+  end
+end
+

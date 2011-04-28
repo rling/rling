@@ -99,7 +99,7 @@ Given /^I have a form_submission in form_submission page$/ do
   @object=Factory(:object_form)
   @form_component = Factory(:form_component, :object_form_id=>@object.id)
   @form_submission = Factory(:form_submission, :object_form_id=>@object.id)
-#  @form_data = Factory(:form_data, :form_component_id=>@form_component.id, :form_submission_id=>@form_submission.id)
+  @form_datum = Factory(:form_datum, :form_component_id=>@form_component.id, :form_submission_id=>@form_submission.id)
 end
 
 When /^I press "([^"]*)" for the "([^"]*)" on the form_submissions index page$/ do |arg1, arg2|

@@ -18,7 +18,7 @@ Feature:Model Component Page
     Given I have a object_model in object_model index page
     Given I go to object_model index page
     When I press "Model Components" for "Blog" on the object_model index page
-    Then I should see "Listing  Components for Blog " on that object_model index page
+    Then I should see "Listing Model Components for Blog " on that object_model index page
     And I should see "title" on the model_componets index page
     And I should see "Title" on the model_componets index page
     And I should see "Textfield" on the model_componets index page

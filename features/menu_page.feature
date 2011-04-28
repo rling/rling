@@ -45,7 +45,7 @@ Feature: Menu Page
     When I press "Show" for the "Home"
     Then I should see "Home" for "Name" on the show page
     And I should see "Root" for "Parent Menu" on the show page
-    And I should see "0" for "Position" on the show page
+    And I should see "1" for "Position" on the show page
 
 
   Scenario: Edit a Menu item
@@ -70,11 +70,10 @@ Feature: Menu Page
     And I press "Destroy" for the "Home"
     Then I should not see "Home" on the index page
 
-#  Scenario: Update position
-#    Given I have a menu in menu index page
-#    Given I go to menu index page
-#    Then I should see "0" on the menu index page
-#    And I fill in "1" with "1"
-#    When I press "Update Positions"
-#    Then I should see "1" on the menu index page
+  Scenario: Update position of menu
+    Given I have a menu in menu index page
+    Given I go to menu index page
+    And I fill in "1" with "2"
+    When I press "Update Positions"
+    Then the menu position should be updated.
 

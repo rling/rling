@@ -24,7 +24,7 @@ Feature: Category View Page
     And I fill in "category_view_body_editor" with "This is category view"
     And I select "Published" from "category_view_status"
     When I press "Create Category view"
-    Then I should see "CategoryView was successfully created." on the show category_view page
+    Then I should see "CategoryView was successfully created" on the show category_view page
 
   Scenario: User clicks on Show Page
     Given I have a category view in category_view index page
@@ -46,13 +46,7 @@ Feature: Category View Page
     And I fill in "category_view_body_editor" with "This is category view"
     And I select "Published" from "category_view_status"
     When I press "Update Category view"
-    Then I should see "CategoryView was successfully updated."
-
-#  Scenario: Delete an item from category_view
-#    Given I have a category view in category_view index page
-#    Given I go to category_view_index page     
-#    When I press "Destroy" for "List" on the show category_view page 
-#    Then I should not see "List"
+    Then I should see "CategoryView was successfully updated"
 
   Scenario: Go to the /list URL
     Given I have a category view in category_view index page

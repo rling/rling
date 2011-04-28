@@ -21,4 +21,4 @@ Feature: Order or limit Page
     Then I select "name" from "view_default_sort_order"
     And I select "ASC" from "view_default_sort_order_value"
     When I press "update"
-    Then I should see "queries were successfully stored."
+    Then I should see "queries were successfully stored"

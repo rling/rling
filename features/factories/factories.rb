@@ -10,6 +10,7 @@ Factory.define(:menu) do |f|
   f.name "Home"
   f.level "1"
   f.menuset_id "1"
+  f.position "1"
 end
 
 Factory.define(:menuset) do |f|
@@ -40,7 +41,7 @@ Factory.define(:form_submission) do |f|
 
 end
 
-Factory.define(:form_data) do |f|
+Factory.define(:form_datum) do |f|
   f.data_value "amit@heurion.com"
 end
 
@@ -97,7 +98,7 @@ Factory.define(:comment_submission) do |f|
   f.level "1"
 end
 
-Factory.define(:comment_data) do |f|
+Factory.define(:comment_datum) do |f|
 
 end
 

@@ -82,4 +82,12 @@ Feature: User detail setting Page
     Then I should see "Name" on the index page
     When I press "Delete" for the "Name" on the page
     Then I should not see "Name" on the index page
+
+  Scenario: Update position of user detail setting
+    Given I have a user detail setting on the index page
+    Given I go to user_detail_setting index page
+    And I fill in "1" with "3"
+    When I press "Update Positions"
+    Then the user detail setting position should be updated.
+
  

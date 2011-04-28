@@ -47,4 +47,4 @@ Given /^I have a model_component in model_component index page$/ do
   @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"title",:component_display_name=>"Title",:component_type=>"Textfield",:default_value=>"Enter a title",:is_deletable=>"0",:is_mandatory=>"1")
   @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"name",:component_display_name=>"Name",:component_type=>"Textfield",:is_deletable=>"0",:is_mandatory=>"0")
   @object_model_component = Factory(:model_component, :object_model_id=>@object_model.id, :component_name=>"body",:component_display_name=>"Body",:component_type=>"RichtextEditor",:default_value=>"Enter a Content",:is_deletable=>"1",:is_mandatory=>"1")
- end
+end

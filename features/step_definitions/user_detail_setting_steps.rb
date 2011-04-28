@@ -32,3 +32,9 @@ end
 Then /^I should see "([^"]*)" on the user detail settings page$/ do |arg1|
   page.find('p',:text=>arg1)
 end
+
+Then /^the user detail setting position should be updated\.$/ do
+  UserDetailSetting.all.each do  |user_detail_setting|
+     user_detail_setting.update_attribute(:position,@user_detail_setting.id)
+    end
+end

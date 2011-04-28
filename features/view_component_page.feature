@@ -53,6 +53,7 @@ Feature: View Component Page
     Given I have a view_components in view_component page
     Given I go to developer page
     Then I should see "Developer" on the developer page
+    And I should see "This is Developer view"
     And I should see "amit" on that developer page
 
 
