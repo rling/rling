@@ -8,13 +8,14 @@ menus = Menu.find_all_by_menuset_id_and_level(menuset.id,1,:order=>"position")
 output << "<ul id='sddm'>"
 mnu_count = 0
 menus.each do |menu|
-  if menu.page.nil?
-   menu_link = menu.link_path
-  else
-   menu_link = menu.page.perma_link
-  end
   submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
-  output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+  if menu.page.nil?
+    menu_link = menu.link_path
+    output << "<li><a title='#{get_pagelet(menu.name)}' href='#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+  else
+    menu_link = menu.page.perma_link
+    output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+  end
   if menu.image_path.blank?
     output << menu.name
   else

@@ -1,48 +1,39 @@
 <% @model= "New " << @object.name.capitalize %>
-
-   <% if validate_permission("create",@object) %>
-   <%= link_to @model, new_object_model_model_submission_path %> |
-   <% end  %>
-    <% if current_user?
-      if current_user.admin? %>
-     <%= link_to 'Back to Dashboard', admin_dashboard_path %>
-     <% else %>
-     <%= link_to 'Back', :controller=>"users",:action=>"show",:id=>current_user.id %>
-     <% end
-   end %>
+  <% if validate_permission("create",@object) %>
+    <%= link_to @model, new_object_model_model_submission_path %>
+  <% end  %>
+<%= render :partial=>'shared/back' %>
 <h1>Listing  <%= @object.name.capitalize.pluralize %> </h1>
 <table>
-<tr>
-<% unless @object.model_submissions.empty? %>
-<% model_component =  @object.model_components.first %>
-   <th><%=model_component.component_display_name.capitalize %></th>
-   <% unless @object.categoryset_id.nil? %>
-   <th>Associated Categories</th>
-   <% end %>
-</tr>
-<% @model_submissions.each do |model_submission| %>
   <tr>
-   <%  model_submission.model_datas.each do |model_data| %>
-   <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
+  <% unless @object.model_submissions.empty? %>
+    <% model_component =  @object.model_components.first %>
+    <th><%=model_component.component_display_name.capitalize %></th>
+    <% unless @object.categoryset_id.nil? %>
+    <th>Associated Categories</th>
+  <% end %>
+  </tr>
+  <% @model_submissions.each do |model_submission| %>
+  <tr>
+  <%  model_submission.model_datas.each do |model_data| %>
+    <td><%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %></td>
       <% break %>
-   <% end %>
-      <% unless @object.categoryset_id.nil? %>
-      <td>
-          <% model_submission.categories.each do |category| %>
-          <%= category.name %>
-          <%= link_to "[X]",category_remove_object_model_model_submission_path(@object,model_submission,:category_id=>category.id) %>,
-          <% end %>
-          <% unless model_submission.unenrolled_categories.empty? %>
-          <%= link_to "[Add Category]", add_category_object_model_model_submission_path(@object,model_submission)%>
-          <% end %>
-      </td>
+  <% end %>
+    <% unless @object.categoryset_id.nil? %>
+    <td>
+      <% model_submission.categories.each do |category| %>
+      <%= category.name %>
+      <%= link_to "[X]",category_remove_object_model_model_submission_path(@object,model_submission,:category_id=>category.id) %>,
       <% end %>
-   
+      <% unless model_submission.unenrolled_categories.empty? %>
+        <%= link_to "[Add Category]", add_category_object_model_model_submission_path(@object,model_submission)%>
+      <% end %>
+    </td>
+    <% end %>
 
     <% if @object.allow_comments %>
-       <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>
+      <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>
     <% end %>
- 
 
     <% if validate_permission("view",@object,model_submission) %>
       <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>
@@ -51,24 +42,18 @@
     <% if validate_permission("edit",@object,model_submission) %>
       <td><%= link_to "Edit", edit_object_model_model_submission_path(@object,model_submission) %></td>
     <% end %>
+
     <% if validate_permission("delete",@object,model_submission) %>
       <td><%=link_to "Destroy", [@object,model_submission], :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
   </tr>
- <% end %>
+  <% end %>
   <% else %>
-  <%= "You don't have any  Submissions!!! ,want to add detail ? click on New " << @object.name.capitalize %><br/>
+    <%= "You don't have any  Submissions!!! ,want to add detail ? click on New " << @object.name.capitalize %><br/>
   <% end %>
   </table>
- 
-   <% if validate_permission("create",@object) %>
-   <%= link_to @model, new_object_model_model_submission_path %> |
-   <% end  %>
-   <% if current_user? %>
-   <% if current_user.admin? %>
-   <%= link_to 'Back to Dashboard', admin_dashboard_path %>
-   <% else %>
-   <%= link_to 'Back', :controller=>"users",:action=>"show",:id=>current_user.id %>
-   <% end %>
-   <% end %>
 
+  <% if validate_permission("create",@object) %>
+    <%= link_to @model, new_object_model_model_submission_path %>
+  <% end  %>
+  <%= render :partial=>'shared/back' %>
