@@ -8,6 +8,7 @@ def check_component_type(form_component,form_submission,data_obj)
     form_data=data_obj.find_by_comment_submission_id_and_comment_component_id(form_component.id,form_submission.id)
    end 
    value = (form_submission.id.nil? ? form_component.default_value : ( form_data.data_value unless form_data.nil? ) )
+   
   else
    value=form_component.default_value
   end

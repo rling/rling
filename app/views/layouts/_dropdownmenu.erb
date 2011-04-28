@@ -17,7 +17,7 @@ menus.each do |menu|
     output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
   end
   if menu.image_path.blank?
-    output << menu.name
+    output << menu.name.capitalize
   else
     output << "<img src='#{menu.image_path}'"
     if !menu.hover_image_path.blank?
@@ -27,14 +27,14 @@ menus.each do |menu|
   end 
   output << "</a>"
   unless submenus.empty?
-  	output << "<div id='m#{mnu_count}' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>"
+  	output << "<div class='submenus' id='m#{mnu_count}' style='border:0px;background-color:transparent;' onmouseover='mcancelclosetime()' onmouseout='mclosetime()'>"
   	submenus.each do |submenu|
 		if submenu.page.nil?
    			sub_menu_link = submenu.link_path
-                        output << "<a href='#{sub_menu_link}'>#{submenu.name}</a>"
+                        output << "<a href='#{sub_menu_link}'>#{submenu.name}</a><br/>"
   		else
    			sub_menu_link = submenu.page.perma_link
-            		output << "<a href='/#{sub_menu_link}'>#{submenu.name}</a>"
+            		output << "<a href='/#{sub_menu_link}'>#{submenu.name}</a><br/>"
 
   		end
   	end

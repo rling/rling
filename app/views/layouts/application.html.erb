@@ -16,6 +16,7 @@
 
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'templatecss' %>
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag :ckeditor %>
   <%= csrf_meta_tag %>
@@ -34,17 +35,22 @@
          <h3>Faster CMS for Faster minds</h3>
        </div>
        <div id="header_menu">
-         <%= raw(show_menu 'dropdownmenu','Header') %>
-        
+         <%= raw(show_menu 'dropdownmenu','Header') %>       
+	<div style="clear:both;"></div>
        </div>
+	<div style="clear:both;"></div>
      </div>
      <div id="middle">
-
-   
+       <div id="dashboard_main">
+		
+     <%= raw (show_secondary_menu) %>
+    
      <%= raw(flash_notice) %>
         
     <%= yield %>
+    </div>
    </div>
+  
    <div id="footer">
     <div id="footer_menu">
      <%= raw(show_menu 'nolistmenu','Footer') %>     

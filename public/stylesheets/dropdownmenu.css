@@ -9,16 +9,23 @@
 	list-style: none;
 	float: left;
 	font: bold 11px arial;
-      border-right: 1px solid black;
+    border-right: 1px solid black;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px; 
+	border-radius: 5px;
+	behavior: url(border-radius.htc);
+	margin-bottom:5px;
+	margin-top:5px;
 }
 
 #sddm li a
 {	display: block;
 	margin: 0 1px 0 0;
-	padding: 5px 10px;
+	padding: 0px 5px;
 	color: #FFF;
 	text-align: center;
-	text-decoration: none}
+	text-decoration: none;
+}
 
 #sddm div
 {	position: absolute;
@@ -41,7 +48,7 @@
 		text-decoration: none;
 		background: #999;
 		color: black;
-		font: 11px arial;
+		font: 11px arial
 		border: 1px solid black;
 }
 

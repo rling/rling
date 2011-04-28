@@ -16,7 +16,6 @@ function mopen(id)
 	// get new layer and show it
 	ddmenuitem = document.getElementById(id);
 	ddmenuitem.style.visibility = 'visible';
-
 }
 // close showed layer
 function mclose()
