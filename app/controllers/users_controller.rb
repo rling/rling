@@ -157,13 +157,15 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
-    if @user.admin? 
-     if User.admins.size > 1
-       @user.destroy
-       flash[:notice] = t(:user_deleted)
-     else
-       flash[:notice] = t(:admin_required)
-     end
+    if @user.admin?
+      if @user==User.first
+        flash[:notice] = t(:admin_required)
+      elsif @user.id==current_user.id
+        flash[:notice] = t(:cannot_delete_own)
+      else
+        @user.destroy
+        flash[:notice] = t(:admin_deleted)
+      end
     else
       @user.destroy
       flash[:notice] = t(:user_deleted)
