@@ -57,7 +57,7 @@ def first_user_create
        setting.save
       #View users account information setting
        setting = Setting.find_by_name("allow_view_user_account")
-       setting.setting_value = params[:allow_view_user_account]
+       setting.setting_value = (params[:allow_view_user_account].nil? ? "false" : "true")
        setting.save
        respond_to do |format|
          flash[:notice] = t(:admin_created)

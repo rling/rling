@@ -139,10 +139,9 @@ before_filter :require_admin
     respond_to do |format|
       if @page.save
           unless params[:page_variables].nil?
-	  update_page_variables(params[:page_variables],@page)
+            update_page_variables(params[:page_variables],@page)
           end
         flash[:notice] = "#{@page_type} #{t(:page_created)}"
-      
         format.html { redirect_to(:action=>'show',:id=>@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else

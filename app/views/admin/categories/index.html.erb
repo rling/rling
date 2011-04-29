@@ -5,6 +5,7 @@
 <%end%>
 <%= link_to "Back to Dashboard", admin_dashboard_path%>
 <h1>Listing categories</h1>
+<% unless @all_categories.empty? %>
 <%= form_tag update_position_categories_path do %>
 <table>
 <% @all_categories.each do |c| %>
@@ -29,8 +30,8 @@
 </table>
 <%= submit_tag 'Update Positions' %>
 <% end %>
+<% end %>
 <br />
-
 <% unless Categoryset.find(:all).empty? %>
 <%= link_to 'New Category', new_category_path %> |
 <%end%>
