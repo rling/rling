@@ -30,7 +30,6 @@ Feature: User Page
     And I should see "amit kumar mandal" on the account page
 
   Scenario: User clicks on Show Page
-    Given I have user details setting in user_detail_setting page
     Given I go to user index page
     Then I should see "amit" on the user index page
     When I press "Show" for "amit" on the user index page
@@ -39,7 +38,6 @@ Feature: User Page
     And I should see "Administrator" for "Role" on the user show page
     
   Scenario: Delete an item from user
-    Given I have user details setting in user_detail_setting page
     Given I go to user index page
     Then I should see "amit" on the user index page
     When I press "Destroy" for "amit" on the user index page

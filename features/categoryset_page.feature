@@ -49,7 +49,7 @@ Feature: Categoryset Page
     When I press "Update Categoryset"
     Then I should see "Categoryset was successfully updated."
 
-  Scenario: Delete an item from menuset
+  Scenario: Delete an item from categoryset
     Given I have a categoryset in categoryset index page
     Given I go to categoryset index page
     Then I should see "Technology" on the categoryset index page

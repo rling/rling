@@ -197,5 +197,4 @@ Factory.define(:category_view) do |f|
   f.creator_id "1"
   f.updater_id "1"
   f.status "Published"
-
 end
