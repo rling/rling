@@ -9,11 +9,11 @@
 	list-style: none;
 	float: left;
 	font: bold 11px arial;
-    border-right: 1px solid black;
-	-moz-border-radius: 5px;
+    border-right: 1px solid #777;
+/*	-moz-border-radius: 5px;
 	-webkit-border-radius:5px; 
 	border-radius: 5px;
-	behavior: url(border-radius.htc);
+	behavior: url(border-radius.htc);*/
 	margin-bottom:5px;
 	margin-top:5px;
 }
@@ -53,5 +53,5 @@
 }
 
 	#sddm div a:hover
-	{	background: #BF2E1B;
+	{	background: #333;
 		color: #FFF}

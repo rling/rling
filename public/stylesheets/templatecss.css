@@ -73,7 +73,7 @@ a:visited { padding-left:10px;color:#696969; font-size:12px;font-weight:normal;}
 
 #header
 {
-	min-height:140px;
+ min-height: 134px
     	background-attachment: scroll;
     	background-color: transparent;
   	background-position: 0 0;
@@ -106,7 +106,7 @@ a:visited { padding-left:10px;color:#696969; font-size:12px;font-weight:normal;}
 #top_bar
 {
 float:left;
-background-color:transparent;
+background-color:#BF2E1B;
 background-image: url(../images/topbar_opacity.png);
 width:99%;
 padding-right:1%;
@@ -114,20 +114,28 @@ padding-right:1%;
 
 #logo
 {
-float:left;   
-margin-top:3px;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 3px;
+    width: 51px;
 }
 
 #logo:hover
 {
-float:left;
--moz-box-shadow: 1px 2px 20px 2px white;   
--webkit-box-shadow: 1px 2px 16px 2px white;
-
--moz-border-radius-topleft: 100px 90px;
--moz-border-radius-topright: 100px 90px;
+  -moz-border-radius-topleft: 100px 187px;
+    -moz-border-radius-topright: 100px 169px;
+    -moz-box-shadow: 0 0 20px 4px white;
+    float: left;
+-webkit-box-shadow: 0px 0px 16px 2px white;
 border-top-left-radius: 100px 110px;
 border-top-right-radius: 100px 110px;
+
+}
+
+#header_right
+{
+  font-size: 20px;
 }
 
 
@@ -138,13 +146,49 @@ color:white;
 margin-top:auto;
 margin-bottom:auto;
 min-height:80px;
+background:#BF2E1B;
+}
+#header_heading
+{
+ width: 625px;
+ height:80px;
+ float: left;
+}
+#heading
+{
+    float: left;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 25px;
+    padding-left: 10px;
+    text-align: left;
+     width: 625px;
 }
 
+#heading_tag
+{
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+    padding-left: 11px;
+}
+
+#access
+{
+  margin: 15px 9px 9px;
+    text-align: right;
+}
+#access a 
+{
+  color: #fff;
+  font-size: 14px;
+}
 #header_menu{
 width:100%;
 background-image: url(../images/topbar_opacity.png);
 padding-top:1px;
-padding-left:5px;
+padding-left:0px;
 }
 
 #footer_menu
@@ -184,13 +228,6 @@ background-image: url(../images/topbar_opacity.png);
  min-height:250px;
  }
 
-#search_bar
-{
- position:absolute;
- top:20px;
- left:735px;
- min-height:30px;
-}
 
 .descriptions
 {

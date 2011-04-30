@@ -26,7 +26,7 @@ width: 800px;
 
 #header{
 background:#EDEAD7 none repeat scroll 0 0;
-height:140px;
+height: 134px;
 width: 800px;
 float:left;
 }
@@ -52,7 +52,8 @@ color:white;
 #header_menu{
  float:left;
  width: 800px;
- height: 40px;
+ height: 33px;
+ background: #333;
 }
 
 #header_menu ul li
@@ -62,7 +63,7 @@ color:white;
  padding: 5px;
 font-size: 15px;
 font-weight: bold;
- background: #999;
+ background: #333;
 }
 #header_menu ul li a
 {
@@ -71,6 +72,16 @@ color: #ffffff;
 #header_menu ul li:hover
 {
  background:#BF2E1B;
+}
+#menus
+{
+float:left;
+}
+#search_bar
+{
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
 }
 
 .menuitem_first
@@ -213,10 +224,6 @@ border: none;
    font-weight:bold;
 }
 
-#search_bar
-{
-float: right;
-}
 #left_page
 {
     float:left;

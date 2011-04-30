@@ -27,15 +27,22 @@
        <div id="top_bar">
          <%= raw(login_links) %>
        </div>
-       <div id="search_bar">
-         <%= raw(search_bar) %>
-       </div>
        <div id="header_text">
-         <h1>Welcome to RlingCMS</h1>
-         <h3>Faster CMS for Faster minds</h3>
+         <div id="logo"><img src="/images/rling_logo.png"></div>
+         <div id="header_heading"> <span id="heading">RLING CMS</span><span id="heading_tag">Faster CMS for Faster Minds</span></div>
+         <div id="access">
+		<a href="http://www.twitter.com/rling">Follow us on Twitter</a> <br/>
+		<a href="http://groups.google.com/rling">Join our Google Groups</a><br/>
+                <a href="/usermanual.pdf">RLINGCMS User Manual</a>
+	</div>
        </div>
        <div id="header_menu">
-         <%= raw(show_menu 'dropdownmenu','Header') %>       
+         <div id="menus">
+         <%= raw(show_menu 'dropdownmenu','Header') %>
+         </div>    
+         <div id="search_bar">
+         <%= raw(search_bar) %>
+        </div>   
 	<div style="clear:both;"></div>
        </div>
 	<div style="clear:both;"></div>
