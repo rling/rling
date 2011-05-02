@@ -210,13 +210,14 @@ border: none;
 {
     float:left;
     padding-left: 10px;
-    width: 470px;
+    width: 600px;
 }
 
 #dashboard_right
 {
     float:left;
-    padding-left: 155px;
+    padding-left: 20px;
+    width: 260px;
 }
 
 .user_information .user_section_heading
