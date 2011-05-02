@@ -66,14 +66,23 @@ Generate permalink parent  automatically<br />
 </div>
 <% end %>
 
-
 <div class="field">
   <%= form.label "Select Categoryset" %>
   <%= form.select :categoryset_id,Categoryset.all.collect{|c|[c.name,c.id]}, {:include_blank => 'None'}%>
 </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field">
+  <%= form.check_box :allow_show_on_homepage,  :checked=> @object_model.allow_show_on_homepage %>
+  <%= form.label :allow_show_on_homepage %>
+</div>
+
+<div class="field">
+  <%= form.check_box :allow_drafts,  :checked=> @object_model.allow_drafts %>
+  <%= form.label :allow_drafts %>
+</div>
+
+<div class="actions">
+  <%= form.submit "#{(@object_model.id.nil? ? "Create" : "Update")} Model" %>
+</div>
 
 <% end %>

@@ -1,11 +1,9 @@
-
-<div>
+<div class="grid_links">
 <% unless params[:page].nil? %>
-<p> Showing <%=  @start  %> to <%= @end %> of <%= @model_submissions.size %> </p>
+<p> Showing <%=  @start  %> to <%= @model_submissions.size < @end ? @model_submissions.size : @end %> of <%= @model_submissions.size %> </p>
 <%  else %>
-
-<p> Showing 1 to <%= @per_page %> of <%= @model_submissions.size %></p>
-<% end %>
+<p> Showing 1 to <%= (@model_submissions.size > @per_page) ? @per_page : @model_submissions.size %> of <%= @model_submissions.size %></p>
+<% end if !@per_page.nil?%>
 <%= will_paginate @page_results %>
 </div>
 
@@ -29,13 +27,12 @@
     <%= raw(output) %>
 </div>
 
-
-<div>
+<div class="grid_links">
+<%= will_paginate @page_results %>
 <% unless params[:page].nil? %>
-<p> Showing <%=  @start  %> to <%= @end %> of <%= @model_submissions.size %> </p>
+<p> Showing <%=  @start  %> to <%= @model_submissions.size < @end ? @model_submissions.size : @end %> of <%= @model_submissions.size %> </p>
 <%  else %>
 
-<p> Showing 1 to <%= @per_page %> of <%= @model_submissions.size %></p>
-<% end %>
-<%= will_paginate @page_results %>
+<p> Showing 1 to <%= (@model_submissions.size > @per_page) ? @per_page : @model_submissions.size %> of <%= @model_submissions.size %></p>
+<% end if !@per_page.nil?%>
 </div>

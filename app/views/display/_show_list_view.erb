@@ -31,10 +31,10 @@
 </div>
 <div>
 <% unless params[:page].nil? %>
+<%= will_paginate @page_results %>
 <p> Showing <%=  @start  %> to <%= @end %> of <%= @model_submissions.size %> </p>
 <%  else %>
 
 <p> Showing 1 to <%= @per_page %> of <%= @model_submissions.size %></p>
 <% end %>
-<%= will_paginate @page_results %>
 </div>

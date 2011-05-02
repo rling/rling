@@ -1,5 +1,4 @@
 <%= javascript_include_tag :ckeditor %>
-
 <% unless @object.model_components.eql?([]) %>
 
 <%= form_for([@object,@model_submission], :html => { :multipart => :true })  do |form| %>
@@ -41,17 +40,20 @@ Generate permalink automatically<br />
     <% end %>
 
         
-   
+<% unless @object.allow_show_on_homepage==false || @object.allow_show_on_homepage.nil? %>
 <div>
   <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
 Show on Home Page
 </div>
 <br/>
-             
+<% end %>
+
+<% unless @object.allow_drafts==false || @object.allow_drafts.nil? %>
 <div id="modelsubmission_status">
  <%= label_tag 'Status:' %>
  <%= select_tag :status, options_for_select([ "Draft", "Published"],:selected=>@model_submission.status) %>
 </div>
+<% end %>
 
 <br/>
   <div class="actions">

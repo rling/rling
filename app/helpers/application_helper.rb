@@ -212,7 +212,7 @@ end
        call_type='nopermission'
      end if !current_user.nil?
    end
-   permission = Permission.find(:first,:conditions=>["permission_type=? and activity_code=?",model.class.to_s,call_type])
+   permission = Permission.find(:first,:conditions=>["permission_object=? and permission_type=? and activity_code=?",model.name,model.class.to_s,call_type])
    unless permission.nil?
      permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
      return permissionrole.nil? ? false : permissionrole.value

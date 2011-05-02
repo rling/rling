@@ -123,4 +123,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  
+  #check if there are any Javascript code which are harmful. this is necessary as 
+  # we donot have control over the fields as entered by non administrators within 
+  # the website.
+   def checkforjs(input)
+     return input.gsub("<script","").gsub("</script>","")
+   end
 end

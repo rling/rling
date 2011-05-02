@@ -170,10 +170,13 @@ border: none;
 {
     float:left;
     display:block;
-    text_align:center;
+    text-align:center;
     margin :5px;
 }
-
+.grid_links
+{
+clear:left
+}
 
 /* CSS for Page*/
 .page_heading
@@ -196,10 +199,12 @@ border: none;
 .form_component
 {
  width:100%;
+ 
 }
 .form_component_heading,.mandatory_component,.form_component_value
 {
-  float:left;
+ font-size:10px;
+ display:inline;
 }
 .form_submit
 {
@@ -236,4 +241,33 @@ border: none;
     float:left;
     width:660px;
 }
+.page_form
+{
 
+    
+}
+
+.display_comment
+{
+ display:block;
+ float:left;
+width: 900px;
+}
+.display_comment_spacing
+{
+ float:left;
+}
+.display_comment_component_heading
+{
+ float:left;
+display:none;
+}
+.display_comment_component_value
+{
+float:left;
+}
+.comment_operations
+{
+ float:left;
+ margin-left: 10px;
+}

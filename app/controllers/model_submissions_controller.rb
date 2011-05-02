@@ -83,7 +83,7 @@ class ModelSubmissionsController < ApplicationController
                 ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>asset.id.to_s)
               end
             else
-              ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>model_data[component.component_name])
+              ModelData.create(:model_submission_id=>@model_submission.id,:model_component_id=>component.id,:data_value=>checkforjs(model_data[component.component_name]))
             end
           end
           message = t(:model_submission_stored)
@@ -146,7 +146,7 @@ class ModelSubmissionsController < ApplicationController
                 model_data_obj.data_value = asset.id.to_s
               end
             else
-              model_data_obj.data_value = model_data[component.component_name]
+              model_data_obj.data_value = checkforjs(model_data[component.component_name])
             end
             model_data_obj.save
           end
@@ -245,4 +245,5 @@ class ModelSubmissionsController < ApplicationController
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end
+   
 end

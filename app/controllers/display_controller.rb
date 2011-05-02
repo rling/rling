@@ -66,6 +66,7 @@ class DisplayController < ApplicationController
     @msg = ""
     if request.post?
     unless @query.blank?
+     @query = checkforjs(@query)
     case @type.downcase
       when "all"
         @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
@@ -179,7 +180,7 @@ class DisplayController < ApplicationController
                 CommentDatum.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
               end
           else
-            CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>comment_data[component.component_name])
+            CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>checkforjs(comment_data[component.component_name]))
           end
         end
         message = t(:comment_submission_stored)

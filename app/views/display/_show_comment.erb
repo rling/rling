@@ -1,25 +1,31 @@
 <% unless model_submission.comment_submissions.empty? %>
 <% get_all_comments(CommentSubmission.new,model_submission).each do |comment| %>
-<div class="display_comment">
+<div class="display_comment" id="display_comment_<%= comment.id %>">
+<div class="display_comment_spacing">  
 <%  comment.level.times do %>
 &nbsp;&nbsp;&nbsp;
 <% end %>
+</div>
 <% comment.model_submission.object_model.comment_components.each do |cc| %>
-
+<div class="display_comment_component_heading display_comment_component_<%= cc.component_name %>_heading">
 <%= cc.component_display_name %>
-
+</div>
           <% comment_data = comment.comment_data.first(:conditions=>["comment_component_id=?",cc.id] )
           unless comment_data.nil? %>
+<div class="display_comment_component_value display_comment_component_<%= cc.component_name %>_value">
             <%= raw get_form_data(cc.component_type,comment_data.data_value) %>
+</div>  
           <% end %>
 
 <% end %>
+  <div class="comment_operations">
 <% if (validate_permission("deletecomment",model_submission.object_model,comment) || validate_permission("deletemycomments",model_submission.object_model,comment)) %>
 |<%= link_to 'Delete Comment',[model_submission.object_model,model_submission, comment], :confirm => 'Are you sure?', :method => :delete %>|
 <% end %>
 <% if comment.model_submission.object_model.is_comment_recursive.eql?(true) %>
     <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>comment.id }   %>
  <% end  %>
+</div>
 </div>
 <% end %>
 <% end  %>
