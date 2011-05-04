@@ -1,20 +1,20 @@
 development:
   adapter: mysql
-  database: rlingcms
+  database: rling
   username: root
   password: root
 
 
 test: &test
   adapter: mysql
-  database: rlingcms_test
+  database: rling_test
   username: root
   password: root
 
 
 production:
   adapter: mysql
-  database: rlingcms
+  database: rling
   username: root
   password: root
 
