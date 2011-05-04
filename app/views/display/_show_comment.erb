@@ -10,7 +10,7 @@
 <div class="display_comment_component_heading display_comment_component_<%= cc.component_name %>_heading">
 <%= cc.component_display_name %>
 </div>
-          <% comment_data = comment.comment_data.first(:conditions=>["comment_component_id=?",cc.id] )
+          <% comment_data = comment.comment_data.first(:conditions=>["comment_component_id=?",cc.id]  )
           unless comment_data.nil? %>
 <div class="display_comment_component_value display_comment_component_<%= cc.component_name %>_value">
             <%= raw get_form_data(cc.component_type,comment_data.data_value) %>

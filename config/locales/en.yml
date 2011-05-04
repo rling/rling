@@ -4,7 +4,7 @@
 en:
   required_user_not_available: "You must be logged in to access this page"
   no_user_required_for_page: "You must be logged out to access this page"
-  admin_privelage_required: "You do not have administrator previleges to access the page"
+  admin_privlege_required: "You do not have administrator previleges to access the page"
   comment_component_created: "Comment component was successfully created."
   comment_component_updated: "Comment component was successfully updated."
   search_string: "You have"

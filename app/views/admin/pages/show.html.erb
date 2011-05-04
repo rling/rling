@@ -63,7 +63,7 @@
 
 <p>
   <b> Layout: </b>
-  <%= @page.layout %>
+  <%= @page.layout.empty? ? 'None' : @page.layout %>
 </p>
 
 <p>

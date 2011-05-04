@@ -203,7 +203,7 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.string   "layout"
     t.integer  "categoryset_id"
     t.boolean  "allow_show_on_homepage", :default => false
-    t.string   "allow_drafts",           :default => "Published"
+    t.boolean  "allow_drafts"
   end
 
   create_table "page_variable_settings", :force => true do |t|

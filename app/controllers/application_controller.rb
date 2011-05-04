@@ -2,12 +2,12 @@ class ApplicationController < ActionController::Base
   #includes
   include Userstamp
   protect_from_forgery
-
   #FILTERS
   helper :all
   helper_method :current_user,:current_user?
   before_filter :check_admin,:check_cookie
-
+  layout :set_layout
+  
   #verify permission for users  
   def verify_permission
     activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewlist"}
@@ -88,12 +88,15 @@ class ApplicationController < ActionController::Base
   def require_admin
     if require_user
       unless current_user.admin?
-        flash[:notice] = t(:admin_privelage_required)
+        flash[:notice] = t(:admin_privilege_required)
         redirect_to :controller => "users", :action => "show", :id => current_user.id
         return false
       else
+        @admin_layout = true
         return true
       end
+    else
+      @admin_layout=true
     end
   end
 
@@ -129,5 +132,10 @@ class ApplicationController < ActionController::Base
   # the website.
    def checkforjs(input)
      return input.gsub("<script","").gsub("</script>","")
+   end
+   
+   def set_layout
+     defined?(@admin_layout) ? "admin" : "application"
+     #(current_user? && current_user.admin?) ? "admin" : "application"      
    end
 end

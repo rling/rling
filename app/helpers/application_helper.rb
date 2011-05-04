@@ -159,6 +159,8 @@ end
        asset = Asset.find(value)
        return check_content_type(asset)
       end
+    when "Textfield","Textarea"
+      return auto_link(value)
     else
       return value
     end

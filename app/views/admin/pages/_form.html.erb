@@ -134,7 +134,7 @@ Show on Home Page
 <% end %>
 
 
-<% if @page.layout.nil? %>
+<% if @page.layout.nil? || @page.layout.empty? %>
 <div class="field">
   <%= check_box('','add_layout',  :checked=> "false", :onclick => "if (this.checked){$('#show_layout').show();} else        {$('#show_layout').hide();}") %>
   Do you want separate layout?
