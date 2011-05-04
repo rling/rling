@@ -25,6 +25,7 @@ en:
   error_in_model_submission: "Could not submit your details. Please try again"
   model_submission_stored: "All details have been stored successfully"
   model_submission_updated: "Submission Form Updated"
+  model_submission_deleted: "Submission Form Deleted"
   category_added: "Category is successfully added"
   category_removed: "Category successfully removed"
   object_model_created: "Model was successfully created"

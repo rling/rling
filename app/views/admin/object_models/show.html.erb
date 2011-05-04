@@ -34,31 +34,26 @@
 
 <p>
   <b> Layout: </b>
-  <%= @object_model.layout %>
+  <%= @object_model.layout.empty? ? 'None' : @object_model.layout %>
 </p>
 
 
-<% unless @object_model.categoryset.nil? %>
 <p>
   <b> CategorySet: </b>
-  <%= @object_model.categoryset.name %>
+  <%= @object_model.categoryset.nil? ? 'None' : @object_model.categoryset.name %>
 </p>
-<% end %>
 
-<% if @object_model.allow_show_on_homepage %>
+
 <p>
   <b> Allow Show on Homepage: </b>
   <%= @object_model.allow_show_on_homepage ? "True" : "False" %>
 </p>
-<% end %>
 
-<% if @object_model.allow_drafts %>
+
 <p>
   <b> Allow Drafts: </b>
   <%= @object_model.allow_drafts ? "True" : "False" %>
 </p>
-<% end %>
-
 
 
 <%= link_to 'Edit', edit_object_model_path(@object_model) %> |

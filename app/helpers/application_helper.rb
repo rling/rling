@@ -289,6 +289,8 @@ def process_page(pagebody)
           display_file = link_to("#{asset.upload_file_name}", asset.upload.url,:target=>"_blank")+" "+link_to("[X]",delete_asset_user_path(field_obj.id))
         end
         return file_field_tag("form_field[#{field_name}]") + display_file
+      when "Link"
+        return text_field_tag("form_field[#{field_name}]",field_value)
       end
     end 
 

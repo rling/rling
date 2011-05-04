@@ -176,7 +176,7 @@ class ModelSubmissionsController < ApplicationController
   def destroy
     @model_submission =  @object.model_submissions.find(params[:id])
     @model_submission.destroy
-
+    flash[:notice] = t(:model_submission_deleted)
     respond_to do |format|
       format.html { redirect_to(object_model_model_submissions_path(@object)) }
       format.xml  { head :ok }

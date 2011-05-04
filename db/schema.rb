@@ -202,8 +202,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.boolean  "email_on_comment",       :default => false
     t.string   "layout"
     t.integer  "categoryset_id"
-    t.boolean  "allow_show_on_homepage"
-    t.boolean  "allow_drafts"
+    t.boolean  "allow_show_on_homepage", :default => false
+    t.string   "allow_drafts",           :default => "Published"
   end
 
   create_table "page_variable_settings", :force => true do |t|

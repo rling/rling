@@ -20,11 +20,12 @@
 	<%= raw get_form_data(model_data.model_component.component_type,model_data.data_value) %><br />
 <% end %>
 </p>
-
+<% if @object.allow_drafts==true %>
 <p>
  <b>Status:</b>
  <%= @model_submission.status %>
 </p>
+<% end %>
 
 <% if validate_permission("edit",@object,@model_submission) %>
 <%= link_to "Edit", edit_object_model_model_submission_path(@object,@model_submission) %> |<% end %>

@@ -53,6 +53,10 @@ Show on Home Page
  <%= label_tag 'Status:' %>
  <%= select_tag :status, options_for_select([ "Draft", "Published"],:selected=>@model_submission.status) %>
 </div>
+<% else %>
+<% puts 7777777777777777777777777777777777 %>
+<%= hidden_field_tag :status,'Published'  %>
+
 <% end %>
 
 <br/>
