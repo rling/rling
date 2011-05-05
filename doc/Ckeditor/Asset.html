@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Ckeditor::Asset</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../app/models/ckeditor/asset_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/ckeditor/asset.rb">app/models/ckeditor/asset.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">ActiveRecord::Base</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-content_type">#content_type</a></li>
+					
+					<li><a href="#method-i-filename">#filename</a></li>
+					
+					<li><a href="#method-i-format_created_at">#format_created_at</a></li>
+					
+					<li><a href="#method-i-geometry">#geometry</a></li>
+					
+					<li><a href="#method-i-has_dimensions%3F">#has_dimensions?</a></li>
+					
+					<li><a href="#method-i-image%3F">#image?</a></li>
+					
+					<li><a href="#method-i-make_content_type">#make_content_type</a></li>
+					
+					<li><a href="#method-i-parameterize_filename">#parameterize_filename</a></li>
+					
+					<li><a href="#method-i-path">#path</a></li>
+					
+					<li><a href="#method-i-public_filename">#public_filename</a></li>
+					
+					<li><a href="#method-i-read_dimensions">#read_dimensions</a></li>
+					
+					<li><a href="#method-i-size">#size</a></li>
+					
+					<li><a href="#method-i-styles">#styles</a></li>
+					
+					<li><a href="#method-i-to_xml">#to_xml</a></li>
+					
+					<li><a href="#method-i-url">#url</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Admin.html">Admin</a></li>
+				
+					<li><a href="../Admin/AdminController.html">Admin::AdminController</a></li>
+				
+					<li><a href="../Admin/CategoriesController.html">Admin::CategoriesController</a></li>
+				
+					<li><a href="../Admin/CategorysetsController.html">Admin::CategorysetsController</a></li>
+				
+					<li><a href="../Admin/CommentComponentsController.html">Admin::CommentComponentsController</a></li>
+				
+					<li><a href="../Admin/FormComponentsController.html">Admin::FormComponentsController</a></li>
+				
+					<li><a href="../Admin/FormSubmissionsController.html">Admin::FormSubmissionsController</a></li>
+				
+					<li><a href="../Admin/MailersController.html">Admin::MailersController</a></li>
+				
+					<li><a href="../Admin/MenusController.html">Admin::MenusController</a></li>
+				
+					<li><a href="../Admin/MenusetsController.html">Admin::MenusetsController</a></li>
+				
+					<li><a href="../Admin/ModelComponentsController.html">Admin::ModelComponentsController</a></li>
+				
+					<li><a href="../Admin/ObjectModelsController.html">Admin::ObjectModelsController</a></li>
+				
+					<li><a href="../Admin/PageVariableSettingsController.html">Admin::PageVariableSettingsController</a></li>
+				
+					<li><a href="../Admin/PageletsController.html">Admin::PageletsController</a></li>
+				
+					<li><a href="../Admin/PagesController.html">Admin::PagesController</a></li>
+				
+					<li><a href="../Admin/PermissionsController.html">Admin::PermissionsController</a></li>
+				
+					<li><a href="../Admin/RolesController.html">Admin::RolesController</a></li>
+				
+					<li><a href="../Admin/SettingsController.html">Admin::SettingsController</a></li>
+				
+					<li><a href="../Admin/UserDetailSettingsController.html">Admin::UserDetailSettingsController</a></li>
+				
+					<li><a href="../Admin/ViewComponentsController.html">Admin::ViewComponentsController</a></li>
+				
+					<li><a href="../Admin/ViewConditionsController.html">Admin::ViewConditionsController</a></li>
+				
+					<li><a href="../Admin/ViewOrdersController.html">Admin::ViewOrdersController</a></li>
+				
+					<li><a href="../Ckeditor.html">Ckeditor</a></li>
+				
+					<li><a href="../Ckeditor/Asset.html">Ckeditor::Asset</a></li>
+				
+					<li><a href="../Ckeditor/AttachmentFile.html">Ckeditor::AttachmentFile</a></li>
+				
+					<li><a href="../Ckeditor/Picture.html">Ckeditor::Picture</a></li>
+				
+					<li><a href="../AdminHelper.html">AdminHelper</a></li>
+				
+					<li><a href="../ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="../ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="../Asset.html">Asset</a></li>
+				
+					<li><a href="../CacheHelper.html">CacheHelper</a></li>
+				
+					<li><a href="../CategoriesHelper.html">CategoriesHelper</a></li>
+				
+					<li><a href="../Categorization.html">Categorization</a></li>
+				
+					<li><a href="../Category.html">Category</a></li>
+				
+					<li><a href="../CategoryView.html">CategoryView</a></li>
+				
+					<li><a href="../Categoryset.html">Categoryset</a></li>
+				
+					<li><a href="../CategorysetsHelper.html">CategorysetsHelper</a></li>
+				
+					<li><a href="../CommentComponent.html">CommentComponent</a></li>
+				
+					<li><a href="../CommentComponentsHelper.html">CommentComponentsHelper</a></li>
+				
+					<li><a href="../CommentDatum.html">CommentDatum</a></li>
+				
+					<li><a href="../CommentSubmission.html">CommentSubmission</a></li>
+				
+					<li><a href="../CommentSubmissionsController.html">CommentSubmissionsController</a></li>
+				
+					<li><a href="../CommentSubmissionsHelper.html">CommentSubmissionsHelper</a></li>
+				
+					<li><a href="../DisplayController.html">DisplayController</a></li>
+				
+					<li><a href="../DisplayHelper.html">DisplayHelper</a></li>
+				
+					<li><a href="../FormComponent.html">FormComponent</a></li>
+				
+					<li><a href="../FormComponentsHelper.html">FormComponentsHelper</a></li>
+				
+					<li><a href="../FormDatum.html">FormDatum</a></li>
+				
+					<li><a href="../FormSubmission.html">FormSubmission</a></li>
+				
+					<li><a href="../FormSubmissionsHelper.html">FormSubmissionsHelper</a></li>
+				
+					<li><a href="../Mailer.html">Mailer</a></li>
+				
+					<li><a href="../MailersHelper.html">MailersHelper</a></li>
+				
+					<li><a href="../Menu.html">Menu</a></li>
+				
+					<li><a href="../MenusHelper.html">MenusHelper</a></li>
+				
+					<li><a href="../Menuset.html">Menuset</a></li>
+				
+					<li><a href="../MenusetsHelper.html">MenusetsHelper</a></li>
+				
+					<li><a href="../ModelComponent.html">ModelComponent</a></li>
+				
+					<li><a href="../ModelComponentsHelper.html">ModelComponentsHelper</a></li>
+				
+					<li><a href="../ModelData.html">ModelData</a></li>
+				
+					<li><a href="../ModelSubmission.html">ModelSubmission</a></li>
+				
+					<li><a href="../ModelSubmissionSweeper.html">ModelSubmissionSweeper</a></li>
+				
+					<li><a href="../ModelSubmissionsController.html">ModelSubmissionsController</a></li>
+				
+					<li><a href="../ModelSubmissionsHelper.html">ModelSubmissionsHelper</a></li>
+				
+					<li><a href="../Notifier.html">Notifier</a></li>
+				
+					<li><a href="../ObjectForm.html">ObjectForm</a></li>
+				
+					<li><a href="../ObjectModel.html">ObjectModel</a></li>
+				
+					<li><a href="../ObjectModelsHelper.html">ObjectModelsHelper</a></li>
+				
+					<li><a href="../Page.html">Page</a></li>
+				
+					<li><a href="../PageSweeper.html">PageSweeper</a></li>
+				
+					<li><a href="../PageVariable.html">PageVariable</a></li>
+				
+					<li><a href="../PageVariableSetting.html">PageVariableSetting</a></li>
+				
+					<li><a href="../PageVariableSettingsHelper.html">PageVariableSettingsHelper</a></li>
+				
+					<li><a href="../Pagelet.html">Pagelet</a></li>
+				
+					<li><a href="../PageletSweeper.html">PageletSweeper</a></li>
+				
+					<li><a href="../PageletsHelper.html">PageletsHelper</a></li>
+				
+					<li><a href="../PagesHelper.html">PagesHelper</a></li>
+				
+					<li><a href="../PasswordResetsController.html">PasswordResetsController</a></li>
+				
+					<li><a href="../PasswordResetsHelper.html">PasswordResetsHelper</a></li>
+				
+					<li><a href="../PermalinkHelper.html">PermalinkHelper</a></li>
+				
+					<li><a href="../Permission.html">Permission</a></li>
+				
+					<li><a href="../PermissionRole.html">PermissionRole</a></li>
+				
+					<li><a href="../PermissionsHelper.html">PermissionsHelper</a></li>
+				
+					<li><a href="../Role.html">Role</a></li>
+				
+					<li><a href="../RolesHelper.html">RolesHelper</a></li>
+				
+					<li><a href="../SessionsController.html">SessionsController</a></li>
+				
+					<li><a href="../SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="../Setting.html">Setting</a></li>
+				
+					<li><a href="../SettingsHelper.html">SettingsHelper</a></li>
+				
+					<li><a href="../User.html">User</a></li>
+				
+					<li><a href="../UserDetail.html">UserDetail</a></li>
+				
+					<li><a href="../UserDetailSetting.html">UserDetailSetting</a></li>
+				
+					<li><a href="../UserDetailSettingsHelper.html">UserDetailSettingsHelper</a></li>
+				
+					<li><a href="../UsersController.html">UsersController</a></li>
+				
+					<li><a href="../UsersHelper.html">UsersHelper</a></li>
+				
+					<li><a href="../View.html">View</a></li>
+				
+					<li><a href="../ViewComponent.html">ViewComponent</a></li>
+				
+					<li><a href="../ViewComponentsHelper.html">ViewComponentsHelper</a></li>
+				
+					<li><a href="../ViewCondition.html">ViewCondition</a></li>
+				
+					<li><a href="../ViewConditionsHelper.html">ViewConditionsHelper</a></li>
+				
+					<li><a href="../ViewOrder.html">ViewOrder</a></li>
+				
+					<li><a href="../ViewOrdersHelper.html">ViewOrdersHelper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Ckeditor::Asset</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="content-type-method" class="method-detail ">
+				<a name="method-i-content_type"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">content_type</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="content-type-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 23</span>
+23:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_type</span>
+24:     <span class="ruby-identifier">data_content_type</span>
+25:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="filename-method" class="method-detail ">
+				<a name="method-i-filename"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">filename</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="filename-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 19</span>
+19:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filename</span>
+20:     <span class="ruby-identifier">data_file_name</span>
+21:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="format-created-at-method" class="method-detail ">
+				<a name="method-i-format_created_at"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">format_created_at</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="format-created-at-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">format_created_at</span>
+40:     <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">l</span>(<span class="ruby-identifier">created_at</span>, <span class="ruby-value">:format=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;%d.%m.%Y %H:%M&quot;</span>)
+41:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="geometry-method" class="method-detail ">
+				<a name="method-i-geometry"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">geometry</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="geometry-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 70</span>
+70:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">geometry</span>
+71:     <span class="ruby-ivar">@geometry</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Paperclip</span><span class="ruby-operator">::</span><span class="ruby-constant">Geometry</span>.<span class="ruby-identifier">from_file</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_file</span>)
+72:     <span class="ruby-ivar">@geometry</span>
+73:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="has-dimensions--method" class="method-detail ">
+				<a name="method-i-has_dimensions%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">has_dimensions?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="has-dimensions--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 62</span>
+62:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_dimensions?</span>
+63:     <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:width</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:height</span>)
+64:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="image--method" class="method-detail ">
+				<a name="method-i-image%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">image?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="image--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image?</span>
+67:     <span class="ruby-constant">Ckeditor</span><span class="ruby-operator">::</span><span class="ruby-constant">IMAGE_TYPES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">data_content_type</span>)
+68:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="path-method" class="method-detail ">
+				<a name="method-i-path"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">path</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="path-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 31</span>
+31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path</span>
+32:     <span class="ruby-identifier">data</span>.<span class="ruby-identifier">path</span>
+33:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="public-filename-method" class="method-detail method-alias">
+				<a name="method-i-public_filename"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">public_filename</span><span
+						class="method-args">(*args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+				</div>
+
+				
+
+				
+				<div class="aliases">
+          Alias for: <a href="Asset.html#method-i-url">url</a>
+				</div>
+				
+			</div>
+
+		
+			<div id="size-method" class="method-detail ">
+				<a name="method-i-size"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">size</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="size-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 27</span>
+27:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size</span>
+28:     <span class="ruby-identifier">data_file_size</span>
+29:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="styles-method" class="method-detail ">
+				<a name="method-i-styles"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">styles</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="styles-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 35</span>
+35:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">styles</span>
+36:     <span class="ruby-identifier">data</span>.<span class="ruby-identifier">styles</span>
+37:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="to-xml-method" class="method-detail ">
+				<a name="method-i-to_xml"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">to_xml</span><span
+						class="method-args">(options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="to-xml-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 43</span>
+43:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_xml</span>(<span class="ruby-identifier">options</span> = {})
+44:     <span class="ruby-identifier">builder</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:builder</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">XML</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>)
+45: 
+46:     <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">send</span>(<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">xml</span><span class="ruby-operator">|</span>
+47:       <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">id_</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">id</span>
+48:       <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">filename</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">filename</span>
+49:       <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">size</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">size</span>
+50:       <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">path</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">url</span>
+51:       
+52:       <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">styles</span> <span class="ruby-keyword kw">do</span>
+53:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">styles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">style</span><span class="ruby-operator">|</span>
+54:           <span class="ruby-identifier">xml</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">style</span>.<span class="ruby-identifier">first</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">url</span>(<span class="ruby-identifier">style</span>.<span class="ruby-identifier">first</span>))
+55:         <span class="ruby-keyword kw">end</span>
+56:       <span class="ruby-keyword kw">end</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">styles</span>.<span class="ruby-identifier">empty?</span>
+57:     <span class="ruby-keyword kw">end</span>
+58:     
+59:     <span class="ruby-identifier">builder</span>.<span class="ruby-identifier">to_xml</span>
+60:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="url-method" class="method-detail ">
+				<a name="method-i-url"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">url</span><span
+						class="method-args">(*args)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="url-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 14</span>
+14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">url</span>(*<span class="ruby-identifier">args</span>)
+15:     <span class="ruby-identifier">data</span>.<span class="ruby-identifier">url</span>(*<span class="ruby-identifier">args</span>)
+16:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+				<div class="aliases">
+					Also aliased as: <a href="Asset.html#method-i-public_filename">public_filename</a>
+				</div>
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="protected-instance-method-details" class="method-section section">
+			<h3 class="section-header">Protected Instance Methods</h3>
+
+		
+			<div id="make-content-type-method" class="method-detail ">
+				<a name="method-i-make_content_type"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">make_content_type</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="make-content-type-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 91</span>
+91:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">make_content_type</span>
+92:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">data_content_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;application/octet-stream&quot;</span>
+93:         <span class="ruby-identifier">content_types</span> = <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>.<span class="ruby-identifier">type_for</span>(<span class="ruby-identifier">filename</span>)
+94:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data_content_type</span> = <span class="ruby-identifier">content_types</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">content_types</span>.<span class="ruby-identifier">empty?</span>
+95:       <span class="ruby-keyword kw">end</span>
+96:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parameterize-filename-method" class="method-detail ">
+				<a name="method-i-parameterize_filename"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parameterize_filename</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parameterize-filename-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 77</span>
+77:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parameterize_filename</span>
+78:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">data_file_name</span>.<span class="ruby-identifier">blank?</span>
+79:         <span class="ruby-identifier">filename</span> = <span class="ruby-constant">Ckeditor</span><span class="ruby-operator">::</span><span class="ruby-constant">Utils</span>.<span class="ruby-identifier">parameterize_filename</span>(<span class="ruby-identifier">data_file_name</span>)
+80:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">instance_write</span>(<span class="ruby-value">:file_name</span>, <span class="ruby-identifier">filename</span>)
+81:       <span class="ruby-keyword kw">end</span>  
+82:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="read-dimensions-method" class="method-detail ">
+				<a name="method-i-read_dimensions"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">read_dimensions</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="read-dimensions-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/ckeditor/asset.rb, line 84</span>
+84:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_dimensions</span>
+85:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">image?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">has_dimensions?</span>
+86:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">width</span> = <span class="ruby-identifier">geometry</span>.<span class="ruby-identifier">width</span>
+87:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">height</span> = <span class="ruby-identifier">geometry</span>.<span class="ruby-identifier">height</span>
+88:       <span class="ruby-keyword kw">end</span>
+89:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

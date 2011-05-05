@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: ApplicationController</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./app/controllers/application_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">ActionController::Base</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-check_admin">#check_admin</a></li>
+					
+					<li><a href="#method-i-check_cookie">#check_cookie</a></li>
+					
+					<li><a href="#method-i-checkforjs">#checkforjs</a></li>
+					
+					<li><a href="#method-i-current_user">#current_user</a></li>
+					
+					<li><a href="#method-i-current_user%3D">#current_user=</a></li>
+					
+					<li><a href="#method-i-current_user%3F">#current_user?</a></li>
+					
+					<li><a href="#method-i-redirect_back_or_default">#redirect_back_or_default</a></li>
+					
+					<li><a href="#method-i-require_admin">#require_admin</a></li>
+					
+					<li><a href="#method-i-require_no_user">#require_no_user</a></li>
+					
+					<li><a href="#method-i-require_user">#require_user</a></li>
+					
+					<li><a href="#method-i-set_layout">#set_layout</a></li>
+					
+					<li><a href="#method-i-store_location">#store_location</a></li>
+					
+					<li><a href="#method-i-verify_permission">#verify_permission</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">Userstamp</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Admin.html">Admin</a></li>
+				
+					<li><a href="./Admin/AdminController.html">Admin::AdminController</a></li>
+				
+					<li><a href="./Admin/CategoriesController.html">Admin::CategoriesController</a></li>
+				
+					<li><a href="./Admin/CategorysetsController.html">Admin::CategorysetsController</a></li>
+				
+					<li><a href="./Admin/CommentComponentsController.html">Admin::CommentComponentsController</a></li>
+				
+					<li><a href="./Admin/FormComponentsController.html">Admin::FormComponentsController</a></li>
+				
+					<li><a href="./Admin/FormSubmissionsController.html">Admin::FormSubmissionsController</a></li>
+				
+					<li><a href="./Admin/MailersController.html">Admin::MailersController</a></li>
+				
+					<li><a href="./Admin/MenusController.html">Admin::MenusController</a></li>
+				
+					<li><a href="./Admin/MenusetsController.html">Admin::MenusetsController</a></li>
+				
+					<li><a href="./Admin/ModelComponentsController.html">Admin::ModelComponentsController</a></li>
+				
+					<li><a href="./Admin/ObjectModelsController.html">Admin::ObjectModelsController</a></li>
+				
+					<li><a href="./Admin/PageVariableSettingsController.html">Admin::PageVariableSettingsController</a></li>
+				
+					<li><a href="./Admin/PageletsController.html">Admin::PageletsController</a></li>
+				
+					<li><a href="./Admin/PagesController.html">Admin::PagesController</a></li>
+				
+					<li><a href="./Admin/PermissionsController.html">Admin::PermissionsController</a></li>
+				
+					<li><a href="./Admin/RolesController.html">Admin::RolesController</a></li>
+				
+					<li><a href="./Admin/SettingsController.html">Admin::SettingsController</a></li>
+				
+					<li><a href="./Admin/UserDetailSettingsController.html">Admin::UserDetailSettingsController</a></li>
+				
+					<li><a href="./Admin/ViewComponentsController.html">Admin::ViewComponentsController</a></li>
+				
+					<li><a href="./Admin/ViewConditionsController.html">Admin::ViewConditionsController</a></li>
+				
+					<li><a href="./Admin/ViewOrdersController.html">Admin::ViewOrdersController</a></li>
+				
+					<li><a href="./Ckeditor.html">Ckeditor</a></li>
+				
+					<li><a href="./Ckeditor/Asset.html">Ckeditor::Asset</a></li>
+				
+					<li><a href="./Ckeditor/AttachmentFile.html">Ckeditor::AttachmentFile</a></li>
+				
+					<li><a href="./Ckeditor/Picture.html">Ckeditor::Picture</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./Asset.html">Asset</a></li>
+				
+					<li><a href="./CacheHelper.html">CacheHelper</a></li>
+				
+					<li><a href="./CategoriesHelper.html">CategoriesHelper</a></li>
+				
+					<li><a href="./Categorization.html">Categorization</a></li>
+				
+					<li><a href="./Category.html">Category</a></li>
+				
+					<li><a href="./CategoryView.html">CategoryView</a></li>
+				
+					<li><a href="./Categoryset.html">Categoryset</a></li>
+				
+					<li><a href="./CategorysetsHelper.html">CategorysetsHelper</a></li>
+				
+					<li><a href="./CommentComponent.html">CommentComponent</a></li>
+				
+					<li><a href="./CommentComponentsHelper.html">CommentComponentsHelper</a></li>
+				
+					<li><a href="./CommentDatum.html">CommentDatum</a></li>
+				
+					<li><a href="./CommentSubmission.html">CommentSubmission</a></li>
+				
+					<li><a href="./CommentSubmissionsController.html">CommentSubmissionsController</a></li>
+				
+					<li><a href="./CommentSubmissionsHelper.html">CommentSubmissionsHelper</a></li>
+				
+					<li><a href="./DisplayController.html">DisplayController</a></li>
+				
+					<li><a href="./DisplayHelper.html">DisplayHelper</a></li>
+				
+					<li><a href="./FormComponent.html">FormComponent</a></li>
+				
+					<li><a href="./FormComponentsHelper.html">FormComponentsHelper</a></li>
+				
+					<li><a href="./FormDatum.html">FormDatum</a></li>
+				
+					<li><a href="./FormSubmission.html">FormSubmission</a></li>
+				
+					<li><a href="./FormSubmissionsHelper.html">FormSubmissionsHelper</a></li>
+				
+					<li><a href="./Mailer.html">Mailer</a></li>
+				
+					<li><a href="./MailersHelper.html">MailersHelper</a></li>
+				
+					<li><a href="./Menu.html">Menu</a></li>
+				
+					<li><a href="./MenusHelper.html">MenusHelper</a></li>
+				
+					<li><a href="./Menuset.html">Menuset</a></li>
+				
+					<li><a href="./MenusetsHelper.html">MenusetsHelper</a></li>
+				
+					<li><a href="./ModelComponent.html">ModelComponent</a></li>
+				
+					<li><a href="./ModelComponentsHelper.html">ModelComponentsHelper</a></li>
+				
+					<li><a href="./ModelData.html">ModelData</a></li>
+				
+					<li><a href="./ModelSubmission.html">ModelSubmission</a></li>
+				
+					<li><a href="./ModelSubmissionSweeper.html">ModelSubmissionSweeper</a></li>
+				
+					<li><a href="./ModelSubmissionsController.html">ModelSubmissionsController</a></li>
+				
+					<li><a href="./ModelSubmissionsHelper.html">ModelSubmissionsHelper</a></li>
+				
+					<li><a href="./Notifier.html">Notifier</a></li>
+				
+					<li><a href="./ObjectForm.html">ObjectForm</a></li>
+				
+					<li><a href="./ObjectModel.html">ObjectModel</a></li>
+				
+					<li><a href="./ObjectModelsHelper.html">ObjectModelsHelper</a></li>
+				
+					<li><a href="./Page.html">Page</a></li>
+				
+					<li><a href="./PageSweeper.html">PageSweeper</a></li>
+				
+					<li><a href="./PageVariable.html">PageVariable</a></li>
+				
+					<li><a href="./PageVariableSetting.html">PageVariableSetting</a></li>
+				
+					<li><a href="./PageVariableSettingsHelper.html">PageVariableSettingsHelper</a></li>
+				
+					<li><a href="./Pagelet.html">Pagelet</a></li>
+				
+					<li><a href="./PageletSweeper.html">PageletSweeper</a></li>
+				
+					<li><a href="./PageletsHelper.html">PageletsHelper</a></li>
+				
+					<li><a href="./PagesHelper.html">PagesHelper</a></li>
+				
+					<li><a href="./PasswordResetsController.html">PasswordResetsController</a></li>
+				
+					<li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a></li>
+				
+					<li><a href="./PermalinkHelper.html">PermalinkHelper</a></li>
+				
+					<li><a href="./Permission.html">Permission</a></li>
+				
+					<li><a href="./PermissionRole.html">PermissionRole</a></li>
+				
+					<li><a href="./PermissionsHelper.html">PermissionsHelper</a></li>
+				
+					<li><a href="./Role.html">Role</a></li>
+				
+					<li><a href="./RolesHelper.html">RolesHelper</a></li>
+				
+					<li><a href="./SessionsController.html">SessionsController</a></li>
+				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./Setting.html">Setting</a></li>
+				
+					<li><a href="./SettingsHelper.html">SettingsHelper</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserDetail.html">UserDetail</a></li>
+				
+					<li><a href="./UserDetailSetting.html">UserDetailSetting</a></li>
+				
+					<li><a href="./UserDetailSettingsHelper.html">UserDetailSettingsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
+				
+					<li><a href="./View.html">View</a></li>
+				
+					<li><a href="./ViewComponent.html">ViewComponent</a></li>
+				
+					<li><a href="./ViewComponentsHelper.html">ViewComponentsHelper</a></li>
+				
+					<li><a href="./ViewCondition.html">ViewCondition</a></li>
+				
+					<li><a href="./ViewConditionsHelper.html">ViewConditionsHelper</a></li>
+				
+					<li><a href="./ViewOrder.html">ViewOrder</a></li>
+				
+					<li><a href="./ViewOrdersHelper.html">ViewOrdersHelper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">ApplicationController</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="check-admin-method" class="method-detail ">
+				<a name="method-i-check_admin"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_admin</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check and return the admin 
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="check-admin-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 115</span>
+115:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_admin</span>
+116:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_found</span>].<span class="ruby-identifier">nil?</span>
+117:      <span class="ruby-identifier">role</span> = <span class="ruby-constant">Role</span>.<span class="ruby-identifier">find_by_role_type</span>(<span class="ruby-value str">&quot;Administrator&quot;</span>)
+118:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">role</span>.<span class="ruby-identifier">nil?</span>
+119:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">role</span>.<span class="ruby-identifier">users</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+120:           <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_found</span>] = <span class="ruby-keyword kw">true</span>
+121:         <span class="ruby-keyword kw">else</span>
+122:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:controller</span>]<span class="ruby-operator">!=</span><span class="ruby-value str">&quot;sessions&quot;</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">params</span>[<span class="ruby-value">:action</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;first_user&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:action</span>] <span class="ruby-operator">!=</span> <span class="ruby-value str">&quot;first_user_create&quot;</span>)
+123:               <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">first_user_sessions_path</span>
+124:           <span class="ruby-keyword kw">end</span>
+125:         <span class="ruby-keyword kw">end</span>
+126:       <span class="ruby-keyword kw">end</span>
+127:     <span class="ruby-keyword kw">end</span>
+128:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="check-cookie-method" class="method-detail ">
+				<a name="method-i-check_cookie"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_cookie</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check the user from the cookie
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="check-cookie-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 54</span>
+54:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_cookie</span>
+55:     <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">current_user?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">cookies</span>[<span class="ruby-value">:remember_me_code</span>].<span class="ruby-identifier">nil?</span>
+56:          <span class="ruby-identifier">u</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>,<span class="ruby-value">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;salt=?&quot;</span>,<span class="ruby-identifier">cookies</span>[<span class="ruby-value">:remember_me_code</span>]])
+57:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_user</span> = <span class="ruby-identifier">u</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">nil?</span>
+58:     <span class="ruby-keyword kw">end</span>
+59:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="checkforjs-method" class="method-detail ">
+				<a name="method-i-checkforjs"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">checkforjs</span><span
+						class="method-args">(input)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+check if there are any Javascript code which are harmful. this is necessary
+as 
+</p>
+<pre>
+ we donot have control over the fields as entered by non administrators within 
+ the website.</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="checkforjs-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 133</span>
+133:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">checkforjs</span>(<span class="ruby-identifier">input</span>)
+134:      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;&lt;script&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;&lt;/script&gt;&quot;</span>,<span class="ruby-value str">&quot;&quot;</span>)
+135:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="current-user-method" class="method-detail ">
+				<a name="method-i-current_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Get the user who has logged in.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user</span>
+40:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>]
+41:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="current-user--method" class="method-detail ">
+				<a name="method-i-current_user%3D"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user=</span><span
+						class="method-args">(value)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+set the current user into the session
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 44</span>
+44:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user=</span>(<span class="ruby-identifier">value</span>)
+45:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>] = <span class="ruby-identifier">value</span>
+46:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="current-user--method" class="method-detail ">
+				<a name="method-i-current_user%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">current_user?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check if user is logged in or not.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="current-user--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 49</span>
+49:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_user?</span>
+50:     <span class="ruby-keyword kw">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">session</span>[<span class="ruby-value">:user</span>].<span class="ruby-identifier">nil?</span>
+51:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="redirect-back-or-default-method" class="method-detail ">
+				<a name="method-i-redirect_back_or_default"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">redirect_back_or_default</span><span
+						class="method-args">(default)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Redirect the field to the available action or the stored action
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="redirect-back-or-default-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 109</span>
+109:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">redirect_back_or_default</span>(<span class="ruby-identifier">default</span>)
+110:     <span class="ruby-identifier">redirect_to</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>)
+111:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] = <span class="ruby-keyword kw">nil</span>
+112:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="require-admin-method" class="method-detail ">
+				<a name="method-i-require_admin"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">require_admin</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check if the user is available and he is an admin to execute the action(s) 
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="require-admin-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 88</span>
+ 88:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_admin</span>
+ 89:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">require_user</span>
+ 90:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin?</span>
+ 91:         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-value">:admin_privilege_required</span>)
+ 92:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;users&quot;</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;show&quot;</span>, <span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>
+ 93:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+ 94:       <span class="ruby-keyword kw">else</span>
+ 95:         <span class="ruby-ivar">@admin_layout</span> = <span class="ruby-keyword kw">true</span>
+ 96:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+ 97:       <span class="ruby-keyword kw">end</span>
+ 98:     <span class="ruby-keyword kw">else</span>
+ 99:       <span class="ruby-ivar">@admin_layout</span>=<span class="ruby-keyword kw">true</span>
+100:     <span class="ruby-keyword kw">end</span>
+101:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="require-no-user-method" class="method-detail ">
+				<a name="method-i-require_no_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">require_no_user</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check if the user is not required to execute the action(s)
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="require-no-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 74</span>
+74:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_no_user</span>
+75:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user?</span>
+76:       <span class="ruby-identifier">store_location</span>
+77:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-value">:no_user_required_for_page</span>)
+78:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">admin?</span>
+79:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_url</span>
+80:       <span class="ruby-keyword kw">else</span>
+81:         <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">account_url</span>
+82:       <span class="ruby-keyword kw">end</span>
+83:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+84:     <span class="ruby-keyword kw">end</span>
+85:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="require-user-method" class="method-detail ">
+				<a name="method-i-require_user"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">require_user</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Check if the user is available to execute the action(s)
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="require-user-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 62</span>
+62:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">require_user</span>
+63:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">current_user?</span>
+64:       <span class="ruby-identifier">store_location</span>
+65:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-value">:required_user_not_available</span>)
+66:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">new_session_url</span>
+67:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+68:     <span class="ruby-keyword kw">else</span>
+69:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+70:     <span class="ruby-keyword kw">end</span>
+71:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="set-layout-method" class="method-detail ">
+				<a name="method-i-set_layout"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">set_layout</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="set-layout-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 137</span>
+137:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_layout</span>
+138:      <span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@admin_layout</span>) <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;admin&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;application&quot;</span>
+139:      <span class="ruby-comment cmt">#(current_user? &amp;&amp; current_user.admin?) ? &quot;admin&quot; : &quot;application&quot;      </span>
+140:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="store-location-method" class="method-detail ">
+				<a name="method-i-store_location"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">store_location</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Store the location in case the user is not allowed and be taken to the
+login url. 
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="store-location-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 104</span>
+104:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_location</span>
+105:     <span class="ruby-identifier">session</span>[<span class="ruby-value">:return_to</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">request_uri</span>
+106:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="verify-permission-method" class="method-detail ">
+				<a name="method-i-verify_permission"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">verify_permission</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+verify permission for users  
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="verify-permission-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/application_controller.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verify_permission</span>
+13:     <span class="ruby-identifier">activities</span> = {<span class="ruby-value str">&quot;new&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;create&quot;</span>,<span class="ruby-value str">&quot;edit&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;edit&quot;</span>,<span class="ruby-value str">&quot;destroy&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;delete&quot;</span>,<span class="ruby-value str">&quot;show&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;view&quot;</span>,<span class="ruby-value str">&quot;index&quot;</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;viewlist&quot;</span>}
+14:     <span class="ruby-identifier">activity</span> = <span class="ruby-identifier">activities</span>[<span class="ruby-identifier">params</span>[<span class="ruby-value">:action</span>]]
+15:       <span class="ruby-keyword kw">if</span>[<span class="ruby-value str">&quot;edit&quot;</span> , <span class="ruby-value str">&quot;delete&quot;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">activity</span>)
+16:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">nil?</span>
+17:          <span class="ruby-identifier">activity</span> = <span class="ruby-node">&quot;#{activity}other&quot;</span>
+18:         <span class="ruby-keyword kw">else</span>
+19:           <span class="ruby-ivar">@model_submission</span> =  <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">model_submissions</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+20:           <span class="ruby-keyword kw">if</span>(<span class="ruby-ivar">@model_submission</span>.<span class="ruby-identifier">creator_id</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">id</span>)
+21:             <span class="ruby-identifier">activity</span> = <span class="ruby-node">&quot;#{activity}other&quot;</span>
+22:           <span class="ruby-keyword kw">end</span>
+23:         <span class="ruby-keyword kw">end</span>
+24:       <span class="ruby-keyword kw">end</span>
+25: 
+26:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">activity</span>.<span class="ruby-identifier">nil?</span>
+27:         <span class="ruby-identifier">permission_type</span> = <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">to_s</span>
+28:         <span class="ruby-identifier">permission_object</span> = <span class="ruby-ivar">@object</span>.<span class="ruby-identifier">name</span>
+29:         <span class="ruby-identifier">permission</span> = <span class="ruby-constant">Permission</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>,<span class="ruby-value">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;permission_type=? and permission_object=? and activity_code=?&quot;</span>,<span class="ruby-identifier">permission_type</span>,<span class="ruby-identifier">permission_object</span>,<span class="ruby-identifier">activity</span>])
+30:         <span class="ruby-identifier">role_id</span> = <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">role_id</span>
+31:         <span class="ruby-identifier">permissionrole</span> = <span class="ruby-constant">PermissionRole</span>.<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>,<span class="ruby-value">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;permission_id=? and role_id=?&quot;</span>,<span class="ruby-identifier">permission</span>.<span class="ruby-identifier">id</span>,<span class="ruby-identifier">role_id</span>])
+32:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">permissionrole</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">permissionrole</span>.<span class="ruby-identifier">value</span>
+33:            <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;display&quot;</span>,<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;no_permissions&quot;</span>
+34:         <span class="ruby-keyword kw">end</span>
+35:       <span class="ruby-keyword kw">end</span>
+36:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: User</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./app/models/user_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/models/user.rb">app/models/user.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">ActiveRecord::Base</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-authenticate">::authenticate</a></li>
+					
+					<li><a href="#method-c-encrypt">::encrypt</a></li>
+					
+					<li><a href="#method-c-random_string">::random_string</a></li>
+					
+					<li><a href="#method-c-tags">::tags</a></li>
+					
+					<li><a href="#method-i-activation_url">#activation_url</a></li>
+					
+					<li><a href="#method-i-active%3F">#active?</a></li>
+					
+					<li><a href="#method-i-admin%3F">#admin?</a></li>
+					
+					<li><a href="#method-i-assign_role">#assign_role</a></li>
+					
+					<li><a href="#method-i-create_activation_key">#create_activation_key</a></li>
+					
+					<li><a href="#method-i-create_reset_code">#create_reset_code</a></li>
+					
+					<li><a href="#method-i-create_welcome_msg">#create_welcome_msg</a></li>
+					
+					<li><a href="#method-i-delete_activation_key">#delete_activation_key</a></li>
+					
+					<li><a href="#method-i-delete_reset_code">#delete_reset_code</a></li>
+					
+					<li><a href="#method-i-encrypt">#encrypt</a></li>
+					
+					<li><a href="#method-i-get_variable_info">#get_variable_info</a></li>
+					
+					<li><a href="#method-i-has_password%3F">#has_password?</a></li>
+					
+					<li><a href="#method-i-in_role%3F">#in_role?</a></li>
+					
+					<li><a href="#method-i-password_validation_required%3F">#password_validation_required?</a></li>
+					
+					<li><a href="#method-i-recently_activated%3F">#recently_activated?</a></li>
+					
+					<li><a href="#method-i-recently_created%3F">#recently_created?</a></li>
+					
+					<li><a href="#method-i-recently_reset%3F">#recently_reset?</a></li>
+					
+					<li><a href="#method-i-reset_password_url">#reset_password_url</a></li>
+					
+					<li><a href="#method-i-update_salt_and_hash">#update_salt_and_hash</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><a class="include" href="ApplicationHelper.html">ApplicationHelper</a></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Admin.html">Admin</a></li>
+				
+					<li><a href="./Admin/AdminController.html">Admin::AdminController</a></li>
+				
+					<li><a href="./Admin/CategoriesController.html">Admin::CategoriesController</a></li>
+				
+					<li><a href="./Admin/CategorysetsController.html">Admin::CategorysetsController</a></li>
+				
+					<li><a href="./Admin/CommentComponentsController.html">Admin::CommentComponentsController</a></li>
+				
+					<li><a href="./Admin/FormComponentsController.html">Admin::FormComponentsController</a></li>
+				
+					<li><a href="./Admin/FormSubmissionsController.html">Admin::FormSubmissionsController</a></li>
+				
+					<li><a href="./Admin/MailersController.html">Admin::MailersController</a></li>
+				
+					<li><a href="./Admin/MenusController.html">Admin::MenusController</a></li>
+				
+					<li><a href="./Admin/MenusetsController.html">Admin::MenusetsController</a></li>
+				
+					<li><a href="./Admin/ModelComponentsController.html">Admin::ModelComponentsController</a></li>
+				
+					<li><a href="./Admin/ObjectModelsController.html">Admin::ObjectModelsController</a></li>
+				
+					<li><a href="./Admin/PageVariableSettingsController.html">Admin::PageVariableSettingsController</a></li>
+				
+					<li><a href="./Admin/PageletsController.html">Admin::PageletsController</a></li>
+				
+					<li><a href="./Admin/PagesController.html">Admin::PagesController</a></li>
+				
+					<li><a href="./Admin/PermissionsController.html">Admin::PermissionsController</a></li>
+				
+					<li><a href="./Admin/RolesController.html">Admin::RolesController</a></li>
+				
+					<li><a href="./Admin/SettingsController.html">Admin::SettingsController</a></li>
+				
+					<li><a href="./Admin/UserDetailSettingsController.html">Admin::UserDetailSettingsController</a></li>
+				
+					<li><a href="./Admin/ViewComponentsController.html">Admin::ViewComponentsController</a></li>
+				
+					<li><a href="./Admin/ViewConditionsController.html">Admin::ViewConditionsController</a></li>
+				
+					<li><a href="./Admin/ViewOrdersController.html">Admin::ViewOrdersController</a></li>
+				
+					<li><a href="./Ckeditor.html">Ckeditor</a></li>
+				
+					<li><a href="./Ckeditor/Asset.html">Ckeditor::Asset</a></li>
+				
+					<li><a href="./Ckeditor/AttachmentFile.html">Ckeditor::AttachmentFile</a></li>
+				
+					<li><a href="./Ckeditor/Picture.html">Ckeditor::Picture</a></li>
+				
+					<li><a href="./AdminHelper.html">AdminHelper</a></li>
+				
+					<li><a href="./ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="./ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="./Asset.html">Asset</a></li>
+				
+					<li><a href="./CacheHelper.html">CacheHelper</a></li>
+				
+					<li><a href="./CategoriesHelper.html">CategoriesHelper</a></li>
+				
+					<li><a href="./Categorization.html">Categorization</a></li>
+				
+					<li><a href="./Category.html">Category</a></li>
+				
+					<li><a href="./CategoryView.html">CategoryView</a></li>
+				
+					<li><a href="./Categoryset.html">Categoryset</a></li>
+				
+					<li><a href="./CategorysetsHelper.html">CategorysetsHelper</a></li>
+				
+					<li><a href="./CommentComponent.html">CommentComponent</a></li>
+				
+					<li><a href="./CommentComponentsHelper.html">CommentComponentsHelper</a></li>
+				
+					<li><a href="./CommentDatum.html">CommentDatum</a></li>
+				
+					<li><a href="./CommentSubmission.html">CommentSubmission</a></li>
+				
+					<li><a href="./CommentSubmissionsController.html">CommentSubmissionsController</a></li>
+				
+					<li><a href="./CommentSubmissionsHelper.html">CommentSubmissionsHelper</a></li>
+				
+					<li><a href="./DisplayController.html">DisplayController</a></li>
+				
+					<li><a href="./DisplayHelper.html">DisplayHelper</a></li>
+				
+					<li><a href="./FormComponent.html">FormComponent</a></li>
+				
+					<li><a href="./FormComponentsHelper.html">FormComponentsHelper</a></li>
+				
+					<li><a href="./FormDatum.html">FormDatum</a></li>
+				
+					<li><a href="./FormSubmission.html">FormSubmission</a></li>
+				
+					<li><a href="./FormSubmissionsHelper.html">FormSubmissionsHelper</a></li>
+				
+					<li><a href="./Mailer.html">Mailer</a></li>
+				
+					<li><a href="./MailersHelper.html">MailersHelper</a></li>
+				
+					<li><a href="./Menu.html">Menu</a></li>
+				
+					<li><a href="./MenusHelper.html">MenusHelper</a></li>
+				
+					<li><a href="./Menuset.html">Menuset</a></li>
+				
+					<li><a href="./MenusetsHelper.html">MenusetsHelper</a></li>
+				
+					<li><a href="./ModelComponent.html">ModelComponent</a></li>
+				
+					<li><a href="./ModelComponentsHelper.html">ModelComponentsHelper</a></li>
+				
+					<li><a href="./ModelData.html">ModelData</a></li>
+				
+					<li><a href="./ModelSubmission.html">ModelSubmission</a></li>
+				
+					<li><a href="./ModelSubmissionSweeper.html">ModelSubmissionSweeper</a></li>
+				
+					<li><a href="./ModelSubmissionsController.html">ModelSubmissionsController</a></li>
+				
+					<li><a href="./ModelSubmissionsHelper.html">ModelSubmissionsHelper</a></li>
+				
+					<li><a href="./Notifier.html">Notifier</a></li>
+				
+					<li><a href="./ObjectForm.html">ObjectForm</a></li>
+				
+					<li><a href="./ObjectModel.html">ObjectModel</a></li>
+				
+					<li><a href="./ObjectModelsHelper.html">ObjectModelsHelper</a></li>
+				
+					<li><a href="./Page.html">Page</a></li>
+				
+					<li><a href="./PageSweeper.html">PageSweeper</a></li>
+				
+					<li><a href="./PageVariable.html">PageVariable</a></li>
+				
+					<li><a href="./PageVariableSetting.html">PageVariableSetting</a></li>
+				
+					<li><a href="./PageVariableSettingsHelper.html">PageVariableSettingsHelper</a></li>
+				
+					<li><a href="./Pagelet.html">Pagelet</a></li>
+				
+					<li><a href="./PageletSweeper.html">PageletSweeper</a></li>
+				
+					<li><a href="./PageletsHelper.html">PageletsHelper</a></li>
+				
+					<li><a href="./PagesHelper.html">PagesHelper</a></li>
+				
+					<li><a href="./PasswordResetsController.html">PasswordResetsController</a></li>
+				
+					<li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a></li>
+				
+					<li><a href="./PermalinkHelper.html">PermalinkHelper</a></li>
+				
+					<li><a href="./Permission.html">Permission</a></li>
+				
+					<li><a href="./PermissionRole.html">PermissionRole</a></li>
+				
+					<li><a href="./PermissionsHelper.html">PermissionsHelper</a></li>
+				
+					<li><a href="./Role.html">Role</a></li>
+				
+					<li><a href="./RolesHelper.html">RolesHelper</a></li>
+				
+					<li><a href="./SessionsController.html">SessionsController</a></li>
+				
+					<li><a href="./SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="./Setting.html">Setting</a></li>
+				
+					<li><a href="./SettingsHelper.html">SettingsHelper</a></li>
+				
+					<li><a href="./User.html">User</a></li>
+				
+					<li><a href="./UserDetail.html">UserDetail</a></li>
+				
+					<li><a href="./UserDetailSetting.html">UserDetailSetting</a></li>
+				
+					<li><a href="./UserDetailSettingsHelper.html">UserDetailSettingsHelper</a></li>
+				
+					<li><a href="./UsersController.html">UsersController</a></li>
+				
+					<li><a href="./UsersHelper.html">UsersHelper</a></li>
+				
+					<li><a href="./View.html">View</a></li>
+				
+					<li><a href="./ViewComponent.html">ViewComponent</a></li>
+				
+					<li><a href="./ViewComponentsHelper.html">ViewComponentsHelper</a></li>
+				
+					<li><a href="./ViewCondition.html">ViewCondition</a></li>
+				
+					<li><a href="./ViewConditionsHelper.html">ViewConditionsHelper</a></li>
+				
+					<li><a href="./ViewOrder.html">ViewOrder</a></li>
+				
+					<li><a href="./ViewOrdersHelper.html">ViewOrdersHelper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">User</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="password-attribute-method" class="method-detail">
+				<a name="password"></a>
+				
+				<a name="password="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">password</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="password-confirmation-attribute-method" class="method-detail">
+				<a name="password_confirmation"></a>
+				
+				<a name="password_confirmation="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">password_confirmation</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="authenticate-method" class="method-detail ">
+				<a name="method-c-authenticate"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">authenticate</span><span
+						class="method-args">(login, pass)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Class Methods
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="authenticate-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 29</span>
+29:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">login</span>, <span class="ruby-identifier">pass</span>)
+30:     <span class="ruby-identifier">u</span>=<span class="ruby-identifier">find</span>(<span class="ruby-value">:first</span>, <span class="ruby-value">:conditions=</span><span class="ruby-operator">&gt;</span>[<span class="ruby-value str">&quot;login = ?&quot;</span>, <span class="ruby-identifier">login</span>])
+31:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">nil?</span>
+32:     <span class="ruby-keyword kw">return</span> (<span class="ruby-constant">User</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">u</span>.<span class="ruby-identifier">salt</span>)<span class="ruby-operator">==</span><span class="ruby-identifier">u</span>.<span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">u</span>.<span class="ruby-identifier">is_activated</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">u</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+33:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="tags-method" class="method-detail ">
+				<a name="method-c-tags"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">tags</span><span
+						class="method-args">(handle)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="tags-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 36</span>
+36:  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">tags</span>(<span class="ruby-identifier">handle</span>)
+37:     <span class="ruby-identifier">tagarray</span> = [<span class="ruby-value str">&quot;login&quot;</span>,<span class="ruby-value str">&quot;email&quot;</span>,<span class="ruby-value str">&quot;password&quot;</span>,<span class="ruby-value str">&quot;activation_url&quot;</span>,<span class="ruby-value str">&quot;reset_password_url&quot;</span>]
+38:     <span class="ruby-constant">UserDetailSetting</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uds</span><span class="ruby-operator">|</span>
+39:        <span class="ruby-identifier">tagarray</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">uds</span>.<span class="ruby-identifier">field_name</span>
+40:     <span class="ruby-keyword kw">end</span> 
+41:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">tagarray</span>
+42:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-class-method-details" class="method-section section">
+			<h3 class="section-header">Private Class Methods</h3>
+
+		
+			<div id="encrypt-method" class="method-detail ">
+				<a name="method-c-encrypt"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">encrypt</span><span
+						class="method-args">(pass, salt)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="encrypt-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 126</span>
+126:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">pass</span>, <span class="ruby-identifier">salt</span>)
+127:     <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">pass</span><span class="ruby-operator">+</span><span class="ruby-identifier">salt</span>)
+128:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="random-string-method" class="method-detail ">
+				<a name="method-c-random_string"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">random_string</span><span
+						class="method-args">(len)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="random-string-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 134</span>
+134:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">random_string</span>(<span class="ruby-identifier">len</span>)
+135:     <span class="ruby-comment cmt">#generat a random password consisting of strings and digits</span>
+136:     <span class="ruby-identifier">chars</span> = (<span class="ruby-value str">&quot;a&quot;</span><span class="ruby-operator">..</span><span class="ruby-value str">&quot;z&quot;</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> (<span class="ruby-value str">&quot;A&quot;</span><span class="ruby-operator">..</span><span class="ruby-value str">&quot;Z&quot;</span>).<span class="ruby-identifier">to_a</span> <span class="ruby-operator">+</span> (<span class="ruby-value str">&quot;0&quot;</span><span class="ruby-operator">..</span><span class="ruby-value str">&quot;9&quot;</span>).<span class="ruby-identifier">to_a</span>
+137:     <span class="ruby-identifier">newpass</span> = <span class="ruby-value str">&quot;&quot;</span>
+138:     <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">len</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">newpass</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">chars</span>[<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)] }
+139:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">newpass</span>
+140:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="activation-url-method" class="method-detail ">
+				<a name="method-i-activation_url"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">activation_url</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="activation-url-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 78</span>
+78:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">activation_url</span>
+79:     <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{get_setting(&quot;site_url&quot;)}/users/#{self.activation_key}/activate&quot;</span>
+80:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="active--method" class="method-detail ">
+				<a name="method-i-active%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">active?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="active--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 94</span>
+94:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active?</span>
+95:      <span class="ruby-identifier">activation_key</span>.<span class="ruby-identifier">nil?</span>
+96:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="admin--method" class="method-detail ">
+				<a name="method-i-admin%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">admin?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="admin--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 53</span>
+53:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">admin?</span>
+54:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">role_id</span><span class="ruby-operator">==</span><span class="ruby-value">3</span>
+55:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="assign-role-method" class="method-detail ">
+				<a name="method-i-assign_role"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">assign_role</span><span
+						class="method-args">(role)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="assign-role-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 49</span>
+49:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assign_role</span>(<span class="ruby-identifier">role</span>)
+50:     <span class="ruby-ivar">@role</span> = <span class="ruby-identifier">role</span>
+51:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="create-activation-key-method" class="method-detail ">
+				<a name="method-i-create_activation_key"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create_activation_key</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="create-activation-key-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 72</span>
+72:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_activation_key</span>
+73:     <span class="ruby-ivar">@activated</span>= <span class="ruby-keyword kw">true</span>
+74:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">activation_key</span>  = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>( <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">//</span>).<span class="ruby-identifier">sort_by</span> {<span class="ruby-identifier">rand</span>}.<span class="ruby-identifier">join</span> )
+75:     <span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
+76:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="create-reset-code-method" class="method-detail ">
+				<a name="method-i-create_reset_code"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create_reset_code</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="create-reset-code-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 66</span>
+66:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_reset_code</span>
+67:     <span class="ruby-ivar">@reset</span> = <span class="ruby-keyword kw">true</span>
+68:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">reset_password_key</span> =<span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>( <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">//</span>).<span class="ruby-identifier">sort_by</span> {<span class="ruby-identifier">rand</span>}.<span class="ruby-identifier">join</span> )  
+69:     <span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
+70:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="create-welcome-msg-method" class="method-detail ">
+				<a name="method-i-create_welcome_msg"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create_welcome_msg</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="create-welcome-msg-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 107</span>
+107:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_welcome_msg</span>
+108:      <span class="ruby-ivar">@create</span> = <span class="ruby-keyword kw">true</span>
+109:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="delete-activation-key-method" class="method-detail ">
+				<a name="method-i-delete_activation_key"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">delete_activation_key</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="delete-activation-key-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 89</span>
+89:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_activation_key</span>
+90:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attributes</span> = {<span class="ruby-value">:activation_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>}
+91:     <span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
+92:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="delete-reset-code-method" class="method-detail ">
+				<a name="method-i-delete_reset_code"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">delete_reset_code</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="delete-reset-code-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 85</span>
+85:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_reset_code</span>
+86:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">attributes</span> = {<span class="ruby-value">:reset_password_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>}
+87:     <span class="ruby-identifier">save</span>(<span class="ruby-keyword kw">false</span>)
+88:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-variable-info-method" class="method-detail ">
+				<a name="method-i-get_variable_info"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_variable_info</span><span
+						class="method-args">(variablename)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-variable-info-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 111</span>
+111:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_variable_info</span>(<span class="ruby-identifier">variablename</span>)
+112:      <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">variablename</span>.<span class="ruby-identifier">downcase</span>)
+113:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">variablename</span>.<span class="ruby-identifier">downcase</span>)
+114:      <span class="ruby-keyword kw">end</span>
+115:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="has-password--method" class="method-detail ">
+				<a name="method-i-has_password%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">has_password?</span><span
+						class="method-args">(submitted_password)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="has-password--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 57</span>
+57:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_password?</span>(<span class="ruby-identifier">submitted_password</span>)
+58:     <span class="ruby-comment cmt"># Compare encrypted_password with the encrypted version of submitted_password.</span>
+59:     <span class="ruby-identifier">hashed_password</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">submitted_password</span>)
+60:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="in-role--method" class="method-detail ">
+				<a name="method-i-in_role%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">in_role?</span><span
+						class="method-args">(role)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Instance Methods
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="in-role--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 45</span>
+45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">in_role?</span>(<span class="ruby-identifier">role</span>)
+46:     <span class="ruby-identifier">role</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@role</span>
+47:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="recently-activated--method" class="method-detail ">
+				<a name="method-i-recently_activated%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">recently_activated?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="recently-activated--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 99</span>
+ 99:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recently_activated?</span>
+100:      <span class="ruby-ivar">@activated</span>
+101:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="recently-created--method" class="method-detail ">
+				<a name="method-i-recently_created%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">recently_created?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="recently-created--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 103</span>
+103:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recently_created?</span>
+104:      <span class="ruby-ivar">@create</span>
+105:    <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="recently-reset--method" class="method-detail ">
+				<a name="method-i-recently_reset%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">recently_reset?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="recently-reset--source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 62</span>
+62:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recently_reset?</span>
+63:     <span class="ruby-ivar">@reset</span>
+64:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="reset-password-url-method" class="method-detail ">
+				<a name="method-i-reset_password_url"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">reset_password_url</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="reset-password-url-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/models/user.rb, line 82</span>
+82:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset_password_url</span>
+83:     <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{get_setting(&quot;site_url&quot;)}/password_resets/#{self.reset_password_key}/reset&quot;</span>
+84:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="encrypt-method" class="method-detail ">
+				<a name="method-i-encrypt"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">encrypt</span><span
+						class="method-args">(str)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="encrypt-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 130</span>
+130:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">str</span>)
+131:      <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA1</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">str</span><span class="ruby-operator">+</span><span class="ruby-identifier">salt</span>)
+132:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="password-validation-required--method" class="method-detail ">
+				<a name="method-i-password_validation_required%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">password_validation_required?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="password-validation-required--source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 142</span>
+142:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">password_validation_required?</span>
+143:     <span class="ruby-identifier">hashed_password</span>.<span class="ruby-identifier">blank?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">password</span>.<span class="ruby-identifier">blank?</span>
+144:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="update-salt-and-hash-method" class="method-detail ">
+				<a name="method-i-update_salt_and_hash"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">update_salt_and_hash</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Private Methods
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="update-salt-and-hash-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/models/user.rb, line 119</span>
+119:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_salt_and_hash</span>
+120:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">password</span>.<span class="ruby-identifier">blank?</span>
+121:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">salt</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">random_string</span>(<span class="ruby-value">10</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">salt?</span>
+122:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">hashed_password</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">encrypt</span>(<span class="ruby-identifier">password</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">salt</span>)
+123:     <span class="ruby-keyword kw">end</span>
+124:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

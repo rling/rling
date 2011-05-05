@@ -4,7 +4,6 @@
     order = @order if defined? @order
     @page=params[:page]
     @per_page= params[:per_page].nil? ? page.per_page : params[:per_page].to_i
-        
     if defined?(@category) && !@category.blank?
       category = Category.find(@category)
       @model_submissions = []
@@ -26,11 +25,13 @@
       @start=1 + (@page.to_i-1)*@per_page.to_i
       @end=@per_page.to_i+ (@page.to_i-1)*@per_page.to_i
       %>
-   <% if validate_permission("viewlist",object_model) %>
    <% if @model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
   
    <% else %>
+     <% object_model = @model_submissions.first.object_model 
+     if validate_permission("viewlist",object_model) %>
+  
      <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
       <% case page.view_type %>
       <% when "Grid" %>
@@ -40,9 +41,10 @@
       <% when "List" %>
         <%=  render :partial=>"display/show_list_view",:locals=>{:page=>page} %>
       <% end %>
-    <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
+      <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
+    <% else %>
+      <%= 'You do not have permissions to view this page' %>
+    <% end %>
   <% end %>
-  <% else %>
-  <%= 'You do not have permissions to view this page' %>
-  <% end %>
+ 
 </div>

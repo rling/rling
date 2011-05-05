@@ -12,7 +12,7 @@
  
     <% output = ""
    @page_results.each do |ms|
-        output << "<div class='grid_element'>"
+        output << "<div id='grid_view_#{page.id}_model_#{ms.id}' class='grid_element'>"
        page.view_components.each do |vc2|
          value = raw (get_submission_model_data(ms,vc2.name))
         if vc2.is_linked

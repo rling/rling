@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Admin::PagesController</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../app/controllers/admin/pages_controller_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="app/controllers/admin/pages_controller.rb">app/controllers/admin/pages_controller.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="../ApplicationController.html">ApplicationController</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-i-category_view_index">#category_view_index</a></li>
+					
+					<li><a href="#method-i-create">#create</a></li>
+					
+					<li><a href="#method-i-create_query">#create_query</a></li>
+					
+					<li><a href="#method-i-destroy">#destroy</a></li>
+					
+					<li><a href="#method-i-edit">#edit</a></li>
+					
+					<li><a href="#method-i-index">#index</a></li>
+					
+					<li><a href="#method-i-new">#new</a></li>
+					
+					<li><a href="#method-i-new_category_view">#new_category_view</a></li>
+					
+					<li><a href="#method-i-new_object_form">#new_object_form</a></li>
+					
+					<li><a href="#method-i-new_view">#new_view</a></li>
+					
+					<li><a href="#method-i-object_form_index">#object_form_index</a></li>
+					
+					<li><a href="#method-i-query">#query</a></li>
+					
+					<li><a href="#method-i-show">#show</a></li>
+					
+					<li><a href="#method-i-update">#update</a></li>
+					
+					<li><a href="#method-i-update_page_variables">#update_page_variables</a></li>
+					
+					<li><a href="#method-i-view_index">#view_index</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Admin.html">Admin</a></li>
+				
+					<li><a href="../Admin/AdminController.html">Admin::AdminController</a></li>
+				
+					<li><a href="../Admin/CategoriesController.html">Admin::CategoriesController</a></li>
+				
+					<li><a href="../Admin/CategorysetsController.html">Admin::CategorysetsController</a></li>
+				
+					<li><a href="../Admin/CommentComponentsController.html">Admin::CommentComponentsController</a></li>
+				
+					<li><a href="../Admin/FormComponentsController.html">Admin::FormComponentsController</a></li>
+				
+					<li><a href="../Admin/FormSubmissionsController.html">Admin::FormSubmissionsController</a></li>
+				
+					<li><a href="../Admin/MailersController.html">Admin::MailersController</a></li>
+				
+					<li><a href="../Admin/MenusController.html">Admin::MenusController</a></li>
+				
+					<li><a href="../Admin/MenusetsController.html">Admin::MenusetsController</a></li>
+				
+					<li><a href="../Admin/ModelComponentsController.html">Admin::ModelComponentsController</a></li>
+				
+					<li><a href="../Admin/ObjectModelsController.html">Admin::ObjectModelsController</a></li>
+				
+					<li><a href="../Admin/PageVariableSettingsController.html">Admin::PageVariableSettingsController</a></li>
+				
+					<li><a href="../Admin/PageletsController.html">Admin::PageletsController</a></li>
+				
+					<li><a href="../Admin/PagesController.html">Admin::PagesController</a></li>
+				
+					<li><a href="../Admin/PermissionsController.html">Admin::PermissionsController</a></li>
+				
+					<li><a href="../Admin/RolesController.html">Admin::RolesController</a></li>
+				
+					<li><a href="../Admin/SettingsController.html">Admin::SettingsController</a></li>
+				
+					<li><a href="../Admin/UserDetailSettingsController.html">Admin::UserDetailSettingsController</a></li>
+				
+					<li><a href="../Admin/ViewComponentsController.html">Admin::ViewComponentsController</a></li>
+				
+					<li><a href="../Admin/ViewConditionsController.html">Admin::ViewConditionsController</a></li>
+				
+					<li><a href="../Admin/ViewOrdersController.html">Admin::ViewOrdersController</a></li>
+				
+					<li><a href="../Ckeditor.html">Ckeditor</a></li>
+				
+					<li><a href="../Ckeditor/Asset.html">Ckeditor::Asset</a></li>
+				
+					<li><a href="../Ckeditor/AttachmentFile.html">Ckeditor::AttachmentFile</a></li>
+				
+					<li><a href="../Ckeditor/Picture.html">Ckeditor::Picture</a></li>
+				
+					<li><a href="../AdminHelper.html">AdminHelper</a></li>
+				
+					<li><a href="../ApplicationController.html">ApplicationController</a></li>
+				
+					<li><a href="../ApplicationHelper.html">ApplicationHelper</a></li>
+				
+					<li><a href="../Asset.html">Asset</a></li>
+				
+					<li><a href="../CacheHelper.html">CacheHelper</a></li>
+				
+					<li><a href="../CategoriesHelper.html">CategoriesHelper</a></li>
+				
+					<li><a href="../Categorization.html">Categorization</a></li>
+				
+					<li><a href="../Category.html">Category</a></li>
+				
+					<li><a href="../CategoryView.html">CategoryView</a></li>
+				
+					<li><a href="../Categoryset.html">Categoryset</a></li>
+				
+					<li><a href="../CategorysetsHelper.html">CategorysetsHelper</a></li>
+				
+					<li><a href="../CommentComponent.html">CommentComponent</a></li>
+				
+					<li><a href="../CommentComponentsHelper.html">CommentComponentsHelper</a></li>
+				
+					<li><a href="../CommentDatum.html">CommentDatum</a></li>
+				
+					<li><a href="../CommentSubmission.html">CommentSubmission</a></li>
+				
+					<li><a href="../CommentSubmissionsController.html">CommentSubmissionsController</a></li>
+				
+					<li><a href="../CommentSubmissionsHelper.html">CommentSubmissionsHelper</a></li>
+				
+					<li><a href="../DisplayController.html">DisplayController</a></li>
+				
+					<li><a href="../DisplayHelper.html">DisplayHelper</a></li>
+				
+					<li><a href="../FormComponent.html">FormComponent</a></li>
+				
+					<li><a href="../FormComponentsHelper.html">FormComponentsHelper</a></li>
+				
+					<li><a href="../FormDatum.html">FormDatum</a></li>
+				
+					<li><a href="../FormSubmission.html">FormSubmission</a></li>
+				
+					<li><a href="../FormSubmissionsHelper.html">FormSubmissionsHelper</a></li>
+				
+					<li><a href="../Mailer.html">Mailer</a></li>
+				
+					<li><a href="../MailersHelper.html">MailersHelper</a></li>
+				
+					<li><a href="../Menu.html">Menu</a></li>
+				
+					<li><a href="../MenusHelper.html">MenusHelper</a></li>
+				
+					<li><a href="../Menuset.html">Menuset</a></li>
+				
+					<li><a href="../MenusetsHelper.html">MenusetsHelper</a></li>
+				
+					<li><a href="../ModelComponent.html">ModelComponent</a></li>
+				
+					<li><a href="../ModelComponentsHelper.html">ModelComponentsHelper</a></li>
+				
+					<li><a href="../ModelData.html">ModelData</a></li>
+				
+					<li><a href="../ModelSubmission.html">ModelSubmission</a></li>
+				
+					<li><a href="../ModelSubmissionSweeper.html">ModelSubmissionSweeper</a></li>
+				
+					<li><a href="../ModelSubmissionsController.html">ModelSubmissionsController</a></li>
+				
+					<li><a href="../ModelSubmissionsHelper.html">ModelSubmissionsHelper</a></li>
+				
+					<li><a href="../Notifier.html">Notifier</a></li>
+				
+					<li><a href="../ObjectForm.html">ObjectForm</a></li>
+				
+					<li><a href="../ObjectModel.html">ObjectModel</a></li>
+				
+					<li><a href="../ObjectModelsHelper.html">ObjectModelsHelper</a></li>
+				
+					<li><a href="../Page.html">Page</a></li>
+				
+					<li><a href="../PageSweeper.html">PageSweeper</a></li>
+				
+					<li><a href="../PageVariable.html">PageVariable</a></li>
+				
+					<li><a href="../PageVariableSetting.html">PageVariableSetting</a></li>
+				
+					<li><a href="../PageVariableSettingsHelper.html">PageVariableSettingsHelper</a></li>
+				
+					<li><a href="../Pagelet.html">Pagelet</a></li>
+				
+					<li><a href="../PageletSweeper.html">PageletSweeper</a></li>
+				
+					<li><a href="../PageletsHelper.html">PageletsHelper</a></li>
+				
+					<li><a href="../PagesHelper.html">PagesHelper</a></li>
+				
+					<li><a href="../PasswordResetsController.html">PasswordResetsController</a></li>
+				
+					<li><a href="../PasswordResetsHelper.html">PasswordResetsHelper</a></li>
+				
+					<li><a href="../PermalinkHelper.html">PermalinkHelper</a></li>
+				
+					<li><a href="../Permission.html">Permission</a></li>
+				
+					<li><a href="../PermissionRole.html">PermissionRole</a></li>
+				
+					<li><a href="../PermissionsHelper.html">PermissionsHelper</a></li>
+				
+					<li><a href="../Role.html">Role</a></li>
+				
+					<li><a href="../RolesHelper.html">RolesHelper</a></li>
+				
+					<li><a href="../SessionsController.html">SessionsController</a></li>
+				
+					<li><a href="../SessionsHelper.html">SessionsHelper</a></li>
+				
+					<li><a href="../Setting.html">Setting</a></li>
+				
+					<li><a href="../SettingsHelper.html">SettingsHelper</a></li>
+				
+					<li><a href="../User.html">User</a></li>
+				
+					<li><a href="../UserDetail.html">UserDetail</a></li>
+				
+					<li><a href="../UserDetailSetting.html">UserDetailSetting</a></li>
+				
+					<li><a href="../UserDetailSettingsHelper.html">UserDetailSettingsHelper</a></li>
+				
+					<li><a href="../UsersController.html">UsersController</a></li>
+				
+					<li><a href="../UsersHelper.html">UsersHelper</a></li>
+				
+					<li><a href="../View.html">View</a></li>
+				
+					<li><a href="../ViewComponent.html">ViewComponent</a></li>
+				
+					<li><a href="../ViewComponentsHelper.html">ViewComponentsHelper</a></li>
+				
+					<li><a href="../ViewCondition.html">ViewCondition</a></li>
+				
+					<li><a href="../ViewConditionsHelper.html">ViewConditionsHelper</a></li>
+				
+					<li><a href="../ViewOrder.html">ViewOrder</a></li>
+				
+					<li><a href="../ViewOrdersHelper.html">ViewOrdersHelper</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Admin::PagesController</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="category-view-index-method" class="method-detail ">
+				<a name="method-i-category_view_index"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">category_view_index</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/category_view_index GET /pages/category_view_index.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="category-view-index-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 42</span>
+42:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">category_view_index</span>
+43:       <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">category_views</span>
+44:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+45:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># category_view_index.html.erb</span>
+46:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pages</span> }
+47:     <span class="ruby-keyword kw">end</span>
+48:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="create-method" class="method-detail ">
+				<a name="method-i-create"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+POST /pages POST /pages.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="create-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 123</span>
+123:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+124:       <span class="ruby-ivar">@page_type</span>= <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_type</span>]
+125:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;ObjectForm&quot;</span>
+126:         <span class="ruby-ivar">@page</span> =<span class="ruby-constant">ObjectForm</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:object_form</span>])
+127:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@page_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;View&quot;</span>
+128:          <span class="ruby-ivar">@page</span> = <span class="ruby-constant">View</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:view</span>])
+129:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-ivar">@page_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CategoryView&quot;</span>
+130:          <span class="ruby-ivar">@page</span> = <span class="ruby-constant">CategoryView</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:category_view</span>])
+131:       <span class="ruby-keyword kw">else</span>
+132:          <span class="ruby-ivar">@page</span> =<span class="ruby-constant">Page</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>])
+133:       <span class="ruby-keyword kw">end</span> 
+134:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:permalnk</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;1&quot;</span>
+135:            <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">perma_link_generate</span>
+136:       <span class="ruby-keyword kw">end</span>
+137:         <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">home_page</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:home_page</span>]  
+138:    
+139:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+140:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">save</span>
+141:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_variables</span>].<span class="ruby-identifier">nil?</span>
+142:             <span class="ruby-identifier">update_page_variables</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page_variables</span>],<span class="ruby-ivar">@page</span>)
+143:           <span class="ruby-keyword kw">end</span>
+144:         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-node">&quot;#{@page_type} #{t(:page_created)}&quot;</span>
+145:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'show'</span>,<span class="ruby-value">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@page</span>) }
+146:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>, <span class="ruby-value">:location</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+147:       <span class="ruby-keyword kw">else</span>
+148:     
+149:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;new&quot;</span> }
+150:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
+151:       <span class="ruby-keyword kw">end</span>
+152:     <span class="ruby-keyword kw">end</span>
+153:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="create-query-method" class="method-detail ">
+				<a name="method-i-create_query"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">create_query</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+POST /pages/create_query POST /pages/create_query.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="create-query-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 228</span>
+228:  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_query</span>
+229:     <span class="ruby-identifier">page</span>=<span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:view_id</span>])
+230:    <span class="ruby-keyword kw">if</span>  <span class="ruby-identifier">page</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:view</span>])
+231:       <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-value">:query_stored</span>)
+232:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+233:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {<span class="ruby-identifier">redirect_to</span> (<span class="ruby-identifier">view_index_pages_path</span>)}
+234:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">page</span>}
+235:       <span class="ruby-keyword kw">end</span>
+236:    <span class="ruby-keyword kw">else</span>
+237:      <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-value">:error_in_page</span>)
+238:      <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+239:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {<span class="ruby-identifier">redirect_to</span> (<span class="ruby-identifier">view_index_pages_path</span>)}
+240:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">page</span>.<span class="ruby-identifier">errors</span> ,<span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>}
+241:       <span class="ruby-keyword kw">end</span>
+242:    <span class="ruby-keyword kw">end</span>
+243:  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="destroy-method" class="method-detail ">
+				<a name="method-i-destroy"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">destroy</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+DELETE /pages/1 DELETE /pages/1.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="destroy-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 205</span>
+205:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+206:     <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+207:     <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span>=<span class="ruby-value str">'Page'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span><span class="ruby-operator">==</span><span class="ruby-keyword kw">nil</span>
+208:     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>]=<span class="ruby-node">&quot;#{@page.type} #{t(:page_deleted)}&quot;</span>
+209:     <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">destroy</span>
+210:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+211:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>((<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CategoryView&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">category_view_index_pages_url</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;ObjectForm&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">object_form_index_pages_url</span> <span class="ruby-operator">:</span> (<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;View&quot;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">view_index_pages_url</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">pages_url</span>))) }
+212:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+213:     <span class="ruby-keyword kw">end</span>
+214:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="edit-method" class="method-detail ">
+				<a name="method-i-edit"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">edit</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/1/edit
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="edit-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 113</span>
+113:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+114:     <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+115:     <span class="ruby-ivar">@page_type</span> = <span class="ruby-value str">&quot;Page&quot;</span>
+116:     <span class="ruby-ivar">@page_type</span> = <span class="ruby-value str">&quot;ObjectForm&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;ObjectForm&quot;</span>
+117:     <span class="ruby-ivar">@page_type</span> = <span class="ruby-value str">&quot;View&quot;</span>   <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;View&quot;</span>
+118:     <span class="ruby-ivar">@page_type</span> = <span class="ruby-value str">&quot;CategoryView&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CategoryView&quot;</span>
+119:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="index-method" class="method-detail ">
+				<a name="method-i-index"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">index</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages GET /pages.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="index-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">index</span>
+13:     <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">pages</span>
+14:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+15:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># index.html.erb</span>
+16:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pages</span> }
+17:     <span class="ruby-keyword kw">end</span>
+18:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-i-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/new GET /pages/new.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 69</span>
+69:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+70:    <span class="ruby-ivar">@page_type</span>=<span class="ruby-value str">'Page'</span>
+71:     <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">new</span>
+72:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+73:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new.html.erb</span>
+74:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+75:     <span class="ruby-keyword kw">end</span>
+76:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-category-view-method" class="method-detail ">
+				<a name="method-i-new_category_view"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new_category_view</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/new_category_view GET /pages/new_category_view.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-category-view-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 103</span>
+103:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_category_view</span>
+104:    <span class="ruby-ivar">@page_type</span>=<span class="ruby-value str">'CategoryView'</span>
+105:    <span class="ruby-ivar">@page</span> = <span class="ruby-constant">CategoryView</span>.<span class="ruby-identifier">new</span>
+106:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+107:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new_category_view.html.erb</span>
+108:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+109:     <span class="ruby-keyword kw">end</span>
+110:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-object-form-method" class="method-detail ">
+				<a name="method-i-new_object_form"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new_object_form</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/new_object_form GET /pages/new_object_form.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-object-form-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 81</span>
+81:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_object_form</span>
+82:    <span class="ruby-ivar">@page_type</span>=<span class="ruby-value str">'ObjectForm'</span>
+83:    <span class="ruby-ivar">@page</span> = <span class="ruby-constant">ObjectForm</span>.<span class="ruby-identifier">new</span>
+84:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+85:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new_object_form.html.erb</span>
+86:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+87:     <span class="ruby-keyword kw">end</span>
+88:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="new-view-method" class="method-detail ">
+				<a name="method-i-new_view"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new_view</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/new_view GET /pages/new_view.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-view-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 92</span>
+92:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_view</span>
+93:    <span class="ruby-ivar">@page_type</span>=<span class="ruby-value str">'View'</span>
+94:    <span class="ruby-ivar">@page</span> = <span class="ruby-constant">View</span>.<span class="ruby-identifier">new</span>
+95:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+96:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># new_view.html.erb</span>
+97:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+98:     <span class="ruby-keyword kw">end</span>
+99:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="object-form-index-method" class="method-detail ">
+				<a name="method-i-object_form_index"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">object_form_index</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/object_form_index GET /pages/object_from_index.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="object-form-index-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 22</span>
+22:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">object_form_index</span>
+23:       <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">object_forms</span>
+24:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+25:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># object_form_index.html.erb</span>
+26:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pages</span> }
+27:       <span class="ruby-keyword kw">end</span>
+28:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="query-method" class="method-detail ">
+				<a name="method-i-query"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">query</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/query GET /pages/query.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="query-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 218</span>
+218:  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>
+219:   <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+220:   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+221:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt">#query.html.erb</span>
+222:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@page</span>}
+223:   <span class="ruby-keyword kw">end</span>
+224:  <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="show-method" class="method-detail ">
+				<a name="method-i-show"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">show</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/1 GET /pages/1.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="show-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 52</span>
+52:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
+53:      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+54:       <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_perma_link</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+55:      <span class="ruby-keyword kw">else</span>
+56:       <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+57:      <span class="ruby-keyword kw">end</span>
+58:     <span class="ruby-ivar">@menu</span> = <span class="ruby-constant">Menu</span>.<span class="ruby-identifier">find_by_page_id</span>(<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">id</span>)
+59:     <span class="ruby-ivar">@categoryset</span>=<span class="ruby-constant">Categoryset</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">view_for</span>)
+60:     <span class="ruby-ivar">@associated</span>=<span class="ruby-constant">Page</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">associated_view</span>)
+61:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+62:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># show.html.erb</span>
+63:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span> }
+64:     <span class="ruby-keyword kw">end</span>
+65:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="update-method" class="method-detail ">
+				<a name="method-i-update"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">update</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+PUT /pages/1 PUT /pages/1.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="update-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 157</span>
+157:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span> 
+158:     <span class="ruby-ivar">@page_type</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_type</span>]
+159:     <span class="ruby-identifier">page_params</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:page</span>]
+160:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;ObjectForm&quot;</span>
+161:       <span class="ruby-identifier">page_params</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:object_form</span>]
+162:     <span class="ruby-keyword kw">end</span>
+163:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;View&quot;</span>
+164:       <span class="ruby-identifier">page_params</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:view</span>]
+165:     <span class="ruby-keyword kw">end</span>
+166:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page_type</span><span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CategoryView&quot;</span>
+167:       <span class="ruby-identifier">page_params</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:category_view</span>]
+168:     <span class="ruby-keyword kw">end</span>
+169:     <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+170:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:permalnk</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;1&quot;</span>
+171:         <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">perma_link_generate</span>
+172:     <span class="ruby-keyword kw">end</span>
+173:     <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">page_params</span>[<span class="ruby-value">:menu_name</span>].<span class="ruby-identifier">nil?</span>
+174:       <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">page_params</span>[<span class="ruby-value">:menu_name</span>].<span class="ruby-identifier">empty?</span>
+175:               <span class="ruby-identifier">menu</span> = <span class="ruby-constant">Menu</span>.<span class="ruby-identifier">find_by_page_id</span>(<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">id</span>)
+176:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">nil?</span>
+177:               <span class="ruby-identifier">menu</span> = <span class="ruby-constant">Menu</span>.<span class="ruby-identifier">new</span>
+178:             <span class="ruby-keyword kw">end</span>
+179:             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">page_params</span>[<span class="ruby-value">:menu_name</span>]
+180:             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">parent_id</span> = <span class="ruby-identifier">page_params</span>[<span class="ruby-value">:menu_parent_id</span>]
+181:             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">page_id</span> = <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">id</span>
+182:             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">menu_view_type</span> = <span class="ruby-identifier">page_params</span>[<span class="ruby-value">:page_view_type</span>]
+183:             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">save</span>
+184:      <span class="ruby-keyword kw">end</span>
+185:      <span class="ruby-keyword kw">end</span>
+186:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+187:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">page_params</span>)
+188:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:page_variables</span>].<span class="ruby-identifier">nil?</span>
+189:           <span class="ruby-identifier">update_page_variables</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:page_variables</span>],<span class="ruby-ivar">@page</span>)
+190:           <span class="ruby-keyword kw">end</span>
+191:          <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">home_page</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:home_page</span>] 
+192:          <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">save</span>
+193:         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] =<span class="ruby-node">&quot;#{@page_type} #{t(:page_updated)}&quot;</span>
+194:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span>(<span class="ruby-value">:action=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">'show'</span> ,<span class="ruby-value">:id=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@page</span>) }
+195:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">head</span> <span class="ruby-value">:ok</span> }
+196:       <span class="ruby-keyword kw">else</span>
+197:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;edit&quot;</span> }
+198:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
+199:       <span class="ruby-keyword kw">end</span>
+200:     <span class="ruby-keyword kw">end</span>
+201:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="view-index-method" class="method-detail ">
+				<a name="method-i-view_index"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">view_index</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+GET /pages/view_index GET /pages/view_index.xml
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="view-index-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 32</span>
+32:    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">view_index</span>
+33:       <span class="ruby-ivar">@pages</span> = <span class="ruby-constant">Page</span>.<span class="ruby-identifier">views</span>
+34:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+35:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment cmt"># view_index.html.erb</span>
+36:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">xml</span>  { <span class="ruby-identifier">render</span> <span class="ruby-value">:xml</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@pages</span> }
+37:     <span class="ruby-keyword kw">end</span>
+38:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="update-page-variables-method" class="method-detail ">
+				<a name="method-i-update_page_variables"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">update_page_variables</span><span
+						class="method-args">(page_variables,page)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+UPDATE PAGE VARIABLES AFTER CREATE AND UPDATE OF PAGES IF ANY
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="update-page-variables-source">
+<pre>
+     <span class="ruby-comment cmt"># File app/controllers/admin/pages_controller.rb, line 248</span>
+248: <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_page_variables</span>(<span class="ruby-identifier">page_variables</span>,<span class="ruby-identifier">page</span>)
+249:  <span class="ruby-identifier">page_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+250:   <span class="ruby-identifier">pv</span> = <span class="ruby-constant">PageVariable</span>.<span class="ruby-identifier">find_by_page_id_and_page_variable_setting_id</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>,<span class="ruby-identifier">k</span>)
+251:   <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">pv</span>.<span class="ruby-identifier">nil?</span>
+252:    <span class="ruby-identifier">pv</span> = <span class="ruby-constant">PageVariable</span>.<span class="ruby-identifier">new</span>
+253:    <span class="ruby-identifier">pv</span>.<span class="ruby-identifier">page_id</span> = <span class="ruby-identifier">page</span>.<span class="ruby-identifier">id</span>
+254:    <span class="ruby-identifier">pv</span>.<span class="ruby-identifier">page_variable_setting_id</span> = <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_i</span>
+255:   <span class="ruby-keyword kw">end</span>
+256:   <span class="ruby-identifier">pv</span>.<span class="ruby-identifier">variable_value</span> = <span class="ruby-identifier">v</span>
+257:   <span class="ruby-identifier">pv</span>.<span class="ruby-identifier">save</span>
+258:  <span class="ruby-keyword kw">end</span> 
+259: <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

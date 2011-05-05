@@ -6,6 +6,8 @@ class Categoryset < ActiveRecord::Base
   #Validations
   validates :name ,:presence=>true,:uniqueness=>true
 
+  #Call Backs
+  after_destroy :delete_category_view
   #Instance Methods
   def levelname
     treelevel
@@ -19,6 +21,10 @@ class Categoryset < ActiveRecord::Base
    self.id = -(self.id) unless self.id.nil?
    lname = self.name
    lname
+  end
+  
+  def delete_category_view
+
   end
 end
 
