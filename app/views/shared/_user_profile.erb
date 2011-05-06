@@ -1,3 +1,4 @@
+<% unless @user_detail_settings.empty? %>
 <% @user_detail_settings.each do |user_detail_setting| %>
  <div class="user_section user_section_field_<%=user_detail_setting.field_name %>">
   <div class="user_section_heading user_section_field_<%=user_detail_setting.field_name %>_heading">
@@ -24,4 +25,7 @@
   <% end %>
  </div>
 </div>
+<% end %>
+<% else %>
+<%= 'No user details added'  %>
 <% end %>

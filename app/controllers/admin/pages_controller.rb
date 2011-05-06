@@ -123,6 +123,7 @@ before_filter :require_admin
   def create
       @page_type= params[:page_type]
       if @page_type == "ObjectForm"
+        @page_type='Form'
         @page =ObjectForm.new(params[:object_form])
       elsif @page_type == "View"
          @page = View.new(params[:view])
@@ -158,6 +159,7 @@ before_filter :require_admin
     @page_type = params[:page_type]
     page_params = params[:page]
     if @page_type == "ObjectForm"
+      @page_type="Form"
       page_params = params[:object_form]
     end
     if @page_type == "View"
@@ -205,10 +207,11 @@ before_filter :require_admin
    def destroy
     @page = Page.find(params[:id])
     @page.type='Page' if @page.type==nil
+    @page.type='Form' if @page.type=='ObjectForm'
     flash[:notice]="#{@page.type} #{t(:page_deleted)}"
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "ObjectForm" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
+      format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "Form" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
       format.xml  { head :ok }
     end
   end

@@ -6,7 +6,7 @@ class ObjectModel < ActiveRecord::Base
   has_many :model_components, :dependent=>:destroy ,:order =>:position
   has_many :model_submissions, :dependent=>:destroy
   has_many :comment_components, :dependent=>:destroy 
-  has_one  :mailer ,:dependent => :destroy
+  has_one :mailer, :dependent => :destroy
   belongs_to :categoryset
   
 #Validations
@@ -20,6 +20,7 @@ class ObjectModel < ActiveRecord::Base
   after_save :verify_comments
   after_update :verify_comments 
   after_destroy :remove_permissions
+  after_destroy :check_comments
 
 
 #Instance Methods
@@ -118,10 +119,26 @@ end
        self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
      end
      if self.email_on_comment
-       subject= "Comment has been submitted to #{self.name} "
-       body='A comment has been submitted to #{self.name}. Check the details for the same.'
-       self.create_mailer(:handle=>self.perma_link_parent,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'CommentSubmission')
+       subject = "Comment has been submitted to #{self.name} "
+       body = "A comment has been submitted to #{self.name}. Check the details for the same."
+       self.create_mailer(:handle=>self.perma_link_parent,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'CommentSubmission',:object_model_id=>self.id)
      end
+   end
+ end
+ 
+ def check_comments
+   if self.allow_comments
+     remove_comment_permissions
+     self.comment_components.each do |comment_component|
+       comment_component.destroy
+     end
+     self.model_submissions.each do |model_submission|
+       model_submission.comment_submissions.each do |comment_submission|
+         comment_submission.destroy
+       end
+     end
+     mailer= Mailer.find_by_handle(self.perma_link_parent)
+     mailer.destroy  unless mailer.nil? 
    end
  end
 end

@@ -23,7 +23,7 @@ class DisplayController < ApplicationController
       if @page.nil?
         redirect_to :action=>"error_page_display"
       end
-    render :layout=>@page.layout unless @page.blank? || @page.layout.blank? || !File.exists?("#{RAILS_ROOT}/app/views/layouts/#{@page.layout}.erb")
+    render :layout=>@page.layout unless @page.blank? || @page.layout.blank? || !File.exists?("#{Rails.root.to_s}/app/views/layouts/#{@page.layout}.erb")
   end
 
    # MATCH "/:permalinkparent/:permalink"=> "display#show_model_data"
@@ -41,7 +41,7 @@ class DisplayController < ApplicationController
        redirect_to :action=>"no_permissions"
      end
     end
-    render :layout=>@object.layout if !(@object.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{RAILS_ROOT}/app/views/layouts/#{@object.layout}.erb")
+    render :layout=>@object.layout if !(@object.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{Rails.root.to_s}/app/views/layouts/#{@object.layout}.erb")
   end
   
   #MATCH "display/error_page_display"=>"display#error_page_display"

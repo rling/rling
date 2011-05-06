@@ -159,7 +159,8 @@ Show on Home Page
 
 
 <div class="actions">
-    <%= form.submit %>
+    <% @page_type='Form' if @page_type=='ObjectForm' %>
+    <%= form.submit "#{@page.id.nil? ? "Create" : "Update"} #{@page_type}" %>
 </div>
 
 
