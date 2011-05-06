@@ -23,7 +23,7 @@ Feature: Category View Page
     And I select "Developer" from "category_view_associated_view"
     And I fill in "category_view_body_editor" with "This is category view"
     And I select "Published" from "category_view_status"
-    When I press "Create Category view"
+    When I press "Create CategoryView"
     Then I should see "CategoryView was successfully created" on the show category_view page
 
   Scenario: User clicks on Show Page
@@ -45,7 +45,7 @@ Feature: Category View Page
     Then I fill in "category_view_title" with "List"
     And I fill in "category_view_body_editor" with "This is category view"
     And I select "Published" from "category_view_status"
-    When I press "Update Category view"
+    When I press "Update CategoryView"
     Then I should see "CategoryView was successfully updated"
 
   Scenario: Go to the /list URL

@@ -28,6 +28,7 @@ Factory.define(:object_form) do |f|
   f.email "amit@heurion.com"
   f.allow_create_on_permission "0"
   f.status "Published"
+  f.layout "admin"
 end
 
 Factory.define(:form_component) do |f|
@@ -57,6 +58,7 @@ Factory.define(:page) do |f|
   f.home_page "0"
   f.page_view_type "0"
   f.allow_create_on_permission "0"
+  f.layout "admin"
 end
 
 Factory.define(:page_variable_setting) do |f|
@@ -82,6 +84,8 @@ Factory.define(:object_model) do |f|
   f.perma_link_parent "blogs"
   f.description "Blog page"
   f.allow_comments "1"
+  f.allow_drafts "1"
+  f.layout "admin"
 end
 
 Factory.define(:comment_component) do |f|
@@ -153,6 +157,7 @@ Factory.define(:view) do |f|
   f.creator_id "1"
   f.updater_id "1"
   f.status "Published"
+  f.layout "admin"
 end
 
 Factory.define(:view_component) do |f|
@@ -197,4 +202,5 @@ Factory.define(:category_view) do |f|
   f.creator_id "1"
   f.updater_id "1"
   f.status "Published"
+  f.layout "admin"
 end

@@ -26,13 +26,11 @@ Feature: Model Administration Page
     Given I go to new model_submissions page
     Then I fill in "form_field_title" with "Information"
     And I fill in "form_field_body_editor" with "Information about the latest technology"
-    And I fill in "form_field_name" with "amit"
     And I select "Published" from "status"
     When I press "Create Blog"
     Then I should see "All details have been stored successfully" on the model_submissions index page
     And I should see "Information" on the model_submissions show page
     And I should see "Information about the latest technology" on the model_submissions show page
-    And I should see "amit" on the model_submissions show page
     And I should see "Published" on the model_submissions show page
 
   Scenario: User clicks on Show Page

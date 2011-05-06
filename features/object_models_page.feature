@@ -21,7 +21,7 @@ Feature: Object Model Page
     And I fill in "object_model_description_editor" with "Blog page"
     And I check "object_model_allow_comments"
     And I select "Technology" from "object_model_categoryset_id"
-    When I press "Create Object model"
+    When I press "Create Model"
     Then I should see "Object model was successfully created." on the object_model index page
     Then I should see "Blog" for "Name" on the object_model_index page
     And I should see "Blog page" for "Description" on the object_model_index page
@@ -41,7 +41,7 @@ Feature: Object Model Page
 
   Scenario: Error in Creating new Pagelet( when Name is blank )
     Given I go to the new object_model page
-    When I press "Create Object model"
+    When I press "Create Model"
     Then I should see "Should contain a  / and alphabets or alphabets and numbers and may contailn - separator" for "Perma link parent" on that object_model page
     Then I should see "can't be blank" for "Name" on that object_model page
 
@@ -64,7 +64,7 @@ Feature: Object Model Page
     And I fill in "object_model_description_editor" with "Blog page"
     And I check "object_model_allow_comments"
     And I select "Technology" from "object_model_categoryset_id"
-    When I press "Update Object model"
+    When I press "Update Model"
     Then I should see "Object model was successfully updated." on the object_model index page
     Then I should see "Blog" for "Name" on the object_model_index page
     And I should see "Blog page" for "Description" on the object_model_index page

@@ -28,7 +28,7 @@ Feature: Object Form Page
     And I fill in "object_form_body_editor" with "Admission form for MCA"
     And I fill in "object_form_email" with "amit@heurion.com"
     And I select "Published" from "object_form_status"
-    When I press "Create Object form"
+    When I press "Create Form"
     Then I should see "Admission" for "Title" on the Object_form index page
     And I should see "Admission form for MCA" for "Body" on the Object_form index page
     And I should see "admission" for "Perma link" on the Object_form index page
@@ -38,7 +38,7 @@ Feature: Object Form Page
 
   Scenario: Error in Creating new Pagelet( when Title is blank )
     Given I go to the new object_form page
-    When I press "Create Object form"
+    When I press "Create Form"
     Then I should see "can't be blank" for "Title" on that pages page
     Then I should see "Perma link Should contain a / and alphabets /alpabets and numbers/ and may have - separator " on that form page
 
@@ -62,8 +62,8 @@ Feature: Object Form Page
     And I fill in "object_form_body_editor" with "Admission form for MCA"
     And I fill in "object_form_email" with "amit@heurion.com"
     And I select "Published" from "object_form_status"
-    When I press "Update Object form"
-    Then I should see "ObjectForm was successfully updated" on the show Object_form page
+    When I press "Update Form"
+    Then I should see "Form was successfully updated" on the show Object_form page
     Then I should see "Admission"
     And I should see "admission"
     And I should see "No"
