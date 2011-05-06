@@ -31,10 +31,10 @@ menus.each do |menu|
   	submenus.each do |submenu|
 		if submenu.page.nil?
    			sub_menu_link = submenu.link_path
-                        output << "<a href='#{sub_menu_link}'>#{submenu.name}</a><br/>"
+                        output << "<a href='#{sub_menu_link}'>#{submenu.name}</a>"
   		else
    			sub_menu_link = submenu.page.perma_link
-            		output << "<a href='/#{sub_menu_link}'>#{submenu.name}</a><br/>"
+            		output << "<a href='/#{sub_menu_link}'>#{submenu.name}</a>"
 
   		end
   	end

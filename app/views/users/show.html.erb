@@ -1,10 +1,9 @@
-<div id="dashboard_left">
+<div id= "user_<%= @user.id %>" class="user_information">
 <%= link_to 'Edit Information', edit_user_path(@user)  %>
 <% if !@user_detail_settings.empty? %>
 | <%= link_to 'Edit User Details', user_details_user_path(@user) %>
 <% end %>
 
-<div id= "user_<%= @user.id %>" class="user_information">
 <h3>Details of  <%= @user.login %></h3>
 
 <div class="user_section user_section_login">
@@ -46,13 +45,14 @@
 
 <%= render :partial=>"shared/user_profile" %>
 
-</div>
-
 <br/>
 <% if current_user.admin? %>
 <%= link_to 'Back',:action=>"index" %>
 <% end %>
 </div>
+
 <div id="dashboard_right">
+<div id="items">
  <%= render :partial=>"shared/models_administration" %>
+</div>
 </div>
