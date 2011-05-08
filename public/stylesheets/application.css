@@ -126,7 +126,7 @@ height: 58px;
 #header_menu{
  float:left;
  width: 800px;
- height: 40px;
+ height: 33px;
  background: #333;
  width:100%;
  background-image: url(../images/topbar_opacity.png);
@@ -164,7 +164,7 @@ float:left;
 {
     float: right;
     margin-right: 15px;
-    margin-top: 5px;
+    margin-top: 4px;
 }
 
 
@@ -196,7 +196,8 @@ background-image: url(../images/footer-bg.png);
 
 #footer_menu
 {
-margin-top:14px;
+text-align:center;
+margin-top: 30px;
 background-color:transparent;
 width:100%;
 background-image: url(../images/topbar_opacity.png);
@@ -204,10 +205,6 @@ background-image: url(../images/topbar_opacity.png);
 
 #footer_menu ul
 {
-background:#BF2E1B none repeat scroll 0 0;
-float:right;
-margin-right:40px;
-width:720px;
 }
 
 #footer_menu ul li
@@ -216,6 +213,12 @@ width:720px;
 display:inline;
 padding: 5px;
 }
+
+#footer_menu ul li a:hover
+{
+color: #BF2E1B;
+}
+
 
 /* dashboard css */
 

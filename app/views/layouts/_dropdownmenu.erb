@@ -17,7 +17,7 @@ menus.each do |menu|
     output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
   end
   if menu.image_path.blank?
-    output << menu.name.capitalize
+    output << menu.name
   else
     output << "<img src='#{menu.image_path}'"
     if !menu.hover_image_path.blank?

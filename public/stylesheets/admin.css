@@ -57,7 +57,7 @@
 /* dashboard css */
 
 
-#admin #dashboard_left  a:visited { padding-left:4px;color:#BF2E1B; font-size:13px;font-weight:normal; border-left:1px solid gray; }
+#admin #dashboard_left  a,#admin #dashboard_left  a:visited { padding-left:4px;color:#BF2E1B; font-size:13px;font-weight:normal; border-left:1px solid gray; }
 
 #admin #dashboard_right  a:visited { padding-left:10px;color:#BF2E1B; font-size:13px;font-weight:normal; border-left:1px solid gray;}
 
