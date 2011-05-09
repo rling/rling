@@ -1,0 +1,233 @@
+#admin img
+{
+   border:none;
+   background-color:none;
+}
+
+
+
+#admin body
+{
+   background-image: url(../images/bg_rling.jpg);
+   background-color: #fff;
+   background-attachment:fixed;
+   background-repeat:no-repeat;
+   padding:0px;
+   margin:0px;
+   
+}
+
+
+#admin td
+{
+   background-color:#F4F4ED;
+   border:1px solid #dcddde;
+}
+
+
+
+#admin a{ color:#666;text-decoration:none; }
+#admin a:visited { color: #666;text-decoration:none; }
+#admin a:hover { color:#666;text-decoration:underline; }
+
+
+
+
+#admin h1
+{
+	
+	font-family: arial;
+	font-size:16px;
+}
+
+#admin h2
+{
+	text-shadow: -2px -2px 15px white;
+	font-family: arial;
+	font-size:14px;
+	margin:5px 5px 5px 0;
+}
+
+#admin h3
+{
+	font-family: arial;
+}
+
+
+/* dashboard css */
+
+
+#admin #dashboard_left  a:visited { padding-left:4px;color:#BF2E1B; font-size:13px;font-weight:normal; border-left:1px solid gray; }
+
+#admin #dashboard_right  a:visited { padding-left:10px;color:#BF2E1B; font-size:13px;font-weight:normal; border-left:1px solid gray;}
+
+
+
+#admin
+ {
+       float:left;
+       width:99%;
+       padding-bottom:10px;
+       background-color:#f4f4f4;
+       padding-left:10px;
+       min-height:250px;
+ 
+ }
+
+#admin .descriptions
+{
+      float:left;
+      width:96%;
+      padding-bottom:10px;
+      background-color:#f4f4f4;
+      padding-left:10px;
+      text-align:justify;
+      padding-right:5px;
+}
+
+
+#admin #dashboard_left  p 
+{
+     font-face:arial;
+     font-size:12px;
+     font-weight:bold;
+}
+
+#admin #dashboard_right p
+{
+     font-face:arial;
+     font-size:12px;
+     font-weight:bold;
+}
+
+#admin .dashboard_headers
+{
+border-left:2px solid red;float:left;width:auto;height:auto;background-color:#f2f2f2;padding-left:10px;border-bottom:1px solid #666;margin-top:10px;
+}
+
+
+#admin table
+{
+    display: table;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-indent: 0;
+    border-spacing:2px; 
+    border-collapse:separate;
+    margin-bottom:5px;
+}
+
+#admin .image_link
+{
+width: 20px;
+height: 20px;
+border: none;
+}
+
+#admin #items a:hover { border-left:3px solid black; }
+
+#admin #items
+{
+	float:left;width:96%;padding-bottom:10px;background-color:#f4f4f4;padding-left:10px;
+}
+
+
+
+#admin #dashboard_left
+{
+    float:left;
+    padding-left: 10px;
+    width: 600px;
+}
+
+#admin #dashboard_right
+{
+    float:right;
+    width: 260px;
+}
+
+
+#admin #dashboard_left u
+{ 
+  font-size: 16px;
+  text-shadow: -2px -2px 20px #666;
+}
+
+#admin #dashboard_right u
+{
+  font-size: 16px;
+  text-shadow: -2px -2px 20px #666;
+}
+
+
+#admin p,ol,ul,td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+
+#admin div.field, div.actions {
+  margin-bottom: 10px;
+  margin-right:25px;
+}
+
+#admin #notice {
+    background: none repeat scroll 0 0 lightgreen;
+    color: black;
+    height: 25px;
+    padding-top: 5px;
+    text-align: center;
+    margin-left:-10px;
+}
+
+
+#admin .field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#admin #error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#admin #error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#admin #error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+
+#admin pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+
+#admin .tdblank
+{
+  background-color: rgb(244, 244, 244); border: 1px solid rgb(244, 244, 244);
+}
+
+
+
+
+
+

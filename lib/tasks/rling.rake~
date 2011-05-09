@@ -9,7 +9,7 @@ namespace :rling do
     puts "STEP 1: Installing all the gems via the bundler"
     
     Bundler.with_clean_env do
-        sh "bundle install"
+        sh "bundle install --deployment"
     end
 
     puts "-------------------------" 

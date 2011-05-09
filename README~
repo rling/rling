@@ -26,7 +26,7 @@ b. Bundler gem is installed
 
 1. Download source code from Git 
 
-> git clone git@github.com:rling/rling.git
+git clone git@github.com:rling/rling.git
 
 2. Set Database settings
 
@@ -45,15 +45,9 @@ if database is different then update GEMFILE to install the correct gem.
 
 3. Run rake task to do all the necessary installations
 
-a. To execute and start the application in development mode use the below command
+rake rling:install
 
-> rake rling:install 
-
-b. To execute and start the applicaton in production mode use the below command
-
-> RAILS_ENV=production rake rling:install
-
-In both the modes, the task runs the following activities
+this task runs the following activities
 a. bundle install
 b. rake db:create
 c. rake db:migrate
@@ -61,7 +55,7 @@ d. rake db:seed
 
 4. Run the applications
 
-> rails server
+rails server
 
 5. Access the application using http://localhost:3000
 

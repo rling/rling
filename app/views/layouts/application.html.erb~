@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+
+  <title><%= get_page_variable "SEO Meta Title" %></title>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="en" />
+  <meta name="generator" content="RlingCMS -- www.rlingcms.com"/>
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="robots" content="index,follow" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta name="distribution" content="worldwide" />
+  <meta name="description" content="<%= get_page_variable "SEO Meta Description" %>" />
+  <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" />
+  <meta name="author" content="<%= get_page_variable "AUTHOR" %>" />
+
+   <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag :ckeditor %>
+  <%= csrf_meta_tag %>
+ </head>
+ <body>
+   <div id="layout">
+     <div id="header">
+       <div id="top_bar">
+         <%= raw(login_links) %>
+       </div>
+       <div id="header_text">
+         <div id="logo"><img src="/images/rling_logo.png"></div>
+         <div id="header_heading"> <span id="heading">RLING CMS</span><span id="heading_tag">Faster CMS for Faster Minds</span></div>
+         <div id="access">
+		<a href="http://www.twitter.com/rlingcms">Follow us on Twitter</a> <br/>
+		<a href="http://groups.google.com/rlingcms">Join our Google Groups</a><br/>
+                <a href="/usermanual.pdf">RLINGCMS User Manual</a>
+	</div>
+       </div>
+       <div id="header_menu">
+         <div id="menus">
+         <%= raw(show_menu 'dropdownmenu','Header') %>
+         </div>    
+         <div id="search_bar">
+         <%= raw(search_bar) %>
+        </div>   
+	<div style="clear:both;"></div>
+       </div>
+	<div style="clear:both;"></div>
+     </div>
+     <div id="middle">
+       <div id="dashboard_main">
+   
+     <%= raw(flash_notice) %>
+        
+    <%= yield %>
+    </div>
+   </div>
+  
+   <div id="footer">
+    <div id="footer_menu">
+     <%= raw(show_menu 'nolistmenu','Footer') %>     
+    </div>
+    <div id="developer">
+       Developed by Heurion<br/>
+       contact: <a href="mailto:info@heurion.com" >info@heurion.com</a>
+       website: <a href="http://www.heurion.com">www.heurion.com</a>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
