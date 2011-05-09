@@ -99,13 +99,17 @@ Generate permalink automatically<br />
    <%= text_area_tag "page_variables[#{pcv.id}]",(pv.blank? ? "" : pv.variable_value),{:rows=>3,:cols=>50} %><br/>
    <% end %>
  </div>
-   
-
-
-<% if @menu.nil? %>
+  
+<% unless @page.menu.nil? %>
+<div id="show_menu"s>
+<%= form.label :menu_name %><br />
+<%= form.text_field :menu_name %><br />
+<%= form.label "Parent Menu" %><br />
+<%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]},:selected=> @page.menu.id.nil? ? '' : (@page.menu.parent_id == 0 ? -(@page.menu.menuset_id) : @page.menu.parent_id) %><br />
+</div>
+<% else %>
   <%= check_box('','add_menu',  :checked=> "false", :onclick => "if (this.checked){$('#show_menu').show();} else        {$('#show_menu').hide();}") %>
   Add Menu for this Page
-<% end %>
 
 <div id="show_menu" style="display:none;">
 <%= form.label :menu_name %><br />
@@ -113,7 +117,8 @@ Generate permalink automatically<br />
 <%= form.label "Parent Menu" %><br />
 <%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %><br />
 </div>
-
+<% end %>
+  
 <% if @page_type.eql?('ObjectForm') %>
  <div class="field">
     <%= form.label :email %><br />

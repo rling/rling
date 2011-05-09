@@ -77,7 +77,7 @@ width: 960px;
 
 #header
 {
- min-height: 134px
+ min-height: 132px;
     	background-attachment: scroll;
     	background-color: transparent;
   	background-position: 0 0;
@@ -345,9 +345,12 @@ border: none;
 {
     float:left;
     display:block;
-    text_align:center;
+    text-align:center;
     margin :5px;
-    width: 100%;
+}
+.grid_links
+{
+clear:left
 }
 
 

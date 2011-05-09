@@ -33,7 +33,7 @@
 
     <% if (@object.allow_comments && (model_submission.creator_id==current_user.id || current_user.admin?)) %>
       <td><%= link_to "Comments ",object_model_model_submission_comment_submissions_path(@object,model_submission) unless @object.comment_components.empty?%> </td>
-    <% end %>
+    <% end unless current_user.nil? %>
 
     <% if validate_permission("view",@object,model_submission) %>
       <td><%= link_to "Show", object_model_model_submission_path(@object,model_submission) %></td>

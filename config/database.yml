@@ -1,6 +1,6 @@
 development:
   adapter: mysql
-  database: rlingsite
+  database: rling
   username: root
   password: root
 

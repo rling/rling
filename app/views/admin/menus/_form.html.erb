@@ -23,10 +23,8 @@
 
   <div class="field">
     <%= f.label :parent_menu %><br />
-    <%= f.select :parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %>
+    <%= f.select :parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]},:selected=> @menu.id.nil? ? '' : (@menu.parent_id == 0 ? -(@menu.menuset_id) : @menu.parent_id) %>
   </div>
-
- 
 
   <div class="field">
     <%= f.label :position %><br />

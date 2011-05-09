@@ -34,12 +34,12 @@ class DisplayController < ApplicationController
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
-     if validate_permission("view",@object)
-         @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id_and_status(params[:permalink],@object.id,:published)
-         redirect_to :action=>"error_page_display" if @model_submission.nil?
-     else
-       redirect_to :action=>"no_permissions"
-     end
+      if validate_permission("view",@object)
+        @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id_and_status(params[:permalink],@object.id,:published)
+        redirect_to :action=>"error_page_display" if @model_submission.nil?
+      else
+        redirect_to :action=>"no_permissions"
+      end
     end
     render :layout=>@object.layout if !(@object.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{Rails.root.to_s}/app/views/layouts/#{@object.layout}.erb")
   end
