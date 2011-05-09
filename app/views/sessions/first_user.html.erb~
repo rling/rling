@@ -84,7 +84,7 @@ $(function(){
    </tr>
    <tr>
        <td colspan=3>
-         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in the website, Is it allowed
+         <%= check_box_tag "allow_user_register_user" %>Can a user register himself in th website, Is it allowed
        </td>
    </tr>
    <tr>

@@ -1,5 +1,5 @@
 <%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<%= link_to 'Back', roles_pa
 
 <p>
 <b>Role:</b>
