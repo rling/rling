@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     userid = params[:id]
-    userid = current_user.id if userid.nil?
+    userid = current_user.id if userid.nil? || !current_user.admin?
+    if User.exists?(userid)
     @user = User.find(userid)
     @user_detail_settings=UserDetailSetting.all
     @objects= [] 
@@ -37,6 +38,9 @@ class UsersController < ApplicationController
      respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
+    end
+    else
+      redirect_to :controller=>"display",:action=>"error_page_display"
     end
   end
 
@@ -83,7 +87,13 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    userid = params[:id]
+    userid = current_user.id if userid.nil? || !current_user.admin?
+    if User.exists?(userid)
+    @user = User.find(userid)
+    else
+      redirect_to :controller=>"display",:action=>"error_page_display"
+    end
   end
 
   # POST /users
@@ -262,5 +272,4 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
  end

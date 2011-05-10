@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
     if require_user
       unless current_user.admin?
         flash[:notice] = t(:admin_privilege_required)
-        redirect_to :controller => "users", :action => "show", :id => current_user.id
+        redirect_to account_path#:controller => "users", :action => "show", :id => current_user.id
         return false
       else
         @admin_layout = true

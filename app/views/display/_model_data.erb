@@ -25,7 +25,7 @@
           <% end %>
         <% end %>
     </div>
-    </div>
+
     <div class="model_data model_data_created_at">
       <div class="model_data_heading model_data_created_at_heading"> Created At</div>
       <div class="model_data_value model_data_created_at_value"><%= model_submission.created_at %></div>
@@ -44,5 +44,5 @@
      <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>"0"}  %>
    </div>
   <% end  %>
+</div>
 <% end %>
-
