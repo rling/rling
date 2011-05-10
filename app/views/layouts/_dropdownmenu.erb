@@ -11,10 +11,10 @@ menus.each do |menu|
   submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
   if menu.page.nil?
     menu_link = menu.link_path
-    output << "<li><a title='#{get_pagelet(menu.name)}' href='#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+    output << "<li><a title='#{get_pagelet(menu.name)}' href='#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()'") + ">"
   else
     menu_link = menu.page.perma_link
-    output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()") + "'>"
+    output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()'") + ">"
   end
   if menu.image_path.blank?
     output << menu.name.capitalize
