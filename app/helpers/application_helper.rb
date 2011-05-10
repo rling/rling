@@ -60,7 +60,7 @@ def show_secondary_menu
    unless menu.nil?
      submenus = Menu.find_all_by_parent_id(menu.id,:order=>"position")
       unless submenus.empty?
-      output << "<ul class='menuset'>"
+      output << "<p class='menuset'>"
       submenus.each do |menu|
    	   menulink = ""
    	   if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
@@ -68,14 +68,63 @@ def show_secondary_menu
    	   else
       		menulink = menu.link_path
    	   end
-    	output << "<a href='/#{menulink}'> #{menu.name}</a>  |"
-    	output << "</li>"
+    	output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
+    	 
      end
+    output << "</p>"
+      
+     else
+          parent_menu=Menu.find_by_id(menu.parent_id)
+         unless parent_menu.nil?
+           submenus = Menu.find_all_by_parent_id(parent_menu.id,:order=>"position")
+      unless submenus.empty?
+      output << "<p class='menuset'>"
+    
+      submenus.each do |menu|
+   	   menulink = ""
+   	   if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
+     	  	menulink = menu.page.perma_link
+   	   else
+      		menulink = menu.link_path
+   	   end
+    	output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
+    	
+     end
+    output << "</p>"
+     end
+ 
      end
    end
   end
+end
      return output
 end
+
+
+
+#shows title
+def show_title
+unless params[:permalink].nil?
+   page=Page.find_by_perma_link(params[:permalink])
+  unless page.nil?
+    menu=Menu.find_by_page_id(page.id) 
+    unless menu.nil?
+    
+     parent_menu=Menu.find_by_id(menu.parent_id)
+     unless parent_menu.nil?
+       
+          return  parent_menu.name
+        
+     else
+       return menu.name
+      end
+   
+     end
+   end
+  end   
+ end
+
+
 
 
 #Get the Menu Tree
