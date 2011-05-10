@@ -5,12 +5,13 @@ before_filter :require_admin
 
 # MATCH admin/dashboard
 def dashboard
- 
+  if current_user.admin?
    @objects=ObjectModel.all
    respond_to do |format|
       format.html #dashboard.html.erb
       format.xml  { head :ok }
-    end 
+    end
+  end   
 end
 
 # MATCH admin/clear_cache

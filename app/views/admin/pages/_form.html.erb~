@@ -80,7 +80,7 @@
       <% else %>
       <%= form.text_field :perma_link %>
       <% end %>
-   
+    <% unless @page.perma_link.nil? %>
     <% if @page_type.eql?('ObjectForm') %>
   <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#object_form_perma_link').attr('disabled', 'disabled');} else {$('#object_form_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
@@ -92,7 +92,7 @@ Generate permalink automatically<br />
 }") %>
 Generate permalink automatically<br />
    <% end %>
-   
+   <% end %>
   </div> 
   
 

@@ -1,7 +1,7 @@
 <% cache("#{model_submission.perma_link}") do %>
-  <div id="model_<%= model_submission.id %>" class="model_display model_display_<%= model_submission.object_model.name %>">
+  <div id="model_<%= model_submission.id %>" class="model_display">
     <% model_submission.object_model.model_components.each do |mc| %>
-      <div class="model_data model_data_<%= mc.component_name%> ">
+      <div class="model_data">
         <div class="model_data_heading model_data_<%= mc.component_name%>_heading">
           <%= mc.component_display_name %>
         </div>
@@ -13,7 +13,7 @@
         </div>
       </div>
     <% end %>
-    <div class="model_data model_data_created_by">
+    <div class="model_data">
       <div class="model_data_heading model_data_creator_id_heading"> Created By</div>
       <div class="model_data_value model_data_creator_id_value">
         <% setting = Setting.find_by_name("allow_view_user_account") %>
@@ -25,12 +25,11 @@
           <% end %>
         <% end %>
     </div>
-
-    <div class="model_data model_data_created_at">
+    <div class="model_data">
       <div class="model_data_heading model_data_created_at_heading"> Created At</div>
       <div class="model_data_value model_data_created_at_value"><%= model_submission.created_at %></div>
     </div>
-    <div class="model_data  model_data_updated_at">
+    <div class="model_data">
       <div class="model_data_heading model_data_updated_at_heading"> Last Updated At</div>
       <div class="model_data_value model_data_updated_at_value"><%= model_submission.updated_at %></div>
     </div>
@@ -40,9 +39,9 @@
      <%= render :partial=>"show_comment" ,:locals=>{:model_submission=>model_submission} %>
    </div>
 
-     <div class="comment_operations">
+   <div>
      <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>"0"}  %>
    </div>
   <% end  %>
-
 <% end %>
+
