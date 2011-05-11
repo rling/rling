@@ -18,7 +18,7 @@ class ObjectModel < ActiveRecord::Base
   after_create :create_2_model_components, :verify_comments 
   after_create :create_permissions
   after_save :verify_comments
-  after_update :verify_comments 
+  after_update :verify_comments,:check_comments
   after_destroy :remove_permissions
   after_destroy :check_comments
 
@@ -138,7 +138,7 @@ end
        end
      end
      mailer= Mailer.where(:handle=>self.perma_link_parent).first()
-     mailer.destroy  unless mailer.nil? 
+     mailer.destroy unless mailer.nil? 
    end
  end
 end

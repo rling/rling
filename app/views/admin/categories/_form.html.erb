@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :parent_category %><br />
-    <%= f.select :parent_id, get_all_categories(@category).collect{|c|[c.levelname,c.id]} %>
+    <%= f.select :parent_id, get_all_categories(@category).collect{|c|[c.levelname,c.id]},:selected=> @category.id.nil? ? '' : (@category.parent_id == 0 ? -(@category.categoryset_id) : @category.parent_id) %>
   </div>
 
   <div class="field">
