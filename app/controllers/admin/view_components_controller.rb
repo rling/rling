@@ -89,7 +89,7 @@ class Admin::ViewComponentsController < ApplicationController
   # POST /views/1/view_components/update_position
   # POST /views/1/view_components/update_position.xml
  def update_position
-  ViewComponent.find_all_by_view_id(@page.id).each do  |view_component|
+  ViewComponent.where(:view_id=>@page.id).each do  |view_component|
      view_component.update_attribute(:position,params["#{view_component.id}"])
     end
     respond_to do |format|

@@ -44,7 +44,7 @@ class Admin::FormSubmissionsController < ApplicationController
       end
       unless mandatoryfailed
         @page.form_components.each do |component|
-          form_data_obj = FormDatum.find_by_form_submission_id_and_form_component_id(@form_submission.id,component.id)
+          form_data_obj = FormDatum.where(:form_submission_id=>@form_submission.id,:form_component_id => component.id).first
           form_data_obj = FormDatum.new(:form_submission_id=>@form_submission.id,:form_component_id=>component.id) if form_data_obj.nil?
           case component.component_type
           when "File"
@@ -80,7 +80,7 @@ class Admin::FormSubmissionsController < ApplicationController
   def destroy
     @form_submission = @page.form_submissions.find(params[:id])
     @form_submission.destroy
-    flash[:notice] = t(:form_submission_deleted)
+
     respond_to do |format|
       format.html { redirect_to(object_form_form_submissions_path(@page)) }
       format.xml  { head :ok }

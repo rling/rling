@@ -89,7 +89,7 @@ class Admin::ModelComponentsController < ApplicationController
   # POST /object_model/1/model_components/update_position
   # POST /object_model/1/model_components/update_position.xml
   def update_position
-     ModelComponent.find_all_by_object_model_id(@object.id).each do  |model_component|
+     ModelComponent.where(:object_model_id=>@object.id).each do  |model_component|
      model_component.update_attribute(:position,params["#{model_component.id}"])
   end
    respond_to do |format|

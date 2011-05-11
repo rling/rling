@@ -90,7 +90,7 @@ class Admin::PermissionsController < ApplicationController
     PermissionRole.update_all(:value=>false)
     params[:permission_role].each do |k,v|
       v.each do |k1,v1|
-        permission_role=PermissionRole.find_by_permission_id_and_role_id(k,k1)
+        permission_role=PermissionRole.where(:permission_id=>k,:role_id=>k1).first
         if permission_role.nil?
           permission_role=PermissionRole.new
           permission_role.permission_id=k

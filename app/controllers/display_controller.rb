@@ -8,8 +8,8 @@ class DisplayController < ApplicationController
   # ROOT :to => "display#index"
   # HOME PAGE OF THE WEBSITE
   def index
-   @pages = Page.find_all_by_home_page(true)
-   @models=ModelSubmission.find_all_by_home_page(true)
+   @pages = Page.where(:home_page=>true)
+   @models=ModelSubmission.where(:home_page=>true)
 
   end
   
@@ -19,7 +19,7 @@ class DisplayController < ApplicationController
     @sort= params[:sort]
     @order= params[:order]
     @category = params[:category]
-    @page = Page.find_by_perma_link_and_status(params[:permalink],:published)
+    @page = Page.where(:perma_link=>params[:permalink],:status=>:published).first
       if @page.nil?
         redirect_to :action=>"error_page_display"
       end
@@ -29,13 +29,13 @@ class DisplayController < ApplicationController
    # MATCH "/:permalinkparent/:permalink"=> "display#show_model_data"
    # DISPLAY ALL THE MODEL SUBMISSIONS FOR GIVEN PERMALINK AND ITS PARENT
    def show_model_data
-    @object= ObjectModel.find_by_perma_link_parent(params[:permalinkparent])
+    @object= ObjectModel.where(:perma_link_parent=>params[:permalinkparent]).first
     @model_submission= nil
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
       if validate_permission("view",@object)
-        @model_submission=ModelSubmission.find_by_perma_link_and_object_model_id_and_status(params[:permalink],@object.id,:published)
+        @model_submission=ModelSubmission.where(:perma_link=>params[:permalink],:object_model_id=>@object.id,:status=>:published).first
         redirect_to :action=>"error_page_display" if @model_submission.nil?
       else
         redirect_to :action=>"no_permissions"
@@ -72,8 +72,8 @@ class DisplayController < ApplicationController
         @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
         # Search for all models for information in title and body
         ObjectModel.all.each do |model|
-          title = model.model_components.find_by_component_name("title")
-          body = model.model_components.find_by_component_name("body")
+          title = model.model_components.where(:component_name=>"title").first
+          body = model.model_components.where(:component_name=>"body").first
           model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
           model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
           model_data.each do |md|
@@ -92,8 +92,8 @@ class DisplayController < ApplicationController
         # Search for those model submissions
         model = ObjectModel.find_by_name(@type)
         unless model.nil?
-          title = model.model_components.find_by_component_name("title")
-          body = model.model_components.find_by_component_name("body")
+          title = model.model_components.where(:component_name=>"title").first
+          body = model.model_components.where(:component_name =>"body").first
           model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
           model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
           model_data.each do |md|

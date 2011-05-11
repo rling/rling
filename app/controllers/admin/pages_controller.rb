@@ -51,11 +51,12 @@ before_filter :require_admin
   # GET /pages/1.xml
   def show
      if params[:id].to_i == 0
-      @page = Page.find_by_perma_link(params[:id])
+      @page = Page.where(:perma_link=>params[:id]).first
      else
       @page = Page.find_by_id(params[:id])
      end
-    @menu = Menu.find_by_page_id(@page.id)
+  
+    @menu = Menu.where(:page_id => @page.id).first
     @categoryset=Categoryset.find_by_id(@page.view_for)
     @associated=Page.find_by_id(@page.associated_view)
     respond_to do |format|
@@ -250,7 +251,7 @@ private
 #UPDATE PAGE VARIABLES AFTER CREATE AND UPDATE OF PAGES IF ANY
 def update_page_variables(page_variables,page)
  page_variables.each do |k,v|
-  pv = PageVariable.find_by_page_id_and_page_variable_setting_id(page.id,k)
+  pv = PageVariable.where(:page_id=>page.id, :page_variable_setting_id=>k).first
   if pv.nil?
    pv = PageVariable.new
    pv.page_id = page.id

@@ -14,8 +14,8 @@ end
 # POST /sessions/first_user_create.xml
 def first_user_create
 #Create the First User
-   role=Role.find_by_role_type("Administrator")
-   user = User.find_by_role_id(role.id)
+   role=Role.where(:role_type=>"Administrator").first
+   user = User.where(:role_id=>role.id).first
    if user.nil?
      @user = User.new(params[:user])
      @user.login = @user.email if params[:is_login_type_email]
@@ -24,39 +24,39 @@ def first_user_create
      if @user.save
       # Save all
       # Login / Email Authentication Setting
-       setting = Setting.find_by_name("is_login_type_email")
+       setting = Setting.where(:name=>"is_login_type_email").first
        setting.setting_value = (params[:is_login_type_email].nil? ? "false" : "true")
        setting.save
       # User registration Setting
-       setting = Setting.find_by_name("allow_user_register_user")
+       setting = Setting.where(:name=>"allow_user_register_user").first
        setting.setting_value = (params[:allow_user_register_user].nil? ? "false" : "true")
        setting.save
       # Welcome email setting
-       setting = Setting.find_by_name("send_welcome_email")
+       setting = Setting.where(:name=>"send_welcome_email").first
        setting.setting_value = (params[:send_welcome_email].nil? ? "false" : "true")
        setting.save
       # Administrator registration setting
-       setting = Setting.find_by_name("allow_admin_register_user")
+       setting = Setting.where(:name=>"allow_admin_register_user").first
        setting.setting_value = (params[:allow_admin_register_user].nil? ? "false" : "true")
        setting.save
       # User activation setting
-       setting = Setting.find_by_name("user_activation_required_on_user")
+       setting = Setting.where(:name=>"user_activation_required_on_user").first
        setting.setting_value = (params[:user_activation_required_on_user].nil? ? "false" : "true")
        setting.save
       # Administrator activation setting
-       setting = Setting.find_by_name("user_activation_required_on_admin")
+       setting = Setting.where(:name=>"user_activation_required_on_admin").first
        setting.setting_value = (params[:user_activation_required_on_admin].nil? ? "false" : "true")
        setting.save
       # URL Setting
-       setting = Setting.find_by_name("site_url")
+       setting = Setting.where(:name=>"site_url").first
        setting.setting_value = params[:site_url]
        setting.save
       # Smtp Setting
-       setting = Setting.find_by_name("smtp_settings")
+       setting = Setting.where(:name=>"smtp_settings").first
        setting.setting_value = params[:smtp_settings]
        setting.save
       #View users account information setting
-       setting = Setting.find_by_name("allow_view_user_account")
+       setting = Setting.where(:name=>"allow_view_user_account").first
        setting.setting_value = (params[:allow_view_user_account].nil? ? "false" : "true")
        setting.save
        respond_to do |format|
@@ -103,7 +103,7 @@ end
 # POST /sessions.xml
 def create
   if current_user.nil?
-     @user = User.find_by_login(params[:login])
+     @user = User.where(:login=>params[:login]).first
      user =User.authenticate(params[:login], params[:password])
      respond_to do |format|
       if @user.nil? 

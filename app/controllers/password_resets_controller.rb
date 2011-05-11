@@ -9,7 +9,7 @@ end
 # POST /password_resets
 # POST /password_resets.xml
 def create
-   user = User.find_by_email(params[:user][:email])
+   user = User.where(:email=>params[:user][:email]).first
    respond_to do |format|
       if user
         user.create_reset_code
@@ -28,7 +28,7 @@ end
 # GET /password_resets/1/reset
 # GET /password_resets/1/reset.xml
 def reset
-    @user = User.find_by_reset_password_key(params[:id]) unless params[:id].nil?
+    @user = User.where(:reset_password_key=>params[:id]).first unless params[:id].nil?
     respond_to do |format|
             format.html #reset.html.erb
             format.xml {render :xml =>@user}
@@ -38,7 +38,7 @@ end
 # POST /password_resets/change
 # POST /password_resets/change.xml
 def change
-  @user = User.find_by_email_and_reset_password_key(params[:user][:email],params[:user][:reset_password_key])
+  @user = User.where(:email=>params[:user][:email],:reset_password_key=>params[:user][:reset_password_key]).first
   if @user.update_attributes(params[:user])
      @user.delete_reset_code
      flash[:notice] = t(:password_changed)

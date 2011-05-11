@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       permission = Permission.where(:activity_code=>"viewlist",:permission_type=>"ObjectModel",:permission_object=>om.name)
       unless permission.nil?
         pm = PermissionRole.where(:role_id=>@user.role_id,:permission_id=>permission[0].id)
-        @objects << om if !pm.empty? && pm[0].value
+        @objects << om if !pm.empty? && pm.first.value
       end
     end
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
    if current_user?
-     setting = Setting.find_by_name("allow_admin_register_user")
+     setting = Setting.where(:name=>"allow_admin_register_user").first
      if current_user.admin? && !setting.setting_data
        flash[:notice] = t(:admin_cannot_create_user)
        respond_to do |format|
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
        end
      end
   else
-    setting = Setting.find_by_name("allow_user_register_user")
+    setting = Setting.where(:name=>"allow_user_register_user").first
     unless setting.setting_data
       flash[:notice] = t(:user_is_not_authorized)
       respond_to do |format|
@@ -131,7 +131,7 @@ class UsersController < ApplicationController
   # GET /users/1/activate
   # GET /users/1/activate.xml
   def activate
-    @user = User.find_by_activation_key(params[:id]) unless params[:id].nil?
+    @user = User.where(:activation_key=>params[:id]).first unless params[:id].nil?
     unless @user.nil?
       @user.is_activated=true
       @user.delete_activation_key
@@ -213,7 +213,7 @@ class UsersController < ApplicationController
           mandatory_failed = true
           break
         end
-        user_detail=UserDetail.find_by_user_id_and_user_detail_setting_id(user_id,user_detail_setting.id)
+        user_detail=UserDetail.where(:user_id=>user_id ,:user_detail_setting_id=>user_detail_setting.id).first
         user_detail=UserDetail.new if user_detail.nil?
         user_detail.user_id=user_id if user_detail.user_id.nil?
         user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
