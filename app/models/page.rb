@@ -37,7 +37,7 @@ def menu_menuset_id=(value)
 end
 
 def menu_parent_id
- menu = Menu.find_by_page_id(self.id)
+ menu = Menu.where(:page_id=>self.id).first()
  unless menu.nil?
    return menu.parent_id
  end
@@ -53,7 +53,7 @@ end
 
 def menu_name
   unless self.id.nil?
-  menu = Menu.find_by_page_id(self.id)
+  menu = Menu.where(:page_id=>self.id).first()
   unless menu.nil?
    return menu.name
  end
@@ -81,7 +81,7 @@ private
       if @parent_id.to_i < 0
         menu.menuset_id = @parent_id.to_i.abs
       else
-        menu.menuset_id= Menu.find(@parent_id).menuset_id
+        menu.menuset_id= Menu.where(:id=>@parent_id).first().menuset_id
       end
       menu.save
     end

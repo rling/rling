@@ -31,7 +31,7 @@ class Menu < ActiveRecord::Base
 private
 
   def set_children() 
-    Menu.find_all_by_parent_id(self.id).each do |menu|
+    Menu.where(:parent_id=>self.id).each do |menu|
       menu.update_attribute("parent_id",nil)
     end	 
   end

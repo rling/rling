@@ -30,7 +30,7 @@ class ObjectModel < ActiveRecord::Base
  end
 
  def published_model_submissions
-   return self.model_submissions.find(:all,:conditions=>["status =?","Published"])
+   return self.model_submissions.where(:status =>'Published')
  end
  
 #Private Methods
@@ -84,7 +84,7 @@ end
 def remove_comment_permissions
   unless self.allow_comments
     ["createcomment","deletecomment","deletecommentother","deletemycomments"].each do |code|
-      permissions = Permission.find(:all,:conditions=>["permission_type=? and activity_code=? and permission_object=?",self.class.to_s,code,self.name])
+      permissions = Permission.where(:permission_type=>self.class.to_s, :activity_code=> code, :permission_object=>self.name)
       permissions.each do |permission|
         permission.destroy
       end
@@ -93,7 +93,7 @@ def remove_comment_permissions
 end
 
  def remove_permissions
-    permissions = Permission.find(:all,:conditions=>["permission_type=? and permission_object=?",self.class.to_s,self.name])
+    permissions = Permission.where(:permission_type=>self.class.to_s, :permission_object=>self.name)
     permissions.each do |permission|
       permission.destroy
     end
@@ -110,12 +110,12 @@ end
          comment_submission.destroy
         end
       end
-     mailer= Mailer.find_by_handle(self.perma_link_parent)
+     mailer= Mailer.where(:handle=>self.perma_link_parent).first()
      mailer.destroy  unless mailer.nil?
       
     else
      create_comment_permissions
-     if self.comment_components.find_by_component_name('comment_text').nil?
+     if self.comment_components.where(:component_name=>'comment_text').first().nil?
        self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
      end
      if self.email_on_comment
@@ -137,7 +137,7 @@ end
          comment_submission.destroy
        end
      end
-     mailer= Mailer.find_by_handle(self.perma_link_parent)
+     mailer= Mailer.where(:handle=>self.perma_link_parent).first()
      mailer.destroy  unless mailer.nil? 
    end
  end

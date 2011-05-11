@@ -6,7 +6,7 @@ class FormSubmission < ActiveRecord::Base
 #Class methods
  #Used to get all the Tags to create Email Template
  def self.tags(handle)
-    objform = ObjectForm.find_by_perma_link(handle)
+    objform = ObjectForm.where(:perma_link=>handle)
     array = objform.form_components.collect {|fc| fc.component_name } unless objform.nil? && objform.form_components.size == 0
    return array
  end
@@ -34,9 +34,9 @@ end
 #Get the value set in a submission for a particular component. Used for display purpose
 def get_variable_info(variablename)
      output = ""
-     form_component = self.object_form.form_components.find(:first,:conditions=>["component_name=?",variablename]) 
+     form_component = self.object_form.form_components.where(:component_name=>variablename).first()
      unless form_component.nil?
-       form_data = self.form_data.find(:first,:conditions=>["form_component_id=?",form_component.id])
+       form_data = self.form_data.where(:form_component_id=>form_component.id).first()
        unless form_data.nil?
          output = form_data.data_value
        end

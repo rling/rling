@@ -32,7 +32,7 @@ class Category < ActiveRecord::Base
   private
 
   def set_children()
-    Category.find_all_by_parent_id(self.id).each do |category|
+    Category.where(:parent_id=>self.id).each do |category|
       category.update_attribute("parent_id",nil)
     end
   end

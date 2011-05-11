@@ -64,6 +64,7 @@ en:
   form_component_created: "Form component was successfully created."
   form_component_updated: "Form component was successfully updated."
   form_submission_updated: "Submission Form Updated"
+  form_submission_deleted: "Submission Form Deleted"
   mailer_created: "Mailer was successfully created."
   mailer_updated: "Mailer was successfully updated."
   standard_mails_required: "Cannot delete standard mailers"

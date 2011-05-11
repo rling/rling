@@ -18,9 +18,9 @@ class CommentSubmission < ActiveRecord::Base
   before_destroy :set_children
 
    def self.tags(handle)
-   object_model = ObjectModel.find_by_perma_link_parent(handle)
-    array = object_model.comment_components.collect {|cc| cc.component_name } unless object_model.nil? && object_model.comment_components.size == 0
- 
+   object_model = ObjectModel.where(:perma_link_parent=>handle)
+   array = object_model.comment_components.collect {|cc| cc.component_name } unless object_model.nil? && object_model.comment_components.size == 0
+
    return array
    end
 

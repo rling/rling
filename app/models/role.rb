@@ -8,7 +8,7 @@ class Role < ActiveRecord::Base
 #Class Methods
   # Allows us to look up roles by passing a symbol, eg. Role.by_name(:admin)
   def self.by_role_type(name)
-   self.find_by_role_type(name.to_s.camelize)
+   self.where(:role_type=>name.to_s.camelize).first()
   end
 end
 

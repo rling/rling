@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
 #Class Methods
   def self.authenticate(login, pass)
-    u=find(:first, :conditions=>["login = ?", login])
+    u=where(:login =>login).first()
     return nil if u.nil?
     return (User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated) ? u : nil
   end

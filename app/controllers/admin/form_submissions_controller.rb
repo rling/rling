@@ -80,7 +80,7 @@ class Admin::FormSubmissionsController < ApplicationController
   def destroy
     @form_submission = @page.form_submissions.find(params[:id])
     @form_submission.destroy
-
+    flash[:notice] = t(:form_submission_deleted)
     respond_to do |format|
       format.html { redirect_to(object_form_form_submissions_path(@page)) }
       format.xml  { head :ok }

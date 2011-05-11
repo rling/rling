@@ -14,7 +14,7 @@ def not_added_components
 end
 
 def not_added_condition_components
- model=ObjectModel.find_by_id(self.view_for)
+ model=ObjectModel.where(:id=>self.view_for).first()
  m_component = model.model_components.collect{|mc|mc.component_name}
  m_component = ["","created_at","updated_at","creator_id","updater_id"] +  m_component
  return  m_component
@@ -23,7 +23,7 @@ end
 
 #Get the View For Name
 def get_view_for
-  model=ObjectModel.find_by_id(self.view_for)
+  model=ObjectModel.where(:id=>self.view_for).first()
   return ( model.nil? ? nil :  model.name.capitalize.pluralize )
 end
 
