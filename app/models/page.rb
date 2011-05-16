@@ -64,6 +64,10 @@ def menu_name=(value)
  @menu_name=value
 end
 
+def published?
+  return self.status == "Published"
+end
+
 #private methods
 private
 

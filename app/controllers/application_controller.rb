@@ -131,8 +131,8 @@ class ApplicationController < ActionController::Base
   # we donot have control over the fields as entered by non administrators within 
   # the website.
    def checkforjs(input)
- return input.gsub("<script","").gsub("</script>","").gsub("</script>","<iframe")
-    #return input.html_safe
+ #return input.gsub("<script","").gsub("</script>","").gsub("</script>","<iframe")
+    return input.html_safe
    end
    
    def set_layout
