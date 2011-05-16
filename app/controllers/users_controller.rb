@@ -168,7 +168,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.admin?
-      if @user==User.first
+      if @user.id==1
         flash[:notice] = t(:admin_required)
       elsif @user.id==current_user.id
         flash[:notice] = t(:cannot_delete_own)

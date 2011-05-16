@@ -202,7 +202,7 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.boolean  "email_on_comment",       :default => false
     t.string   "layout"
     t.integer  "categoryset_id"
-    t.boolean  "allow_show_on_homepage"
+    t.boolean  "allow_show_on_homepage", :default => false
     t.boolean  "allow_drafts"
   end
 
