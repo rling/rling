@@ -27,13 +27,26 @@
   </div>
 
   <% if @setting.setting_type=='boolean' %>
-  <div class="field">
+    <div class="field">
+      <b><%= f.label :setting_value,'Setting Value' %></b><br />
+      <%= f.select :setting_value ,["true","false"]%>
+    </div>
+  <% elsif %> 
+    <% @setting.setting_type=='colorbox' %>
     <b><%= f.label :setting_value,'Setting Value' %></b><br />
-    <%= f.select :setting_value ,["true","false"]%>
-  </div>
-  <% else %>
+    <p> <%= f.text_field :setting_value,:id=>"colorpickerField1" %></p>
+  <%elsif%>
+    <% @setting.setting_type=='integer' %>
     <b><%= f.label :setting_value,'Setting Value' %></b><br />
-    <%= f.text_field :setting_value %>
+     <p> <%= f.select :setting_value,["12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"] %></p>
+  <% elsif %>
+     <% @setting.setting_type=='font' %>
+    <b><%= f.label :setting_value,'Setting Value' %></b><br />
+    <p> <%= f.select :setting_value,["Arial","Arial Black","Geneva","Georgia","Georgia1","Helvetica","monospace","MS Serif4","sans-serif","Tahoma","Times New Roman","Times","Trebuchet MS","Trebuchet MS1","Verdana"] %></p>
+   
+ <% else %>
+   <b><%= f.label :setting_value,'Setting Value' %></b><br />
+    <p> <%= f.text_field :setting_value %></p>
   <% end %>
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,86 @@
+  <style>
+    #header_text{
+      background: #<%= @header_background_color.setting_value%>;
+    }
+    #top_bar{
+      background: #<%= @top_bar_background_color.setting_value %>;
+    }
+    #dashboard_main
+    {
+      background: #<%= @dashboard_main_background_color.setting_value %>;
+    }
+    
+    #developer a
+    {
+      color: #<%=  @footer_link.setting_value %>;
+    }  
+    
+    #header_text{
+       font-family:<%= @header_text.setting_value %>;     
+    }
+    
+    #top_bar
+    {
+       font-family:<%= @top_bar_text.setting_value %>;
+    }
+    
+    #header_menu ul li a
+    {
+      color:#<%= @header_text_menu_color.setting_value %>; 
+    }
+    
+    #header_text ul li:hover
+    {
+       background:#<%=  @header_text_hover_color.setting_value %>;
+      
+    }
+    
+    #footer_menu ul li a:hover
+    {
+       color:#<%=  @footer_hover.setting_value %>;
+    }
+    
+    #footer_menu ul
+    {
+        font-family:<%= @footer_text.setting_value %>;
+    }
+    #top_bar 
+    {
+      color:#<%= @top_bar_text_color.setting_value%>;
+    }
+   
+    #top_bar
+    {
+      font-size: <%=@top_bar_font_size.setting_value %>px;
+    }
+    
+    #heading
+    {
+      font-size:<%= @heading_font_size.setting_value  %>px;
+    }
+    
+    #heading_tag{
+      font-size:<%= @heading_tag_font_size.setting_value %>px;
+    }
+    
+    #heading_tag
+    {
+      color:#<%= @heading_tag_color.setting_value %>;
+    }
+    
+    #heading
+    {
+      color:#<%= @heading_color.setting_value %>;
+    }
+
+   #header_menu
+   {
+      background:#<%=  @header_menu_color.setting_value %>;
+   }
+
+   #middle
+   {
+      background:#<%=  @middle_color.setting_value %>;
+   }      
+      
+  </style>

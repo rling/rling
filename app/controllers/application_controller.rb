@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   #FILTERS
   helper :all
   helper_method :current_user,:current_user?
-  before_filter :check_admin,:check_cookie
+  before_filter :check_admin,:check_cookie,:read_color_settings
   layout :set_layout
   
   #verify permission for users  
@@ -131,12 +131,32 @@ class ApplicationController < ActionController::Base
   # we donot have control over the fields as entered by non administrators within 
   # the website.
    def checkforjs(input)
-    return input.gsub("<script","").gsub("</script>","").gsub("</script>","").gsub("<iframe","")
-    #return input.html_safe
+     return input.gsub("<script","").gsub("</script>","").gsub("</script>","").gsub("<iframe","")
    end
    
    def set_layout
      defined?(@admin_layout) ? "admin" : "application"
      #(current_user? && current_user.admin?) ? "admin" : "application"      
+   end
+
+  def read_color_settings
+     @header_background_color=Setting.find_by_name("header_background_color")
+     @top_bar_background_color=Setting.find_by_name("top_bar_background_color")
+     @dashboard_main_background_color=Setting.find_by_name("dashboard_main_background_color")
+     @footer_link=Setting.find_by_name("footer_link")
+     @header_text=Setting.find_by_name("header_text")
+     @top_bar_text=Setting.find_by_name("top_bar_text")
+     @header_text_menu_color=Setting.find_by_name("header_text_menu_color")
+     @header_text_hover_color=Setting.find_by_name("header_menu_hover_color")
+     @footer_hover=Setting.find_by_name("footer_hover")
+     @footer_text=Setting.find_by_name("footer_text")
+     @top_bar_text_color=Setting.find_by_name("top_bar_text_color")
+     @top_bar_font_size=Setting.find_by_name("top_bar_font_size")
+     @heading_font_size=Setting.find_by_name("heading_font_size")
+     @heading_tag_font_size=Setting.find_by_name("heading_tag_font_size")
+     @heading_tag_color=Setting.find_by_name("heading_tag_color")
+     @heading_color=Setting.find_by_name("heading_color")
+     @header_menu_color=Setting.find_by_name("header_menu_color");
+     @middle_color=Setting.find_by_name("middle_color");
    end
 end

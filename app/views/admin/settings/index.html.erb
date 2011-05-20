@@ -24,6 +24,76 @@
 
 <% end %>
 </table>
+<br />
+
+<h1>Color Settings</h1>
+<table>
+  <tr>
+    
+    <th>Setting Name</th>
+    <th>Descriptive Text</th>
+    <th>Setting Type</th>
+    <th>Setting Value</th>
+  </tr>
+
+<% @setting_colors.each do |setting| %>
+  <tr>
+    <td><%= setting.name %></td>
+    <td><%= setting.desc_text %></td>
+    <td><%= setting.setting_type %></td>
+    <td><%= setting.setting_value %></td>
+    <td><%= link_to "Edit", edit_setting_path(setting)%></td>
+  </tr>
+
+<% end %>
+
+</table>
+</br>
+
+<h1>Font Family Settings</h1>
+<table>
+  <tr>
+    
+    <th>Setting Name</th>
+    <th>Descriptive Text</th>
+    <th>Setting Type</th>
+    <th>Setting Value</th>
+  </tr>
+
+<% @setting_fonts.each do |setting| %>
+  <tr>
+    <td><%= setting.name %></td>
+    <td><%= setting.desc_text %></td>
+    <td><%= setting.setting_type %></td>
+    <td><%= setting.setting_value %></td>
+    <td><%= link_to "Edit", edit_setting_path(setting)%></td>
+  </tr>
+
+<% end %>
+</table>
+</br>
+
+<h1>Font Size Settings</h1>
+<table>
+  <tr>
+    
+    <th>Setting Name</th>
+    <th>Descriptive Text</th>
+    <th>Setting Type</th>
+    <th>Setting Value</th>
+  </tr>
+
+<% @setting_sizes.each do |setting| %>
+  <tr>
+    <td><%= setting.name %></td>
+    <td><%= setting.desc_text %></td>
+    <td><%= setting.setting_type %></td>
+    <td><%= setting.setting_value %></td>
+    <td><%= link_to "Edit", edit_setting_path(setting)%></td>
+  </tr>
+<% end %>
+</table>
+
 
 <br />
 <%= link_to 'Back to Dashboard', admin_dashboard_path %>

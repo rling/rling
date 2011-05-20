@@ -16,6 +16,9 @@
     <div class="user_section_value user_section_email_value"><%=@user.email %></div>
 </div>
 
+
+<%= render :partial=>"shared/user_profile" %>
+
 <div class="role">
    <div class="user_section_heading user_section_email_heading">Role:</div>
    <div class="user_section_value user_section_email_value">
@@ -43,7 +46,6 @@
  <div class="user_section_value user_section_previous_login_value"><%= @user.last_login_ip %></div>
 </div>
 
-<%= render :partial=>"shared/user_profile" %>
 
 <br/>
 <% if current_user.admin? %>

@@ -5,7 +5,10 @@ class Admin::SettingsController < ApplicationController
   # GET /settings
   # GET /settings.xml
   def index
-    @settings = Setting.all
+    @settings = Setting.find_all_by_setting_type('string')
+    @setting_colors=Setting.find_all_by_setting_type('colorbox')
+    @setting_fonts=Setting.find_all_by_setting_type('font')
+    @setting_sizes=Setting.find_all_by_setting_type('integer')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @settings }

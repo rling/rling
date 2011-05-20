@@ -17,6 +17,27 @@ Setting.create(:name=>"user_activation_required_on_admin",:desc_text=>"Should th
 Setting.create(:name=>"site_url",:desc_text=>"URL of the Site that is required to go out as external links. e.g. in emails, on pages, etc.,",:setting_type=>"string",:setting_value=>"http://localhost:3000")
 Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings required to send emails from the CMS",:setting_type=>"string",:setting_value=>"address:smtp.rlingcms.com; port:25; domain:mail.rlingcms.com; authentication:plain; user_name:myusername; password:mypassword;")
 Setting.create(:name=>"allow_view_user_account",:desc_text=>"Can a user view another users account info when he clicks on the name of the user who submitted a post",:setting_type=>"boolean",:setting_value=>"false")
+Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings required to send emails from the CMS",:setting_type=>"string",:setting_value=>"address:smtp.rlingcms.com; port:25; domain:mail.rlingcms.com; authentication:plain; user_name:myusername; password:mypassword;")
+Setting.create(:name=>"allow_view_user_account",:desc_text=>"Can a user view another users account info when he clicks on the name of the user who submitted a post",:setting_type=>"boolean",:setting_value=>"false")
+Setting.create(:name=>"top_bar_background_color",:desc_text=>"top bar background color",:setting_type=>"colorbox",:setting_value=>"white")
+Setting.create(:name=>"dashboard_main_background_color",:desc_text=>"dashboard main background color",:setting_type=>"colorbox",:setting_value=>"F4F4F4")
+Setting.create(:name=>"footer_link",:desc_text=>"footer link color ",:setting_type=>"colorbox",:setting_value=>"white")
+Setting.create(:name=>"header_text",:desc_text=>"header text",:setting_type=>"font",:setting_value=>"verdana")
+Setting.create(:name=>"top_bar_text",:desc_text=>"top bar text",:setting_type=>"font",:setting_value=>"verdana")
+Setting.create(:name=>"header_text_menu_color",:desc_text=>"header_text_menu color",:setting_type=>"colorbox",:setting_value=>"white")
+Setting.create(:name=>"header_menu_hover_color",:desc_text=>"header menu hover color",:setting_type=>"colorbox",:setting_value=>"yellow")
+Setting.create(:name=>"footer_hover",:desc_text=>"footer hover color",:setting_type=>"colorbox",:setting_value=>"BF2E1B")
+Setting.create(:name=>"footer_text",:desc_text=>"footer text",:setting_type=>"font",:setting_value=>"verdana")
+Setting.create(:name=>"top_bar_text_color",:desc_text=>"top bar text color",:setting_type=>"colorbox",:setting_value=>"yellow")
+Setting.create(:name=>"top_bar_font_size",:desc_text=>"top bar font size",:setting_type=>"integer",:setting_value=>"12")
+Setting.create(:name=>"heading_font_size",:desc_text=>"heading font size",:setting_type=>"integer",:setting_value=>"30")
+Setting.create(:name=>"heading_tag_font_size",:desc_text=>"heading tag font size",:setting_type=>"integer",:setting_value=>"14")
+Setting.create(:name=>"heading_tag_color",:desc_text=>"heading tag color",:setting_type=>"colorbox",:setting_value=>"black")
+Setting.create(:name=>"heading_color",:desc_text=>"heading color",:setting_type=>"colorbox",:setting_value=>"black")
+Setting.create(:name=>"header_menu_color",:desc_text=>"header menu color",:setting_type=>"colorbox",:setting_value=>"333333")
+Setting.create(:name=>"middle_color",:desc_text=>"middle color",:setting_type=>"colorbox",:setting_value=>"white")
+
+
 
 
 #Create Mailer Settings
