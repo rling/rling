@@ -23,10 +23,21 @@
   </tr>
 
 <% end %>
+<% @setting_booleans.each do |setting| %>
+  <tr>
+    <td><%= setting.name %></td>
+    <td><%= setting.desc_text %></td>
+    <td><%= setting.setting_type %></td>
+    <td><%= setting.setting_value %></td>
+    <td><%= link_to "Edit", edit_setting_path(setting)%></td>
+  </tr>
+<% end %>
 </table>
 <br />
 
-<h1>Color Settings</h1>
+<h1>Layout settings</h1>
+
+<h3>Color Settings</h3>
 <table>
   <tr>
     
@@ -50,7 +61,7 @@
 </table>
 </br>
 
-<h1>Font Family Settings</h1>
+<h3>Font Family Settings</h3>
 <table>
   <tr>
     
@@ -73,7 +84,7 @@
 </table>
 </br>
 
-<h1>Font Size Settings</h1>
+<h3>Font Size Settings</h3>
 <table>
   <tr>
     

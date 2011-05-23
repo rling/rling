@@ -1,86 +1,108 @@
   <style>
     #header_text{
-      background: #<%= @header_background_color.setting_value%>;
+      background: #<%= session[:settings][:header_background_color] %>;
     }
     #top_bar{
-      background: #<%= @top_bar_background_color.setting_value %>;
+      background: #<%= session[:settings][:top_bar_background_color] %>;
     }
     #dashboard_main
     {
-      background: #<%= @dashboard_main_background_color.setting_value %>;
+      background: #<%= session[:settings][:dashboard_main_background_color]%>;
     }
     
     #developer a
     {
-      color: #<%=  @footer_link.setting_value %>;
+      color: #<%=  session[:settings][:footer_link]%>;
     }  
     
     #header_text{
-       font-family:<%= @header_text.setting_value %>;     
+       font-family:<%= session[:settings][:header_text] %>;     
     }
     
     #top_bar
     {
-       font-family:<%= @top_bar_text.setting_value %>;
+       font-family:<%= session[:settings][:top_bar_text] %>;
     }
     
     #header_menu ul li a
     {
-      color:#<%= @header_text_menu_color.setting_value %>; 
+      color:#<%= session[:settings][:header_text_menu_color] %>; 
     }
     
-    #header_text ul li:hover
+    #header_menu ul li:hover
     {
-       background:#<%=  @header_text_hover_color.setting_value %>;
+       background:#<%=  session[:settings][:header_text_hover_color] %>;
       
     }
     
     #footer_menu ul li a:hover
     {
-       color:#<%=  @footer_hover.setting_value %>;
+       color:#<%=  session[:settings][:footer_hover] %>;
     }
     
     #footer_menu ul
     {
-        font-family:<%= @footer_text.setting_value %>;
+        font-family:<%= session[:settings][:footer_text] %>;
     }
     #top_bar 
     {
-      color:#<%= @top_bar_text_color.setting_value%>;
+      color:#<%= session[:settings][:top_bar_text_color] %>;
     }
    
     #top_bar
     {
-      font-size: <%=@top_bar_font_size.setting_value %>px;
+      font-size: <%=session[:settings][:top_bar_font_size] %>px;
     }
     
     #heading
     {
-      font-size:<%= @heading_font_size.setting_value  %>px;
+      font-size:<%= session[:settings][:heading_font_size]  %>px;
     }
     
     #heading_tag{
-      font-size:<%= @heading_tag_font_size.setting_value %>px;
+      font-size:<%= session[:settings][:heading_tag_font_size] %>px;
     }
     
     #heading_tag
     {
-      color:#<%= @heading_tag_color.setting_value %>;
+      color:#<%= session[:settings][:heading_tag_color] %>;
     }
     
     #heading
     {
-      color:#<%= @heading_color.setting_value %>;
+      color:#<%= session[:settings][:heading_color] %>;
     }
 
    #header_menu
    {
-      background:#<%=  @header_menu_color.setting_value %>;
+      background:#<%=  session[:settings][:header_menu_color] %>;
    }
 
    #middle
    {
-      background:#<%=  @middle_color.setting_value %>;
-   }      
+      background:#<%=  session[:settings][:middle_color] %>;
+   }  
+   
+   #sddm div a:hover
+   {
+     background:#<%= session[:settings][:submenu_hover] %>
+   }    
+    
+   #sddm 
+   {
+     color:#<%= session[:settings][:submenu_text] %>
+   }
+   
+   #heading_tag
+   {
+     font-family:#<%= session[:settings][:heading_tag_setting_value] %>
+   }
+   
+   #heading
+   {
+     font-family:#<%= session[:settings][:heading_setting_value] %>
+   }    
+   
+  
       
   </style>

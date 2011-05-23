@@ -6,6 +6,7 @@ class Admin::SettingsController < ApplicationController
   # GET /settings.xml
   def index
     @settings = Setting.find_all_by_setting_type('string')
+    @setting_booleans=Setting.find_all_by_setting_type('boolean')
     @setting_colors=Setting.find_all_by_setting_type('colorbox')
     @setting_fonts=Setting.find_all_by_setting_type('font')
     @setting_sizes=Setting.find_all_by_setting_type('integer')
@@ -46,6 +47,7 @@ class Admin::SettingsController < ApplicationController
     @setting = Setting.new(params[:setting])
     respond_to do |format|
       if @setting.save
+                session[:settings][@setting.name.intern] = @setting.setting_value unless session[:settings].nil?
         format.html { redirect_to(@setting, :notice => t(:setting_created)) }
         format.xml  { render :xml => @setting, :status => :created, :location => @setting }
       else
@@ -61,6 +63,7 @@ class Admin::SettingsController < ApplicationController
     @setting = Setting.find(params[:id])
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
+        session[:settings][@setting.name.intern] = @setting.setting_value unless session[:settings].nil?
         format.html { redirect_to(settings_path, :notice => t(:setting_updated)) }
         format.xml  { head :ok }
       else

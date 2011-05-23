@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   #FILTERS
   helper :all
   helper_method :current_user,:current_user?
-  before_filter :check_admin,:check_cookie,:read_color_settings
+  before_filter :check_admin,:check_cookie,:read_color_settings 
   layout :set_layout
   
   #verify permission for users  
@@ -44,6 +44,7 @@ class ApplicationController < ActionController::Base
   def current_user=(value)
     session[:user] = value
   end
+
 
   #Check if user is logged in or not.
   def current_user?
@@ -122,7 +123,7 @@ class ApplicationController < ActionController::Base
 	  if params[:controller]!="sessions" && (params[:action] != "first_user" || params[:action] != "first_user_create")
 	      redirect_to first_user_sessions_path
      	  end
-        end
+         end
       end
     end
   end
@@ -140,23 +141,31 @@ class ApplicationController < ActionController::Base
    end
 
   def read_color_settings
-     @header_background_color=Setting.find_by_name("header_background_color")
-     @top_bar_background_color=Setting.find_by_name("top_bar_background_color")
-     @dashboard_main_background_color=Setting.find_by_name("dashboard_main_background_color")
-     @footer_link=Setting.find_by_name("footer_link")
-     @header_text=Setting.find_by_name("header_text")
-     @top_bar_text=Setting.find_by_name("top_bar_text")
-     @header_text_menu_color=Setting.find_by_name("header_text_menu_color")
-     @header_text_hover_color=Setting.find_by_name("header_menu_hover_color")
-     @footer_hover=Setting.find_by_name("footer_hover")
-     @footer_text=Setting.find_by_name("footer_text")
-     @top_bar_text_color=Setting.find_by_name("top_bar_text_color")
-     @top_bar_font_size=Setting.find_by_name("top_bar_font_size")
-     @heading_font_size=Setting.find_by_name("heading_font_size")
-     @heading_tag_font_size=Setting.find_by_name("heading_tag_font_size")
-     @heading_tag_color=Setting.find_by_name("heading_tag_color")
-     @heading_color=Setting.find_by_name("heading_color")
-     @header_menu_color=Setting.find_by_name("header_menu_color");
-     @middle_color=Setting.find_by_name("middle_color");
-   end
-end
+    if session[:settings].nil?
+     session[:settings] = Hash.new
+     session[:settings][:header_background_color] = Setting.find_by_name("header_background_color").setting_value
+     session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
+     session[:settings][:dashboard_main_background_color]=Setting.find_by_name("dashboard_main_background_color").setting_value
+     session[:settings][:footer_link]=Setting.find_by_name("footer_link").setting_value
+     session[:settings][:header_text]=Setting.find_by_name("header_text").setting_value
+     session[:settings][:top_bar_text]=Setting.find_by_name("top_bar_text").setting_value
+     session[:settings][:header_text_menu_color]=Setting.find_by_name("header_text_menu_color").setting_value
+     session[:settings][:header_text_hover_color]=Setting.find_by_name("header_menu_hover_color").setting_value
+     session[:settings][:footer_hover]=Setting.find_by_name("footer_hover").setting_value
+     session[:settings][:footer_text]=Setting.find_by_name("footer_text").setting_value
+     session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
+     session[:settings][:top_bar_font_size]=Setting.find_by_name("top_bar_font_size").setting_value
+     session[:settings][:heading_font_size]=Setting.find_by_name("heading_font_size").setting_value
+     session[:settings][:heading_tag_font_size]=Setting.find_by_name("heading_tag_font_size").setting_value
+     session[:settings][:heading_tag_color]=Setting.find_by_name("heading_tag_color").setting_value
+     session[:settings][:heading_color]=Setting.find_by_name("heading_color").setting_value
+     session[:settings][:header_menu_color]=Setting.find_by_name("header_menu_color").setting_value
+     session[:settings][:middle_color]=Setting.find_by_name("middle_color").setting_value
+     session[:settings][:header_logo]=Setting.find_by_name("header logo").setting_value
+     session[:settings][:submenu_hover]=Setting.find_by_name("submenu hover").setting_value
+     session[:settings][:submenu_text]=Setting.find_by_name("submenu text").setting_value
+     session[:settings][:heading_tag_setting_value]=Setting.find_by_name("heading_tag_font_family").setting_value
+     session[:settings][:heading_setting_value]=Setting.find_by_name("heading_setting_font_family").setting_value
+    end   
+  end
+end 

@@ -24,6 +24,7 @@ Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings r
 Setting.create(:name=>"allow_view_user_account",:desc_text=>"Can a user view another users account info when he clicks on the name of the user who submitted a post",:setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"smtp_settings",:desc_text=>"SMTP Configuration settings required to send emails from the CMS",:setting_type=>"string",:setting_value=>"address:smtp.rlingcms.com; port:25; domain:mail.rlingcms.com; authentication:plain; user_name:myusername; password:mypassword;")
 Setting.create(:name=>"allow_view_user_account",:desc_text=>"Can a user view another users account info when he clicks on the name of the user who submitted a post",:setting_type=>"boolean",:setting_value=>"false")
+Setting.create(:name=>"header_background_color",:desc_text=>"header background color",:setting_type=>"colorbox",:setting_value=>"BF21B")
 Setting.create(:name=>"top_bar_background_color",:desc_text=>"top bar background color",:setting_type=>"colorbox",:setting_value=>"white")
 Setting.create(:name=>"dashboard_main_background_color",:desc_text=>"dashboard main background color",:setting_type=>"colorbox",:setting_value=>"F4F4F4")
 Setting.create(:name=>"footer_link",:desc_text=>"footer link color ",:setting_type=>"colorbox",:setting_value=>"white")
@@ -41,7 +42,11 @@ Setting.create(:name=>"heading_tag_color",:desc_text=>"heading tag color",:setti
 Setting.create(:name=>"heading_color",:desc_text=>"heading color",:setting_type=>"colorbox",:setting_value=>"black")
 Setting.create(:name=>"header_menu_color",:desc_text=>"header menu color",:setting_type=>"colorbox",:setting_value=>"333333")
 Setting.create(:name=>"middle_color",:desc_text=>"middle color",:setting_type=>"colorbox",:setting_value=>"white")
-
+Setting.create(:name=>"header logo",:desc_text=>"header logo",:setting_type=>"string",:setting_value=>"/images/rling_logo.png")
+Setting.create(:name=>"submenu hover",:desc_text=>"submenu hover color",:setting_type=>"colorbox",:setting_value=>"BF21B")
+Setting.create(:name=>"submenu text",:desc_text=>"submenu text color",:setting_type=>"colorbox",:setting_value=>"333")
+Setting.create(:name=>"heading_tag_font_family",:desc_text=>"heading tag font family",:setting_type=>"font",:setting_value=>"verdana")
+Setting.create(:name=>"heading_setting_font_family",:desc_text=>"heading font family",:setting_type=>"font",:setting_value=>"verdana")
 
 
 

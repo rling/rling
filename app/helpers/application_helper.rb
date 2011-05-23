@@ -315,7 +315,8 @@ def process_page(pagebody)
         return text_area_tag("form_field[#{field_name}]",field_value)
       when "RichtextEditor"
         ckoutput =  ckeditor_textarea("form_field","#{field_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
-        ckoutput << raw("<script> $('#form_field_#{field_name}_editor').val(#{field_value});</script>")
+        ckoutput << text_area_tag("hidden_form_field[#{field_name}]",field_value,:style=>"display:none")
+        ckoutput << raw("<script language='javascript'> document.getElementById('form_field_#{field_name}_editor').value = document.getElementById('hidden_form_field_#{field_name}').value;</script>")
         return ckoutput
       when "Label"
         return field_value
@@ -344,5 +345,6 @@ def process_page(pagebody)
         return text_field_tag("form_field[#{field_name}]",field_value)
       end
     end 
+ 
 
 end 
