@@ -7,6 +7,11 @@ Role.create(:role_type=>"Anonymous",:is_deletable=>false)
 Role.create(:role_type=>"User",:is_deletable=>false)
 Role.create(:role_type=>"Administrator",:is_deletable=>false)
 
+#Create Page Variables
+PageVariableSetting.create(:name=>"SEO Meta Title")
+PageVariableSetting.create(:name=>"SEO Meta Description")
+PageVariableSetting.create(:name=>"SEO Meta Keywords")
+
 #Create Login Settings
 Setting.create(:name=>"allow_user_register_user",:desc_text=>"Should the System allow users to sign up to the website on their own. i.e. Should there be a register link for the user to execute", :setting_type=>"boolean",:setting_value=>"false")
 Setting.create(:name=>"allow_admin_register_user",:desc_text=>"Should the System allow administrators to self register users to the website",:setting_type=>"boolean",:setting_value=>"true")
