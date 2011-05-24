@@ -8,7 +8,7 @@ background-color:none;
 
 body
 {
-background-image: url(../images/bg_rling.jpg);
+
 background-color: #fff;
 background-attachment:fixed;
 background-repeat:no-repeat;
@@ -189,7 +189,7 @@ float:left;
 width:800px;
 min-height:100px;
 width:960px;
-background-image: url(../images/footer-bg.png);     
+     
 }
 
 

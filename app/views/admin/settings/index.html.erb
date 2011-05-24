@@ -61,28 +61,6 @@
 </table>
 </br>
 
-<h3>Font Family Settings</h3>
-<table>
-  <tr>
-    
-    <th>Setting Name</th>
-    <th>Descriptive Text</th>
-    <th>Setting Type</th>
-    <th>Setting Value</th>
-  </tr>
-
-<% @setting_fonts.each do |setting| %>
-  <tr>
-    <td><%= setting.name %></td>
-    <td><%= setting.desc_text %></td>
-    <td><%= setting.setting_type %></td>
-    <td><%= setting.setting_value %></td>
-    <td><%= link_to "Edit", edit_setting_path(setting)%></td>
-  </tr>
-
-<% end %>
-</table>
-</br>
 
 <h3>Font Size Settings</h3>
 <table>

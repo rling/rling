@@ -8,7 +8,6 @@ class Admin::SettingsController < ApplicationController
     @settings = Setting.find_all_by_setting_type('string')
     @setting_booleans=Setting.find_all_by_setting_type('boolean')
     @setting_colors=Setting.find_all_by_setting_type('colorbox')
-    @setting_fonts=Setting.find_all_by_setting_type('font')
     @setting_sizes=Setting.find_all_by_setting_type('integer')
     respond_to do |format|
       format.html # index.html.erb

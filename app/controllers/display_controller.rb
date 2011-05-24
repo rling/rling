@@ -8,9 +8,9 @@ class DisplayController < ApplicationController
   # ROOT :to => "display#index"
   # HOME PAGE OF THE WEBSITE
   def index
-   @pages = Page.where(:home_page=>true)
-   @models=ModelSubmission.where(:home_page=>true)
-
+   @pages = Page.where(:home_page=>true,:status=>:published)
+   @models=ModelSubmission.where(:home_page=>true,:status=>:published)
+   
   end
   
   # MATCH "/:permalink"=> "display#show_page"

@@ -147,25 +147,28 @@ class ApplicationController < ActionController::Base
      session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
      session[:settings][:dashboard_main_background_color]=Setting.find_by_name("dashboard_main_background_color").setting_value
      session[:settings][:footer_link]=Setting.find_by_name("footer_link").setting_value
-     session[:settings][:header_text]=Setting.find_by_name("header_text").setting_value
-     session[:settings][:top_bar_text]=Setting.find_by_name("top_bar_text").setting_value
      session[:settings][:header_text_menu_color]=Setting.find_by_name("header_text_menu_color").setting_value
      session[:settings][:header_text_hover_color]=Setting.find_by_name("header_menu_hover_color").setting_value
-     session[:settings][:footer_hover]=Setting.find_by_name("footer_hover").setting_value
-     session[:settings][:footer_text]=Setting.find_by_name("footer_text").setting_value
      session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
-     session[:settings][:top_bar_font_size]=Setting.find_by_name("top_bar_font_size").setting_value
      session[:settings][:heading_font_size]=Setting.find_by_name("heading_font_size").setting_value
      session[:settings][:heading_tag_font_size]=Setting.find_by_name("heading_tag_font_size").setting_value
      session[:settings][:heading_tag_color]=Setting.find_by_name("heading_tag_color").setting_value
      session[:settings][:heading_color]=Setting.find_by_name("heading_color").setting_value
      session[:settings][:header_menu_color]=Setting.find_by_name("header_menu_color").setting_value
      session[:settings][:middle_color]=Setting.find_by_name("middle_color").setting_value
-     session[:settings][:header_logo]=Setting.find_by_name("header logo").setting_value
-     session[:settings][:submenu_hover]=Setting.find_by_name("submenu hover").setting_value
-     session[:settings][:submenu_text]=Setting.find_by_name("submenu text").setting_value
-     session[:settings][:heading_tag_setting_value]=Setting.find_by_name("heading_tag_font_family").setting_value
-     session[:settings][:heading_setting_value]=Setting.find_by_name("heading_setting_font_family").setting_value
-    end   
+     session[:settings][:header_logo]=Setting.find_by_name("header_logo").setting_value
+     session[:settings][:edit_heading_text]=Setting.find_by_name("edit_heading_text").setting_value
+     session[:settings][:edit_heading_tag_text]=Setting.find_by_name("edit_heading_tag_text").setting_value
+     session[:settings][:top_bar_link]=Setting.find_by_name("top_bar_link").setting_value
+     session[:settings][:top_bar_link_hover]=Setting.find_by_name("top_bar_link_hover").setting_value
+     session[:settings][:middle_background_color]=Setting.find_by_name("middle_background_color").setting_value
+     session[:settings][:middle_text_color] =Setting.find_by_name("middle_text_color").setting_value
+     session[:settings][:footer_text_color]=Setting.find_by_name("footer_text_color").setting_value
+     session[:settings][:footer_link_hover_color]=Setting.find_by_name("footer_link_hover_color").setting_value
+     session[:settings][:footer_link_background_color]=Setting.find_by_name("footer_background_color").setting_value 
+     session[:settings][:header_text_hover_color]=Setting.find_by_name("header_text_hover_color").setting_value 
+     session[:settings][:body_color]=Setting.find_by_name("body_color").setting_value 
+     session[:settings][:header_menu_link_background]=Setting.find_by_name("header_menu_link_background").setting_value 
+    end                            
   end
 end 

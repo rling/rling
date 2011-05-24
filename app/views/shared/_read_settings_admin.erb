@@ -15,15 +15,8 @@
       color: #<%=  session[:settings][:footer_link]%>;
     }  
     
-    #header_text{
-       font-family:<%= session[:settings][:header_text] %>;     
-    }
     
-    #top_bar
-    {
-       font-family:<%= session[:settings][:top_bar_text] %>;
-    }
-    
+   
     #header_menu ul li a
     {
       color:#<%= session[:settings][:header_text_menu_color] %>; 
@@ -31,28 +24,20 @@
     
     #header_menu ul li:hover
     {
-       background:#<%=  session[:settings][:header_text_hover_color] %>;
+       background:#<%=  session[:settings][:header_menu_hover_color] %>;
       
     }
     
-    #footer_menu ul li a:hover
+    #header_menu ul li a:hover
     {
-       color:#<%=  session[:settings][:footer_hover] %>;
+      color:#<%=  session[:settings][:header_text_hover_color] %>;
     }
-    
-    #footer_menu ul
-    {
-        font-family:<%= session[:settings][:footer_text] %>;
-    }
+   
     #top_bar 
     {
       color:#<%= session[:settings][:top_bar_text_color] %>;
     }
    
-    #top_bar
-    {
-      font-size: <%=session[:settings][:top_bar_font_size] %>px;
-    }
     
     #heading
     {
@@ -83,26 +68,51 @@
       background:#<%=  session[:settings][:middle_color] %>;
    }  
    
-   #sddm div a:hover
-   {
-     background:#<%= session[:settings][:submenu_hover] %>
-   }    
-    
-   #sddm 
-   {
-     color:#<%= session[:settings][:submenu_text] %>
-   }
-   
-   #heading_tag
-   {
-     font-family:#<%= session[:settings][:heading_tag_setting_value] %>
-   }
-   
-   #heading
-   {
-     font-family:#<%= session[:settings][:heading_setting_value] %>
-   }    
-   
   
-      
+   #top_bar a
+   {
+     color:#<%= session[:settings][:top_bar_link] %>
+   }
+   
+   #top_bar a:hover
+   {
+     color:#<%= session[:settings][:top_bar_link_hover] %>
+   }
+  
+  #admin
+  {
+     background-color:#<%= session[:settings][:middle_background_color] %>
+  }
+  
+  #admin
+  {
+     color:#<%= session[:settings][:middle_text_color] %>
+  }
+  
+  #developer
+  {
+    color:#<%= session[:settings][:footer_text_color] %>
+  }
+  
+ 
+  #developer a:hover
+  {
+    color:#<%= session[:settings][:footer_link_hover_color] %>
+  }
+  
+  #footer
+  {
+    background-color:#<%= session[:settings][:footer_link_background_color] %>
+  }
+  
+  body
+  {
+    background-color:#<%= session[:settings][:body_color] %>
+  }
+  
+  #header_menu ul li
+  {
+    background-color:#<%= session[:settings][:header_menu_link_background] %>
+  }
+  
   </style>
