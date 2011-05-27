@@ -142,33 +142,36 @@ class ApplicationController < ActionController::Base
 
   def read_color_settings
     if session[:settings].nil?
+     load_style_settings
+    end                            
+  end
+  
+  def load_style_settings
      session[:settings] = Hash.new
-     session[:settings][:header_background_color] = Setting.find_by_name("header_background_color").setting_value
+     session[:settings][:body_background_color]=Setting.find_by_name("body_background_color").setting_value 
      session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
-     session[:settings][:dashboard_main_background_color]=Setting.find_by_name("dashboard_main_background_color").setting_value
-     session[:settings][:footer_link]=Setting.find_by_name("footer_link").setting_value
-     session[:settings][:header_text_menu_color]=Setting.find_by_name("header_text_menu_color").setting_value
-     session[:settings][:header_text_hover_color]=Setting.find_by_name("header_menu_hover_color").setting_value
      session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
-     session[:settings][:heading_font_size]=Setting.find_by_name("heading_font_size").setting_value
-     session[:settings][:heading_tag_font_size]=Setting.find_by_name("heading_tag_font_size").setting_value
-     session[:settings][:heading_tag_color]=Setting.find_by_name("heading_tag_color").setting_value
-     session[:settings][:heading_color]=Setting.find_by_name("heading_color").setting_value
-     session[:settings][:header_menu_color]=Setting.find_by_name("header_menu_color").setting_value
-     session[:settings][:middle_color]=Setting.find_by_name("middle_color").setting_value
+     session[:settings][:top_bar_link_color]=Setting.find_by_name("top_bar_link_color").setting_value
+     session[:settings][:top_bar_link_hover_color]=Setting.find_by_name("top_bar_link_hover_color").setting_value
+     session[:settings][:header_background_color] = Setting.find_by_name("header_background_color").setting_value
      session[:settings][:header_logo]=Setting.find_by_name("header_logo").setting_value
-     session[:settings][:edit_heading_text]=Setting.find_by_name("edit_heading_text").setting_value
-     session[:settings][:edit_heading_tag_text]=Setting.find_by_name("edit_heading_tag_text").setting_value
-     session[:settings][:top_bar_link]=Setting.find_by_name("top_bar_link").setting_value
-     session[:settings][:top_bar_link_hover]=Setting.find_by_name("top_bar_link_hover").setting_value
+     session[:settings][:header_website_text_color]=Setting.find_by_name("header_website_text_color").setting_value
+     session[:settings][:heading_website_tag_color]=Setting.find_by_name("heading_website_tag_color").setting_value
+     session[:settings][:header_website_font_size]=Setting.find_by_name("header_website_font_size").setting_value
+     session[:settings][:header_website_text]=Setting.find_by_name("header_website_text").setting_value
+     session[:settings][:header_website_tag_text]=Setting.find_by_name("header_website_tag_text").setting_value
+     session[:settings][:header_website_tag_font_size]=Setting.find_by_name("header_website_tag_font_size").setting_value
+     session[:settings][:menu_bar_background_color]=Setting.find_by_name("menu_bar_background_color").setting_value
+     session[:settings][:menu_bar_hover_menu_background_color]=Setting.find_by_name("menu_bar_hover_menu_background_color").setting_value
+     session[:settings][:menu_bar_hover_menu_text_color]=Setting.find_by_name("menu_bar_hover_menu_text_color").setting_value 
+     session[:settings][:menu_bar_menu_text_color]=Setting.find_by_name("menu_bar_menu_text_color").setting_value
+     session[:settings][:menu_bar_menu_background_color]=Setting.find_by_name("menu_bar_menu_background_color").setting_value 
+     session[:settings][:middle_border_color]=Setting.find_by_name("middle_border_color").setting_value
      session[:settings][:middle_background_color]=Setting.find_by_name("middle_background_color").setting_value
      session[:settings][:middle_text_color] =Setting.find_by_name("middle_text_color").setting_value
+     session[:settings][:footer_background_color]=Setting.find_by_name("footer_background_color").setting_value 
      session[:settings][:footer_text_color]=Setting.find_by_name("footer_text_color").setting_value
+     session[:settings][:footer_link_color]=Setting.find_by_name("footer_link_color").setting_value
      session[:settings][:footer_link_hover_color]=Setting.find_by_name("footer_link_hover_color").setting_value
-     session[:settings][:footer_link_background_color]=Setting.find_by_name("footer_background_color").setting_value 
-     session[:settings][:header_text_hover_color]=Setting.find_by_name("header_text_hover_color").setting_value 
-     session[:settings][:body_color]=Setting.find_by_name("body_color").setting_value 
-     session[:settings][:header_menu_link_background]=Setting.find_by_name("header_menu_link_background").setting_value 
-    end                            
   end
 end 

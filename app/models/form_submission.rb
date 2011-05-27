@@ -6,7 +6,7 @@ class FormSubmission < ActiveRecord::Base
 #Class methods
  #Used to get all the Tags to create Email Template
  def self.tags(handle)
-    objform = ObjectForm.where(:perma_link=>handle)
+    objform = ObjectForm.where(:perma_link=>handle).first
     array = objform.form_components.collect {|fc| fc.component_name } unless objform.nil? && objform.form_components.size == 0
    return array
  end

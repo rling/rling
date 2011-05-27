@@ -85,7 +85,11 @@ scope :module => "admin" do
    # Roles
   resources :roles
   # Settings
-  resources :settings
+  resources :settings do
+    collection do 
+      get 'reload_style'
+    end
+  end
   # User Detail Settings
   resources :user_detail_settings do
     collection do

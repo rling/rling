@@ -13,16 +13,18 @@
   <meta name="description" content="<%= get_page_variable "SEO Meta Description" %>" />
   <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" />
 
+ 
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'admin' %>
   <%= stylesheet_link_tag 'colorpicker' %> 
-  <%= render "shared/read_settings" %>
+
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag :ckeditor %>
   <%= javascript_include_tag "colorpicker" %>
   <%= javascript_include_tag "eye" %>
   <%= javascript_include_tag "utils" %>
   <%= javascript_include_tag "layout" %>
+    <%= render "shared/read_settings" %>
 
   <%= csrf_meta_tag %>
  </head>
@@ -35,7 +37,7 @@
        <div id="header_text">
          <div id="logo"><a href="/"><img src="<%= "#{session[:settings][:header_logo]}" %>"></a></div>
          
-         <div id="header_heading"> <span id="heading"> <%=  "#{session[:settings][:edit_heading_text]}" %></span><span id="heading_tag"><%=  "#{session[:settings][:edit_heading_tag_text]}" %></span></div>
+         <div id="header_heading"> <span id="heading"> <%=  "#{session[:settings][:header_website_text]}" %></span><span id="heading_tag"><%=  "#{session[:settings][:header_website_tag_text]}" %></span></div>
        </div>
        <div id="header_menu">
          <div id="menus">

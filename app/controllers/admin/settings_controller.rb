@@ -5,10 +5,10 @@ class Admin::SettingsController < ApplicationController
   # GET /settings
   # GET /settings.xml
   def index
-    @settings = Setting.find_all_by_setting_type('string')
-    @setting_booleans=Setting.find_all_by_setting_type('boolean')
-    @setting_colors=Setting.find_all_by_setting_type('colorbox')
-    @setting_sizes=Setting.find_all_by_setting_type('integer')
+     @settings = Setting.where(:setting_type=>'string')
+    @setting_booleans=Setting.where(:setting_type=>'boolean')
+    @setting_colors=Setting.where(:setting_type=>'colorbox')
+    @setting_sizes=Setting.where(:setting_type=>'integer')
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @settings }
@@ -82,4 +82,15 @@ class Admin::SettingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+# GET /settings/reload_style
+def reload_style
+  load_style_settings
+  flash[:notice] = t(:styles_reloaded)
+  respond_to do |format|
+      format.html { redirect_to(settings_path) }
+      format.xml  { head :ok }
+    end 
+  end
+  
 end

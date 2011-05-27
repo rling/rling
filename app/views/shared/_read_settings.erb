@@ -1,120 +1,163 @@
-  <style>
+<style>
 <% unless session[:settings][:header_background_color].blank? %>
     #header_text{
       background: #<%= session[:settings][:header_background_color] %>;
     }
- <% end %>
+<% end  %>  
+
+
+<% unless session[:settings][:top_bar_background_color].blank? %>
     #top_bar{
       background: #<%= session[:settings][:top_bar_background_color] %>;
     }
-    #dashboard_main
-    {
-      background: #<%= session[:settings][:dashboard_main_background_color]%>;
-    }
-    
+<% end %>
+
+
+<% unless session[:settings][:footer_link_color].blank? %>
     #developer a
     {
-      color: #<%=  session[:settings][:footer_link]%>;
+      color: #<%=  session[:settings][:footer_link_color]%>;
     }  
-    
-    
-   
+<% end %>
+
+
+<% unless session[:settings][:menu_bar_menu_text_color].blank? %>
     #header_menu ul li a
     {
-      color:#<%= session[:settings][:header_text_menu_color] %>; 
+      color:#<%= session[:settings][:menu_bar_menu_text_color] %>; 
     }
-    
+<% end %>
+
+
+<% unless session[:settings][:menu_bar_hover_menu_background_color].blank? %>
     #header_menu ul li:hover
     {
-       background:#<%=  session[:settings][:header_menu_hover_color] %>;
+      background:#<%=  session[:settings][:menu_bar_hover_menu_background_color] %>;
       
     }
-    
+<% end %>
+
+<% unless session[:settings][:menu_bar_hover_menu_text_color].blank? %>  
     #header_menu ul li a:hover
     {
-      color:#<%=  session[:settings][:header_text_hover_color] %>;
+      color:#<%=  session[:settings][:menu_bar_hover_menu_text_color] %>;
     }
-   
+<% end %>
+
+<% unless session[:settings][:top_bar_text_color].blank? %>   
     #top_bar 
     {
       color:#<%= session[:settings][:top_bar_text_color] %>;
     }
-   
-    
+<% end %>
+
+
+
+<% unless session[:settings][:header_website_font_size].blank? %>      
     #heading
     {
-      font-size:<%= session[:settings][:heading_font_size]  %>px;
+      font-size:<%= session[:settings][:header_website_font_size]  %>px;
     }
-    
+<% end %>
+
+<% unless session[:settings][:header_website_tag_font_size].blank? %>    
     #heading_tag{
-      font-size:<%= session[:settings][:heading_tag_font_size] %>px;
+      font-size:<%= session[:settings][:header_website_tag_font_size] %>px;
     }
-    
+<% end %>
+
+<% unless session[:settings][:heading_website_tag_color].blank? %>
     #heading_tag
     {
-      color:#<%= session[:settings][:heading_tag_color] %>;
+      color:#<%= session[:settings][:heading_website_tag_color] %>;
     }
-    
+<% end %>    
+
+
+<% unless session[:settings][:header_website_text_color].blank? %>
     #heading
     {
-      color:#<%= session[:settings][:heading_color] %>;
+      color:#<%= session[:settings][:header_website_text_color] %>;
     }
+<% end %>
 
-   #header_menu
-   {
-      background:#<%=  session[:settings][:header_menu_color] %>;
-   }
+<% unless session[:settings][:menu_bar_background_color].blank? %>
+    #header_menu
+    {
+      background:#<%=  session[:settings][:menu_bar_background_color] %>;
+    }
+<% end %>  
 
-   #middle
-   {
-      background:#<%=  session[:settings][:middle_color] %>;
-   }  
-   
-  
-   #top_bar a
-   {
-     color:#<%= session[:settings][:top_bar_link] %>
-   }
-   
-   #top_bar a:hover
-   {
-     color:#<%= session[:settings][:top_bar_link_hover] %>
-   }
-  
-  #admin
-  {
-     background-color:#<%= session[:settings][:middle_background_color] %>
-  }
-  
-  #admin
-  {
-     color:#<%= session[:settings][:middle_text_color] %>
-  }
-  
-  #developer
-  {
-    color:#<%= session[:settings][:footer_text_color] %>
-  }
-  
- 
-  #developer a:hover
-  {
-    color:#<%= session[:settings][:footer_link_hover_color] %>
-  }
-  
-  #footer
-  {
-    background-color:#<%= session[:settings][:footer_link_background_color] %>
-  }
-  
-  body
-  {
-    background-color:#<%= session[:settings][:body_color] %>
-  }
-  
-  #header_menu ul li
-  {
-    background-color:#<%= session[:settings][:header_menu_link_background] %>
-  }
-  
-  </style>
+
+<% unless session[:settings][:middle_border_color].blank? %>
+    #middle
+    {
+      background:#<%= session[:settings][:middle_border_color] %>;
+    }  
+<% end %>   
+
+
+<% unless session[:settings][:top_bar_link_color].blank? %>
+    #top_bar a
+    {
+      color:#<%= session[:settings][:top_bar_link_color] %>;
+    }
+<% end %>
+
+<% unless session[:settings][:top_bar_link_hover_color].blank? %>
+    #top_bar a:hover
+    {
+      color:#<%= session[:settings][:top_bar_link_hover_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:middle_background_color].blank? %>
+    #admin
+    {
+      background-color:#<%= session[:settings][:middle_background_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:middle_text_color].blank? %>
+    #admin
+    {
+      color:#<%= session[:settings][:middle_text_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:footer_text_color].blank? %>
+    #developer
+    {
+      color:#<%= session[:settings][:footer_text_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:footer_link_hover_color].blank? %>
+    #developer a:hover
+    {
+      color:#<%= session[:settings][:footer_link_hover_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:footer_background_color].blank? %>
+    #footer
+    {
+      background-color:#<%= session[:settings][:footer_background_color] %>
+    }
+<% end %>
+
+<% unless session[:settings][:body_background_color].blank? %>
+    body
+    {
+      background-color:#<%= session[:settings][:body_background_color] %>
+    }
+<% end %>    
+
+
+<% unless session[:settings][:menu_bar_menu_background_color].blank? %>
+    #header_menu ul li
+    {
+      background-color:#<%= session[:settings][:menu_bar_menu_background_color] %>
+    }
+<% end %>
+</style>
