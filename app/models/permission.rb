@@ -3,7 +3,7 @@ class Permission < ActiveRecord::Base
   has_many :permission_roles, :dependent=>:destroy
 
   #Validations
-  name_regex = /^[a-zA-Z0-9]+$/
+  name_regex = /^[a-zA-Z0-9_]+$/
   validates :activity_code,:presence=>true, :format=> {:with => name_regex }
 end
 

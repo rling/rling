@@ -5,8 +5,8 @@ class UserDetailSetting < ActiveRecord::Base
  scope :all,  :order=>"position"
   
 #Validation
-  name_regex = /^[a-zA-Z0-9]+$/
-  validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3,:maximum=>10},
+  name_regex = /^[a-zA-Z0-9_]+$/
+  validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3},
             :format=> {:with => name_regex }
   validates :field_type, :presence=>true
 end

@@ -82,64 +82,37 @@ def create_comment_permissions
 end
 
 def remove_comment_permissions
-  unless self.allow_comments
-    ["createcomment","deletecomment","deletecommentother","deletemycomments"].each do |code|
-      permissions = Permission.where(:permission_type=>self.class.to_s, :activity_code=> code, :permission_object=>self.name)
-      permissions.each do |permission|
-        permission.destroy
-      end
-    end
-  end
+   Permission.destroy_all(:permission_type=>self.class.to_s, :permission_object=>self.name, :activity_code=> ["createcomment","deletecomment","deletecommentother","deletemycomments"]) unless self.allow_comments
 end
 
  def remove_permissions
-    permissions = Permission.where(:permission_type=>self.class.to_s, :permission_object=>self.name)
-    permissions.each do |permission|
-      permission.destroy
-    end
+    Permission.destroy_all(:permission_type=>self.class.to_s, :permission_object=>self.name)
  end
 
  def verify_comments
     unless self.allow_comments
-      remove_comment_permissions
-      self.comment_components.each do |comment_component|
-       comment_component.destroy
-      end
-      self.model_submissions.each do |model_submission|
-        model_submission.comment_submissions.each do |comment_submission|
-         comment_submission.destroy
-        end
-      end
-     mailer= Mailer.where(:handle=>self.perma_link_parent).first()
-     mailer.destroy  unless mailer.nil?
-      
+      remove_comments
     else
-     create_comment_permissions
-     if self.comment_components.where(:component_name=>'comment_text').first().nil?
-       self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"Plz comment!",:mandatory=>true)
-     end
-     if self.email_on_comment
-       subject = "Comment has been submitted to #{self.name} "
-       body = "A comment has been submitted to #{self.name}. Check the details for the same."
-       self.create_mailer(:handle=>self.perma_link_parent,:subject=>subject,:body=>body,:is_deletable=>false,:allowable_tags=>'CommentSubmission',:object_model_id=>self.id)
-     end
-   end
+      create_comment_permissions
+      self.comment_components.create(:component_name=>'comment_text',:component_display_name=>"Comment Text",:component_type=>"Textarea",:default_value=>"",:mandatory=>true) if self.comment_components.where(:component_name=>'comment_text').first().nil?
+      self.create_mailer(:handle=>self.perma_link_parent,:subject=>"Comment has been submitted to #{self.name} ",:body=>"A comment has been submitted to #{self.name}. Check the details for the same.",:is_deletable=>false,:allowable_tags=>'CommentSubmission',:object_model_id=>self.id) if self.email_on_comment
+    end
  end
  
  def check_comments
    if self.allow_comments
-     remove_comment_permissions
-     self.comment_components.each do |comment_component|
-       comment_component.destroy
-     end
-     self.model_submissions.each do |model_submission|
-       model_submission.comment_submissions.each do |comment_submission|
-         comment_submission.destroy
-       end
-     end
-     mailer= Mailer.where(:handle=>self.perma_link_parent).first()
-     mailer.destroy unless mailer.nil? 
+     remove_comments
    end
+ end
+
+ def remove_comments
+   remove_comment_permissions
+   self.comment_components.destroy_all
+   self.model_submissions.each do |model_submission|
+     model_submission.comment_submissions.destroy_all
+   end
+   mailer= Mailer.where(:handle=>self.perma_link_parent).first()
+   mailer.destroy unless mailer.nil? 
  end
 end
 

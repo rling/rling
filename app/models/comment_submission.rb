@@ -25,9 +25,7 @@ class CommentSubmission < ActiveRecord::Base
    end
 
    def send_email
-    if self.model_submission.object_model.email_on_comment
-      Notifier.comment_submitted(self).deliver
-    end
+    Notifier.comment_submitted(self).deliver if self.model_submission.object_model.email_on_comment
   end
 
    def get_variable_info(variablename)
@@ -35,9 +33,7 @@ class CommentSubmission < ActiveRecord::Base
     comment_component = self.model_submission.object_model.comment_components.find(:first,:conditions=>["component_name=?",variablename])
      unless comment_component.nil?
        comment_data = self.comment_data.find(:first,:conditions=>["comment_component_id=?",comment_component.id])
-       unless comment_data.nil?
-         output = comment_data.data_value
-       end
+       output = comment_data.data_value  unless comment_data.nil?
      end
      return output
 end
@@ -45,9 +41,7 @@ end
   private
 
   def set_children() 
-    CommentSubmission.find_all_by_parent_id(self.id).each do |comment_submission|
-      comment_submission.destroy
-    end	 
+    CommentSubmission.find_all_by_parent_id(self.id).destroy_all
   end
 
   def set_level

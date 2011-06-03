@@ -37,9 +37,7 @@ def get_variable_info(variablename)
      form_component = self.object_form.form_components.where(:component_name=>variablename).first()
      unless form_component.nil?
        form_data = self.form_data.where(:form_component_id=>form_component.id).first()
-       unless form_data.nil?
-         output = form_data.data_value
-       end
+       output = form_data.data_value unless form_data.nil?
      end
      return output
 end
