@@ -5,7 +5,7 @@ class CreateUserDetailSettings < ActiveRecord::Migration
       t.column :field_type, :string
       t.column :field_values, :text
       t.column :default_value, :string
-      t.column :mandatory, :boolean,:default=>false 
+      t.column :mandatory, :boolean,:default=>false
       t.timestamps
     end
   end

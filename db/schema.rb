@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502144116) do
+ActiveRecord::Schema.define(:version => 20111114115430) do
 
   create_table "assets", :force => true do |t|
     t.string   "upload_file_name"
@@ -31,12 +31,18 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["categoryset_id"], :name => "index_categories_on_categoryset_id"
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
   create_table "categorizations", :force => true do |t|
     t.integer  "model_submission_id"
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categorizations", ["category_id"], :name => "index_categorizations_on_category_id"
+  add_index "categorizations", ["model_submission_id"], :name => "index_categorizations_on_model_submission_id"
 
   create_table "categorysets", :force => true do |t|
     t.string   "name"
@@ -76,6 +82,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "updated_at"
   end
 
+  add_index "comment_components", ["object_model_id"], :name => "index_comment_components_on_object_model_id"
+
   create_table "comment_data", :force => true do |t|
     t.integer  "comment_component_id"
     t.integer  "comment_submission_id"
@@ -83,6 +91,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comment_data", ["comment_component_id"], :name => "index_comment_data_on_comment_component_id"
+  add_index "comment_data", ["comment_submission_id"], :name => "index_comment_data_on_comment_submission_id"
 
   create_table "comment_submissions", :force => true do |t|
     t.integer  "model_submission_id"
@@ -93,6 +104,11 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "updated_at"
     t.integer  "level",               :default => 0
   end
+
+  add_index "comment_submissions", ["creator_id"], :name => "index_comment_submissions_on_creator_id"
+  add_index "comment_submissions", ["model_submission_id"], :name => "index_comment_submissions_on_model_submission_id"
+  add_index "comment_submissions", ["parent_id"], :name => "index_comment_submissions_on_parent_id"
+  add_index "comment_submissions", ["updater_id"], :name => "index_comment_submissions_on_updater_id"
 
   create_table "form_components", :force => true do |t|
     t.integer  "object_form_id"
@@ -107,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "position",               :default => 0
   end
 
+  add_index "form_components", ["object_form_id"], :name => "index_form_components_on_object_form_id"
+
   create_table "form_data", :force => true do |t|
     t.integer  "form_component_id"
     t.string   "data_value"
@@ -115,11 +133,16 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "form_submission_id"
   end
 
+  add_index "form_data", ["form_component_id"], :name => "index_form_data_on_form_component_id"
+  add_index "form_data", ["form_submission_id"], :name => "index_form_data_on_form_submission_id"
+
   create_table "form_submissions", :force => true do |t|
     t.integer  "object_form_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "form_submissions", ["object_form_id"], :name => "index_form_submissions_on_object_form_id"
 
   create_table "mailers", :force => true do |t|
     t.string   "handle"
@@ -132,6 +155,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "object_form_id"
     t.integer  "object_model_id"
   end
+
+  add_index "mailers", ["object_form_id"], :name => "index_mailers_on_object_form_id"
+  add_index "mailers", ["object_model_id"], :name => "index_mailers_on_object_model_id"
 
   create_table "menus", :force => true do |t|
     t.string   "name"
@@ -147,6 +173,10 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "menus", ["menuset_id"], :name => "index_menus_on_menuset_id"
+  add_index "menus", ["page_id"], :name => "index_menus_on_page_id"
+  add_index "menus", ["parent_id"], :name => "index_menus_on_parent_id"
 
   create_table "menusets", :force => true do |t|
     t.string   "name"
@@ -169,6 +199,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "position",               :default => 0
   end
 
+  add_index "model_components", ["object_model_id"], :name => "index_model_components_on_object_model_id"
+
   create_table "model_data", :force => true do |t|
     t.integer  "model_component_id"
     t.integer  "model_submission_id"
@@ -178,6 +210,11 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "creator_id"
     t.integer  "updater_id"
   end
+
+  add_index "model_data", ["creator_id"], :name => "index_model_data_on_creator_id"
+  add_index "model_data", ["model_component_id"], :name => "index_model_data_on_model_component_id"
+  add_index "model_data", ["model_submission_id"], :name => "index_model_data_on_model_submission_id"
+  add_index "model_data", ["updater_id"], :name => "index_model_data_on_updater_id"
 
   create_table "model_submissions", :force => true do |t|
     t.integer  "object_model_id"
@@ -190,6 +227,10 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "updater_id"
     t.string   "status"
   end
+
+  add_index "model_submissions", ["creator_id"], :name => "index_model_submissions_on_creator_id"
+  add_index "model_submissions", ["object_model_id"], :name => "index_model_submissions_on_object_model_id"
+  add_index "model_submissions", ["updater_id"], :name => "index_model_submissions_on_updater_id"
 
   create_table "object_models", :force => true do |t|
     t.string   "name"
@@ -206,6 +247,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.boolean  "allow_drafts"
   end
 
+  add_index "object_models", ["categoryset_id"], :name => "index_object_models_on_categoryset_id"
+
   create_table "page_variable_settings", :force => true do |t|
     t.string   "name"
     t.text     "default_value"
@@ -220,6 +263,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "page_variables", ["page_id"], :name => "index_page_variables_on_page_id"
+  add_index "page_variables", ["page_variable_setting_id"], :name => "index_page_variables_on_page_variable_setting_id"
 
   create_table "pagelets", :force => true do |t|
     t.string   "handle"
@@ -252,6 +298,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.integer  "per_page"
   end
 
+  add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
+  add_index "pages", ["updater_id"], :name => "index_pages_on_updater_id"
+
   create_table "permission_roles", :force => true do |t|
     t.integer  "permission_id"
     t.integer  "role_id"
@@ -259,6 +308,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "permission_roles", ["permission_id"], :name => "index_permission_roles_on_permission_id"
+  add_index "permission_roles", ["role_id"], :name => "index_permission_roles_on_role_id"
 
   create_table "permissions", :force => true do |t|
     t.string   "permission_object"
@@ -315,6 +367,9 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "updated_at"
   end
 
+  add_index "user_details", ["user_detail_setting_id"], :name => "index_user_details_on_user_detail_setting_id"
+  add_index "user_details", ["user_id"], :name => "index_user_details_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "login",                                 :null => false
     t.string   "email",                                 :null => false
@@ -337,6 +392,7 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["role_id"], :name => "index_users_on_role_id"
 
   create_table "view_components", :force => true do |t|
     t.integer  "view_id"
@@ -348,6 +404,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.string   "display_name"
   end
 
+  add_index "view_components", ["view_id"], :name => "index_view_components_on_view_id"
+
   create_table "view_conditions", :force => true do |t|
     t.integer  "view_id"
     t.string   "name"
@@ -358,6 +416,8 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "updated_at"
   end
 
+  add_index "view_conditions", ["view_id"], :name => "index_view_conditions_on_view_id"
+
   create_table "view_orders", :force => true do |t|
     t.integer  "view_id"
     t.string   "name"
@@ -365,5 +425,7 @@ ActiveRecord::Schema.define(:version => 20110502144116) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "view_orders", ["view_id"], :name => "index_view_orders_on_view_id"
 
 end

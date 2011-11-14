@@ -6,8 +6,7 @@ class CreateFormComponents < ActiveRecord::Migration
       t.string :component_type
       t.text :component_values
       t.string :default_value
-      t.boolean :mandatory,:default=>false 
-
+      t.boolean :mandatory,:default=>false
       t.timestamps
     end
   end

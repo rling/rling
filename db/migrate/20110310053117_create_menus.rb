@@ -1,7 +1,7 @@
 class CreateMenus < ActiveRecord::Migration
   def self.up
     create_table :menus do |t|
-      t.string :name             
+      t.string :name
       t.integer :position         ,:default => 0
       t.integer :level            ,:default => 0
       t.string :image_path

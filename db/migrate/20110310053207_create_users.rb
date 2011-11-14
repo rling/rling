@@ -1,10 +1,10 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-    t.string    :login,               :null => false                
-    t.string    :email,               :null => false                
+    t.string    :login, :null => false
+    t.string    :email, :null => false
     t.integer   :role_id
-    t.string    :hashed_password			             
+    t.string    :hashed_password
     t.string    :salt
     t.string    :activation_key
     t.boolean   :is_activated, :default=>false
@@ -16,7 +16,6 @@ class CreateUsers < ActiveRecord::Migration
     t.datetime  :last_login_at
     t.string    :current_login_ip
     t.string    :last_login_ip
-    
     t.timestamps
     end
 

@@ -1,8 +1,8 @@
-Rling::Application.routes.draw do     
+Rling::Application.routes.draw do
 
 # Directs /admin/products/* to Admin::ProductsController
 # (app/controllers/admin/products_controller.rb)
-  
+
 scope :module => "admin" do
   match "admin/dashboard" =>"admin#dashboard"
   match "admin/clear_cache"=>"admin#clear_cache"
@@ -25,7 +25,7 @@ scope :module => "admin" do
   end
   #permissions
   resources :permission_roles
-   #Email Templates 
+   #Email Templates
    resources :mailers do
      member do
        get 'sendmail'
@@ -55,7 +55,7 @@ scope :module => "admin" do
       post 'create_query'
     end
   end
-  # Pagelets 
+  # Pagelets
   resources :pagelets
   # Object Forms
   resources :object_forms do
@@ -66,9 +66,9 @@ scope :module => "admin" do
      end
      resources :form_submissions do
       member do
- 	get 'delete_asset'
-      end 
-     end
+        get 'delete_asset'
+      end
+      end
   end
   # Views
   resources :views do
@@ -86,7 +86,7 @@ scope :module => "admin" do
   resources :roles
   # Settings
   resources :settings do
-    collection do 
+    collection do
       get 'reload_style'
     end
   end
@@ -123,7 +123,7 @@ end
       resources :comment_submissions
     end
   end
-  
+
   resources :users do
     member do
       get 'activate'
@@ -132,28 +132,28 @@ end
       get 'delete_asset'
     end
   end
- 
+
    resources :password_resets do
    member do
      get 'reset'
    end
    collection do
      post 'change'
-   end 
+   end
   end
-  resources :sessions do 
+  resources :sessions do
     collection do
      get 'first_user'
      post 'first_user_create'
     end
   end
-  
+
   namespace :ckeditor do
    resources :pictures, :only => [:index, :create, :destroy]
    resources :attachments, :only => [:index, :create, :destroy]
    resources :attachment_files, :only => [:index, :create, :destroy]
   end
- 
+
   match "account"=> "users#show"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
@@ -169,6 +169,6 @@ end
   match "profile/:id"=>"display#profile"
   match "/:permalink"=> "display#show_page"
   match "/:permalinkparent/:permalink"=> "display#show_model_data"
- 
+
   root :to => "display#index"
 end
