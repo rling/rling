@@ -6,7 +6,7 @@ class Asset < ActiveRecord::Base
                     :path => ":rails_root/public/system/assets/:id/:style/:basename.:extension",
                     :styles =>  Proc.new { |a| a.instance.attachment_sizes }
   #Validations
-  validates_attachment_presence :upload           
+  validates_attachment_presence :upload
 
   #Process for thumbnails while creating images
   before_post_process :thumbnailable?
@@ -18,7 +18,7 @@ class Asset < ActiveRecord::Base
   end
 
   def attachment_sizes
-    thumbs = { :thumb => ["100x100"] } 
+    thumbs = { :thumb => ["100x100"] }
     unless sizes.nil?
       size_arr = self.sizes.split(',')
       size_arr.each do |size|
@@ -26,7 +26,7 @@ class Asset < ActiveRecord::Base
         thumbs[size]=[size]
       end
     end
-    thumbs 
+    thumbs
   end
 
    #Store Size in which the thumbnail has to be prepared

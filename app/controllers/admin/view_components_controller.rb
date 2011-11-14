@@ -29,7 +29,6 @@ class Admin::ViewComponentsController < ApplicationController
   # GET /views/1/view_components/new.xml
   def new
     @view_component = @page.view_components.new
-    
 
     respond_to do |format|
       format.html # new.html.erb
@@ -85,7 +84,7 @@ class Admin::ViewComponentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
   # POST /views/1/view_components/update_position
   # POST /views/1/view_components/update_position.xml
  def update_position
@@ -97,11 +96,11 @@ class Admin::ViewComponentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
- 
+
 private
   #Get the Parent View (Page) Object to identify the nested URL
   def get_view
   @page=View.find(params[:view_id])
   end
- 
+
 end

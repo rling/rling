@@ -37,11 +37,11 @@
   </div>
   <% if  model_submission.object_model.allow_comments %>
    <div>
-     <%= render :partial=>"show_comment" ,:locals=>{:model_submission=>model_submission} %>
+     <%= render "show_comment" ,:model_submission=>model_submission %>
    </div>
 
      <div class="comment_operations">
-     <%= render :partial=>"show_comment_form",:locals=>{:model_submission=>model_submission,:parent_id=>"0"}  %>
+     <%= render "show_comment_form",:model_submission=>model_submission,:parent_id=>"0"  %>
    </div>
   <% end  %>
 

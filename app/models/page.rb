@@ -22,7 +22,7 @@ scope :views,  :conditions => "type = 'View'"
 scope :category_views, :conditions =>"type = 'CategoryView'"
 
 #callbacks
-after_save :set_menu 
+after_save :set_menu
 
 #instance methods
 
@@ -76,8 +76,8 @@ private
       unless @menu_name.empty?
       menu = self.menu
       if menu.nil?
-	    menu = Menu.new
-      end 
+        menu = Menu.new
+      end
       menu.name = @menu_name
       menu.parent_id = @parent_id
       menu.page_id = self.id
@@ -95,12 +95,10 @@ private
 def destroy_menu
  unless self.menu.nil?
    self.menu.destroy
- end 
+ end
 end
 
-
 end
-
 
 
 

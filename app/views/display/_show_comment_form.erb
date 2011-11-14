@@ -22,13 +22,8 @@ $(function(){
 $("#cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").click(function() {
    $('#comment_form_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display','none');
    $('#add_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>').css('display','');
-   
 });
 });
-
-
-
-
 </script>
 
 <% unless model_submission.object_model.comment_components.empty? %>
@@ -49,11 +44,10 @@ $("#cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>").click(fu
       <% end %>
       <%= hidden_field_tag 'parent_id', parent_id  %>
 
-    <div class="form_submit"><%= submit_tag "Submit" %> 
+<div class="form_submit"><%= submit_tag "Submit" %>
     <a id="cancel_comment_<%=  model_submission.id.to_s %>_<%=  parent_id %>"> Cancel</a>
     </div>
     <% end %>
        </div>
 <% end %>
    <% end %>
- 

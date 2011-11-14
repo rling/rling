@@ -2,7 +2,7 @@
   <% if validate_permission("create",@object) %>
     <%= link_to @model, new_object_model_model_submission_path %>
   <% end  %>
-<%= render :partial=>'shared/back' %>
+<%= render 'shared/back' %>
 <h1>Listing  <%= @object.name.capitalize.pluralize %> </h1>
 <table>
   <tr>
@@ -56,4 +56,4 @@
   <% if validate_permission("create",@object) %>
     <%= link_to @model, new_object_model_model_submission_path %>
   <% end  %>
-  <%= render :partial=>'shared/back' %>
+  <%= render 'shared/back' %>

@@ -6,7 +6,7 @@
    <% else %>
       <% case page.view_type %>
         <% when "TreeView" %>
-          <%=  render :partial=>"display/show_category_tree_view",:locals=>{:page=>page} %>
+          <%=  render "display/show_category_tree_view",:page=>page %>
         <% end %>
       <% end %>
 <% else %>

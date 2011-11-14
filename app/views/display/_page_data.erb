@@ -7,9 +7,9 @@
 </div>
 <% end %>
 <% if page.type.eql?('ObjectForm') %>
- <%= render :partial=>"display/show_form",:locals=>{:page=>page} %>
+ <%= render "display/show_form", :page=>page %>
 <% elsif page.type.eql?('View')%>
- <%= render :partial=>"display/show_view",:locals=>{:page=>page} %>
+ <%= render "display/show_view", :page=>page %>
 <% elsif page.type.eql?('CategoryView')%>
- <%= render :partial=>"display/show_category_view",:locals=>{:page=>page}  %>
+ <%= render "display/show_category_view", :page=>page  %>
 <% end %>

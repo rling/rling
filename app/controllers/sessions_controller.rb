@@ -78,7 +78,6 @@ def first_user_create
          format.xml  { head:ok }
        end
    end
-   
 end
 
 # GET /sessions/new
@@ -97,7 +96,6 @@ def new
    end
   end
 end
- 
 
 # POST /sessions
 # POST /sessions.xml
@@ -106,11 +104,11 @@ def create
      @user = User.where(:login=>params[:login]).first
      user =User.authenticate(params[:login], params[:password])
      respond_to do |format|
-      if @user.nil? 
+      if @user.nil?
           flash[:notice]= t(:incorrect_login)
           format.html {render :action => :new}
       elsif !@user.is_activated
-	  flash[:notice]= t(:user_activation_required)
+        flash[:notice]= t(:user_activation_required)
           format.html {render :action => :new}
       elsif user.nil?
           @user.failed_login_count += 1
@@ -125,8 +123,8 @@ def create
          end
          @user.last_login_ip=@user.current_login_ip
          @user.current_login_ip=request.remote_ip
-         @user.login_count+=1 
-	 @user.save
+         @user.login_count+=1
+         @user.save
          if current_user.admin?
             format.html{ redirect_to admin_path }
          else

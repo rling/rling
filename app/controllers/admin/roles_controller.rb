@@ -1,7 +1,6 @@
 class Admin::RolesController < ApplicationController
 #Filters
   before_filter :require_admin
-  
   # GET /roles
   # GET /roles.xml
   def index

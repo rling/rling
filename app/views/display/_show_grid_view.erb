@@ -7,10 +7,8 @@
 <%= will_paginate @page_results %>
 </div>
 
-
 <div id="grid_view_<%=page.id%>">
- 
-    <% output = ""
+ <% output = ""
    @page_results.each do |ms|
         output << "<div id='grid_view_#{page.id}_model_#{ms.id}' class='grid_element'>"
        page.view_components.each do |vc2|
@@ -22,9 +20,8 @@
        end
        output<<"</div>"
     end
-
-   %>
-    <%= raw(output) %>
+  %>
+<%= raw(output) %>
 </div>
 
 <div class="grid_links">

@@ -6,9 +6,8 @@ def check_component_type(form_component,form_submission,data_obj)
     form_data=data_obj.find_by_form_submission_id_and_form_component_id(form_submission.id,form_component.id)
    else
     form_data=data_obj.find_by_comment_submission_id_and_comment_component_id(form_component.id,form_submission.id)
-   end 
+   end
    value = (form_submission.id.nil? ? form_component.default_value : ( form_data.data_value unless form_data.nil? ) )
-   
   else
    value=form_component.default_value
   end
@@ -60,11 +59,10 @@ def get_view_model_submission_order(object_model,view,submissions,sort,order)
   ids = submissions.collect{|sub|sub.id}
   if view.limit.blank?
     md = ModelData.find(:all,:conditions=>["model_submission_id  IN (?) #{conditions}",ids],:order=>order_txt)
- 
  else
     md = ModelData.find(:all,:conditions=>["model_submission_id  IN (?) #{conditions}",ids],:order=>order_txt, :limit=>view.limit)
   end
- 
+
   md.each{|data|output << data.model_submission unless output.include?(data.model_submission)}
   return output
 end

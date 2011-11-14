@@ -14,7 +14,6 @@
     </div>
   <% end %>
 
-
    <% @object.model_components.each do |model_component| %>
      <p>
      <%= model_component.component_display_name %>:
@@ -32,14 +31,9 @@
          <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#model_submission_perma_link').attr('disabled','disabled');} else {$('#model_submission_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
              </div>
-             
           <%  end %>
-           
-  
       </p>
-    <% end %>
-
-        
+<% end %>
 <% unless @object.allow_show_on_homepage==false || @object.allow_show_on_homepage.nil? %>
 <div>
   <%= check_box('','home_page',  :checked=> @model_submission.home_page) %>
@@ -61,11 +55,7 @@ Show on Home Page
 
 <br/>
   <div class="actions">
-   <%= form.submit "#{(@model_submission.id.nil? ? "Create" : "Update")} #{@object.name.capitalize}"%> 
+<%= form.submit "#{(@model_submission.id.nil? ? "Create" : "Update")} #{@object.name.capitalize}"%>
   </div>
 <% end %>
 <% end %>
-
-
-
- 

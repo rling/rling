@@ -11,7 +11,7 @@ class Setting < ActiveRecord::Base
    data = setting_value
    case self.setting_type
     when "boolean"
-     data = (setting_value=="true") rescue nil     
+     data = (setting_value=="true") rescue nil
     when "integer"
      data = setting_value.to_i rescue nil
     when "float"

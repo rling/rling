@@ -5,13 +5,12 @@
 
 <table>
   <tr>
-    
     <th>Name</th>
      <th></th>
     <th>Display Name</th>
     <th></th>
     <th>Is linked?</th>
-    
+
     <th></th>
     <th></th>
     <th></th>
@@ -19,9 +18,8 @@
 <%= form_tag update_position_view_view_components_path do %>
 <% @view_components.each do |view_component| %>
   <tr>
-    
     <td><%= view_component.name %></td>
-    <th></th> 
+    <th></th>
     <td><%= view_component.display_name %></td>
     <th></th>
     <td><%= view_component.is_linked %></td>

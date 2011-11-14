@@ -16,8 +16,7 @@
 
  <div class="field">
    <%= hidden_field_tag "page_type", @page_type %>
-  </div>
-    
+ </div>
 
   <div class="field">
     <%= form.label :title %><br />
@@ -67,12 +66,11 @@
     You can display other pages into the body of this page. For this you insert code in this format:<br/> &lt;%=display_rling_page("perma-link of page")%&gt;
     <%= raw(form.cktext_area :body, :toolbar=>'Full',:cols=>'100', :rows=>'5',:height=>200 ,:swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id})  %>
   </div>
-  
+
    <div class="field">
       <%= form.hidden_field :page_view_type, :value => 1 %>
    </div>
-  
- 
+
   <div class="field">
       <%= form.label :perma_link %><br />
       <% if @page.perma_link.nil? %>
@@ -80,8 +78,7 @@
       <% else %>
       <%= form.text_field :perma_link %>
       <% end %>
-   
-    <% if @page_type.eql?('ObjectForm') %>
+  <% if @page_type.eql?('ObjectForm') %>
   <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#object_form_perma_link').attr('disabled', 'disabled');} else {$('#object_form_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
    <% elsif @page_type.eql?('View')  %>
@@ -91,10 +88,8 @@ Generate permalink automatically<br />
     <%= check_box('','permalnk', :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#page_perma_link').attr('disabled', 'disabled');} else {$('#page_perma_link').removeAttr('disabled');
 }") %>
 Generate permalink automatically<br />
-   <% end %>
-   
-  </div> 
-  
+ <% end %>
+  </div>
 
  <div>
    <% PageVariableSetting.find(:all).each do |pcv| %>
@@ -103,7 +98,7 @@ Generate permalink automatically<br />
    <%= text_area_tag "page_variables[#{pcv.id}]",(pv.blank? ? "" : pv.variable_value),{:rows=>3,:cols=>50} %><br/>
    <% end %>
  </div>
-  
+
 <% unless @page.menu.nil? %>
 <div id="show_menu"s>
 <%= form.label :menu_name %><br />
@@ -122,7 +117,7 @@ Generate permalink automatically<br />
 <%= form.select :menu_parent_id, get_all_menus(@menu).collect{|m|[m.levelname,m.id]} %><br />
 </div>
 <% end %>
-  
+
 <% if @page_type.eql?('ObjectForm') %>
  <div class="field">
     <%= form.label :email %><br />

@@ -14,8 +14,6 @@
 <td></td>
 <% end %>
 <td><%= m[0] %></td>
-
-   
     <td align=right><%= text_field_tag "#{menu.id}",menu.position, :size=>2 %></td>
     <td align=center><%= link_to "Edit", edit_menu_path(menu) %></td>
     <td align=center><%= link_to "Destroy", menu, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,5 +25,5 @@
 <%= submit_tag 'Update Positions' %>
 <% end %>
 <br/><br/>
-<%= link_to 'New Menu', new_menu_path %> | 
+<%= link_to 'New Menu', new_menu_path %> |
 <%= link_to "Back to Dashboard", :controller=>"admin", :action=>"dashboard" %>

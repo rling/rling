@@ -22,7 +22,7 @@ class Categoryset < ActiveRecord::Base
    lname = self.name
    lname
   end
-  
+
   def delete_category_view
 
   end

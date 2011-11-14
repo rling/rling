@@ -52,10 +52,10 @@ class Admin::FormSubmissionsController < ApplicationController
               unless form_data_obj.data_value.blank?
                 asset = Asset.find(form_data_obj.data_value)
                 asset.destroy
-	      end
+              end
               asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
               form_data_obj.data_value = asset.id.to_s
-            end
+           end
           else
             form_data_obj.data_value = form_data[component.component_name]
           end

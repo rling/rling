@@ -1,62 +1,62 @@
 <div id="dashboard_left">
-				<h1><u>Administration Dashboard</u></h1>
-				<div class="dashboard_headers">
-					<H2>User Management System</H2>
-				</div>
-				<div class="descriptions">
-				User Administration section of RLING CMS helps users to manage the users, their details, roles and permissions. 
- 				Administrator (based on their settings) should be able to send welcome and activation emails to users after registration. User Administration section also has User details settings section where admins can set what they wish to capture information about a 
-				</div>				
-				<div id="items" >	
-					<%= link_to "Role Management",roles_path %>
-					<%= link_to "User Administration", users_path%>
-					<%= link_to "Permission Management",permissions_path %>
-				</div>
-				
-				<div class="dashboard_headers">
-					<H2>Page Management System</H2>
-				</div>
-				<div class="descriptions">
-				Page management Systems comprises of adding pages to the system along with adding menus and menusets to display the pages. Pagelets are simple type of pages which are cached and displayed where pages are not available or necessary. Forms are type of pages which can be displayed so that users can submit them to the Administrators.
-				</div>				
-				<div id="items">	
-					<%= link_to "Menuset Administration", menusets_path %>
-					<%= link_to "Menu Administration", menus_path %>
-					<%= link_to "Pages Administration" ,pages_path %>
-					<%= link_to "Pagelets Administration" ,pagelets_path %>
-					<%= link_to "Forms Administration" ,object_form_index_pages_path %>
-				</div>		
+<h1><u>Administration Dashboard</u></h1>
+<div class="dashboard_headers">
+<H2>User Management System</H2>
+</div>
+<div class="descriptions">
+ User Administration section of RLING CMS helps users to manage the users, their details, roles and permissions.
+ Administrator (based on their settings) should be able to send welcome and activation emails to users after registration. User Administration section also has User details settings section where admins can set what they wish to capture information about a
+</div>
+<div id="items" >
+<%= link_to "Role Management",roles_path %>
+<%= link_to "User Administration", users_path%>
+<%= link_to "Permission Management",permissions_path %>
+</div>
 
-				<div class="dashboard_headers">
-					<H2>Models Management System</H2>
-				</div>
-				<div class="descriptions">
-				Models are systems which are configurable business entities that drive the website. Models are like blogs, forums, products, photos etc., which define information that can add, change or removed without affecting the system. Views are displayable method of the models. Models can be viewed in the form of Table, Grid and List views. Models can be grouped into categories and categories 
-				</div>
-				<div id="items">	
-					<%= link_to " Models Administration" ,object_models_path %>
-					<%= link_to "Views Administration" ,view_index_pages_path %>
-					<%= link_to "CategorySet Administration", categorysets_path %>
-					<%= link_to "Category Administration", categories_path %>
-                                        <%= link_to "Category Views Administration" ,category_view_index_pages_path %>
-				</div>				
+<div class="dashboard_headers">
+<H2>Page Management System</H2>
+</div>
+<div class="descriptions">
+Page management Systems comprises of adding pages to the system along with adding menus and menusets to display the pages. Pagelets are simple type of pages which are cached and displayed where pages are not available or necessary. Forms are type of pages which can be displayed so that users can submit them to the Administrators.
+</div>
+<div id="items">
+<%= link_to "Menuset Administration", menusets_path %>
+<%= link_to "Menu Administration", menus_path %>
+<%= link_to "Pages Administration" ,pages_path %>
+<%= link_to "Pagelets Administration" ,pagelets_path %>
+<%= link_to "Forms Administration" ,object_form_index_pages_path %>
+</div>
 
-				<div class="dashboard_headers">
-					<H2>Others</H2>
-				</div>
-				<div class="descriptions">
-				Administrators can configure the look and feel of the emails that are sent to the users as well as provide / hide necessary information as they deem fit for the website to be used. The CMS provides administrators with various site settings which are configurable to the requirements.
-				</div>				
-				<div id="items" >	
-					<%= link_to 'E-mail Template Configuration',mailers_path %>
-					<%= link_to "Site Settings Administration", settings_path %>
-				</div>					
-			</div>
+<div class="dashboard_headers">
+<H2>Models Management System</H2>
+</div>
+<div class="descriptions">
+ Models are systems which are configurable business entities that drive the website. Models are like blogs, forums, products, photos etc., which define information that can add, change or removed without affecting the system. Views are displayable method of the models. Models can be viewed in the form of Table, Grid and List views. Models can be grouped into categories and categories
+</div>
+<div id="items">
+<%= link_to " Models Administration" ,object_models_path %>
+<%= link_to "Views Administration" ,view_index_pages_path %>
+<%= link_to "CategorySet Administration", categorysets_path %>
+<%= link_to "Category Administration", categories_path %>
+ <%= link_to "Category Views Administration" ,category_view_index_pages_path %>
+</div>
+
+<div class="dashboard_headers">
+<H2>Others</H2>
+</div>
+<div class="descriptions">
+Administrators can configure the look and feel of the emails that are sent to the users as well as provide / hide necessary information as they deem fit for the website to be used. The CMS provides administrators with various site settings which are configurable to the requirements.
+</div>
+ <div id="items" >
+ <%= link_to 'E-mail Template Configuration',mailers_path %>
+ <%= link_to "Site Settings Administration", settings_path %>
+ </div>
+</div>
 
 
 
 <div id="dashboard_right">
 <div id="items">
- <%= render :partial=>"shared/models_administration" %>
+ <%= render "shared/models_administration" %>
 </div>
 </div>

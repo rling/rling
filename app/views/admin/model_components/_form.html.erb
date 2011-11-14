@@ -1,16 +1,15 @@
 
 <script type="text/javascript">
 $(function(){
-     $("#model_component_component_type").change(function(){            
+     $("#model_component_component_type").change(function(){
       var test=$("#model_component_component_type").val();
-     
-      if(test=="Dropdown"|| test=="Radiobutton") 
+      if(test=="Dropdown"|| test=="Radiobutton")
      {
-	$("#field_value").show();
+      $("#field_value").show();
      }
      else
      {
-        $("#field_value").hide();	    
+      $("#field_value").hide();
      }
      if(test=="File")
      {
@@ -27,14 +26,13 @@ $(function(){
 
 $(document).ready(function(){
  var test=$("#model_component_component_type").val();
-     
-      if(test=="Dropdown"|| test=="Radiobutton") 
+      if(test=="Dropdown"|| test=="Radiobutton")
      {
-	$("#field_value").show();
+      $("#field_value").show();
      }
      else
      {
-        $("#field_value").hide();	    
+      $("#field_value").hide();
      }
      if(test=="File")
      {
@@ -63,8 +61,7 @@ $(document).ready(function(){
     </div>
   <% end %>
 <div class="field" >
- 
-    <%= f.label :component_name %><br />
+   <%= f.label :component_name %><br />
    <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
     <%= f.text_field :component_name ,:disabled=>'disabled' %>
    <% else %>
@@ -98,7 +95,6 @@ $(document).ready(function(){
   </div>
   <div class="field">
      <%= f.label 'Is this field mandatory?' %><br />
-  
  <% if @model_component.component_name.eql?('title') || @model_component.component_name.eql?('body') %>
    <%=   f.check_box :is_mandatory ,:disabled=>true %>
  <% else  %>
@@ -109,6 +105,4 @@ $(document).ready(function(){
  <div class="actions">
     <%= f.submit %>
   </div>
-
-  
 <% end %>

@@ -2,16 +2,16 @@
 <script type="text/javascript">
 $(document).ready(function(){
        var test=$("#user_detail_setting_field_type").val();
-       if(test=="Dropdown"|| test=="Radiobutton") 
+       if(test=="Dropdown"|| test=="Radiobutton")
        {
-	   $("#field_value").show();
+       $("#field_value").show();
        }
        else
        {
-           $("#field_value").hide();	    
+       $("#field_value").hide();
        }
        if(test=="File")
-       { 
+       {
           $('#default_value').hide();
           $('#thumbnail').show();
        }
@@ -21,7 +21,7 @@ $(document).ready(function(){
           $('#thumbnail').hide();
        }
        if(test=="Label")
-       { 
+       {
           $('#default_value').hide();
           $('#user_setting_default').hide();
           $('#mandatory').hide();
@@ -32,33 +32,31 @@ $(document).ready(function(){
           $('#user_setting_default').show();
           $('#mandatory').show();
        }
-    
-    
  });
- 
+
 $(function(){
-       $('#user_detail_setting_field_type').change(function(){ 
+   $('#user_detail_setting_field_type').change(function(){
        var test=$("#user_detail_setting_field_type").val();
-       if(test=="Dropdown"|| test=="Radiobutton") 
+       if(test=="Dropdown"|| test=="Radiobutton")
        {
-	   $("#field_value").show();
+       $("#field_value").show();
        }
        else
        {
-           $("#field_value").hide();	    
+       $("#field_value").hide();
        }
        if(test=="File")
-       { 
-          $('#default_value').hide();
-          $('#thumbnail').show();
+       {
+         $('#default_value').hide();
+         $('#thumbnail').show();
        }
        else
        {
-          $('#default_value').show();
-          $('#thumbnail').hide();
+         $('#default_value').show();
+         $('#thumbnail').hide();
        }
         if(test=="Label")
-       { 
+       {
           $('#default_value').hide();
           $('#user_setting_default').hide();
           $('#mandatory').hide();
@@ -70,11 +68,9 @@ $(function(){
           $('#mandatory').show();
        }
  });
- 
 });
 
 </script>
-
 
 <%= form_for(@user_detail_setting,:html=>{:multipart=>true}) do |f| %>
   <% if @user_detail_setting.errors.any? %>

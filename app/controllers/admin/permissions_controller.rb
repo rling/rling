@@ -1,7 +1,7 @@
 class Admin::PermissionsController < ApplicationController
  #FILTERS
   before_filter :require_admin
-  
+
   # GET /permissions
   # GET /permissions.xml
   def index

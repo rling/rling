@@ -14,11 +14,10 @@
   <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" />
 
    <%= stylesheet_link_tag 'application' %>
- 
    <%= javascript_include_tag :defaults %>
    <%= javascript_include_tag :ckeditor %>
     <%= render "shared/read_settings" %>
- 
+
   <%= csrf_meta_tag %>
  </head>
  <body>
@@ -34,26 +33,23 @@
        <div id="header_menu">
          <div id="menus">
          <%= raw(show_menu 'dropdownmenu','Header') %>
-         </div>    
+         </div>
          <div id="search_bar">
          <%= raw(search_bar) %>
-        </div>   
-	<div style="clear:both;"></div>
+        </div>
+ <div style="clear:both;"></div>
        </div>
-	<div style="clear:both;"></div>
+ <div style="clear:both;"></div>
      </div>
      <div id="middle">
        <div id="dashboard_main">
-   
      <%= raw(flash_notice) %>
-        
     <%= yield %>
     </div>
    </div>
-  
    <div id="footer">
     <div id="footer_menu">
-     <%= raw(show_menu 'nolistmenu','Footer') %>     
+     <%= raw(show_menu 'nolistmenu','Footer') %>
     </div>
     <div id="developer">
       RLING CMS is a product of <a href="http://www.railsdetectives.com">RAILS DETECTIVES</a> released under GNU General Public License v3.0

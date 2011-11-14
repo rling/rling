@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
   #FILTERS
   helper :all
   helper_method :current_user,:current_user?
-  before_filter :check_admin,:check_cookie,:read_color_settings 
+  before_filter :check_admin,:check_cookie,:read_color_settings
   layout :set_layout
-  
-  #verify permission for users  
+
+  #verify permission for users
   def verify_permission
     activities = {"new"=>"create","edit"=>"edit","destroy"=>"delete","show"=>"view","index"=>"viewlist"}
     activity = activities[params[:action]]
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   def current_user
     return session[:user]
   end
-    
+
   #set the current user into the session
   def current_user=(value)
     session[:user] = value
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #Check if the user is available and he is an admin to execute the action(s)    
+  #Check if the user is available and he is an admin to execute the action(s)
   def require_admin
     if require_user
       unless current_user.admin?
@@ -101,7 +101,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #Store the location in case the user is not allowed and be taken to the login url. 
+  #Store the location in case the user is not allowed and be taken to the login url.
   def store_location
     session[:return_to] = request.request_uri
   end
@@ -112,43 +112,43 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
-  #Check and return the admin 
+  #Check and return the admin
   def check_admin
     if session[:admin_found].nil?
      role = Role.find_by_role_type("Administrator")
       unless role.nil?
         if role.users.size > 0
-	  session[:admin_found] = true
+          session[:admin_found] = true
         else
-	  if params[:controller]!="sessions" && (params[:action] != "first_user" || params[:action] != "first_user_create")
-	      redirect_to first_user_sessions_path
-     	  end
-         end
+          if params[:controller]!="sessions" && (params[:action] != "first_user" || params[:action] != "first_user_create")
+            redirect_to first_user_sessions_path
+          end
+        end
       end
     end
   end
-  
-  #check if there are any Javascript code which are harmful. this is necessary as 
-  # we donot have control over the fields as entered by non administrators within 
+
+  #check if there are any Javascript code which are harmful. this is necessary as
+  # we donot have control over the fields as entered by non administrators within
   # the website.
    def checkforjs(input)
      return input.gsub("<script","").gsub("</script>","").gsub("</script>","").gsub("<iframe","")
    end
-   
+
    def set_layout
      defined?(@admin_layout) ? "admin" : "application"
-     #(current_user? && current_user.admin?) ? "admin" : "application"      
+     #(current_user? && current_user.admin?) ? "admin" : "application"
    end
 
   def read_color_settings
     if session[:settings].nil?
      load_style_settings
-    end                            
+    end
   end
-  
+
   def load_style_settings
      session[:settings] = Hash.new
-     session[:settings][:body_background_color]=Setting.find_by_name("body_background_color").setting_value 
+     session[:settings][:body_background_color]=Setting.find_by_name("body_background_color").setting_value
      session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
      session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
      session[:settings][:top_bar_link_color]=Setting.find_by_name("top_bar_link_color").setting_value
@@ -163,15 +163,15 @@ class ApplicationController < ActionController::Base
      session[:settings][:header_website_tag_font_size]=Setting.find_by_name("header_website_tag_font_size").setting_value
      session[:settings][:menu_bar_background_color]=Setting.find_by_name("menu_bar_background_color").setting_value
      session[:settings][:menu_bar_hover_menu_background_color]=Setting.find_by_name("menu_bar_hover_menu_background_color").setting_value
-     session[:settings][:menu_bar_hover_menu_text_color]=Setting.find_by_name("menu_bar_hover_menu_text_color").setting_value 
+     session[:settings][:menu_bar_hover_menu_text_color]=Setting.find_by_name("menu_bar_hover_menu_text_color").setting_value
      session[:settings][:menu_bar_menu_text_color]=Setting.find_by_name("menu_bar_menu_text_color").setting_value
-     session[:settings][:menu_bar_menu_background_color]=Setting.find_by_name("menu_bar_menu_background_color").setting_value 
+     session[:settings][:menu_bar_menu_background_color]=Setting.find_by_name("menu_bar_menu_background_color").setting_value
      session[:settings][:middle_border_color]=Setting.find_by_name("middle_border_color").setting_value
      session[:settings][:middle_background_color]=Setting.find_by_name("middle_background_color").setting_value
      session[:settings][:middle_text_color] =Setting.find_by_name("middle_text_color").setting_value
-     session[:settings][:footer_background_color]=Setting.find_by_name("footer_background_color").setting_value 
+     session[:settings][:footer_background_color]=Setting.find_by_name("footer_background_color").setting_value
      session[:settings][:footer_text_color]=Setting.find_by_name("footer_text_color").setting_value
      session[:settings][:footer_link_color]=Setting.find_by_name("footer_link_color").setting_value
      session[:settings][:footer_link_hover_color]=Setting.find_by_name("footer_link_hover_color").setting_value
   end
-end 
+end

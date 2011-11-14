@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @user_detail_settings = UserDetailSetting.all(:order =>'position')
-  
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     if User.exists?(userid)
     @user = User.find(userid)
     @user_detail_settings=UserDetailSetting.all
-    @objects= [] 
+    @objects= []
     ObjectModel.all.each do |om|
       permission = Permission.where(:activity_code=>"viewlist",:permission_type=>"ObjectModel",:permission_object=>om.name)
       unless permission.nil?
@@ -122,12 +122,12 @@ class UsersController < ApplicationController
         end
         format.xml { render :xml => user.email, :status => :created }
       else
-        format.html { render :action => "new" }
+         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
      end
   end
- 
+
   # GET /users/1/activate
   # GET /users/1/activate.xml
   def activate
@@ -147,7 +147,7 @@ class UsersController < ApplicationController
       end
     end
   end
- 
+
   # PUT /users/1
   # PUT /users/1.xml
   def update
@@ -157,8 +157,8 @@ class UsersController < ApplicationController
         format.html { redirect_to(@user, :notice => t(:user_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+         format.html { render :action => "edit" }
+         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -193,7 +193,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       unless @user_detail_settings.empty?
         @user=User.find(params[:id])
-        format.html {render :action=>"user_details"}
+       format.html { render :action => "user_details" }
       else
         format.html {redirect_to users_path}
       end
@@ -258,7 +258,7 @@ class UsersController < ApplicationController
  end
 
   # GET /users/1/delete_asset
-  # GET /users/1/delete_asset.xml 
+  # GET /users/1/delete_asset.xml
   def delete_asset
     user_detail = UserDetail.find(params[:id])
     unless user_detail.nil?

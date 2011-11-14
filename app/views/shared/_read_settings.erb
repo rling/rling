@@ -3,8 +3,7 @@
     #header_text{
       background: #<%= session[:settings][:header_background_color] %>;
     }
-<% end  %>  
-
+<% end  %>
 
 <% unless session[:settings][:top_bar_background_color].blank? %>
     #top_bar{
@@ -17,14 +16,14 @@
     #developer a
     {
       color: #<%=  session[:settings][:footer_link_color]%>;
-    }  
+    }
 <% end %>
 
 
 <% unless session[:settings][:menu_bar_menu_text_color].blank? %>
     #header_menu ul li a
     {
-      color:#<%= session[:settings][:menu_bar_menu_text_color] %>; 
+     color:#<%= session[:settings][:menu_bar_menu_text_color] %>;
     }
 <% end %>
 
@@ -33,34 +32,31 @@
     #header_menu ul li:hover
     {
       background:#<%=  session[:settings][:menu_bar_hover_menu_background_color] %>;
-      
     }
 <% end %>
 
-<% unless session[:settings][:menu_bar_hover_menu_text_color].blank? %>  
+<% unless session[:settings][:menu_bar_hover_menu_text_color].blank? %>
     #header_menu ul li a:hover
     {
       color:#<%=  session[:settings][:menu_bar_hover_menu_text_color] %>;
     }
 <% end %>
 
-<% unless session[:settings][:top_bar_text_color].blank? %>   
-    #top_bar 
+<% unless session[:settings][:top_bar_text_color].blank? %>
+    #top_bar
     {
       color:#<%= session[:settings][:top_bar_text_color] %>;
     }
 <% end %>
 
-
-
-<% unless session[:settings][:header_website_font_size].blank? %>      
+<% unless session[:settings][:header_website_font_size].blank? %>
     #heading
     {
       font-size:<%= session[:settings][:header_website_font_size]  %>px;
     }
 <% end %>
 
-<% unless session[:settings][:header_website_tag_font_size].blank? %>    
+<% unless session[:settings][:header_website_tag_font_size].blank? %>
     #heading_tag{
       font-size:<%= session[:settings][:header_website_tag_font_size] %>px;
     }
@@ -71,8 +67,7 @@
     {
       color:#<%= session[:settings][:heading_website_tag_color] %>;
     }
-<% end %>    
-
+<% end %>
 
 <% unless session[:settings][:header_website_text_color].blank? %>
     #heading
@@ -86,16 +81,14 @@
     {
       background:#<%=  session[:settings][:menu_bar_background_color] %>;
     }
-<% end %>  
-
+<% end %>
 
 <% unless session[:settings][:middle_border_color].blank? %>
     #middle
     {
       background:#<%= session[:settings][:middle_border_color] %>;
-    }  
-<% end %>   
-
+    }
+<% end %>
 
 <% unless session[:settings][:top_bar_link_color].blank? %>
     #top_bar a
@@ -151,8 +144,7 @@
     {
       background-color:#<%= session[:settings][:body_background_color] %>
     }
-<% end %>    
-
+<% end %>
 
 <% unless session[:settings][:menu_bar_menu_background_color].blank? %>
     #header_menu ul li

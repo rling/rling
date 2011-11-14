@@ -8,13 +8,11 @@ $(function(){
          $('#login_field').hide();
        else
          $('#login_field').show();
-          
   });
 });
 </script>
 
 <%= form_tag first_user_create_sessions_path do %>
-
 <table>
  <tr id="login_field">
    <td>
@@ -31,7 +29,6 @@ $(function(){
        <td>
           <label for="user_email">Email</label>
        </td>
-   
       <td>
            <%= text_field "user", "email",  :size => 20 %>
       </td>
@@ -112,11 +109,6 @@ $(function(){
          <%= check_box_tag  "allow_view_user_account" %>Can a user view other users account info when he clicks on the name of that user in the post submitted by that user.
        </td>
    </tr>
-   
 </table>
-
-
-
-
 <%= submit_tag "Create Rling First User"%>
 <% end %>

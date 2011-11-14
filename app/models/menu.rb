@@ -7,7 +7,7 @@ class Menu < ActiveRecord::Base
   validates :name, :presence=>true
   validates :menu_view_type, :presence=>true
 
-#Callbacks 
+#Callbacks
   before_save :set_level
   before_destroy :set_children
 
@@ -30,10 +30,10 @@ class Menu < ActiveRecord::Base
 #Private Methods
 private
 
-  def set_children() 
+  def set_children()
     Menu.where(:parent_id=>self.id).each do |menu|
       menu.update_attribute("parent_id",nil)
-    end	 
+    end
   end
 
   def set_level

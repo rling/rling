@@ -3,7 +3,7 @@ class UserDetailSetting < ActiveRecord::Base
   has_many :user_details,:dependent=>:destroy
 #Scope
  scope :all,  :order=>"position"
-  
+
 #Validation
   name_regex = /^[a-zA-Z0-9_]+$/
   validates :field_name, :presence=>true,:uniqueness=>true,:length=>{:minimum=>3},

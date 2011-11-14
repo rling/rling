@@ -6,7 +6,7 @@ class Menuset < ActiveRecord::Base
   validates :name ,:presence=>true,:uniqueness=>true
 
 #Instance Methods
-  def levelname 
+  def levelname
     treelevel
   end
 

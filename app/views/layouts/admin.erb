@@ -13,10 +13,9 @@
   <meta name="description" content="<%= get_page_variable "SEO Meta Description" %>" />
   <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" />
 
- 
   <%= stylesheet_link_tag 'application' %>
   <%= stylesheet_link_tag 'admin' %>
-  <%= stylesheet_link_tag 'colorpicker' %> 
+  <%= stylesheet_link_tag 'colorpicker' %>
 
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag :ckeditor %>
@@ -36,31 +35,29 @@
        </div>
        <div id="header_text">
          <div id="logo"><a href="/"><img src="<%= "#{session[:settings][:header_logo]}" %>"></a></div>
-         
          <div id="header_heading"> <span id="heading"> <%=  "#{session[:settings][:header_website_text]}" %></span><span id="heading_tag"><%=  "#{session[:settings][:header_website_tag_text]}" %></span></div>
        </div>
        <div id="header_menu">
          <div id="menus">
            <%= raw(show_menu 'dropdownmenu','Header') %>
-         </div>    
+         </div>
          <div id="search_bar">
          <%= raw(search_bar) %>
-        </div>   
-	<div style="clear:both;"></div>
+         </div>
+   <div style="clear:both;"></div>
        </div>
-	<div style="clear:both;"></div>
+   <div style="clear:both;"></div>
      </div>
      <div id="middle">
        <div id="admin">
-     <%= raw(flash_notice) %>
-        
-    <%= yield %>
+        <%= raw(flash_notice) %>
+
+        <%= yield %>
     </div>
    </div>
-  
    <div id="footer">
     <div id="footer_menu">
-     <%= raw(show_menu 'nolistmenu','Footer') %>     
+     <%= raw(show_menu 'nolistmenu','Footer') %>
     </div>
     <div id="developer">
        Developed by Heurion<br/>

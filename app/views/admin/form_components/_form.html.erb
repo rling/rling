@@ -1,16 +1,15 @@
 
 <script  type="text/javascript">
 $(function(){
-     $("#form_component_component_type").change(function(){            
-      var test=$("#form_component_component_type").val();
-     
-      if(test=="Dropdown"|| test=="Radiobutton") 
+$("#form_component_component_type").change(function(){
+     var test=$("#form_component_component_type").val();
+     if(test=="Dropdown"|| test=="Radiobutton")
      {
-	$("#field_value").show();
+     $("#field_value").show();
      }
      else
      {
-        $("#field_value").hide();	    
+     $("#field_value").hide();
      }
      if(test=="File")
      {
@@ -26,16 +25,14 @@ $(function(){
 });
 
 $(document).ready(function(){
-          
-      var test=$("#form_component_component_type").val();
-     
-      if(test=="Dropdown"|| test=="Radiobutton") 
+   var test=$("#form_component_component_type").val();
+    if(test=="Dropdown"|| test=="Radiobutton")
      {
-	$("#field_value").show();
+       $("#field_value").show();
      }
      else
      {
-        $("#field_value").hide();	    
+       $("#field_value").hide():
      }
      if(test=="File")
      {
@@ -47,7 +44,6 @@ $(document).ready(function(){
        $('#default_value').show();
        $('#thumbnail').hide();
      }
-   
 });
 
 </script>
@@ -66,8 +62,6 @@ $(document).ready(function(){
     </div>
   <% end %>
 
-   
-  
   <div class="field">
     <%= f.label :component_name %><br />
     <%= f.text_field :component_name %>
@@ -102,5 +96,4 @@ $(document).ready(function(){
   <div class="actions">
     <%= f.submit %>
   </div>
-
 <% end %>

@@ -1,4 +1,4 @@
-class DisplayController < ApplicationController 
+class DisplayController < ApplicationController
  #Includes
  include ApplicationHelper
 
@@ -10,9 +10,8 @@ class DisplayController < ApplicationController
   def index
    @pages = Page.where(:home_page=>true,:status=>:published)
    @models=ModelSubmission.where(:home_page=>true,:status=>:published)
-   
   end
-  
+
   # MATCH "/:permalink"=> "display#show_page"
   # DISPLAY ALL THE PAGES / FORMS / VIEWS IDENTIFIED BY THE PERMALINK
   def show_page
@@ -43,7 +42,7 @@ class DisplayController < ApplicationController
     end
     render :layout=>@object.layout if !(@object.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{Rails.root.to_s}/app/views/layouts/#{@object.layout}.erb")
   end
-  
+
   #MATCH "display/error_page_display"=>"display#error_page_display"
   #DISPLAY THIS PAGE IN CASE OF ANY ERROR THAT HAS BEEN HANDLED FOR OTHERS GO TO 404
   def error_page_display
@@ -102,7 +101,6 @@ class DisplayController < ApplicationController
           end
         end
       end
-      
       @msg = "#{t(:search_string)} #{@results.size} #{t(:search_result)}"
     else
       @msg = t(:search_found_empty)

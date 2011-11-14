@@ -2,7 +2,6 @@
 
 <table>
   <tr>
- 
     <th>Name</th>
     <th>Order</th>
     <th></th>
@@ -12,7 +11,6 @@
 
 <% @view_orders.each do |view_order| %>
   <tr>
-   
     <td><%= view_order.name %></td>
     <td><%= view_order.order %></td>
     <td><%= link_to 'Show', view_view_order_path(@page, view_order) %></td>

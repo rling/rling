@@ -4,7 +4,7 @@
 <%= form_tag update_details_user_path(@user),:multipart=>true, :method => :post do %>
 <%= hidden_field_tag 'user_id',@user.id %>
  <% @user_detail_settings.each do |user_detail_setting| %>
- <div class="user_field">  
+ <div class="user_field">
    <div class="form_user_heading form_user_heading_<%= user_detail_setting.display_name %>">
       <%= user_detail_setting.display_name %>:
    </div>
@@ -13,7 +13,7 @@
         <%= check_field_type(user_detail_setting,@user) %>
     </div>
  </div>
-<% end %> 
+<% end %>
 
   <div class= "user_form_submit"><%= submit_tag "Submit" %></div>
 </div>

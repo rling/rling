@@ -55,7 +55,7 @@ before_filter :require_admin
      else
       @page = Page.find_by_id(params[:id])
      end
-  
+
     @menu = Menu.where(:page_id => @page.id).first
     @categoryset=Categoryset.find_by_id(@page.view_for)
     @associated=Page.find_by_id(@page.associated_view)
@@ -132,12 +132,12 @@ before_filter :require_admin
          @page = CategoryView.new(params[:category_view])
       else
          @page =Page.new(params[:page])
-      end 
+      end
       if params[:permalnk] == "1"
            @page.perma_link_generate
       end
-        @page.home_page = params[:home_page]  
-   
+        @page.home_page = params[:home_page]
+
     respond_to do |format|
       if @page.save
           unless params[:page_variables].nil?
@@ -147,7 +147,6 @@ before_filter :require_admin
         format.html { redirect_to(:action=>'show',:id=>@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-    
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
@@ -156,7 +155,7 @@ before_filter :require_admin
 
   # PUT /pages/1
   # PUT /pages/1.xml
-  def update 
+  def update
     @page_type = params[:page_type]
     page_params = params[:page]
     if @page_type == "ObjectForm"
@@ -171,27 +170,27 @@ before_filter :require_admin
     end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
-   	@page.perma_link_generate
+      @page.perma_link_generate
     end
     unless page_params[:menu_name].nil?
       unless page_params[:menu_name].empty?
-	      menu = Menu.find_by_page_id(@page.id)
-	    if menu.nil?
-	      menu = Menu.new
-	    end
-	    menu.name = page_params[:menu_name]
-	    menu.parent_id = page_params[:menu_parent_id]
-	    menu.page_id = @page.id
-            menu.menu_view_type = page_params[:page_view_type]
-	    menu.save
+        menu = Menu.find_by_page_id(@page.id)
+         if menu.nil?
+           menu = Menu.new
+         end
+         menu.name = page_params[:menu_name]
+         menu.parent_id = page_params[:menu_parent_id]
+         menu.page_id = @page.id
+         menu.menu_view_type = page_params[:page_view_type]
+         menu.save
      end
      end
-    respond_to do |format|
+     respond_to do |format|
       if @page.update_attributes(page_params)
-   	  unless params[:page_variables].nil?
-	  update_page_variables(params[:page_variables],@page)
-          end
-         @page.home_page = params[:home_page] 
+        unless params[:page_variables].nil?
+          update_page_variables(params[:page_variables],@page)
+        end
+         @page.home_page = params[:home_page]
          @page.save
         flash[:notice] ="#{@page_type} #{t(:page_updated)}"
         format.html { redirect_to(:action=>'show' ,:id=>@page) }
@@ -226,7 +225,7 @@ before_filter :require_admin
       format.xml  { render :xml=>@page}
   end
  end
- 
+
   # POST /pages/create_query
   # POST /pages/create_query.xml
  def create_query
@@ -245,8 +244,8 @@ before_filter :require_admin
       end
    end
  end
-    
-private 
+
+private
 
 #UPDATE PAGE VARIABLES AFTER CREATE AND UPDATE OF PAGES IF ANY
 def update_page_variables(page_variables,page)
@@ -259,7 +258,7 @@ def update_page_variables(page_variables,page)
   end
   pv.variable_value = v
   pv.save
- end 
+ end
 end
 
 end

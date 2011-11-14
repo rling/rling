@@ -1,6 +1,5 @@
 <%= form_tag "/pages/:id/create_query" do %>
-  <div >
-   
+<div >
    <% @view=Page.find_by_id(@page.id) %>
    <%= hidden_field_tag  "view_id", @view.id %>
    sort By:

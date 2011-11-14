@@ -2,8 +2,6 @@
 <h1>Listing Comment Submissions</h1>
 
 <table>
-  
-
 <% @comment_submissions.each do |comment| %>
   <tr>
   <% comment.level.times do %>
@@ -15,11 +13,9 @@
     <b><%= cc.component_display_name %> :</b>
           <% comment_data = comment.comment_data.first(:conditions=>["comment_component_id=?",cc.id] )
           unless comment_data.nil? %>
-           
            <%= raw get_form_data(cc.component_type,comment_data.data_value) %>
           <% end %>
           <hr/>
-
    <% end %>
   </td>
     <% if (validate_permission("deletecomment",comment.model_submission.object_model,comment) || validate_permission("deletemycomments",comment.model_submission.object_model,comment)) %>
@@ -28,8 +24,5 @@
   </tr>
 <% end %>
 </table>
-
 <br />
 <%= link_to "Back", object_model_model_submissions_path(@object) %>
-
-

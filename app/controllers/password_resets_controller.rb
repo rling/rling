@@ -3,7 +3,7 @@ class PasswordResetsController < ApplicationController
 # GET /password_resets/new
 # GET /password_resets/new.xml
 def new
- 
+
 end
 
 # POST /password_resets
@@ -18,7 +18,7 @@ def create
         format.html { redirect_to login_path }
         format.xml { render :xml => user.email, :status => :created }
       else
-        flash[:notice] = "#{params[:user][:email]} #{t(:email_dosent_exist)} #{User.admins.first.email}"  
+        flash[:notice] = "#{params[:user][:email]} #{t(:email_dosent_exist)} #{User.admins.first.email}"
         format.html {render :action=>'new'}
         format.xml { render :xml => user.email, :status => :unprocessable_entity }
        end

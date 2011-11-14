@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
   include ApplicationHelper
   #FILTER
   before_filter :require_admin
-  
+
   # GET /categories
   # GET /categories.xml
   def index

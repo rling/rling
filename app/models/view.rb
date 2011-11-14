@@ -8,7 +8,7 @@ has_many  :view_orders ,:dependent => :destroy
 
 #instance methods
 #Components to be displayed which are to be added to the select of view components form
-def not_added_components 
+def not_added_components
  v_component = self.view_components.collect{|vc|vc.name}
  return  (not_added_condition_components - v_component)
 end

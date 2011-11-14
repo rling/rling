@@ -1,4 +1,4 @@
-<%= render :partial=>"shared/search_form",:locals=>{:type=>@type,:query=>@query} %>
+<%= render "shared/search_form",:type=>@type,:query=>@query %>
 
 <h1><p>
 Search Results
@@ -11,7 +11,7 @@ Search Results
   The following are the pages with the search criteria
 </p>
 <p>
-  <% @results.each do |page| 
+<% @results.each do |page|
     if page.class.to_s == "ModelSubmission"  %>
       <%= link_to page.title,"/#{page.object_model.perma_link_parent}/#{page.perma_link}" %><br/>
     <%  else %>

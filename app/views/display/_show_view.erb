@@ -16,9 +16,7 @@
       object_model=ObjectModel.find_by_id(page.view_for)
       ms = object_model.published_model_submissions unless object_model.nil?
       @model_submissions = get_view_model_submission(object_model,page,ms,sort,order)
-     
        @page_results = @model_submissions.paginate(:page=>@page,:per_page=>@per_page)
-      
     end %>
 
      <%
@@ -29,24 +27,22 @@
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
     <p>
         <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
-    </p>   
+</p>
    <% else %>
-     <% object_model = @model_submissions.first.object_model 
+   <% object_model = @model_submissions.first.object_model
      if validate_permission("viewlist",object_model) %>
-  
      <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
       <% case page.view_type %>
       <% when "Grid" %>
-        <%=  render :partial=>"display/show_grid_view",:locals=>{:page=>page} %>
+        <%=  render "display/show_grid_view",:page=>page %>
       <% when "Table"  %>
-        <%=  render :partial=>"display/show_table_view",:locals=>{:page=>page} %>
+        <%=  render "display/show_table_view",:page=>page %>
       <% when "List" %>
-        <%=  render :partial=>"display/show_list_view",:locals=>{:page=>page} %>
+        <%=  render "display/show_list_view", :page=>page %>
       <% end %>
       <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
     <% else %>
       <%= 'You do not have permissions to view this page' %>
     <% end %>
   <% end %>
- 
 </div>

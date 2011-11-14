@@ -1,39 +1,39 @@
 <script type="text/javascript">
 $(document).ready(function(){
 var test=$("#comment_component_component_type").val();
-       if(test=="Dropdown"|| test=="Radiobutton") 
-       {
-	   $("#field_value").show();
-       }
-       else
-       {
-           $("#field_value").hide();	    
-       }
-       if(test=="File")
-       { 
-          $('#default_value').hide();
-          $('#thumbnail').show();
-       }
-       else
-       {
-          $('#default_value').show();
-          $('#thumbnail').hide();
-       }
+if(test=="Dropdown"|| test=="Radiobutton")
+{
+ $("#field_value").show();
+ }
+  else
+ {
+  $("#field_value").hide();
+  }
+  if(test=="File")
+   {
+    $('#default_value').hide();
+    $('#thumbnail').show();
+     }
+    else
+    {
+    $('#default_value').show();
+    $('#thumbnail').hide();
+     }
 });
 
 $(function(){
-     $("#comment_component_component_type").change(function(){ 
-       var test=$("#comment_component_component_type").val();
-       if(test=="Dropdown"|| test=="Radiobutton") 
+     $("#comment_component_component_type").change(function(){
+     var test=$("#comment_component_component_type").val();
+     if(test=="Dropdown"|| test=="Radiobutton")
        {
-	   $("#field_value").show();
+      $("#field_value").show();
        }
        else
        {
-           $("#field_value").hide();	    
+         $("#field_value").hide();
        }
        if(test=="File")
-       { 
+       {
           $('#default_value').hide();
           $('#thumbnail').show();
        }
@@ -43,7 +43,6 @@ $(function(){
           $('#thumbnail').hide();
        }
    });
- 
 });
 </script>
 

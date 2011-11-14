@@ -3,9 +3,7 @@ User Not found. Please check your reset Path is correct or not.
 
 <% else %>
 
-
 <%= error_messages_for :user %>
- 
 <% form_tag change_password_resets_path do -%>
   <p>
     Pick a new password for <span><%= @user.email %></span>
@@ -17,12 +15,10 @@ User Not found. Please check your reset Path is correct or not.
     <label for="password">New Password</label><br />
     <%= password_field :user, :password %>
   </p>
-  
   <p>
     <label for="password">Confirm Password</label><br />
     <%= password_field :user,:password_confirmation %>
   </p>
-
 
   <p>
     <%= submit_tag 'Reset' %>

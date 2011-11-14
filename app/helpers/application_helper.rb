@@ -15,7 +15,7 @@ def login_strip
        output << "#{link_to('Register', new_user_path)} | " if setting.setting_data
        output << link_to("Login","/login")
       end
-    end 
+    end
     return output
 end
 
@@ -53,7 +53,6 @@ end
 #Shows Secondary menus of a page
 def show_secondary_menu
    output = ""
-  
   unless params[:permalink].nil?
    page=Page.find_by_perma_link(params[:permalink])
    menu=Menu.find_by_page_id(page.id) unless page.nil?
@@ -62,38 +61,34 @@ def show_secondary_menu
       unless submenus.empty?
       output << "<p class='menuset'>"
       submenus.each do |menu|
-   	   menulink = ""
-   	   if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
-     	  	menulink = menu.page.perma_link
-   	   else
-      		menulink = menu.link_path
-   	   end
-    	output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
-    	 
-     end
+        menulink = ""
+        if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
+          menulink = menu.page.perma_link
+        else
+          menulink = menu.link_path
+      end
+      output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
+    end
     output << "</p>"
-      
      else
           parent_menu=Menu.find_by_id(menu.parent_id)
          unless parent_menu.nil?
            submenus = Menu.find_all_by_parent_id(parent_menu.id,:order=>"position")
       unless submenus.empty?
       output << "<p class='menuset'>"
-    
       submenus.each do |menu|
-   	   menulink = ""
-   	   if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
-     	  	menulink = menu.page.perma_link
-   	   else
-      		menulink = menu.link_path
-   	   end
-    	output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
-    	
+        menulink = ""
+        if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
+          menulink = menu.page.perma_link
+        else
+          menulink = menu.link_path
+        end
+      output << "<a href='/#{menulink}'> #{menu.name}</a> <br> "
+
      end
-    output << "</p>"
+     output << "</p>"
      end
- 
-     end
+    end
    end
   end
 end
@@ -101,30 +96,23 @@ end
 end
 
 
-
 #shows title
 def show_title
 unless params[:permalink].nil?
    page=Page.find_by_perma_link(params[:permalink])
   unless page.nil?
-    menu=Menu.find_by_page_id(page.id) 
+    menu=Menu.find_by_page_id(page.id)
     unless menu.nil?
-    
      parent_menu=Menu.find_by_id(menu.parent_id)
      unless parent_menu.nil?
-       
-          return  parent_menu.name
-        
+       return  parent_menu.name
      else
        return menu.name
       end
-   
      end
    end
-  end   
+  end
  end
-
-
 
 
 #Get the Menu Tree
@@ -166,8 +154,8 @@ end
 #Add Children to the (Menu/Category) Tree
   def add_item_to_group(record, item, group)
       if record.nil? || record.id != item.id
-	  group << item
-	  item.children.each { |child| add_item_to_group(record, child, group) }
+        group << item
+        item.children.each { |child| add_item_to_group(record, child, group) }
       end
   end
 
@@ -194,7 +182,7 @@ end
   end
 
 #Get the Pagelet for the given handle and output the value as partial.Cache the pagelet if not cached.
-  def get_pagelet(handle) 
+  def get_pagelet(handle)
    render :partial=>"shared/pagelet",:locals=>{:handle=>handle}
   end
 
@@ -236,8 +224,8 @@ end
          sizes.each do |size|
            output << "  "
            output << link_to(image_tag(asset.upload.url(size)),asset.upload.url)
-         end 
-       end  
+         end
+       end
        return output
       else
         return link_to("#{asset.upload_file_name}", asset.upload.url)
@@ -269,7 +257,7 @@ end
      return permissionrole.nil? ? false : permissionrole.value
    end
  end
-  
+
 #Process Multi-page page
 def process_page(pagebody)
     pagebody = evaluate_page(pagebody,"amp;")
@@ -281,9 +269,9 @@ def process_page(pagebody)
   def evaluate_page(pagebody, tag="tag")
    text = pagebody.gsub("&nbsp;","")
    if tag == "tag"
-    codes = text.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)  
+    codes = text.scan(/<%=[ ]*display_rling_page\([ ]*"[a-zA-Z0-9-]*"[ ]*\)[ ]*%>/)
    else
-    codes = text.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)  
+    codes = text.scan(/&lt;%=[ ]*display_rling_page\([ ]*&quot;[a-zA-Z0-9-]*&quot;[ ]*\)[ ]*%&gt;/)
    end
    if codes.size > 0
     codes.each do |code|
@@ -344,7 +332,6 @@ def process_page(pagebody)
       when "Link"
         return text_field_tag("form_field[#{field_name}]",field_value)
       end
-    end 
- 
+    end
 
-end 
+end

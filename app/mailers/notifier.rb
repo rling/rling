@@ -28,7 +28,7 @@ def setup
  Notifier.smtp_settings[:authentication] = smtp_hash["authentication"] unless smtp_hash["authentication"].nil?
  Notifier.smtp_settings[:user_name] = smtp_hash["user_name"] unless smtp_hash["user_name"].nil?
  Notifier.smtp_settings[:password] = smtp_hash["password"] unless smtp_hash["password"].nil?
- unless smtp_hash["enable_starttls_auto"].nil? 
+ unless smtp_hash["enable_starttls_auto"].nil?
   Notifier.smtp_settings[:enable_starttls_auto]= (smtp_hash["enable_starttls_auto"]=="true")
  end
 end
@@ -97,7 +97,7 @@ end
 
   private
 
-#Replace tags in email with data as necessary from the object information. 
+#Replace tags in email with data as necessary from the object information.
   def verify_tags(body,entity)
     output = body
     codes = body.scan(/&lt;RLING::[a-zA-Z]*::[a-zA-Z0-9_]*&gt;/)
@@ -107,7 +107,7 @@ end
          splits = code.split("::")
           if entity.class.to_s.upcase == splits[1]
             output = output.gsub("&lt;RLING::#{splits[1]}::#{splits[2]}&gt;",entity.send("get_variable_info",splits[2].downcase).to_s)
-         end 
+         end
       end
     end
     return output

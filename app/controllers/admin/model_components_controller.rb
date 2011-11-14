@@ -2,7 +2,7 @@ class Admin::ModelComponentsController < ApplicationController
   #FILTERS
   before_filter :require_admin
   before_filter :get_object_model
-  
+
   # GET /object_model/1/model_components
   # GET /object_model/1/model_components.xml
   def index

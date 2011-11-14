@@ -2,7 +2,7 @@ class Admin::ObjectModelsController < ApplicationController
 
   #FILTERS
   before_filter :require_admin
-  
+
   # GET /object_models
   # GET /object_models.xml
   def index
@@ -61,9 +61,9 @@ class Admin::ObjectModelsController < ApplicationController
   def update
     @object_model = ObjectModel.find(params[:id])
     if params[:permalnkparent] == "1"
-   	@object_model.perma_link_generate
+      @object_model.perma_link_generate
     end
-    
+
     respond_to do |format|
       if @object_model.update_attributes(params[:object_model])
        @object_model.update_attributes(:email_on_comment => false ,:is_comment_recursive=>false) unless @object_model.allow_comments

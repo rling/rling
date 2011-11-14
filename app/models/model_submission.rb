@@ -16,10 +16,9 @@ class ModelSubmission < ActiveRecord::Base
   regex_pattern = /(?=.*[A-Za-z0-9])[A-Za-z0-9-]+\z/i
   validates :perma_link ,:presence=>true, :uniqueness=>true, :format=>{:with=>regex_pattern ,:message=>"Should contain a  / and alphabets or alphabets and numbers and may contain - separator"}
 
-  
 
   #instance methods
- 
+
  def perma_link_generate(title)
      self.perma_link = generate_perma_link(ModelSubmission,create_permalink(title))
  end

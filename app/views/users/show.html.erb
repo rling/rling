@@ -17,7 +17,7 @@
 </div>
 
 
-<%= render :partial=>"shared/user_profile" %>
+<%= render "shared/user_profile" %>
 
 <div class="role">
    <div class="user_section_heading user_section_email_heading">Role:</div>
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div class= "login_count">  
+<div class= "login_count">
   <div class="user_section_heading user_section_login_count_heading">Login Count:</div>
   <div class="user_section_value user_section_login_count_value"><%= @user.login_count %></div>
 </div>
@@ -55,6 +55,6 @@
 
 <div id="dashboard_right">
 <div id="items">
- <%= render :partial=>"shared/models_administration" %>
+ <%= render "shared/models_administration" %>
 </div>
 </div>

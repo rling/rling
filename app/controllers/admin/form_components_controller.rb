@@ -47,7 +47,6 @@ class Admin::FormComponentsController < ApplicationController
   # POST /object_form/1/form_components
   # POST /object_form/1/form_components.xml
   def create
-  
     @form_component = @page.form_components.new(params[:form_component])
 
     respond_to do |format|
@@ -100,7 +99,7 @@ class Admin::FormComponentsController < ApplicationController
     end
   end
  private
-  # Get the Object Form (Page Object) to which the form components are associated to. 
+  # Get the Object Form (Page Object) to which the form components are associated to.
   def get_object_form
   @page=ObjectForm.find(params[:object_form_id])
   end

@@ -37,10 +37,10 @@ class CommentSubmission < ActiveRecord::Base
      end
      return output
 end
-  
+
   private
 
-  def set_children() 
+  def set_children()
     CommentSubmission.find_all_by_parent_id(self.id).destroy_all
   end
 

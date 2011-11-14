@@ -1,7 +1,7 @@
 class Admin::SettingsController < ApplicationController
 #FILTER
   before_filter  :require_admin
-  
+
   # GET /settings
   # GET /settings.xml
   def index
@@ -82,7 +82,7 @@ class Admin::SettingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+
 # GET /settings/reload_style
 def reload_style
   load_style_settings
@@ -90,7 +90,7 @@ def reload_style
   respond_to do |format|
       format.html { redirect_to(settings_path) }
       format.xml  { head :ok }
-    end 
+    end
   end
-  
+
 end

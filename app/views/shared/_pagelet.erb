@@ -1,6 +1,6 @@
-<% pagelet = Pagelet.find_by_handle(handle) 
- unless pagelet.nil? 
+<% pagelet = Pagelet.find_by_handle(handle)
+ unless pagelet.nil?
  cache("#{pagelet.handle}")  do  %>
  <%= pagelet.display_text %>
-<% end 
+<% end
  end %>

@@ -2,7 +2,7 @@ class Admin::UserDetailSettingsController < ApplicationController
 
  #FILTERS
   before_filter :require_admin
-  
+
   # GET /user_detail_settings
   # GET /user_detail_settings.xml
   def index

@@ -3,7 +3,7 @@ class ModelSubmissionsController < ApplicationController
   include ApplicationHelper
   #SWEEPER
  cache_sweeper :model_submission_sweeper,  :only => [:create, :update, :destroy]
-  
+
   #FILTERS
   before_filter :get_object_model,:verify_permission
 
@@ -92,11 +92,11 @@ class ModelSubmissionsController < ApplicationController
             format.html { redirect_to (object_model_model_submission_path(@object,@model_submission)) }
             format.xml  { render :xml => @model_submission, :status => :created, :location => @model_submission}
           end
-        else 
+        else
           respond_to do |format|
             format.html { render :action => "new" }
             format.xml  { render :xml => @model_submission.errors, :status => :unprocessable_entity }
-          end   
+          end
         end
       else
         message = t(:mandatory_fields_required)
@@ -104,7 +104,7 @@ class ModelSubmissionsController < ApplicationController
         respond_to do |format|
             format.html { render :action => "new" }
             format.xml  { render :xml => @model_submission.errors, :status => :unprocessable_entity }
-        end 
+        end
       end
     end
   end
@@ -129,7 +129,7 @@ class ModelSubmissionsController < ApplicationController
       end
       @model_submission.perma_link_generate(@title) if params[:permalnk] == "1"
       @model_submission.home_page = params[:home_page]
-      @model_submission.status=params[:status] 
+      @model_submission.status=params[:status]
       unless mandatoryfailed
         if @model_submission.update_attributes(params[:model_submission])
           @object.model_components.each do |component|
@@ -141,7 +141,7 @@ class ModelSubmissionsController < ApplicationController
                 unless model_data_obj.data_value.blank?
                   asset = Asset.find(model_data_obj.data_value)
                   asset.destroy
-	        end       
+                end
                 asset = Asset.create(:sizes=>component.default_value,:upload=>model_data[component.component_name])
                 model_data_obj.data_value = asset.id.to_s
               end
@@ -241,9 +241,9 @@ class ModelSubmissionsController < ApplicationController
    end
 
    private
-  #Get the object model as required for model submissions to be associated to 
+  #Get the object model as required for model submissions to be associated to
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end
-   
+
 end

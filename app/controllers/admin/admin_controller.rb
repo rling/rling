@@ -5,12 +5,11 @@ before_filter :require_admin
 
 # MATCH admin/dashboard
 def dashboard
- 
    @objects=ObjectModel.all
    respond_to do |format|
       format.html #dashboard.html.erb
       format.xml  { head :ok }
-    end 
+    end
 end
 
 # MATCH admin/clear_cache
@@ -26,6 +25,6 @@ def clear_cache
   respond_to do |format|
       format.html { redirect_to(:action=>'dashboard',:controller=>'admin') }
       format.xml  { head :ok }
-    end 
+    end
   end
 end

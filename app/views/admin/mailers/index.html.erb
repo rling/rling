@@ -20,7 +20,6 @@
         <%= link_to 'Send Mail',sendmail_mailer_path(mailer) %>
         <% end %></td>
     <td><%= link_to "Show", mailer %></td>
-    
     <td><%= link_to "Edit", edit_mailer_path(mailer) %></td>
     <% unless mailer.is_deletable == false %>
     <td><%= link_to "Destroy", mailer, :confirm => 'Are you sure?', :method => :delete %></td>

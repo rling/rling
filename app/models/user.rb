@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
             :format=> {:with => email_regex }
   validates :password, :presence => true, :length => {:minimum => 6},:confirmation=>true, :if => :password_validation_required?
   validates :role_id, :presence=> true
-#Callbacks                       
+#Callbacks
   before_save :update_salt_and_hash
   before_create :update_salt_and_hash,:activation_key
 
@@ -32,12 +32,11 @@ class User < ActiveRecord::Base
     return (User.encrypt(pass, u.salt)==u.hashed_password && u.is_activated) ? u : nil
   end
 
- 
  def self.tags(handle)
     tagarray = ["login","email","password","activation_url","reset_password_url"]
     UserDetailSetting.all.each do |uds|
        tagarray << uds.field_name
-    end 
+    end
     return tagarray
   end
 
@@ -53,7 +52,7 @@ class User < ActiveRecord::Base
   def admin?
     return self.role_id==3
   end
-  
+
   def has_password?(submitted_password)
     # Compare encrypted_password with the encrypted version of submitted_password.
     hashed_password == encrypt(submitted_password)
@@ -62,10 +61,10 @@ class User < ActiveRecord::Base
   def recently_reset?
     @reset
   end
- 
+
   def create_reset_code
     @reset = true
-    self.reset_password_key =Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )  
+    self.reset_password_key =Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
     save(false)
   end
 
@@ -90,7 +89,7 @@ class User < ActiveRecord::Base
     self.attributes = {:activation_key => nil}
     save(false)
   end
-  
+
    def active?
      activation_key.nil?
    end
@@ -115,7 +114,7 @@ class User < ActiveRecord::Base
    end
 #Private Methods
  private
- 
+
   def update_salt_and_hash
     unless password.blank?
       self.salt = User.random_string(10) unless self.salt?
@@ -138,7 +137,7 @@ class User < ActiveRecord::Base
     1.upto(len) { |i| newpass << chars[rand(chars.size-1)] }
     return newpass
   end
- 
+
   def password_validation_required?
     hashed_password.blank? || !password.blank?
   end
