@@ -1,5 +1,6 @@
 class Admin::PermissionsController < ApplicationController
  #FILTERS
+  before_filter :find_permission, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /permissions
@@ -17,7 +18,7 @@ class Admin::PermissionsController < ApplicationController
   # GET /permissions/1
   # GET /permissions/1.xml
   def show
-    @permission = Permission.find(params[:id])
+    #@permission = Permission.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +39,7 @@ class Admin::PermissionsController < ApplicationController
 
   # GET /permissions/1/edit
   def edit
-    @permission = Permission.find(params[:id])
+    #@permission = Permission.find(params[:id])
   end
 
   # POST /permissions
@@ -51,7 +52,7 @@ class Admin::PermissionsController < ApplicationController
         format.html { redirect_to(@permission, :notice => t(:permission_created)) }
         format.xml  { render :xml => @permission, :status => :created, :location => @permission }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @permission.errors, :status => :unprocessable_entity }
       end
     end
@@ -60,13 +61,13 @@ class Admin::PermissionsController < ApplicationController
   # PUT /permissions/1
   # PUT /permissions/1.xml
   def update
-    @permission = Permission.find(params[:id])
+   # @permission = Permission.find(params[:id])
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
         format.html { redirect_to(@permission, :notice => t(:permission_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @permission.errors, :status => :unprocessable_entity }
       end
     end
@@ -75,7 +76,7 @@ class Admin::PermissionsController < ApplicationController
   # DELETE /permissions/1
   # DELETE /permissions/1.xml
   def destroy
-    @permission = Permission.find(params[:id])
+    #@permission = Permission.find(params[:id])
     @permission.destroy
 
     respond_to do |format|
@@ -105,5 +106,9 @@ class Admin::PermissionsController < ApplicationController
       format.html { redirect_to admin_dashboard_path }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_permission
+     @permission = Permission.find(params[:id])
   end
 end

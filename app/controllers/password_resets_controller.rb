@@ -19,7 +19,7 @@ def create
         format.xml { render :xml => user.email, :status => :created }
       else
         flash[:notice] = "#{params[:user][:email]} #{t(:email_dosent_exist)} #{User.admins.first.email}"
-        format.html {render :action=>'new'}
+        format.html {render 'new'}
         format.xml { render :xml => user.email, :status => :unprocessable_entity }
        end
    end
@@ -49,7 +49,7 @@ def change
   else
      flash[:notice] = t(:verify_reset_key)
      respond_to do |format|
-            format.html {render :action => "reset" }
+            format.html {render  "reset" }
             format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end

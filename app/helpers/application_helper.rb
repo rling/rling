@@ -216,7 +216,8 @@ end
 
 #Check the content type if the uploaded asset/file is an image or other file. If image, then output all the images based on the size, else
 #output simple link for the file name
-   def check_content_type(asset)
+   def check_content_type(user_detail)
+     asset=Asset.find(user_detail.selected_value)
       if asset.upload_content_type.match(/^image/)
        output = link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url,:target=>'_blank')
        unless asset.sizes.nil?

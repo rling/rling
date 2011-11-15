@@ -1,5 +1,6 @@
 class Admin::ViewOrdersController < ApplicationController
 #Filters
+  before_filter :find_view_order, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
  before_filter :get_view
   # GET /view_orders
@@ -16,7 +17,7 @@ class Admin::ViewOrdersController < ApplicationController
   # GET /view_orders/1.xml
   def show
 
-    @view_order =  @page.view_orders.find(params[:id])
+   # @view_order =  @page.view_orders.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @view_order }
@@ -36,7 +37,7 @@ class Admin::ViewOrdersController < ApplicationController
 
   # GET /view_orders/1/edit
   def edit
-    @view_order =  @page.view_orders.find(params[:id])
+    #@view_order =  @page.view_orders.find(params[:id])
   end
 
   # POST /view_orders
@@ -49,7 +50,7 @@ class Admin::ViewOrdersController < ApplicationController
         format.html { redirect_to([@page,@view_order], :notice => t(:view_order_created)) }
         format.xml  { render :xml => @view_order, :status => :created, :location => @view_order }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @view_order.errors, :status => :unprocessable_entity }
       end
     end
@@ -58,14 +59,14 @@ class Admin::ViewOrdersController < ApplicationController
   # PUT /view_orders/1
   # PUT /view_orders/1.xml
   def update
-    @view_order =  @page.view_orders.find(params[:id])
+    #@view_order =  @page.view_orders.find(params[:id])
 
     respond_to do |format|
       if @view_order.update_attributes(params[:view_order])
         format.html { redirect_to([@page,@view_order], :notice => t(:view_order_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @view_order.errors, :status => :unprocessable_entity }
       end
     end
@@ -74,7 +75,7 @@ class Admin::ViewOrdersController < ApplicationController
   # DELETE /view_orders/1
   # DELETE /view_orders/1.xml
   def destroy
-    @view_order =  @page.view_orders.find(params[:id])
+    #@view_order =  @page.view_orders.find(params[:id])
     @view_order.destroy
 
     respond_to do |format|
@@ -87,5 +88,8 @@ class Admin::ViewOrdersController < ApplicationController
   # Get the View (Page Object) to which the conditions are associated to.
   def get_view
   @page=View.find_by_id(params[:view_id])
+  end
+  def find_view_order
+     @view_order =  @page.view_orders.find(params[:id])
   end
 end

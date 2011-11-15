@@ -1,5 +1,6 @@
 class Admin::MenusetsController < ApplicationController
 #FILTERS
+  before_filter :find_menuset, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /menusets
@@ -15,7 +16,7 @@ class Admin::MenusetsController < ApplicationController
   # GET /menusets/1
   # GET /menusets/1.xml
   def show
-    @menuset = Menuset.find(params[:id])
+    #@menuset = Menuset.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @menuset }
@@ -34,7 +35,7 @@ class Admin::MenusetsController < ApplicationController
 
   # GET /menusets/1/edit
   def edit
-    @menuset = Menuset.find(params[:id])
+    #@menuset = Menuset.find(params[:id])
   end
 
   # POST /menusets
@@ -46,7 +47,7 @@ class Admin::MenusetsController < ApplicationController
         format.html { redirect_to(menusets_path, :notice => t(:menuset_created)) }
         format.xml  { render :xml => @menuset, :status => :created, :location => @menuset }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @menuset.errors, :status => :unprocessable_entity }
       end
     end
@@ -55,13 +56,13 @@ class Admin::MenusetsController < ApplicationController
   # PUT /menusets/1
   # PUT /menusets/1.xml
   def update
-    @menuset = Menuset.find(params[:id])
+    #@menuset = Menuset.find(params[:id])
     respond_to do |format|
       if @menuset.update_attributes(params[:menuset])
         format.html { redirect_to(menusets_path, :notice => t(:menu_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @menuset.errors, :status => :unprocessable_entity }
       end
     end
@@ -70,11 +71,15 @@ class Admin::MenusetsController < ApplicationController
   # DELETE /menusets/1
   # DELETE /menusets/1.xml
   def destroy
-    @menuset = Menuset.find(params[:id])
+   # @menuset = Menuset.find(params[:id])
     @menuset.destroy
     respond_to do |format|
       format.html { redirect_to(menusets_url,:notice=>t(:menu_deleted)) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_menuset
+     @menuset = Menuset.find(params[:id])
   end
 end

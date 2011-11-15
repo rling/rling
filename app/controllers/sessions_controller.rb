@@ -67,7 +67,7 @@ def first_user_create
      else
        respond_to do |format|
         flash[:notice] = t(:error_creating_admin)
-        format.html { render :action=>"first_user" }
+        format.html { render "first_user" }
         format.xml  { render :xml=>@user.errors,:status=>:unprocessable_entity }
        end
      end
@@ -106,15 +106,15 @@ def create
      respond_to do |format|
       if @user.nil?
           flash[:notice]= t(:incorrect_login)
-          format.html {render :action => :new}
+          format.html {render  :new}
       elsif !@user.is_activated
         flash[:notice]= t(:user_activation_required)
-          format.html {render :action => :new}
+          format.html {render  :new}
       elsif user.nil?
           @user.failed_login_count += 1
           @user.save
          flash[:notice]= t(:incorrect_password)
-         format.html{ render :action => :new }
+         format.html{ render  :new }
       else
          flash[:notice] = t(:logged_in)
          self.current_user = @user

@@ -1,6 +1,7 @@
 class Admin::FormSubmissionsController < ApplicationController
 
  #FILTERS
+ before_filter :find_form_submission, :only => [:show, :edit, :destroy]
  before_filter :require_admin
  before_filter :get_object_form
 
@@ -17,7 +18,7 @@ class Admin::FormSubmissionsController < ApplicationController
   # GET /object_form/1/form_submissions/1
   # GET /object_form/1/form_submissions/1.xml
   def show
-    @form_submission = @page.form_submissions.find(params[:id])
+    #@form_submission = @page.form_submissions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +28,7 @@ class Admin::FormSubmissionsController < ApplicationController
 
   # GET /object_form/1/form_submissions/1/edit
   def edit
-    @form_submission = @page.form_submissions.find(params[:id])
+   # @form_submission = @page.form_submissions.find(params[:id])
   end
 
   # PUT /object_form/1/form_submissions/1
@@ -69,7 +70,7 @@ class Admin::FormSubmissionsController < ApplicationController
       else
        flash[:notice] = t(:mandatory_fields_required)
        respond_to do |format|
-        format.html { render :action=>"edit" }
+        format.html { render "edit" }
         format.xml { render :xml => @form_submission.errors, :status => :unprocessable_entity }
        end
       end
@@ -78,7 +79,7 @@ class Admin::FormSubmissionsController < ApplicationController
   # DELETE /object_form/1/form_submissions/1
   # DELETE /object_form/1/form_submissions/1.xml
   def destroy
-    @form_submission = @page.form_submissions.find(params[:id])
+   # @form_submission = @page.form_submissions.find(params[:id])
     @form_submission.destroy
 
     respond_to do |format|
@@ -107,5 +108,9 @@ private
  #GET the Object Form to which teh form submissions are made.
   def get_object_form
    @page=ObjectForm.find(params[:object_form_id])
+  end
+
+  def find_form_submission
+      @form_submission = @page.form_submissions.find(params[:id])
   end
 end

@@ -3,6 +3,7 @@ class Admin::FormComponentsController < ApplicationController
 #SWEEPER
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 #Filters
+ before_filter :find_form_component, :only => [:show, :edit, :update, :destroy]
  before_filter :require_admin
  before_filter :get_object_form
 
@@ -19,7 +20,7 @@ class Admin::FormComponentsController < ApplicationController
   # GET /object_form/1/form_components/1
   # GET /object_form/1/form_components/1.xml
   def show
-    @form_component = @page.form_components.find(params[:id])
+   # @form_component = @page.form_components.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +42,7 @@ class Admin::FormComponentsController < ApplicationController
 
   # GET /object_form/1/form_components/1/edit
   def edit
-    @form_component = @page.form_components.find(params[:id])
+   # @form_component = @page.form_components.find(params[:id])
   end
 
   # POST /object_form/1/form_components
@@ -54,7 +55,7 @@ class Admin::FormComponentsController < ApplicationController
         format.html { redirect_to(object_form_form_components_path, :notice => t(:form_component_created)) }
         format.xml  { render :xml => @form_component, :status => :created, :location => @form_component }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @form_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -63,14 +64,14 @@ class Admin::FormComponentsController < ApplicationController
   # PUT /object_form/1/form_components/1
   # PUT /object_form/1/form_components/1.xml
   def update
-    @form_component = @page.form_components.find(params[:id])
+    #@form_component = @page.form_components.find(params[:id])
 
     respond_to do |format|
       if @form_component.update_attributes(params[:form_component])
         format.html { redirect_to(object_form_form_components_path, :notice => t(:form_component_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @form_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -79,7 +80,7 @@ class Admin::FormComponentsController < ApplicationController
   # DELETE /object_form/1/form_components/1
   # DELETE /object_form/1/form_components/1.xml
   def destroy
-    @form_component = @page.form_components.find(params[:id])
+   # @form_component = @page.form_components.find(params[:id])
     @form_component.destroy
     respond_to do |format|
       format.html { redirect_to(object_form_form_components_path(@page)) }
@@ -102,5 +103,9 @@ class Admin::FormComponentsController < ApplicationController
   # Get the Object Form (Page Object) to which the form components are associated to.
   def get_object_form
   @page=ObjectForm.find(params[:object_form_id])
+  end
+
+  def find_form_component
+     @form_component = @page.form_components.find(params[:id])
   end
 end

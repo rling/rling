@@ -1,6 +1,7 @@
 class Admin::ObjectModelsController < ApplicationController
 
   #FILTERS
+  before_filter :find_object_model, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /object_models
@@ -16,7 +17,7 @@ class Admin::ObjectModelsController < ApplicationController
   # GET /object_models/1
   # GET /object_models/1.xml
   def show
-    @object_model = ObjectModel.find(params[:id])
+   # @object_model = ObjectModel.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @object_model }
@@ -35,7 +36,7 @@ class Admin::ObjectModelsController < ApplicationController
 
   # GET /object_models/1/edit
   def edit
-    @object_model = ObjectModel.find(params[:id])
+   # @object_model = ObjectModel.find(params[:id])
   end
 
   # POST /object_models
@@ -50,7 +51,7 @@ class Admin::ObjectModelsController < ApplicationController
         format.html { redirect_to(object_models_path, :notice => t(:object_model_created)) }
         format.xml  { render :xml => @object_model, :status => :created, :location => @object_model }
       else
-        format.html { render :action => "new" }
+        format.html { render "new" }
         format.xml  { render :xml => @object_model.errors, :status => :unprocessable_entity }
       end
     end
@@ -59,7 +60,7 @@ class Admin::ObjectModelsController < ApplicationController
   # PUT /object_models/1
   # PUT /object_models/1.xml
   def update
-    @object_model = ObjectModel.find(params[:id])
+   # @object_model = ObjectModel.find(params[:id])
     if params[:permalnkparent] == "1"
       @object_model.perma_link_generate
     end
@@ -71,7 +72,7 @@ class Admin::ObjectModelsController < ApplicationController
         format.html { redirect_to(object_models_path, :notice => t(:object_model_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @object_model.errors, :status => :unprocessable_entity }
       end
     end
@@ -80,11 +81,15 @@ class Admin::ObjectModelsController < ApplicationController
   # DELETE /object_models/1
   # DELETE /object_models/1.xml
   def destroy
-    @object_model = ObjectModel.find(params[:id])
+   # @object_model = ObjectModel.find(params[:id])
     @object_model.destroy
     respond_to do |format|
       format.html { redirect_to(object_models_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_object_model
+     @object_model = ObjectModel.find(params[:id])
   end
 end

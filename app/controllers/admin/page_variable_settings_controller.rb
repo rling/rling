@@ -1,5 +1,6 @@
 class Admin::PageVariableSettingsController < ApplicationController
   #FILTERS
+  before_filter :find_page_variable, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /page_variable_settings
@@ -15,7 +16,7 @@ class Admin::PageVariableSettingsController < ApplicationController
   # GET /page_variable_settings/1
   # GET /page_variable_settings/1.xml
   def show
-    @page_variable_setting = PageVariableSetting.find(params[:id])
+    #@page_variable_setting = PageVariableSetting.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @page_variable_setting }
@@ -34,7 +35,7 @@ class Admin::PageVariableSettingsController < ApplicationController
 
   # GET /page_variable_settings/1/edit
   def edit
-    @page_variable_setting = PageVariableSetting.find(params[:id])
+   # @page_variable_setting = PageVariableSetting.find(params[:id])
   end
 
   # POST /page_variable_settings
@@ -46,7 +47,7 @@ class Admin::PageVariableSettingsController < ApplicationController
         format.html { redirect_to(page_variable_settings_path, :notice => t(:page_variable_setting_created)) }
         format.xml  { render :xml => @page_variable_setting, :status => :created, :location => @page_variable_setting }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @page_variable_setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -55,13 +56,13 @@ class Admin::PageVariableSettingsController < ApplicationController
   # PUT /page_variable_settings/1
   # PUT /page_variable_settings/1.xml
   def update
-    @page_variable_setting = PageVariableSetting.find(params[:id])
+    #@page_variable_setting = PageVariableSetting.find(params[:id])
     respond_to do |format|
       if @page_variable_setting.update_attributes(params[:page_variable_setting])
         format.html { redirect_to(page_variable_settings_path, :notice => t(:page_variable_setting_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @page_variable_setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -70,11 +71,15 @@ class Admin::PageVariableSettingsController < ApplicationController
   # DELETE /page_variable_settings/1
   # DELETE /page_variable_settings/1.xml
   def destroy
-    @page_variable_setting = PageVariableSetting.find(params[:id])
+    #@page_variable_setting = PageVariableSetting.find(params[:id])
     @page_variable_setting.destroy
     respond_to do |format|
       format.html { redirect_to(page_variable_settings_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_page_variable
+     @page_variable_setting = PageVariableSetting.find(params[:id])
   end
 end

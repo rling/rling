@@ -10,8 +10,8 @@
   <% case user_detail_setting.field_type %>
       <% when "File" %>
        <% if !user_detail.selected_value.blank? && user_detail.selected_value.to_i != 0 %>
-           <% asset=Asset.find(user_detail.selected_value) %>
-           <%= check_content_type(asset) %>
+           <%# asset=Asset.find(user_detail.selected_value) %>
+           <%= check_content_type(user_detail) %>
         <% else %>
            <%= "No files uploaded." %>
         <% end  %>

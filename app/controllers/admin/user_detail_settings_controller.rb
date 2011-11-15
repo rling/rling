@@ -1,6 +1,7 @@
 class Admin::UserDetailSettingsController < ApplicationController
 
  #FILTERS
+  before_filter :find_user_detail, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /user_detail_settings
@@ -17,7 +18,7 @@ class Admin::UserDetailSettingsController < ApplicationController
   # GET /user_detail_settings/1
   # GET /user_detail_settings/1.xml
   def show
-    @user_detail_setting = UserDetailSetting.find(params[:id])
+   # @user_detail_setting = UserDetailSetting.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +39,7 @@ class Admin::UserDetailSettingsController < ApplicationController
 
   # GET /user_detail_settings/1/edit
   def edit
-    @user_detail_setting = UserDetailSetting.find(params[:id])
+    #@user_detail_setting = UserDetailSetting.find(params[:id])
   end
 
   # POST /user_detail_settings
@@ -51,7 +52,7 @@ class Admin::UserDetailSettingsController < ApplicationController
         format.html { redirect_to(@user_detail_setting, :notice => t(:user_detail_setting_created)) }
         format.xml  { render :xml => @user_detail_setting, :status => :created, :location => @user_detail_setting }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @user_detail_setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -60,14 +61,14 @@ class Admin::UserDetailSettingsController < ApplicationController
   # PUT /user_detail_settings/1
   # PUT /user_detail_settings/1.xml
   def update
-    @user_detail_setting = UserDetailSetting.find(params[:id])
+   # @user_detail_setting = UserDetailSetting.find(params[:id])
 
     respond_to do |format|
       if @user_detail_setting.update_attributes(params[:user_detail_setting])
         format.html { redirect_to(@user_detail_setting, :notice => t(:user_detail_setting_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @user_detail_setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -76,7 +77,7 @@ class Admin::UserDetailSettingsController < ApplicationController
   # DELETE /user_detail_settings/1
   # DELETE /user_detail_settings/1.xml
   def destroy
-    @user_detail_setting = UserDetailSetting.find(params[:id])
+   # @user_detail_setting = UserDetailSetting.find(params[:id])
     @user_detail_setting.destroy
 
     respond_to do |format|
@@ -95,5 +96,9 @@ class Admin::UserDetailSettingsController < ApplicationController
       format.html { redirect_to(user_detail_settings_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_user_detail
+     @user_detail_setting = UserDetailSetting.find(params[:id])
   end
 end

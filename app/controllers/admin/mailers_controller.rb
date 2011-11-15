@@ -1,5 +1,6 @@
 class Admin::MailersController < ApplicationController
   #FILTERS
+  before_filter :find_mailer, :only => [:show, :edit, :update, :destroy, :sendmail]
   before_filter :require_admin
 
   # GET /mailers
@@ -15,7 +16,7 @@ class Admin::MailersController < ApplicationController
   # GET /mailers/1
   # GET /mailers/1.xml
   def show
-    @mailer = Mailer.find(params[:id])
+    #@mailer = Mailer.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @mailer }
@@ -34,7 +35,7 @@ class Admin::MailersController < ApplicationController
 
   # GET /mailers/1/edit
   def edit
-    @mailer = Mailer.find(params[:id])
+    #@mailer = Mailer.find(params[:id])
   end
 
   # POST /mailers
@@ -46,7 +47,7 @@ class Admin::MailersController < ApplicationController
         format.html { redirect_to(@mailer, :notice => t(:mailer_created)) }
         format.xml  { render :xml => @mailer, :status => :created, :location => @mailer }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @mailer.errors, :status => :unprocessable_entity }
       end
     end
@@ -55,13 +56,13 @@ class Admin::MailersController < ApplicationController
   # PUT /mailers/1
   # PUT /mailers/1.xml
   def update
-    @mailer = Mailer.find(params[:id])
+    #@mailer = Mailer.find(params[:id])
     respond_to do |format|
       if @mailer.update_attributes(params[:mailer])
         format.html { redirect_to(@mailer, :notice => t(:mailer_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @mailer.errors, :status => :unprocessable_entity }
       end
     end
@@ -70,7 +71,7 @@ class Admin::MailersController < ApplicationController
   # DELETE /mailers/1
   # DELETE /mailers/1.xml
   def destroy
-    @mailer = Mailer.find(params[:id])
+    #@mailer = Mailer.find(params[:id])
     unless @mailer.is_deletable
       flash[:notice] = t(:standard_mails_required)
     else
@@ -85,7 +86,7 @@ class Admin::MailersController < ApplicationController
   # GET /mailers/1/sendmail
   # GET /mailers/1/sendmail.xml
   def sendmail
-    @mailer = Mailer.find(params[:id])
+   # @mailer = Mailer.find(params[:id])
     respond_to do |format|
       format.html # sendmail.html.erb
       format.xml  { render :xml => @mailer }
@@ -110,5 +111,9 @@ class Admin::MailersController < ApplicationController
         format.xml  { head :ok }
       end
     end
+  end
+ private
+  def find_mailer
+     @mailer = Mailer.find(params[:id])
   end
 end

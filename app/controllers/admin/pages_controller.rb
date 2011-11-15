@@ -4,6 +4,8 @@ class Admin::PagesController < ApplicationController
 cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 
 #FILTER
+before_filter :find_page_type, :only => [:create, :update]
+before_filter :find_page, :only => [:edit, :destroy, :query]
 before_filter :require_admin
 
 
@@ -68,7 +70,7 @@ before_filter :require_admin
   # GET /pages/new
   # GET /pages/new.xml
   def new
-   @page_type='Page'
+   #@page_type='Page'
     @page = Page.new
     respond_to do |format|
       format.html # new.html.erb
@@ -112,7 +114,7 @@ before_filter :require_admin
 
   # GET /pages/1/edit
   def edit
-    @page = Page.find(params[:id])
+   # @page = Page.find(params[:id])
     @page_type = "Page"
     @page_type = "ObjectForm" if @page.type == "ObjectForm"
     @page_type = "View"   if @page.type == "View"
@@ -122,7 +124,7 @@ before_filter :require_admin
   # POST /pages
   # POST /pages.xml
   def create
-      @page_type= params[:page_type]
+      #@page_type= params[:page_type]
       if @page_type == "ObjectForm"
         @page_type='Form'
         @page =ObjectForm.new(params[:object_form])
@@ -147,7 +149,7 @@ before_filter :require_admin
         format.html { redirect_to(:action=>'show',:id=>@page) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
@@ -156,7 +158,7 @@ before_filter :require_admin
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @page_type = params[:page_type]
+    #@page_type = params[:page_type]
     page_params = params[:page]
     if @page_type == "ObjectForm"
       @page_type="Form"
@@ -196,7 +198,7 @@ before_filter :require_admin
         format.html { redirect_to(:action=>'show' ,:id=>@page) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
     end
@@ -205,7 +207,7 @@ before_filter :require_admin
   # DELETE /pages/1
   # DELETE /pages/1.xml
    def destroy
-    @page = Page.find(params[:id])
+    #@page = Page.find(params[:id])
     @page.type='Page' if @page.type==nil
     @page.type='Form' if @page.type=='ObjectForm'
     flash[:notice]="#{@page.type} #{t(:page_deleted)}"
@@ -219,7 +221,7 @@ before_filter :require_admin
   # GET /pages/query
   # GET /pages/query.xml
  def query
-  @page = Page.find(params[:id])
+  #@page = Page.find(params[:id])
   respond_to do |format|
       format.html #query.html.erb
       format.xml  { render :xml=>@page}
@@ -260,5 +262,10 @@ def update_page_variables(page_variables,page)
   pv.save
  end
 end
-
+def find_page
+     @page = Page.find(params[:id])
+end
+def find_page_type
+   @page_type = params[:page_type]
+end
 end

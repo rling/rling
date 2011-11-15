@@ -1,5 +1,6 @@
 class Admin::RolesController < ApplicationController
 #Filters
+  before_filter :find_role, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
   # GET /roles
   # GET /roles.xml
@@ -14,7 +15,7 @@ class Admin::RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.xml
   def show
-    @role = Role.find(params[:id])
+   # @role = Role.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @role }
@@ -33,7 +34,7 @@ class Admin::RolesController < ApplicationController
 
   # GET /roles/1/edit
   def edit
-    @role = Role.find(params[:id])
+   # @role = Role.find(params[:id])
   end
 
   # POST /roles
@@ -45,7 +46,7 @@ class Admin::RolesController < ApplicationController
         format.html { redirect_to(roles_path, :notice => t(:role_created)) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
     end
@@ -54,13 +55,13 @@ class Admin::RolesController < ApplicationController
   # PUT /roles/1
   # PUT /roles/1.xml
   def update
-    @role = Role.find(params[:id])
+   # @role = Role.find(params[:id])
     respond_to do |format|
       if @role.update_attributes(params[:role])
         format.html { redirect_to(@role, :notice => t(:role_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @role.errors, :status => :unprocessable_entity }
       end
     end
@@ -69,11 +70,15 @@ class Admin::RolesController < ApplicationController
   # DELETE /roles/1
   # DELETE /roles/1.xml
   def destroy
-    @role = Role.find(params[:id])
+    #@role = Role.find(params[:id])
     @role.destroy
     respond_to do |format|
       format.html { redirect_to(roles_url, :notice=> t(:role_deleted)) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_role
+     @role = Role.find(params[:id])
   end
 end

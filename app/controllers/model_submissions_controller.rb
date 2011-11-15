@@ -5,8 +5,9 @@ class ModelSubmissionsController < ApplicationController
  cache_sweeper :model_submission_sweeper,  :only => [:create, :update, :destroy]
 
   #FILTERS
+  before_filter :find_model_submission, :only => [:show, :edit, :destroy, :add_category, :category_add, :category_remove]
   before_filter :get_object_model,:verify_permission
-
+  before_filter :find_model, :only => [:create, :update]
   # GET /object_model/1/model_submissions
   # GET /object_model/1/model_submissions.xml
   def index
@@ -25,7 +26,7 @@ class ModelSubmissionsController < ApplicationController
   # GET /object_model/1/model_submissions/1
   # GET /object_model/1/model_submissions/1.xml
   def show
-    @model_submission =  @object.model_submissions.find(params[:id])
+   # @model_submission =  @object.model_submissions.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @model_submission }
@@ -44,7 +45,7 @@ class ModelSubmissionsController < ApplicationController
 
   # GET /object_model/1/model_submissions/1/edit
   def edit
-      @model_submission =  @object.model_submissions.find(params[:id])
+     # @model_submission =  @object.model_submissions.find(params[:id])
      respond_to do |format|
       format.html # edit.html.erb
       format.xml  { render :xml => @model_submission }
@@ -54,7 +55,7 @@ class ModelSubmissionsController < ApplicationController
   # POST /object_model/1/model_submissions
   # POST /object_model/1/model_submissions.xmlmodel_data
   def create
-    message= t(:model_submission_submitted)
+    #message= t(:model_submission_submitted)
     if @object.nil?
       message= t(:error_in_model_submission)
     else
@@ -94,7 +95,7 @@ class ModelSubmissionsController < ApplicationController
           end
         else
           respond_to do |format|
-            format.html { render :action => "new" }
+            format.html { render  "new" }
             format.xml  { render :xml => @model_submission.errors, :status => :unprocessable_entity }
           end
         end
@@ -102,7 +103,7 @@ class ModelSubmissionsController < ApplicationController
         message = t(:mandatory_fields_required)
         flash[:notice] = message
         respond_to do |format|
-            format.html { render :action => "new" }
+            format.html { render  "new" }
             format.xml  { render :xml => @model_submission.errors, :status => :unprocessable_entity }
         end
       end
@@ -112,7 +113,7 @@ class ModelSubmissionsController < ApplicationController
   # PUT /object_model/1/model_submissions/1
   # PUT /object_model/1/model_submissions/1.xml
   def update
-    message= t(:model_submission_submitted)
+   # message= t(:model_submission_submitted)
     if @object.nil?
       message= t(:error_in_model_submission)
     else
@@ -157,14 +158,14 @@ class ModelSubmissionsController < ApplicationController
           end
         else
           respond_to do |format|
-            format.html { render :action=>'edit' }
+            format.html { render 'edit' }
             format.xml  { render :xml=>@model_submission.errors,:status=>:unprocessable_entity }
           end
         end
       else
         flash[:notice] = t(:mandatory_fields_required)
         respond_to do |format|
-          format.html { render :action=>'edit' }
+          format.html { render 'edit' }
           format.xml  { render :xml=>@model_submission.errors,:status=>:unprocessable_entity }
         end
       end
@@ -174,7 +175,7 @@ class ModelSubmissionsController < ApplicationController
   # DELETE /object_model/1/model_submissions/1
   # DELETE /object_model/1/model_submissions/1.xml
   def destroy
-    @model_submission =  @object.model_submissions.find(params[:id])
+   # @model_submission =  @object.model_submissions.find(params[:id])
     @model_submission.destroy
     flash[:notice] = t(:model_submission_deleted)
     respond_to do |format|
@@ -202,7 +203,7 @@ class ModelSubmissionsController < ApplicationController
   # GET /object_model/1/model_submissions/1/add_category
   # GET /object_model/1/model_submissions/1/add_category.xml
   def add_category
-     @model_submission =  @object.model_submissions.find(params[:id])
+     #@model_submission =  @object.model_submissions.find(params[:id])
      @categories=Category.find(:all,:conditions=>{:categoryset_id=>@object.categoryset_id})
      respond_to do |format|
       format.html #add_category.html.erb
@@ -213,7 +214,7 @@ class ModelSubmissionsController < ApplicationController
   # POST /object_model/1/model_submissions/1/add_category
   # POST /object_model/1/model_submissions/1/add_category.xml
    def category_add
-     @model_submission =  @object.model_submissions.find(params[:id])
+    # @model_submission =  @object.model_submissions.find(params[:id])
      @category=Category.find(params[:category])
      unless @model_submission.enrolled_in?(@category)
        @model_submission.categories << @category
@@ -228,7 +229,7 @@ class ModelSubmissionsController < ApplicationController
   # DELETE /object_model/1/model_submissions/1/category_remove
   # DELETE /object_model/1/model_submissions/1/category_remove.xml
    def category_remove
-     @model_submission =  @object.model_submissions.find(params[:id])
+    # @model_submission =  @object.model_submissions.find(params[:id])
      @category=Category.find(params[:category_id])
      if @model_submission.enrolled_in?(@category)
        @model_submission.categories.delete(@category)
@@ -245,5 +246,10 @@ class ModelSubmissionsController < ApplicationController
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end
-
+   def find_model_submission
+     @model_submission =  @object.model_submissions.find(params[:id])
+   end
+   def find_model
+     message= t(:model_submission_submitted)
+   end
 end

@@ -1,5 +1,6 @@
 class Admin::CommentComponentsController < ApplicationController
   #FILTERS
+  before_filter :find_comment, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
   before_filter :get_object_model
 
@@ -16,7 +17,7 @@ class Admin::CommentComponentsController < ApplicationController
   # GET /object_models/1/comment_components/1
   # GET /object_models/1/comment_components/1.xml
   def show
-    @comment_component = @object.comment_components.find(params[:id])
+   # @comment_component = @object.comment_components.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @comment_component }
@@ -35,7 +36,7 @@ class Admin::CommentComponentsController < ApplicationController
 
   # GET /object_models/1/comment_components/1/edit
   def edit
-    @comment_component = @object.comment_components.find(params[:id])
+    #@comment_component = @object.comment_components.find(params[:id])
   end
 
   # POST /object_models/1/comment_components
@@ -47,7 +48,7 @@ class Admin::CommentComponentsController < ApplicationController
         format.html { redirect_to(object_model_comment_components_path, :notice => t(:comment_component_created)) }
         format.xml  { render :xml => @comment_component, :status => :created, :location => @comment_component }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @comment_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -56,13 +57,13 @@ class Admin::CommentComponentsController < ApplicationController
   # PUT /object_models/1/comment_components/1
   # PUT /object_models/1/comment_components/1.xml
   def update
-    @comment_component =@object.comment_components.find(params[:id])
+   # @comment_component =@object.comment_components.find(params[:id])
     respond_to do |format|
       if @comment_component.update_attributes(params[:comment_component])
         format.html { redirect_to(object_model_comment_components_path, :notice => t(:comment_component_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @comment_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -71,7 +72,7 @@ class Admin::CommentComponentsController < ApplicationController
   # DELETE /object_models/1/comment_components/1
   # DELETE /object_models/1/comment_components/1.xml
   def destroy
-    @comment_component = @object.comment_components.find(params[:id])
+    #@comment_component = @object.comment_components.find(params[:id])
     @comment_component.destroy
     respond_to do |format|
       format.html { redirect_to(object_model_comment_components_url) }
@@ -84,4 +85,9 @@ class Admin::CommentComponentsController < ApplicationController
    def get_object_model
      @object=ObjectModel.find(params[:object_model_id])
    end
+
+  def find_comment
+    @comment_component = @object.comment_components.find(params[:id])
+   end
+
 end

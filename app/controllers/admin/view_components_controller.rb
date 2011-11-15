@@ -1,5 +1,6 @@
 class Admin::ViewComponentsController < ApplicationController
   # FILTERS
+  before_filter :find_view_component, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
   before_filter :get_view
 
@@ -17,7 +18,7 @@ class Admin::ViewComponentsController < ApplicationController
   # GET /views/1/view_components/1
   # GET /views/1/view_components/1.xml
   def show
-    @view_component = @page.view_components.find(params[:id])
+   # @view_component = @page.view_components.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +39,7 @@ class Admin::ViewComponentsController < ApplicationController
 
   # GET /views/1/view_components/1/edit
   def edit
-    @view_component = @page.view_components.find(params[:id])
+   # @view_component = @page.view_components.find(params[:id])
   end
 
   # POST /views/1/view_components
@@ -51,7 +52,7 @@ class Admin::ViewComponentsController < ApplicationController
         format.html { redirect_to(view_view_components_path, :notice => t(:view_component_created)) }
         format.xml  { render :xml => @view_component, :status => :created, :location => @view_component }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @view_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -60,14 +61,14 @@ class Admin::ViewComponentsController < ApplicationController
   # PUT /views/1/view_components/1
   # PUT /views/1/view_components/1.xml
   def update
-    @view_component = @page.view_components.find(params[:id])
+   # @view_component = @page.view_components.find(params[:id])
 
     respond_to do |format|
       if @view_component.update_attributes(params[:view_component])
         format.html { redirect_to(view_view_components_path, :notice => t(:view_component_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @view_component.errors, :status => :unprocessable_entity }
       end
     end
@@ -76,7 +77,7 @@ class Admin::ViewComponentsController < ApplicationController
   # DELETE /views/1/view_components/1
   # DELETE /views/1/view_components/1.xml
   def destroy
-    @view_component = @page.view_components.find(params[:id])
+    #@view_component = @page.view_components.find(params[:id])
     @view_component.destroy
 
     respond_to do |format|
@@ -102,5 +103,7 @@ private
   def get_view
   @page=View.find(params[:view_id])
   end
-
+  def find_view_component
+     @view_component = @page.view_components.find(params[:id])
+  end
 end

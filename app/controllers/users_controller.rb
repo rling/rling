@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   include ApplicationHelper
 
   #FILTERS
+  before_filter :find_user, :only =>[:update, :destroy]
+  before_filter :find_user_id, :only =>[:show, :edit]
   before_filter :require_user, :except => [:new,:create,:activate]
   before_filter :require_admin, :only => [:index,:destroy]
 
@@ -21,10 +23,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.xml
   def show
-    userid = params[:id]
-    userid = current_user.id if userid.nil? || !current_user.admin?
-    if User.exists?(userid)
-    @user = User.find(userid)
+   # userid = params[:id]
+   # userid = current_user.id if userid.nil? || !current_user.admin?
+    #if User.exists?(userid)
+    #@user = User.find(userid)
+    if @user
     @user_detail_settings=UserDetailSetting.all
     @objects= []
     ObjectModel.all.each do |om|
@@ -87,11 +90,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    userid = params[:id]
-    userid = current_user.id if userid.nil? || !current_user.admin?
-    if User.exists?(userid)
-    @user = User.find(userid)
-    else
+    #userid = params[:id]
+   # userid = current_user.id if userid.nil? || !current_user.admin?
+    #if User.exists?(userid)
+    #@user = User.find(userid)
+    #else
+     if  !@user
       redirect_to :controller=>"display",:action=>"error_page_display"
     end
   end
@@ -122,7 +126,7 @@ class UsersController < ApplicationController
         end
         format.xml { render :xml => user.email, :status => :created }
       else
-         format.html { render :action => "new" }
+         format.html { render  "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
      end
@@ -151,13 +155,13 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user = User.find(params[:id])
+   # @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => t(:user_updated)) }
         format.xml  { head :ok }
       else
-         format.html { render :action => "edit" }
+         format.html { render  "edit" }
          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
@@ -166,7 +170,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.xml
   def destroy
-    @user = User.find(params[:id])
+   # @user = User.find(params[:id])
     if @user.admin?
       if @user.id==1
         flash[:notice] = t(:admin_required)
@@ -193,7 +197,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       unless @user_detail_settings.empty?
         @user=User.find(params[:id])
-       format.html { render :action => "user_details" }
+       format.html { render  "user_details" }
       else
         format.html {redirect_to users_path}
       end
@@ -271,5 +275,16 @@ class UsersController < ApplicationController
       format.html { redirect_to(user_details_user_path(user_detail.user_id)) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def find_user_id
+    userid = params[:id]
+    userid = current_user.id if userid.nil? || !current_user.admin?
+    User.exists?(userid)
+    @user = User.find(userid)
+  end
+  def find_user
+    @user = User.find(params[:id])
   end
  end

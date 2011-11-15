@@ -1,5 +1,6 @@
 class Admin::ViewConditionsController < ApplicationController
 
+   before_filter :find_view_condition, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
  before_filter :get_view
   # GET /view_conditions
@@ -16,7 +17,7 @@ class Admin::ViewConditionsController < ApplicationController
   # GET /view_conditions/1
   # GET /view_conditions/1.xml
   def show
-    @view_condition =  @page.view_conditions.find(params[:id])
+    #@view_condition =  @page.view_conditions.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +37,7 @@ class Admin::ViewConditionsController < ApplicationController
 
   # GET /view_conditions/1/edit
   def edit
-    @view_condition =  @page.view_conditions.find(params[:id])
+   # @view_condition =  @page.view_conditions.find(params[:id])
   end
 
   # POST /view_conditions
@@ -49,7 +50,7 @@ class Admin::ViewConditionsController < ApplicationController
         format.html { redirect_to(view_view_conditions_path, :notice => t(:view_condition_created)) }
         format.xml  { render :xml => @view_condition, :status => :created, :location => @view_condition }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @view_condition.errors, :status => :unprocessable_entity }
       end
     end
@@ -58,14 +59,14 @@ class Admin::ViewConditionsController < ApplicationController
   # PUT /view_conditions/1
   # PUT /view_conditions/1.xml
   def update
-    @view_condition =  @page.view_conditions.find(params[:id])
+   # @view_condition =  @page.view_conditions.find(params[:id])
 
     respond_to do |format|
       if @view_condition.update_attributes(params[:view_condition])
         format.html { redirect_to(view_view_conditions_path, :notice => t(:view_condition_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @view_condition.errors, :status => :unprocessable_entity }
       end
     end
@@ -74,7 +75,7 @@ class Admin::ViewConditionsController < ApplicationController
   # DELETE /view_conditions/1
   # DELETE /view_conditions/1.xml
   def destroy
-    @view_condition =  @page.view_conditions.find(params[:id])
+   # @view_condition =  @page.view_conditions.find(params[:id])
     @view_condition.destroy
 
     respond_to do |format|
@@ -87,5 +88,8 @@ class Admin::ViewConditionsController < ApplicationController
   # Get the View (Page Object) to which the conditions are associated to.
   def get_view
   @page=View.find(params[:view_id])
+  end
+  def find_view_condition
+     @view_condition =  @page.view_conditions.find(params[:id])
   end
 end

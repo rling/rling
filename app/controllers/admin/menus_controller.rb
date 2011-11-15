@@ -2,6 +2,7 @@ class Admin::MenusController < ApplicationController
 #Includes
   include ApplicationHelper
   #FILTERS
+   before_filter :find_menu, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
 
   # GET /menus
@@ -17,7 +18,7 @@ class Admin::MenusController < ApplicationController
   # GET /menus/1
   # GET /menus/1.xml
   def show
-    @menu = Menu.find(params[:id])
+   # @menu = Menu.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +39,7 @@ class Admin::MenusController < ApplicationController
 
   # GET /menus/1/edit
   def edit
-    @menu = Menu.find(params[:id])
+    #@menu = Menu.find(params[:id])
   end
 
   # POST /menus
@@ -51,7 +52,7 @@ class Admin::MenusController < ApplicationController
         format.html { redirect_to(menus_path, :notice => t(:menu_created)) }
         format.xml  { render :xml => @menu, :status => :created, :location => @menu }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @menu.errors, :status => :unprocessable_entity }
       end
     end
@@ -60,14 +61,14 @@ class Admin::MenusController < ApplicationController
   # PUT /menus/1
   # PUT /menus/1.xml
   def update
-    @menu = Menu.find(params[:id])
+   # @menu = Menu.find(params[:id])
 
     respond_to do |format|
       if @menu.update_attributes(params[:menu])
         format.html { redirect_to(menus_path, :notice => t(:menu_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @menu.errors, :status => :unprocessable_entity }
       end
     end
@@ -76,7 +77,7 @@ class Admin::MenusController < ApplicationController
   # DELETE /menus/1
   # DELETE /menus/1.xml
   def destroy
-    @menu = Menu.find(params[:id])
+   # @menu = Menu.find(params[:id])
     @menu.destroy
 
     respond_to do |format|
@@ -95,5 +96,9 @@ class Admin::MenusController < ApplicationController
       format.html { redirect_to(menus_url) }
       format.xml  { head :ok }
     end
+  end
+  private
+  def find_menu
+     @menu = Menu.find(params[:id])
   end
 end

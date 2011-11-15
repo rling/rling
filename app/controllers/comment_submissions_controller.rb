@@ -16,7 +16,7 @@ class CommentSubmissionsController < ApplicationController
       format.xml  { render :xml => @comment_submissions }
     end
     else
-      render :action=>'display/no_permissions'
+      render 'display/no_permissions'
     end
   end
 
