@@ -18,6 +18,7 @@ class DisplayController < ApplicationController
     @sort= params[:sort]
     @order= params[:order]
     @category = params[:category]
+    @cate=Category.find(@category)
     @page = Page.where(:perma_link=>params[:permalink],:status=>:published).first
       if @page.nil?
         redirect_to :action=>"error_page_display"
@@ -33,14 +34,15 @@ class DisplayController < ApplicationController
     if @object.nil?
       redirect_to :action=>"error_page_display"
     else
-      if validate_permission("view",@object)
-        @model_submission=ModelSubmission.where(:perma_link=>params[:permalink],:object_model_id=>@object.id,:status=>:published).first
+      obj=@object
+      if validate_permission("view",obj)
+        @model_submission=ModelSubmission.where(:perma_link=>params[:permalink],:object_model_id=>obj.id,:status=>:published).first
         redirect_to :action=>"error_page_display" if @model_submission.nil?
       else
         redirect_to :action=>"no_permissions"
       end
     end
-    render :layout=>@object.layout if !(@object.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{Rails.root.to_s}/app/views/layouts/#{@object.layout}.erb")
+    render :layout=>@object.layout if !(obj.nil? || @model_submission.nil?) && !@object.layout.blank? && File.exists?("#{Rails.root.to_s}/app/views/layouts/#{obj.layout}.erb")
   end
 
   #MATCH "display/error_page_display"=>"display#error_page_display"
@@ -64,47 +66,48 @@ class DisplayController < ApplicationController
     @results = []
     @msg = ""
     if request.post?
-    unless @query.blank?
-     @query = checkforjs(@query)
-    case @type.downcase
-      when "all"
-        @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
-        # Search for all models for information in title and body
-        ObjectModel.all.each do |model|
-          title = model.model_components.where(:component_name=>"title").first
-          body = model.model_components.where(:component_name=>"body").first
-          model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
-          model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
-          model_data.each do |md|
-            ms = md.model_submission
-            @results << ms if ms.status == "Published" && !@results.include?(ms)
-          end
-        end
-      when "page"
-        # Search only page
-        @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
-      when ""
+      ModelData.search(@type, @query )
+   # unless @query.blank?
+    # @query = checkforjs(@query)
+    #case @type.downcase
+    #  when "all"
+     #   @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
+      #  # Search for all models for information in title and body
+      #  ObjectModel.all.each do |model|
+       #   title = model.model_components.where(:component_name=>"title").first
+       #   body = model.model_components.where(:component_name=>"body").first
+        #  model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
+        #  model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
+        #  model_data.each do |md|
+         #   ms = md.model_submission
+          #  @results << ms if ms.status == "Published" && !@results.include?(ms)
+        #  end
+       # end
+      #when "page"
+      #  # Search only page
+      #  @results = @results + Page.find(:all, :conditions => ['title LIKE ? or body LIKE ? and status=?',"%#{@query}%", "%#{@query}%","Published"])
+      #when ""
         # No Search
-      else
+      #else
         # GET THE TYPE NAME i.e. BLOGS object model
         # GET all the model submissions for that object model
         # Search for those model submissions
-        model = ObjectModel.find_by_name(@type)
-        unless model.nil?
-          title = model.model_components.where(:component_name=>"title").first
-          body = model.model_components.where(:component_name =>"body").first
-          model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
-          model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
-          model_data.each do |md|
-            ms = md.model_submission
-            @results << ms if ms.status == "Published" && !@results.include?(ms)
-          end
-        end
-      end
-      @msg = "#{t(:search_string)} #{@results.size} #{t(:search_result)}"
-    else
-      @msg = t(:search_found_empty)
-    end
+       # model = ObjectModel.find_by_name(@type)
+       # unless model.nil?
+       #   title = model.model_components.where(:component_name=>"title").first
+        #  body = model.model_components.where(:component_name =>"body").first
+        #  model_data = ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",title.id])
+        #  model_data = model_data + ModelData.find(:all,:conditions=>["data_value LIKE ? and model_component_id=?", "%#{@query}%",body.id])
+        #  model_data.each do |md|
+        #    ms = md.model_submission
+          #  @results << ms if ms.status == "Published" && !@results.include?(ms)
+         # end
+        #end
+     # end
+     # @msg = "#{t(:search_string)} #{@results.size} #{t(:search_result)}"
+    #else
+     # @msg = t(:search_found_empty)
+    #end
     else
       @msg = t(:enter_search_criteria)
     end
@@ -119,34 +122,35 @@ class DisplayController < ApplicationController
     if object_form.nil?
       message= t(:error_in_object_form)
     else
-      form_datum = params[:form_field]
-      mandatoryfailed = false
-      object_form.form_components.each do |component|
-        if component.mandatory && form_datum[component.component_name].blank?
-          mandatoryfailed = true
-          break;
-        end
-      end
-      unless mandatoryfailed
-        submission = FormSubmission.create(:object_form_id=>object_form.id)
-        object_form.form_components.each do |component|
-        case component.component_type
-          when "File"
-            unless form_datum[component.component_name].nil?
-              asset = Asset.create(:sizes=>component.default_value,:upload=>form_datum[component.component_name])
-              FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
-            end
-        else
-            FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_datum[component.component_name])
-        end
-        end
-        message = t(:object_form_stored)
-        Notifier.form_submitted(submission).deliver unless object_form.email.blank?
-      else
-        message = t(:mandatory_fields_required)
-      end
+      FormSubmission.create_form(params[:form_field],object_form )
+      #form_datum = params[:form_field]
+     # mandatoryfailed = false
+      #object_form.form_components.each do |component|
+      #  if component.mandatory && form_datum[component.component_name].blank?
+      #    mandatoryfailed = true
+      #    break;
+      #  end
+     # end
+     # unless mandatoryfailed
+      #  submission = FormSubmission.create(:object_form_id=>object_form.id)
+       # object_form.form_components.each do |component|
+       # case component.component_type
+        #  when "File"
+         #   unless form_datum[component.component_name].nil?
+          #    asset = Asset.create(:sizes=>component.default_value,:upload=>form_datum[component.component_name])
+          #    FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>asset.id.to_s)
+         #   end
+       # else
+         #   FormDatum.create(:form_submission_id=>submission.id,:form_component_id=>component.id,:data_value=>form_datum[component.component_name])
+       # end
+        #end
+       # message = t(:object_form_stored)
+       # Notifier.form_submitted(submission).deliver unless object_form.email.blank?
+     # else
+       # message = t(:mandatory_fields_required)
+      #end
     end
-    flash[:notice] = message
+    #flash[:notice] = message
     redirect_to :back
   end
 
@@ -158,34 +162,35 @@ class DisplayController < ApplicationController
     if model_submission.nil?
       message= t(:error_in_comment_submission)
     else
-      comment_data = params[:form_field]
-      mandatoryfailed = false
-      model_submission.object_model.comment_components.each do |component|
-        if component.mandatory && comment_data[component.component_name].blank?
-          mandatoryfailed = true
-          break;
-        end
-      end
-      unless mandatoryfailed
-        submission = CommentSubmission.new(:model_submission_id=>model_submission.id )
-        submission.parent_id=params[:parent_id]
-        submission.save
-        model_submission.object_model.comment_components.each do |component|
-          case component.component_type
-            when "File"
-              unless comment_data[component.component_name].nil?
-                asset = Asset.create(:sizes=>component.default_value,:upload=>comment_data[component.component_name])
-                CommentDatum.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
-              end
-          else
-            CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>checkforjs(comment_data[component.component_name]))
-          end
-        end
-        message = t(:comment_submission_stored)
-        submission.send_email
-      else
-        message = t(:mandatory_fields_required)
-      end
+      ModelSubmission.create_submissiion(params[:form_field], model_submission, params[:parent_id])
+      #comment_data = params[:form_field]
+      #mandatoryfailed = false
+      #model_submission.object_model.comment_components.each do |component|
+      #  if component.mandatory && comment_data[component.component_name].blank?
+       #   mandatoryfailed = true
+       #   break;
+       # end
+      #end
+     # unless mandatoryfailed
+       # submission = CommentSubmission.new(:model_submission_id=>model_submission.id )
+      #  submission.parent_id=params[:parent_id]
+       # submission.save
+       # model_submission.object_model.comment_components.each do |component|
+        #  case component.component_type
+         #   when "File"
+           #   unless comment_data[component.component_name].nil?
+            #    asset = Asset.create(:sizes=>component.default_value,:upload=>comment_data[component.component_name])
+            #    CommentDatum.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
+            #  end
+         # else
+          #  CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>checkforjs(comment_data[component.component_name]))
+         # end
+        #end
+        #message = t(:comment_submission_stored)
+       # submission.send_email
+      #else
+      #  message = t(:mandatory_fields_required)
+      #end
     end
     flash[:notice] = message
     redirect_to :back

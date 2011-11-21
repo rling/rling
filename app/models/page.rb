@@ -68,6 +68,39 @@ def published?
   return self.status == "Published"
 end
 
+def self.update_page(page_type, page_params, id , params)
+  if page_type == "ObjectForm"
+      page_type="Form"
+      page_params = params[:object_form]
+    end
+    if page_type == "View"
+      page_params = params[:view]
+    end
+    if page_type== "CategoryView"
+      page_params = params[:category_view]
+    end
+    page = Page.find(id)
+    unless page_params[:menu_name].nil?
+      unless page_params[:menu_name].empty?
+        menu = Menu.find_by_page_id(page.id)
+         if menu.nil?
+           menu = Menu.new
+         end
+         menu.name = page_params[:menu_name]
+         menu.parent_id = page_params[:menu_parent_id]
+         menu.page_id = page.id
+         menu.menu_view_type = page_params[:page_view_type]
+         menu.save
+     end
+   end
+end
+
+def self.destroy_page(page)
+  page.type='Page' if page.type==nil
+  page.type='Form' if page.type=='ObjectForm'
+ # flash[:notice]="#{page.type} #{t(:page_deleted)}"
+  page.destroy
+end
 #private methods
 private
 

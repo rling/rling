@@ -5,7 +5,7 @@ selectedmenu = ((menu.level == 1)? menu : Menu.find_by_id(menu.parent_id))
 menus = Menu.find_all_by_parent_id(selectedmenu.id,:order=>"position desc")
 menus << selectedmenu if (menu.level!=1)
 menus.reverse.each do |menuitem|
-if (menuitem.link_path.nil? or menuitem.link_path.empty?)  and !menuitem.page_id.nil?
+if Menu.link_menu(menuitem)
  menulink = menuitem.page.perma_link
  else
  menulink = menuitem.link_path

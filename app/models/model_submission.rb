@@ -6,6 +6,7 @@ class ModelSubmission < ActiveRecord::Base
 
   #Associations
   belongs_to :object_model
+  delegate :name, :allow_comments , :to => :object_model, :prefix => true
   has_many :model_datas ,:dependent=>:destroy
   has_many  :comment_submissions ,:dependent => :destroy
   has_many :categorizations, :dependent=> :destroy
@@ -35,6 +36,36 @@ class ModelSubmission < ActiveRecord::Base
    title = self.object_model.model_components.find_by_component_name("title")
    model_data = self.model_datas.find_by_model_component_id(title.id)
    return model_data.nil? ? "" : model_data.data_value
+ end
+
+ def self.create_submissiion(comment_data, model_submission,id)
+   mandatoryfailed = false
+      model_submission.object_model.comment_components.each do |component|
+        if component.mandatory && comment_data[component.component_name].blank?
+          mandatoryfailed = true
+          break;
+        end
+      end
+      unless mandatoryfailed
+        submission = CommentSubmission.new(:model_submission_id=>model_submission.id )
+        submission.parent_id=id
+        submission.save
+        model_submission.object_model.comment_components.each do |component|
+          case component.component_type
+            when "File"
+              unless comment_data[component.component_name].nil?
+                asset = Asset.create(:sizes=>component.default_value,:upload=>comment_data[component.component_name])
+                CommentDatum.create( :comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>asset.id.to_s)
+              end
+          else
+            CommentDatum.create(:comment_submission_id=>submission.id,:comment_component_id=>component.id,:data_value=>checkforjs(comment_data[component.component_name]))
+          end
+        end
+        message = t(:comment_submission_stored)
+        submission.send_email
+      else
+        message = t(:mandatory_fields_required)
+      end
  end
 end
 

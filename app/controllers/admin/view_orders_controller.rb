@@ -1,8 +1,8 @@
 class Admin::ViewOrdersController < ApplicationController
 #Filters
+  before_filter :get_view
   before_filter :find_view_order, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
- before_filter :get_view
   # GET /view_orders
   # GET /view_orders.xml
   def index

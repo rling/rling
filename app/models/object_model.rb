@@ -33,6 +33,44 @@ class ObjectModel < ActiveRecord::Base
    return self.model_submissions.where(:status =>'Published')
  end
 
+ def self.mandatory(model_data,model_submission, params,object)
+  mandatoryfailed = false
+  object.model_components.each do |component|
+    if  component.component_name.eql?('title')
+       @title =model_data[component.component_name]
+     elsif  component.is_mandatory  && model_data[component.component_name].blank?
+       mandatoryfailed = true
+        break;
+      end
+  end
+  model_submission.perma_link_generate(@title) if params[:permalnk] == "1"
+  model_submission.home_page = params[:home_page]
+  model_submission.status=params[:status]
+   unless mandatoryfailed
+    model_submission.save
+   end
+ end
+
+ def self.create_model( object,model_submission)
+   object.model_components.each do |component|
+            model_data_obj = ModelData.find_by_model_submission_id_and_model_component_id(model_submission.id,component.id)
+            model_data_obj = ModelData.new(:model_submission_id=>model_submission.id,:model_component_id=>component.id) if model_data_obj.nil?
+            case component.component_type
+            when "File"
+              unless model_data[component.component_name].nil?
+                unless model_data_obj.data_value.blank?
+                  asset = Asset.find(model_data_obj.data_value)
+                  asset.destroy
+                end
+                asset = Asset.create(:sizes=>component.default_value,:upload=>model_data[component.component_name])
+                model_data_obj.data_value = asset.id.to_s
+              end
+            else
+              model_data_obj.data_value = checkforjs(model_data[component.component_name])
+            end
+            model_data_obj.save
+          end
+ end
 #Private Methods
 private
 

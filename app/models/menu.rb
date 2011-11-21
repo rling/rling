@@ -2,7 +2,7 @@ class Menu < ActiveRecord::Base
 #Associations
   belongs_to :menuset
   belongs_to :page
-
+  delegate :perma_link , :to => :page, :prefix => true
 #Validations
   validates :name, :presence=>true
   validates :menu_view_type, :presence=>true
@@ -26,7 +26,9 @@ class Menu < ActiveRecord::Base
   def treename
     return self.name
   end
-
+  def self.link_menu(menuitem)
+    (menuitem.link_path.nil? or menuitem.link_path.empty?)  and !menuitem.page_id.nil?
+  end
 #Private Methods
 private
 

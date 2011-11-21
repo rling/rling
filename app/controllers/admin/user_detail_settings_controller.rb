@@ -7,7 +7,7 @@ class Admin::UserDetailSettingsController < ApplicationController
   # GET /user_detail_settings
   # GET /user_detail_settings.xml
   def index
-    @user_detail_settings = UserDetailSetting.all(:order =>'position')
+    @user_detail_settings = UserDetailSetting.all #(:order =>'position')
 
     respond_to do |format|
       format.html # index.html.erb

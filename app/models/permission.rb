@@ -5,6 +5,10 @@ class Permission < ActiveRecord::Base
   #Validations
   name_regex = /^[a-zA-Z0-9_]+$/
   validates :activity_code,:presence=>true, :format=> {:with => name_regex }
+
+ def self.by_type_activity(permission_type,permission_object,activity)
+   self.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
+ end
 end
 
 # == Schema Information

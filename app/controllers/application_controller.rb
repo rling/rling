@@ -26,9 +26,11 @@ class ApplicationController < ActionController::Base
       unless activity.nil?
         permission_type = @object.class.to_s
         permission_object = @object.name
-        permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
+       # permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
+        permission = Permission.by_type_activity(permission_type,permission_object,activity)
         role_id = current_user.nil? ? 1 : current_user.role_id
-        permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+       # permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+        permissionrole = PermissionRole.by_permission_role(permission,role_id)
         if permissionrole.nil? || !permissionrole.value
            redirect_to :controller=>"display",:action=>"no_permissions"
         end
@@ -54,7 +56,8 @@ class ApplicationController < ActionController::Base
   #Check the user from the cookie
   def check_cookie
     if !current_user? && !cookies[:remember_me_code].nil?
-         u = User.find(:first,:conditions=>["salt=?",cookies[:remember_me_code]])
+       #  u = User.find(:first,:conditions=>["salt=?",cookies[:remember_me_code]])
+         u= User.find_by_salt(cookies[:remember_me_code])
         self.current_user = u unless u.nil?
     end
   end
@@ -147,31 +150,6 @@ class ApplicationController < ActionController::Base
   end
 
   def load_style_settings
-     session[:settings] = Hash.new
-     session[:settings][:body_background_color]=Setting.find_by_name("body_background_color").setting_value
-     session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
-     session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
-     session[:settings][:top_bar_link_color]=Setting.find_by_name("top_bar_link_color").setting_value
-     session[:settings][:top_bar_link_hover_color]=Setting.find_by_name("top_bar_link_hover_color").setting_value
-     session[:settings][:header_background_color] = Setting.find_by_name("header_background_color").setting_value
-     session[:settings][:header_logo]=Setting.find_by_name("header_logo").setting_value
-     session[:settings][:header_website_text_color]=Setting.find_by_name("header_website_text_color").setting_value
-     session[:settings][:heading_website_tag_color]=Setting.find_by_name("heading_website_tag_color").setting_value
-     session[:settings][:header_website_font_size]=Setting.find_by_name("header_website_font_size").setting_value
-     session[:settings][:header_website_text]=Setting.find_by_name("header_website_text").setting_value
-     session[:settings][:header_website_tag_text]=Setting.find_by_name("header_website_tag_text").setting_value
-     session[:settings][:header_website_tag_font_size]=Setting.find_by_name("header_website_tag_font_size").setting_value
-     session[:settings][:menu_bar_background_color]=Setting.find_by_name("menu_bar_background_color").setting_value
-     session[:settings][:menu_bar_hover_menu_background_color]=Setting.find_by_name("menu_bar_hover_menu_background_color").setting_value
-     session[:settings][:menu_bar_hover_menu_text_color]=Setting.find_by_name("menu_bar_hover_menu_text_color").setting_value
-     session[:settings][:menu_bar_menu_text_color]=Setting.find_by_name("menu_bar_menu_text_color").setting_value
-     session[:settings][:menu_bar_menu_background_color]=Setting.find_by_name("menu_bar_menu_background_color").setting_value
-     session[:settings][:middle_border_color]=Setting.find_by_name("middle_border_color").setting_value
-     session[:settings][:middle_background_color]=Setting.find_by_name("middle_background_color").setting_value
-     session[:settings][:middle_text_color] =Setting.find_by_name("middle_text_color").setting_value
-     session[:settings][:footer_background_color]=Setting.find_by_name("footer_background_color").setting_value
-     session[:settings][:footer_text_color]=Setting.find_by_name("footer_text_color").setting_value
-     session[:settings][:footer_link_color]=Setting.find_by_name("footer_link_color").setting_value
-     session[:settings][:footer_link_hover_color]=Setting.find_by_name("footer_link_hover_color").setting_value
+     Setting.session_setting
   end
 end

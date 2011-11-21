@@ -1,8 +1,8 @@
 class Admin::CommentComponentsController < ApplicationController
   #FILTERS
+   before_filter :get_object_model
   before_filter :find_comment, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
-  before_filter :get_object_model
 
   # GET /object_models/1/comment_components
   # GET /object_models/1/comment_components.xml

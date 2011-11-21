@@ -1,9 +1,9 @@
 class Admin::FormSubmissionsController < ApplicationController
 
  #FILTERS
- before_filter :find_form_submission, :only => [:show, :edit, :destroy]
  before_filter :require_admin
  before_filter :get_object_form
+ before_filter :find_form_submission, :only => [:show, :edit, :destroy]
 
   # GET /object_form/1/form_submissions
   # GET /object_form/1/form_submissions.xml
@@ -44,24 +44,25 @@ class Admin::FormSubmissionsController < ApplicationController
         end
       end
       unless mandatoryfailed
-        @page.form_components.each do |component|
-          form_data_obj = FormDatum.where(:form_submission_id=>@form_submission.id,:form_component_id => component.id).first
-          form_data_obj = FormDatum.new(:form_submission_id=>@form_submission.id,:form_component_id=>component.id) if form_data_obj.nil?
-          case component.component_type
-          when "File"
-            unless form_data[component.component_name].nil?
-              unless form_data_obj.data_value.blank?
-                asset = Asset.find(form_data_obj.data_value)
-                asset.destroy
-              end
-              asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
-              form_data_obj.data_value = asset.id.to_s
-           end
-          else
-            form_data_obj.data_value = form_data[component.component_name]
-          end
-          form_data_obj.save
-        end
+        FormDatum.update_data(@page,@form_submission ,form_data)
+        #@page.form_components.each do |component|
+         # form_data_obj = FormDatum.where(:form_submission_id=>@form_submission.id,:form_component_id => component.id).first
+         # form_data_obj = FormDatum.new(:form_submission_id=>@form_submission.id,:form_component_id=>component.id) if form_data_obj.nil?
+         # case component.component_type
+         # when "File"
+         #   unless form_data[component.component_name].nil?
+          #    unless form_data_obj.data_value.blank?
+           #     asset = Asset.find(form_data_obj.data_value)
+           #     asset.destroy
+           #   end
+           #   asset = Asset.create(:sizes=>component.default_value,:upload=>form_data[component.component_name])
+          #    form_data_obj.data_value = asset.id.to_s
+          # end
+         # else
+          #  form_data_obj.data_value = form_data[component.component_name]
+         # end
+         # form_data_obj.save
+       # end
        flash[:notice] = t(:form_submission_updated)
        respond_to do |format|
         format.html {redirect_to object_form_form_submissions_path(@path)}
@@ -95,8 +96,9 @@ class Admin::FormSubmissionsController < ApplicationController
      unless form_data.blank?
       asset = Asset.find(form_data.data_value)
       asset.destroy unless asset.nil?
-      form_data.data_value = nil
-      form_data.save
+      fd=form_data
+      fd.data_value = nil
+      fd.save
     end
     respond_to do |format|
       format.html { redirect_to(edit_object_form_form_submission_path(@page,form_data.form_submission)) }

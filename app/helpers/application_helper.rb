@@ -63,7 +63,7 @@ def show_secondary_menu
       submenus.each do |menu|
         menulink = ""
         if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
-          menulink = menu.page.perma_link
+          menulink = menu.page_perma_link
         else
           menulink = menu.link_path
       end
@@ -79,7 +79,7 @@ def show_secondary_menu
       submenus.each do |menu|
         menulink = ""
         if (menu.link_path.nil? or menu.link_path.empty?)  and !menu.page_id.nil?
-          menulink = menu.page.perma_link
+          menulink = menu.page_perma_link
         else
           menulink = menu.link_path
         end

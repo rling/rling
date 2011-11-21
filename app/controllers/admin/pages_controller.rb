@@ -158,35 +158,36 @@ before_filter :require_admin
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    #@page_type = params[:page_type]
+    @page_type = params[:page_type]
     page_params = params[:page]
-    if @page_type == "ObjectForm"
-      @page_type="Form"
-      page_params = params[:object_form]
-    end
-    if @page_type == "View"
-      page_params = params[:view]
-    end
-    if @page_type== "CategoryView"
-      page_params = params[:category_view]
-    end
+    Page.update_page(@page_type, page_params, params[:id] ,params)
+   # if @page_type == "ObjectForm"
+     # @page_type="Form"
+     # page_params = params[:object_form]
+    #end
+   # if @page_type == "View"
+    #  page_params = params[:view]
+    #end
+   # if @page_type== "CategoryView"
+    #  page_params = params[:category_view]
+   # end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
       @page.perma_link_generate
     end
-    unless page_params[:menu_name].nil?
-      unless page_params[:menu_name].empty?
-        menu = Menu.find_by_page_id(@page.id)
-         if menu.nil?
-           menu = Menu.new
-         end
-         menu.name = page_params[:menu_name]
-         menu.parent_id = page_params[:menu_parent_id]
-         menu.page_id = @page.id
-         menu.menu_view_type = page_params[:page_view_type]
-         menu.save
-     end
-     end
+   # unless page_params[:menu_name].nil?
+    #  unless page_params[:menu_name].empty?
+    #    menu = Menu.find_by_page_id(@page.id)
+    #     if menu.nil?
+     #      menu = Menu.new
+     #    end
+      #   menu.name = page_params[:menu_name]
+       #  menu.parent_id = page_params[:menu_parent_id]
+       #  menu.page_id = @page.id
+       #  menu.menu_view_type = page_params[:page_view_type]
+       #  menu.save
+     #end
+     #end
      respond_to do |format|
       if @page.update_attributes(page_params)
         unless params[:page_variables].nil?
@@ -208,10 +209,11 @@ before_filter :require_admin
   # DELETE /pages/1.xml
    def destroy
     #@page = Page.find(params[:id])
-    @page.type='Page' if @page.type==nil
-    @page.type='Form' if @page.type=='ObjectForm'
-    flash[:notice]="#{@page.type} #{t(:page_deleted)}"
-    @page.destroy
+    Page.destroy_page(@page)
+   # @page.type='Page' if @page.type==nil
+   # @page.type='Form' if @page.type=='ObjectForm'
+    #flash[:notice]="#{@page.type} #{t(:page_deleted)}"
+    #@page.destroy
     respond_to do |format|
       format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "Form" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
       format.xml  { head :ok }
@@ -254,12 +256,10 @@ def update_page_variables(page_variables,page)
  page_variables.each do |k,v|
   pv = PageVariable.where(:page_id=>page.id, :page_variable_setting_id=>k).first
   if pv.nil?
-   pv = PageVariable.new
-   pv.page_id = page.id
-   pv.page_variable_setting_id = k.to_i
+   PageVariable.create_page_variable(k, v, page)
   end
-  pv.variable_value = v
-  pv.save
+#  pv.variable_value = v
+ # pv.save
  end
 end
 def find_page

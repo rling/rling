@@ -93,9 +93,10 @@ class Admin::PermissionsController < ApplicationController
       v.each do |k1,v1|
         permission_role=PermissionRole.where(:permission_id=>k,:role_id=>k1).first
         if permission_role.nil?
-          permission_role=PermissionRole.new
-          permission_role.permission_id=k
-          permission_role.role_id=k1
+          PermissionRole.create_role(k,k1)
+          #pr=PermissionRole.new
+         # pr.permission_id=k
+          #pr.role_id=k1
         end
         permission_role.value=true
         permission_role.save

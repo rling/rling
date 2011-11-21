@@ -6,7 +6,7 @@
                         "Root"
 else
                          unless @menu.parent_id.nil?
-                         Menu.find(@menu.parent_id).name
+                         @menu.name
                          end
 end %></p>
  <p><b>Position</b>:<%= @menu.position %></p>

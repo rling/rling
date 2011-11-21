@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   # GET /users.xml
   def index
     @users = User.all
-    @user_detail_settings = UserDetailSetting.all(:order =>'position')
+    @user_detail_settings = UserDetailSetting.all  #(:order =>'position')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,9 +60,9 @@ class UsersController < ApplicationController
      else
        if current_user.admin? && setting.setting_data
        @user = User.new
-       respond_to do |format|
-         format.html # new.html.erb
-         format.xml  { render :xml => @user }
+       respond_to do |forat|
+         forat.html # new.html.erb
+         forat.xml  { render :xml => @user }
          end
        else
        respond_to do |format|
@@ -72,17 +72,17 @@ class UsersController < ApplicationController
        end
      end
   else
-    setting = Setting.where(:name=>"allow_user_register_user").first
-    unless setting.setting_data
+    set = Setting.where(:name=>"allow_user_register_user").first
+    unless set.setting_data
       flash[:notice] = t(:user_is_not_authorized)
       respond_to do |format|
         format.html {redirect_to "/"}
       end
     else
       @user = User.new
-      respond_to do |format|
-        format.html # new.html.erb
-        format.xml  { render :xml => @user }
+      respond_to do |form|
+        form.html # new.html.erb
+        form.xml  { render :xml => @user }
       end
     end
   end
@@ -104,21 +104,21 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
-    @user.login = @user.email if @user.login.blank?
     respond_to do |format|
       if @user.save
         flash[:notice] = t(:user_registered)
-        Notifier.welcome_email(@user).deliver if get_setting("send_welcome_email")
+      # Notifier.welcome_email(@user).deliver if get_setting("send_welcome_email")
+       User.create_user(@user)
         #Write code for Send welcome email if setting is true
-        if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
-          @user.create_activation_key
-          @user.activation_url
-          Notifier.activation_email(@user).deliver
-          flash[:notice] = t(:user_created)
-        else
-          @user.is_activated = true
-          @user.save
-        end
+        #if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
+        #  @user.create_activation_key
+         # @user.activation_url
+         # Notifier.activation_email(@user).deliver
+        #  flash[:notice] = t(:user_created)
+       # else
+        #  @user.is_activated = true
+       #   @user.save
+       # end
         if current_user? and current_user.admin?
           format.html {redirect_to users_path }
         else
@@ -172,14 +172,15 @@ class UsersController < ApplicationController
   def destroy
    # @user = User.find(params[:id])
     if @user.admin?
-      if @user.id==1
-        flash[:notice] = t(:admin_required)
-      elsif @user.id==current_user.id
-        flash[:notice] = t(:cannot_delete_own)
-      else
-        @user.destroy
-        flash[:notice] = t(:admin_deleted)
-      end
+    #  User.user_destroy(@user)
+    #  if @user.id==1
+     #   flash[:notice] = t(:admin_required)
+     # elsif @user.id==current_user.id
+     #   flash[:notice] = t(:cannot_delete_own)
+     # else
+      #  @user.destroy
+      #  flash[:notice] = t(:admin_deleted)
+     # end
     else
       @user.destroy
       flash[:notice] = t(:user_deleted)
@@ -211,37 +212,38 @@ class UsersController < ApplicationController
     user_id=params[:user_id]
     form_field=params[:form_field]
     mandatory_failed = false
-    unless form_field.nil?
-      UserDetailSetting.all.each do |user_detail_setting|
-        if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
-          mandatory_failed = true
-          break
-        end
-        user_detail=UserDetail.where(:user_id=>user_id ,:user_detail_setting_id=>user_detail_setting.id).first
-        user_detail=UserDetail.new if user_detail.nil?
-        user_detail.user_id=user_id if user_detail.user_id.nil?
-        user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
-        case user_detail_setting.field_type
-        when "File"
-          unless form_field[user_detail_setting.field_name].nil?
-            asset = Asset.create(:sizes=>user_detail_setting.default_value,:upload=>form_field[user_detail_setting.field_name])
-            Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
-            user_detail.selected_value = asset.id.to_s
-          end
-        when "Checkbox"
-          if form_field[user_detail_setting.field_name].nil?
-            user_detail.selected = "0"
-          else
-            user_detail.selected_value=form_field[user_detail_setting.field_name]
-          end
-        when "Date"
-          user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
-        else
-          user_detail.selected_value=form_field[user_detail_setting.field_name]
-        end
-        user_detail.save
-      end
-    end
+    User.update_detail(user_id, form_field)
+    #unless form_field.nil?
+     # UserDetailSetting.all.each do |user_detail_setting|
+     #   if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
+      #    mandatory_failed = true
+      #    break
+      #  end
+      #  user_detail=UserDetail.where(:user_id=>user_id ,:user_detail_setting_id=>user_detail_setting.id).first
+      #  user_detail=UserDetail.new if user_detail.nil?
+      #  user_detail.user_id=user_id if user_detail.user_id.nil?
+       # user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
+       # case user_detail_setting.field_type
+       # when "File"
+       #   unless form_field[user_detail_setting.field_name].nil?
+        #    asset = Asset.create(:sizes=>user_detail_setting.default_value,:upload=>form_field[user_detail_setting.field_name])
+          #  Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
+          #  user_detail.selected_value = asset.id.to_s
+         # end
+        #when "Checkbox"
+        #  if form_field[user_detail_setting.field_name].nil?
+        #    user_detail.selected = "0"
+       #   else
+        #    user_detail.selected_value=form_field[user_detail_setting.field_name]
+       #   end
+       # when "Date"
+       #   user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
+       # else
+       #   user_detail.selected_value=form_field[user_detail_setting.field_name]
+       # end
+       # user_detail.save
+     # end
+   # end
     respond_to do |format|
       if mandatory_failed
         @user = User.find(user_id)
@@ -265,12 +267,13 @@ class UsersController < ApplicationController
   # GET /users/1/delete_asset.xml
   def delete_asset
     user_detail = UserDetail.find(params[:id])
-    unless user_detail.nil?
-      asset = Asset.find(user_detail.selected_value)
-      asset.destroy unless asset.nil?
-      user_detail.selected_value = nil
-      user_detail.save
-    end
+    User.asset_delete(user_detail)
+    #unless user_detail.nil?
+    #  asset = Asset.find(user_detail.selected_value)
+     # asset.destroy unless asset.nil?
+     # user_detail.selected_value = nil
+     # user_detail.save
+   # end
     respond_to do |format|
       format.html { redirect_to(user_details_user_path(user_detail.user_id)) }
       format.xml  { head :ok }

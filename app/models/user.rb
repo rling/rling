@@ -112,6 +112,129 @@ class User < ActiveRecord::Base
       self.send(variablename.downcase)
      end
    end
+   def self.create_setting(params, role)
+     @user = User.new(params)
+     @user.login = @user.email if params[:is_login_type_email]
+     @user.role = role
+     @user.is_activated = true
+     if @user.save
+      # Save all
+      # Login / Email Authentication Setting
+       setting = Setting.where(:name=>"is_login_type_email").first
+       setting.setting_value = (params[:is_login_type_email].nil? ? "false" : "true")
+       setting.save
+      # User registration Setting
+       setting = Setting.where(:name=>"allow_user_register_user").first
+       setting.setting_value = (params[:allow_user_register_user].nil? ? "false" : "true")
+       setting.save
+      # Welcome email setting
+       setting = Setting.where(:name=>"send_welcome_email").first
+       setting.setting_value = (params[:send_welcome_email].nil? ? "false" : "true")
+       setting.save
+      # Administrator registration setting
+       setting = Setting.where(:name=>"allow_admin_register_user").first
+       setting.setting_value = (params[:allow_admin_register_user].nil? ? "false" : "true")
+       setting.save
+      # User activation setting
+       setting = Setting.where(:name=>"user_activation_required_on_user").first
+       setting.setting_value = (params[:user_activation_required_on_user].nil? ? "false" : "true")
+       setting.save
+      # Administrator activation setting
+       setting = Setting.where(:name=>"user_activation_required_on_admin").first
+       setting.setting_value = (params[:user_activation_required_on_admin].nil? ? "false" : "true")
+       setting.save
+      # URL Setting
+       setting = Setting.where(:name=>"site_url").first
+       setting.setting_value = params[:site_url]
+       setting.save
+      # Smtp Setting
+       setting = Setting.where(:name=>"smtp_settings").first
+       setting.setting_value = params[:smtp_settings]
+       setting.save
+      #View users account information setting
+       setting = Setting.where(:name=>"allow_view_user_account").first
+       setting.setting_value = (params[:allow_view_user_account].nil? ? "false" : "true")
+       setting.save
+     end
+ end
+
+ def self.update_detail(user_id, form_field)
+   unless form_field.nil?
+      UserDetailSetting.all.each do |user_detail_setting|
+        if user_detail_setting.mandatory && form_field[user_detail_setting.field_name].blank?
+          mandatory_failed = true
+          break
+        end
+        user_detail=UserDetail.where(:user_id=>user_id ,:user_detail_setting_id=>user_detail_setting.id).first
+        user_detail=UserDetail.new if user_detail.nil?
+        user_detail.user_id=user_id if user_detail.user_id.nil?
+        user_detail.user_detail_setting_id=user_detail_setting.id if user_detail.user_detail_setting_id.nil?
+        case user_detail_setting.field_type
+        when "File"
+          unless form_field[user_detail_setting.field_name].nil?
+            asset = Asset.create(:sizes=>user_detail_setting.default_value,:upload=>form_field[user_detail_setting.field_name])
+            Asset.find(user_detail.selected_value).destroy if !user_detail.selected_value.blank? && (user_detail.selected_value.to_i != 0)
+            user_detail.selected_value = asset.id.to_s
+          end
+        when "Checkbox"
+          if form_field[user_detail_setting.field_name].nil?
+            user_detail.selected = "0"
+          else
+            user_detail.selected_value=form_field[user_detail_setting.field_name]
+          end
+        when "Date"
+          user_detail.selected_value= Date.parse(form_field[user_detail_setting.field_name].to_a.sort.collect{|c| c[1]}.join("-"))
+        else
+          user_detail.selected_value=form_field[user_detail_setting.field_name]
+        end
+        user_detail.save
+      end
+    end
+ end
+
+ def self.asset_delete(user_detail)
+   unless user_detail.nil?
+      asset = Asset.find(user_detail.selected_value)
+      asset.destroy unless asset.nil?
+      user_detail.selected_value = nil
+      user_detail.save
+    end
+ end
+
+ def self.create_user(user)
+   Notifier.welcome_email(user).deliver if get_setting("send_welcome_email")
+   if (get_setting("user_activation_required_on_user") && !current_user?) || (get_setting("user_activation_required_on_admin") && current_user? && current_user.admin?)
+     user.create_activation_key
+     user.activation_url
+     Notifier.activation_email(user).deliver
+     flash[:notice] = t(:user_created)
+    else
+     user.is_activated = true
+     user.save
+   end
+ end
+
+  before_create do |user|
+    user.login = user.email if user.login.blank?
+  end
+
+def self.user_destroy(user)
+  if user.id==1
+   flash[:notice] = t(:admin_required)
+  elsif user.id==current_user.id
+    flash[:notice] = t(:cannot_delete_own)
+  else
+    user.destroy
+    flash[:notice] = t(:admin_deleted)
+  end
+end
+
+def self.save_login(user)
+  user.last_login_ip=user.current_login_ip
+  user.current_login_ip=request.remote_ip
+  user.login_count+=1
+  user.save
+end
 #Private Methods
  private
 

@@ -22,7 +22,8 @@
 <% if (validate_permission("deletecomment",model_submission.object_model,comment) || validate_permission("deletemycomments",model_submission.object_model,comment)) %>
 |<%= link_to 'Delete Comment',[model_submission.object_model,model_submission, comment], :confirm => 'Are you sure?', :method => :delete %>|
 <% end %>
-<% if comment.model_submission.object_model.is_comment_recursive.eql?(true) %>
+<% com=comment.model_submission.object_model%>
+<% if com.is_comment_recursive.eql?(true) %>
     <%= render "show_comment_form",:model_submission=>model_submission,:parent_id=>comment.id    %>
  <% end  %>
 </div>

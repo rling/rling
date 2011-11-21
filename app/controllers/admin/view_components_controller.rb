@@ -1,8 +1,8 @@
 class Admin::ViewComponentsController < ApplicationController
   # FILTERS
+  before_filter :get_view
   before_filter :find_view_component, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
-  before_filter :get_view
 
   # GET /views/1/view_components
   # GET /views/1/view_components.xml

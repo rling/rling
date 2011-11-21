@@ -1,8 +1,7 @@
 class Admin::ViewConditionsController < ApplicationController
-
-   before_filter :find_view_condition, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_view
+  before_filter :find_view_condition, :only => [:show, :edit, :update, :destroy]
   before_filter :require_admin
- before_filter :get_view
   # GET /view_conditions
   # GET /view_conditions.xml
   def index

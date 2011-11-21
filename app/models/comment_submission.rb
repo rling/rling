@@ -30,13 +30,17 @@ class CommentSubmission < ActiveRecord::Base
 
    def get_variable_info(variablename)
      output = ""
-    comment_component = self.model_submission.object_model.comment_components.find(:first,:conditions=>["component_name=?",variablename])
+    comment_component = self.model_submission.object_model.comment_components.where("component_name=?",variablename).first
      unless comment_component.nil?
-       comment_data = self.comment_data.find(:first,:conditions=>["comment_component_id=?",comment_component.id])
+       comment_data = self.comment_data.where("comment_component_id=?",comment_component.id).first
        output = comment_data.data_value  unless comment_data.nil?
      end
      return output
 end
+
+  def self.valid_permission(comment)
+    (validate_permission("deletecomment",comment.model_submission.object_model,comment) || validate_permission("deletemycomments",comment.model_submission.object_model,comment))
+  end
 
   private
 

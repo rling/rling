@@ -3,9 +3,9 @@ class Admin::FormComponentsController < ApplicationController
 #SWEEPER
   cache_sweeper :page_sweeper,  :only => [:create, :update, :destroy]
 #Filters
- before_filter :find_form_component, :only => [:show, :edit, :update, :destroy]
  before_filter :require_admin
  before_filter :get_object_form
+ before_filter :find_form_component, :only => [:show, :edit, :update, :destroy]
 
   # GET /object_form/1/form_components
   # GET /object_form/1/form_components.xml

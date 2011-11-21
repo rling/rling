@@ -116,11 +116,11 @@ end
       member do
         get 'delete_asset'
         get 'add_category'
-        post 'category_add'
+      #  post 'category_add'
         get 'category_remove'
       end
       # all the comments submitted for model submissions
-      resources :comment_submissions
+      resources :comment_submissions, :only => [:index, :destroy]
     end
   end
 
@@ -133,7 +133,7 @@ end
     end
   end
 
-   resources :password_resets do
+   resources :password_resets, :only => [:new, :create] do
    member do
      get 'reset'
    end
@@ -141,7 +141,7 @@ end
      post 'change'
    end
   end
-  resources :sessions do
+  resources :sessions, :only => [:new, :create, :destroy] do
     collection do
      get 'first_user'
      post 'first_user_create'

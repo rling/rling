@@ -2,6 +2,18 @@ class PermissionRole < ActiveRecord::Base
 #Associations
   belongs_to :role
   belongs_to :permission
+
+def self.create_role(k,k1)
+  pr=PermissionRole.new
+  pr.permission_id=k
+  pr.role_id=k1
+  pr.value=true
+  pr.save
+end
+
+def self.by_permission_role(permission,role_id)
+  self.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
+end
 end
 
 # == Schema Information
