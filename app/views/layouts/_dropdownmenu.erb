@@ -13,10 +13,10 @@ menus.each do |menu|
     menu_link = menu.link_path
     output << "<li><a title='#{get_pagelet(menu.name)}' href='#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()'") + ">"
   else
-    menu_link = menu.page.perma_link
+    menu_link = menu.page_perma_link
     output << "<li><a title='#{get_pagelet(menu.name)}' href='/#{menu_link}' " + ( submenus.empty? ? "" : "onmouseover='mopen(\"m#{mnu_count}\")' onmouseout='mclosetime()'") + ">"
   end
-  if menu.image_path.blank?
+  if menu.image_path?
     output << menu.name.capitalize
   else
     output << "<img src='#{menu.image_path}'"

@@ -1,5 +1,5 @@
 <div class="shadow_sub_menu">
-<% menu = Menu.find_by_page_id(@page.id) 
+<% menu = Menu.find_by_page_id(page.id) 
 selectedmenu = nil
 selectedmenu = ((menu.level == 1)? menu : Menu.find_by_id(menu.parent_id))
 menus = Menu.find_all_by_parent_id(selectedmenu.id,:order=>"position desc")

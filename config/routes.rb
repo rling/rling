@@ -116,7 +116,7 @@ end
       member do
         get 'delete_asset'
         get 'add_category'
-      #  post 'category_add'
+        post 'category_add'
         get 'category_remove'
       end
       # all the comments submitted for model submissions

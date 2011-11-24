@@ -135,22 +135,23 @@ before_filter :require_admin
       else
          @page =Page.new(params[:page])
       end
+     @pag=@page
       if params[:permalnk] == "1"
-           @page.perma_link_generate
+           @pag.perma_link_generate
       end
-        @page.home_page = params[:home_page]
+        @pag.home_page = params[:home_page]
 
     respond_to do |format|
-      if @page.save
+      if @pag.save
           unless params[:page_variables].nil?
-            update_page_variables(params[:page_variables],@page)
+            update_page_variables(params[:page_variables],@pag)
           end
         flash[:notice] = "#{@page_type} #{t(:page_created)}"
-        format.html { redirect_to(:action=>'show',:id=>@page) }
-        format.xml  { render :xml => @page, :status => :created, :location => @page }
+        format.html { redirect_to(:action=>'show',:id=>@pag) }
+        format.xml  { render :xml => @page, :status => :created, :location => @pag }
       else
         format.html { render  "new" }
-        format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @pag.errors, :status => :unprocessable_entity }
       end
     end
   end

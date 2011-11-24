@@ -1,9 +1,9 @@
-<% unless @objects.eql?([]) %>
+<% unless objects.eql?([]) %>
 <h1><u><%= "Models Administration " %></u></h1>
 These are models as configured under the Models Management System section and available for users to add and change. This section is available to both users and administrators based on the permissions set by the administrators.<br/><br/>
-  <% @objects.each do |object_model| %>
-    <% @link=object_model.name.capitalize.pluralize %>
-    <% @link << " Administration" %>
-    <%= link_to @link,[object_model,:model_submissions] %> <br/>
+  <% objects.each do |object_model| %>
+    <% link=object_model.name.capitalize.pluralize %>
+    <% link << " Administration" %>
+    <%= link_to link,[object_model,:model_submissions] %> <br/>
   <% end %>
 <% end %>

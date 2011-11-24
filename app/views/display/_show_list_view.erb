@@ -1,16 +1,16 @@
 <div>
 <% unless params[:page].nil? %>
-<p> Showing <%=  @start  %> to <%= @model_submissions.size < @end ? @model_submissions.size : @end %> of <%= @model_submissions.size %> </p>
+<p> Showing <%=  start  %> to <%= model_submissions.size < end ? model_submissions.size : end %> of <%= model_submissions.size %> </p>
 <%  else %>
-<p> Showing 1 to <%= (@model_submissions.size > @per_page) ? @per_page : @model_submissions.size %> of <%= @model_submissions.size %></p>
-<% end if !@per_page.nil?%>
+<p> Showing 1 to <%= (model_submissions.size > per_page) ? per_page : model_submissions.size %> of <%= model_submissions.size %></p>
+<% end if !per_page.nil?%>
 <%= will_paginate @page_results %>
 </div>
 
 <div id="list_view_<%=page.id%>">
 
     <% output = ""
-    @page_results.each do |ms|
+    page_results.each do |ms|
       output << "<li id='list_view_#{page.id}_model_#{ms.id}' class='list_element'>"
       page.view_components.each do |vc2|
         value = raw (get_submission_model_data(ms,vc2.name))
@@ -27,10 +27,10 @@
  </ul>
 </div>
 <div>
-<%= will_paginate @page_results %>
+<%= will_paginate@page_results %>
 <% unless params[:page].nil? %>
-<p> Showing <%=  @start  %> to <%= @model_submissions.size < @end ? @model_submissions.size : @end %> of <%= @model_submissions.size %> </p>
+<p> Showing <%=  start  %> to <%= model_submissions.size < end ? model_submissions.size : end %> of <%= model_submissions.size %> </p>
 <%  else %>
-<p> Showing 1 to <%= (@model_submissions.size > @per_page) ? @per_page : @model_submissions.size %> of <%= @model_submissions.size %></p>
-<% end if !@per_page.nil?%>
+<p> Showing 1 to <%= (model_submissions.size > per_page) ? per_page : model_submissions.size %> of <%= model_submissions.size %></p>
+<% end if !per_page.nil?%>
 </div>

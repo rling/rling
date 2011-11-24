@@ -1,44 +1,44 @@
 <div id="view_<%= page.id %>" class="page_view">
 <%  order = sort = ""
-    sort = @sort if defined? @sort
-    order = @order if defined? @order
-    @page=params[:page]
-    @per_page= params[:per_page].nil? ? page.per_page : params[:per_page].to_i
-    if defined?(@category) && !@category.blank?
-      category = @cate
-      @model_submissions = []
+    sort = sort if defined? sort
+    order = order if defined? order
+    page=params[:page]
+    per_page= params[:per_page].nil? ? page.per_page : params[:per_page].to_i
+    if defined?(category) && !category.blank?
+      category = cate
+      model_submissions = []
       category.categoryset.object_models.each do |object_model|
         ms = category.model_submissions.find(:all,:conditions=>["object_model_id=? and status ='Published'",object_model.id])
-        @model_submissions = @model_submissions + get_view_model_submission(object_model,page,ms,sort,order)
-        @page_results = @model_submissions.paginate(:page=>@page,:per_page=>@per_page)
+        model_submissions = model_submissions + get_view_model_submission(object_model,page,ms,sort,order)
+        page_results = model_submissions.paginate(:page=>page,:per_page=>per_page)
       end
     else
       object_model=ObjectModel.find_by_id(page.view_for)
       ms = object_model.published_model_submissions unless object_model.nil?
-      @model_submissions = get_view_model_submission(object_model,page,ms,sort,order)
-       @page_results = @model_submissions.paginate(:page=>@page,:per_page=>@per_page)
+      model_submissions = get_view_model_submission(object_model,page,ms,sort,order)
+       page_results = model_submissions.paginate(:page=>page,:per_page=>per_page)
     end %>
 
      <%
-      @start=1 + (@page.to_i-1)*@per_page.to_i
-      @end=@per_page.to_i+ (@page.to_i-1)*@per_page.to_i
+      start=1 + (page.to_i-1)*per_page.to_i
+      end=per_page.to_i+ (page.to_i-1)*per_page.to_i
       %>
-   <% if @model_submissions.empty? %>
+   <% if model_submissions.empty? %>
       <%= " No Record for #{object_model.name}" unless object_model.nil?  %>
     <p>
         <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
 </p>
    <% else %>
-   <% object_model = @model_submissions.first.object_model
+   <% object_model = model_submissions.first.object_model
      if validate_permission("viewlist",object_model) %>
      <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
       <% case page.view_type %>
       <% when "Grid" %>
-        <%=  render "display/show_grid_view",:page=>page %>
+        <%=  render "display/show_grid_view",:page=>page, :page_results=>page_results, per_page=>per_page, :start=>start, :end=>end %>
       <% when "Table"  %>
-        <%=  render "display/show_table_view",:page=>page %>
+        <%=  render "display/show_table_view",:page=>page, :page_results=>page_results, per_page=>per_page, :start=>start, :end=>end %>
       <% when "List" %>
-        <%=  render "display/show_list_view", :page=>page %>
+        <%=  render "display/show_list_view", :page=>page, :page_results=>page_results, per_page=>per_page, :start=>start, :end=>end %>
       <% end %>
       <%= link_to "Create "+object_model.name.capitalize, new_object_model_model_submission_path(object_model) if validate_permission("create",object_model) && page.allow_create_on_permission==true %>
     <% else %>

@@ -24,6 +24,10 @@ class ModelSubmission < ActiveRecord::Base
      self.perma_link = generate_perma_link(ModelSubmission,create_permalink(title))
  end
 
+ def is_owner?(user)
+  return (self.creator_id == user.id || user.admin?)
+ end
+
  def enrolled_in?(category)
     self.categories.include?(category)
  end

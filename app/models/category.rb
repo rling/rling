@@ -1,6 +1,7 @@
 class Category < ActiveRecord::Base
   #Associations
   belongs_to :categoryset
+  delegate :name , :to => :categoryset, :prefix => true
   has_many :categorizations, :dependent=> :destroy
   has_many :model_submissions, :through=> :categorizations
   #Validations

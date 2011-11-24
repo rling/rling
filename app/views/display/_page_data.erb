@@ -9,7 +9,7 @@
 <% if page.type.eql?('ObjectForm') %>
  <%= render "display/show_form", :page=>page %>
 <% elsif page.type.eql?('View')%>
- <%= render "display/show_view", :page=>page %>
+ <%= render "display/show_view", :page=>page, :sort=>sort, :order=>order %>
 <% elsif page.type.eql?('CategoryView')%>
  <%= render "display/show_category_view", :page=>page  %>
 <% end %>

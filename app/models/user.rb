@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   model_stamper
 #Associations
   belongs_to :role
+  delegate :role_type , :to => :role, :prefix => true
   has_many :user_details, :dependent=> :destroy
 
 #Attributes

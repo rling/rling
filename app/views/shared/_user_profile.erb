@@ -1,11 +1,11 @@
-<% unless @user_detail_settings.empty? %>
-<% @user_detail_settings.each do |user_detail_setting| %>
+<% unless user_detail_settings.empty? %>
+<% user_detail_settings.each do |user_detail_setting| %>
  <div class="user_section user_section_field_<%=user_detail_setting.field_name %>">
   <div class="user_section_heading user_section_field_<%=user_detail_setting.field_name %>_heading">
       <%= user_detail_setting.display_name %>:
   </div>
   <div class="user_section_value user_section_field_<%=user_detail_setting.field_name %>_value">
-  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id)
+  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(user.id,user_detail_setting.id)
    unless user_detail.nil? %>
   <% case user_detail_setting.field_type %>
       <% when "File" %>

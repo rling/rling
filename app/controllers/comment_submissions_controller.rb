@@ -10,7 +10,7 @@ class CommentSubmissionsController < ApplicationController
   def index
     @comment_submissions = get_all_comments(CommentSubmission.new,@model)
     @model_submission = ModelSubmission.find(params[:model_submission_id])
-    if @model_submission.creator_id==current_user.id || current_user.admin?
+    if @model_submission.is_owner?(current_user)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @comment_submissions }

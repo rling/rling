@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.9'
 gem 'mysql', '2.8.1'
 gem 'acts_as_tree'
 gem 'ckeditor'
@@ -32,5 +32,6 @@ end
 
 
 group :development, :test do
+ gem "rails_best_practices"
   #gem 'railroady'
 end
