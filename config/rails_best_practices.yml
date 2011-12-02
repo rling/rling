@@ -16,7 +16,7 @@ UseBeforeFilterCheck: { customize_count: 1 }
 MoveCodeIntoControllerCheck: { }
 MoveCodeIntoModelCheck: { use_count: 2 }
 MoveCodeIntoHelperCheck: { array_count: 3 }
-ReplaceInstanceVariableWithLocalVariableCheck: { }
+#ReplaceInstanceVariableWithLocalVariableCheck: { }
 DryBundlerInCapistranoCheck: { }
 UseSayWithTimeInMigrationsCheck: { }
 UseQueryAttributeCheck: { }
