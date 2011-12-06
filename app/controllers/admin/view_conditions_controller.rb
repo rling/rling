@@ -86,6 +86,6 @@ class Admin::ViewConditionsController < ApplicationController
   private
   # Get the View (Page Object) to which the conditions are associated to.
   def get_view
-  @page=View.find(params[:view_id])
+  @page=Page.find(params[:view_id])
   end
 end

@@ -29,7 +29,7 @@
      <td align=right><%= text_field_tag "#{view_component.id}",view_component.position, :size=>2 %></td>
     <td><%= link_to "Edit", edit_view_view_component_path(@page,view_component) %></td>
 
-    <td><%=  link_to "Destroy",[@page, view_component], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=  link_to "Destroy",view_view_component_path(@page,view_component), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -38,4 +38,4 @@
 <br /><br/>
 
 <%= link_to 'Add component', new_view_view_component_path %> |
-<%= link_to 'Back',view_index_pages_path %>
+<%= link_to 'Back',@page.type=="View" ? view_index_pages_path : users_view_index_pages_path %>

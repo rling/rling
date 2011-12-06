@@ -10,6 +10,7 @@ def check_component_type(form_component,form_submission,data_obj)
    value = (form_submission.id.nil? ? form_component.default_value : ( form_data.data_value unless form_data.nil? ) )
    
   else
+  
    value=form_component.default_value
   end
   return return_field_tag(form_component.component_name,value,form_component.component_type,form_component.component_values,form_submission)
@@ -21,6 +22,32 @@ def get_view_model_submission(object_model,view,ms,sort="",order="")
     ids = ms.collect{|sub|sub.id}
     conditions = ""
     view.view_conditions.each do |cond|
+      value = cond.value
+      value = "%#{cond.value}%" if cond.operator== "LIKE"
+      if ["created_at","updated_at","creator_id","updater_id"].include?(cond.name)
+          conditions << " #{cond.relation_with} (#{cond.name} #{cond.operator} '#{value}') "
+      else
+        mc = object_model.model_components.first(:conditions=>["component_name=?",cond.name])
+        unless mc.nil?
+          conditions << " #{cond.relation_with} (model_component_id=#{mc.id.to_s} and data_value #{cond.operator} '#{value}') "
+        end
+      end
+    end
+    conditions = "and (#{conditions})" unless conditions.blank?
+    md = ModelData.find(:all,:conditions=>["model_submission_id  IN (?)  #{conditions}",ids])
+    md.each{|data|output << data.model_submission unless output.include?(data.model_submission)}
+    output = get_view_model_submission_order(object_model,view,output,sort,order)
+  end
+  return output
+end
+
+
+def get_user_view_submission(user_view,page,user_view_published,sort="",order="")
+  output = []
+  unless user_view.nil?
+    ids = user_view_published.collect{|sub|sub.id}
+    conditions = ""
+    user_view.view_conditions.each do |cond|
       value = cond.value
       value = "%#{cond.value}%" if cond.operator== "LIKE"
       if ["created_at","updated_at","creator_id","updater_id"].include?(cond.name)
@@ -98,5 +125,7 @@ def get_child_categories(cat,view)
   end
   return output
 end
+
+
 
 end

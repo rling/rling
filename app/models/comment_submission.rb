@@ -41,7 +41,9 @@ end
   private
 
   def set_children() 
-    CommentSubmission.find_all_by_parent_id(self.id).destroy_all
+    CommentSubmission.find_all_by_parent_id(self.id).each do |commentsubmission|
+        commentsubmission.destroy
+    end
   end
 
   def set_level

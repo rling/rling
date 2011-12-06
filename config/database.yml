@@ -1,22 +1,22 @@
 development:
   adapter: mysql
-  database: rling
+  database: rlingclone
   username: root
-  password: root
+  password: 
 
 
 test: &test
   adapter: mysql
-  database: rling_test
+  database: rlingclone_test
   username: root
-  password: root
+  password: 
 
 
 production:
   adapter: mysql
   database: rling
   username: root
-  password: root
+  password: 
 
 cucumber:
   <<: *test

@@ -19,7 +19,7 @@
     @page_results.each do |ms|
        output << "<tr class='table_view_tr_value #{cycle('odd','even')}'>"
        page.view_components.each do |vc2|
-        value =raw  (get_submission_model_data(ms,vc2.name))
+        value =raw(get_submission_model_data(ms,vc2.name))
         if vc2.is_linked
           value = link_to( value,"/#{ms.object_model.perma_link_parent}/#{ms.perma_link}")
         end

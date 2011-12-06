@@ -101,7 +101,7 @@ class Admin::ViewComponentsController < ApplicationController
 private
   #Get the Parent View (Page) Object to identify the nested URL
   def get_view
-  @page=View.find(params[:view_id])
+  @page=Page.find(params[:view_id])
   end
  
 end

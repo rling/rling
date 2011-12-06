@@ -5,26 +5,21 @@
       <%= user_detail_setting.display_name %>:
   </div>
   <div class="user_section_value user_section_field_<%=user_detail_setting.field_name %>_value">
-  <% user_detail = UserDetail.find_by_user_id_and_user_detail_setting_id(@user.id,user_detail_setting.id)
-   unless user_detail.nil? %>
-  <% case user_detail_setting.field_type %>
-      <% when "File" %>
-       <% if !user_detail.selected_value.blank? && user_detail.selected_value.to_i != 0 %>
-           <% asset=Asset.find(user_detail.selected_value) %>
-           <%= check_content_type(asset) %>
-        <% else %>
-           <%= "No files uploaded." %>
-        <% end  %>
-      <% when "Textfield","Textarea"%>
-         <%= auto_link(user_detail.selected_value)  %>
-      <% else %>
-        <%= user_detail.selected_value %>
-      <% end %>
-  <% else %>
-    <% "" %>
-  <% end %>
+  <%= raw(get_user_detail(@user,user_detail_setting)) %>
  </div>
 </div>
 <% end %>
 <% end %>
+
+
+<div id="member-blog">
+<% title=ModelComponent.find_by_component_name('title') %>  
+<% model_datas=ModelData.find_all_by_creator_id_and_model_component_id(@user.id,title) %>
+<% model_datas.each do |model_data| %>
+ <% if model_data.model_submission.status=='Published' %>
+<%= link_to "#{model_data.data_value}", "/#{model_data.model_submission.object_model.perma_link_parent}/#{model_data.model_submission.perma_link}"%> 
+ <%#= model_data.data_value %><br/>
+<% end %>
+ <% end %>
+</div>
 

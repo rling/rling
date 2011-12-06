@@ -46,6 +46,18 @@ before_filter :require_admin
       format.xml  { render :xml => @pages }
     end
   end
+  
+   # GET /pages/user_view_index
+  # GET /pages/user_view_index.xml
+   def users_view_index
+      @pages = Page.user_views
+      respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @pages }
+    end
+  end
+  
+   
 
   # GET /pages/1
   # GET /pages/1.xml
@@ -109,6 +121,15 @@ before_filter :require_admin
       format.xml  { render :xml => @page }
     end
   end
+  
+  def new_users_view
+   @page_type='UserView'
+   @page = UserView.new
+    respond_to do |format|
+      format.html # new_category_view.html.erb
+      format.xml  { render :xml => @page }
+    end
+  end
 
   # GET /pages/1/edit
   def edit
@@ -117,6 +138,7 @@ before_filter :require_admin
     @page_type = "ObjectForm" if @page.type == "ObjectForm"
     @page_type = "View"   if @page.type == "View"
     @page_type = "CategoryView" if @page.type == "CategoryView"
+    @page_type = "UserView" if @page.type == "UserView"
   end
 
   # POST /pages
@@ -130,6 +152,8 @@ before_filter :require_admin
          @page = View.new(params[:view])
       elsif @page_type == "CategoryView"
          @page = CategoryView.new(params[:category_view])
+      elsif @page_type == "UserView"
+         @page = UserView.new(params[:user_view])   
       else
          @page =Page.new(params[:page])
       end 
@@ -168,6 +192,9 @@ before_filter :require_admin
     end
     if @page_type== "CategoryView"
       page_params = params[:category_view]
+    end
+     if @page_type== "UserView"
+      page_params = params[:user_view]
     end
     @page = Page.find(params[:id])
     if params[:permalnk] == "1"
@@ -212,7 +239,20 @@ before_filter :require_admin
     flash[:notice]="#{@page.type} #{t(:page_deleted)}"
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to((@page.type == "CategoryView" ? category_view_index_pages_url : @page.type == "Form" ? object_form_index_pages_url : (@page.type == "View" ? view_index_pages_url : pages_url))) }
+      format.html { 
+        case @page.type
+        when "UserView"
+          redirect_to user_view_index_pages_url
+        when "CategoryView"
+          redirect_to category_view_index_pages_url
+        when "View"  
+          redirect_to view_index_pages_url
+        when "Form"
+          redirect_to object_form_index_pages_url
+        else 
+          redirect_to pages_url
+        end
+      }
       format.xml  { head :ok }
     end
   end

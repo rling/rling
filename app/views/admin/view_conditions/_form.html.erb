@@ -1,4 +1,5 @@
-<%= form_for([@page,@view_condition]) do |f| %>
+<%= form_for :view_condition,:url=>view_view_conditions_path(@page) do |f| %>
+
   <% if @view_condition.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@view_condition.errors.count, "error") %> prohibited this view_condition from being saved:</h2>

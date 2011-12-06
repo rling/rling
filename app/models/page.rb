@@ -20,6 +20,9 @@ scope :pages ,  :conditions =>"type is null"
 scope :object_forms,  :conditions =>"type = 'ObjectForm'"
 scope :views,  :conditions => "type = 'View'"
 scope :category_views, :conditions =>"type = 'CategoryView'"
+scope :user_views,  :conditions => "type = 'UserView'"
+
+
 
 #callbacks
 after_save :set_menu 

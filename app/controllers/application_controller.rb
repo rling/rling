@@ -28,10 +28,12 @@ class ApplicationController < ActionController::Base
         permission_object = @object.name
         permission = Permission.find(:first,:conditions=>["permission_type=? and permission_object=? and activity_code=?",permission_type,permission_object,activity])
         role_id = current_user.nil? ? 1 : current_user.role_id
+
         permissionrole = PermissionRole.find(:first,:conditions=>["permission_id=? and role_id=?",permission.id,role_id])
         if permissionrole.nil? || !permissionrole.value
            redirect_to :controller=>"display",:action=>"no_permissions"
-        end
+       end
+
       end
   end
 
@@ -132,7 +134,7 @@ class ApplicationController < ActionController::Base
   # we donot have control over the fields as entered by non administrators within 
   # the website.
    def checkforjs(input)
-     return input.gsub("<script","").gsub("</script>","").gsub("</script>","").gsub("<iframe","")
+     return input.gsub("<script","").gsub("</script>","").gsub("<iframe","") unless input.blank?
    end
    
    def set_layout
@@ -142,16 +144,11 @@ class ApplicationController < ActionController::Base
 
   def read_color_settings
     if session[:settings].nil?
-     load_style_settings
-    end                            
-  end
-  
-  def load_style_settings
      session[:settings] = Hash.new
      session[:settings][:body_background_color]=Setting.find_by_name("body_background_color").setting_value 
      session[:settings][:top_bar_background_color]=Setting.find_by_name("top_bar_background_color").setting_value
      session[:settings][:top_bar_text_color]=Setting.find_by_name("top_bar_text_color").setting_value
-     session[:settings][:top_bar_link_color]=Setting.find_by_name("top_bar_link_color").setting_value
+     session[:settings][:top_bar_link]=Setting.find_by_name("top_bar_link_color").setting_value
      session[:settings][:top_bar_link_hover_color]=Setting.find_by_name("top_bar_link_hover_color").setting_value
      session[:settings][:header_background_color] = Setting.find_by_name("header_background_color").setting_value
      session[:settings][:header_logo]=Setting.find_by_name("header_logo").setting_value
@@ -162,7 +159,7 @@ class ApplicationController < ActionController::Base
      session[:settings][:header_website_tag_text]=Setting.find_by_name("header_website_tag_text").setting_value
      session[:settings][:header_website_tag_font_size]=Setting.find_by_name("header_website_tag_font_size").setting_value
      session[:settings][:menu_bar_background_color]=Setting.find_by_name("menu_bar_background_color").setting_value
-     session[:settings][:menu_bar_hover_menu_background_color]=Setting.find_by_name("menu_bar_hover_menu_background_color").setting_value
+     session[:settings][:header_menu_hover_color]=Setting.find_by_name("menu_bar_hover_menu_background_color").setting_value
      session[:settings][:menu_bar_hover_menu_text_color]=Setting.find_by_name("menu_bar_hover_menu_text_color").setting_value 
      session[:settings][:menu_bar_menu_text_color]=Setting.find_by_name("menu_bar_menu_text_color").setting_value
      session[:settings][:menu_bar_menu_background_color]=Setting.find_by_name("menu_bar_menu_background_color").setting_value 
@@ -173,5 +170,6 @@ class ApplicationController < ActionController::Base
      session[:settings][:footer_text_color]=Setting.find_by_name("footer_text_color").setting_value
      session[:settings][:footer_link_color]=Setting.find_by_name("footer_link_color").setting_value
      session[:settings][:footer_link_hover_color]=Setting.find_by_name("footer_link_hover_color").setting_value
+    end                            
   end
 end 

@@ -1,4 +1,4 @@
- <%= javascript_include_tag :ckeditor %>
+ <%= javascript_include_tag 'ckeditor/ckeditor' %>
 
 
 <%= form_for(@page ,:url=>{:action=>(@page.id.nil? ? 'create' : 'update') }) do |form| %>
@@ -24,10 +24,10 @@
     <%= form.text_field :title %>
   </div>
 
- <% if @page_type.eql?('View') || @page_type.eql?('CategoryView') %>
+ <% if @page_type.eql?('View') || @page_type.eql?('CategoryView') || @page_type.eql?('UserView') %>
  <div class="field">
     <%= form.label :view_type %><br />
-    <% if @page_type.eql?('View') %>
+    <% if @page_type.eql?('View') || @page_type.eql?('UserView') %>
     <%= form.select :view_type,["Table","Grid","List"] %>
     <% else %>
     <%= form.select :view_type,["TreeView"] %>
@@ -39,7 +39,7 @@
     <%= form.label :view_for%><br />
     <% if @page_type.eql?('View') %>
        <%= form.select :view_for ,ObjectModel.find(:all).collect{|m| [ m.name.pluralize,m.id]} %>
-    <% else %>
+    <% elsif @page_type.eql?('CategoryView') %>
        <%= form.select :view_for ,Categoryset.find(:all).collect{|m| [ m.name,m.id]} %>
     <% end %>
   </div>
@@ -87,7 +87,7 @@ Generate permalink automatically<br />
    <% elsif @page_type.eql?('View')  %>
       <%= check_box('','permalnk',  :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#view_perma_link').attr('disabled', 'disabled');} else {$('#view_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
-  <% else %>
+  <% else%>
     <%= check_box('','permalnk', :checked=> (@page.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#page_perma_link').attr('disabled', 'disabled');} else {$('#page_perma_link').removeAttr('disabled');
 }") %>
 Generate permalink automatically<br />

@@ -3,7 +3,6 @@ class PasswordResetsController < ApplicationController
 # GET /password_resets/new
 # GET /password_resets/new.xml
 def new
- 
 end
 
 # POST /password_resets

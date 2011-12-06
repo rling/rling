@@ -215,4 +215,9 @@ class DisplayController < ApplicationController
       redirect_to :action=>"error_page_display"
     end
   end
+  
+  def members
+    @users=User.order("id desc")
+  end
+  
 end

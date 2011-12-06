@@ -1,4 +1,4 @@
-<%= form_for([@page,@view_component]) do |f| %>
+<%= form_for :view_component,:url=>view_view_components_path(@page) do |f| %>
   <% if @view_component.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@view_component.errors.count, "error") %> prohibited this view_component from being saved:</h2>

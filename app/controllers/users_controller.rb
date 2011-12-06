@@ -131,6 +131,7 @@ class UsersController < ApplicationController
   # GET /users/1/activate
   # GET /users/1/activate.xml
   def activate
+   
     @user = User.where(:activation_key=>params[:id]).first unless params[:id].nil?
     unless @user.nil?
       @user.is_activated=true

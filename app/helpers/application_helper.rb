@@ -228,9 +228,9 @@ end
 
 #Check the content type if the uploaded asset/file is an image or other file. If image, then output all the images based on the size, else
 #output simple link for the file name
-   def check_content_type(asset)
+   def check_content_type(user,asset,size)
       if asset.upload_content_type.match(/^image/)
-       output = link_to(image_tag(asset.upload.url(:thumb)),asset.upload.url,:target=>'_blank')
+       output = link_to(image_tag(asset.upload.url(size)),"/profile/#{user.id}",:target=>'_blank')
        unless asset.sizes.nil?
          sizes = asset.sizes.split(",")
          sizes.each do |size|
@@ -314,7 +314,7 @@ def process_page(pagebody)
       when "Textarea"
         return text_area_tag("form_field[#{field_name}]",field_value)
       when "RichtextEditor"
-        ckoutput =  ckeditor_textarea("form_field","#{field_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
+        ckoutput =  cktext_area("form_field","#{field_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
         ckoutput << text_area_tag("hidden_form_field[#{field_name}]",field_value,:style=>"display:none")
         ckoutput << raw("<script language='javascript'> document.getElementById('form_field_#{field_name}_editor').value = document.getElementById('hidden_form_field_#{field_name}').value;</script>")
         return ckoutput
@@ -346,5 +346,44 @@ def process_page(pagebody)
       end
     end 
  
+  
+  def get_user_detail_value(user,name)
+     uds = UserDetailSetting.where(:field_name=>name)
+     if uds.empty? 
+       return ""
+     else
+       return get_user_detail(user,uds.first)
+     end
+ end
+ 
+  def get_user_detail(user,user_detail_setting)
+   ud = UserDetail.where(:user_id=>user.id,:user_detail_setting_id=>user_detail_setting.id)
+   if ud.empty?
+    return ""
+   else
+    retvalue = ""
+    user_detail = ud.first
+    case user_detail_setting.field_type 
+    when "File" 
+       if !user_detail.selected_value.blank? && user_detail.selected_value.to_i != 0 
+          asset=Asset.find(user_detail.selected_value) 
+          retvalue= check_content_type(user,asset,"100x100") 
+       else 
+          retvalue = image_tag("no-image.jpg")
+       end 
+    when "Textfield,TextArea"
+      retvalue = auto_link(user_detail.selected_value)
+    when "Checkbox" 
+      retvalue= user_detail.selected_value == 1 ? "Yes" : "No" 
+    else  
+      retvalue = user_detail.selected_value 
+    end 
+   return retvalue
+   end
+ end
+ 
+
+ 
+
 
 end 

@@ -19,7 +19,7 @@
     <td><%= view_condition.operator %></td>
     <td><%= view_condition.value %></td>
     <td><%= link_to 'Edit', edit_view_view_condition_path(@page,view_condition) %></td>
-    <td><%= link_to 'Destroy', [@page,view_condition], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', view_view_condition_path(@page,view_condition), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

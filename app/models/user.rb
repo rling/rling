@@ -66,13 +66,13 @@ class User < ActiveRecord::Base
   def create_reset_code
     @reset = true
     self.reset_password_key =Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )  
-    save(false)
+    self.save
   end
 
   def create_activation_key
     @activated= true
     self.activation_key  = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
-    save(false)
+    self.save
   end
 
   def activation_url
@@ -84,11 +84,11 @@ class User < ActiveRecord::Base
   end
   def delete_reset_code
     self.attributes = {:reset_password_key => nil}
-    save(false)
+    self.save
   end
   def delete_activation_key
     self.attributes = {:activation_key => nil}
-    save(false)
+    self.save
   end
   
    def active?

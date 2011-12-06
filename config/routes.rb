@@ -49,6 +49,8 @@ scope :module => "admin" do
       get 'view_index'
       get 'new_category_view'
       get 'category_view_index'
+      get 'new_users_view'
+      get 'users_view_index'
     end
     member do
       get  'query'
@@ -167,6 +169,7 @@ end
   match "display/search_result"=>"display#search_result"
   match "search"=>"display#search_result"
   match "profile/:id"=>"display#profile"
+  match "/members"=>"display#members"
   match "/:permalink"=> "display#show_page"
   match "/:permalinkparent/:permalink"=> "display#show_model_data"
  

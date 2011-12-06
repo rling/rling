@@ -12,4 +12,6 @@
  <%= render :partial=>"display/show_view",:locals=>{:page=>page} %>
 <% elsif page.type.eql?('CategoryView')%>
  <%= render :partial=>"display/show_category_view",:locals=>{:page=>page}  %>
+<% elsif page.type.eql?('UserView')%>
+ <%= render :partial=>"display/show_user_view",:locals=>{:page=>page}  %>
 <% end %>

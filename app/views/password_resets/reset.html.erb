@@ -6,7 +6,7 @@ User Not found. Please check your reset Path is correct or not.
 
 <%= error_messages_for :user %>
  
-<% form_tag change_password_resets_path do -%>
+<%= form_tag change_password_resets_path do -%>
   <p>
     Pick a new password for <span><%= @user.email %></span>
    <%= hidden_field :user,:email %>
