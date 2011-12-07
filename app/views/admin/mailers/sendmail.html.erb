@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <%= label_tag :body %><br />
-    <%= raw(ckeditor_textarea :mailer, :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
+    <%= raw(cktext_area :mailer, :body, :toolbar=>'Full',:cols=>'100', :rows=>'5') %>
   </div>
   <div class="actions">
     <%= submit_tag "Send Mail" %>
