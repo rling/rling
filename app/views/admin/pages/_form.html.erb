@@ -1,4 +1,4 @@
- <%= javascript_include_tag 'ckeditor/ckeditor' %>
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
 
 
 <%= form_for(@page ,:url=>{:action=>(@page.id.nil? ? 'create' : 'update') }) do |form| %>

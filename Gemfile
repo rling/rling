@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.3'
-gem 'mysql'
+gem 'mysql2'
 gem 'acts_as_tree'
 gem 'ckeditor'
 gem 'paperclip'
@@ -20,7 +20,7 @@ group :development, :test do
  gem 'rspec-expectations'
  gem 'rspec-mocks'
  gem 'autotest'
- gem 'rails-dev-tweaks', '~> 0.5.1'
+ #gem 'rails-dev-tweaks', '~> 0.5.1'
 end
 
 # test-environment gems

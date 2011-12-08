@@ -13,13 +13,16 @@
   <meta name="description" content="<%= get_page_variable "SEO Meta Description" %>" />
   <meta name="keywords" content="<%= get_page_variable "SEO Meta Keywords" %>" />
 
-   <%= stylesheet_link_tag 'application' %>
-    <%= stylesheet_link_tag 'layout' %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'layout' %>
+  <%= stylesheet_link_tag 'admin' %>
+  <%= stylesheet_link_tag 'colorpicker' %>
  
    <%= javascript_include_tag :application %>
    <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
    <%= javascript_include_tag "application" %>
-   <%= javascript_include_tag 'ckeditor/ckeditor' %>
+   <%= javascript_include_tag "rails" %>
+   <%= javascript_include_tag '/javascripts/ckeditor/ckeditor' %>
     <%= render "shared/read_settings" %>
  
   <%= csrf_meta_tag %>

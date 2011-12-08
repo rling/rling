@@ -1,6 +1,4 @@
-<%= stylesheet_link_tag 'dropdownmenu' %>
 <%= javascript_include_tag 'menu_down' %>
-
 <% output = ""
 menuset = Menuset.find_by_name(menusetname)
 menus = Menu.where("menuset_id=#{menuset.id} and level=1").order("position")

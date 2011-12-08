@@ -26,10 +26,12 @@ Rling::Application.configure do
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
+  
+  config.assets.precompile += %w( application.js colorpicker.js eye.js utils.js layout.js menu_down.js rails.js application.css admin.css layout.css colorpicker.css)
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = true
   
   
   # Compress JavaScripts and CSS
@@ -57,15 +59,14 @@ Rling::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  ActionMailer::Base.delivery_method=:smtp
-  ActionMailer::Base.default_content_type="text/html"
-  ActionMailer::Base.smtp_settings = {
-  :address=>"mail.railsparty.com",
-  :port=>25,
-  :domain=>"www.railsparty.com",
-  :authentication => :plain,
-  :enable_starttls_auto=>false,
-  :user_name=>"admin@railsparty.com",
-  :password =>"password"
-}
+  #ActionMailer::Base.delivery_method=:smtp
+  #ActionMailer::Base.default_content_type="text/html"
+  #ActionMailer::Base.smtp_settings = {
+  #:address=>"mail.railsparty.com",
+  #:port=>25,
+  #:domain=>"www.railsparty.com",
+  #:authentication => :plain,
+  #:enable_starttls_auto=>false,
+  #:user_name=>"admin@railsparty.com",
+  #:password =>"password"
 end

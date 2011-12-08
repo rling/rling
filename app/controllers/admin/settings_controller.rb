@@ -1,7 +1,8 @@
 class Admin::SettingsController < ApplicationController
 #FILTER
+  before_filter :find_setting, :only => [:show, :edit, :update, :destroy]
   before_filter  :require_admin
-  
+
   # GET /settings
   # GET /settings.xml
   def index
@@ -18,7 +19,7 @@ class Admin::SettingsController < ApplicationController
   # GET /settings/1
   # GET /settings/1.xml
   def show
-    @setting = Setting.find(params[:id])
+    #@setting = Setting.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @setting }
@@ -37,7 +38,7 @@ class Admin::SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
-    @setting = Setting.find(params[:id])
+    #@setting = Setting.find(params[:id])
   end
 
   # POST /settings
@@ -50,7 +51,7 @@ class Admin::SettingsController < ApplicationController
         format.html { redirect_to(@setting, :notice => t(:setting_created)) }
         format.xml  { render :xml => @setting, :status => :created, :location => @setting }
       else
-        format.html { render :action => "new" }
+        format.html { render  "new" }
         format.xml  { render :xml => @setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -59,14 +60,14 @@ class Admin::SettingsController < ApplicationController
   # PUT /settings/1
   # PUT /settings/1.xml
   def update
-    @setting = Setting.find(params[:id])
+   # @setting = Setting.find(params[:id])
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
         session[:settings][@setting.name.intern] = @setting.setting_value unless session[:settings].nil?
         format.html { redirect_to(settings_path, :notice => t(:setting_updated)) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render  "edit" }
         format.xml  { render :xml => @setting.errors, :status => :unprocessable_entity }
       end
     end
@@ -75,22 +76,25 @@ class Admin::SettingsController < ApplicationController
   # DELETE /settings/1
   # DELETE /settings/1.xml
   def destroy
-    @setting = Setting.find(params[:id])
+    #@setting = Setting.find(params[:id])
     @setting.destroy
     respond_to do |format|
       format.html { redirect_to(settings_url) }
       format.xml  { head :ok }
     end
   end
-  
+
 # GET /settings/reload_style
 def reload_style
-  load_style_settings
+  @load_style_settings
   flash[:notice] = t(:styles_reloaded)
   respond_to do |format|
       format.html { redirect_to(settings_path) }
       format.xml  { head :ok }
-    end 
+    end
   end
-  
+private
+  def find_setting
+     @setting = Setting.find(params[:id])
+  end
 end

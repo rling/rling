@@ -11,10 +11,17 @@ test: &test
   username: root
   password: 
 
+staging:
+  adapter: mysql2
+  database: kangarating
+  username: root
+  password: 
+
+
 
 production:
   adapter: mysql
-  database: rling
+  database: rlingclone
   username: root
   password: 
 
