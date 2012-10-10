@@ -1,16 +1,16 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'acts_as_tree'
 gem 'ckeditor'
 gem 'paperclip'
-gem 'userstamp'
+gem 'userstamp', :git => "https://github.com/hcshiv/userstamp.git"
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'railroady'
-gem 'therubyracer'
 gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
+gem "dynamic_form", "~> 1.1.4"
 
 group :development, :test do
  gem 'annotate'
@@ -20,10 +20,8 @@ group :development, :test do
  gem 'rspec-expectations'
  gem 'rspec-mocks'
  gem 'autotest'
- #gem 'rails-dev-tweaks', '~> 0.5.1'
 end
 
-# test-environment gems
 group :test, :spec, :cucumber do
   gem 'factory_girl'
   gem 'cucumber'
@@ -35,13 +33,13 @@ group :test, :spec, :cucumber do
 end
 
 
-group :development, :test do
-  #gem 'railroady'
-  #gem "rails_best_practices"
+group :development do
+  gem 'thin'
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer'
 end

@@ -10836,3 +10836,3810 @@ Rendered shared/_search_form.erb (4.1ms)
 Rendered layouts/_nolistmenu.erb (16.7ms)
 Completed 200 OK in 706ms (Views: 151.3ms | ActiveRecord: 554.6ms)
 Creating scope :all. Overwriting existing method UserDetailSetting.all.
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-09 16:51:53 +0530
+  Processing by DisplayController#index as HTML
+Read fragment views/lora (0.5ms)
+Write fragment views/lora (15.2ms)
+Rendered display/_page_data.erb (21.7ms)
+Rendered display/index.erb within layouts/application (1019.6ms)
+Rendered shared/_read_settings.erb (6.7ms)
+Rendered shared/_pagelet.erb (180.9ms)
+Rendered shared/_pagelet.erb (2.3ms)
+Rendered layouts/_dropdownmenu.erb (395.8ms)
+Rendered shared/_search_form.erb (6.8ms)
+Rendered layouts/_nolistmenu.erb (12.4ms)
+Completed 200 OK in 3552ms (Views: 2296.4ms | ActiveRecord: 164.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:51:58 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://0.0.0.0:3000/display/error_page_display
+Completed 302 Found in 43ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-09 16:51:59 +0530
+  Processing by DisplayController#index as HTML
+Read fragment views/lora (0.5ms)
+Rendered display/_page_data.erb (1.4ms)
+Rendered display/index.erb within layouts/application (9.0ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (2.7ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 195ms (Views: 72.1ms | ActiveRecord: 55.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:52:01 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:52:01 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (1.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (20.7ms)
+Rendered shared/_search_form.erb (3.0ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 314ms (Views: 100.5ms | ActiveRecord: 211.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-12-09 16:52:36 +0530
+  Processing by SessionsController#new as HTML
+Rendered sessions/new.html.erb within layouts/application (9.4ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (6.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (30.1ms)
+Rendered shared/_search_form.erb (2.5ms)
+Rendered layouts/_nolistmenu.erb (7.9ms)
+Completed 200 OK in 153ms (Views: 130.8ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:52:37 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:52:37 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.1ms)
+Rendered shared/_search_form.erb (2.7ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 83ms (Views: 61.3ms | ActiveRecord: 20.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-12-09 16:52:55 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "login"=>"ravikiranhebbar88@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+Rendered sessions/new.html.erb within layouts/application (9.4ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (4.9ms)
+Rendered shared/_pagelet.erb (4.5ms)
+Rendered layouts/_dropdownmenu.erb (50.5ms)
+Rendered shared/_search_form.erb (9.9ms)
+Rendered layouts/_nolistmenu.erb (6.5ms)
+Completed 200 OK in 120ms (Views: 101.9ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:52:55 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 16ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:52:55 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (22.5ms)
+Rendered shared/_search_form.erb (4.9ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 97ms (Views: 73.1ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-12-09 16:53:39 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "login"=>"ravikiranhebbar88@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+Rendered sessions/new.html.erb within layouts/application (5.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (5.0ms)
+Rendered layouts/_dropdownmenu.erb (19.6ms)
+Rendered shared/_search_form.erb (2.4ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 66ms (Views: 55.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:53:39 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:53:39 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (24.5ms)
+Rendered shared/_search_form.erb (2.5ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 93ms (Views: 67.8ms | ActiveRecord: 24.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-12-09 16:53:48 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "login"=>"ravikiranhebbar88@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+Rendered sessions/new.html.erb within layouts/application (7.7ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (20.1ms)
+Rendered shared/_search_form.erb (2.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 73ms (Views: 59.9ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:53:49 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:53:49 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (2.0ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.9ms)
+Rendered shared/_search_form.erb (2.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 88ms (Views: 67.4ms | ActiveRecord: 19.7ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-12-09 16:54:23 +0530
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "login"=>"kiranhebbar88@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 868ms
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 16:54:24 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.1ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (28.5ms)
+Rendered shared/_read_settings.erb (1.4ms)
+Rendered shared/_pagelet.erb (2.3ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.8ms)
+Rendered shared/_search_form.erb (4.1ms)
+Rendered layouts/_nolistmenu.erb (11.9ms)
+Completed 200 OK in 163ms (Views: 145.3ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:54:24 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:54:25 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (3.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (4.3ms)
+Rendered layouts/_nolistmenu.erb (10.4ms)
+Completed 200 OK in 87ms (Views: 69.6ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-12-09 16:54:35 +0530
+  Processing by DisplayController#index as HTML
+Read fragment views/lora (2.5ms)
+Rendered display/_page_data.erb (3.2ms)
+Rendered display/index.erb within layouts/application (7.0ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (18.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 57ms (Views: 48.1ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:54:35 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:54:35 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (2.9ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (17.5ms)
+Rendered shared/_search_form.erb (4.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 70ms (Views: 55.8ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 16:54:40 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (0.1ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (9.6ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 64ms (Views: 53.4ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:54:40 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 16ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:54:40 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (17.2ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 77ms (Views: 51.5ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 16:54:52 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (10.9ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (38.6ms)
+Rendered shared/_search_form.erb (7.0ms)
+Rendered layouts/_nolistmenu.erb (7.9ms)
+Completed 200 OK in 177ms (Views: 146.2ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:54:53 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:54:53 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (8.5ms)
+Completed 200 OK in 87ms (Views: 65.1ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/object_models/new" for 127.0.0.1 at 2011-12-09 16:54:54 +0530
+  Processing by Admin::ObjectModelsController#new as HTML
+Rendered admin/object_models/_form.html.erb (478.4ms)
+Rendered admin/object_models/new.html.erb within layouts/admin (484.0ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (20.7ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 548ms (Views: 525.1ms | ActiveRecord: 21.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:54:55 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:54:55 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (9.1ms)
+Rendered shared/_pagelet.erb (15.6ms)
+Rendered layouts/_dropdownmenu.erb (81.2ms)
+Rendered shared/_search_form.erb (6.6ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 194ms (Views: 145.4ms | ActiveRecord: 47.9ms)
+
+
+Started POST "/object_models" for 127.0.0.1 at 2011-12-09 16:55:12 +0530
+  Processing by Admin::ObjectModelsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "object_model"=>{"name"=>"car", "description"=>"<p>\r\n\thttp://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/http://localhost:3000/</p>\r\n", "allow_comments"=>"0", "is_comment_recursive"=>"0", "email_on_comment"=>"0", "layout"=>"", "categoryset_id"=>"", "allow_drafts"=>"0"}, "permalnkparent"=>"1", "add_layout"=>"0", "commit"=>"Create Model"}
+Redirected to http://localhost:3000/object_models
+Completed 302 Found in 442ms
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 16:55:13 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (344.5ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (2.7ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.7ms)
+Rendered shared/_search_form.erb (4.0ms)
+Rendered layouts/_nolistmenu.erb (3.7ms)
+Completed 200 OK in 414ms (Views: 397.8ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:55:13 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 14ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:55:14 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (6.9ms)
+Rendered layouts/_dropdownmenu.erb (38.3ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (4.3ms)
+Completed 200 OK in 101ms (Views: 75.9ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 16:55:20 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.8ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.6ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (3.2ms)
+Completed 200 OK in 73ms (Views: 60.8ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:55:20 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 14ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:55:20 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (18.1ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Completed 200 OK in 78ms (Views: 56.6ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 16:55:27 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (6.9ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered layouts/_dropdownmenu.erb (15.7ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (2.5ms)
+Completed 200 OK in 65ms (Views: 48.1ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:55:27 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:55:27 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (6.6ms)
+Rendered shared/_pagelet.erb (1.9ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 77ms (Views: 59.8ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 16:55:29 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.0ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (6.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 74ms (Views: 62.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:55:30 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:55:30 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 81ms (Views: 63.1ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 16:55:31 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (2.6ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (37.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (29.4ms)
+Rendered shared/_search_form.erb (8.5ms)
+Rendered layouts/_nolistmenu.erb (7.4ms)
+Completed 200 OK in 185ms (Views: 142.9ms | ActiveRecord: 29.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 16:55:32 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 16:55:32 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (8.3ms)
+Rendered layouts/_dropdownmenu.erb (26.1ms)
+Rendered shared/_search_form.erb (4.5ms)
+Rendered layouts/_nolistmenu.erb (4.7ms)
+Completed 200 OK in 80ms (Views: 57.9ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 16:55:33 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (632.3ms)
+Rendered model_submissions/new.html.erb within layouts/application (644.4ms)
+Completed 500 Internal Server Error in 691ms
+
+ActionView::Template::Error (ckeditor.js isn't precompiled):
+    1: <%= javascript_include_tag :ckeditor %>
+    2: <% unless @object.model_components.eql?([]) %>
+    3: 
+    4: <%= form_for([@object,@model_submission], :html => { :multipart => :true })  do |form| %>
+  app/views/model_submissions/_form.html.erb:1:in `_app_views_model_submissions__form_html_erb___153973201_82989910'
+  app/views/model_submissions/new.html.erb:8:in `_app_views_model_submissions_new_html_erb__137257228_83547610'
+  app/controllers/model_submissions_controller.rb:39:in `new'
+
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (6.7ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.2ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (28.1ms)
+Creating scope :all. Overwriting existing method UserDetailSetting.all.
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:05:11 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (273.6ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (477.9ms)
+Rendered shared/_read_settings.erb (7.1ms)
+Rendered shared/_pagelet.erb (19.8ms)
+Rendered shared/_pagelet.erb (2.1ms)
+Rendered layouts/_dropdownmenu.erb (849.8ms)
+Rendered shared/_search_form.erb (8.2ms)
+Rendered layouts/_nolistmenu.erb (5.7ms)
+Completed 200 OK in 2196ms (Views: 2052.7ms | ActiveRecord: 73.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:05:14 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 13ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:05:14 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (4.8ms)
+Rendered shared/_read_settings.erb (2.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.7ms)
+Rendered shared/_search_form.erb (9.1ms)
+Rendered layouts/_nolistmenu.erb (14.9ms)
+Completed 200 OK in 149ms (Views: 127.2ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:05:15 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (7.2ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (36.7ms)
+Rendered shared/_read_settings.erb (3.1ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (18.5ms)
+Rendered shared/_search_form.erb (4.0ms)
+Rendered layouts/_nolistmenu.erb (3.0ms)
+Completed 200 OK in 544ms (Views: 97.4ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:05:16 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:05:16 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (10.5ms)
+Completed 200 OK in 78ms (Views: 58.2ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 17:05:18 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (338.1ms)
+Rendered model_submissions/new.html.erb within layouts/application (364.5ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.7ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 475ms (Views: 394.9ms | ActiveRecord: 42.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:05:18 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 16ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:05:19 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (16.0ms)
+Rendered shared/_pagelet.erb (5.8ms)
+Rendered shared/_pagelet.erb (7.9ms)
+Rendered layouts/_dropdownmenu.erb (34.4ms)
+Rendered shared/_search_form.erb (12.6ms)
+Rendered layouts/_nolistmenu.erb (7.3ms)
+Completed 200 OK in 148ms (Views: 95.4ms | ActiveRecord: 51.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:22:35 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.2ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.7ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.4ms)
+Rendered layouts/_dropdownmenu.erb (17.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 67ms (Views: 56.4ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:22:36 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:22:36 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (27.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 85ms (Views: 72.1ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:22:37 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (16.5ms)
+Rendered shared/_read_settings.erb (2.2ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.7ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (6.9ms)
+Completed 200 OK in 82ms (Views: 58.7ms | ActiveRecord: 14.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:22:38 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:22:38 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 78ms (Views: 61.5ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 17:22:40 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (17.0ms)
+Rendered model_submissions/new.html.erb within layouts/application (25.6ms)
+Rendered shared/_read_settings.erb (1.0ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.5ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (7.5ms)
+Completed 200 OK in 102ms (Views: 71.3ms | ActiveRecord: 24.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:22:40 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:22:40 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (9.8ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (36.3ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (11.2ms)
+Completed 200 OK in 146ms (Views: 88.7ms | ActiveRecord: 56.9ms)
+
+
+Started POST "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:23:03 +0530
+  Processing by ModelSubmissionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "form_field"=>{"title"=>"test", "body"=>"<p>\r\n\tlorem ipsum dolerum</p>\r\n"}, "model_submission"=>{"page_view_type"=>"1"}, "permalnk"=>"1", "hidden_form_field"=>{"body"=>"Enter a Content"}, "status"=>"Published", "commit"=>"Create Car", "object_model_id"=>"1"}
+Expire fragment views/test (0.3ms)
+Redirected to http://localhost:3000/object_models/1/model_submissions/1
+Completed 302 Found in 1104ms
+
+
+Started GET "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:23:04 +0530
+  Processing by ModelSubmissionsController#show as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/show.html.erb within layouts/application (462.2ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (22.0ms)
+Rendered shared/_search_form.erb (6.9ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 558ms (Views: 518.4ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:23:05 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:23:05 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.0ms)
+Rendered layouts/_dropdownmenu.erb (17.0ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 80ms (Views: 67.7ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:23:09 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (21.5ms)
+Rendered model_submissions/edit.html.erb within layouts/application (27.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (4.5ms)
+Rendered layouts/_dropdownmenu.erb (22.7ms)
+Rendered shared/_search_form.erb (6.8ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 136ms (Views: 83.3ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:23:09 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:23:09 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (11.1ms)
+Rendered shared/_pagelet.erb (5.9ms)
+Rendered shared/_pagelet.erb (8.2ms)
+Rendered layouts/_dropdownmenu.erb (57.2ms)
+Rendered shared/_search_form.erb (15.7ms)
+Rendered layouts/_nolistmenu.erb (6.0ms)
+Completed 200 OK in 176ms (Views: 105.4ms | ActiveRecord: 70.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:26:28 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.7ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.1ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 67ms (Views: 58.3ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:29 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:30 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (25.0ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 85ms (Views: 73.2ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 17:26:39 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (12.5ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (18.3ms)
+Rendered shared/_search_form.erb (11.7ms)
+Rendered layouts/_nolistmenu.erb (6.4ms)
+Completed 200 OK in 92ms (Views: 81.2ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:39 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:39 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 78ms (Views: 54.4ms | ActiveRecord: 20.6ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:26:42 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.8ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.6ms)
+Rendered shared/_search_form.erb (5.4ms)
+Rendered layouts/_nolistmenu.erb (8.0ms)
+Completed 200 OK in 80ms (Views: 66.5ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:42 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 17ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:42 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (7.1ms)
+Rendered shared/_pagelet.erb (5.9ms)
+Rendered shared/_pagelet.erb (8.9ms)
+Rendered layouts/_dropdownmenu.erb (47.8ms)
+Rendered shared/_search_form.erb (4.3ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 114ms (Views: 56.5ms | ActiveRecord: 57.0ms)
+
+
+Started GET "/menus" for 127.0.0.1 at 2011-12-09 17:26:44 +0530
+  Processing by Admin::MenusController#index as HTML
+Rendered admin/menus/index.html.erb within layouts/admin (31.5ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 148ms (Views: 116.9ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:44 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:44 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (50.5ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (5.2ms)
+Completed 200 OK in 128ms (Views: 86.2ms | ActiveRecord: 41.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:26:46 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.8ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (12.3ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (23.7ms)
+Rendered shared/_search_form.erb (11.8ms)
+Rendered layouts/_nolistmenu.erb (6.1ms)
+Completed 200 OK in 99ms (Views: 69.1ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:47 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:47 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (2.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.8ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 83ms (Views: 65.6ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 17:26:51 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (7.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 62ms (Views: 50.6ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:52 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:52 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (8.6ms)
+Rendered shared/_pagelet.erb (5.0ms)
+Rendered shared/_pagelet.erb (9.6ms)
+Rendered layouts/_dropdownmenu.erb (68.4ms)
+Rendered shared/_search_form.erb (17.6ms)
+Rendered layouts/_nolistmenu.erb (14.7ms)
+Completed 200 OK in 209ms (Views: 140.2ms | ActiveRecord: 68.0ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:26:53 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.2ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.8ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.0ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 71ms (Views: 60.1ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:53 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:53 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered layouts/_dropdownmenu.erb (18.5ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 83ms (Views: 71.0ms | ActiveRecord: 11.9ms)
+
+
+Started GET "/pages/view_index" for 127.0.0.1 at 2011-12-09 17:26:55 +0530
+  Processing by Admin::PagesController#view_index as HTML
+Rendered admin/pages/view_index.html.erb within layouts/admin (10.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (30.1ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 92ms (Views: 74.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:26:56 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:26:56 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (21.6ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 89ms (Views: 64.6ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/pages/new_view" for 127.0.0.1 at 2011-12-09 17:26:59 +0530
+  Processing by Admin::PagesController#new_view as HTML
+Rendered admin/pages/_form.html.erb (140.2ms)
+Rendered admin/pages/new_view.html.erb within layouts/admin (156.6ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.9ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 238ms (Views: 198.3ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:00 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 4ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:00 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (9.3ms)
+Rendered shared/_pagelet.erb (9.7ms)
+Rendered shared/_pagelet.erb (11.5ms)
+Rendered layouts/_dropdownmenu.erb (52.3ms)
+Rendered shared/_search_form.erb (9.9ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 171ms (Views: 105.6ms | ActiveRecord: 65.0ms)
+
+
+Started POST "/pages" for 127.0.0.1 at 2011-12-09 17:27:25 +0530
+  Processing by Admin::PagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "page_type"=>"View", "view"=>{"title"=>"title", "view_type"=>"Table", "view_for"=>"1", "per_page"=>"5", "body"=>"<p>\r\n\tlorem ipsa dlora</p>\r\n", "page_view_type"=>"1", "menu_name"=>"", "menu_parent_id"=>"-1", "allow_create_on_permission"=>"0", "layout"=>"", "status"=>"Draft"}, "permalnk"=>"1", "page_variables"=>{"1"=>"lorem ipsa dlora", "2"=>"lorem ipsa dlora", "3"=>"lorem ipsa dlora"}, "add_menu"=>"0", "home_page"=>"0", "add_layout"=>"0", "commit"=>"Create View"}
+Expire fragment views/title (0.3ms)
+Redirected to http://localhost:3000/pages/2
+Completed 302 Found in 88ms
+
+
+Started GET "/pages/2" for 127.0.0.1 at 2011-12-09 17:27:25 +0530
+  Processing by Admin::PagesController#show as HTML
+  Parameters: {"id"=>"2"}
+Rendered admin/pages/show.html.erb within layouts/admin (12.5ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (7.7ms)
+Rendered layouts/_dropdownmenu.erb (34.2ms)
+Rendered shared/_search_form.erb (5.7ms)
+Rendered layouts/_nolistmenu.erb (3.0ms)
+Completed 200 OK in 133ms (Views: 83.1ms | ActiveRecord: 36.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:26 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 14ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:27 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (5.1ms)
+Rendered layouts/_dropdownmenu.erb (25.6ms)
+Rendered shared/_search_form.erb (9.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 84ms (Views: 64.0ms | ActiveRecord: 19.3ms)
+
+
+Started GET "/pages/2/edit" for 127.0.0.1 at 2011-12-09 17:27:29 +0530
+  Processing by Admin::PagesController#edit as HTML
+  Parameters: {"id"=>"2"}
+Rendered admin/pages/_form.html.erb (68.1ms)
+Rendered admin/pages/edit.html.erb within layouts/admin (74.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.6ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 137ms (Views: 112.3ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:29 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:30 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (2.2ms)
+Rendered shared/_pagelet.erb (2.5ms)
+Rendered layouts/_dropdownmenu.erb (72.5ms)
+Rendered shared/_search_form.erb (5.9ms)
+Rendered layouts/_nolistmenu.erb (7.0ms)
+Completed 200 OK in 181ms (Views: 113.2ms | ActiveRecord: 67.1ms)
+
+
+Started GET "/pages/view_index" for 127.0.0.1 at 2011-12-09 17:27:35 +0530
+  Processing by Admin::PagesController#view_index as HTML
+Rendered admin/pages/view_index.html.erb within layouts/admin (15.8ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered layouts/_dropdownmenu.erb (17.7ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (6.9ms)
+Completed 200 OK in 75ms (Views: 64.2ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:35 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:35 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (6.7ms)
+Completed 200 OK in 81ms (Views: 50.0ms | ActiveRecord: 30.5ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:27:37 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.1ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (5.3ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 76ms (Views: 58.9ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:37 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 17ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:37 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.1ms)
+Rendered shared/_search_form.erb (6.8ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 89ms (Views: 67.4ms | ActiveRecord: 21.1ms)
+
+
+Started GET "/categorysets" for 127.0.0.1 at 2011-12-09 17:27:40 +0530
+  Processing by Admin::CategorysetsController#index as HTML
+Rendered admin/categorysets/index.html.erb within layouts/admin (4.3ms)
+Rendered shared/_read_settings.erb (3.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (5.3ms)
+Rendered layouts/_dropdownmenu.erb (27.4ms)
+Rendered shared/_search_form.erb (6.1ms)
+Rendered layouts/_nolistmenu.erb (3.0ms)
+Completed 200 OK in 98ms (Views: 79.0ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:40 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:41 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (2.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (18.2ms)
+Rendered shared/_search_form.erb (4.0ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 57ms (Views: 49.1ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/categorysets/new" for 127.0.0.1 at 2011-12-09 17:27:43 +0530
+  Processing by Admin::CategorysetsController#new as HTML
+Rendered admin/categorysets/_form.html.erb (31.2ms)
+Rendered admin/categorysets/new.html.erb within layouts/admin (36.7ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (29.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 107ms (Views: 86.2ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:43 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:44 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.9ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 76ms (Views: 60.4ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/categorysets" for 127.0.0.1 at 2011-12-09 17:27:48 +0530
+  Processing by Admin::CategorysetsController#index as HTML
+Rendered admin/categorysets/index.html.erb within layouts/admin (2.1ms)
+Rendered shared/_read_settings.erb (3.4ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (16.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (5.0ms)
+Completed 200 OK in 57ms (Views: 48.5ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:49 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 4ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:49 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (4.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 71ms (Views: 50.1ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:27:51 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.3ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.8ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.5ms)
+Rendered shared/_search_form.erb (6.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 75ms (Views: 60.8ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:27:51 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:27:51 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (6.6ms)
+Completed 200 OK in 80ms (Views: 55.4ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2011-12-09 17:28:03 +0530
+  Processing by Admin::CategoriesController#index as HTML
+Rendered admin/categories/index.html.erb within layouts/admin (6.1ms)
+Rendered shared/_read_settings.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (5.1ms)
+Rendered layouts/_dropdownmenu.erb (24.0ms)
+Rendered shared/_search_form.erb (8.1ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 98ms (Views: 75.4ms | ActiveRecord: 15.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:28:03 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:28:03 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 77ms (Views: 60.5ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:28:06 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.8ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 70ms (Views: 58.0ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:28:07 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:28:07 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered shared/_pagelet.erb (4.1ms)
+Rendered layouts/_dropdownmenu.erb (38.2ms)
+Rendered shared/_search_form.erb (7.7ms)
+Rendered layouts/_nolistmenu.erb (7.7ms)
+Completed 200 OK in 103ms (Views: 73.5ms | ActiveRecord: 29.2ms)
+
+
+Started GET "/pages/category_view_index" for 127.0.0.1 at 2011-12-09 17:28:10 +0530
+  Processing by Admin::PagesController#category_view_index as HTML
+Rendered admin/pages/category_view_index.html.erb within layouts/admin (7.7ms)
+Rendered shared/_read_settings.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 75ms (Views: 56.7ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:28:10 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:28:10 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (4.8ms)
+Completed 200 OK in 73ms (Views: 61.8ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/pages/new_category_view" for 127.0.0.1 at 2011-12-09 17:28:12 +0530
+  Processing by Admin::PagesController#new_category_view as HTML
+Rendered admin/pages/_form.html.erb (116.0ms)
+Rendered admin/pages/new_category_view.html.erb within layouts/admin (119.9ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (3.9ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (19.4ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (7.6ms)
+Completed 200 OK in 493ms (Views: 181.2ms | ActiveRecord: 52.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:28:13 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 4ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:28:13 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (9.4ms)
+Rendered shared/_pagelet.erb (7.1ms)
+Rendered shared/_pagelet.erb (9.6ms)
+Rendered layouts/_dropdownmenu.erb (55.3ms)
+Rendered shared/_search_form.erb (12.2ms)
+Rendered layouts/_nolistmenu.erb (13.9ms)
+Completed 200 OK in 178ms (Views: 128.5ms | ActiveRecord: 48.9ms)
+
+
+Started POST "/pages" for 127.0.0.1 at 2011-12-09 17:28:36 +0530
+  Processing by Admin::PagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "page_type"=>"CategoryView", "category_view"=>{"title"=>"gfgfgfg", "view_type"=>"TreeView", "associated_view"=>"2", "body"=>"<p>\r\n\t&nbsp;</p>\r\n<div>\r\n\t<p>\r\n\t\tlorem ipsa dlora</p>\r\n</div>\r\n", "page_view_type"=>"1", "menu_name"=>"", "menu_parent_id"=>"-1", "layout"=>"", "status"=>"Draft"}, "permalnk"=>"1", "page_variables"=>{"1"=>"lorem ipsa dlora", "2"=>"lorem ipsa dlora", "3"=>"lorem ipsa dlora"}, "add_menu"=>"0", "home_page"=>"0", "add_layout"=>"0", "commit"=>"Create CategoryView"}
+Expire fragment views/gfgfgfg (0.3ms)
+Redirected to http://localhost:3000/pages/3
+Completed 302 Found in 48ms
+
+
+Started GET "/pages/3" for 127.0.0.1 at 2011-12-09 17:28:36 +0530
+  Processing by Admin::PagesController#show as HTML
+  Parameters: {"id"=>"3"}
+Rendered admin/pages/show.html.erb within layouts/admin (227.7ms)
+Completed 500 Internal Server Error in 244ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    13: </p>
+    14: <p>
+    15:   <b>View For: </b>
+    16:   <%= @categoryset.name %>
+    17: </p>
+    18: 
+    19: <% end %>
+  app/views/admin/pages/show.html.erb:16:in `_app_views_admin_pages_show_html_erb__847570321_109160050'
+  app/controllers/admin/pages_controller.rb:74:in `show'
+
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.9ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (18.2ms)
+
+
+Started POST "/pages" for 127.0.0.1 at 2011-12-09 17:29:13 +0530
+  Processing by Admin::PagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "page_type"=>"CategoryView", "category_view"=>{"title"=>"gfgfgfg", "view_type"=>"TreeView", "associated_view"=>"2", "body"=>"<p>\r\n\t&nbsp;</p>\r\n<div>\r\n\t<p>\r\n\t\tlorem ipsa dlora</p>\r\n</div>\r\n", "page_view_type"=>"1", "menu_name"=>"", "menu_parent_id"=>"-1", "layout"=>"", "status"=>"Draft"}, "permalnk"=>"1", "page_variables"=>{"1"=>"lorem ipsa dlora", "2"=>"lorem ipsa dlora", "3"=>"lorem ipsa dlora"}, "add_menu"=>"0", "home_page"=>"0", "add_layout"=>"0", "commit"=>"Create CategoryView"}
+Expire fragment views/gfgfgfg-0 (0.3ms)
+Redirected to http://localhost:3000/pages/4
+Completed 302 Found in 55ms
+
+
+Started GET "/pages/4" for 127.0.0.1 at 2011-12-09 17:29:13 +0530
+  Processing by Admin::PagesController#show as HTML
+  Parameters: {"id"=>"4"}
+Rendered admin/pages/show.html.erb within layouts/admin (3.8ms)
+Completed 500 Internal Server Error in 16ms
+
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    13: </p>
+    14: <p>
+    15:   <b>View For: </b>
+    16:   <%= @categoryset.name %>
+    17: </p>
+    18: 
+    19: <% end %>
+  app/views/admin/pages/show.html.erb:16:in `_app_views_admin_pages_show_html_erb__847570321_109160050'
+  app/controllers/admin/pages_controller.rb:74:in `show'
+
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (11.6ms)
+Rendered /home/shiva/.rvm/gems/ruby-1.9.2-p290@rails3.1.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (25.5ms)
+
+
+Started GET "/categorysets" for 127.0.0.1 at 2011-12-09 17:30:24 +0530
+  Processing by Admin::CategorysetsController#index as HTML
+Rendered admin/categorysets/index.html.erb within layouts/admin (2.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.7ms)
+Rendered shared/_search_form.erb (5.8ms)
+Rendered layouts/_nolistmenu.erb (3.0ms)
+Completed 200 OK in 64ms (Views: 53.8ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:24 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 14ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:24 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.7ms)
+Rendered shared/_pagelet.erb (9.9ms)
+Rendered layouts/_dropdownmenu.erb (60.6ms)
+Rendered shared/_search_form.erb (11.2ms)
+Rendered layouts/_nolistmenu.erb (6.6ms)
+Completed 200 OK in 138ms (Views: 98.4ms | ActiveRecord: 38.8ms)
+
+
+Started GET "/categorysets/new" for 127.0.0.1 at 2011-12-09 17:30:25 +0530
+  Processing by Admin::CategorysetsController#new as HTML
+Rendered admin/categorysets/_form.html.erb (9.1ms)
+Rendered admin/categorysets/new.html.erb within layouts/admin (11.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (4.7ms)
+Completed 200 OK in 68ms (Views: 55.9ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:26 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:26 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (4.7ms)
+Completed 200 OK in 79ms (Views: 65.0ms | ActiveRecord: 13.2ms)
+
+
+Started POST "/categorysets" for 127.0.0.1 at 2011-12-09 17:30:34 +0530
+  Processing by Admin::CategorysetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "categoryset"=>{"name"=>"test", "description"=>"lorem ipsa dloralorem ipsa dlora"}, "commit"=>"Create Categoryset"}
+Redirected to http://localhost:3000/categorysets
+Completed 302 Found in 20ms
+
+
+Started GET "/categorysets" for 127.0.0.1 at 2011-12-09 17:30:34 +0530
+  Processing by Admin::CategorysetsController#index as HTML
+Rendered admin/categorysets/index.html.erb within layouts/admin (9.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.6ms)
+Rendered layouts/_dropdownmenu.erb (19.8ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (3.8ms)
+Completed 200 OK in 80ms (Views: 60.4ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:35 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:35 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.8ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 79ms (Views: 61.0ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:30:37 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.0ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (12.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 74ms (Views: 60.2ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:38 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:38 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (17.1ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 307ms (Views: 288.8ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/pages/category_view_index" for 127.0.0.1 at 2011-12-09 17:30:40 +0530
+  Processing by Admin::PagesController#category_view_index as HTML
+Rendered admin/pages/category_view_index.html.erb within layouts/admin (11.9ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (6.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 69ms (Views: 57.5ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:41 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 13ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:41 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (5.0ms)
+Completed 200 OK in 78ms (Views: 60.2ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/pages/new_category_view" for 127.0.0.1 at 2011-12-09 17:30:49 +0530
+  Processing by Admin::PagesController#new_category_view as HTML
+Rendered admin/pages/_form.html.erb (51.9ms)
+Rendered admin/pages/new_category_view.html.erb within layouts/admin (54.0ms)
+Rendered shared/_read_settings.erb (5.0ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.8ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 124ms (Views: 100.8ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:30:50 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:30:50 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered shared/_pagelet.erb (5.1ms)
+Rendered layouts/_dropdownmenu.erb (30.0ms)
+Rendered shared/_search_form.erb (13.8ms)
+Rendered layouts/_nolistmenu.erb (6.2ms)
+Completed 200 OK in 145ms (Views: 80.7ms | ActiveRecord: 63.7ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2011-12-09 17:31:00 +0530
+  Processing by Admin::CategoriesController#index as HTML
+Rendered admin/categories/index.html.erb within layouts/admin (5.5ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (15.1ms)
+Rendered shared/_search_form.erb (5.2ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 65ms (Views: 50.4ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:00 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:01 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (4.7ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 71ms (Views: 52.2ms | ActiveRecord: 18.4ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2011-12-09 17:31:03 +0530
+  Processing by Admin::CategoriesController#new as HTML
+Rendered admin/categories/_form.html.erb (43.7ms)
+Rendered admin/categories/new.html.erb within layouts/admin (51.6ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered layouts/_dropdownmenu.erb (18.6ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 140ms (Views: 119.4ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:03 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:03 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (5.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 85ms (Views: 66.6ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/pages/category_view_index" for 127.0.0.1 at 2011-12-09 17:31:10 +0530
+  Processing by Admin::PagesController#category_view_index as HTML
+Rendered admin/pages/category_view_index.html.erb within layouts/admin (9.9ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 64ms (Views: 55.8ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:11 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:11 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (5.6ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (7.0ms)
+Completed 200 OK in 89ms (Views: 71.5ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/pages/new_category_view" for 127.0.0.1 at 2011-12-09 17:31:12 +0530
+  Processing by Admin::PagesController#new_category_view as HTML
+Rendered admin/pages/_form.html.erb (50.7ms)
+Rendered admin/pages/new_category_view.html.erb within layouts/admin (53.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (6.3ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (24.2ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 121ms (Views: 100.5ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:13 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:13 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (9.1ms)
+Rendered shared/_pagelet.erb (4.5ms)
+Rendered shared/_pagelet.erb (6.3ms)
+Rendered layouts/_dropdownmenu.erb (34.0ms)
+Rendered shared/_search_form.erb (14.4ms)
+Rendered layouts/_nolistmenu.erb (9.4ms)
+Completed 200 OK in 592ms (Views: 512.7ms | ActiveRecord: 77.7ms)
+
+
+Started GET "/pages/4/edit" for 127.0.0.1 at 2011-12-09 17:31:19 +0530
+  Processing by Admin::PagesController#edit as HTML
+  Parameters: {"id"=>"4"}
+Rendered admin/pages/_form.html.erb (60.5ms)
+Rendered admin/pages/edit.html.erb within layouts/admin (64.5ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.9ms)
+Rendered layouts/_dropdownmenu.erb (16.1ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 138ms (Views: 112.3ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:19 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:19 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (2.6ms)
+Rendered shared/_pagelet.erb (1.9ms)
+Rendered layouts/_dropdownmenu.erb (39.9ms)
+Rendered shared/_search_form.erb (9.9ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 150ms (Views: 98.9ms | ActiveRecord: 50.9ms)
+
+
+Started PUT "/pages/4" for 127.0.0.1 at 2011-12-09 17:31:25 +0530
+  Processing by Admin::PagesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "page_type"=>"CategoryView", "category_view"=>{"title"=>"gfgfgfg", "view_type"=>"TreeView", "view_for"=>"1", "associated_view"=>"2", "body"=>"<p>\r\n\t&nbsp;</p>\r\n<div>\r\n\t<p>\r\n\t\tlorem ipsa dlora</p>\r\n</div>\r\n", "page_view_type"=>"1", "perma_link"=>"gfgfgfg-0", "menu_name"=>"", "menu_parent_id"=>"-1", "layout"=>"", "status"=>"Draft"}, "permalnk"=>"0", "page_variables"=>{"1"=>"lorem ipsa dlora", "2"=>"lorem ipsa dlora", "3"=>"lorem ipsa dlora"}, "add_menu"=>"0", "home_page"=>"0", "add_layout"=>"0", "commit"=>"Update CategoryView", "id"=>"4"}
+Expire fragment views/gfgfgfg-0 (0.3ms)
+Expire fragment views/gfgfgfg-0 (0.2ms)
+Redirected to http://localhost:3000/pages/4
+Completed 302 Found in 48ms
+
+
+Started GET "/pages/4" for 127.0.0.1 at 2011-12-09 17:31:25 +0530
+  Processing by Admin::PagesController#show as HTML
+  Parameters: {"id"=>"4"}
+Rendered admin/pages/show.html.erb within layouts/admin (5.8ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.9ms)
+Rendered shared/_pagelet.erb (7.3ms)
+Rendered layouts/_dropdownmenu.erb (34.4ms)
+Rendered shared/_search_form.erb (6.7ms)
+Rendered layouts/_nolistmenu.erb (5.4ms)
+Completed 200 OK in 99ms (Views: 59.4ms | ActiveRecord: 32.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:25 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:25 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (5.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.7ms)
+Rendered shared/_search_form.erb (9.6ms)
+Rendered layouts/_nolistmenu.erb (8.1ms)
+Completed 200 OK in 89ms (Views: 69.7ms | ActiveRecord: 18.4ms)
+
+
+Started GET "/pages/category_view_index" for 127.0.0.1 at 2011-12-09 17:31:27 +0530
+  Processing by Admin::PagesController#category_view_index as HTML
+Rendered admin/pages/category_view_index.html.erb within layouts/admin (15.7ms)
+Rendered shared/_read_settings.erb (3.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 67ms (Views: 56.8ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:27 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:27 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.2ms)
+Rendered shared/_search_form.erb (5.3ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 80ms (Views: 61.5ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/pages/new_category_view" for 127.0.0.1 at 2011-12-09 17:31:30 +0530
+  Processing by Admin::PagesController#new_category_view as HTML
+Rendered admin/pages/_form.html.erb (53.2ms)
+Rendered admin/pages/new_category_view.html.erb within layouts/admin (55.3ms)
+Rendered shared/_read_settings.erb (5.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.5ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 129ms (Views: 105.9ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:30 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 15ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:30 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (13.4ms)
+Rendered layouts/_dropdownmenu.erb (52.8ms)
+Rendered shared/_search_form.erb (18.1ms)
+Rendered layouts/_nolistmenu.erb (7.2ms)
+Completed 200 OK in 161ms (Views: 100.5ms | ActiveRecord: 60.3ms)
+
+
+Started POST "/pages" for 127.0.0.1 at 2011-12-09 17:31:42 +0530
+  Processing by Admin::PagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "page_type"=>"CategoryView", "category_view"=>{"title"=>"gfgfgfgdff", "view_type"=>"TreeView", "view_for"=>"1", "associated_view"=>"2", "body"=>"<p>\r\n\t&nbsp;</p>\r\n<div>\r\n\t<p>\r\n\t\tlorem ipsa dloralorem ipsa dloralorem ipsa dlora</p>\r\n</div>\r\n", "page_view_type"=>"1", "menu_name"=>"", "menu_parent_id"=>"-1", "layout"=>"", "status"=>"Draft"}, "permalnk"=>"1", "page_variables"=>{"1"=>"lorem ipsa dlora", "2"=>"lorem ipsa dlora", "3"=>"lorem ipsa dlora"}, "add_menu"=>"0", "home_page"=>"0", "add_layout"=>"0", "commit"=>"Create CategoryView"}
+Expire fragment views/gfgfgfgdff (0.2ms)
+Redirected to http://localhost:3000/pages/5
+Completed 302 Found in 52ms
+
+
+Started GET "/pages/5" for 127.0.0.1 at 2011-12-09 17:31:42 +0530
+  Processing by Admin::PagesController#show as HTML
+  Parameters: {"id"=>"5"}
+Rendered admin/pages/show.html.erb within layouts/admin (2.9ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (7.1ms)
+Rendered shared/_pagelet.erb (4.4ms)
+Rendered layouts/_dropdownmenu.erb (58.5ms)
+Rendered shared/_search_form.erb (5.1ms)
+Rendered layouts/_nolistmenu.erb (9.8ms)
+Completed 200 OK in 186ms (Views: 97.5ms | ActiveRecord: 76.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:31:43 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:31:43 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (7.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 83ms (Views: 59.4ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:32:02 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (44.4ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (2.0ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (244.8ms)
+Completed 200 OK in 366ms (Views: 299.2ms | ActiveRecord: 55.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:32:03 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 13ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:32:03 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (4.9ms)
+Completed 200 OK in 72ms (Views: 49.6ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:32:08 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (19.1ms)
+Rendered model_submissions/edit.html.erb within layouts/application (23.5ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.8ms)
+Rendered shared/_search_form.erb (7.6ms)
+Rendered layouts/_nolistmenu.erb (8.9ms)
+Completed 200 OK in 104ms (Views: 72.7ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:32:08 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:32:08 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (2.6ms)
+Rendered shared/_pagelet.erb (8.4ms)
+Rendered layouts/_dropdownmenu.erb (54.6ms)
+Rendered shared/_search_form.erb (9.7ms)
+Rendered layouts/_nolistmenu.erb (8.9ms)
+Completed 200 OK in 158ms (Views: 117.1ms | ActiveRecord: 40.9ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:35:29 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.9ms)
+Rendered model_submissions/index.html.erb within layouts/application (39.0ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (3.6ms)
+Rendered shared/_pagelet.erb (2.5ms)
+Rendered layouts/_dropdownmenu.erb (28.5ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 114ms (Views: 80.9ms | ActiveRecord: 24.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:35:30 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:35:30 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (4.5ms)
+Rendered layouts/_dropdownmenu.erb (39.9ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (12.4ms)
+Completed 200 OK in 149ms (Views: 86.1ms | ActiveRecord: 62.8ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 17:35:31 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (17.6ms)
+Rendered model_submissions/new.html.erb within layouts/application (25.9ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (5.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (33.8ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 135ms (Views: 95.8ms | ActiveRecord: 26.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:35:32 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:35:32 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (8.0ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (32.6ms)
+Rendered shared/_search_form.erb (8.0ms)
+Rendered layouts/_nolistmenu.erb (12.4ms)
+Completed 200 OK in 151ms (Views: 93.5ms | ActiveRecord: 57.1ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:35:37 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.6ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (39.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.2ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (28.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 120ms (Views: 78.2ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:35:37 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:35:37 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (5.0ms)
+Rendered shared/_pagelet.erb (2.5ms)
+Rendered shared/_pagelet.erb (7.0ms)
+Rendered layouts/_dropdownmenu.erb (33.9ms)
+Rendered shared/_search_form.erb (8.1ms)
+Rendered layouts/_nolistmenu.erb (4.4ms)
+Completed 200 OK in 108ms (Views: 65.1ms | ActiveRecord: 40.8ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:35:39 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (15.0ms)
+Rendered model_submissions/edit.html.erb within layouts/application (21.4ms)
+Rendered shared/_read_settings.erb (1.0ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (33.0ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 136ms (Views: 92.3ms | ActiveRecord: 35.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:35:39 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:35:39 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (5.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.4ms)
+Rendered layouts/_dropdownmenu.erb (38.9ms)
+Rendered shared/_search_form.erb (6.8ms)
+Rendered layouts/_nolistmenu.erb (13.8ms)
+Completed 200 OK in 164ms (Views: 115.5ms | ActiveRecord: 47.7ms)
+
+
+Started GET "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:35:58 +0530
+  Processing by ModelSubmissionsController#show as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/show.html.erb within layouts/application (16.5ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 83ms (Views: 59.8ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:35:58 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:35:58 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (2.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (21.4ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (7.8ms)
+Completed 200 OK in 371ms (Views: 340.9ms | ActiveRecord: 29.7ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:36:11 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (18.8ms)
+Rendered model_submissions/edit.html.erb within layouts/application (22.9ms)
+Rendered shared/_read_settings.erb (3.0ms)
+Rendered shared/_pagelet.erb (2.3ms)
+Rendered shared/_pagelet.erb (2.6ms)
+Rendered layouts/_dropdownmenu.erb (32.5ms)
+Rendered shared/_search_form.erb (5.4ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 138ms (Views: 101.8ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:36:12 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:36:12 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (9.8ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered shared/_pagelet.erb (4.7ms)
+Rendered layouts/_dropdownmenu.erb (48.2ms)
+Rendered shared/_search_form.erb (11.4ms)
+Rendered layouts/_nolistmenu.erb (9.6ms)
+Completed 200 OK in 171ms (Views: 111.5ms | ActiveRecord: 58.8ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:41:40 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (17.1ms)
+Rendered model_submissions/edit.html.erb within layouts/application (22.0ms)
+Rendered shared/_read_settings.erb (3.3ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (7.4ms)
+Rendered layouts/_nolistmenu.erb (7.8ms)
+Completed 200 OK in 113ms (Views: 76.2ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:41:41 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:41:42 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (13.9ms)
+Rendered shared/_pagelet.erb (6.9ms)
+Rendered layouts/_dropdownmenu.erb (72.6ms)
+Rendered shared/_search_form.erb (8.1ms)
+Rendered layouts/_nolistmenu.erb (17.1ms)
+Completed 200 OK in 232ms (Views: 172.4ms | ActiveRecord: 59.1ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:42:03 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (46.6ms)
+Rendered model_submissions/edit.html.erb within layouts/application (53.5ms)
+Rendered shared/_read_settings.erb (1.0ms)
+Rendered shared/_pagelet.erb (7.4ms)
+Rendered shared/_pagelet.erb (10.0ms)
+Rendered layouts/_dropdownmenu.erb (65.4ms)
+Rendered shared/_search_form.erb (20.2ms)
+Rendered layouts/_nolistmenu.erb (5.8ms)
+Completed 200 OK in 317ms (Views: 168.5ms | ActiveRecord: 128.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:42:05 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:42:05 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (29.8ms)
+Rendered shared/_pagelet.erb (25.8ms)
+Rendered layouts/_dropdownmenu.erb (95.6ms)
+Rendered shared/_search_form.erb (16.0ms)
+Rendered layouts/_nolistmenu.erb (7.4ms)
+Completed 200 OK in 263ms (Views: 166.0ms | ActiveRecord: 96.9ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:42:11 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (31.3ms)
+Rendered model_submissions/edit.html.erb within layouts/application (45.2ms)
+Rendered shared/_read_settings.erb (4.9ms)
+Rendered shared/_pagelet.erb (7.6ms)
+Rendered shared/_pagelet.erb (14.4ms)
+Rendered layouts/_dropdownmenu.erb (76.9ms)
+Rendered shared/_search_form.erb (11.0ms)
+Rendered layouts/_nolistmenu.erb (10.5ms)
+Completed 200 OK in 294ms (Views: 128.9ms | ActiveRecord: 145.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:42:12 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:42:13 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (15.8ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (70.6ms)
+Rendered shared/_search_form.erb (26.6ms)
+Rendered layouts/_nolistmenu.erb (19.5ms)
+Completed 200 OK in 288ms (Views: 173.5ms | ActiveRecord: 113.9ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:42:30 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (34.5ms)
+Rendered model_submissions/edit.html.erb within layouts/application (45.9ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (6.5ms)
+Rendered shared/_pagelet.erb (9.7ms)
+Rendered layouts/_dropdownmenu.erb (43.2ms)
+Rendered shared/_search_form.erb (7.2ms)
+Rendered layouts/_nolistmenu.erb (12.8ms)
+Completed 200 OK in 252ms (Views: 161.3ms | ActiveRecord: 66.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:42:32 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 17ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:42:32 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (15.2ms)
+Rendered shared/_pagelet.erb (15.5ms)
+Rendered shared/_pagelet.erb (7.1ms)
+Rendered layouts/_dropdownmenu.erb (104.2ms)
+Rendered shared/_search_form.erb (11.8ms)
+Rendered layouts/_nolistmenu.erb (6.9ms)
+Completed 200 OK in 263ms (Views: 196.7ms | ActiveRecord: 65.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:43:50 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:43:50 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.0ms)
+Rendered shared/_pagelet.erb (7.8ms)
+Rendered shared/_pagelet.erb (14.4ms)
+Rendered layouts/_dropdownmenu.erb (66.5ms)
+Rendered shared/_search_form.erb (22.0ms)
+Rendered layouts/_nolistmenu.erb (13.4ms)
+Completed 200 OK in 227ms (Views: 124.7ms | ActiveRecord: 88.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:43:57 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.9ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.4ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (9.1ms)
+Rendered layouts/_nolistmenu.erb (9.1ms)
+Completed 200 OK in 90ms (Views: 73.9ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:43:57 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:43:57 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.6ms)
+Rendered layouts/_dropdownmenu.erb (18.8ms)
+Rendered shared/_search_form.erb (5.3ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 84ms (Views: 69.6ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 17:44:01 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (7.5ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 70ms (Views: 51.4ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:01 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:01 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (4.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.6ms)
+Rendered shared/_search_form.erb (6.0ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 87ms (Views: 66.0ms | ActiveRecord: 20.6ms)
+
+
+Started GET "/object_models/new" for 127.0.0.1 at 2011-12-09 17:44:02 +0530
+  Processing by Admin::ObjectModelsController#new as HTML
+Rendered admin/object_models/_form.html.erb (27.8ms)
+Rendered admin/object_models/new.html.erb within layouts/admin (32.4ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (28.6ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 101ms (Views: 82.5ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:03 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 14ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:03 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered shared/_pagelet.erb (5.9ms)
+Rendered layouts/_dropdownmenu.erb (53.3ms)
+Rendered shared/_search_form.erb (12.8ms)
+Rendered layouts/_nolistmenu.erb (7.0ms)
+Completed 200 OK in 156ms (Views: 107.7ms | ActiveRecord: 47.3ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:44:08 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.9ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (12.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 76ms (Views: 57.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:08 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:09 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (2.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.1ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (3.1ms)
+Completed 200 OK in 70ms (Views: 49.0ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/pages/view_index" for 127.0.0.1 at 2011-12-09 17:44:17 +0530
+  Processing by Admin::PagesController#view_index as HTML
+Rendered admin/pages/view_index.html.erb within layouts/admin (15.9ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 77ms (Views: 66.0ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:18 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:18 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.9ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 86ms (Views: 70.6ms | ActiveRecord: 15.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:44:20 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.9ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (251.3ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.3ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (3.3ms)
+Completed 200 OK in 331ms (Views: 306.0ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:21 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:21 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (5.1ms)
+Completed 200 OK in 77ms (Views: 62.0ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/pages/view_index" for 127.0.0.1 at 2011-12-09 17:44:24 +0530
+  Processing by Admin::PagesController#view_index as HTML
+Rendered admin/pages/view_index.html.erb within layouts/admin (14.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.8ms)
+Rendered shared/_search_form.erb (5.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 76ms (Views: 66.2ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:25 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:25 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.9ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (3.7ms)
+Completed 200 OK in 86ms (Views: 69.5ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:44:27 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.0ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.7ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.0ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 79ms (Views: 60.1ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:27 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:27 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (22.0ms)
+Rendered shared/_search_form.erb (7.5ms)
+Rendered layouts/_nolistmenu.erb (6.4ms)
+Completed 200 OK in 99ms (Views: 70.4ms | ActiveRecord: 28.7ms)
+
+
+Started GET "/pages" for 127.0.0.1 at 2011-12-09 17:44:28 +0530
+  Processing by Admin::PagesController#index as HTML
+Rendered admin/pages/index.html.erb within layouts/admin (12.7ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.0ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (6.8ms)
+Completed 200 OK in 95ms (Views: 76.1ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:28 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:28 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.9ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.2ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (4.9ms)
+Completed 200 OK in 85ms (Views: 73.2ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/pages/category_view_index" for 127.0.0.1 at 2011-12-09 17:44:32 +0530
+  Processing by Admin::PagesController#category_view_index as HTML
+Rendered admin/pages/category_view_index.html.erb within layouts/admin (13.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (4.7ms)
+Rendered shared/_pagelet.erb (6.6ms)
+Rendered layouts/_dropdownmenu.erb (41.5ms)
+Rendered shared/_search_form.erb (9.5ms)
+Rendered layouts/_nolistmenu.erb (3.6ms)
+Completed 200 OK in 112ms (Views: 85.5ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:32 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:32 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (8.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 86ms (Views: 63.1ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/pages/3/edit" for 127.0.0.1 at 2011-12-09 17:44:34 +0530
+  Processing by Admin::PagesController#edit as HTML
+  Parameters: {"id"=>"3"}
+Rendered admin/pages/_form.html.erb (54.8ms)
+Rendered admin/pages/edit.html.erb within layouts/admin (60.8ms)
+Rendered shared/_read_settings.erb (1.0ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.7ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 130ms (Views: 100.0ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:35 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:35 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (2.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (8.1ms)
+Rendered layouts/_dropdownmenu.erb (50.3ms)
+Rendered shared/_search_form.erb (6.1ms)
+Rendered layouts/_nolistmenu.erb (6.9ms)
+Completed 200 OK in 161ms (Views: 127.3ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/categories" for 127.0.0.1 at 2011-12-09 17:44:49 +0530
+  Processing by Admin::CategoriesController#index as HTML
+Rendered admin/categories/index.html.erb within layouts/admin (5.9ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.8ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 65ms (Views: 51.0ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:49 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:49 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (19.0ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (11.2ms)
+Completed 200 OK in 341ms (Views: 320.9ms | ActiveRecord: 20.1ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:44:54 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.9ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.6ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (2.4ms)
+Rendered layouts/_dropdownmenu.erb (16.4ms)
+Rendered shared/_search_form.erb (5.6ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 75ms (Views: 60.3ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:44:55 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:44:55 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (7.6ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (4.8ms)
+Completed 200 OK in 75ms (Views: 59.2ms | ActiveRecord: 15.5ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:46:16 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (50.2ms)
+Rendered shared/_read_settings.erb (9.3ms)
+Rendered shared/_pagelet.erb (6.8ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (33.4ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (12.8ms)
+Completed 200 OK in 182ms (Views: 139.4ms | ActiveRecord: 32.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:46:17 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:46:17 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (9.0ms)
+Rendered shared/_pagelet.erb (7.8ms)
+Rendered layouts/_dropdownmenu.erb (42.4ms)
+Rendered shared/_search_form.erb (8.3ms)
+Rendered layouts/_nolistmenu.erb (3.3ms)
+Completed 200 OK in 137ms (Views: 95.0ms | ActiveRecord: 41.2ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:46:22 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (18.5ms)
+Rendered model_submissions/edit.html.erb within layouts/application (21.9ms)
+Rendered shared/_read_settings.erb (3.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered layouts/_dropdownmenu.erb (24.4ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 110ms (Views: 81.3ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:46:22 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:46:22 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (40.4ms)
+Rendered shared/_search_form.erb (20.2ms)
+Rendered layouts/_nolistmenu.erb (4.2ms)
+Completed 200 OK in 158ms (Views: 104.8ms | ActiveRecord: 52.7ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:47:07 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.8ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.3ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 71ms (Views: 55.3ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:47:08 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:47:08 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (3.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (5.0ms)
+Completed 200 OK in 74ms (Views: 51.0ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:47:09 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.6ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (38.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.8ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (28.0ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 119ms (Views: 81.2ms | ActiveRecord: 29.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:47:09 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:47:10 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.2ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 85ms (Views: 62.2ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:47:11 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (15.2ms)
+Rendered model_submissions/edit.html.erb within layouts/application (21.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.5ms)
+Rendered layouts/_dropdownmenu.erb (28.7ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 108ms (Views: 73.5ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:47:11 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 5ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:47:11 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (13.4ms)
+Rendered shared/_pagelet.erb (3.9ms)
+Rendered shared/_pagelet.erb (4.1ms)
+Rendered layouts/_dropdownmenu.erb (37.9ms)
+Rendered shared/_search_form.erb (14.9ms)
+Rendered layouts/_nolistmenu.erb (6.5ms)
+Completed 200 OK in 150ms (Views: 85.6ms | ActiveRecord: 64.0ms)
+
+
+Started GET "/object_models" for 127.0.0.1 at 2011-12-09 17:48:51 +0530
+  Processing by Admin::ObjectModelsController#index as HTML
+Rendered admin/object_models/index.html.erb within layouts/admin (252.9ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (17.2ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 322ms (Views: 309.4ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:48:51 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:48:51 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 89ms (Views: 51.6ms | ActiveRecord: 30.7ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:48:54 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.9ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.2ms)
+Rendered shared/_read_settings.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (5.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 70ms (Views: 57.8ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:48:54 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 17ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:48:54 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (3.7ms)
+Rendered shared/_pagelet.erb (4.7ms)
+Rendered layouts/_dropdownmenu.erb (25.5ms)
+Rendered shared/_search_form.erb (6.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 86ms (Views: 63.6ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/pages/view_index" for 127.0.0.1 at 2011-12-09 17:48:59 +0530
+  Processing by Admin::PagesController#view_index as HTML
+Rendered admin/pages/view_index.html.erb within layouts/admin (19.4ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.8ms)
+Rendered shared/_search_form.erb (5.9ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 75ms (Views: 65.7ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:48:59 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:48:59 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 82ms (Views: 66.1ms | ActiveRecord: 15.4ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:49:01 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.6ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.4ms)
+Rendered shared/_read_settings.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.2ms)
+Rendered shared/_search_form.erb (5.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 76ms (Views: 60.4ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:49:01 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:49:02 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.1ms)
+Rendered shared/_search_form.erb (8.2ms)
+Rendered layouts/_nolistmenu.erb (6.8ms)
+Completed 200 OK in 85ms (Views: 58.9ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:49:06 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (39.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.3ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (25.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 125ms (Views: 86.5ms | ActiveRecord: 21.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:49:06 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:49:06 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.1ms)
+Rendered shared/_search_form.erb (5.7ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 83ms (Views: 55.5ms | ActiveRecord: 27.1ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:52:08 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.6ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (42.3ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (23.2ms)
+Rendered shared/_search_form.erb (6.2ms)
+Rendered layouts/_nolistmenu.erb (5.5ms)
+Completed 200 OK in 137ms (Views: 89.2ms | ActiveRecord: 33.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:52:08 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 11ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:52:09 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (4.8ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered layouts/_dropdownmenu.erb (28.6ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 88ms (Views: 65.4ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:52:11 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (19.2ms)
+Rendered model_submissions/edit.html.erb within layouts/application (23.3ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.4ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (5.2ms)
+Completed 200 OK in 349ms (Views: 318.4ms | ActiveRecord: 21.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:52:11 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 15ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:52:12 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.3ms)
+Rendered shared/_read_settings.erb (13.5ms)
+Rendered shared/_pagelet.erb (6.1ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered layouts/_dropdownmenu.erb (44.9ms)
+Rendered shared/_search_form.erb (10.4ms)
+Rendered layouts/_nolistmenu.erb (5.7ms)
+Completed 200 OK in 149ms (Views: 96.1ms | ActiveRecord: 43.7ms)
+
+
+Started PUT "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:52:28 +0530
+  Processing by ModelSubmissionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "form_field"=>{"title"=>"test", "body"=>"<p>\r\n\tbvbdbbdgb</p>\r\n"}, "model_submission"=>{"perma_link"=>"test", "page_view_type"=>"1"}, "permalnk"=>"0", "hidden_form_field"=>{"body"=>"<p>\r\n\tlorem ipsum dolerum</p>\r\n"}, "status"=>"Published", "commit"=>"Update Car", "object_model_id"=>"1", "id"=>"1"}
+Expire fragment views/test (0.3ms)
+Redirected to http://localhost:3000/object_models/1/model_submissions/1
+Completed 302 Found in 40ms
+
+
+Started GET "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:52:28 +0530
+  Processing by ModelSubmissionsController#show as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/show.html.erb within layouts/application (22.6ms)
+Rendered shared/_read_settings.erb (4.5ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (19.4ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 115ms (Views: 85.5ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:52:28 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 10ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:52:29 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (7.0ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (3.1ms)
+Rendered shared/_pagelet.erb (3.6ms)
+Rendered layouts/_dropdownmenu.erb (19.2ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (3.5ms)
+Completed 200 OK in 85ms (Views: 65.8ms | ActiveRecord: 19.1ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:52:32 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (40.3ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (5.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (26.3ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 122ms (Views: 85.4ms | ActiveRecord: 26.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:52:32 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:52:32 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (11.8ms)
+Rendered shared/_pagelet.erb (1.8ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (16.5ms)
+Rendered shared/_search_form.erb (5.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 88ms (Views: 65.1ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:53:17 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.7ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.3ms)
+Rendered layouts/_dropdownmenu.erb (15.2ms)
+Rendered shared/_search_form.erb (3.8ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 78ms (Views: 61.2ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:53:18 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 9ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:53:18 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (18.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 81ms (Views: 62.3ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:53:19 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (38.8ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.4ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered layouts/_dropdownmenu.erb (27.4ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 114ms (Views: 83.2ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:53:19 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:53:19 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.7ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 82ms (Views: 62.1ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/object_models/1/model_submissions/1/edit" for 127.0.0.1 at 2011-12-09 17:53:24 +0530
+  Processing by ModelSubmissionsController#edit as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/_form.html.erb (19.6ms)
+Rendered model_submissions/edit.html.erb within layouts/application (23.3ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered layouts/_dropdownmenu.erb (26.0ms)
+Rendered shared/_search_form.erb (6.8ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 114ms (Views: 83.2ms | ActiveRecord: 20.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:53:24 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:53:24 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (5.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (8.1ms)
+Rendered layouts/_dropdownmenu.erb (43.0ms)
+Rendered shared/_search_form.erb (11.1ms)
+Rendered layouts/_nolistmenu.erb (5.9ms)
+Completed 200 OK in 137ms (Views: 80.6ms | ActiveRecord: 56.2ms)
+
+
+Started PUT "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:53:43 +0530
+  Processing by ModelSubmissionsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jr0IpBAiLoyJ1EbrIzconKR7YeJkLxvut7IphkEfOhc=", "form_field"=>{"title"=>"test", "body"=>"<p>\r\n\t<span style=\"background-color:lime;\"><kbd>sfdsfsfsfsdfsdfsfdfsf</kbd></span></p>\r\n"}, "model_submission"=>{"perma_link"=>"test", "page_view_type"=>"1"}, "permalnk"=>"0", "hidden_form_field"=>{"body"=>"<p>\r\n\tbvbdbbdgb</p>\r\n"}, "status"=>"Published", "commit"=>"Update Car", "object_model_id"=>"1", "id"=>"1"}
+Expire fragment views/test (0.2ms)
+Redirected to http://localhost:3000/object_models/1/model_submissions/1
+Completed 302 Found in 32ms
+
+
+Started GET "/object_models/1/model_submissions/1" for 127.0.0.1 at 2011-12-09 17:53:43 +0530
+  Processing by ModelSubmissionsController#show as HTML
+  Parameters: {"object_model_id"=>"1", "id"=>"1"}
+Rendered model_submissions/show.html.erb within layouts/application (287.5ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (17.6ms)
+Rendered shared/_search_form.erb (5.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 372ms (Views: 302.3ms | ActiveRecord: 62.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:53:44 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:53:44 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (2.0ms)
+Rendered layouts/_dropdownmenu.erb (19.7ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 87ms (Views: 64.6ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2011-12-09 17:54:54 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (4.0ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (11.3ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.4ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 71ms (Views: 59.1ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:54:55 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:54:55 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (7.4ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (16.9ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (10.5ms)
+Completed 200 OK in 89ms (Views: 60.3ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:54:56 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (39.0ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (27.1ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 113ms (Views: 82.2ms | ActiveRecord: 20.5ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:54:56 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 3ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:54:56 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (4.2ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.4ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (3.3ms)
+Completed 200 OK in 81ms (Views: 61.2ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 17:54:57 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (18.2ms)
+Rendered model_submissions/new.html.erb within layouts/application (27.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.8ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered layouts/_dropdownmenu.erb (29.0ms)
+Rendered shared/_search_form.erb (3.1ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 114ms (Views: 76.6ms | ActiveRecord: 25.2ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:54:58 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 8ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:54:58 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (4.3ms)
+Rendered shared/_pagelet.erb (7.2ms)
+Rendered layouts/_dropdownmenu.erb (44.3ms)
+Rendered shared/_search_form.erb (9.5ms)
+Rendered layouts/_nolistmenu.erb (6.8ms)
+Completed 200 OK in 146ms (Views: 88.5ms | ActiveRecord: 57.2ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 17:55:39 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (3.7ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (10.7ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.5ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 70ms (Views: 55.9ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:55:39 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:55:39 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (15.3ms)
+Rendered shared/_search_form.erb (3.2ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 78ms (Views: 60.6ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 17:55:40 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.7ms)
+Rendered shared/_back.erb (0.6ms)
+Rendered model_submissions/index.html.erb within layouts/application (39.5ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (3.0ms)
+Rendered shared/_pagelet.erb (2.5ms)
+Rendered layouts/_dropdownmenu.erb (30.1ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 122ms (Views: 82.4ms | ActiveRecord: 29.6ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:55:40 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 12ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:55:40 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (4.3ms)
+Rendered shared/_pagelet.erb (4.4ms)
+Rendered layouts/_dropdownmenu.erb (35.1ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (6.6ms)
+Completed 200 OK in 111ms (Views: 71.5ms | ActiveRecord: 39.3ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 17:55:43 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (16.1ms)
+Rendered model_submissions/new.html.erb within layouts/application (24.8ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered shared/_pagelet.erb (3.9ms)
+Rendered layouts/_dropdownmenu.erb (28.9ms)
+Rendered shared/_search_form.erb (3.3ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 112ms (Views: 76.6ms | ActiveRecord: 22.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 17:55:44 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 13ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 17:55:45 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (6.3ms)
+Rendered shared/_pagelet.erb (1.6ms)
+Rendered shared/_pagelet.erb (2.4ms)
+Rendered layouts/_dropdownmenu.erb (23.0ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.8ms)
+Completed 200 OK in 70ms (Views: 61.2ms | ActiveRecord: 7.9ms)
+Creating scope :all. Overwriting existing method UserDetailSetting.all.
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 20:23:52 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (2.6ms)
+Rendered shared/_back.erb (0.9ms)
+Rendered model_submissions/index.html.erb within layouts/application (1191.2ms)
+Rendered shared/_read_settings.erb (17.3ms)
+Rendered shared/_pagelet.erb (11.4ms)
+Rendered shared/_pagelet.erb (2.2ms)
+Rendered layouts/_dropdownmenu.erb (360.2ms)
+Rendered shared/_search_form.erb (6.1ms)
+Rendered layouts/_nolistmenu.erb (18.6ms)
+Completed 200 OK in 3554ms (Views: 2125.3ms | ActiveRecord: 115.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 20:23:57 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 19ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 20:23:57 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (1.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.4ms)
+Rendered layouts/_dropdownmenu.erb (26.4ms)
+Rendered shared/_search_form.erb (8.7ms)
+Rendered layouts/_nolistmenu.erb (8.1ms)
+Completed 200 OK in 154ms (Views: 122.5ms | ActiveRecord: 22.8ms)
+
+
+Started GET "/admin/dashboard" for 127.0.0.1 at 2011-12-09 20:23:59 +0530
+  Processing by Admin::AdminController#dashboard as HTML
+Rendered shared/_models_administration.erb (5.6ms)
+Rendered admin/admin/dashboard.html.erb within layouts/admin (20.4ms)
+Rendered shared/_read_settings.erb (1.3ms)
+Rendered shared/_pagelet.erb (5.6ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (27.1ms)
+Rendered shared/_search_form.erb (3.6ms)
+Rendered layouts/_nolistmenu.erb (2.9ms)
+Completed 200 OK in 109ms (Views: 87.1ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 20:24:00 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 6ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 20:24:00 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.5ms)
+Rendered layouts/_dropdownmenu.erb (16.4ms)
+Rendered shared/_search_form.erb (5.0ms)
+Rendered layouts/_nolistmenu.erb (5.2ms)
+Completed 200 OK in 79ms (Views: 60.6ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/object_models/1/model_submissions" for 127.0.0.1 at 2011-12-09 20:24:01 +0530
+  Processing by ModelSubmissionsController#index as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered shared/_back.erb (0.8ms)
+Rendered shared/_back.erb (6.9ms)
+Rendered model_submissions/index.html.erb within layouts/application (57.6ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (2.9ms)
+Rendered shared/_pagelet.erb (5.0ms)
+Rendered layouts/_dropdownmenu.erb (56.1ms)
+Rendered shared/_search_form.erb (14.7ms)
+Rendered layouts/_nolistmenu.erb (8.2ms)
+Completed 200 OK in 208ms (Views: 138.5ms | ActiveRecord: 58.9ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 20:24:02 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 7ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 20:24:02 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.1ms)
+Rendered shared/_pagelet.erb (5.5ms)
+Rendered shared/_pagelet.erb (3.9ms)
+Rendered layouts/_dropdownmenu.erb (28.5ms)
+Rendered shared/_search_form.erb (3.4ms)
+Rendered layouts/_nolistmenu.erb (2.6ms)
+Completed 200 OK in 89ms (Views: 67.7ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/object_models/1/model_submissions/new" for 127.0.0.1 at 2011-12-09 20:24:04 +0530
+  Processing by ModelSubmissionsController#new as HTML
+  Parameters: {"object_model_id"=>"1"}
+Rendered model_submissions/_form.html.erb (305.1ms)
+Rendered model_submissions/new.html.erb within layouts/application (318.2ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered shared/_pagelet.erb (1.7ms)
+Rendered layouts/_dropdownmenu.erb (17.5ms)
+Rendered shared/_search_form.erb (3.5ms)
+Rendered layouts/_nolistmenu.erb (2.7ms)
+Completed 200 OK in 397ms (Views: 367.3ms | ActiveRecord: 13.1ms)
+
+
+Started GET "/images/rling_logo.png" for 127.0.0.1 at 2011-12-09 20:24:04 +0530
+  Processing by DisplayController#show_model_data as 
+  Parameters: {"permalinkparent"=>"images", "permalink"=>"rling_logo"}
+Redirected to http://localhost:3000/display/error_page_display
+Completed 302 Found in 18ms
+
+
+Started GET "/display/error_page_display" for 127.0.0.1 at 2011-12-09 20:24:05 +0530
+  Processing by DisplayController#error_page_display as */*
+Rendered display/error_page_display.html.erb within layouts/application (0.1ms)
+Rendered shared/_read_settings.erb (1.2ms)
+Rendered shared/_pagelet.erb (5.2ms)
+Rendered shared/_pagelet.erb (15.6ms)
+Rendered layouts/_dropdownmenu.erb (56.8ms)
+Rendered shared/_search_form.erb (20.1ms)
+Rendered layouts/_nolistmenu.erb (7.4ms)
+Completed 200 OK in 194ms (Views: 131.1ms | ActiveRecord: 62.1ms)
+Creating scope :all. Overwriting existing method UserDetailSetting.all.

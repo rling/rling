@@ -1,4 +1,4 @@
-<%= javascript_include_tag :ckeditor %>
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor" %>
 <% unless @object.model_components.eql?([]) %>
 
 <%= form_for([@object,@model_submission], :html => { :multipart => :true })  do |form| %>
@@ -31,10 +31,11 @@
          <%= hidden_field_tag "model_submission[page_view_type]","1" %>
          <%= check_box('','permalnk',  :checked=> (@model_submission.perma_link.nil? ? "checked" : "false"), :onclick => "if (this.checked){$('#model_submission_perma_link').attr('disabled','disabled');} else {$('#model_submission_perma_link').removeAttr('disabled');}") %>
 Generate permalink automatically<br />
+
              </div>
-             
+ 
           <%  end %>
-           
+          
   
       </p>
     <% end %>
@@ -54,7 +55,7 @@ Show on Home Page
  <%= select_tag :status, options_for_select([ "Draft", "Published"],:selected=>@model_submission.status) %>
 </div>
 <% else %>
-<% puts 7777777777777777777777777777777777 %>
+
 <%= hidden_field_tag :status,'Published'  %>
 
 <% end %>

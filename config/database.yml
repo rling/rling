@@ -1,29 +1,29 @@
 development:
-  adapter: mysql
-  database: rlingclone
+  adapter: mysql2
+  database: rling_dev
   username: root
   password: 
-
+  host: localhost
+  pool: 10
+  timeout: 5000
 
 test: &test
-  adapter: mysql
-  database: rlingclone_test
-  username: root
-  password: 
-
-staging:
   adapter: mysql2
-  database: kangarating
+  database: rling_test
   username: root
   password: 
-
-
+  host: localhost
+  pool: 5
+  timeout: 5000
 
 production:
-  adapter: mysql
-  database: rlingclone
+  adapter: mysql2
+  database: rling_prod
   username: root
   password: 
+  host: localhost
+  pool: 10
+  timeout: 5000
 
 cucumber:
   <<: *test

@@ -1,0 +1,21 @@
+<div id="view_<%= page.id %>" class="page_view">
+<%  order = sort = ""
+    sort = @sort if defined? @sort
+    order = @order if defined? @order
+    @page=params[:page]
+    @per_page= params[:per_page].nil? ? page.per_page : params[:per_page].to_i
+    @user_view=UserView.find_by_id(page.view_for)
+%>
+   
+
+ <% case page.view_type %>
+      <% when "Grid" %>
+        <%=  render :partial=>"display/show_user_grid_view",:locals=>{:page=>page} %>
+      <% when "Table"  %>
+        <%=  render :partial=>"display/show_user_table_view",:locals=>{:page=>page} %>
+      <% when "List" %>
+        <%=  render :partial=>"display/show_user_list_view",:locals=>{:page=>page} %>
+  <% end %>
+
+ 
+</div>

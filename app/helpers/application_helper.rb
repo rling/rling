@@ -314,9 +314,12 @@ def process_page(pagebody)
       when "Textarea"
         return text_area_tag("form_field[#{field_name}]",field_value)
       when "RichtextEditor"
-        ckoutput =  cktext_area("form_field","#{field_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
-        ckoutput << text_area_tag("hidden_form_field[#{field_name}]",field_value,:style=>"display:none")
-        ckoutput << raw("<script language='javascript'> document.getElementById('form_field_#{field_name}_editor').value = document.getElementById('hidden_form_field_#{field_name}').value;</script>")
+        
+        #ckoutput =  raw("<style>.hidden_text_area_tag{display:none;}</style>")
+        #ckoutput << text_area_tag("hidden_form_field[#{field_name}]",field_value,:class=>"hidden_text_area_tag")
+        ckoutput = raw("<div id='hidden_form_field_#{field_name}' style='display:none;'>#{field_value}</div>")
+        ckoutput << cktext_area("form_field","#{field_name}",:toolbar=>'Full',:cols=>'100',:height=>200, :rows=>'5')
+        ckoutput << raw("<script language='javascript'> document.getElementById('form_field_#{field_name}').value = document.getElementById('hidden_form_field_#{field_name}').innerHTML;</script>")
         return ckoutput
       when "Label"
         return field_value
@@ -346,7 +349,7 @@ def process_page(pagebody)
       end
     end 
  
-  
+    
   def get_user_detail_value(user,name)
      uds = UserDetailSetting.where(:field_name=>name)
      if uds.empty? 
@@ -381,9 +384,4 @@ def process_page(pagebody)
    return retvalue
    end
  end
- 
-
- 
-
-
 end 

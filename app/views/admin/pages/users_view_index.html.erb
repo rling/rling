@@ -1,0 +1,37 @@
+<%= link_to 'New Users View', new_users_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+
+<h1>Listing User Views</h1>
+<% unless @pages.empty? %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Perma link</th>
+    <th>Home page</th>
+    <th>View Type</th>
+    <th>View For</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.title %></td>
+    <td><%= page.perma_link %></td>
+    <td><%= page.home_page ? "Yes" : "No" %></td>
+    <td><%= page.view_type %></td>
+    <td><%= link_to "View Components",view_view_components_path(page.id) %></td>
+    <td><%= link_to "View conditions",view_view_conditions_path(page.id) %></td>
+    <td><%= link_to "Show", :action=>"show",:id=>page %></td>
+    <td><%= link_to "Edit", edit_page_path(page) %></td>
+    <td><%= link_to "Destroy", {:action=>"destroy",:id=>page}, :confirm => 'Are you sure?', :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>
+<% else %>
+<%= 'You do not have any views. Create one now.' %>
+<% end %>
+<br />
+<%= link_to 'New Users View', new_users_view_pages_path %> | <%= link_to 'Back to Dashboard', admin_dashboard_path %><br />
+

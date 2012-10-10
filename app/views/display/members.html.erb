@@ -1,0 +1,14 @@
+<div id="members">
+<% @users.each do |user| %>
+<div class="member">
+<div class="member_avatar">
+<%= raw(get_user_detail_value(user,"avatar"))%>
+</div>
+<div class="member_login"><a href="/profile/<%=user.id%>"><%= user.login %></a></div>
+<div class="member_location"><%= raw(get_user_detail_value(user,"location"))%></div>
+<div class="member_role"><%= user.role.role_type %></div>
+</div>
+<% end %>
+</div>
+
+
