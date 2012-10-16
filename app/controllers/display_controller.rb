@@ -10,7 +10,6 @@ class DisplayController < ApplicationController
   def index
    @pages = Page.where(:home_page=>true,:status=>:published)
    @models=ModelSubmission.where(:home_page=>true,:status=>:published)
-   
   end
   
   # MATCH "/:permalink"=> "display#show_page"
