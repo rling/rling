@@ -25,9 +25,9 @@ Installation
 
 2.  Set Database settings(Skip this, to use default settings)
 
-   - Open rling/config/database.yml file
-   - Modify adapter settings such as adapter, username, password, database, pool, etc.,
-   - Save the database.yml file.
+    - Open rling/config/database.yml file
+    - Modify adapter settings such as adapter, username, password, database, pool, etc.,
+    - Save the database.yml file.
 
 3.  Default settings are:
 
@@ -39,11 +39,11 @@ Installation
 4.  Run rake task to do all the necessary installations.
 
 
-   - To execute and start the application in development mode use the below command
+    - To execute and start the application in development mode use the below command
 
         $ rake rling:install
 
-   - To execute and start the applicaton in production mode use the below command
+    - To execute and start the applicaton in production mode use the below command
 
         $ RAILS_ENV=production rake rling:install
 
