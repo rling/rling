@@ -19,32 +19,32 @@ Features of Rling CMS
 Installation
 -------------------------------
 
-* Clone the repository:
+1.  Clone the repository:
 
         $ git clone git@github.com:rling/rling.git
 
-* Set Database settings(Skip this, to use default settings)
+2.  Set Database settings(Skip this, to use default settings)
 
-	1.  Open rling/config/database.yml file
-	2.  Modify adapter settings such as adapter, username, password, database, pool, etc.,
-	3.  Save the database.yml file.
+   * Open rling/config/database.yml file
+   * Modify adapter settings such as adapter, username, password, database, pool, etc.,
+   * Save the database.yml file.
 
-* Default settings are:
+3.  Default settings are:
 
-	1.  adapter: mysql
-	2.  database: rling
-	3.  username: root
-	4.  password: 
-
-
-* Run rake task to do all the necessary installations.
+   * adapter: mysql
+   * database: rling
+   * username: root
+   * password: 
 
 
-	1.  To execute and start the application in development mode use the below command
+4.  Run rake task to do all the necessary installations.
+
+
+   * To execute and start the application in development mode use the below command
 
         $ rake rling:install
 
-	2.  To execute and start the applicaton in production mode use the below command
+   * To execute and start the applicaton in production mode use the below command
 
         $ RAILS_ENV=production rake rling:install
 
