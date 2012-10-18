@@ -112,7 +112,7 @@ Version
 Changes
 -------------------------------
 
-*  Added full support to rails 3.2.8
+*  Added full support to rails 3.2.x
 *  Usage of Assets Pipeline.
 *  All the plugins have been replaced with gems.
 *  It no longer uses prototype which is replaced with jquery.
