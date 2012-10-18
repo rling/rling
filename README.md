@@ -48,4 +48,48 @@ Installation
 
         $ RAILS_ENV=production rake rling:install
 
+5.  In both the modes, the task runs the following activities
 
+        $ bundle install <br/>
+        $ rake db:create <br/>
+        $ rake db:migrate <br/>
+        $ rake db:seed
+
+
+6.  Running the application
+
+        $ rails s
+
+
+License
+-------------------------------
+
+Rling CMS is the brain child of SATISH N KOTA, CEO HEURION CONSULTING a.k.a 
+*[Rails detectives](http://www.heurion.com).*
+
+However Rling CMS would like to thank the following people as minimum,
+
+   1. HEURION a.k.a RAILS DETECTIVES EMPLOYEES, EX-Employees and Project Trainees
+   2. Individuals who have helped in giving us expert advise on how to make this system much better
+   3. MATZ for creating Ruby Language
+   4. DHH and Team for developing Rails technology.
+   5. Individuals and Teams who have built CKEditor, PaperClip, RailRoady, UserStamp, Jquery, RSpec, Cucumber, Webrat, etc.,
+
+
+Version
+-------------------------------
+*  This is the release version 1.1 of the system.
+*  It runs on rails 3.2.8 and ruby 1.9.2
+*  Earlier release has been moved to branch, rails3.0.x
+
+
+
+Changes
+-------------------------------
+
+*  Added full support to rails 3.2.8
+*  Usage of Assets Pipeline.
+*  All the plugins have been replaced with gems.
+*  It no longer uses prototype which is replaced with jquery.
+*  Minor Bugfixes.
+ 
