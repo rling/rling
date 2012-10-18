@@ -36,7 +36,6 @@ Installation
    * username: root
    * password: 
 
-
 4.  Run rake task to do all the necessary installations.
 
 
@@ -54,7 +53,6 @@ Installation
         $ rake db:create <br/>
         $ rake db:migrate <br/>
         $ rake db:seed
-
 
 6.  Running the application
 
