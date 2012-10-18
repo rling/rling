@@ -14,6 +14,8 @@ class Ckeditor::Asset < ActiveRecord::Base
   def url(*args)
     data.url(*args)
   end
+  
+  
   alias :public_filename :url
   
   def filename
