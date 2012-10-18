@@ -22,19 +22,17 @@ Installation
 +  **Clone the repository:**
 
         $ git clone git@github.com:rling/rling.git  
-
-
-
-
+  
+  
+  
 +  **Set Database settings(Skip this, to use default settings)**
 
    * Open rling/config/database.yml file
    * Modify adapter settings such as adapter, username, password, database, pool, etc.,
    * Save the database.yml file.  
-
-
-
-
+  
+  
+  
 +  **Default settings are:**
 
    > adapter: mysql
@@ -44,10 +42,9 @@ Installation
    > username: root
    >
    > password:  
-
-
-
-
+  
+  
+  
 +  **Run rake task to do all the necessary installations.**
 
 
@@ -58,24 +55,24 @@ Installation
    * To execute and start the applicaton in production mode use the below command
 
 				$ RAILS_ENV=production rake rling:install..
-
-
-
-
+  
+  
+  
 +  **In both the modes, the task runs the following activities**
 
         $ bundle install
         $ rake db:create
         $ rake db:migrate
         $ rake db:seed  
-
-
-
+  
+  
+  
 +  Running the application
 
         $ rails s  
-
-
+  
+  
+  
 License
 -------------------------------
 
