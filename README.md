@@ -19,44 +19,49 @@ Features of Rling CMS
 Installation
 -------------------------------
 
-+ Clone the repository:
++  Clone the repository:
 
-    $ git clone git@github.com:rling/rling.git
+        $ git clone git@github.com:rling/rling.git
 
-+ Set Database settings(Skip this, to use default settings)
++  Set Database settings(Skip this, to use default settings)
 
-    * Open rling/config/database.yml file
-    * Modify adapter settings such as adapter, username, password, database, pool, etc.,
-    * Save the database.yml file.
+   * Open rling/config/database.yml file
+   * Modify adapter settings such as adapter, username, password, database, pool, etc.,
+   * Save the database.yml file.
 
-+ Default settings are:
++  Default settings are:
 
-    > adapter: mysql
-    > database: rling
-    > username: root
-    > password: 
+   > adapter: mysql
+   >
+   > database: rling
+   >
+   > username: root
+   >
+   > password: 
 
-+ Run rake task to do all the necessary installations.
+
++  Run rake task to do all the necessary installations.
 
 
-    * To execute and start the application in development mode use the below command
+   * To execute and start the application in development mode use the below command
 
-    $ rake rling:install
+        $ rake rling:install
 
-    * To execute and start the applicaton in production mode use the below command
+   * To execute and start the applicaton in production mode use the below command
 
-    $ RAILS_ENV=production rake rling:install
+        $ RAILS_ENV=production rake rling:install
 
-+ In both the modes, the task runs the following activities
++  In both the modes, the task runs the following activities
 
-    $ bundle install
-    $ rake db:create
-    $ rake db:migrate
-    $ rake db:seed
+        $ bundle install
+        $ rake db:create
+        $ rake db:migrate
+        $ rake db:seed
 
-+ Running the application
 
-    $ rails s
++  Running the application
+
+        $ rails s
 
 
 License
@@ -85,7 +90,7 @@ Version
 Changes
 -------------------------------
 
-*  Added full support to rails 3.2.x
+*  Added full support to rails 3.2.8
 *  Usage of Assets Pipeline.
 *  All the plugins have been replaced with gems.
 *  It no longer uses prototype which is replaced with jquery.
