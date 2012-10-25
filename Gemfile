@@ -5,7 +5,7 @@ gem 'mysql2'
 gem 'acts_as_tree'
 gem 'ckeditor'
 gem 'paperclip'
-gem 'userstamp', :git => "https://github.com/hcshiv/userstamp.git"
+gem 'userstamp', :git => "git@github.com:hcshiv/userstamp.git"
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'railroady'
