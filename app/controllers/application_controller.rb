@@ -134,7 +134,15 @@ class ApplicationController < ActionController::Base
   # we donot have control over the fields as entered by non administrators within 
   # the website.
    def checkforjs(input)
-     return input.gsub("<script","").gsub("</script>","").gsub("<iframe","") unless input.blank?
+       if input.class.to_s == "ActiveSupport::HashWithIndifferentAccess"
+          year = input.with_indifferent_access["(1i)"]
+          month =input.with_indifferent_access["(2i)"]
+          day = input.with_indifferent_access["(3i)"]
+          date = year + "-" + month + "-" + day
+          return date
+       else
+        return input.gsub("<script","").gsub("</script>","").gsub("<iframe","") unless input.blank?
+       end
    end
    
    def set_layout

@@ -206,10 +206,12 @@ end
     when "File"
       unless value.blank?
        asset = Asset.find(value)
-       return check_content_type(asset)
+       return check_content_type(current_user,asset,asset.upload_file_size)
       end
     when "Textfield","Textarea"
       return auto_link(value)
+    when "Date"
+        return value
     else
       return value
     end
